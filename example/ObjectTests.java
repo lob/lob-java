@@ -6,6 +6,7 @@ import com.lob.exception.LobException;
 import com.lob.model.Object;
 import com.lob.model.DeletedStatus;
 import com.lob.model.ObjectCollection;
+import java.io.*;
 
 public class ObjectTests {
 
@@ -19,7 +20,7 @@ public class ObjectTests {
        
             Map<String, java.lang.Object> ObjectMap = new HashMap<String, java.lang.Object>();
             ObjectMap.put("name", "GO BLUE");
-            ObjectMap.put("file", "https://www.lob.com/goblue.pdf");
+            ObjectMap.put("file", "@F:/Jimmy/goblue.pdf");
             ObjectMap.put("quantity", 2);
             ObjectMap.put("setting_id", 100);
             ObjectMap.put("double_sided", 1);
@@ -45,4 +46,22 @@ public class ObjectTests {
             e.printStackTrace();
         }
     }
+    
+    public static byte[] readFile(File file) throws IOException {
+        // Open file
+        RandomAccessFile f = new RandomAccessFile(file, "r");
+        try {
+            // Get and check length
+            long longlength = f.length();
+            int length = (int) longlength;
+            if (length != longlength)
+                throw new IOException("File size >= 2 GB");
+            // Read file and return data
+            byte[] data = new byte[length];
+            f.readFully(data);
+            return data;
+        } finally {
+            f.close();
+        }
+    }    
 }

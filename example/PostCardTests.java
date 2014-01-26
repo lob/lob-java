@@ -8,7 +8,8 @@ import com.lob.model.PostcardCollection;
 
 public class PostCardTests {
 
-    public static void main(String[] args) {
+    @SuppressWarnings("deprecation")
+	public static void main(String[] args) {
         Lob.apiKey = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:";
         String id = "psc_5c002b86ce47537a";
         try {
@@ -30,9 +31,9 @@ public class PostCardTests {
             ObjectMap.put("from[address_state]", "WA");
             ObjectMap.put("from[address_zip]", "94041");
             ObjectMap.put("from[address_country]", "US");
-            ObjectMap.put("front", "https://www.lob.com/postcardfront.pdf");
-            ObjectMap.put("back", "https://www.lob.com/postcardback.pdf");           
-           		
+            ObjectMap.put("front", "@C:/Data/Lob/postcardfront.pdf");
+            ObjectMap.put("back", "https://www.lob.com/postcardback.pdf"); 
+            
             Postcard p2 = Postcard.create(ObjectMap, Lob.apiKey);
             System.out.println(p2);
             

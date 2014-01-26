@@ -17,16 +17,20 @@ Add this dependency to your project's POM:
     <dependency>
       <groupId>com.lob</groupId>
       <artifactId>lob-java</artifactId>
-      <version>1.0</version>
+      <version>1.1</version>
     </dependency>
 
 ### Others
 
 You'll need to manually install the following JARs:
 
-* The Lob JAR lob-java.jar
+* The Lob JAR lob-java-1.1.jar
 * [Google Gson](http://code.google.com/p/google-gson/) from <http://google-gson.googlecode.com/files/google-gson-2.2.2-release.zip>.
 * [Apache Commons Codec](http://commons.apache.org/proper/commons-codec/index.html) from <http://apache.claz.org//commons/codec/binaries/commons-codec-1.8-bin.zip>.
+* [Apache Commons Logging](http://commons.apache.org/proper/commons-logging/) from <http://www.motorlogy.com/apache//commons/logging/binaries/commons-logging-1.1.3-bin.zip>.
+* [Apache HttpClient](http://hc.apache.org/httpcomponents-client-4.3.x/index.html) from <http://mirrors.gigenet.com/apache//httpcomponents/httpclient/binary/httpcomponents-client-4.3.2-bin.zip>.
+* [Apache HttpCore](http://hc.apache.org/httpcomponents-core-ga/) from <http://mirrors.sonic.net/apache//httpcomponents/httpcore/binary/httpcomponents-core-4.3.1-bin.zip>.
+* [Apache HttpClient Mime](http://hc.apache.org/httpcomponents-client-ga/) from <http://repo1.maven.org/maven2/org/apache/httpcomponents/httpmime/4.3.2/httpmime-4.3.2.jar>.
 
 Usage
 =====

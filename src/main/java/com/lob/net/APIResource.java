@@ -13,6 +13,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.impl.client.HttpClientBuilder;
+
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -139,24 +147,61 @@ public abstract class APIResource extends LobObject {
 		return conn;
 	}
 
-	private static javax.net.ssl.HttpsURLConnection createPostConnection(
-			String url, String query, String apiKey) throws IOException {
-		javax.net.ssl.HttpsURLConnection conn = createLobConnection(url,
-				apiKey);
-		conn.setDoOutput(true);
-		conn.setRequestMethod("POST");
-		conn.setRequestProperty("Content-Type", String.format(
-				"application/x-www-form-urlencoded;charset=%s", CHARSET));
-		OutputStream output = null;
+	private static HttpResponse createPostConnection(
+			String url, String query, String apiKey, Map<String, Object> params) throws IOException {
+
+	    HttpClient httpclient = HttpClientBuilder.create().build();
+	    HttpPost httppost = new HttpPost(url);
+
 		try {
-			output = conn.getOutputStream();
-			output.write(query.getBytes(CHARSET));
-		} finally {
-			if (output != null) {
-				output.close();
+	        MultipartEntityBuilder builder = MultipartEntityBuilder.create();        
+	        builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+
+			Map<String, String> flatParams = flattenParams(params);
+			for (Map.Entry<String, String> entry : flatParams.entrySet()) {
+				String val = entry.getValue();
+				if (val.startsWith("@"))
+				{
+				    String filename = val.substring(1);
+				    java.io.File file = new java.io.File(filename);
+				       
+				    java.io.FileInputStream fis = new java.io.FileInputStream(file);		    
+				    java.io.ByteArrayOutputStream bos = new java.io.ByteArrayOutputStream();
+			        byte[] buf = new byte[1024];
+
+			        for (int readNum; (readNum = fis.read(buf)) != -1;) {
+			        	bos.write(buf, 0, readNum); //no doubt here is 0
+			                //Writes len bytes from the specified byte array starting at offset off to this byte array output stream.
+			                //System.out.println("read " + readNum + " bytes,");
+			        }
+
+			        org.apache.http.entity.mime.content.ContentBody contentPart = 
+			        	new org.apache.http.entity.mime.content.ByteArrayBody(bos.toByteArray(), filename);	
+			        
+			        builder.addPart(entry.getKey(), contentPart);
+				}
+				else
+					builder.addTextBody(entry.getKey(), entry.getValue());
 			}
+	        
+	        HttpEntity yourEntity = builder.build();
+	        httppost.setEntity(yourEntity);
+	        
+	        httppost.addHeader("User-Agent",
+	    			String.format("Lob/v1 JavaBindings/%s", Lob.VERSION));    
+
+	    	byte[] authEncBytes = org.apache.commons.codec.binary.Base64.encodeBase64(Lob.apiKey.getBytes());
+	    	String authStringEnc = new String(authEncBytes);
+	        httppost.addHeader("Authorization", "Basic " + authStringEnc);
+	    	
+	        HttpResponse response = httpclient.execute(httppost);
+	        return response;
+ 
 		}
-		return conn;
+	    catch (InvalidRequestException e)
+	    {
+			throw new IOException(e);
+		}
 	}
 
 	private static javax.net.ssl.HttpsURLConnection createDeleteConnection(
@@ -241,7 +286,7 @@ public abstract class APIResource extends LobObject {
 
 	private static LobResponse makeURLConnectionRequest(
 			APIResource.RequestMethod method, String url, String query,
-			String apiKey) throws APIConnectionException {
+			String apiKey, Map<String, Object> params) throws APIConnectionException {
 		javax.net.ssl.HttpsURLConnection conn = null;
 		try {
 			switch (method) {
@@ -249,8 +294,17 @@ public abstract class APIResource extends LobObject {
 				conn = createGetConnection(url, query, apiKey);
 				break;
 			case POST:
-				conn = createPostConnection(url, query, apiKey);
-				break;
+				HttpResponse response = createPostConnection(url, query, apiKey, params);
+		        
+				int rCode = response.getStatusLine().getStatusCode(); 
+				String rBody = null;
+				if (rCode >= 200 && rCode < 300) {
+					rBody = getResponseBody(response.getEntity().getContent());
+				} else {
+					rBody = getResponseBody(response.getEntity().getContent());
+				}
+				return new LobResponse(rCode, rBody);
+				
 			case DELETE:
 				conn = createDeleteConnection(url, query, apiKey);
 				break;
@@ -349,7 +403,7 @@ public abstract class APIResource extends LobObject {
 		LobResponse response;
 		try {
 			// HTTPSURLConnection verifies SSL cert by default
-			response = makeURLConnectionRequest(method, url, query, apiKey);
+			response = makeURLConnectionRequest(method, url, query, apiKey, params);
 		} catch (ClassCastException ce) {
 			// appengine doesn't have HTTPSConnection, use URLFetch API
 			String appEngineEnv = System.getProperty(
