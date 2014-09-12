@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -53,13 +54,13 @@ public abstract class APIResource extends LobObject {
 		else
 			return String.format("%s/v1/%s", Lob.API_BASE, className(clazz));
 	}
-	
+
 
 	protected static String classURL(Class<?> clazz) {
 		if (className(clazz).contains("address"))
 			return String.format("%ses", singleClassURL(clazz));
 		else
-			return String.format("%ss", singleClassURL(clazz));	
+			return String.format("%ss", singleClassURL(clazz));
 	}
 
 	protected static String instanceURL(Class<?> clazz, String id) {
@@ -89,6 +90,9 @@ public abstract class APIResource extends LobObject {
 		if (apiKey == null) {
 			apiKey = Lob.apiKey;
 		}
+
+		if (!apiKey.endsWith(":"))
+			apiKey = apiKey + ":";
 
 		headers.put("Authorization", "Basic " + apiKey);
 
@@ -121,13 +125,13 @@ public abstract class APIResource extends LobObject {
 		conn.setConnectTimeout(30000); // 30 seconds
 		conn.setReadTimeout(80000); // 80 seconds
 		conn.setUseCaches(false);
-		
+
 		if (!apiKey.endsWith(":"))
 			apiKey = apiKey + ":";
-		
+
 		byte[] authEncBytes = org.apache.commons.codec.binary.Base64.encodeBase64(apiKey.getBytes());
 		String authStringEnc = new String(authEncBytes);
-		
+
 		conn.setRequestProperty("Authorization", "Basic " + authStringEnc);
 
 		return conn;
@@ -140,7 +144,7 @@ public abstract class APIResource extends LobObject {
 			getURL = String.format("%s?%s", url, query);
 		else
 			getURL = url;
-		
+
 		javax.net.ssl.HttpsURLConnection conn = createLobConnection(getURL,
 				apiKey);
 		conn.setRequestMethod("GET");
@@ -154,7 +158,7 @@ public abstract class APIResource extends LobObject {
 	    HttpPost httppost = new HttpPost(url);
 
 		try {
-	        MultipartEntityBuilder builder = MultipartEntityBuilder.create();        
+	        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 	        builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 
 			Map<String, String> flatParams = flattenParams(params);
@@ -164,8 +168,8 @@ public abstract class APIResource extends LobObject {
 				{
 				    String filename = val.substring(1);
 				    java.io.File file = new java.io.File(filename);
-				       
-				    java.io.FileInputStream fis = new java.io.FileInputStream(file);		    
+
+				    java.io.FileInputStream fis = new java.io.FileInputStream(file);
 				    java.io.ByteArrayOutputStream bos = new java.io.ByteArrayOutputStream();
 			        byte[] buf = new byte[1024];
 
@@ -175,28 +179,32 @@ public abstract class APIResource extends LobObject {
 			                //System.out.println("read " + readNum + " bytes,");
 			        }
 
-			        org.apache.http.entity.mime.content.ContentBody contentPart = 
-			        	new org.apache.http.entity.mime.content.ByteArrayBody(bos.toByteArray(), filename);	
-			        
+			        org.apache.http.entity.mime.content.ContentBody contentPart =
+			        	new org.apache.http.entity.mime.content.ByteArrayBody(bos.toByteArray(), filename);
+
 			        builder.addPart(entry.getKey(), contentPart);
 				}
 				else
 					builder.addTextBody(entry.getKey(), entry.getValue());
 			}
-	        
+
 	        HttpEntity yourEntity = builder.build();
 	        httppost.setEntity(yourEntity);
-	        
-	        httppost.addHeader("User-Agent",
-	    			String.format("Lob/v1 JavaBindings/%s", Lob.VERSION));    
 
-	    	byte[] authEncBytes = org.apache.commons.codec.binary.Base64.encodeBase64(Lob.apiKey.getBytes());
+	        httppost.addHeader("User-Agent",
+	    			String.format("Lob/v1 JavaBindings/%s", Lob.VERSION));
+
+        if (!apiKey.endsWith(":"))
+			    apiKey = apiKey + ":";
+
+	    	byte[] authEncBytes = org.apache.commons.codec.binary.Base64.encodeBase64(apiKey.getBytes());
 	    	String authStringEnc = new String(authEncBytes);
+
 	        httppost.addHeader("Authorization", "Basic " + authStringEnc);
-	    	
+
 	        HttpResponse response = httpclient.execute(httppost);
 	        return response;
- 
+
 		}
 	    catch (InvalidRequestException e)
 	    {
@@ -262,17 +270,13 @@ public abstract class APIResource extends LobObject {
 
 	// represents Errors returned as JSON
 	private static class ErrorContainer {
-		private APIResource.Error error;
+		private List<APIResource.Error> errors;
 	}
 
 	private static class Error {
-		String type;
-
 		String message;
 
-		String code;
-
-		String param;
+		String status_code;
 	}
 
 	private static String getResponseBody(InputStream responseStream)
@@ -295,8 +299,8 @@ public abstract class APIResource extends LobObject {
 				break;
 			case POST:
 				HttpResponse response = createPostConnection(url, query, apiKey, params);
-		        
-				int rCode = response.getStatusLine().getStatusCode(); 
+
+				int rCode = response.getStatusLine().getStatusCode();
 				String rBody = null;
 				if (rCode >= 200 && rCode < 300) {
 					rBody = getResponseBody(response.getEntity().getContent());
@@ -304,7 +308,7 @@ public abstract class APIResource extends LobObject {
 					rBody = getResponseBody(response.getEntity().getContent());
 				}
 				return new LobResponse(rCode, rBody);
-				
+
 			case DELETE:
 				conn = createDeleteConnection(url, query, apiKey);
 				break;
@@ -342,7 +346,7 @@ public abstract class APIResource extends LobObject {
 	protected static <T> T request(APIResource.RequestMethod method,
 			String url, Map<String, Object> params, Class<T> clazz,
 			String apiKey) throws AuthenticationException,
-			InvalidRequestException, APIConnectionException, 
+			InvalidRequestException, APIConnectionException,
 			APIException {
 		String originalDNSCacheTTL = null;
 		Boolean allowedToSetTTL = true;
@@ -375,7 +379,7 @@ public abstract class APIResource extends LobObject {
 	protected static <T> T _request(APIResource.RequestMethod method,
 			String url, Map<String, Object> params, Class<T> clazz,
 			String apiKey) throws AuthenticationException,
-			InvalidRequestException, APIConnectionException, 
+			InvalidRequestException, APIConnectionException,
 			APIException {
 		if ((Lob.apiKey == null || Lob.apiKey.length() == 0)
 				&& (apiKey == null || apiKey.length() == 0)) {
@@ -427,12 +431,10 @@ public abstract class APIResource extends LobObject {
 			throws InvalidRequestException, AuthenticationException,
 			APIException {
 		APIResource.Error error = gson.fromJson(rBody,
-				APIResource.ErrorContainer.class).error;
+				APIResource.ErrorContainer.class).errors.get(0);
 		switch (rCode) {
-		case 400:
-			throw new InvalidRequestException(error.message, error.param, null);
 		case 404:
-			throw new InvalidRequestException(error.message, error.param, null);
+			throw new APIException(error.message, null);
 		case 401:
 			throw new AuthenticationException(error.message);
 
