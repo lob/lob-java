@@ -4,7 +4,8 @@ import com.lob.exception.LobException;
 import com.lob.exception.APIException;
 import com.lob.Lob;
 import com.lob.model.Bank_account;
-import com.lob.model.BankAccountCollection;
+import com.lob.model.Check;
+import com.lob.model.CheckCollection;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +14,10 @@ import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class BankAccountTest {
+public class CheckTest {
+    static Map<String, Object> defaultCheckParams = new HashMap<String, Object>();
     static Map<String, Object> defaultBankAccountParams = new HashMap<String, Object>();
+
 
     @BeforeClass
     public static void setUp() {
@@ -36,48 +39,58 @@ public class BankAccountTest {
       defaultBankAccountParams.put("account_address[address_state]", "CA");
       defaultBankAccountParams.put("account_address[address_zip]", "94085");
       defaultBankAccountParams.put("account_address[address_country]", "US");
+
+      defaultCheckParams.put("name", "Test Check");
+      defaultCheckParams.put("to[name]", "Payee");
+      defaultCheckParams.put("to[address_line1]", "123 Test Street");
+      defaultCheckParams.put("to[address_city]", "San Francisco");
+      defaultCheckParams.put("to[address_state]", "CA");
+      defaultCheckParams.put("to[address_zip]", "94107");
+      defaultCheckParams.put("amount", "2000");
     }
 
     @Test
-    public void testBankAccountRetrieveAll() throws LobException {
+    public void testCheckRetrieveAll() throws LobException {
       Map<String, Object> listParams = new HashMap<String, Object>();
       listParams.put("count", 2);
       listParams.put("offset", 3);
 
-      BankAccountCollection bankAccounts = Bank_account.all(listParams, Lob.apiKey);
-      assertEquals(bankAccounts.getData().size(), 2);
+      CheckCollection checks = Check.all(listParams, Lob.apiKey);
+      assertEquals(checks.getData().size(), 2);
     }
 
     @Test(expected=APIException.class)
-    public void testBankAccountRetrieveAllFail() throws LobException {
+    public void testCheckRetrieveAllFail() throws LobException {
       Map<String, Object> listParams = new HashMap<String, Object>();
       listParams.put("count", 100000);
 
-      BankAccountCollection bankAccounts = Bank_account.all(listParams, Lob.apiKey);
+      CheckCollection checks = Check.all(listParams, Lob.apiKey);
     }
 
     @Test
-    public void testBankAccountCreate() throws LobException {
+    public void testCheckCreate() throws LobException {
       Bank_account bankAccount = Bank_account.create(defaultBankAccountParams, Lob.apiKey);
-      assertEquals(bankAccount.getRouting_number(), "122100024");
+      defaultCheckParams.put("bank_account", bankAccount.getId());
+      Check check = Check.create(defaultCheckParams, Lob.apiKey);
+      assertEquals(check.getName(), "Test Check");
     }
 
     @Test(expected=APIException.class)
-    public void testBankAccountCreateFail() throws LobException {
-      Map<String, Object> badBankAccountParams = new HashMap<String, Object>();
-      badBankAccountParams.put("routing_number", "Test Address");
-      Bank_account badBankAccount = Bank_account.create(badBankAccountParams, Lob.apiKey);
+    public void testCheckCreateFail() throws LobException {
+      Map<String, Object> badCheckParams = new HashMap<String, Object>();
+      badCheckParams.put("amount", "2000");
+      Check badCheck = Check.create(badCheckParams, Lob.apiKey);
     }
 
     @Test
-    public void testBankAccountRetrieve() throws LobException {
-      Bank_account createdBankAccount = Bank_account.create(defaultBankAccountParams, Lob.apiKey);
-      Bank_account retrievedBankAccount = Bank_account.retrieve(createdBankAccount.getId(), Lob.apiKey);
-      assertEquals(createdBankAccount.getId(), retrievedBankAccount.getId());
+    public void testCheckRetrieve() throws LobException {
+      Check createdCheck = Check.create(defaultCheckParams, Lob.apiKey);
+      Check retrievedCheck = Check.retrieve(createdCheck.getId(), Lob.apiKey);
+      assertEquals(createdCheck.getId(), retrievedCheck.getId());
     }
 
     @Test(expected=APIException.class)
-    public void testBankAccountRetrieveFail() throws LobException {
-      Bank_account bankAccount = Bank_account.retrieve("asdf", Lob.apiKey);
+    public void testCheckRetrieveFail() throws LobException {
+      Check bankAccount = Check.retrieve("asdf", Lob.apiKey);
     }
 }
