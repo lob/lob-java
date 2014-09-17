@@ -1,5 +1,8 @@
 # Lob Java Bindings
 
+[![Build Status](https://secure.travis-ci.org/lob/lob-java.png)](https://travis-ci.org/lob/lob-java)
+[![Coverage Status](https://coveralls.io/repos/javadev/lob-java/badge.png?branch=master)](https://coveralls.io/r/javadev/lob-java)
+
 You can sign up for a Lob account at https://www.lob.com.
 
 Requirements
