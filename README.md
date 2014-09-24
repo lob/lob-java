@@ -13,18 +13,6 @@ Java 1.5 and later.
 Installation
 ============
 
-### Maven users
-
-Add this dependency to your project's POM:
-
-    <dependency>
-      <groupId>com.lob</groupId>
-      <artifactId>lob-java</artifactId>
-      <version>1.1</version>
-    </dependency>
-
-### Others
-
 You'll need to manually install the following JARs:
 
 * The Lob JAR lob-java-1.1.jar
