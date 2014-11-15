@@ -5,6 +5,7 @@ import com.lob.exception.APIException;
 import com.lob.Lob;
 import com.lob.model.Address;
 import com.lob.model.AddressCollection;
+import com.lob.model.DeletedStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -69,5 +70,16 @@ public class AddressTest {
     @Test(expected=APIException.class)
     public void testAddressRetrieveFail() throws LobException {
       Address address = Address.retrieve("asdf", Lob.apiKey);
+    }
+
+    @Test
+    public void testAddressDelete() throws LobException {
+      Address address = Address.create(defaultAddressParams, Lob.apiKey);
+      assertEquals(address.getName(), "Test Address");
+      assertEquals(address.getAddress_line1(), "123 Test Street");
+      DeletedStatus status = Address.delete(address.getId(), Lob.apiKey);
+      assertEquals("1", status.getMessage());
+      Address retrievedAddress = Address.retrieve(address.getId(), Lob.apiKey);
+      assertEquals(1, retrievedAddress.getDeleted());
     }
 }
