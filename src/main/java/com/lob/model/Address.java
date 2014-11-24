@@ -19,6 +19,7 @@ public class Address extends APIResource {
 	String address_state;
 	String address_zip;
 	String address_country;
+	int deleted;
 
 	
 	public String getName() {
@@ -97,19 +98,15 @@ public class Address extends APIResource {
 		return id;
 	}
 
+	public int getDeleted() {
+		return deleted;
+	}
+
 	public static Address retrieve(String id, String apiKey)
 			throws AuthenticationException, InvalidRequestException,
 			APIConnectionException, APIException {
 		return request(RequestMethod.GET, instanceURL(Address.class, id), null,
 				Address.class, apiKey);
-	}
-
-	public static Address update(String id, Map<String, java.lang.Object> params, String apiKey)
-			throws AuthenticationException, InvalidRequestException,
-			APIConnectionException, APIException {
-			return request(RequestMethod.POST,
-					instanceURL(Address.class, id), params, Address.class,
-					apiKey);
 	}
 
 	public static Address create(Map<String, java.lang.Object> params, String apiKey)

@@ -1,8 +1,8 @@
 package com.lob.model;
 
 public class DeletedStatus extends LobObject {
-	String message;
+	int deleted;
 	public String getMessage() {
-		return message;
+		return String.valueOf(deleted);
 	}	
 }
