@@ -15,7 +15,7 @@ public class ObjectTests {
         String id = "obj_4241a46e01b4f892";
         try {
  
-        	Object o1 = Object.retrieve(id, Lob.apiKey);
+            Object o1 = Object.retrieve(id, Lob.apiKey);
             System.out.println(o1);           
        
             Map<String, java.lang.Object> ObjectMap = new HashMap<String, java.lang.Object>();
@@ -38,11 +38,11 @@ public class ObjectTests {
             System.out.println(ac);
             
         } catch (LobException e) {
-        	System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
         catch (Exception e) {
-        	System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }

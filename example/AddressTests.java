@@ -15,13 +15,8 @@ public class AddressTests {
         String id = "adr_fa85158b26c3eb7c";
         try {
  
-        	Address a1 = Address.retrieve(id, Lob.apiKey);
+            Address a1 = Address.retrieve(id, Lob.apiKey);
             System.out.println(a1);
-            
-            Map<String, Object> AddressMap1 = new HashMap<String, Object>();
-            AddressMap1.put("address_line1", "345 Update Street");
-            Address a2 = Address.update(id, AddressMap1, Lob.apiKey);
-            System.out.println(a2);
             
             Map<String, Object> AddressMap2 = new HashMap<String, Object>();
             AddressMap2.put("name", "James Chen");
@@ -55,11 +50,11 @@ public class AddressTests {
             System.out.println(a4);
             
         } catch (LobException e) {
-        	System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
         catch (Exception e) {
-        	System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
