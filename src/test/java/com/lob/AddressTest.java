@@ -6,6 +6,7 @@ import com.lob.Lob;
 import com.lob.model.Address;
 import com.lob.model.AddressCollection;
 import com.lob.model.DeletedStatus;
+import com.lob.model.Verify;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -82,4 +83,16 @@ public class AddressTest {
       Address retrievedAddress = Address.retrieve(address.getId(), Lob.apiKey);
       assertEquals(1, retrievedAddress.getDeleted());
     }
+
+    @Test
+    public void testAddressVerify() throws LobException {
+      Map<String, Object> addressMap = new HashMap<String, Object>();
+      addressMap.put("address_line1", "220 William T Morrissey Boulevard");
+      addressMap.put("address_city", "Boston");
+      addressMap.put("address_state", "MA");
+      addressMap.put("address_zip", "02125");
+      Verify verify = Address.verify(addressMap, Lob.apiKey);
+      assertEquals("220 WILLIAM T MORRISSEY BLVD", verify.getAddress().getAddress_line1());
+    }
+
 }
