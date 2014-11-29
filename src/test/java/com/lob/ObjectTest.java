@@ -3,6 +3,7 @@ package com.lob;
 import com.lob.exception.LobException;
 import com.lob.exception.APIException;
 import com.lob.Lob;
+import com.lob.model.DeletedStatus;
 import com.lob.model.Object;
 import com.lob.model.ObjectCollection;
 
@@ -47,6 +48,14 @@ public class ObjectTest {
     public void testObjectCreate() throws LobException {
       Object object = Object.create(defaultObjectParams, Lob.apiKey);
       assertEquals(object.getName(), "Test Object");
+    }
+
+    @Test
+    public void testObjectDelete() throws LobException {
+      Object object = Object.create(defaultObjectParams, Lob.apiKey);
+      assertEquals(object.getName(), "Test Object");
+      DeletedStatus status = Object.delete(object.getId(), Lob.apiKey);
+      assertEquals("1", status.getMessage());
     }
 
     @Test
