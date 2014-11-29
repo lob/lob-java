@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -93,6 +94,13 @@ public class AddressTest {
       addressMap.put("address_zip", "02125");
       Verify verify = Address.verify(addressMap, Lob.apiKey);
       assertEquals("220 WILLIAM T MORRISSEY BLVD", verify.getAddress().getAddress_line1());
+      assertEquals("", verify.getAddress().getAddress_line2());
+      assertEquals("BOSTON", verify.getAddress().getAddress_city());
+      assertEquals("MA", verify.getAddress().getAddress_state());
+      assertEquals("02125-3314", verify.getAddress().getAddress_zip());
+      assertEquals("US", verify.getAddress().getAddress_country());
+      assertNull(verify.getAddress().getEmail());
+      assertNull(verify.getAddress().getPhone());
     }
 
 }
