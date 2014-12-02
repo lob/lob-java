@@ -54,7 +54,8 @@ public class JobTest {
       listParams.put("offset", 3);
 
       JobCollection jobs = Job.all(listParams, Lob.apiKey);
-      assertEquals(jobs.getData().size(), 2);
+      assertEquals(2, jobs.getData().size());
+      assertEquals(2, jobs.getCount().intValue());
     }
 
     @Test(expected=APIException.class)
