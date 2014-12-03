@@ -75,6 +75,12 @@ public class PostcardTest {
       Postcard createdPostcard = Postcard.create(defaultPostcardParams, Lob.apiKey);
       Postcard retrievedPostcard = Postcard.retrieve(createdPostcard.getId(), Lob.apiKey);
       assertEquals(createdPostcard.getId(), retrievedPostcard.getId());
+      assertEquals(createdPostcard.getName(), retrievedPostcard.getName());
+      assertEquals(createdPostcard.getTo().getId(), retrievedPostcard.getTo().getId());
+      assertEquals(createdPostcard.getFrom().getId(), retrievedPostcard.getFrom().getId());
+      assertEquals(createdPostcard.getMessage(), retrievedPostcard.getMessage());
+      assertEquals(createdPostcard.getFront(), retrievedPostcard.getFront());
+      assertEquals(createdPostcard.getBack(), retrievedPostcard.getBack());
     }
 
     @Test(expected=APIException.class)
