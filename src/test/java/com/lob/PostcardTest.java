@@ -47,6 +47,7 @@ public class PostcardTest {
 
       PostcardCollection jobs = Postcard.all(listParams, Lob.apiKey);
       assertEquals(jobs.getData().size(), 2);
+      assertEquals("list", jobs.getObject());
     }
 
     @Test(expected=APIException.class)
