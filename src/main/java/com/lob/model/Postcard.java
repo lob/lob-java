@@ -16,7 +16,7 @@ public class Postcard extends APIResource {
     String message;
     String front;
     String back;
-    
+
     public String getId() {
         return id;
     }
@@ -57,11 +57,11 @@ public class Postcard extends APIResource {
             APIConnectionException, APIException {
             return request(RequestMethod.POST, classURL(Postcard.class), params,
                     Postcard.class, apiKey);
-    }   
-    
+    }
+
     public static PostcardCollection all(Map<String, java.lang.Object> params,
             String apiKey) throws AuthenticationException,
-            InvalidRequestException, APIConnectionException, 
+            InvalidRequestException, APIConnectionException,
             APIException {
         return request(RequestMethod.GET, classURL(Postcard.class), params,
                 PostcardCollection.class, apiKey);
