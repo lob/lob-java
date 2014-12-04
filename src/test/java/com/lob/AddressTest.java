@@ -38,6 +38,7 @@ public class AddressTest {
 
       AddressCollection addresses = Address.all(listParams, Lob.apiKey);
       assertEquals(addresses.getData().size(), 2);
+      assertEquals("list", addresses.getObject());
     }
 
     @Test(expected=APIException.class)
