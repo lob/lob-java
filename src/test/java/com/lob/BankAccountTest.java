@@ -46,6 +46,7 @@ public class BankAccountTest {
 
       BankAccountCollection bankAccounts = Bank_account.all(listParams, Lob.apiKey);
       assertEquals(bankAccounts.getData().size(), 2);
+      assertEquals("list", bankAccounts.getObject());
     }
 
     @Test(expected=APIException.class)
