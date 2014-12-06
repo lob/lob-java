@@ -34,6 +34,7 @@ public class ObjectTest {
 
       ObjectCollection objects = Object.all(listParams, Lob.apiKey);
       assertEquals(objects.getData().size(), 2);
+      assertEquals("list", objects.getObject());
     }
 
     @Test(expected=APIException.class)

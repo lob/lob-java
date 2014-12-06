@@ -24,5 +24,6 @@ public class StateTest {
     public void testStateRetrieveAll() throws LobException {
       StateCollection states = State.all(Lob.apiKey);
       assertEquals(states.getData().size(), 62);
+      assertEquals("list", states.getObject());
     }
 }

@@ -25,5 +25,6 @@ public class CountryTest {
     public void testCountryRetrieveAll() throws LobException {
       CountryCollection countries = Country.all(Lob.apiKey);
       assertEquals(countries.getData().size(), 246);
+      assertEquals("list", countries.getObject());
     }
 }

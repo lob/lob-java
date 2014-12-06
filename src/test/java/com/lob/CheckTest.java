@@ -57,6 +57,7 @@ public class CheckTest {
 
       CheckCollection checks = Check.all(listParams, Lob.apiKey);
       assertEquals(checks.getData().size(), 2);
+      assertEquals("list", checks.getObject());
     }
 
     @Test(expected=APIException.class)
