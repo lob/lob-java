@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -25,5 +26,9 @@ public class StateTest {
       StateCollection states = State.all(Lob.apiKey);
       assertEquals(states.getData().size(), 62);
       assertEquals("list", states.getObject());
+      assertNull(states.getData().get(0).getId());
+      assertEquals("Alabama", states.getData().get(0).getName());
+      assertEquals("AL", states.getData().get(0).getShort_name());
+      assertEquals("state", states.getData().get(0).getObject());
     }
 }

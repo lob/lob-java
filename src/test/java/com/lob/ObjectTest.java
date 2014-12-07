@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -69,6 +70,10 @@ public class ObjectTest {
 
       Object object = Object.create(ObjectMap, Lob.apiKey);
       assertEquals(object.getName(), "GO BLUE");
+      assertNull(object.getFile());
+      assertEquals("201", object.getSetting().getId());
+      assertEquals(2, object.getQuantity().intValue());
+      assertEquals(1, object.getDouble_sided().intValue());
     }
 
     @Test(expected=APIException.class)

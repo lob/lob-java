@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -26,5 +27,9 @@ public class CountryTest {
       CountryCollection countries = Country.all(Lob.apiKey);
       assertEquals(countries.getData().size(), 246);
       assertEquals("list", countries.getObject());
+      assertNull(countries.getData().get(0).getId());
+      assertEquals("United States", countries.getData().get(0).getName());
+      assertEquals("US", countries.getData().get(0).getShort_name());
+      assertEquals("country", countries.getData().get(0).getObject());
     }
 }
