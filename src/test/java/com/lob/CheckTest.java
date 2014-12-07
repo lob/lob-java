@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -73,7 +74,13 @@ public class CheckTest {
       Bank_account bankAccount = Bank_account.create(defaultBankAccountParams, Lob.apiKey);
       defaultCheckParams.put("bank_account", bankAccount.getId());
       Check check = Check.create(defaultCheckParams, Lob.apiKey);
-      assertEquals(check.getName(), "Test Check");
+      assertEquals("Test Check", check.getName());
+      assertEquals("10000", check.getCheck_number());
+      assertEquals("123456789", check.getBank_account().getAccount_number());
+      assertEquals("Payee", check.getTo().getName());
+      assertEquals(2000.0, check.getAmount(), 1);
+      assertNull(check.getMessage());
+      assertNull(check.getMemo());
     }
 
     @Test(expected=APIException.class)
