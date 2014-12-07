@@ -8,107 +8,99 @@ import com.lob.exception.InvalidRequestException;
 import com.lob.net.APIResource;
 
 public class Job extends APIResource {
-	String id;
-	String name;
-	Double price;
-	Address to;
-	Address from;
-	Object[] objects;
+    String id;
+    String name;
+    Double price;
+    Address to;
+    Address from;
+    Object[] objects;
     Integer quantity;
     String status;
     Object tracking;
-	Packaging packaging;
-	Service service;
-	String object;
-	
-	public String getId() {
-		return id;
-	}
+    Packaging packaging;
+    Service service;
+    String object;
 
-	
-	public String getName() {
-		return name;
-	}
+    public String getId() {
+        return id;
+    }
 
 
-	public Double getPrice() {
-		return price;
-	}
+    public String getName() {
+        return name;
+    }
 
 
-	public Address getTo() {
-		return to;
-	}
+    public Double getPrice() {
+        return price;
+    }
 
 
-	public Address getFrom() {
-		return from;
-	}
+    public Address getTo() {
+        return to;
+    }
 
 
-	public Object[] getObjects() {
-		return objects;
-	}
+    public Address getFrom() {
+        return from;
+    }
 
 
-	public Integer getQuantity() {
-		return quantity;
-	}
+    public Object[] getObjects() {
+        return objects;
+    }
 
 
-	public String getStatus() {
-		return status;
-	}
+    public Integer getQuantity() {
+        return quantity;
+    }
 
 
-	public Object getTracking() {
-		return tracking;
-	}
+    public String getStatus() {
+        return status;
+    }
 
 
-	public Packaging getPackaging() {
-		return packaging;
-	}
+    public Object getTracking() {
+        return tracking;
+    }
 
 
-	public Service getService() {
-		return service;
-	}
+    public Packaging getPackaging() {
+        return packaging;
+    }
 
 
-	public String getObject() {
-		return object;
-	}
+    public Service getService() {
+        return service;
+    }
 
 
-	public static Job retrieve(String id, String apiKey)
-			throws AuthenticationException, InvalidRequestException,
-			APIConnectionException, APIException {
-		return request(RequestMethod.GET, instanceURL(Job.class, id), null,
-				Job.class, apiKey);
-	}
+    public String getObject() {
+        return object;
+    }
 
-	public static Job create(Map<String, java.lang.Object> params, String apiKey)
-			throws AuthenticationException, InvalidRequestException,
-			APIConnectionException, APIException {
-			return request(RequestMethod.POST, classURL(Job.class), params,
-					Job.class, apiKey);
-	}	
-	
-	public static DeletedStatus delete(String id, String apiKey)
-	throws AuthenticationException, InvalidRequestException,
-			APIConnectionException, APIException {
-			return request(RequestMethod.DELETE,
-				instanceURL(Job.class, id), null,
-				DeletedStatus.class, apiKey);
-	}	
-	
-	public static JobCollection all(Map<String, java.lang.Object> params,
-			String apiKey) throws AuthenticationException,
-			InvalidRequestException, APIConnectionException, 
-			APIException {
-		return request(RequestMethod.GET, classURL(Job.class), params,
-				JobCollection.class, apiKey);
-	}
+
+    public static Job retrieve(String id, String apiKey)
+            throws AuthenticationException, InvalidRequestException,
+            APIConnectionException, APIException {
+        return request(RequestMethod.GET, instanceURL(Job.class, id), null,
+                Job.class, apiKey);
+    }
+
+    public static Job create(Map<String, java.lang.Object> params, String apiKey)
+            throws AuthenticationException, InvalidRequestException,
+            APIConnectionException, APIException {
+            return request(RequestMethod.POST, classURL(Job.class), params,
+                    Job.class, apiKey);
+    }
+
+    public static JobCollection all(Map<String, java.lang.Object> params,
+            String apiKey) throws AuthenticationException,
+            InvalidRequestException, APIConnectionException,
+            APIException {
+        return request(RequestMethod.GET, classURL(Job.class), params,
+                JobCollection.class, apiKey);
+    }
 
 }

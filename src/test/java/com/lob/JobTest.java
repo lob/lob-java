@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -84,6 +85,17 @@ public class JobTest {
       Job createdJob = Job.create(defaultJobParams, Lob.apiKey);
       Job retrievedJob = Job.retrieve(createdJob.getId(), Lob.apiKey);
       assertEquals(createdJob.getId(), retrievedJob.getId());
+      assertEquals("Test Job", retrievedJob.getName());
+      assertEquals(1.65, retrievedJob.getPrice(), 2);
+      assertEquals("Test Address", retrievedJob.getTo().getName());
+      assertEquals("Test Address", retrievedJob.getFrom().getName());
+      assertEquals("Test Object", retrievedJob.getObjects()[0].getName());
+      assertNull(retrievedJob.getQuantity());
+      assertEquals("processed", retrievedJob.getStatus());
+      assertNull(retrievedJob.getTracking());
+      assertEquals("Smart Packaging", retrievedJob.getPackaging().getName());
+      assertNull(retrievedJob.getService());
+      assertEquals("job", retrievedJob.getObject());
     }
 
     @Test(expected=APIException.class)
