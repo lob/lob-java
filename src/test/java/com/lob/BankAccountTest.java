@@ -5,11 +5,13 @@ import com.lob.exception.APIException;
 import com.lob.Lob;
 import com.lob.model.Bank_account;
 import com.lob.model.BankAccountCollection;
+import com.lob.model.DeletedStatus;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -60,7 +62,18 @@ public class BankAccountTest {
     @Test
     public void testBankAccountCreate() throws LobException {
       Bank_account bankAccount = Bank_account.create(defaultBankAccountParams, Lob.apiKey);
-      assertEquals(bankAccount.getRouting_number(), "122100024");
+      assertEquals("122100024", bankAccount.getRouting_number());
+      assertNull(bankAccount.getBank_code());
+      assertEquals("Chase Bank", bankAccount.getBank_address().getName());
+      assertEquals("Leore Avidar", bankAccount.getAccount_address().getName());
+    }
+
+    @Test
+    public void testBankAccountDelete() throws LobException {
+      Bank_account bankAccount = Bank_account.create(defaultBankAccountParams, Lob.apiKey);
+      assertEquals("122100024", bankAccount.getRouting_number());
+      DeletedStatus deletedStatus = Bank_account.delete(bankAccount.getId(), Lob.apiKey);
+      assertEquals("1", deletedStatus.getMessage());
     }
 
     @Test(expected=APIException.class)
