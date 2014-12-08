@@ -75,6 +75,7 @@
         <configuration>
           <excludes>
             <exclude>**/APIResource*.class</exclude>
+            <exclude>**/exception/*Exception.class</exclude>
           </excludes>
         </configuration>
         <executions>
