@@ -19,6 +19,7 @@ public class Address extends APIResource {
     String address_state;
     String address_zip;
     String address_country;
+    String object;
     int deleted;
 
     public String getName() {
@@ -55,6 +56,10 @@ public class Address extends APIResource {
 
     public String getAddress_country() {
         return address_country;
+    }
+
+    public String getObject() {
+        return object;
     }
 
     public String getId() {

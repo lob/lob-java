@@ -11,6 +11,7 @@ import com.lob.model.Verify;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import org.junit.BeforeClass;
@@ -51,9 +52,46 @@ public class AddressTest {
 
     @Test
     public void testAddressCreate() throws LobException {
-      Address address = Address.create(defaultAddressParams, Lob.apiKey);
-      assertEquals(address.getName(), "Test Address");
-      assertEquals(address.getAddress_line1(), "123 Test Street");
+      final String name = "Harry Zhang";
+      final String email = "harry@Lob.com";
+      final String phone = "5555555555";
+      final String addressLine1 = "123 Test Street";
+      final String addressLine2 = "Unit 123";
+      final String addressCity = "San Francisco";
+      final String addressState = "CA";
+      final String addressZip = "94158";
+      final String addressCountry = "US";
+      Address address = Address.create(new HashMap<String, Object>(){{
+        put("name", name);
+        put("email", email);
+        put("phone", phone);
+        put("address_line1", addressLine1);
+        put("address_line2", addressLine2);
+        put("address_city", addressCity);
+        put("address_state", addressState);
+        put("address_zip", addressZip);
+        put("address_country", addressCountry);
+      }}, Lob.apiKey);
+      assertThat(address.getId()).isNotNull();
+      assertThat(address.getName()).isNotNull();
+      assertThat(address.getName()).isEqualTo(name);
+      assertThat(address.getEmail()).isNotNull();
+      assertThat(address.getEmail()).isEqualTo(email);
+      assertThat(address.getPhone()).isNotNull();
+      assertThat(address.getPhone()).isEqualTo(phone);
+      assertThat(address.getAddress_line1()).isNotNull();
+      assertThat(address.getAddress_line1()).isEqualTo(addressLine1);
+      assertThat(address.getAddress_line2()).isNotNull();
+      assertThat(address.getAddress_line2()).isEqualTo(addressLine2);
+      assertThat(address.getAddress_city()).isNotNull();
+      assertThat(address.getAddress_city()).isEqualTo(addressCity);
+      assertThat(address.getAddress_state()).isNotNull();
+      assertThat(address.getAddress_state()).isEqualTo("California");
+      assertThat(address.getAddress_zip()).isNotNull();
+      assertThat(address.getAddress_zip()).isEqualTo(addressZip);
+      assertThat(address.getAddress_country()).isNotNull();
+      assertThat(address.getAddress_country()).isEqualTo("United States");
+      assertThat(address.getObject()).isEqualTo("address");
     }
 
     @Test(expected=APIException.class)
