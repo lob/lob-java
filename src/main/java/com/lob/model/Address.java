@@ -1,5 +1,6 @@
 package com.lob.model;
 
+import java.util.Date;
 import java.util.Map;
 
 import com.lob.exception.APIConnectionException;
@@ -20,6 +21,8 @@ public class Address extends APIResource {
     String address_zip;
     String address_country;
     String object;
+    Date date_created;
+    Date date_modified;
     int deleted;
 
     public String getName() {
@@ -64,6 +67,14 @@ public class Address extends APIResource {
 
     public String getId() {
         return id;
+    }
+
+    public Date getDate_created() {
+        return date_created;
+    }
+
+    public Date getDate_modified() {
+        return date_modified;
     }
 
     public int getDeleted() {
