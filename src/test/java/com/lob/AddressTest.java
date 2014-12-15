@@ -32,6 +32,21 @@ public class AddressTest {
     }
 
     @Test
+    public void list_it_should_have_correct_defaults() throws LobException {
+        AddressCollection addresses = Address.list(null, null, Lob.apiKey);
+        assertThat(addresses.getObject()).isNotNull();
+        assertThat(addresses.getData()).isNotNull();
+        assertThat(addresses.getData().size()).isEqualTo(10);
+        assertThat(addresses.getCount()).isNotNull();
+        assertThat(addresses.getNext_url()).isNotNull();
+        assertThat(addresses.getNext_url()).isEqualTo("https://api.lob.com/" +
+        "v1/addresses?count=10&offset=10");
+        assertThat(addresses.getPrevious_url()).isNull();
+        assertThat(addresses.getObject()).isEqualTo("list");
+        assertThat(addresses.getCount()).isEqualTo(10);
+    }
+
+    @Test
     public void testAddressRetrieveAll() throws LobException {
       Map<String, Object> listParams = new HashMap<String, Object>();
       listParams.put("count", 2);

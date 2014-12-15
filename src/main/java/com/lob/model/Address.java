@@ -1,6 +1,7 @@
 package com.lob.model;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.lob.exception.APIConnectionException;
@@ -93,20 +94,31 @@ public class Address extends APIResource {
             APIConnectionException, APIException {
             return request(RequestMethod.POST, classURL(Address.class), params,
                     Address.class, apiKey);
-    }   
-    
+    }
+
     public static DeletedStatus delete(String id, String apiKey)
     throws AuthenticationException, InvalidRequestException,
             APIConnectionException, APIException {
             return request(RequestMethod.DELETE,
                 instanceURL(Address.class, id), null,
                 DeletedStatus.class, apiKey);
-    }   
-    
+    }
+
     public static AddressCollection all(Map<String, java.lang.Object> params,
             String apiKey) throws AuthenticationException,
             InvalidRequestException, APIConnectionException, 
             APIException {
+        return request(RequestMethod.GET, classURL(Address.class), params,
+                AddressCollection.class, apiKey);
+    }
+
+    public static AddressCollection list(Integer count, Integer offset,
+            String apiKey) throws AuthenticationException,
+            InvalidRequestException, APIConnectionException,
+            APIException {
+        final Map<String, java.lang.Object> params = new HashMap<String, java.lang.Object>();
+        params.put("count", count == null ? 10 : count);
+        params.put("offset", offset == null ? 0 : offset);
         return request(RequestMethod.GET, classURL(Address.class), params,
                 AddressCollection.class, apiKey);
     }
@@ -117,5 +129,5 @@ public class Address extends APIResource {
             APIException {
         return request(RequestMethod.POST, singleClassURL(Verify.class), params,
                 Verify.class, apiKey);
-    }   
+    }
 }
