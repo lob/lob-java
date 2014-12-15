@@ -12,6 +12,7 @@ public abstract class LobObject {
         setPrettyPrinting().
         serializeNulls().
         setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).
+        setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").
         create();
 
     @Override public String toString() {

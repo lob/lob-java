@@ -36,6 +36,7 @@ public abstract class APIResource extends LobObject {
 
     public static final Gson gson = new GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")
             .create();
 
     private static String className(Class<?> clazz) {

@@ -51,7 +51,7 @@ public class AddressTest {
     }
 
     @Test
-    public void testAddressCreate() throws LobException {
+    public void create_it_should_succeed_with_default_POST_request() throws LobException {
       final String name = "Harry Zhang";
       final String email = "harry@Lob.com";
       final String phone = "5555555555";
@@ -91,6 +91,9 @@ public class AddressTest {
       assertThat(address.getAddress_zip()).isEqualTo(addressZip);
       assertThat(address.getAddress_country()).isNotNull();
       assertThat(address.getAddress_country()).isEqualTo("United States");
+      assertThat(address.getDate_created()).isNotNull();
+      assertThat(address.getDate_modified()).isNotNull();
+      assertThat(address.getObject()).isNotNull();
       assertThat(address.getObject()).isEqualTo("address");
     }
 
