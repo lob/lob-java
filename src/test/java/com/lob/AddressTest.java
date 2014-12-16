@@ -14,6 +14,7 @@ import java.util.Map;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -44,6 +45,31 @@ public class AddressTest {
         assertThat(addresses.getPrevious_url()).isNull();
         assertThat(addresses.getObject()).isEqualTo("list");
         assertThat(addresses.getCount()).isEqualTo(10);
+    }
+
+    @Test
+    public void list_it_should_let_you_limit_the_count() throws LobException {
+        AddressCollection addresses = Address.list(5, null, Lob.apiKey);
+        assertThat(addresses.getCount()).isEqualTo(5);
+    }
+
+    @Test
+    public void list_it_should_error_on_high_count() throws LobException {
+        try {
+            AddressCollection addresses = Address.list(589, null, Lob.apiKey);
+            fail("Should be an APIException");
+        } catch (APIException ex) {
+            assertThat(ex.getMessage()).isEqualTo("count must be less than or equal to 100");
+        }
+    }
+
+    @Test
+    public void list_it_should_let_you_shift_the_offset() throws LobException {
+        AddressCollection addresses = Address.list(null, 10, Lob.apiKey);
+        String address1id = addresses.getData().get(9).getId();
+        AddressCollection addresses2 = Address.list(1, 9, Lob.apiKey);
+        String address2id = addresses2.getData().get(0).getId();
+        assertThat(address1id).isNotEqualTo(address2id);
     }
 
     @Test
