@@ -138,11 +138,141 @@ public class AddressTest {
       assertThat(address.getObject()).isEqualTo("address");
     }
 
+    @Test
+    public void create_it_should_succeed_with_foreign_state_and_country() throws LobException {
+      final String name = "Harry Zhang";
+      final String email = "harry@Lob.com";
+      final String phone = "5555555555";
+      final String addressLine1 = "123 Test Street";
+      final String addressLine2 = "Unit 123";
+      final String addressCity = "Armstrong";
+      final String addressState = "British Columbia";
+      final String addressZip = "V0E 1Y0";
+      final String addressCountry = "CA";
+      Address address = Address.create(new HashMap<String, Object>(){{
+        put("name", name);
+        put("email", email);
+        put("phone", phone);
+        put("address_line1", addressLine1);
+        put("address_line2", addressLine2);
+        put("address_city", addressCity);
+        put("address_state", addressState);
+        put("address_zip", addressZip);
+        put("address_country", addressCountry);
+      }}, Lob.apiKey);
+      assertThat(address.getId()).isNotNull();
+      assertThat(address.getName()).isNotNull();
+      assertThat(address.getName()).isEqualTo(name);
+      assertThat(address.getEmail()).isNotNull();
+      assertThat(address.getEmail()).isEqualTo(email);
+      assertThat(address.getPhone()).isNotNull();
+      assertThat(address.getPhone()).isEqualTo(phone);
+      assertThat(address.getAddress_line1()).isNotNull();
+      assertThat(address.getAddress_line1()).isEqualTo(addressLine1);
+      assertThat(address.getAddress_line2()).isNotNull();
+      assertThat(address.getAddress_line2()).isEqualTo(addressLine2);
+      assertThat(address.getAddress_city()).isNotNull();
+      assertThat(address.getAddress_city()).isEqualTo(addressCity);
+      assertThat(address.getAddress_state()).isNotNull();
+      assertThat(address.getAddress_state()).isEqualTo("British Columbia");
+      assertThat(address.getAddress_zip()).isNotNull();
+      assertThat(address.getAddress_zip()).isEqualTo(addressZip);
+      assertThat(address.getAddress_country()).isNotNull();
+      assertThat(address.getAddress_country()).isEqualTo("Canada");
+      assertThat(address.getDate_created()).isNotNull();
+      assertThat(address.getDate_modified()).isNotNull();
+      assertThat(address.getObject()).isNotNull();
+      assertThat(address.getObject()).isEqualTo("address");
+    }
+
     @Test(expected=APIException.class)
-    public void testAddressCreateFail() throws LobException {
-      Map<String, Object> badAddressParams = new HashMap<String, Object>();
-      badAddressParams.put("name", "Test Address");
-      Address badAddress = Address.create(badAddressParams, Lob.apiKey);
+    public void create_it_should_error_when_no_name_is_provided() throws LobException {
+      final String email = "harry@Lob.com";
+      final String phone = "5555555555";
+      final String addressLine1 = "123 Test Street";
+      final String addressLine2 = "Unit 123";
+      final String addressCity = "San Francisco";
+      final String addressState = "CA";
+      final String addressZip = "94158";
+      final String addressCountry = "US";
+      Address address = Address.create(new HashMap<String, Object>(){{
+        put("email", email);
+        put("phone", phone);
+        put("address_line1", addressLine1);
+        put("address_line2", addressLine2);
+        put("address_city", addressCity);
+        put("address_state", addressState);
+        put("address_zip", addressZip);
+        put("address_country", addressCountry);
+      }}, Lob.apiKey);
+    }
+
+    @Test(expected=APIException.class)
+    public void create_it_should_error_when_no_address_line1_is_provided() throws LobException {
+      final String name = "Harry Zhang";
+      final String email = "harry@Lob.com";
+      final String phone = "5555555555";
+      final String addressLine2 = "Unit 123";
+      final String addressCity = "San Francisco";
+      final String addressState = "CA";
+      final String addressZip = "94158";
+      final String addressCountry = "US";
+      Address address = Address.create(new HashMap<String, Object>(){{
+        put("name", name);
+        put("email", email);
+        put("phone", phone);
+        put("address_line2", addressLine2);
+        put("address_city", addressCity);
+        put("address_state", addressState);
+        put("address_zip", addressZip);
+        put("address_country", addressCountry);
+      }}, Lob.apiKey);
+    }
+
+    @Test(expected=APIException.class)
+    public void create_it_should_error_when_no_address_zip_is_provided() throws LobException {
+      final String name = "Harry Zhang";
+      final String email = "harry@Lob.com";
+      final String phone = "5555555555";
+      final String addressLine1 = "123 Test Street";
+      final String addressLine2 = "Unit 123";
+      final String addressCity = "San Francisco";
+      final String addressState = "CA";
+      final String addressCountry = "US";
+      Address address = Address.create(new HashMap<String, Object>(){{
+        put("name", name);
+        put("email", email);
+        put("phone", phone);
+        put("address_line1", addressLine1);
+        put("address_line2", addressLine2);
+        put("address_city", addressCity);
+        put("address_state", addressState);
+        put("address_country", addressCountry);
+      }}, Lob.apiKey);
+    }
+
+    @Test(expected=APIException.class)
+    public void create_it_should_error_when_an_invalid_state_is_provided() throws LobException {
+      final String name = "Harry Zhang";
+      final String email = "harry@Lob.com";
+      final String phone = "5555555555";
+      final String addressLine1 = "123 Test Street";
+      final String addressLine2 = "Unit 123";
+      final String addressCity = "San Francisco";
+      final String addressState = "ZZ";
+      final String addressZip = "94158";
+      final String addressCountry = "US";
+      Address address = Address.create(new HashMap<String, Object>(){{
+        put("name", name);
+        put("email", email);
+        put("phone", phone);
+        put("address_line1", addressLine1);
+        put("address_line2", addressLine2);
+        put("address_city", addressCity);
+        put("address_state", addressState);
+        put("address_zip", addressZip);
+        put("address_country", addressCountry);
+      }}, Lob.apiKey);
     }
 
     @Test
