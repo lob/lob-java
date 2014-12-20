@@ -65,6 +65,19 @@ public class AreaTest {
         }}, Lob.apiKey);
         assertThat(area.getName()).isEqualTo("Test Area");
         assertThat(area.getUrl()).startsWith("http://assets.lob.com/area_");
+        assertThat(area.getStatus()).isEqualTo("processed");
+        assertThat(area.getPrice()).isEqualTo(1066.28);
+        assertThat(area.getTarget_type()).isEqualTo("all");
+        assertThat(area.getAddresses()).isNull();
+        assertThat(area.getZip_codes().get(0).getZip_code()).isEqualTo("94107");
+        assertThat(area.getZip_codes().get(0).getObject()).isEqualTo("zip_code");
+        assertThat(area.getZip_codes().get(0).getRoutes().get(0).getRoute()).isEqualTo("C031");
+        assertThat(area.getZip_codes().get(0).getRoutes().get(0).getResidential()).isEqualTo(496);
+        assertThat(area.getZip_codes().get(0).getRoutes().get(0).getBusiness()).isEqualTo(186);
+        assertThat(area.getZip_codes().get(0).getRoutes().get(0).getObject()).isEqualTo("route");
+        assertThat(area.getZip_codes().get(1).getZip_code()).isEqualTo("94158");
+        assertThat(area.getDate_created()).isNotNull();
+        assertThat(area.getDate_modified()).isNotNull();
         assertThat(area.getObject()).isEqualTo("area");
     }
 }
