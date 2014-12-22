@@ -45,7 +45,7 @@ public abstract class APIResource extends LobObject {
 
     protected static String singleClassURL(Class<?> clazz) {
         if (className(clazz).contains("country"))
-            return String.format("%s/v1/countrie", Lob.API_BASE, className(clazz));
+            return String.format("%s/v1/countrie", Lob.API_BASE);
         else
             return String.format("%s/v1/%s", Lob.API_BASE, className(clazz));
     }
@@ -135,10 +135,11 @@ public abstract class APIResource extends LobObject {
     private static javax.net.ssl.HttpsURLConnection createGetConnection(
             String url, String query, String apiKey) throws IOException {
         String getURL;
-        if (query != "")
-            getURL = String.format("%s?%s", url, query);
-        else
+        if ("".equals(query)) {
             getURL = url;
+        } else {
+            getURL = String.format("%s?%s", url, query);
+        }
 
         javax.net.ssl.HttpsURLConnection conn = createLobConnection(getURL,
                 apiKey);
@@ -159,28 +160,35 @@ public abstract class APIResource extends LobObject {
             Map<String, String> flatParams = flattenParams(params);
             for (Map.Entry<String, String> entry : flatParams.entrySet()) {
                 String val = entry.getValue();
-                if (val.startsWith("@"))
-                {
+                if (val.startsWith("@")) {
                     String filename = val.substring(1);
                     java.io.File file = new java.io.File(filename);
 
-                    java.io.FileInputStream fis = new java.io.FileInputStream(file);
-                    java.io.ByteArrayOutputStream bos = new java.io.ByteArrayOutputStream();
-                    byte[] buf = new byte[1024];
-
-                    for (int readNum; (readNum = fis.read(buf)) != -1;) {
-                        bos.write(buf, 0, readNum); //no doubt here is 0
-                            //Writes len bytes from the specified byte array starting at offset off to this byte array output stream.
-                            //System.out.println("read " + readNum + " bytes,");
+                    java.io.FileInputStream fis = null;
+                    java.io.ByteArrayOutputStream bos = null;
+                    try {
+                        fis = new java.io.FileInputStream(file);
+                        bos = new java.io.ByteArrayOutputStream();
+                        byte[] buf = new byte[1024];
+    
+                        for (int readNum; (readNum = fis.read(buf)) != -1;) {
+                            bos.write(buf, 0, readNum); //no doubt here is 0
+                                //Writes len bytes from the specified byte array starting at offset off to this byte array output stream.
+                                //System.out.println("read " + readNum + " bytes,");
+                        }
+                    } finally {
+                        if (fis != null) {
+                            fis.close();
+                        }
                     }
 
                     org.apache.http.entity.mime.content.ContentBody contentPart =
                         new org.apache.http.entity.mime.content.ByteArrayBody(bos.toByteArray(), filename);
 
                     builder.addPart(entry.getKey(), contentPart);
-                }
-                else
+                } else {
                     builder.addTextBody(entry.getKey(), entry.getValue());
+                }
             }
 
             HttpEntity yourEntity = builder.build();
@@ -256,7 +264,7 @@ public abstract class APIResource extends LobObject {
                                   key, null);
             } else if (value == null) {
                 flatParams.put(key, "");
-            } else if (value != null) {
+            } else {
                 flatParams.put(key, value.toString());
             }
         }
@@ -296,12 +304,7 @@ public abstract class APIResource extends LobObject {
                 HttpResponse response = createPostConnection(url, query, apiKey, params);
 
                 int rCode = response.getStatusLine().getStatusCode();
-                String rBody = null;
-                if (rCode >= 200 && rCode < 300) {
-                    rBody = getResponseBody(response.getEntity().getContent());
-                } else {
-                    rBody = getResponseBody(response.getEntity().getContent());
-                }
+                String rBody = getResponseBody(response.getEntity().getContent());
                 return new LobResponse(rCode, rBody);
 
             case DELETE:

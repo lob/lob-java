@@ -117,8 +117,8 @@ public class Address extends APIResource {
             InvalidRequestException, APIConnectionException,
             APIException {
         final Map<String, java.lang.Object> params = new HashMap<String, java.lang.Object>();
-        params.put("count", count == null ? 10 : count);
-        params.put("offset", offset == null ? 0 : offset);
+        params.put("count", count == null ? Integer.valueOf(10) : count);
+        params.put("offset", offset == null ? Integer.valueOf(0) : offset);
         return request(RequestMethod.GET, classURL(Address.class), params,
                 AddressCollection.class, apiKey);
     }

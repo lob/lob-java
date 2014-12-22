@@ -2,7 +2,6 @@ package com.lob;
 
 import com.lob.exception.LobException;
 import com.lob.exception.APIException;
-import com.lob.Lob;
 import com.lob.model.Address;
 import com.lob.model.AddressCollection;
 import com.lob.model.DeletedStatus;
@@ -83,7 +82,7 @@ public class AddressTest {
       assertEquals("list", addresses.getObject());
     }
 
-    @Test(expected=APIException.class)
+    @Test(expected = APIException.class)
     public void testAddressRetrieveAllFail() throws LobException {
       Map<String, Object> listParams = new HashMap<String, Object>();
       listParams.put("count", 100000);
@@ -185,7 +184,7 @@ public class AddressTest {
       assertThat(address.getObject()).isEqualTo("address");
     }
 
-    @Test(expected=APIException.class)
+    @Test(expected = APIException.class)
     public void create_it_should_error_when_no_name_is_provided() throws LobException {
       final String email = "harry@Lob.com";
       final String phone = "5555555555";
@@ -195,7 +194,7 @@ public class AddressTest {
       final String addressState = "CA";
       final String addressZip = "94158";
       final String addressCountry = "US";
-      Address address = Address.create(new HashMap<String, Object>(){{
+      Address.create(new HashMap<String, Object>(){{
         put("email", email);
         put("phone", phone);
         put("address_line1", addressLine1);
@@ -207,7 +206,7 @@ public class AddressTest {
       }}, Lob.apiKey);
     }
 
-    @Test(expected=APIException.class)
+    @Test(expected = APIException.class)
     public void create_it_should_error_when_no_address_line1_is_provided() throws LobException {
       final String name = "Harry Zhang";
       final String email = "harry@Lob.com";
@@ -217,7 +216,7 @@ public class AddressTest {
       final String addressState = "CA";
       final String addressZip = "94158";
       final String addressCountry = "US";
-      Address address = Address.create(new HashMap<String, Object>(){{
+      Address.create(new HashMap<String, Object>(){{
         put("name", name);
         put("email", email);
         put("phone", phone);
@@ -229,7 +228,7 @@ public class AddressTest {
       }}, Lob.apiKey);
     }
 
-    @Test(expected=APIException.class)
+    @Test(expected = APIException.class)
     public void create_it_should_error_when_no_address_zip_is_provided() throws LobException {
       final String name = "Harry Zhang";
       final String email = "harry@Lob.com";
@@ -239,7 +238,7 @@ public class AddressTest {
       final String addressCity = "San Francisco";
       final String addressState = "CA";
       final String addressCountry = "US";
-      Address address = Address.create(new HashMap<String, Object>(){{
+      Address.create(new HashMap<String, Object>(){{
         put("name", name);
         put("email", email);
         put("phone", phone);
@@ -251,7 +250,7 @@ public class AddressTest {
       }}, Lob.apiKey);
     }
 
-    @Test(expected=APIException.class)
+    @Test(expected = APIException.class)
     public void create_it_should_error_when_an_invalid_state_is_provided() throws LobException {
       final String name = "Harry Zhang";
       final String email = "harry@Lob.com";
@@ -262,7 +261,7 @@ public class AddressTest {
       final String addressState = "ZZ";
       final String addressZip = "94158";
       final String addressCountry = "US";
-      Address address = Address.create(new HashMap<String, Object>(){{
+      Address.create(new HashMap<String, Object>(){{
         put("name", name);
         put("email", email);
         put("phone", phone);
@@ -282,7 +281,7 @@ public class AddressTest {
       assertEquals(createdAddress.getId(), retrievedAddress.getId());
     }
 
-    @Test(expected=APIException.class)
+    @Test(expected = APIException.class)
     public void testAddressRetrieveFail() throws LobException {
       Address address = Address.retrieve("asdf", Lob.apiKey);
     }
