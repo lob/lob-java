@@ -13,9 +13,21 @@ Java 1.5 and later.
 Installation
 ============
 
+### Maven users
+
+Add this dependency to your project's POM:
+
+    <dependency>
+      <groupId>com.lob</groupId>
+      <artifactId>lob-java</artifactId>
+      <version>1.2</version>
+    </dependency>
+
+### Others
+
 You'll need to manually install the following JARs:
 
-* The Lob JAR lob-java-1.1.jar from <https://github.com/lob/lob-java/raw/master/lob-java-1.1.jar>.
+* The Lob JAR lob-java-1.2.jar from <https://github.com/lob/lob-java/raw/master/lob-java-1.2.jar>.
 * [Google Gson](http://code.google.com/p/google-gson/) from <http://repo1.maven.org/maven2/com/google/code/gson/gson/2.3/gson-2.3.jar>.
 * [Apache Commons Codec](http://commons.apache.org/proper/commons-codec/index.html) from <http://apache.claz.org//commons/codec/binaries/commons-codec-1.8-bin.zip>.
 * [Apache Commons Logging](http://commons.apache.org/proper/commons-logging/) from <http://www.motorlogy.com/apache//commons/logging/binaries/commons-logging-1.1.3-bin.zip>.
