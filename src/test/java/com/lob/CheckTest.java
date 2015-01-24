@@ -25,6 +25,7 @@ public class CheckTest {
       Lob.apiKey = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc";
 
       defaultBankAccountParams.put("name", "Testing Bank Account");
+      defaultBankAccountParams.put("signatory", "John Doe");
       defaultBankAccountParams.put("routing_number", "122100024");
       defaultBankAccountParams.put("account_number", "123456789");
       defaultBankAccountParams.put("bank_address[name]", "Chase Bank");

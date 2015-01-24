@@ -25,6 +25,7 @@ public class BankAccountTest {
       defaultBankAccountParams.put("name", "Testing Bank Account");
       defaultBankAccountParams.put("routing_number", "122100024");
       defaultBankAccountParams.put("account_number", "123456789");
+      defaultBankAccountParams.put("signatory", "John Doe");
       defaultBankAccountParams.put("bank_address[name]", "Chase Bank");
       defaultBankAccountParams.put("bank_address[address_line1]", "55 Edmonds");
       defaultBankAccountParams.put("bank_address[address_city]", "Palo Alto");
