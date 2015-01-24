@@ -2,7 +2,7 @@ package com.lob.model;
 
 import java.util.List;
 
-public class Zip_code {
+public class Zip_code extends LobObject {
     String zip_code;
     List<Route> routes;
     String object;

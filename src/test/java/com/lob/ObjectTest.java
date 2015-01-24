@@ -24,7 +24,7 @@ public class ObjectTest {
 
       defaultObjectParams.put("name", "Test Object");
       defaultObjectParams.put("file", "https://www.lob.com/test.pdf");
-      defaultObjectParams.put("setting_id", "201");
+      defaultObjectParams.put("setting", "201");
     }
 
     @Test
@@ -66,7 +66,7 @@ public class ObjectTest {
       ObjectMap.put("name", "GO BLUE");
       ObjectMap.put("file", "@" + System.getProperty("user.dir") + "/assets/test.pdf");
       ObjectMap.put("quantity", 2);
-      ObjectMap.put("setting_id", 201);
+      ObjectMap.put("setting", 201);
 
       Object object = Object.create(ObjectMap, Lob.apiKey);
       assertEquals(object.getName(), "GO BLUE");
