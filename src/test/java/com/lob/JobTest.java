@@ -13,6 +13,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -29,8 +30,8 @@ public class JobTest {
       Lob.apiKey = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc";
 
       defaultObjectParams.put("name", "Test Object");
-      defaultObjectParams.put("file", "https://www.lob.com/test.pdf");
-      defaultObjectParams.put("setting_id", "201");
+      defaultObjectParams.put("file", "https://s3-us-west-2.amazonaws.com/lob-assets/goblue.pdf");
+      defaultObjectParams.put("setting", "100");
 
       defaultObject = Object.create(defaultObjectParams, Lob.apiKey);
 
@@ -62,6 +63,7 @@ public class JobTest {
     @Test(expected=APIException.class)
     public void testJobRetrieveAllFail() throws LobException {
       Map<String, java.lang.Object> listParams = new HashMap<String, java.lang.Object>();
+      listParams.put("offset", 0);
       listParams.put("count", 100000);
 
       JobCollection jobs = Job.all(listParams, Lob.apiKey);
@@ -92,8 +94,8 @@ public class JobTest {
       assertEquals("Test Object", retrievedJob.getObjects()[0].getName());
       assertNull(retrievedJob.getQuantity());
       assertEquals("processed", retrievedJob.getStatus());
-      assertNull(retrievedJob.getTracking());
-      assertEquals("Smart Packaging", retrievedJob.getPackaging().getName());
+      assertNotNull(retrievedJob.getTracking().getId());
+      assertNull(retrievedJob.getPackaging());
       assertNull(retrievedJob.getService());
       assertEquals("job", retrievedJob.getObject());
     }

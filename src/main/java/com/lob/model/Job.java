@@ -16,7 +16,7 @@ public class Job extends APIResource {
     Object[] objects;
     Integer quantity;
     String status;
-    Object tracking;
+    Tracking tracking;
     Packaging packaging;
     Service service;
     String object;
@@ -61,7 +61,7 @@ public class Job extends APIResource {
     }
 
 
-    public Object getTracking() {
+    public Tracking getTracking() {
         return tracking;
     }
 
