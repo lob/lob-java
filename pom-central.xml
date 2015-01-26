@@ -6,6 +6,7 @@
   <packaging>jar</packaging>
   <version>1.3</version>
   <name>lob-java</name>
+  <description>Java Wrapper for Lob API</description>
   <url>https://github.com/lob/lob-java</url>
 
   <developers>
