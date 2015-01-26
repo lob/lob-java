@@ -12,6 +12,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -25,6 +26,7 @@ public class BankAccountTest {
       defaultBankAccountParams.put("name", "Testing Bank Account");
       defaultBankAccountParams.put("routing_number", "122100024");
       defaultBankAccountParams.put("account_number", "123456789");
+      defaultBankAccountParams.put("signatory", "John Doe");
       defaultBankAccountParams.put("bank_address[name]", "Chase Bank");
       defaultBankAccountParams.put("bank_address[address_line1]", "55 Edmonds");
       defaultBankAccountParams.put("bank_address[address_city]", "Palo Alto");
@@ -64,6 +66,10 @@ public class BankAccountTest {
       Bank_account bankAccount = Bank_account.create(defaultBankAccountParams, Lob.apiKey);
       assertEquals("122100024", bankAccount.getRouting_number());
       assertNull(bankAccount.getBank_code());
+      assertEquals("John Doe", bankAccount.getSignatory());
+      assertEquals("bank_account", bankAccount.getObject());
+      assertNotNull(bankAccount.getDate_created());
+      assertNotNull(bankAccount.getDate_modified());
       assertEquals("Chase Bank", bankAccount.getBank_address().getName());
       assertEquals("Leore Avidar", bankAccount.getAccount_address().getName());
     }

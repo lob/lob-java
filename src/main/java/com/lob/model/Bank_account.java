@@ -1,5 +1,6 @@
 package com.lob.model;
 
+import java.util.Date;
 import java.util.Map;
 
 import com.lob.exception.APIConnectionException;
@@ -15,6 +16,10 @@ public class Bank_account extends APIResource {
     String bank_code;
     Address bank_address;
     Address account_address;
+    String signatory;
+    Date date_created;
+    Date date_modified;
+    String object;
 
     public String getRouting_number() {
         return routing_number;
@@ -38,6 +43,22 @@ public class Bank_account extends APIResource {
 
     public String getId() {
         return id;
+    }
+
+    public String getSignatory() {
+        return signatory;
+    }
+
+    public Date getDate_created() {
+        return date_created;
+    }
+
+    public Date getDate_modified() {
+        return date_modified;
+    }
+
+    public String getObject() {
+        return object;
     }
 
     public static Bank_account retrieve(String id, String apiKey)
