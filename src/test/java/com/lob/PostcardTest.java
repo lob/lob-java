@@ -35,8 +35,8 @@ public class PostcardTest {
       defaultPostcardParams.put("name", "Test Postcard");
       defaultPostcardParams.put("to", defaultAddress.getId());
       defaultPostcardParams.put("from", defaultAddress.getId());
-      defaultPostcardParams.put("front", "https://www.lob.com/test.pdf");
-      defaultPostcardParams.put("back", "https://www.lob.com/test.pdf");
+      defaultPostcardParams.put("front", "https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf");
+      defaultPostcardParams.put("back", "https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf");
     }
 
     @Test
@@ -53,6 +53,7 @@ public class PostcardTest {
     @Test(expected=APIException.class)
     public void testPostcardRetrieveAllFail() throws LobException {
       Map<String, java.lang.Object> listParams = new HashMap<String, java.lang.Object>();
+      listParams.put("offset", 0);
       listParams.put("count", 100000);
 
       PostcardCollection jobs = Postcard.all(listParams, Lob.apiKey);
