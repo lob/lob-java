@@ -66,7 +66,7 @@ public class AreaTest {
         assertThat(area.getName()).isEqualTo("Test Area");
         assertThat(area.getUrl()).startsWith("http://assets.lob.com/area_");
         assertThat(area.getStatus()).isEqualTo("processed");
-        assertThat(area.getPrice()).isEqualTo(1066.28);
+        assertThat(area.getPrice()).isGreaterThan(0);
         assertThat(area.getTarget_type()).isEqualTo("all");
         assertThat(area.getAddresses()).isNull();
         assertThat(area.getZip_codes().get(0).getZip_code()).isEqualTo("94107");
