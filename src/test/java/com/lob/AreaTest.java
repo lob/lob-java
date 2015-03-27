@@ -72,8 +72,6 @@ public class AreaTest {
         assertThat(area.getZip_codes().get(0).getZip_code()).isEqualTo("94107");
         assertThat(area.getZip_codes().get(0).getObject()).isEqualTo("zip_code");
         assertThat(area.getZip_codes().get(0).getRoutes().get(0).getRoute()).isEqualTo("C031");
-        assertThat(area.getZip_codes().get(0).getRoutes().get(0).getResidential()).isEqualTo(496);
-        assertThat(area.getZip_codes().get(0).getRoutes().get(0).getBusiness()).isEqualTo(186);
         assertThat(area.getZip_codes().get(0).getRoutes().get(0).getObject()).isEqualTo("route");
         assertThat(area.getZip_codes().get(1).getZip_code()).isEqualTo("94158");
         assertThat(area.getDate_created()).isNotNull();
