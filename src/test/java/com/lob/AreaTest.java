@@ -40,7 +40,7 @@ public class AreaTest {
     @Test
     public void get_it_should_have_the_correct_defaults() throws LobException {
         Area area = Area.create(new HashMap<String, Object>() {{
-            put("name", "Test Area");
+            put("description", "Test Area");
             put("routes[0]", "94158-C001");
             put("routes[1]", "94107-C031");
             put("front", "https://s3-us-west-2.amazonaws.com/lob-assets/" +
@@ -55,7 +55,7 @@ public class AreaTest {
     @Test
     public void create_it_should_succeed_using_address_and_remote_file() throws LobException {
         Area area = Area.create(new HashMap<String, Object>() {{
-            put("name", "Test Area");
+            put("description", "Test Area");
             put("routes[0]", "94158-C001");
             put("routes[1]", "94107-C031");
             put("front", "https://s3-us-west-2.amazonaws.com/lob-assets/" +
@@ -63,7 +63,7 @@ public class AreaTest {
             put("back", "https://s3-us-west-2.amazonaws.com/lob-assets/" +
                 "areaback.pdf");
         }}, Lob.apiKey);
-        assertThat(area.getName()).isEqualTo("Test Area");
+        assertThat(area.getDescription()).isEqualTo("Test Area");
         assertThat(area.getUrl()).startsWith("http://assets.lob.com/area_");
         assertThat(area.getStatus()).isEqualTo("processed");
         assertThat(area.getPrice()).isGreaterThan(0);

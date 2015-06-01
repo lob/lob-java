@@ -273,7 +273,7 @@ public abstract class APIResource extends LobObject {
 
     // represents Errors returned as JSON
     private static class ErrorContainer {
-        private List<APIResource.Error> errors;
+        private APIResource.Error error;
     }
 
     private static class Error {
@@ -429,13 +429,12 @@ public abstract class APIResource extends LobObject {
             throws InvalidRequestException, AuthenticationException,
             APIException {
         APIResource.Error error = gson.fromJson(rBody,
-                APIResource.ErrorContainer.class).errors.get(0);
+            APIResource.ErrorContainer.class).error;
         switch (rCode) {
-        case 404:
-            throw new APIException(error.message, null);
         case 401:
             throw new AuthenticationException(error.message);
-
+        case 404:
+            throw new APIException(error.message, null);
         default:
             throw new APIException(error.message, null);
         }

@@ -13,6 +13,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -23,11 +24,10 @@ public class BankAccountTest {
     public static void setUp() {
       Lob.apiKey = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc";
 
-      defaultBankAccountParams.put("name", "Testing Bank Account");
       defaultBankAccountParams.put("routing_number", "122100024");
       defaultBankAccountParams.put("account_number", "123456789");
       defaultBankAccountParams.put("signatory", "John Doe");
-      defaultBankAccountParams.put("bank_address[name]", "Chase Bank");
+      defaultBankAccountParams.put("bank_address[name]", "Chase");
       defaultBankAccountParams.put("bank_address[address_line1]", "55 Edmonds");
       defaultBankAccountParams.put("bank_address[address_city]", "Palo Alto");
       defaultBankAccountParams.put("bank_address[address_state]", "CA");
@@ -70,7 +70,7 @@ public class BankAccountTest {
       assertEquals("bank_account", bankAccount.getObject());
       assertNotNull(bankAccount.getDate_created());
       assertNotNull(bankAccount.getDate_modified());
-      assertEquals("Chase Bank", bankAccount.getBank_address().getName());
+      assertEquals("Chase", bankAccount.getBank_address().getName());
       assertEquals("Leore Avidar", bankAccount.getAccount_address().getName());
     }
 
@@ -79,7 +79,7 @@ public class BankAccountTest {
       Bank_account bankAccount = Bank_account.create(defaultBankAccountParams, Lob.apiKey);
       assertEquals("122100024", bankAccount.getRouting_number());
       DeletedStatus deletedStatus = Bank_account.delete(bankAccount.getId(), Lob.apiKey);
-      assertEquals("1", deletedStatus.getMessage());
+      assertTrue(deletedStatus.getDeleted());
     }
 
     @Test(expected=APIException.class)

@@ -22,23 +22,23 @@ public class SettingTest {
 
     @Test
     public void testSettingRetrieve() throws LobException {
-        String id = "100";
+        String id = "200";
         Setting setting = Setting.retrieve(id, Lob.apiKey);
-        assertEquals("100", setting.getId());
-        assertEquals("documents", setting.getType());
-        assertEquals("black and white document", setting.getDescription());
-        assertEquals("20lb paper standard", setting.getPaper());
-        assertEquals("8.500", setting.getWidth());
-        assertEquals("11.000", setting.getLength());
-        assertEquals("black and white", setting.getColor());
-        assertEquals("12 cents per extra page", setting.getNotes());
+        assertEquals("200", setting.getId());
+        assertEquals("cards", setting.getType());
+        assertEquals("4x6 color card", setting.getDescription());
+        assertEquals("120lb gloss cover", setting.getPaper());
+        assertEquals("6.000", setting.getWidth());
+        assertEquals("4.000", setting.getLength());
+        assertEquals("color", setting.getColor());
+        assertEquals("includes envelope", setting.getNotes());
         assertEquals("setting", setting.getObject());
     }
 
     @Test
     public void testSettingRetrieveAll() throws LobException {
         SettingCollection settings = Setting.all(Lob.apiKey);
-        assertEquals(18, settings.getData().size());
+        assertEquals(12, settings.getData().size());
         assertEquals("list", settings.getObject());
     }
 }

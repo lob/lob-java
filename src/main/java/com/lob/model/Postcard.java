@@ -10,7 +10,7 @@ import com.lob.net.APIResource;
 
 public class Postcard extends APIResource {
     String id;
-    String name;
+    String description;
     Address to;
     Address from;
     String message;
@@ -21,8 +21,8 @@ public class Postcard extends APIResource {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
     public Address getTo() {

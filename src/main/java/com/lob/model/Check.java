@@ -9,7 +9,7 @@ import com.lob.net.APIResource;
 
 public class Check extends APIResource {
     String id;
-    String name;
+    String description;
     String check_number;
     Bank_account bank_account;
     Address to;
@@ -21,8 +21,8 @@ public class Check extends APIResource {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
     public String getCheck_number() {

@@ -27,7 +27,7 @@ public class ServiceTest {
       assertEquals(2, services.getData().size());
       assertEquals("list", services.getObject());
       assertEquals("3", services.getData().get(0).getId());
-      assertEquals("Registered Mail", services.getData().get(0).getName());
+      assertEquals("registered", services.getData().get(0).getName());
       assertEquals("Registered USPS Mail", services.getData().get(0).getDescription());
       assertEquals("service", services.getData().get(0).getObject());
     }

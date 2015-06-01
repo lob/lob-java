@@ -24,7 +24,7 @@ public class Address extends APIResource {
     String object;
     Date date_created;
     Date date_modified;
-    int deleted;
+    boolean deleted;
 
     public String getName() {
         return name;
@@ -78,7 +78,7 @@ public class Address extends APIResource {
         return date_modified;
     }
 
-    public int getDeleted() {
+    public boolean getDeleted() {
         return deleted;
     }
 
