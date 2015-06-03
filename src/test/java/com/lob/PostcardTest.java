@@ -32,11 +32,11 @@ public class PostcardTest {
 
       defaultAddress = Address.create(defaultAddressParams, Lob.apiKey);
 
-      defaultPostcardParams.put("name", "Test Postcard");
+      defaultPostcardParams.put("description", "Test Postcard");
       defaultPostcardParams.put("to", defaultAddress.getId());
       defaultPostcardParams.put("from", defaultAddress.getId());
-      defaultPostcardParams.put("front", "https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf");
-      defaultPostcardParams.put("back", "https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf");
+      defaultPostcardParams.put("front", "https://s3-us-west-2.amazonaws.com/lob-assets/lob-postcard-front.pdf");
+      defaultPostcardParams.put("back", "https://s3-us-west-2.amazonaws.com/lob-assets/lob-postcard-front.pdf");
     }
 
     @Test
@@ -62,13 +62,13 @@ public class PostcardTest {
     @Test
     public void testPostcardCreate() throws LobException {
       Postcard job = Postcard.create(defaultPostcardParams, Lob.apiKey);
-      assertEquals(job.getName(), "Test Postcard");
+      assertEquals(job.getDescription(), "Test Postcard");
     }
 
     @Test(expected=APIException.class)
     public void testPostcardCreateFail() throws LobException {
       Map<String, java.lang.Object> badPostcardParams = new HashMap<String, java.lang.Object>();
-      badPostcardParams.put("name", "Test Postcard");
+      badPostcardParams.put("description", "Test Postcard");
       Postcard badPostcard = Postcard.create(badPostcardParams, Lob.apiKey);
     }
 
@@ -77,7 +77,7 @@ public class PostcardTest {
       Postcard createdPostcard = Postcard.create(defaultPostcardParams, Lob.apiKey);
       Postcard retrievedPostcard = Postcard.retrieve(createdPostcard.getId(), Lob.apiKey);
       assertEquals(createdPostcard.getId(), retrievedPostcard.getId());
-      assertEquals(createdPostcard.getName(), retrievedPostcard.getName());
+      assertEquals(createdPostcard.getDescription(), retrievedPostcard.getDescription());
       assertEquals(createdPostcard.getTo().getId(), retrievedPostcard.getTo().getId());
       assertEquals(createdPostcard.getFrom().getId(), retrievedPostcard.getFrom().getId());
       assertEquals(createdPostcard.getMessage(), retrievedPostcard.getMessage());

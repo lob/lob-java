@@ -13,6 +13,7 @@ import java.util.Map;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -292,9 +293,9 @@ public class AddressTest {
       assertEquals(address.getName(), "Test Address");
       assertEquals(address.getAddress_line1(), "123 Test Street");
       DeletedStatus status = Address.delete(address.getId(), Lob.apiKey);
-      assertEquals("1", status.getMessage());
+      assertTrue(status.getDeleted());
       Address retrievedAddress = Address.retrieve(address.getId(), Lob.apiKey);
-      assertEquals(1, retrievedAddress.getDeleted());
+      assertTrue(retrievedAddress.getDeleted());
     }
 
     @Test

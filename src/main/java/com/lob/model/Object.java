@@ -10,7 +10,7 @@ import com.lob.net.APIResource;
 
 public class Object extends APIResource {
     String id;
-    String name;
+    String description;
     String file;
     Setting setting;
     Integer quantity;
@@ -20,8 +20,8 @@ public class Object extends APIResource {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
     public String getFile() {
         return file;

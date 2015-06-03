@@ -9,7 +9,7 @@ import com.lob.net.APIResource;
 
 public class Job extends APIResource {
     String id;
-    String name;
+    String description;
     Double price;
     Address to;
     Address from;
@@ -26,8 +26,8 @@ public class Job extends APIResource {
     }
 
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
 

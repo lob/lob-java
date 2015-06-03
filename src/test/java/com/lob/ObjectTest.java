@@ -12,6 +12,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -22,9 +23,9 @@ public class ObjectTest {
     public static void setUp() {
       Lob.apiKey = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc";
 
-      defaultObjectParams.put("name", "Test Object");
-      defaultObjectParams.put("file", "https://s3-us-west-2.amazonaws.com/lob-assets/goblue.pdf");
-      defaultObjectParams.put("setting", "100");
+      defaultObjectParams.put("description", "Test Object");
+      defaultObjectParams.put("file", "https://s3-us-west-2.amazonaws.com/lob-assets/200_201_card.pdf");
+      defaultObjectParams.put("setting", 201);
     }
 
     @Test
@@ -50,37 +51,36 @@ public class ObjectTest {
     @Test
     public void testObjectCreate() throws LobException {
       Object object = Object.create(defaultObjectParams, Lob.apiKey);
-      assertEquals(object.getName(), "Test Object");
+      assertEquals(object.getDescription(), "Test Object");
     }
 
     @Test
     public void testObjectDelete() throws LobException {
       Object object = Object.create(defaultObjectParams, Lob.apiKey);
-      assertEquals(object.getName(), "Test Object");
+      assertEquals(object.getDescription(), "Test Object");
       DeletedStatus status = Object.delete(object.getId(), Lob.apiKey);
-      assertEquals("1", status.getMessage());
+      assertTrue(status.getDeleted());
     }
 
     @Test
     public void testObjectCreateLocal() throws LobException {
       Map<String, java.lang.Object> ObjectMap = new HashMap<String, java.lang.Object>();
-      ObjectMap.put("name", "GO BLUE");
-      ObjectMap.put("file", "@" + System.getProperty("user.dir") + "/assets/test.pdf");
+      ObjectMap.put("description", "GO BLUE");
+      ObjectMap.put("file", "@" + System.getProperty("user.dir") + "/assets/4_25x6_25.pdf");
       ObjectMap.put("quantity", 2);
       ObjectMap.put("setting", 201);
 
       Object object = Object.create(ObjectMap, Lob.apiKey);
-      assertEquals(object.getName(), "GO BLUE");
+      assertEquals(object.getDescription(), "GO BLUE");
       assertNull(object.getFile());
       assertEquals("201", object.getSetting().getId());
       assertEquals(2, object.getQuantity().intValue());
-      assertEquals(1, object.getDouble_sided().intValue());
     }
 
     @Test(expected=APIException.class)
     public void testObjectCreateFail() throws LobException {
       Map<String, java.lang.Object> badObjectParams = new HashMap<String, java.lang.Object>();
-      badObjectParams.put("name", "Test Object");
+      badObjectParams.put("description", "Test Object");
       Object badObject = Object.create(badObjectParams, Lob.apiKey);
     }
 

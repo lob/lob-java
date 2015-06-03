@@ -13,7 +13,7 @@ import com.lob.net.APIResource;
 
 public class Area extends APIResource {
     String id;
-    String name;
+    String description;
     String status;
     Double price;
     String url;
@@ -24,8 +24,8 @@ public class Area extends APIResource {
     Date date_modified;
     String object;
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
     public String getStatus() {

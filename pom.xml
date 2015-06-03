@@ -4,7 +4,7 @@
   <groupId>com.lob</groupId>
   <artifactId>lob-java</artifactId>
   <packaging>jar</packaging>
-  <version>1.3</version>
+  <version>1.4</version>
   <name>lob-java</name>
   <description>Java Wrapper for Lob API</description>
   <url>https://github.com/lob/lob-java</url>

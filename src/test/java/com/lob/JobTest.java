@@ -29,9 +29,9 @@ public class JobTest {
     public static void setUp() throws LobException {
       Lob.apiKey = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc";
 
-      defaultObjectParams.put("name", "Test Object");
-      defaultObjectParams.put("file", "https://s3-us-west-2.amazonaws.com/lob-assets/goblue.pdf");
-      defaultObjectParams.put("setting", "100");
+      defaultObjectParams.put("description", "Test Object");
+      defaultObjectParams.put("file", "https://s3-us-west-2.amazonaws.com/lob-assets/200_201_card.pdf");
+      defaultObjectParams.put("setting", "201");
 
       defaultObject = Object.create(defaultObjectParams, Lob.apiKey);
 
@@ -43,7 +43,7 @@ public class JobTest {
 
       defaultAddress = Address.create(defaultAddressParams, Lob.apiKey);
 
-      defaultJobParams.put("name", "Test Job");
+      defaultJobParams.put("description", "Test Job");
       defaultJobParams.put("to", defaultAddress.getId());
       defaultJobParams.put("from", defaultAddress.getId());
       defaultJobParams.put("object1", defaultObject.getId());
@@ -72,13 +72,13 @@ public class JobTest {
     @Test
     public void testJobCreate() throws LobException {
       Job job = Job.create(defaultJobParams, Lob.apiKey);
-      assertEquals(job.getName(), "Test Job");
+      assertEquals(job.getDescription(), "Test Job");
     }
 
     @Test(expected=APIException.class)
     public void testJobCreateFail() throws LobException {
       Map<String, java.lang.Object> badJobParams = new HashMap<String, java.lang.Object>();
-      badJobParams.put("name", "Test Job");
+      badJobParams.put("description", "Test Job");
       Job badJob = Job.create(badJobParams, Lob.apiKey);
     }
 
@@ -87,11 +87,11 @@ public class JobTest {
       Job createdJob = Job.create(defaultJobParams, Lob.apiKey);
       Job retrievedJob = Job.retrieve(createdJob.getId(), Lob.apiKey);
       assertEquals(createdJob.getId(), retrievedJob.getId());
-      assertEquals("Test Job", retrievedJob.getName());
+      assertEquals("Test Job", retrievedJob.getDescription());
       assertEquals(1.65, retrievedJob.getPrice(), 2);
       assertEquals("Test Address", retrievedJob.getTo().getName());
       assertEquals("Test Address", retrievedJob.getFrom().getName());
-      assertEquals("Test Object", retrievedJob.getObjects()[0].getName());
+      assertEquals("Test Object", retrievedJob.getObjects()[0].getDescription());
       assertNull(retrievedJob.getQuantity());
       assertEquals("processed", retrievedJob.getStatus());
       assertNotNull(retrievedJob.getTracking().getId());
