@@ -1,0 +1,239 @@
+# Adding a new endpoint
+
+This document gives a quick overview of how to add new endpoints to the lob-java helper library.
+
+Most of the work is in creating the request and response classes. It looks like a lot of code, but I promise it's not that bad :)
+
+## IDE
+It is highly recommended to write Java code using a Java IDE, such as [Intellij](https://www.jetbrains.com/idea/). Unfortunately, due to Java's code structure, writing code in Vim or the like is simply untenable. In addition, the IDE will catch any mistakes you make (which are unfortunately easy to make while writing Java).
+
+## ID class
+
+The first step is to create the class that represents whatever ID you've come up with for the new resource.
+
+All ids live in the `com.lob.id` package.
+
+### Prefix
+
+Inside `com.lob.id.LobId` is a static `Prefix` enum. This enum keeps track of all valid ID prefixes in the Lob API.
+
+Add your new prefix to this enum like so:
+
+`POSTCARD("psc", "postcard"),`
+
+### Create the class
+
+Create a new class in `com.lob.id` that extends `LobId`. This will do most of the wiring for you.
+
+The only things to do are create a private constructor that delegates to the superclass (Intellij generates these) and create a static `parse()` method that takes in a String, annotated with @JsonCreator (this is for serialization purposes). This `parse()` method is where we use the `Prefix` that we defined earlier.
+
+Example:
+
+```
+package com.lob.id;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+
+public class AddressId extends LobId {
+    private AddressId(final Prefix prefix, final String identifier) {
+        super(prefix, identifier);
+    }
+
+    @JsonCreator
+    public static AddressId parse(final String s) {
+        return new AddressId(Prefix.ADDRESS, s);
+    }
+}
+```
+
+## Request class
+The next step is to create the class that represents the POST request to Lob. This class will include all of the parameters that Lob needs to service it.
+
+All request classes live in the `com.lob.protocol.request` package.
+
+A lob-java request class has the following properties:
+
+- It implements `HasLobParams`. This means you have to implement `getLobParams()`, which is what the client uses to send the request. See the example.
+- It contains the necessary fields
+- It overrides `toString()` (Intellij can generate this)
+- It contains a static `Builder` class -- [This Intellij plugin makes this very easy](https://plugins.jetbrains.com/plugin/6585?pr=)
+
+A full example follows.
+
+```
+package com.lob.protocol.request;
+
+import com.lob.LobParamsBuilder;
+import com.lob.id.ZipCode;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
+import static com.lob.Util.defensiveCopy;
+
+public class ZipCodeRouteRequest implements HasLobParams {
+    private final Collection<ZipCode> zipCodes;
+
+    public ZipCodeRouteRequest(final Collection<ZipCode> zipCodes) {
+        this.zipCodes = defensiveCopy(zipCodes);
+    }
+
+    @Override
+    public Collection<LobParam> getLobParams() {
+        return LobParamsBuilder.create()
+            .putAllStringValued("zip_codes", this.zipCodes)
+            .build();
+    }
+
+    public Collection<ZipCode> getZipCodes() {
+        return defensiveCopy(zipCodes);
+    }
+
+    @Override
+    public String toString() {
+        return "ZipCodeRouteRequest{" +
+            "zipCodes=" + zipCodes +
+            '}';
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private final Collection<ZipCode> zipCodes = new ArrayList<ZipCode>();
+
+        private Builder() {
+        }
+
+        public Builder addStringZips(final String... zipCodes) {
+            return addStringZips(Arrays.asList(zipCodes));
+        }
+
+        public Builder addZips(final ZipCode... zipCodes) {
+            return addZips(Arrays.asList(zipCodes));
+        }
+
+        public Builder addStringZips(final Collection<String> zipCodes) {
+            final List<ZipCode> transformedList = new ArrayList<ZipCode>(zipCodes.size());
+            for (final String stringZip : zipCodes) {
+                transformedList.add(ZipCode.parse(stringZip));
+            }
+
+            return addZips(transformedList);
+        }
+
+        public Builder addZips(final Collection<ZipCode> zipCodes) {
+            this.zipCodes.addAll(zipCodes);
+            return this;
+        }
+
+        public ZipCodeRouteRequest build() {
+            return new ZipCodeRouteRequest(zipCodes);
+        }
+    }
+}
+```
+
+## Response class
+
+The next step is to create the response class. Luckily, this one is a little more straightforward than the request class.
+
+Response classes live in `com.lob.protocol.response`.
+
+Responses consist of:
+
+- The fields of the response, annotated with `@JsonProperty`
+- A constructor annotated with `@JsonCreator` (the constructor can be generated by Intellij, albeit without the annotations)
+- Getters for all of the fields (also recommended to be generated) (notice a pattern here? :) )
+- A `toString()` override (also generated)
+
+The corresponding response to the above request:
+
+```
+package com.lob.protocol.response;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lob.id.ZipCode;
+
+import java.util.Collection;
+import java.util.List;
+
+import static com.lob.Util.defensiveCopy;
+
+public class ZipCodeRouteResponse {
+    @JsonProperty private final ZipCode zipCode;
+    @JsonProperty private final List<RouteResponse> routes;
+
+    @JsonCreator
+    public ZipCodeRouteResponse(
+            @JsonProperty("zip_code") final ZipCode zipCode,
+            @JsonProperty("routes") final List<RouteResponse> routes) {
+        this.zipCode = zipCode;
+        this.routes = routes;
+    }
+
+    public ZipCode getZipCode() {
+        return zipCode;
+    }
+
+    public List<RouteResponse> getRoutes() {
+        return defensiveCopy(routes);
+    }
+
+    @Override
+    public String toString() {
+        return "ZipCodeRouteCollection{" +
+            "zipCode=" + zipCode +
+            ", routes=" + routes +
+            '}';
+    }
+}
+```
+
+## Adding the route
+
+Add a `public final static String` to `com.lob.client.Router` that defines the route to the endpoint, relative to the base Lob API address, without the leading slash.
+
+`public final static String JOBS = "jobs";`
+
+## Create the methods in the `com.lob.client.LobClient` interface
+
+Here is where we're going to use the classes we created in the previous section.
+
+```
+// Job methods
+public ListenableFuture<JobResponse> createJob(final JobRequest jobRequest);
+
+public ListenableFuture<JobResponse> getJob(final JobId id);
+```
+
+## Implement the methods in `com.lob.client.AsyncLobClient`
+
+Finally, we will make the actual request to Lob. Luckily, once we have the proper classes in place, this is easy.
+
+Just follow the pattern below (once again, Intellij code generation is helpful here: Code Generation->Implement methods...):
+
+```
+@Override
+public ListenableFuture<JobResponse> createJob(final JobRequest jobRequest) {
+    return execute(JobResponse.class, post(Router.JOBS, jobRequest), this.callbackExecutorService);
+}
+
+@Override
+public ListenableFuture<JobResponse> getJob(final JobId id) {
+    return execute(JobResponse.class, get(Router.JOBS, id), this.callbackExecutorService);
+}
+```
+
+## Conclusion
+
+That's it! Your new endpoint is hot off the press and ready to use.
+
+### TODO:
+- Gotchas
+- List resources
+- Testing
