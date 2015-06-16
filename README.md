@@ -25,8 +25,8 @@ Include the following in your `pom.xml` for Maven:
 <dependencies>
   <dependency>
     <groupId>com.lob</groupId>
-    <artifactId>lob-java-client</artifactId>
-    <version>2.0.0-SNAPSHOT</version>
+    <artifactId>lob-java</artifactId>
+    <version>2.0.0</version>
   </dependency>
   ...
 </dependencies>
