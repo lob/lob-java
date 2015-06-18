@@ -1,5 +1,7 @@
 # lob-java
 
+[![Build Status](https://secure.travis-ci.org/lob/lob-java.png)](https://travis-ci.org/lob/lob-java)
+
 This is the java wrapper for the Lob.com API.
 
 ## Frameworks
