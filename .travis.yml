@@ -1,3 +1,11 @@
 language: java
 
-script: mvn clean package jacoco:report coveralls:jacoco
+jdk:
+  - openjdk6
+  - openjdk7
+  - oraclejdk7
+  - oraclejdk8
+
+script:
+  - mvn -DXms512m -DXmx512m -DXX:MaxPermSize=350m clean package jacoco:report coveralls:jacoco
+  - mvn -f lob-java-examples/pom.xml clean package
