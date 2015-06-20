@@ -1,6 +1,7 @@
 # lob-java
 
 [![Build Status](https://secure.travis-ci.org/lob/lob-java.png)](https://travis-ci.org/lob/lob-java)
+[![Coverage Status](https://coveralls.io/repos/javadev/lob-java/badge.png?branch=master)](https://coveralls.io/r/javadev/lob-java)
 
 This is the java wrapper for the Lob.com API.
 
