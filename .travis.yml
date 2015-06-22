@@ -6,6 +6,9 @@ jdk:
   - oraclejdk7
   - oraclejdk8
 
+before_script:
+  - ulimit -c unlimited
+
 script:
   - mvn -DXms512m -DXmx512m -DXX:MaxPermSize=350m clean package jacoco:report coveralls:jacoco
   - mvn -f lob-java-examples/pom.xml clean package
