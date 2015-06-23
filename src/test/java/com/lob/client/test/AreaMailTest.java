@@ -1,5 +1,6 @@
 package com.lob.client.test;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
 import com.lob.OrCollection;
@@ -77,6 +78,7 @@ public class AreaMailTest extends QuietLogging {
         assertTrue(routeId.getRouteId() instanceof RouteId);
         assertTrue(routeId.getZipCode() instanceof ZipCode);
         print(builder.butWith().routesForIds(routeId).build());
+        print(builder.butWith().routesForIds(Lists.<ZipCodeRouteId>newArrayList(routeId)).build());
 
         final AreaMailRequest request = print(builder.build());
         assertTrue(print(request.getBack()) instanceof LobParam);

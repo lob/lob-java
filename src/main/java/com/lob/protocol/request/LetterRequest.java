@@ -97,8 +97,8 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
 
         private Builder() {}
 
-        private Builder description(final String description) {
-            this.description= description;
+        public Builder description(final String description) {
+            this.description = description;
             return this;
         }
 

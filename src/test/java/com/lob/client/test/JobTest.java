@@ -82,6 +82,9 @@ public class JobTest extends QuietLogging {
         print(response.getService());
 
         final TrackingResponse tracking = print(response.getTracking());
+        print(tracking.getId());
+        print(tracking.getTrackingNumber());
+        print(tracking.getEvents());
         print(tracking.getCarrier());
         print(tracking.getLink());
         print(tracking.getObject());
