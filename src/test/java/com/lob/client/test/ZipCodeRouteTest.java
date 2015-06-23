@@ -2,6 +2,7 @@ package com.lob.client.test;
 
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
+import com.lob.id.ZipCodeRouteId;
 import com.lob.protocol.request.ZipCodeRouteRequest;
 import com.lob.protocol.response.RouteResponse;
 import com.lob.protocol.response.ZipCodeRouteResponse;
@@ -36,5 +37,10 @@ public class ZipCodeRouteTest extends QuietLogging {
         print(response.getZipCode().toZipCodeRouteId(route.getRoute()));
 
         assertFalse(request.getZipCodes().isEmpty());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidId() throws Exception {
+        ZipCodeRouteId.parse("lolol");
     }
 }

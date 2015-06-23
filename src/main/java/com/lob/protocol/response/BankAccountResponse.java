@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class BankAccountResponse extends AbstractLobResponse {
     @JsonProperty private final BankAccountId id;
-    @JsonProperty private final String name;
     @JsonProperty private final String routingNumber;
     @JsonProperty private final String accountNumber;
     @JsonProperty private final AddressResponse bankAddress;
@@ -20,7 +19,6 @@ public class BankAccountResponse extends AbstractLobResponse {
     @JsonCreator
     public BankAccountResponse(
             @JsonProperty("id") final BankAccountId id,
-            @JsonProperty("name") final String name,
             @JsonProperty("routing_number") final String routingNumber,
             @JsonProperty("account_number") final String accountNumber,
             @JsonProperty("bank_address") final AddressResponse bankAddress,
@@ -33,7 +31,6 @@ public class BankAccountResponse extends AbstractLobResponse {
             @JsonProperty("object") final String object) {
         super(dateCreated, dateModified, metadata, object);
         this.id = id;
-        this.name = name;
         this.routingNumber = routingNumber;
         this.accountNumber = accountNumber;
         this.bankAddress = bankAddress;
@@ -44,10 +41,6 @@ public class BankAccountResponse extends AbstractLobResponse {
 
     public BankAccountId getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getRoutingNumber() {
@@ -78,7 +71,6 @@ public class BankAccountResponse extends AbstractLobResponse {
     public String toString() {
         return "BankAccountResponse{" +
             "id=" + id +
-            ", name='" + name + '\'' +
             ", routingNumber='" + routingNumber + '\'' +
             ", accountNumber='" + accountNumber + '\'' +
             ", bankAddress=" + bankAddress +

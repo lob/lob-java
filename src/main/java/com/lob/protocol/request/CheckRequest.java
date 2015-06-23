@@ -16,7 +16,6 @@ import static com.lob.Util.checkNotNull;
 public class CheckRequest extends AbstractDataFieldRequest implements HasLobParams {
     public static final String LOGO = "logo";
 
-    private final String name;
     private final Integer checkNumber; // optional parameter, needs to be null if not set
     private final BankAccountId bankAccount;
     private final Or<AddressId, AddressRequest> to;
@@ -26,7 +25,6 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
     private final LobParam logo;
 
     public CheckRequest(
-            final String name,
             final Integer checkNumber,
             final BankAccountId bankAccount,
             final Or<AddressId, AddressRequest> to,
@@ -35,9 +33,9 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             final String memo,
             final LobParam logo,
             final Map<String, String> metadata,
-            final Map<String, String> data) {
-        super(metadata, data);
-        this.name = name;
+            final Map<String, String> data,
+            final String description) {
+        super(metadata, data, description);
         this.checkNumber = checkNumber;
         this.bankAccount = checkNotNull(bankAccount, "bank account is required");
         this.to = checkNotNull(to, "to is required");
@@ -50,7 +48,6 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
     @Override
     public Collection<LobParam> getLobParams() {
         return super.beginParams()
-            .put("name", name)
             .put("check_number", checkNumber)
             .put("bank_account", bankAccount)
             .put("to", to)
@@ -59,10 +56,6 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             .put("memo", memo)
             .put(logo)
             .build();
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Integer getCheckNumber() {
@@ -96,8 +89,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
     @Override
     public String toString() {
         return "CheckRequest{" +
-            "name='" + name + '\'' +
-            ", checkNumber=" + checkNumber +
+            "checkNumber=" + checkNumber +
             ", bankAccount=" + bankAccount +
             ", to=" + to +
             ", amount=" + amount +
@@ -111,8 +103,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         return new Builder();
     }
 
-    public static class Builder {
-        private String name;
+    public static class Builder extends AbstractDataFieldRequest.Builder<Builder> {
         private Integer checkNumber;
         private BankAccountId bankAccount;
         private Or<AddressId, AddressRequest> to;
@@ -120,15 +111,8 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         private String message;
         private String memo;
         private LobParam logo;
-        private Map<String, String> metadata;
-        private Map<String, String> data;
 
         private Builder() {}
-
-        public Builder name(final String name) {
-            this.name = name;
-            return this;
-        }
 
         public Builder checkNumber(final Integer checkNumber) {
             this.checkNumber = checkNumber;
@@ -190,19 +174,8 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             return this;
         }
 
-        public Builder metadata(final Map<String, String> metadata) {
-            this.metadata = metadata;
-            return this;
-        }
-
-        public Builder data(final Map<String, String> data) {
-            this.data = data;
-            return this;
-        }
-
         public Builder butWith() {
             return new Builder()
-                .name(name)
                 .checkNumber(checkNumber)
                 .bankAccount(bankAccount)
                 .to(to)
@@ -211,11 +184,12 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
                 .memo(memo)
                 .logo(logo)
                 .metadata(metadata)
-                .data(data);
+                .data(data)
+                .description(description);
         }
 
         public CheckRequest build() {
-            return new CheckRequest(name, checkNumber, bankAccount, to, amount, message, memo, logo, metadata, data);
+            return new CheckRequest(checkNumber, bankAccount, to, amount, message, memo, logo, metadata, data, description);
         }
     }
 }

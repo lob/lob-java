@@ -14,7 +14,7 @@ public class VerifyAddressRequest extends AbstractAddressRequest implements HasL
         final ZipCode zip,
         final CountryCode country) {
 
-        super(line1, line2, city, state, zip, country, null); // verification requests don't have metadata
+        super(line1, line2, city, state, zip, country, null, null); // verification requests don't have metadata or descriptions
     }
 
     @Override

@@ -23,8 +23,10 @@ public abstract class AbstractAddressRequest extends AbstractLobRequest {
             final String state,
             final ZipCode zip,
             final CountryCode country,
-            final Map<String, String> metadata) {
-        super(metadata);
+            final Map<String, String> metadata,
+            final String description) {
+
+        super(metadata, description);
 
         this.line1 = line1;
         this.line2 = line2;

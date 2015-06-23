@@ -46,18 +46,15 @@ public class AsyncLobClient implements LobClient {
 
     private final AsyncHttpClient httpClient;
     private final String baseUrl;
-    private final Optional<String> apiVersion;
 
     private final ExecutorService callbackExecutorService;
 
     private AsyncLobClient(
             final AsyncHttpClient httpClient,
             final String baseUrl,
-            final Optional<String> apiVersion,
             final ExecutorService callbackExecutorService) {
         this.httpClient = httpClient;
         this.baseUrl = baseUrl;
-        this.apiVersion = apiVersion;
         this.callbackExecutorService = callbackExecutorService;
     }
 
@@ -76,7 +73,6 @@ public class AsyncLobClient implements LobClient {
         return new AsyncLobClient(
             new AsyncHttpClient(commonSetup(apiKey, new Builder())),
             Lob.getBaseUrl(),
-            Lob.getApiVersion(),
             Executors.newCachedThreadPool());
     }
 
@@ -84,7 +80,6 @@ public class AsyncLobClient implements LobClient {
         return new AsyncLobClient(
             new AsyncHttpClient(commonSetup(apiKey, new Builder(config))),
             Lob.getBaseUrl(),
-            Lob.getApiVersion(),
             Executors.newCachedThreadPool());
     }
 
@@ -470,10 +465,6 @@ public class AsyncLobClient implements LobClient {
 
         @Override
         public T onCompleted(final Response response) throws Exception {
-            if (guavaFut.isDone()) {
-                return guavaFut.get();
-            }
-
             if (isSuccess(response)) {
                 final T value = MAPPER.readValue(response.getResponseBody(), clazz);
                 // Execute setting the guava future in a separate thread so any callbacks

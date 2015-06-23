@@ -3,6 +3,7 @@ package com.lob.client.test;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
+import com.lob.LobApiException;
 import com.lob.Or;
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
@@ -28,6 +29,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class CheckTest extends QuietLogging {
     private final LobClient client = AsyncLobClient.createDefault("test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc");
@@ -65,9 +67,21 @@ public class CheckTest extends QuietLogging {
         assertThat(client.getChecks(1, 2).get().getCount(), is(1));
     }
 
-    @Test(expected = ExecutionException.class)
+    @Test
     public void testListChecksFail() throws Exception {
-        client.getChecks(1000).get();
+        try {
+            client.getChecks(1000).get();
+            fail();
+        }
+        catch (final ExecutionException e) {
+            if (!(e.getCause() instanceof LobApiException)) {
+                fail();
+            }
+
+            final LobApiException lobApiException = (LobApiException) e.getCause();
+            print(print(lobApiException.getErrorResponse()).getError().getMessage());
+            print(lobApiException.getErrorResponse().getError().getStatusCode());
+        }
     }
 
 
@@ -104,6 +118,7 @@ public class CheckTest extends QuietLogging {
         assertTrue(response.getPrice() instanceof Money);
         assertTrue(response.getAmount() instanceof Money);
         assertFalse(response.getThumbnails().isEmpty());
+        print(response.getTracking());
 
 
         final CheckResponse retrievedResponse = client.getCheck(response.getId()).get();

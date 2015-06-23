@@ -125,6 +125,8 @@ public class AddressTest extends QuietLogging {
         assertFalse(request.getLine2().isEmpty());
         assertFalse(request.getState().isEmpty());
         assertTrue(request.getCountry() instanceof CountryCode);
+        assertThat(request.getName(), is("Lob"));
+        assertTrue(request.getZip() instanceof ZipCode);
 
         final AddressId id = response.getId();
         final AddressResponse retrievedResponse = client.getAddress(id).get();
@@ -142,6 +144,7 @@ public class AddressTest extends QuietLogging {
         final AddressId id = client.getAddresses().get().get(0).getId();
         final AddressDeleteResponse response = print(client.deleteAddress(id).get());
         assertThat(response.getId(), is(id));
+        assertTrue(response.isDeleted());
     }
 
     @Test

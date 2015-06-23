@@ -20,45 +20,34 @@ import static com.lob.Util.checkPresent;
 public class AreaMailRequest extends AbstractDataFieldRequest implements HasLobParams {
     public static final String FRONT = "front";
     public static final String BACK = "back";
-    private final String name;
     private final LobParam front;
     private final LobParam back;
     private final OrCollection<ZipCode, ZipCodeRouteId> routes;
     private final TargetType targetType;
-    private final Boolean fullBleed;
 
     public AreaMailRequest(
-            final String name,
             final LobParam front,
             final LobParam back,
             final OrCollection<ZipCode, ZipCodeRouteId> routes,
             final TargetType targetType,
-            final Boolean fullBleed,
             final Map<String, String> metadata,
-            final Map<String, String> data) {
-        super(metadata, data);
-        this.name = name;
+            final Map<String, String> data,
+            final String description) {
+        super(metadata, data, description);
         this.front = checkNotNull(front, "front is required");
         this.back = checkNotNull(back, "back is required");
         this.routes = checkPresent(routes, "routes is required");
         this.targetType = targetType;
-        this.fullBleed = fullBleed;
     }
 
     @Override
     public Collection<LobParam> getLobParams() {
         return super.beginParams()
-            .put("name", name)
             .putAllStringValued("routes", routes)
             .put("target_type", targetType)
-            .put("full_bleed", fullBleed)
             .put(front)
             .put(back)
             .build();
-    }
-
-    public String getName() {
-        return name;
     }
 
     public LobParam getFront() {
@@ -77,19 +66,13 @@ public class AreaMailRequest extends AbstractDataFieldRequest implements HasLobP
         return targetType;
     }
 
-    public Boolean getFullBleed() {
-        return fullBleed;
-    }
-
     @Override
     public String toString() {
         return "AreaMailRequest{" +
-            "name='" + name + '\'' +
-            ", front='" + front + '\'' +
+            "front='" + front + '\'' +
             ", back='" + back + '\'' +
             ", routes=" + routes +
             ", targetType=" + targetType +
-            ", fullBleed=" + fullBleed +
             super.toString();
     }
 
@@ -98,22 +81,13 @@ public class AreaMailRequest extends AbstractDataFieldRequest implements HasLobP
     }
 
 
-    public static class Builder {
-        private String name;
+    public static class Builder extends AbstractDataFieldRequest.Builder<Builder> {
         private LobParam front;
         private LobParam back;
         private OrCollection<ZipCode, ZipCodeRouteId> routes;
         private TargetType targetType;
-        private Boolean fullBleed;
-        private Map<String, String> metadata;
-        private Map<String, String> data;
 
         private Builder() {
-        }
-
-        public Builder name(final String name) {
-            this.name = name;
-            return this;
         }
 
         public Builder front(final String front) {
@@ -194,35 +168,19 @@ public class AreaMailRequest extends AbstractDataFieldRequest implements HasLobP
             return this;
         }
 
-        public Builder fullBleed(final Boolean fullBleed) {
-            this.fullBleed = fullBleed;
-            return this;
-        }
-
-        public Builder metadata(final Map<String, String> metadata) {
-            this.metadata = metadata;
-            return this;
-        }
-
-        public Builder data(final Map<String, String> data) {
-            this.data = data;
-            return this;
-        }
-
         public Builder butWith() {
             return new Builder()
-                .name(name)
                 .front(front)
                 .back(back)
                 .routes(routes)
                 .targetType(targetType)
-                .fullBleed(fullBleed)
                 .metadata(metadata)
-                .data(data);
+                .data(data)
+                .description(description);
         }
 
         public AreaMailRequest build() {
-            return new AreaMailRequest(name, front, back, routes, targetType, fullBleed, metadata, data);
+            return new AreaMailRequest(front, back, routes, targetType, metadata, data, description);
         }
     }
 }

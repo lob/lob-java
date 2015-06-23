@@ -9,9 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 public final class Util {
-    // prevent instantiation
-    private Util() {}
-
     public static <T> T checkNotNull(final T ref, final String message) {
         if (ref == null) {
             throw new NullPointerException(message);

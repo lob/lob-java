@@ -1,10 +1,11 @@
 package com.lob.client.test;
 
+import com.lob.ClientUtil;
+import com.lob.Lob;
 import com.lob.OrCollection;
 import com.lob.Util;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
@@ -36,7 +37,15 @@ public class UtilTest extends QuietLogging {
         Util.checkValidHex("NOT HEX AT ALL LOL");
     }
 
+    @Test
     public void testDefensiveCopyWithEmptyList() {
         assertEquals(Util.defensiveCopy(Collections.emptyList()), Collections.emptyList());
+    }
+
+    @Test
+    public void constructorsTest() {
+        new Util();
+        new ClientUtil();
+        new Lob();
     }
 }

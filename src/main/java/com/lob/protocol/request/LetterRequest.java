@@ -13,7 +13,6 @@ import static com.lob.Util.checkNotNull;
 public class LetterRequest extends AbstractDataFieldRequest implements HasLobParams {
     private final static String FILE = "file";
 
-    private final String description;
     private final Or<AddressId, AddressRequest> to;
     private final Or<AddressId, AddressRequest> from;
     private final LobParam file;
@@ -32,8 +31,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             final Map<String, String> metadata,
             final Map<String, String> data) {
 
-        super(metadata, data);
-        this.description = description;
+        super(metadata, data, description);
         this.to = checkNotNull(to, "to is required");
         this.from = checkNotNull(from, "from is required");
         this.file = checkNotNull(file, "file is required");
@@ -45,7 +43,6 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
     @Override
     public Collection<LobParam> getLobParams() {
         return super.beginParams()
-            .put("description", description)
             .put("to", to)
             .put("from", from)
             .put(file)
@@ -54,8 +51,6 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             .put("template", template)
             .build();
     }
-
-    public String getDescription() { return description; }
 
     public Or<AddressId, AddressRequest> getTo() { return to; }
 
@@ -72,8 +67,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
     @Override
     public String toString() {
         return "LetterRequest{" +
-            "description='" + description + "'" +
-            ", to=" + to +
+            "to=" + to +
             ", from=" + from +
             ", file=" + file +
             ", color=" + color +
@@ -84,21 +78,18 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
 
     public static Builder builder() { return new Builder(); }
 
-    public static class Builder {
-        private String description;
+    public static class Builder extends AbstractDataFieldRequest.Builder<Builder> {
         private Or<AddressId, AddressRequest> to;
         private Or<AddressId, AddressRequest> from;
         private LobParam file;
         private Boolean color;
         private Boolean doubleSided;
         private Boolean template;
-        private Map<String, String> metadata;
-        private Map<String, String> data;
 
         private Builder() {}
 
-        private Builder description(final String description) {
-            this.description= description;
+        public Builder description(final String description) {
+            this.description = description;
             return this;
         }
 
@@ -159,16 +150,6 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
 
         public Builder template(final Boolean template) {
             this.template = template;
-            return this;
-        }
-
-        public Builder metadata(final Map<String, String> metadata) {
-            this.metadata = metadata;
-            return this;
-        }
-
-        public Builder data(final Map<String, String> data) {
-            this.data = data;
             return this;
         }
 
