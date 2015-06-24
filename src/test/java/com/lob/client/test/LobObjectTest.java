@@ -82,6 +82,7 @@ public class LobObjectTest extends QuietLogging {
 
         final LobObjectDeleteResponse deleteResponse = print(client.deleteLobObject(response.getId()).get());
         assertThat(deleteResponse.getId(), is(response.getId()));
+        assertTrue(deleteResponse.isDeleted());
 
         assertThat(response.getDescription(), is("description"));
         assertFalse(response.getObject().isEmpty());
@@ -95,7 +96,7 @@ public class LobObjectTest extends QuietLogging {
         assertFalse(thumbnail.getMedium().isEmpty());
         assertFalse(thumbnail.getSmall().isEmpty());
 
-        final LobObjectRequest request = builder.build();
+        final LobObjectRequest request = print(builder.build());
         assertThat(request.getMetadata().get("key0"), is("value0"));
         assertThat(request.getMetadata().get("key1"), is("value1"));
         assertThat(request.getData().get("key0"), is("value0"));

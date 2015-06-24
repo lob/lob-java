@@ -41,9 +41,4 @@ public class UtilTest extends QuietLogging {
     public void testDefensiveCopyWithEmptyList() {
         assertEquals(Util.defensiveCopy(Collections.emptyList()), Collections.emptyList());
     }
-
-    @Test(expected = IllegalAccessException.class)
-    public void testClientUtilPrivateConstructor() throws Exception {
-        ClientUtil.class.newInstance();
-    }
 }
