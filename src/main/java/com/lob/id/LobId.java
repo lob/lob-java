@@ -109,12 +109,6 @@ public abstract class LobId implements StringValued {
         private static Prefix fromString(final String s) {
             return stringPrefixMap.get(s);
         }
-
-        @Override
-        public String toString() {
-            return this.prefix;
-        }
-
     }
 
 }

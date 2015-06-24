@@ -82,12 +82,16 @@ public class JobTest extends QuietLogging {
         print(response.getService());
 
         final TrackingResponse tracking = print(response.getTracking());
+        print(tracking.getId());
+        print(tracking.getTrackingNumber());
+        print(tracking.getEvents());
         print(tracking.getCarrier());
         print(tracking.getLink());
         print(tracking.getObject());
 
-        final JobRequest otherRequest = builder.butWith().objectIds(objects).build();
+        final JobRequest otherRequest = print(builder.butWith().objectIds(objects).build());
         assertTrue(otherRequest.getFrom() instanceof Or);
+        assertTrue(otherRequest.getTo() instanceof Or);
         assertTrue(otherRequest.getObjects() instanceof OrCollection);
         assertNull(otherRequest.getService());
 

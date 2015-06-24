@@ -60,10 +60,17 @@ public class LobObjectTest extends QuietLogging {
         final Map<String, String> metadata = Maps.newHashMap();
         metadata.put("key0", "value0");
         metadata.put("key1", "value1");
+
+        final Map<String, String> data = Maps.newHashMap();
+        data.put("key0", "value0");
+        data.put("key1", "value1");
+
         final LobObjectRequest.Builder builder = LobObjectRequest.builder()
+            .description("description")
             .file("https://s3-us-west-2.amazonaws.com/lob-assets/200_201_card.pdf")
             .setting(201)
-            .metadata(metadata);
+            .metadata(metadata)
+            .data(data);
 
         final LobObjectResponse response = print(client.createLobObject(builder.build()).get());
 
@@ -75,23 +82,26 @@ public class LobObjectTest extends QuietLogging {
 
         final LobObjectDeleteResponse deleteResponse = print(client.deleteLobObject(response.getId()).get());
         assertThat(deleteResponse.getId(), is(response.getId()));
+        assertTrue(deleteResponse.isDeleted());
 
+        assertThat(response.getDescription(), is("description"));
         assertFalse(response.getObject().isEmpty());
         assertTrue(response.getQuantity() > 0);
+        assertTrue(response.getPages() > 0);
         assertTrue(response.getSetting() instanceof SettingResponse);
         assertFalse(response.getThumbnails().isEmpty());
-        assertFalse(response.isFullBleed());
-        assertFalse(response.isTemplate());
 
         final ThumbnailResponse thumbnail = response.getThumbnails().get(0);
         assertFalse(thumbnail.getLarge().isEmpty());
         assertFalse(thumbnail.getMedium().isEmpty());
         assertFalse(thumbnail.getSmall().isEmpty());
 
-        final LobObjectRequest request = builder.build();
-        assertNull(request.isDoubleSided());
-        assertNull(request.isFullBleed());
-        assertNull(request.isTemplate());
+        final LobObjectRequest request = print(builder.build());
+        assertThat(request.getMetadata().get("key0"), is("value0"));
+        assertThat(request.getMetadata().get("key1"), is("value1"));
+        assertThat(request.getData().get("key0"), is("value0"));
+        assertThat(request.getData().get("key1"), is("value1"));
+        assertThat(request.getDescription(), is("description"));
         assertTrue(request.getFile() instanceof LobParam);
         assertNull(request.getQuantity());
         assertTrue(request.getSetting() instanceof SettingId);
