@@ -21,21 +21,18 @@ import static com.lob.Util.checkPresent;
 public class JobRequest extends AbstractLobRequest implements HasLobParams {
     public static final String OBJECT = "object";
 
-    private final String name;
     private final Or<AddressId, AddressRequest> to;
     private final Or<AddressId, AddressRequest> from;
     private final OrCollection<LobObjectId, LobObjectRequest> objects;
     private final ServiceId service;
 
     public JobRequest(
-            final String name,
             final Or<AddressId, AddressRequest> to,
             final Or<AddressId, AddressRequest> from,
             final OrCollection<LobObjectId, LobObjectRequest> objects,
             final ServiceId service,
             final Map<String, String> metadata) {
         super(metadata);
-        this.name = name;
         this.to = checkNotNull(to, "to is required");
         this.from = checkNotNull(from, "from is required");
         this.objects = checkPresent(objects, "at least one object is required");
@@ -49,7 +46,6 @@ public class JobRequest extends AbstractLobRequest implements HasLobParams {
     @Override
     public Collection<LobParam> getLobParams() {
         final LobParamsBuilder builder = super.beginParams()
-            .put("name", name)
             .put("to", to)
             .put("from", from)
             .put("service", service);
@@ -66,10 +62,6 @@ public class JobRequest extends AbstractLobRequest implements HasLobParams {
             }
         }
         return builder.build();
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Or<AddressId, AddressRequest> getTo() {
@@ -91,8 +83,7 @@ public class JobRequest extends AbstractLobRequest implements HasLobParams {
     @Override
     public String toString() {
         return "JobRequest{" +
-            "name='" + name + '\'' +
-            ", to=" + to +
+            "to=" + to +
             ", from=" + from +
             ", objects=" + objects +
             ", service=" + service +
@@ -100,7 +91,6 @@ public class JobRequest extends AbstractLobRequest implements HasLobParams {
     }
 
     public static class Builder {
-        private String name;
         private Or<AddressId, AddressRequest> to;
         private Or<AddressId, AddressRequest> from;
         private OrCollection<LobObjectId, LobObjectRequest> objects;
@@ -108,11 +98,6 @@ public class JobRequest extends AbstractLobRequest implements HasLobParams {
         private Map<String, String> metadata;
 
         private Builder() {}
-
-        public Builder name(final String name) {
-            this.name = name;
-            return this;
-        }
 
         public Builder to(final AddressId to) {
             this.to = Or.typeA(to);
@@ -187,7 +172,6 @@ public class JobRequest extends AbstractLobRequest implements HasLobParams {
 
         public Builder butWith() {
             return new Builder()
-                .name(name)
                 .to(to)
                 .from(from)
                 .objects(objects)
@@ -195,7 +179,7 @@ public class JobRequest extends AbstractLobRequest implements HasLobParams {
                 .metadata(metadata);
         }
         public JobRequest build() {
-            return new JobRequest(name, to, from, objects, service, metadata);
+            return new JobRequest(to, from, objects, service, metadata);
         }
     }
 }
