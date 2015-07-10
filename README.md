@@ -640,8 +640,6 @@ final LetterRequest letterRequest = LetterRequest.builder()
     .color(true)
     .build();
 final ListenableFuture<LetterResponse> letter = client.createLetter(letterRequest);
-
-final ListenableFuture<LetterResponse> letter = client.createLetter(letterRequest);
 ```
 
 ## Simple Check Service
