@@ -1,5 +1,6 @@
 package com.lob.client.test;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
 import com.lob.OrCollection;
@@ -50,6 +51,7 @@ public class AreaMailTest extends QuietLogging {
         final AreaMailResponse response = client.createAreaMail(builder.build()).get();
         assertTrue(response instanceof AreaMailResponse);
 
+        print(ZipCodeRouteRequest.builder().addZips(ZipCode.parse("94158")).build());
         final ZipCodeRouteRequest routeRequest = ZipCodeRouteRequest.builder().addStringZips("94158").build();
         final ZipCodeRouteResponseList route = client.getZipCodeRoutes(routeRequest).get();
 
@@ -68,15 +70,16 @@ public class AreaMailTest extends QuietLogging {
         assertThat(response.getMetadata().get("key0"), is("value0"));
         assertThat(response.getMetadata().get("key1"), is("value1"));
 
-        client.createAreaMail(builder.butWith().routes(route).build()).get();
-        client.createAreaMail(builder.butWith().routesForZips(ZipCode.parse("94158")).build()).get();
-        client.createAreaMail(builder.butWith().routesForZips(Arrays.asList(ZipCode.parse("94158"))).build()).get();
-        client.createAreaMail(builder.butWith().routesForStringZips(Arrays.asList("94158")).build()).get();
+        print(builder.butWith().routes(route).build());
+        print(builder.butWith().routesForZips(ZipCode.parse("94158")).build());
+        print(builder.butWith().routesForZips(Arrays.asList(ZipCode.parse("94158"))).build());
+        print(builder.butWith().routesForStringZips(Arrays.asList("94158")).build());
 
         final ZipCodeRouteId routeId = print(ZipCodeRouteId.parse("94158-C001"));
         assertTrue(routeId.getRouteId() instanceof RouteId);
         assertTrue(routeId.getZipCode() instanceof ZipCode);
         print(builder.butWith().routesForIds(routeId).build());
+        print(builder.butWith().routesForIds(Lists.<ZipCodeRouteId>newArrayList(routeId)).build());
 
         final AreaMailRequest request = print(builder.build());
         assertTrue(print(request.getBack()) instanceof LobParam);

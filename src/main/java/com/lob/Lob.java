@@ -6,9 +6,6 @@ public final class Lob {
     private static String BASE_URL = "https://api.lob.com/v1/";
     private static Optional<String> API_VERSION = Optional.absent();
 
-    // prevent instantiation
-    private Lob() {}
-
     public static String getBaseUrl() {
         return BASE_URL;
     }

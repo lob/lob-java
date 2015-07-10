@@ -22,6 +22,7 @@ public class ServiceTest extends QuietLogging {
         final ServiceResponseList responseList = print(client.getServices().get());
         final ServiceResponse response = print(responseList.get(0));
 
+        assertThat(responseList.getData().get(0), is(response));
         assertTrue(response instanceof ServiceResponse);
         assertThat(responseList.getObject(), is("list"));
         assertFalse(responseList.isEmpty());

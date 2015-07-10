@@ -27,7 +27,8 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
             final String state,
             final ZipCode zip,
             final CountryCode country,
-            final Map<String, String> metadata) {
+            final Map<String, String> metadata,
+            final String description) {
 
         super(
             checkNotNull(line1,
@@ -37,7 +38,8 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
             state,
             zip,
             checkNotNull(country, "country is required"),
-            metadata);
+            metadata,
+            description);
 
         this.name = checkPresent(name, "name is required");
         this.email = email;
@@ -78,7 +80,7 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
             super.toString();
     }
 
-    public static class Builder {
+    public static class Builder extends AbstractLobRequest.Builder<Builder> {
         private String name;
         private String email;
         private String phone;
@@ -88,7 +90,6 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
         private String state;
         private ZipCode zip;
         private CountryCode country;
-        private Map<String, String> metadata;
 
         private Builder() {
         }
@@ -148,11 +149,6 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
             return this;
         }
 
-        public Builder metadata(final Map<String, String> metadata) {
-            this.metadata = metadata;
-            return this;
-        }
-
         public Builder butWith() {
             return new Builder()
                 .name(name)
@@ -164,11 +160,12 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
                 .state(state)
                 .zip(zip)
                 .country(country)
-                .metadata(metadata);
+                .metadata(metadata)
+                .description(description);
         }
 
         public AddressRequest build() {
-            return new AddressRequest(name, email, phone, line1, line2, city, state, zip, country, metadata);
+            return new AddressRequest(name, email, phone, line1, line2, city, state, zip, country, metadata, description);
         }
     }
 }

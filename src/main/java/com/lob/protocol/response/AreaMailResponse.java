@@ -12,7 +12,6 @@ import java.util.Map;
 
 public class AreaMailResponse extends AbstractLobResponse {
     @JsonProperty private final AreaMailId id;
-    @JsonProperty private final String name;
     @JsonProperty private final String status;
     @JsonProperty private final Money price;
     @JsonProperty private final String url;
@@ -25,7 +24,6 @@ public class AreaMailResponse extends AbstractLobResponse {
     @JsonCreator
     public AreaMailResponse(
             @JsonProperty("id") final AreaMailId id,
-            @JsonProperty("name") final String name,
             @JsonProperty("status") final String status,
             @JsonProperty("price") final Money price,
             @JsonProperty("url") final String url,
@@ -40,7 +38,6 @@ public class AreaMailResponse extends AbstractLobResponse {
             @JsonProperty("object") final String object) {
         super(dateCreated, dateModified, metadata, object);
         this.id = id;
-        this.name = name;
         this.status = status;
         this.price = price;
         this.url = url;
@@ -53,10 +50,6 @@ public class AreaMailResponse extends AbstractLobResponse {
 
     public AreaMailId getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getStatus() {
@@ -95,7 +88,6 @@ public class AreaMailResponse extends AbstractLobResponse {
     public String toString() {
         return "AreaMailResponse{" +
             "id=" + id +
-            ", name='" + name + '\'' +
             ", status='" + status + '\'' +
             ", price=" + price +
             ", url='" + url + '\'' +

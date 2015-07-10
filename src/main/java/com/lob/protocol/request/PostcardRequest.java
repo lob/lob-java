@@ -15,58 +15,43 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
     private final static String FRONT = "front";
     private final static String BACK = "back";
 
-    private final String name;
     private final Or<AddressId, AddressRequest> to;
     private final Or<AddressId, AddressRequest> from;
     private final String message;
     private final LobParam front;
     private final LobParam back;
-    private final Boolean template;
-    private final Boolean fullBleed;
     private final SettingId setting;
 
     public PostcardRequest(
-            final String name,
             final Or<AddressId, AddressRequest> to,
             final Or<AddressId, AddressRequest> from,
             final String message,
             final LobParam front,
             final LobParam back,
-            final Boolean template,
-            final Boolean fullBleed,
             final SettingId setting,
             final Map<String, String> metadata,
-            final Map<String, String> data) {
+            final Map<String, String> data,
+            final String description) {
 
-        super(metadata, data);
-        this.name = name;
+        super(metadata, data, description);
         this.to = checkNotNull(to, "to is required");
         this.from = checkNotNull(from, "from is required");
         this.message = message;
         this.front = checkNotNull(front, "front is required");
         this.back = back;
-        this.template = template;
-        this.fullBleed = fullBleed;
         this.setting = setting;
     }
 
     @Override
     public Collection<LobParam> getLobParams() {
         return super.beginParams()
-            .put("name", name)
             .put("to", to)
             .put("from", from)
             .put("message", message)
-            .put("template", template)
-            .put("full_bleed", fullBleed)
             .put("setting", setting)
             .put(front)
             .put(back)
             .build();
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Or<AddressId, AddressRequest> getTo() {
@@ -89,14 +74,6 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
         return back;
     }
 
-    public Boolean isTemplate() {
-        return template;
-    }
-
-    public Boolean isFullBleed() {
-        return fullBleed;
-    }
-
     public SettingId getSetting() {
         return setting;
     }
@@ -104,14 +81,11 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
     @Override
     public String toString() {
         return "PostcardRequest{" +
-            "name='" + name + '\'' +
-            ", to=" + to +
+            "to=" + to +
             ", from=" + from +
             ", message='" + message + '\'' +
             ", front='" + front + '\'' +
             ", back='" + back + '\'' +
-            ", template=" + template +
-            ", fullBleed=" + fullBleed +
             ", setting=" + setting +
             super.toString();
     }
@@ -120,25 +94,15 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
         return new Builder();
     }
 
-    public static class Builder {
-        private String name;
+    public static class Builder extends AbstractDataFieldRequest.Builder<Builder> {
         private Or<AddressId, AddressRequest> to;
         private Or<AddressId, AddressRequest> from;
         private String message;
         private LobParam front;
         private LobParam back;
-        private Boolean template;
-        private Boolean fullBleed;
         private SettingId setting;
-        private Map<String, String> metadata;
-        private Map<String, String> data;
 
         private Builder() {}
-
-        public Builder name(final String name) {
-            this.name = name;
-            return this;
-        }
 
         public Builder to(final AddressId to) {
             this.to = Or.typeA(to);
@@ -205,48 +169,26 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
             return this;
         }
 
-        public Builder template(final Boolean template) {
-            this.template = template;
-            return this;
-        }
-
-        public Builder fullBleed(final Boolean fullBleed) {
-            this.fullBleed = fullBleed;
-            return this;
-        }
-
         public Builder setting(final SettingId setting) {
             this.setting = setting;
             return this;
         }
 
-        public Builder metadata(final Map<String, String> metadata) {
-            this.metadata = metadata;
-            return this;
-        }
-
-        public Builder data(final Map<String, String> data) {
-            this.data = data;
-            return this;
-        }
-
         public Builder butWith() {
             return new Builder()
-                .name(name)
                 .to(to)
                 .from(from)
                 .message(message)
                 .front(front)
                 .back(back)
-                .template(template)
-                .fullBleed(fullBleed)
                 .setting(setting)
                 .metadata(metadata)
-                .data(data);
+                .data(data)
+                .description(description);
         }
 
         public PostcardRequest build() {
-            return new PostcardRequest(name, to, from, message, front, back, template, fullBleed, setting, metadata, data);
+            return new PostcardRequest(to, from, message, front, back, setting, metadata, data, description);
         }
     }
 }

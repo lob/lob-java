@@ -12,7 +12,6 @@ import static com.lob.Util.checkNotNull;
 import static com.lob.Util.checkPresent;
 
 public class BankAccountRequest extends AbstractLobRequest implements HasLobParams {
-    private final String name;
     private final String routingNumber;
     private final String accountNumber;
     private final Or<AddressId, AddressRequest> bankAddress;
@@ -20,15 +19,14 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
     private final String signatory;
 
     public BankAccountRequest(
-            final String name,
             final String routingNumber,
             final String accountNumber,
             final Or<AddressId, AddressRequest> bankAddress,
             final Or<AddressId, AddressRequest> accountAddress,
             final String signatory,
-            final Map<String, String> metadata) {
-        super(metadata);
-        this.name = name;
+            final Map<String, String> metadata,
+            final String description) {
+        super(metadata, description);
         this.routingNumber = checkNotNull(routingNumber, "routing number is required");
         this.accountNumber = checkNotNull(accountNumber, "account number is required");
         this.bankAddress = checkNotNull(bankAddress, "bank address is required");
@@ -39,17 +37,12 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
     @Override
     public Collection<LobParam> getLobParams() {
         return super.beginParams()
-            .put("name", name)
             .put("routing_number", routingNumber)
             .put("account_number", accountNumber)
             .put("bank_address", bankAddress)
             .put("account_address", accountAddress)
             .put("signatory", signatory)
             .build();
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getRoutingNumber() {
@@ -75,8 +68,7 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
     @Override
     public String toString() {
         return "BankAccountRequest{" +
-            "name='" + name + '\'' +
-            ", routingNumber='" + routingNumber + '\'' +
+            "routingNumber='" + routingNumber + '\'' +
             ", accountNumber='" + accountNumber + '\'' +
             ", bankAddress=" + bankAddress +
             ", accountAddress=" + accountAddress +
@@ -88,21 +80,14 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
         return new Builder();
     }
 
-    public static class Builder {
-        private String name;
+    public static class Builder extends AbstractLobRequest.Builder<Builder> {
         private String routingNumber;
         private String accountNumber;
         private Or<AddressId, AddressRequest> bankAddress;
         private Or<AddressId, AddressRequest> accountAddress;
         private String signatory;
-        private Map<String, String> metadata;
 
         private Builder() {
-        }
-
-        public Builder name(final String name) {
-            this.name = name;
-            return this;
         }
 
         public Builder routingNumber(final String routingNumber) {
@@ -150,24 +135,19 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
             return this;
         }
 
-        public Builder metadata(final Map<String, String> metadata) {
-            this.metadata = metadata;
-            return this;
-        }
-
         public Builder butWith() {
             return new Builder()
-                .name(name)
                 .routingNumber(routingNumber)
                 .accountNumber(accountNumber)
                 .bankAddress(bankAddress)
                 .accountAddress(accountAddress)
                 .signatory(signatory)
-                .metadata(metadata);
+                .metadata(metadata)
+                .description(description);
         }
 
         public BankAccountRequest build() {
-            return new BankAccountRequest(name, routingNumber, accountNumber, bankAddress, accountAddress, signatory, metadata);
+            return new BankAccountRequest(routingNumber, accountNumber, bankAddress, accountAddress, signatory, metadata, description);
         }
     }
 }

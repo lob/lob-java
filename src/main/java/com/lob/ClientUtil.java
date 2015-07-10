@@ -7,9 +7,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class ClientUtil {
-    // prevent instantiation
-    private ClientUtil() {}
-
     public static File fileFromResource(final String resource) throws IOException {
         final File file = File.createTempFile("/tmp", ".tmp");
         file.deleteOnExit();

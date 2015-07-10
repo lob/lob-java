@@ -16,7 +16,6 @@ public class AddressResponse extends BaseAddressResponse {
     @JsonProperty private final String phone;
     @JsonProperty private final DateTime dateCreated;
     @JsonProperty private final DateTime dateModified;
-    @JsonProperty private final boolean deleted;
     @JsonProperty private final Map<String, String> metadata;
 
     @JsonCreator
@@ -34,7 +33,6 @@ public class AddressResponse extends BaseAddressResponse {
             @JsonProperty("object") final String object,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
-            @JsonProperty("deleted") final boolean deleted,
             @JsonProperty("metadata") final Map<String, String> metadata) {
 
         super(line1, line2, city, state, zip, country, object);
@@ -44,7 +42,6 @@ public class AddressResponse extends BaseAddressResponse {
         this.phone = phone;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
-        this.deleted = deleted;
         this.metadata = metadata;
     }
 
@@ -72,10 +69,6 @@ public class AddressResponse extends BaseAddressResponse {
         return dateModified;
     }
 
-    public boolean isDeleted() {
-        return deleted;
-    }
-
     public Map<String, String> getMetadata() {
         return metadata;
     }
@@ -89,7 +82,6 @@ public class AddressResponse extends BaseAddressResponse {
             ", phone='" + phone + '\'' +
             ", dateCreated=" + dateCreated +
             ", dateModified=" + dateModified +
-            ", deleted=" + deleted +
             ", metadata=" + metadata +
             super.toString();
     }

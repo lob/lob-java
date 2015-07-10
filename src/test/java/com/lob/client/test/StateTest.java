@@ -20,10 +20,12 @@ public class StateTest extends QuietLogging {
         final StateResponseList responseList = print(client.getStates().get());
         final StateResponse response = print(responseList.get(0));
 
+        assertTrue(responseList.iterator().hasNext());
         assertTrue(responseList.size() > 0);
         assertFalse(responseList.isEmpty());
         assertTrue(response instanceof StateResponse);
         assertThat(responseList.getObject(), is("list"));
+        assertTrue(response.getId() >= 0);
         assertFalse(response.getName().isEmpty());
         assertFalse(response.getShortName().isEmpty());
         assertThat(response.getObject(), is("state"));

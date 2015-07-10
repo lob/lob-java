@@ -23,6 +23,7 @@ public class SettingTest extends QuietLogging {
     public void testSettings() throws Exception {
         final SettingResponseList responseList = print(client.getSettings().get());
         final SettingResponse response = print(responseList.get(0));
+        assertThat(responseList.getData().get(0), is(response));
 
         assertTrue(response instanceof SettingResponse);
         assertThat(responseList.getObject(), is("list"));

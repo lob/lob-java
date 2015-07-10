@@ -12,11 +12,9 @@ import static com.lob.Util.defensiveCopy;
 
 public class LobObjectResponse extends AbstractLobResponse {
     @JsonProperty private final LobObjectId id;
-    @JsonProperty private final String name;
+    @JsonProperty private final String description;
     @JsonProperty private final int quantity;
-    @JsonProperty private final boolean fullBleed;
-    @JsonProperty private final boolean doubleSided;
-    @JsonProperty private final boolean template;
+    @JsonProperty private final int pages;
     @JsonProperty private final String url;
     @JsonProperty private final List<ThumbnailResponse> thumbnails;
     @JsonProperty private final SettingResponse setting;
@@ -24,11 +22,9 @@ public class LobObjectResponse extends AbstractLobResponse {
     @JsonCreator
     public LobObjectResponse(
             @JsonProperty("id") final LobObjectId id,
-            @JsonProperty("name") final String name,
+            @JsonProperty("description") final String description,
             @JsonProperty("quantity") final int quantity,
-            @JsonProperty("full_bleed") final boolean fullBleed,
-            @JsonProperty("double_sided") final boolean doubleSided,
-            @JsonProperty("template") final boolean template,
+            @JsonProperty("pages") final int pages,
             @JsonProperty("url") final String url,
             @JsonProperty("thumbnails") final List<ThumbnailResponse> thumbnails,
             @JsonProperty("date_created") final DateTime dateCreated,
@@ -38,11 +34,9 @@ public class LobObjectResponse extends AbstractLobResponse {
             @JsonProperty("object") final String object) {
         super(dateCreated, dateModified, metadata, object);
         this.id = id;
-        this.name = name;
+        this.description = description;
         this.quantity = quantity;
-        this.fullBleed = fullBleed;
-        this.doubleSided = doubleSided;
-        this.template = template;
+        this.pages = pages;
         this.url = url;
         this.thumbnails = thumbnails;
         this.setting = setting;
@@ -52,24 +46,16 @@ public class LobObjectResponse extends AbstractLobResponse {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public boolean isFullBleed() {
-        return fullBleed;
-    }
-
-    public boolean isDoubleSided() {
-        return doubleSided;
-    }
-
-    public boolean isTemplate() {
-        return template;
+    public int getPages() {
+        return pages;
     }
 
     public String getUrl() {
@@ -88,11 +74,9 @@ public class LobObjectResponse extends AbstractLobResponse {
     public String toString() {
         return "LobObjectResponse{" +
             "id=" + id +
-            ", name='" + name + '\'' +
+            ", description='" + description + '\'' +
             ", quantity=" + quantity +
-            ", fullBleed=" + fullBleed +
-            ", doubleSided=" + doubleSided +
-            ", template=" + template +
+            ", pages=" + pages +
             ", url='" + url + '\'' +
             ", thumbnails=" + thumbnails +
             ", setting=" + setting +

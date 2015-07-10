@@ -23,10 +23,20 @@ public class IdTest extends QuietLogging {
     }
 
     @Test
+    public void testEquals() throws Exception {
+        final AddressId id = AddressId.parse("adr_0000000000000000");
+        final AddressId other = AddressId.parse("adr_0000000000000001");
+        assertTrue(id.equals(id));
+        assertFalse(id.equals(null));
+        assertFalse(id.equals(other));
+        assertFalse(id.hashCode() == other.hashCode());
+    }
+    @Test
     public void testIntegerId() throws Exception {
         final IntegerId id = PackagingId.create(1);
         assertTrue(id.equals(id));
         assertFalse(id.equals(null));
+        assertFalse(id.equals(PackagingId.create(2)));
 
         final IntegerId otherId = PackagingId.create(1);
         assertEquals(id.hashCode(), otherId.hashCode());
@@ -48,7 +58,7 @@ public class IdTest extends QuietLogging {
 
     @Test(expected = IllegalArgumentException.class)
     public void testLobIdBad() throws Exception {
-        new FakeId("BLARGH");
+        new FakeId("BLARGHBLARGHBLARGHBLA");
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -58,12 +68,12 @@ public class IdTest extends QuietLogging {
 
     @Test(expected = IllegalArgumentException.class)
     public void testLobIdWrongPrefix() throws Exception {
-        new FakeId("obj_BLARGH");
+        new FakeId("obj_BLARGHBLARGHBLAR");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testLobIdBadPrefix() throws Exception {
-        new FakeId("blargh_BLARGH");
+        new FakeId("blargh_BLARGHBLARGHB");
     }
 
     public void testLobId() throws Exception {

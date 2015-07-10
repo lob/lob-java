@@ -13,7 +13,6 @@ import static com.lob.Util.defensiveCopy;
 
 public class CheckResponse extends AbstractLobResponse {
     @JsonProperty private final CheckId id;
-    @JsonProperty private final String name;
     @JsonProperty private final int checkNumber;
     @JsonProperty private final String memo;
     @JsonProperty private final Money amount;
@@ -30,7 +29,6 @@ public class CheckResponse extends AbstractLobResponse {
     @JsonCreator
     public CheckResponse(
             @JsonProperty("id") final CheckId id,
-            @JsonProperty("name") final String name,
             @JsonProperty("check_number") final int checkNumber,
             @JsonProperty("memo") final String memo,
             @JsonProperty("amount") final Money amount,
@@ -49,7 +47,6 @@ public class CheckResponse extends AbstractLobResponse {
             @JsonProperty("object") final String object) {
         super(dateCreated, dateModified, metadata, object);
         this.id = id;
-        this.name = name;
         this.checkNumber = checkNumber;
         this.memo = memo;
         this.amount = amount;
@@ -66,10 +63,6 @@ public class CheckResponse extends AbstractLobResponse {
 
     public CheckId getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getCheckNumber() {
@@ -124,7 +117,6 @@ public class CheckResponse extends AbstractLobResponse {
     public String toString() {
         return "CheckResponse{" +
             "id=" + id +
-            ", name='" + name + '\'' +
             ", checkNumber=" + checkNumber +
             ", memo='" + memo + '\'' +
             ", amount=" + amount +

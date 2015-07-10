@@ -12,7 +12,6 @@ import static com.lob.Util.defensiveCopy;
 
 public class JobResponse extends AbstractLobResponse {
     @JsonProperty("id") private final JobId id;
-    @JsonProperty("name") private final String name;
     @JsonProperty("price") private final String price;
     @JsonProperty("to") private final AddressResponse to;
     @JsonProperty("from") private final AddressResponse from;
@@ -24,7 +23,6 @@ public class JobResponse extends AbstractLobResponse {
     @JsonCreator
     public JobResponse(
             @JsonProperty("id") final JobId id,
-            @JsonProperty("name") final String name,
             @JsonProperty("price") final String price,
             @JsonProperty("to") final AddressResponse to,
             @JsonProperty("from") final AddressResponse from,
@@ -38,7 +36,6 @@ public class JobResponse extends AbstractLobResponse {
             @JsonProperty("object") final String object) {
         super(dateCreated, dateModified, metadata, object);
         this.id = id;
-        this.name = name;
         this.price = price;
         this.to = to;
         this.from = from;
@@ -50,10 +47,6 @@ public class JobResponse extends AbstractLobResponse {
 
     public JobId getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getPrice() {
@@ -88,7 +81,6 @@ public class JobResponse extends AbstractLobResponse {
     public String toString() {
         return "JobResponse{" +
             "id=" + id +
-            ", name='" + name + '\'' +
             ", price='" + price + '\'' +
             ", to=" + to +
             ", from=" + from +
