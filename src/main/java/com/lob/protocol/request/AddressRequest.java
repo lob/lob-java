@@ -8,17 +8,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.lob.Util.checkNotNull;
-import static com.lob.Util.checkPresent;
 
 public class AddressRequest extends AbstractAddressRequest implements HasLobParams {
     private final static int MAX_LENGTH = 50;
 
     private final String name;
+    private final String company;
     private final String email;
     private final String phone;
 
     public AddressRequest(
             final String name,
+            final String company,
             final String email,
             final String phone,
             final String line1,
@@ -41,7 +42,8 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
             metadata,
             description);
 
-        this.name = checkPresent(name, "name is required");
+        this.name = name;
+        this.company = company;
         this.email = email;
         this.phone = phone;
     }
@@ -50,6 +52,7 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
     public Collection<LobParam> getLobParams() {
         return super.beginParams()
             .put("name", name)
+            .put("company", company)
             .put("email", email)
             .put("phone", phone)
             .build();
@@ -62,6 +65,9 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
     public String getName() {
         return name;
     }
+    public String getCompany() {
+        return company;
+    }
 
     public String getEmail() {
         return email;
@@ -73,8 +79,10 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
 
     @Override
     public String toString() {
+
         return "AddressRequest{" +
             "name='" + name + '\'' +
+            ", company='" + company + '\'' +
             ", email='" + email + '\'' +
             ", phone='" + phone + '\'' +
             super.toString();
@@ -82,6 +90,7 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
 
     public static class Builder extends AbstractLobRequest.Builder<Builder> {
         private String name;
+        private String company;
         private String email;
         private String phone;
         private String line1;
@@ -96,6 +105,11 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
 
         public Builder name(final String name) {
             this.name = name;
+            return this;
+        }
+
+        public Builder company(final String company) {
+            this.company = company;
             return this;
         }
 
@@ -152,6 +166,7 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
         public Builder butWith() {
             return new Builder()
                 .name(name)
+                .company(company)
                 .email(email)
                 .phone(phone)
                 .line1(line1)
@@ -165,7 +180,7 @@ public class AddressRequest extends AbstractAddressRequest implements HasLobPara
         }
 
         public AddressRequest build() {
-            return new AddressRequest(name, email, phone, line1, line2, city, state, zip, country, metadata, description);
+            return new AddressRequest(name, company, email, phone, line1, line2, city, state, zip, country, metadata, description);
         }
     }
 }
