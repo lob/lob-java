@@ -341,11 +341,6 @@ public class AsyncLobClient implements LobClient {
         return execute(StateResponseList.class, get(Router.STATES), this.callbackExecutorService);
     }
 
-    @Override
-    public ListenableFuture<PackagingResponseList> getPackagings() {
-        return execute(PackagingResponseList.class, get(Router.PACKAGINGS), this.callbackExecutorService);
-    }
-
     private BoundRequestBuilder delete(final String resourceUrl, final LobId id) {
         return this.httpClient.prepareDelete(this.baseUrl + resourceUrl + "/" + id.value());
     }
@@ -424,7 +419,7 @@ public class AsyncLobClient implements LobClient {
             final Class<T> clazz,
             final BoundRequestBuilder request,
             final ExecutorService callbackExecutorService) {
-            final SettableFuture<T> guavaFut = SettableFuture.create();
+        final SettableFuture<T> guavaFut = SettableFuture.create();
         try {
             final Optional<String> apiVersionOpt = Lob.getApiVersion();
             if (apiVersionOpt.isPresent()) {

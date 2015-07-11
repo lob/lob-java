@@ -130,5 +130,4 @@ public interface LobClient {
 
     public ListenableFuture<StateResponseList> getStates();
 
-    public ListenableFuture<PackagingResponseList> getPackagings();
 }
