@@ -1,6 +1,5 @@
 package com.lob.client.test;
 
-import com.google.common.base.Optional;
 import com.lob.Lob;
 import com.lob.client.AsyncLobClient;
 import org.junit.AfterClass;

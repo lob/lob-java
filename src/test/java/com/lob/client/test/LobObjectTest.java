@@ -20,7 +20,6 @@ import java.io.File;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -32,8 +31,8 @@ public class LobObjectTest extends QuietLogging {
 
     @Test
     public void testListObjects() throws Exception {
-        final LobObjectResponseList responseList = print(client.getLobObjects().get());
-        final LobObjectResponse response = print(responseList.get(0));
+        final LobObjectResponseList responseList = client.getLobObjects().get();
+        final LobObjectResponse response = responseList.get(0);
 
         assertTrue(response instanceof LobObjectResponse);
         assertThat(responseList.getObject(), is("list"));
@@ -72,7 +71,7 @@ public class LobObjectTest extends QuietLogging {
             .metadata(metadata)
             .data(data);
 
-        final LobObjectResponse response = print(client.createLobObject(builder.build()).get());
+        final LobObjectResponse response = client.createLobObject(builder.build()).get();
 
         assertTrue(response instanceof LobObjectResponse);
         assertThat(response.getMetadata().get("key0"), is("value0"));
@@ -80,7 +79,7 @@ public class LobObjectTest extends QuietLogging {
 
         client.createLobObject(builder.butWith().setting(201).build()).get();
 
-        final LobObjectDeleteResponse deleteResponse = print(client.deleteLobObject(response.getId()).get());
+        final LobObjectDeleteResponse deleteResponse = client.deleteLobObject(response.getId()).get();
         assertThat(deleteResponse.getId(), is(response.getId()));
         assertTrue(deleteResponse.isDeleted());
 
@@ -97,7 +96,7 @@ public class LobObjectTest extends QuietLogging {
         assertFalse(thumbnail.getMedium().isEmpty());
         assertFalse(thumbnail.getSmall().isEmpty());
 
-        final LobObjectRequest request = print(builder.build());
+        final LobObjectRequest request = builder.build();
         assertThat(request.getMetadata().get("key0"), is("value0"));
         assertThat(request.getMetadata().get("key1"), is("value1"));
         assertThat(request.getData().get("key0"), is("value0"));

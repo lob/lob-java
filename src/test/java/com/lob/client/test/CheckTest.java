@@ -24,7 +24,6 @@ import java.io.File;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -50,8 +49,8 @@ public class CheckTest extends QuietLogging {
 
     @Test
     public void testListChecks() throws Exception {
-        final CheckResponseList responseList = print(client.getChecks().get());
-        final CheckResponse response = print(responseList.get(0));
+        final CheckResponseList responseList = client.getChecks().get();
+        final CheckResponse response = responseList.get(0);
 
         assertTrue(response instanceof CheckResponse);
         assertThat(responseList.getObject(), is("list"));
@@ -79,8 +78,6 @@ public class CheckTest extends QuietLogging {
             }
 
             final LobApiException lobApiException = (LobApiException) e.getCause();
-            print(print(lobApiException.getErrorResponse()).getError().getMessage());
-            print(lobApiException.getErrorResponse().getError().getStatusCode());
         }
     }
 
@@ -102,7 +99,7 @@ public class CheckTest extends QuietLogging {
             .memo("Test Check")
             .metadata(metadata);
 
-        final CheckResponse response = client.createCheck(print(builder.build())).get();
+        final CheckResponse response = client.createCheck(builder.build()).get();
         assertTrue(response instanceof CheckResponse);
         assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
         assertThat(response.getTo().getId(), is(address.getId()));
@@ -118,8 +115,6 @@ public class CheckTest extends QuietLogging {
         assertTrue(response.getPrice() instanceof Money);
         assertTrue(response.getAmount() instanceof Money);
         assertFalse(response.getThumbnails().isEmpty());
-        print(response.getTracking());
-
 
         final CheckResponse retrievedResponse = client.getCheck(response.getId()).get();
         assertThat(retrievedResponse.getId(), is(response.getId()));
@@ -129,7 +124,7 @@ public class CheckTest extends QuietLogging {
         final File logo = ClientUtil.fileFromResource("lobCheckLogo.png");
         client.createCheck(builder.butWith().logo(logo).build()).get();
 
-        final CheckRequest otherRequest = print(builder.butWith().logo("example.com/logo").build());
+        final CheckRequest otherRequest = builder.butWith().logo("example.com/logo").build();
         assertFalse(otherRequest.getMessage().isEmpty());
         assertFalse(otherRequest.getMemo().isEmpty());
         assertTrue(otherRequest.getAmount() instanceof Money);

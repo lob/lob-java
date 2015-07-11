@@ -7,10 +7,8 @@ import com.lob.protocol.response.ServiceResponse;
 import com.lob.protocol.response.ServiceResponseList;
 import org.junit.Test;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -19,8 +17,8 @@ public class ServiceTest extends QuietLogging {
 
     @Test
     public void testServices() throws Exception {
-        final ServiceResponseList responseList = print(client.getServices().get());
-        final ServiceResponse response = print(responseList.get(0));
+        final ServiceResponseList responseList = client.getServices().get();
+        final ServiceResponse response = responseList.get(0);
 
         assertThat(responseList.getData().get(0), is(response));
         assertTrue(response instanceof ServiceResponse);

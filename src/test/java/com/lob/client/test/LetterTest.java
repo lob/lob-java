@@ -18,7 +18,6 @@ import org.junit.Test;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -29,8 +28,8 @@ public class LetterTest extends QuietLogging {
 
     @Test
     public void testListLetters() throws Exception {
-        final LetterResponseList responseList = print(client.getLetters().get());
-        final LetterResponse response = print(responseList.get(0));
+        final LetterResponseList responseList = client.getLetters().get();
+        final LetterResponse response = responseList.get(0);
 
         assertThat(client.getLetter(response.getId()).get().getId(), is(response.getId()));
         assertTrue(response instanceof LetterResponse);
@@ -61,22 +60,21 @@ public class LetterTest extends QuietLogging {
         final Map<String, String> data = Maps.newHashMap();
         data.put("name", "peter");
         final String file = "<html style='padding-top: 3in; margin: .5in;'>HTML Letter for {{name}}</html>";
-        final LetterRequest.Builder builder = print(
-            LetterRequest.builder()
-                .to(address.getId())
-                .from(address.getId())
-                .file(file)
-                .data(data)
-                .color(true)
-                .template(true)
-                .doubleSided(false)
-                .metadata(metadata)
-                .description("letter"));
+        final LetterRequest.Builder builder = LetterRequest.builder()
+            .to(address.getId())
+            .from(address.getId())
+            .file(file)
+            .data(data)
+            .color(true)
+            .template(true)
+            .doubleSided(false)
+            .metadata(metadata)
+            .description("letter");
 
         final LetterRequest request = builder.build();
         assertThat(Iterables.get(request.getFile().getStringParam(), 0), is(file));
 
-        final LetterResponse response = print(client.createLetter(request).get());
+        final LetterResponse response = client.createLetter(request).get();
         assertTrue(response instanceof LetterResponse);
         assertThat(response.getTo().getId(), is(address.getId()));
         assertThat(response.getFrom().getId(), is(address.getId()));
@@ -105,14 +103,13 @@ public class LetterTest extends QuietLogging {
             .country("US")
             .build();
 
-        final LetterRequest otherRequest = print(
-            builder.butWith()
-                .description("otherRequest")
-                .color(false)
-                .to(addrRequest)
-                .from(addrRequest)
-                .file(ClientUtil.fileFromResource("goblue.pdf"))
-                .build());
+        final LetterRequest otherRequest = builder.butWith()
+            .description("otherRequest")
+            .color(false)
+            .to(addrRequest)
+            .from(addrRequest)
+            .file(ClientUtil.fileFromResource("goblue.pdf"))
+            .build();
 
         assertThat(otherRequest.getDescription(), is("otherRequest"));
         assertThat(otherRequest.getFrom().getTypeB(), is(addrRequest));

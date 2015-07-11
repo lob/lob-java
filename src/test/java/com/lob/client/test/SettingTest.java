@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import java.util.concurrent.ExecutionException;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -21,8 +20,8 @@ public class SettingTest extends QuietLogging {
 
     @Test
     public void testSettings() throws Exception {
-        final SettingResponseList responseList = print(client.getSettings().get());
-        final SettingResponse response = print(responseList.get(0));
+        final SettingResponseList responseList = client.getSettings().get();
+        final SettingResponse response = responseList.get(0);
         assertThat(responseList.getData().get(0), is(response));
 
         assertTrue(response instanceof SettingResponse);

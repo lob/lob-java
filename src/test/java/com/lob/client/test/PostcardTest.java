@@ -19,7 +19,6 @@ import java.io.File;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -31,8 +30,8 @@ public class PostcardTest extends QuietLogging {
 
     @Test
     public void testListPostcards() throws Exception {
-        final PostcardResponseList responseList = print(client.getPostcards().get());
-        final PostcardResponse response = print(responseList.get(0));
+        final PostcardResponseList responseList = client.getPostcards().get();
+        final PostcardResponse response = responseList.get(0);
 
         assertTrue(response instanceof PostcardResponse);
         assertThat(responseList.getObject(), is("list"));
@@ -74,14 +73,10 @@ public class PostcardTest extends QuietLogging {
         assertThat(response.getMetadata().get("key0"), is("value0"));
         assertThat(response.getMetadata().get("key1"), is("value1"));
 
-        print(builder.butWith().message("message"));
-
-        print(response.getMessage());
         assertTrue(response.getPrice() instanceof Money);
         assertFalse(response.getStatus().isEmpty());
-        print(response.getSetting());
 
-        final PostcardRequest request = print(builder.build());
+        final PostcardRequest request = builder.build();
         assertNull(request.getMessage());
         assertTrue(request.getBack() instanceof LobParam);
         assertTrue(request.getFrom() instanceof Or);

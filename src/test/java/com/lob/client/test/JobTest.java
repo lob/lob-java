@@ -21,7 +21,6 @@ import org.junit.Test;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -33,8 +32,8 @@ public class JobTest extends QuietLogging {
 
     @Test
     public void testListJobs() throws Exception {
-        final JobResponseList responseList = print(client.getJobs().get());
-        final JobResponse response = print(responseList.get(0));
+        final JobResponseList responseList = client.getJobs().get();
+        final JobResponse response = responseList.get(0);
 
         assertTrue(response instanceof JobResponse);
         assertThat(responseList.getObject(), is("list"));
@@ -63,13 +62,13 @@ public class JobTest extends QuietLogging {
         final LobObjectResponseList objects = client.getLobObjects(1).get();
         final LobObjectResponse lobObject = objects.get(0);
 
-        final JobRequest.Builder builder = print(JobRequest.builder()
+        final JobRequest.Builder builder = JobRequest.builder()
             .to(address.getId())
             .from(address.getId())
             .objectIds(lobObject.getId())
-            .metadata(metadata));
+            .metadata(metadata);
 
-        final JobResponse response = print(client.createJob(builder.build()).get());
+        final JobResponse response = client.createJob(builder.build()).get();
         assertTrue(response instanceof JobResponse);
         assertThat(response.getTo().getId(), is(address.getId()));
         assertThat(response.getFrom().getId(), is(address.getId()));
@@ -79,17 +78,8 @@ public class JobTest extends QuietLogging {
 
         assertFalse(response.getPrice().isEmpty());
         assertFalse(response.getStatus().isEmpty());
-        print(response.getService());
 
-        final TrackingResponse tracking = print(response.getTracking());
-        print(tracking.getId());
-        print(tracking.getTrackingNumber());
-        print(tracking.getEvents());
-        print(tracking.getCarrier());
-        print(tracking.getLink());
-        print(tracking.getObject());
-
-        final JobRequest otherRequest = print(builder.butWith().objectIds(objects).build());
+        final JobRequest otherRequest = builder.butWith().objectIds(objects).build();
         assertTrue(otherRequest.getFrom() instanceof Or);
         assertTrue(otherRequest.getTo() instanceof Or);
         assertTrue(otherRequest.getObjects() instanceof OrCollection);

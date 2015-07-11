@@ -6,7 +6,6 @@ import com.lob.protocol.response.StateResponse;
 import com.lob.protocol.response.StateResponseList;
 import org.junit.Test;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -17,8 +16,8 @@ public class StateTest extends QuietLogging {
 
     @Test
     public void testStates() throws Exception {
-        final StateResponseList responseList = print(client.getStates().get());
-        final StateResponse response = print(responseList.get(0));
+        final StateResponseList responseList = client.getStates().get();
+        final StateResponse response = responseList.get(0);
 
         assertTrue(responseList.iterator().hasNext());
         assertTrue(responseList.size() > 0);
