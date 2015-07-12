@@ -7,7 +7,7 @@ jdk:
   - oraclejdk8
 
 before_script:
-  - ulimit -c unlimited
+  - ulimit -u 514029
 
 script:
   - mvn -DXms512m -DXmx512m -DXX:MaxPermSize=350m clean package jacoco:report coveralls:jacoco

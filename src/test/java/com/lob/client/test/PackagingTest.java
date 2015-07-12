@@ -10,6 +10,7 @@ import org.junit.Test;
 import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -26,6 +27,6 @@ public class PackagingTest extends QuietLogging {
         assertTrue(response.getId() instanceof PackagingId);
         assertFalse(response.getDescription().isEmpty());
         assertFalse(response.getName().isEmpty());
-        assertFalse(response.getObject().isEmpty());
+        assertNull(response.getObject());
     }
 }
