@@ -7,6 +7,7 @@ import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
 import com.lob.id.LobObjectId;
 import com.lob.id.SettingId;
+import com.lob.protocol.request.Filters;
 import com.lob.protocol.request.LobObjectRequest;
 import com.lob.protocol.request.LobParam;
 import com.lob.protocol.response.LobObjectDeleteResponse;
@@ -18,6 +19,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
@@ -26,9 +28,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class LobObjectTest extends QuietLogging {
-    private final LobClient client = AsyncLobClient.createDefault("test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc");
-
+public class LobObjectTest extends BaseTest {
     @Test
     public void testListObjects() throws Exception {
         final LobObjectResponseList responseList = client.getLobObjects().get();
@@ -56,9 +56,11 @@ public class LobObjectTest extends QuietLogging {
 
     @Test
     public void testCreateObjectUrl() throws Exception {
+        final String value0 = UUID.randomUUID().toString();
+        final String value1 = UUID.randomUUID().toString();
         final Map<String, String> metadata = Maps.newHashMap();
-        metadata.put("key0", "value0");
-        metadata.put("key1", "value1");
+        metadata.put("key0", value0);
+        metadata.put("key1", value1);
 
         final Map<String, String> data = Maps.newHashMap();
         data.put("key0", "value0");
@@ -74,8 +76,11 @@ public class LobObjectTest extends QuietLogging {
         final LobObjectResponse response = client.createLobObject(builder.build()).get();
 
         assertTrue(response instanceof LobObjectResponse);
-        assertThat(response.getMetadata().get("key0"), is("value0"));
-        assertThat(response.getMetadata().get("key1"), is("value1"));
+        assertThat(response.getMetadata().get("key0"), is(value0));
+        assertThat(response.getMetadata().get("key1"), is(value1));
+
+        final LobObjectResponse metadataResponse = client.getLobObjects(Filters.ofMetadata(metadata)).get().get(0);
+        assertThat(metadataResponse.getId(), is(response.getId()));
 
         client.createLobObject(builder.butWith().setting(201).build()).get();
 
@@ -97,8 +102,8 @@ public class LobObjectTest extends QuietLogging {
         assertFalse(thumbnail.getSmall().isEmpty());
 
         final LobObjectRequest request = builder.build();
-        assertThat(request.getMetadata().get("key0"), is("value0"));
-        assertThat(request.getMetadata().get("key1"), is("value1"));
+        assertThat(request.getMetadata().get("key0"), is(value0));
+        assertThat(request.getMetadata().get("key1"), is(value1));
         assertThat(request.getData().get("key0"), is("value0"));
         assertThat(request.getData().get("key1"), is("value1"));
         assertThat(request.getDescription(), is("description"));

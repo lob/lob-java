@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 
-public class LobParamsBuilderTest extends QuietLogging {
+public class LobParamsBuilderTest extends BaseTest {
 
     @Test
     @SuppressWarnings("unchecked")

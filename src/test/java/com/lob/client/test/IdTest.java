@@ -12,7 +12,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class IdTest extends QuietLogging {
+public class IdTest extends BaseTest {
 
     @Test
     public void testEquals() throws Exception {

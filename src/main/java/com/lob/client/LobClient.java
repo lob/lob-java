@@ -13,6 +13,8 @@ import com.lob.id.SettingId;
 import com.lob.protocol.request.*;
 import com.lob.protocol.response.*;
 
+import java.util.Map;
+
 public interface LobClient {
     public final static String LOB_VERSION_HEADER = "Lob-Version";
 
@@ -23,9 +25,13 @@ public interface LobClient {
 
     public ListenableFuture<JobResponseList> getJobs();
 
+    @Deprecated
     public ListenableFuture<JobResponseList> getJobs(final int count);
 
+    @Deprecated
     public ListenableFuture<JobResponseList> getJobs(final int count, final int offset);
+
+    public ListenableFuture<JobResponseList> getJobs(final Filter filter);
 
     // Address methods
     public ListenableFuture<AddressResponse> createAddress(final AddressRequest addressRequest);
@@ -34,9 +40,13 @@ public interface LobClient {
 
     public ListenableFuture<AddressResponseList> getAddresses();
 
+    @Deprecated
     public ListenableFuture<AddressResponseList> getAddresses(final int count);
 
+    @Deprecated
     public ListenableFuture<AddressResponseList> getAddresses(final int count, final int offset);
+
+    public ListenableFuture<AddressResponseList> getAddresses(final Filter filter);
 
     public ListenableFuture<AddressDeleteResponse> deleteAddress(final AddressId id);
 
@@ -47,9 +57,13 @@ public interface LobClient {
 
     public ListenableFuture<LobObjectResponseList> getLobObjects();
 
+    @Deprecated
     public ListenableFuture<LobObjectResponseList> getLobObjects(final int count);
 
+    @Deprecated
     public ListenableFuture<LobObjectResponseList> getLobObjects(final int count, final int offset);
+
+    public ListenableFuture<LobObjectResponseList> getLobObjects(final Filter filter);
 
     public ListenableFuture<LobObjectDeleteResponse> deleteLobObject(final LobObjectId id);
 
@@ -68,9 +82,13 @@ public interface LobClient {
 
     public ListenableFuture<LetterResponseList> getLetters();
 
+    @Deprecated
     public ListenableFuture<LetterResponseList> getLetters(final int count);
 
+    @Deprecated
     public ListenableFuture<LetterResponseList> getLetters(final int count, final int offset);
+
+    public ListenableFuture<LetterResponseList> getLetters(final Filter filter);
 
     // Postcard methods
     public ListenableFuture<PostcardResponse> createPostcard(final PostcardRequest postcardRequest);
@@ -79,9 +97,13 @@ public interface LobClient {
 
     public ListenableFuture<PostcardResponseList> getPostcards();
 
+    @Deprecated
     public ListenableFuture<PostcardResponseList> getPostcards(final int count);
 
+    @Deprecated
     public ListenableFuture<PostcardResponseList> getPostcards(final int count, final int offset);
+
+    public ListenableFuture<PostcardResponseList> getPostcards(final Filter filter);
 
     // Check methods
     public ListenableFuture<CheckResponse> createCheck(final CheckRequest checkRequest);
@@ -90,9 +112,13 @@ public interface LobClient {
 
     public ListenableFuture<CheckResponseList> getChecks();
 
+    @Deprecated
     public ListenableFuture<CheckResponseList> getChecks(final int count);
 
+    @Deprecated
     public ListenableFuture<CheckResponseList> getChecks(final int count, final int offset);
+
+    public ListenableFuture<CheckResponseList> getChecks(final Filter filter);
 
     // Bank account methods
     public ListenableFuture<BankAccountResponse> createBankAccount(final BankAccountRequest bankAccountRequest);
@@ -101,9 +127,13 @@ public interface LobClient {
 
     public ListenableFuture<BankAccountResponseList> getBankAccounts();
 
+    @Deprecated
     public ListenableFuture<BankAccountResponseList> getBankAccounts(final int count);
 
+    @Deprecated
     public ListenableFuture<BankAccountResponseList> getBankAccounts(final int count, final int offset);
+
+    public ListenableFuture<BankAccountResponseList> getBankAccounts(final Filter filter);
 
     public ListenableFuture<BankAccountDeleteResponse> deleteBankAccount(final BankAccountId id);
 
@@ -116,9 +146,13 @@ public interface LobClient {
 
     public ListenableFuture<AreaMailResponseList> getAreaMails();
 
+    @Deprecated
     public ListenableFuture<AreaMailResponseList> getAreaMails(final int count);
 
+    @Deprecated
     public ListenableFuture<AreaMailResponseList> getAreaMails(final int count, final int offset);
+
+    public ListenableFuture<AreaMailResponseList> getAreaMails(final Filter filter);
 
     public ListenableFuture<ZipCodeRouteResponseList> getZipCodeRoutes(final ZipCodeRouteRequest request);
 

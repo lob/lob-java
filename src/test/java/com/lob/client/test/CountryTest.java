@@ -10,9 +10,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class CountryTest extends QuietLogging {
-    private final LobClient client = AsyncLobClient.createDefault("test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc");
-
+public class CountryTest extends BaseTest {
     @Test
     public void testCountries() throws Exception {
         final CountryResponseList responseList = client.getCountries().get();

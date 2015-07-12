@@ -37,7 +37,14 @@ Include the following in your `pom.xml` for Maven:
 
 ## Project Structure
 
-- **lob-java** contains the actual client for interacting with Lob's API. It depends on **guava**, **asynchttpclient**, **joda-money**, **joda-time**, **jackson-annotations**, and two **jackson-databind** packages.
+- **lob-java** contains the actual client for interacting with Lob's API. It depends on:
+  - guava
+  - asynchttpclient
+  - netty
+  - joda-money
+  - joda-time
+  - jackson-annotations
+  - two jackson-databind packages
 - **lob-java-examples** contains usage examples and is not intended to be consumed by your code.
 
 ## Usage
@@ -95,6 +102,10 @@ import com.lob.client.LobClient;
 Lob.setApiVersion("apiVersion");
 final LobClient client = AsyncLobClient.createDefault("yourApiKey");
 ```
+
+### Callbacks
+Please ensure any callbacks attached to the `ListenableFuture`s returned from the `LobClient` have a dedicated `Executor`
+for their execution. Otherwise, the callbacks will be executed on internal I/O threads, adversely affecting performance.
 
 ## API Reference
 - [Simple Print Service](#simple-print-service)
@@ -162,9 +173,7 @@ final LobClient client = AsyncLobClient.createDefault("yourApiKey");
 final ListenableFuture<JobResponseList> jobs = client.getJobs();
 
 // Can specify count and offset as well
-final int count = 5;
-final int offset = 1;
-final ListenableFuture<JobResponseList> jobs = client.getJobs(count, offset);
+final ListenableFuture<JobResponseList> jobs = client.getJobs(Filters.ofCount(5).withOffset(1));
 ```
 
 #### Job retrieval
@@ -272,10 +281,7 @@ final ListenableFuture<JobResponse> jobResponse = client.createJob(jobRequest);
 final ListenableFuture<AddressResponseList> addresses = client.getAddresses();
 
 // List Addresses with Count and Offset
-final int count = 5;
-final int offset = 2;
-
-final ListenableFuture<AddressResponseList> addresses = client.getAddresses(count, offset);
+final ListenableFuture<AddressResponseList> addresses = client.getAddresses(Filters.ofCount(5).withOffset(2));
 ```
 
 #### Address retrieval
@@ -345,9 +351,7 @@ final ListenableFuture<StateResponseList> states = client.getStates();
 final ListenableFuture<LobObjectResponseList> objects = client.getLobObjects();
 
 // Can specify count and offset
-final int count = 4;
-final int offset = 2;
-final ListenableFuture<LobObjectResponseList> objects = client.getLobObjects(count, offset);
+final ListenableFuture<LobObjectResponseList> objects = client.getLobObjects(Filters.ofCount(4).withOffset(2));
 ```
 
 #### Lob Object retrieval
@@ -429,9 +433,7 @@ final ListenableFuture<ServiceResponseList> services = client.getServices();
 final ListenableFuture<PostcardResponseList> postcards = client.getPostcards();
 
 // Can specify count and offset
-final int count = 4;
-final int offset = 2;
-final ListenableFuture<PostcardResponseList> postcards = client.getPostcards(count, offset);
+final ListenableFuture<PostcardResponseList> postcards = client.getPostcards(Filters.ofCount(4).withOffset(2));
 ```
 
 #### Postcard retrieval
@@ -559,9 +561,7 @@ final ListenableFuture<PostcardResponse> postcard = client.createPostcard(postca
 final ListenableFuture<LetterResponseList> letters = client.getLetters();
 
 // Can specify count and offset
-final int count = 4;
-final int offset = 2;
-final ListenableFuture<LetterResponseList> letters = client.getLetters(count, offset);
+final ListenableFuture<LetterResponseList> letters = client.getLetters(Filters.ofCount(4).withOffset(2));
 ```
 
 #### Letter retrieval
@@ -652,9 +652,7 @@ final ListenableFuture<LetterResponse> letter = client.createLetter(letterReques
 final ListenableFuture<CheckResponseList> checks = client.getChecks();
 
 // Can specify count and offset
-final int count = 4;
-final int offset = 2;
-final ListenableFuture<CheckResponseList> checks = client.getChecks(count, offset);
+final ListenableFuture<CheckResponseList> checks = client.getChecks(Filters.ofCount(4).withOffset(2));
 ```
 
 #### Check retrieval
@@ -704,9 +702,7 @@ final ListenableFuture<CheckResponse> check = client.createCheck(checkRequest);
 final ListenableFuture<BankAccountResponseList> bankAccounts = client.getBankAccounts();
 
 // Can specify count and offset
-final int count = 4;
-final int offset = 2;
-final ListenableFuture<BankAccountResponseList> bankAccounts = client.getBankAccounts(count, offset);
+final ListenableFuture<BankAccountResponseList> bankAccounts = client.getBankAccounts(Filters.ofCount(4).withOffset(2));
 ```
 
 #### BankAccount retrieval
@@ -773,9 +769,7 @@ final ListenableFuture<BankAccountDeleteResponse> bankAccountDeleteResponse = cl
 final ListenableFuture<AreaMailResponseList> areaMails = client.getAreaMails();
 
 // Can specify count and offset
-final int count = 4;
-final int offset = 2;
-final ListenableFuture<AreaMailResponseList> areaMails = client.getAreaMails(count, offset);
+final ListenableFuture<AreaMailResponseList> areaMails = client.getAreaMails(Filters.ofCount(4).withOffset(2));
 ```
 
 #### Area retrieval

@@ -14,9 +14,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class SettingTest extends QuietLogging {
+public class SettingTest extends BaseTest {
     public static final SettingId SETTING_ID = SettingId.parse(200);
-    private final LobClient client = AsyncLobClient.createDefault("test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc");
 
     @Test
     public void testSettings() throws Exception {

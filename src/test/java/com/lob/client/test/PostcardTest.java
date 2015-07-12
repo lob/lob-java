@@ -7,6 +7,7 @@ import com.lob.Or;
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
 import com.lob.protocol.request.AddressRequest;
+import com.lob.protocol.request.Filters;
 import com.lob.protocol.request.LobParam;
 import com.lob.protocol.request.PostcardRequest;
 import com.lob.protocol.response.AddressResponse;
@@ -17,6 +18,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
@@ -25,9 +27,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class PostcardTest extends QuietLogging {
-    private final LobClient client = AsyncLobClient.createDefault("test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc");
-
+public class PostcardTest extends BaseTest {
     @Test
     public void testListPostcards() throws Exception {
         final PostcardResponseList responseList = client.getPostcards().get();
@@ -54,9 +54,11 @@ public class PostcardTest extends QuietLogging {
 
     @Test
     public void testCreatePostcard() throws Exception {
+        final String value0 = UUID.randomUUID().toString();
+        final String value1 = UUID.randomUUID().toString();
         final Map<String, String> metadata = Maps.newHashMap();
-        metadata.put("key0", "value0");
-        metadata.put("key1", "value1");
+        metadata.put("key0", value0);
+        metadata.put("key1", value1);
         final AddressResponse address = Iterables.get(client.getAddresses(1).get(), 0);
 
         final PostcardRequest.Builder builder = PostcardRequest.builder()
@@ -70,8 +72,11 @@ public class PostcardTest extends QuietLogging {
         assertTrue(response instanceof PostcardResponse);
         assertThat(response.getTo().getId(), is(address.getId()));
         assertThat(response.getFrom().getId(), is(address.getId()));
-        assertThat(response.getMetadata().get("key0"), is("value0"));
-        assertThat(response.getMetadata().get("key1"), is("value1"));
+        assertThat(response.getMetadata().get("key0"), is(value0));
+        assertThat(response.getMetadata().get("key1"), is(value1));
+
+        final PostcardResponse metadataResponse = client.getPostcards(Filters.ofMetadata(metadata)).get().get(0);
+        assertThat(metadataResponse.getId(), is(response.getId()));
 
         assertTrue(response.getPrice() instanceof Money);
         assertFalse(response.getStatus().isEmpty());

@@ -8,18 +8,19 @@ import com.lob.id.AddressId;
 import com.lob.id.CountryCode;
 import com.lob.id.ZipCode;
 import com.lob.protocol.request.AddressRequest;
+import com.lob.protocol.request.Filters;
 import com.lob.protocol.request.VerifyAddressRequest;
 import com.lob.protocol.response.AddressDeleteResponse;
 import com.lob.protocol.response.AddressResponse;
 import com.lob.protocol.response.AddressResponseList;
 import com.lob.protocol.response.ErrorResponse;
 import com.lob.protocol.response.VerifyAddressResponse;
-import com.ning.http.client.AsyncHttpClientConfig;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
 import java.net.URI;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
@@ -27,11 +28,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class AddressTest extends QuietLogging {
-    private final LobClient client = AsyncLobClient.create(
-        "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc",
-        new AsyncHttpClientConfig.Builder().build());
-
+public class AddressTest extends BaseTest {
     @Test
     public void testListAddresses() throws Exception {
         final AddressResponseList addresses = client.getAddresses().get();
@@ -53,6 +50,9 @@ public class AddressTest extends QuietLogging {
         assertThat(addresses.getCount(), is(2));
 
         assertThat(client.getAddresses(1, 2).get().getCount(), is(1));
+        assertThat(client.getAddresses(Filters.ofCount(1)).get().getCount(), is(1));
+        assertThat(client.getAddresses(Filters.ofCount(1).withOffset(2)).get().getCount(), is(1));
+        assertThat(client.getAddresses(Filters.ofOffset(2).withCount(1)).get().getCount(), is(1));
 
         assertFalse(addresses.isEmpty());
     }
@@ -77,9 +77,11 @@ public class AddressTest extends QuietLogging {
 
     @Test
     public void testCreateAddress() throws Exception {
+        final String value0 = UUID.randomUUID().toString();
+        final String value1 = UUID.randomUUID().toString();
         final Map<String, String> metadata = Maps.newHashMap();
-        metadata.put("key0", "value0");
-        metadata.put("key1", "value1");
+        metadata.put("key0", value0);
+        metadata.put("key1", value1);
 
         final AddressRequest.Builder builder = AddressRequest.builder()
             .name("Lob")
@@ -102,8 +104,11 @@ public class AddressTest extends QuietLogging {
         assertTrue(response.getDateCreated() instanceof DateTime);
         assertTrue(response.getDateModified() instanceof DateTime);
         assertThat(response.getObject(), is("address"));
-        assertThat(response.getMetadata().get("key0"), is("value0"));
-        assertThat(response.getMetadata().get("key1"), is("value1"));
+        assertThat(response.getMetadata().get("key0"), is(value0));
+        assertThat(response.getMetadata().get("key1"), is(value1));
+
+        final AddressResponse metadataResponse = client.getAddresses(Filters.ofMetadata(metadata).withMetadata(metadata).withCount(1)).get().get(0);
+        assertThat(metadataResponse.getId(), is(response.getId()));
 
         client.createAddress(builder.butWith()
             .zip(ZipCode.parse("94107"))
