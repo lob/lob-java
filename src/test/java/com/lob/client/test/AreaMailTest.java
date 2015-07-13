@@ -1,6 +1,5 @@
 package com.lob.client.test;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
 import com.lob.OrCollection;
@@ -11,6 +10,7 @@ import com.lob.id.RouteId;
 import com.lob.id.ZipCode;
 import com.lob.id.ZipCodeRouteId;
 import com.lob.protocol.request.AreaMailRequest;
+import com.lob.protocol.request.Filters;
 import com.lob.protocol.request.LobParam;
 import com.lob.protocol.request.TargetType;
 import com.lob.protocol.request.ZipCodeRouteRequest;
@@ -22,8 +22,8 @@ import org.joda.time.DateTime;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
@@ -31,14 +31,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class AreaMailTest extends QuietLogging {
-    private final LobClient client = AsyncLobClient.createDefault("test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc");
-
+public class AreaMailTest extends BaseTest {
     @Test
     public void testCreateArea() throws Exception {
+        final String value0 = UUID.randomUUID().toString();
+        final String value1 = UUID.randomUUID().toString();
         final Map<String, String> metadata = Maps.newHashMap();
-        metadata.put("key0", "value0");
-        metadata.put("key1", "value1");
+        metadata.put("key0", value0);
+        metadata.put("key1", value1);
 
         final AreaMailRequest.Builder builder = AreaMailRequest.builder()
             .front("https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf")
@@ -65,8 +65,11 @@ public class AreaMailTest extends QuietLogging {
         assertFalse(response.getZipCodeRouteResponses().isEmpty());
         assertTrue(response.getDateCreated() instanceof DateTime);
         assertTrue(response.getDateModified() instanceof DateTime);
-        assertThat(response.getMetadata().get("key0"), is("value0"));
-        assertThat(response.getMetadata().get("key1"), is("value1"));
+        assertThat(response.getMetadata().get("key0"), is(value0));
+        assertThat(response.getMetadata().get("key1"), is(value1));
+
+        final AreaMailResponse metadataResponse = client.getAreaMails(Filters.ofMetadata(metadata)).get().get(0);
+        assertThat(metadataResponse.getId(), is(response.getId()));
 
         final ZipCodeRouteId routeId = ZipCodeRouteId.parse("94158-C001");
         assertTrue(routeId.getRouteId() instanceof RouteId);

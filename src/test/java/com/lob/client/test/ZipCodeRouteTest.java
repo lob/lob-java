@@ -14,9 +14,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class ZipCodeRouteTest extends QuietLogging {
-    private final LobClient client = AsyncLobClient.createDefault("test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc");
-
+public class ZipCodeRouteTest extends BaseTest {
     @Test
     public void testZipCodeRoute() throws Exception {
         final ZipCodeRouteRequest request = ZipCodeRouteRequest.builder()

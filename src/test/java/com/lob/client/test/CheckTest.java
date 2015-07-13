@@ -11,6 +11,7 @@ import com.lob.id.BankAccountId;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.BankAccountVerifyRequest;
 import com.lob.protocol.request.CheckRequest;
+import com.lob.protocol.request.Filters;
 import com.lob.protocol.response.AddressResponse;
 import com.lob.protocol.response.BankAccountResponse;
 import com.lob.protocol.response.CheckResponse;
@@ -22,6 +23,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
@@ -30,10 +32,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public class CheckTest extends QuietLogging {
-    private final LobClient client = AsyncLobClient.createDefault("test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc");
-
-
+public class CheckTest extends BaseTest {
     private BankAccountResponse getAndVerifyBankAccount() throws Exception {
         final BankAccountResponse bankAccount = Iterables.get(client.getBankAccounts(1).get(), 0);
         if (!bankAccount.isVerified()) {
@@ -84,9 +83,11 @@ public class CheckTest extends QuietLogging {
 
     @Test
     public void testCreateCheck() throws Exception {
+        final String value0 = UUID.randomUUID().toString();
+        final String value1 = UUID.randomUUID().toString();
         final Map<String, String> metadata = Maps.newHashMap();
-        metadata.put("key0", "value0");
-        metadata.put("key1", "value1");
+        metadata.put("key0", value0);
+        metadata.put("key1", value1);
         final AddressResponse address = getAddress();
         final BankAccountResponse bankAccount = getAndVerifyBankAccount();
 
@@ -103,8 +104,8 @@ public class CheckTest extends QuietLogging {
         assertTrue(response instanceof CheckResponse);
         assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
         assertThat(response.getTo().getId(), is(address.getId()));
-        assertThat(response.getMetadata().get("key0"), is("value0"));
-        assertThat(response.getMetadata().get("key1"), is("value1"));
+        assertThat(response.getMetadata().get("key0"), is(value0));
+        assertThat(response.getMetadata().get("key1"), is(value1));
 
         assertFalse(response.getMessage().isEmpty());
         assertFalse(response.getMemo().isEmpty());
@@ -115,6 +116,8 @@ public class CheckTest extends QuietLogging {
         assertTrue(response.getPrice() instanceof Money);
         assertTrue(response.getAmount() instanceof Money);
         assertFalse(response.getThumbnails().isEmpty());
+        final CheckResponse metadataResponse = client.getChecks(Filters.ofMetadata(metadata)).get().get(0);
+        assertThat(metadataResponse.getId(), is(response.getId()));
 
         final CheckResponse retrievedResponse = client.getCheck(response.getId()).get();
         assertThat(retrievedResponse.getId(), is(response.getId()));

@@ -4,13 +4,14 @@ import com.lob.ClientUtil;
 import com.lob.Lob;
 import com.lob.OrCollection;
 import com.lob.Util;
+import com.lob.protocol.request.Filters;
 import org.junit.Test;
 
 import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 
-public class UtilTest extends QuietLogging {
+public class UtilTest extends BaseTest {
 
     @Test(expected = NullPointerException.class)
     public void testCheckNotNullWithNull() throws Exception {
@@ -47,5 +48,6 @@ public class UtilTest extends QuietLogging {
         new Util();
         new ClientUtil();
         new Lob();
+        new Filters();
     }
 }
