@@ -6,7 +6,6 @@ import com.lob.protocol.response.CountryResponse;
 import com.lob.protocol.response.CountryResponseList;
 import org.junit.Test;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -16,8 +15,8 @@ public class CountryTest extends QuietLogging {
 
     @Test
     public void testCountries() throws Exception {
-        final CountryResponseList responseList = print(client.getCountries().get());
-        final CountryResponse response = print(responseList.get(0));
+        final CountryResponseList responseList = client.getCountries().get();
+        final CountryResponse response = responseList.get(0);
 
         assertTrue(response instanceof CountryResponse);
         assertThat(responseList.getObject(), is("list"));

@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -37,7 +36,7 @@ public class BankAccountTest extends QuietLogging {
 
     @Test
     public void testListBankAccountsLimit() throws Exception {
-        final BankAccountResponseList responseList = print(client.getBankAccounts(2).get());
+        final BankAccountResponseList responseList = client.getBankAccounts(2).get();
         final BankAccountResponse response = responseList.get(0);
 
         assertTrue(response instanceof BankAccountResponse);
@@ -66,7 +65,7 @@ public class BankAccountTest extends QuietLogging {
             .signatory("John Doe")
             .metadata(metadata);
 
-        final BankAccountResponse response = print(client.createBankAccount(builder.build()).get());
+        final BankAccountResponse response = client.createBankAccount(builder.build()).get();
         assertTrue(response instanceof BankAccountResponse);
         assertThat(response.getAccountAddress().getId(), is(address.getId()));
         assertFalse(response.isVerified());
@@ -79,10 +78,10 @@ public class BankAccountTest extends QuietLogging {
         final BankAccountResponse retrievedResponse = client.getBankAccount(response.getId()).get();
         assertThat(retrievedResponse.getId(), is(response.getId()));
 
-        final BankAccountVerifyRequest verifyRequest = print(BankAccountVerifyRequest.builder()
+        final BankAccountVerifyRequest verifyRequest = BankAccountVerifyRequest.builder()
             .id(response.getId())
             .amounts(20, 40)
-            .build());
+            .build();
         assertThat(verifyRequest.getAmounts(), is(Arrays.asList(20, 40)));
 
         final BankAccountResponse verifyResponse = client.verifyBankAccount(verifyRequest).get();
@@ -90,7 +89,7 @@ public class BankAccountTest extends QuietLogging {
 
         client.createBankAccount(builder.butWith().signatory("other account").build()).get();
 
-        final BankAccountRequest request = print(builder.build());
+        final BankAccountRequest request = builder.build();
         assertFalse(request.getAccountNumber().isEmpty());
         assertFalse(request.getRoutingNumber().isEmpty());
         assertFalse(request.getSignatory().isEmpty());
@@ -133,7 +132,7 @@ public class BankAccountTest extends QuietLogging {
     @Test
     public void testDeleteBankAccount() throws Exception {
         final BankAccountResponse response = client.getBankAccounts().get().get(0);
-        final BankAccountDeleteResponse deleteResponse = print(client.deleteBankAccount(response.getId()).get());
+        final BankAccountDeleteResponse deleteResponse = client.deleteBankAccount(response.getId()).get();
         assertThat(deleteResponse.getId(), is(response.getId()));
     }
 }

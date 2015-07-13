@@ -3,11 +3,9 @@ package com.lob.client.test;
 import com.lob.id.AddressId;
 import com.lob.id.IntegerId;
 import com.lob.id.LobId;
-import com.lob.id.PackagingId;
 import com.lob.id.ServiceId;
 import org.junit.Test;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -15,12 +13,6 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class IdTest extends QuietLogging {
-
-    @Test
-    public void testPackagingId() throws Exception {
-        print(PackagingId.create(1));
-        assertThat(PackagingId.parse("1").getId(), is(1));
-    }
 
     @Test
     public void testEquals() throws Exception {
@@ -33,16 +25,15 @@ public class IdTest extends QuietLogging {
     }
     @Test
     public void testIntegerId() throws Exception {
-        final IntegerId id = PackagingId.create(1);
+        final IntegerId id = ServiceId.create(1);
         assertTrue(id.equals(id));
         assertFalse(id.equals(null));
-        assertFalse(id.equals(PackagingId.create(2)));
+        assertFalse(id.equals(ServiceId.create(2)));
 
-        final IntegerId otherId = PackagingId.create(1);
+        final IntegerId otherId = ServiceId.create(1);
         assertEquals(id.hashCode(), otherId.hashCode());
 
-        print(PackagingId.create(1));
-        assertThat(PackagingId.parse("1").getId(), is(1));
+        assertThat(ServiceId.parse("1").getId(), is(1));
     }
 
     @Test
@@ -76,6 +67,7 @@ public class IdTest extends QuietLogging {
         new FakeId("blargh_BLARGHBLARGHB");
     }
 
+    @Test
     public void testLobId() throws Exception {
         final LobId id = AddressId.parse("adr_1111111111111111");
         assertTrue(id.equals(id));
@@ -85,7 +77,4 @@ public class IdTest extends QuietLogging {
         assertEquals(id.hashCode(), otherId.hashCode());
     }
 
-    public void testZipCode() throws Exception {
-
-    }
 }

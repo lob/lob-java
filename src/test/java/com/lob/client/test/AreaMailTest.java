@@ -26,7 +26,6 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -51,7 +50,6 @@ public class AreaMailTest extends QuietLogging {
         final AreaMailResponse response = client.createAreaMail(builder.build()).get();
         assertTrue(response instanceof AreaMailResponse);
 
-        print(ZipCodeRouteRequest.builder().addZips(ZipCode.parse("94158")).build());
         final ZipCodeRouteRequest routeRequest = ZipCodeRouteRequest.builder().addStringZips("94158").build();
         final ZipCodeRouteResponseList route = client.getZipCodeRoutes(routeRequest).get();
 
@@ -70,19 +68,12 @@ public class AreaMailTest extends QuietLogging {
         assertThat(response.getMetadata().get("key0"), is("value0"));
         assertThat(response.getMetadata().get("key1"), is("value1"));
 
-        print(builder.butWith().routes(route).build());
-        print(builder.butWith().routesForZips(ZipCode.parse("94158")).build());
-        print(builder.butWith().routesForZips(Arrays.asList(ZipCode.parse("94158"))).build());
-        print(builder.butWith().routesForStringZips(Arrays.asList("94158")).build());
-
-        final ZipCodeRouteId routeId = print(ZipCodeRouteId.parse("94158-C001"));
+        final ZipCodeRouteId routeId = ZipCodeRouteId.parse("94158-C001");
         assertTrue(routeId.getRouteId() instanceof RouteId);
         assertTrue(routeId.getZipCode() instanceof ZipCode);
-        print(builder.butWith().routesForIds(routeId).build());
-        print(builder.butWith().routesForIds(Lists.<ZipCodeRouteId>newArrayList(routeId)).build());
 
-        final AreaMailRequest request = print(builder.build());
-        assertTrue(print(request.getBack()) instanceof LobParam);
+        final AreaMailRequest request = builder.build();
+        assertTrue(request.getBack() instanceof LobParam);
         assertTrue(request.getFront() instanceof LobParam);
         assertTrue(request.getRoutes() instanceof OrCollection);
         assertTrue(request.getTargetType() instanceof TargetType);
@@ -106,13 +97,13 @@ public class AreaMailTest extends QuietLogging {
             .targetType(TargetType.ALL)
             .build();
 
-        final AreaMailResponse response = print(client.createAreaMail(request).get());
+        final AreaMailResponse response = client.createAreaMail(request).get();
         assertTrue(response instanceof AreaMailResponse);
     }
 
     @Test
     public void testListAreas() throws Exception {
-        final AreaMailResponseList responseList = print(client.getAreaMails().get());
+        final AreaMailResponseList responseList = client.getAreaMails().get();
         final AreaMailResponse response = responseList.get(0);
         assertTrue(response instanceof AreaMailResponse);
         assertThat(responseList.getObject(), is("list"));

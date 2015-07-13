@@ -1,6 +1,5 @@
 package com.lob.client.test;
 
-import ch.qos.logback.classic.Level;
 import com.google.common.collect.Maps;
 import com.lob.LobApiException;
 import com.lob.client.AsyncLobClient;
@@ -17,16 +16,12 @@ import com.lob.protocol.response.ErrorResponse;
 import com.lob.protocol.response.VerifyAddressResponse;
 import com.ning.http.client.AsyncHttpClientConfig;
 import org.joda.time.DateTime;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.net.URI;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static com.lob.Util.print;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -39,7 +34,7 @@ public class AddressTest extends QuietLogging {
 
     @Test
     public void testListAddresses() throws Exception {
-        final AddressResponseList addresses = print(client.getAddresses().get());
+        final AddressResponseList addresses = client.getAddresses().get();
         final AddressResponse response = addresses.get(0);
         assertTrue(response instanceof AddressResponse);
         assertThat(addresses.getObject(), is("list"));
@@ -47,7 +42,6 @@ public class AddressTest extends QuietLogging {
         assertFalse(addresses.isEmpty());
         assertFalse(addresses.getData().isEmpty());
         assertFalse(addresses.getNextUrl().isEmpty());
-        print(addresses.getPreviousUrl());
         assertTrue(addresses.getCount() > 0);
     }
 
@@ -75,7 +69,6 @@ public class AddressTest extends QuietLogging {
         }
         catch (final ExecutionException e) {
             final LobApiException lobException = (LobApiException) e.getCause();
-            print(lobException);
             assertFalse(lobException.getMessage().isEmpty());
             assertTrue(lobException.getUri() instanceof URI);
             assertTrue(lobException.getErrorResponse() instanceof ErrorResponse);
@@ -100,7 +93,7 @@ public class AddressTest extends QuietLogging {
             .country("US")
             .metadata(metadata);
 
-        final AddressResponse response = print(client.createAddress(builder.build()).get());
+        final AddressResponse response = client.createAddress(builder.build()).get();
         assertTrue(response instanceof AddressResponse);
         assertThat(response.getName(), is("Lob"));
 
@@ -117,7 +110,7 @@ public class AddressTest extends QuietLogging {
             .country(CountryCode.parse("US"))
             .build()).get();
 
-        final AddressRequest request = print(builder.build());
+        final AddressRequest request = builder.build();
         assertFalse(request.getEmail().isEmpty());
         assertFalse(request.getPhone().isEmpty());
         assertFalse(request.getCity().isEmpty());
@@ -135,14 +128,14 @@ public class AddressTest extends QuietLogging {
 
     @Test
     public void testRetrieveAddress() throws Exception {
-        final AddressResponse response = print(client.getAddresses().get().get(0));
+        final AddressResponse response = client.getAddresses().get().get(0);
         assertTrue(response instanceof AddressResponse);
     }
 
     @Test
     public void testDeleteAddress() throws Exception {
         final AddressId id = client.getAddresses().get().get(0).getId();
-        final AddressDeleteResponse response = print(client.deleteAddress(id).get());
+        final AddressDeleteResponse response = client.deleteAddress(id).get();
         assertThat(response.getId(), is(id));
         assertTrue(response.isDeleted());
     }
@@ -157,7 +150,7 @@ public class AddressTest extends QuietLogging {
             .zip("02125")
             .country("US");
 
-        final VerifyAddressResponse response = print(client.verifyAddress(print(builder.build())).get());
+        final VerifyAddressResponse response = client.verifyAddress(builder.build()).get();
         assertThat(response.getLine1(), is("220 WILLIAM T MORRISSEY BLVD"));
         assertFalse(response.getLine2().isEmpty());
         assertFalse(response.getCity().isEmpty());
