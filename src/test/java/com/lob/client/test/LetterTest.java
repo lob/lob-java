@@ -82,7 +82,6 @@ public class LetterTest extends BaseTest {
         assertThat(response.getFrom().getId(), is(address.getId()));
         assertThat(response.getDescription(), is("letter"));
         assertTrue(response.getExpectedDeliveryDate() instanceof DateTime);
-        assertFalse(response.getStatus().isEmpty());
         assertFalse(response.getUrl().isEmpty());
         assertTrue(response.isColor());
         assertFalse(response.isDoubleSided());
@@ -95,8 +94,6 @@ public class LetterTest extends BaseTest {
 
         final LetterResponse metadataResponse = client.getLetters(Filters.ofMetadata(metadata)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));
-
-        assertFalse(response.getStatus().isEmpty());
 
         final AddressRequest addrRequest = AddressRequest.builder()
             .name("Lob0")

@@ -54,7 +54,6 @@ public class AreaMailTest extends BaseTest {
         final ZipCodeRouteResponseList route = client.getZipCodeRoutes(routeRequest).get();
 
         assertTrue(response.getId() instanceof AreaMailId);
-        assertFalse(response.getStatus().isEmpty());
         assertFalse(response.getUrl().isEmpty());
         assertThat(response.getObject(), is("area"));
         assertTrue(response.getExpectedDeliveryDate() instanceof DateTime);

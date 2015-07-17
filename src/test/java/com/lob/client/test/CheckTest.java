@@ -109,7 +109,6 @@ public class CheckTest extends BaseTest {
 
         assertFalse(response.getMessage().isEmpty());
         assertFalse(response.getMemo().isEmpty());
-        assertFalse(response.getStatus().isEmpty());
         assertFalse(response.getUrl().isEmpty());
         assertTrue(response.getCheckNumber() > 0);
         assertTrue(response.getExpectedDeliveryDate() instanceof DateTime);

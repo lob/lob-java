@@ -20,7 +20,6 @@ public class LetterResponse extends AbstractLobResponse {
     @JsonProperty private final int pages;
     @JsonProperty private final boolean template;
     @JsonProperty private final Money price;
-    @JsonProperty private final String status;
     @JsonProperty private final String url;
     @JsonProperty private final DateTime expectedDeliveryDate;
 
@@ -35,7 +34,6 @@ public class LetterResponse extends AbstractLobResponse {
             @JsonProperty("pages") final int pages,
             @JsonProperty("template") final boolean template,
             @JsonProperty("price") final Money price,
-            @JsonProperty("status") final String status,
             @JsonProperty("url") final String url,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
             @JsonProperty("date_created") final DateTime dateCreated,
@@ -52,7 +50,6 @@ public class LetterResponse extends AbstractLobResponse {
         this.pages = pages;
         this.template = template;
         this.price = price;
-        this.status = status;
         this.url = url;
         this.expectedDeliveryDate = expectedDeliveryDate;
     }
@@ -75,8 +72,6 @@ public class LetterResponse extends AbstractLobResponse {
 
     public Money getPrice() { return price; }
 
-    public String getStatus() { return status; }
-
     public String getUrl() { return url; }
 
     public DateTime getExpectedDeliveryDate() { return expectedDeliveryDate; }
@@ -93,7 +88,6 @@ public class LetterResponse extends AbstractLobResponse {
                 ", pages=" + pages +
                 ", template=" + template +
                 ", price='" + price + "'" +
-                ", status='" + status + "'" +
                 ", url='" + url + "'" +
                 ", expectedDeliveryDate='" + expectedDeliveryDate + "'" +
                 super.toString();
