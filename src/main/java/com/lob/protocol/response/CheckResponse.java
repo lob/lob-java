@@ -18,7 +18,6 @@ public class CheckResponse extends AbstractLobResponse {
     @JsonProperty private final Money amount;
     @JsonProperty private final AddressResponse to;
     @JsonProperty private final BankAccountResponse bankAccount;
-    @JsonProperty private final String status;
     @JsonProperty private final String message;
     @JsonProperty private final Money price;
     @JsonProperty private final String url;
@@ -52,7 +51,6 @@ public class CheckResponse extends AbstractLobResponse {
         this.amount = amount;
         this.to = to;
         this.bankAccount = bankAccount;
-        this.status = status;
         this.message = message;
         this.price = price;
         this.url = url;
@@ -83,10 +81,6 @@ public class CheckResponse extends AbstractLobResponse {
 
     public BankAccountResponse getBankAccount() {
         return bankAccount;
-    }
-
-    public String getStatus() {
-        return status;
     }
 
     public String getMessage() {
@@ -122,7 +116,6 @@ public class CheckResponse extends AbstractLobResponse {
             ", amount=" + amount +
             ", to=" + to +
             ", bankAccount=" + bankAccount +
-            ", status='" + status + '\'' +
             ", message='" + message + '\'' +
             ", price=" + price +
             ", url='" + url + '\'' +

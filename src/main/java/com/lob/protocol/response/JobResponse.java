@@ -15,7 +15,6 @@ public class JobResponse extends AbstractLobResponse {
     @JsonProperty("price") private final String price;
     @JsonProperty("to") private final AddressResponse to;
     @JsonProperty("from") private final AddressResponse from;
-    @JsonProperty("status") private final String status;
     @JsonProperty("tracking") private final TrackingResponse tracking;
     @JsonProperty("service") private final ServiceResponse service;
     @JsonProperty("objects") private final List<LobObjectResponse> objects;
@@ -26,7 +25,6 @@ public class JobResponse extends AbstractLobResponse {
             @JsonProperty("price") final String price,
             @JsonProperty("to") final AddressResponse to,
             @JsonProperty("from") final AddressResponse from,
-            @JsonProperty("status") final String status,
             @JsonProperty("tracking") final TrackingResponse tracking,
             @JsonProperty("service") final ServiceResponse service,
             @JsonProperty("objects") final List<LobObjectResponse> objects,
@@ -39,7 +37,6 @@ public class JobResponse extends AbstractLobResponse {
         this.price = price;
         this.to = to;
         this.from = from;
-        this.status = status;
         this.tracking = tracking;
         this.service = service;
         this.objects = objects;
@@ -61,10 +58,6 @@ public class JobResponse extends AbstractLobResponse {
         return from;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
     public TrackingResponse getTracking() {
         return tracking;
     }
@@ -84,7 +77,6 @@ public class JobResponse extends AbstractLobResponse {
             ", price='" + price + '\'' +
             ", to=" + to +
             ", from=" + from +
-            ", status='" + status + '\'' +
             ", tracking='" + tracking + '\'' +
             ", service=" + service +
             ", objects=" + objects +

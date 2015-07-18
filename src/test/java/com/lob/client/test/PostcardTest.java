@@ -79,7 +79,6 @@ public class PostcardTest extends BaseTest {
         assertThat(metadataResponse.getId(), is(response.getId()));
 
         assertTrue(response.getPrice() instanceof Money);
-        assertFalse(response.getStatus().isEmpty());
 
         final PostcardRequest request = builder.build();
         assertNull(request.getMessage());

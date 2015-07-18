@@ -81,7 +81,6 @@ public class JobTest extends BaseTest {
         assertThat(metadataResponse.getId(), is(response.getId()));
 
         assertFalse(response.getPrice().isEmpty());
-        assertFalse(response.getStatus().isEmpty());
 
         final JobRequest otherRequest = builder.butWith().objectIds(objects).build();
         assertTrue(otherRequest.getFrom() instanceof Or);
