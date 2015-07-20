@@ -85,6 +85,7 @@ public class AddressTest extends BaseTest {
 
         final AddressRequest.Builder builder = AddressRequest.builder()
             .name("Lob")
+            .company("Lob")
             .email("support@lob.com")
             .phone("555-555-5555")
             .line1("185 Berry Street")
@@ -98,6 +99,7 @@ public class AddressTest extends BaseTest {
         final AddressResponse response = client.createAddress(builder.build()).get();
         assertTrue(response instanceof AddressResponse);
         assertThat(response.getName(), is("Lob"));
+        assertThat(response.getCompany(), is("Lob"));
 
         assertFalse(response.getEmail().isEmpty());
         assertFalse(response.getPhone().isEmpty());
@@ -124,6 +126,7 @@ public class AddressTest extends BaseTest {
         assertFalse(request.getState().isEmpty());
         assertTrue(request.getCountry() instanceof CountryCode);
         assertThat(request.getName(), is("Lob"));
+        assertThat(request.getCompany(), is("Lob"));
         assertTrue(request.getZip() instanceof ZipCode);
 
         final AddressId id = response.getId();
