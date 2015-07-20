@@ -3,24 +3,39 @@
 [![Build Status](https://secure.travis-ci.org/lob/lob-java.png)](https://travis-ci.org/lob/lob-java)
 [![Coverage Status](https://coveralls.io/repos/javadev/lob-java/badge.png?branch=master)](https://coveralls.io/r/javadev/lob-java)
 
-This is the java wrapper for the Lob.com API.
+Java wrapper for the [Lob.com](http://lob.com) API. See the full Lob.com [API Documentation](https://lob.com/docs/java).  For best results, be sure that you're using [the latest version](https://lob.com/docs/java#version) of the Lob API and the latest version of the java wrapper.
 
-## Frameworks
-lob-java uses Guava's [ListenableFuture](https://code.google.com/p/guava-libraries/wiki/ListenableFutureExplained), the Ning
- [AsyncHttpClient](https://github.com/AsyncHttpClient/async-http-client), and the [Jackson](https://github.com/FasterXML/jackson) serialization
- library to make robust, asynchronous integration with Lob's API easy.
+lob-java uses Guava's [ListenableFuture](https://code.google.com/p/guava-libraries/wiki/ListenableFutureExplained), the Ning [AsyncHttpClient](https://github.com/AsyncHttpClient/async-http-client), and the [Jackson](https://github.com/FasterXML/jackson) serialization library to make robust, asynchronous integration with Lob's API easy.
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Project Structure](#project-structure)
-- [Usage](#usage)
-- [Supported Image Types](#supported-image-types)
-- [Initialization and Configuration](#initialization-and-configuration)
-- [API Reference](#api-reference)
+- [Getting Started](#getting-started)
+  - [Registration](#registration)
+  - [Installation](#installation)
+  - [Usage](#usage)
+- [Examples](#examples)
+- [API Documentation](#api-documentation)
+- [Contributing](#contributing)
 - [Testing](#testing)
 
-## Installation
+## Getting Started
+
+Here's a general overview of the Lob services available, click through to read more.
+
+- [Simple Postcard Service](https://lob.com/services/postcards)
+- [Simple Letter Service](https://lob.com/services/letters)
+- [Simple Check Service](https://lob.com/services/checks)
+- [Simple Print Service](https://lob.com/services/sps)
+- [Simple Area Mail](https://lob.com/services/sam)
+- [Address Verification](https://lob.com/verification/address)
+
+### Registration
+
+First, you will need to first create an account at [Lob.com](https://dashboard.lob.com/#/register) and obtain your Test and Live API Keys.
+
+Once you have created an account, you can access your API Keys from the [Settings Panel](https://dashboard.lob.com/#/settings).
+
+### Installation
 
 Include the following in your `pom.xml` for Maven:
 
@@ -35,7 +50,11 @@ Include the following in your `pom.xml` for Maven:
 </dependencies>
 ```
 
-## Project Structure
+### Usage
+
+We've provided examples in the `lob-java-examples/` package that has examples of how to use the lob-java wrapper with some of our core endpoints.
+
+#### Project Structure
 
 - **lob-java** contains the actual client for interacting with Lob's API. It depends on:
   - guava
@@ -47,27 +66,7 @@ Include the following in your `pom.xml` for Maven:
   - two jackson-databind packages
 - **lob-java-examples** contains usage examples and is not intended to be consumed by your code.
 
-## Usage
-
-We've provided examples in the `lob-java-examples/` package that has examples of
-how to use the lob-java wrapper with some of our core endpoints.
-
-## Supported Image Types
-The Lob.com API supports the following image types:
-
-- PDF
-- PNG
-- JPEG
-
-For more information on prepping the images please see the [Lob documentation](https://lob.com/docs/python#prepping).
-
-## HTML Support
-
-The Lob.com API also supports HTML strings in lieu of a file of the above type. See below for examples of submitting with HTML strings.
-
-For templates and more information regarding HTML, please see the [Lob documentation](https://lob.com/docs/python#html-fonts).
-
-## Initialization and Configuration
+#### Initialization and Configuration
 
 To initialize the wrapper, create an instance of `AsyncLobClient` as follows:
 
@@ -103,768 +102,102 @@ Lob.setApiVersion("apiVersion");
 final LobClient client = AsyncLobClient.createDefault("yourApiKey");
 ```
 
-### Callbacks
+#### Callbacks
 Please ensure any callbacks attached to the `ListenableFuture`s returned from the `LobClient` have a dedicated `Executor`
 for their execution. Otherwise, the callbacks will be executed on internal I/O threads, adversely affecting performance.
 
-## API Reference
-- [Simple Print Service](#simple-print-service)
-  - [Job](#job)
-    - [Job creation](#job-creation)
-    - [Job listing](#job-listing)
-    - [Job retrieval](#job-retrieval)
-  - [Address](#address)
-    - [Address creation](#address-creation)
-    - [Address listing](#address-listing)
-    - [Address retrieval](#address-retrieval)
-    - [Address deletion](#address-deletion)
-  - [Country](#country)
-    - [Country listing](#country-listing)
-  - [State](#state)
-    - [State listing](#state-listing)
-  - [Lob Object](#lob-object)
-    - [Lob Object creation](#lob-object-creation)
-    - [Lob Object listing](#lob-object-listing)
-    - [Lob Object retrieval](#lob-object-retrieval)
-    - [Lob Object deletion](#lob-object-deletion)
-  - [Setting](#setting)
-    - [Setting listing](#setting-listing)
-    - [Setting retrieval](#setting-retrieval)
-  - [Services](#service)
-    - [Services listing](#service-listing)
-- [Simple Postcard Service](#simple-postcard-service)
-  - [Postcard](#postcard)
-    - [Postcard creation](#postcard-creation)
-    - [Postcard listing](#postcard-listing)
-    - [Postcard retrieval](#postcard-retrieval)
-- [Simple Letter Service](#simple-letter-service)
-  - [Letter](#letter)
-    - [Letter creation](#letter-creation)
-    - [Letter listing](#letter-listing)
-    - [Letter retrieval](#letter-retrieval)
-- [Simple Check Service](#simple-check-service)
-  - [Check](#check)
-    - [Check creation](#check-creation)
-    - [Check listing](#check-listing)
-    - [Check retrieval](#check-retrieval)
-  - [BankAccount](#bankaccount)
-    - [BankAccount creation](#bankaccount-creation)
-    - [BankAccount listing](#bankaccount-listing)
-    - [BankAccount retrieval](#bankaccount-retrieval)
-- [Simple Area Mail](#simple-area-mail)
-  - [Area](#area)
-    - [Area creation](#area-creation)
-    - [Area listing](#area-listing)
-    - [Area retrieval](#area-retrieval)
-  - [Route](#route)
-    - [Route listing](#route-listing)
-- [Address Verification](#address-verification)
-  - [Verification](#verification)
-    - [Verification creation](#verification-creation)
-
-## Simple Print Service
-
-### Job
-
-#### Job listing
-
-```java
-// Returns a list of Job objects
-final ListenableFuture<JobResponseList> jobs = client.getJobs();
-
-// Can specify count and offset as well
-final ListenableFuture<JobResponseList> jobs = client.getJobs(Filters.ofCount(5).withOffset(1));
-```
-
-#### Job retrieval
-
-```java
-// Retrieve a specific job by id
-final ListenableFuture<JobResponse> job = client.getJob(<id>);
-```
-
-#### Job creation
-
-```java
-// Create Job Using IDs for Address and Object
-final JobRequest.Builder jobBuilder = JobRequest.builder();
-
-final JobRequest jobRequest = builder
-    .to(<addressId>)
-    .from(<addressId)
-    .objectId(<objectId>)
-    .build();
-
-final ListenableFuture<JobResponse> job = client.createJob(jobRequest);
-
-// Create a Job Using Lob Java Objects
-final AddressResponseList addresses = client.getAddresses(2).get();
-final LobObject object = client.getLobObjects(1).get().get(0);
-
-final JobRequest jobRequest = JobRequest.builder()
-    .to(addresses.get(0))
-    .from(addresses.get(1))
-    .object(object)
-    .build();
-
-final ListenableFuture<JobResponse> job = client.createJob(jobRequest);
-
-// Create Job Using Inline Address and Object
-final JobRequest jobRequest = JobRequest.builder()
-    .to(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .from(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .object(LobObjectRequest.builder()
-        .file("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-        .setting(200)
-        .build())
-    .build();
-
-final ListenableFuture<JobResponse> jobResponse = client.createJob(jobRequest);
-
-// Create a Multi-Object Job
-final JobRequest jobRequest = JobRequest.builder()
-    .to(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .from(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .objects(
-        LobObjectRequest.builder()
-            .file("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-            .setting(201)
-            .build(),
-        LobObjectRequest.builder()
-            .file("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-            .setting(200)
-            .build())
-    .build();
-
-final ListenableFuture<JobResponse> jobResponse = client.createJob(jobRequest);
-
-```
-
-### Address
-
-#### Address listing
-
-```java
-// List addresses
-final ListenableFuture<AddressResponseList> addresses = client.getAddresses();
-
-// List Addresses with Count and Offset
-final ListenableFuture<AddressResponseList> addresses = client.getAddresses(Filters.ofCount(5).withOffset(2));
-```
-
-#### Address retrieval
-```java
-// You can query an address with its `ID`
-final ListenableFuture<AddressResponse> address = client.getAddress(<id>);
-```
-
-#### Address creation
-```java
-// Basic Address Create
-final AddressRequest addressRequest = AddressRequest.builder()
-    .name("Joe Smith")
-    .line1("104, Printing Boulevard")
-    .city("Boston")
-    .state("MA")
-    .zip("12345")
-    .country("US")
-    .build();
-
-final ListenableFuture<AddressResponse> address = client.createAddress(addressRequest);
-
-// Create Address with Optional Parameters
-final AddressRequest addressRequest = AddressRequest.builder()
-    .name("Joe Smith")
-    .email("support@lob.com")
-    .phone("555-555-5555")
-    .line1("104, Printing Boulevard")
-    .line2("Sunset Town")
-    .city("Boston")
-    .state("MA")
-    .zip("12345")
-    .country("US")
-    .build();
-
-final ListenableFuture<AddressResponse> address = client.createAddress(addressRequest);
-```
-
-#### Address deletion
-```java
-// Delete an address
-final ListenableFuture<AddressDeleteResponse> deleteResponse = client.deleteAddress(<id>);
-```
-
-### Country
-
-#### Country listing
-```java
-// Returns a list of Country objects
-final ListenableFuture<CountryResponseList> countries = client.getCountries();
-```
-
-### State
-
-#### State listing
-```java
-// Returns a list of State objects
-final ListenableFuture<StateResponseList> states = client.getStates();
-```
-
-### Lob Object
-
-#### Lob Object listing
-
-```java
-// Returns a list of lob objects
-final ListenableFuture<LobObjectResponseList> objects = client.getLobObjects();
-
-// Can specify count and offset
-final ListenableFuture<LobObjectResponseList> objects = client.getLobObjects(Filters.ofCount(4).withOffset(2));
-```
-
-#### Lob Object retrieval
-
-```java
-// Retrieve a specifc object
-final ListenableFuture<LobObjectResponse> object = client.getLobObject(<id>);
-```
-
-#### Lob Object creation
-
-```java
-// Create an Object using a URL
-final LobObjectRequest objectRequest = LobObjectRequest.builder()
-    .file("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-    .setting(200)
-    .quantity(1)
-    .build();
-final ListenableFuture<LobObjectResponse> object = client.createLobObject(objectRequest);
-
-// Create an Object using a local file
-final File file = new File("/path/to/local/file");
-final LobObjectRequest objectRequest = LobObjectRequest.builder()
-    .file(file)
-    .setting(200)
-    .quantity(1)
-    .build();
-final ListenableFuture<LobObjectResponse> object = client.createLobObject(objectRequest);
-
-// Create an Object using HTML
-final LobObjectRequest objectRequest = LobObjectRequest.builder()
-    .file("<html style="margin: 130px; font-size: 50;">HTML here</html>")
-    .setting(200)
-    .quantity(1)
-    .build();
-final ListenableFuture<LobObjectResponse> object = client.createLobObject(objectRequest);
-```
-
-#### Lob Object deletion
-
-```java
-// Delete an object via its ID
-final ListenableFuture<LobObjectDeleteResponse> objectDeleteResponse = client.deleteLobObject(<id>);
-```
-
-### Setting
-
-#### Setting listing
-
-```java
-// List All Settings
-final ListenableFuture<SettingResponseList> settings = client.getSettings();
-```
-
-#### Setting retrieval
-
-```java
-// Retrieve a Setting
-final ListenableFuture<SettingResponseList> settings = client.getSetting(SettingId.parse(100));
-```
-
-### Service
-
-#### Service listing
-
-```java
-// List All Services
-final ListenableFuture<ServiceResponseList> services = client.getServices();
-```
-
-## Simple Postcard Service
-
-### Postcard
-
-#### Postcard listing
-
-```java
-// Returns a list of Postcard objects
-final ListenableFuture<PostcardResponseList> postcards = client.getPostcards();
-
-// Can specify count and offset
-final ListenableFuture<PostcardResponseList> postcards = client.getPostcards(Filters.ofCount(4).withOffset(2));
-```
-
-#### Postcard retrieval
-```java
-// Retrieve a specific postcard by id
-final ListenableFuture<PostcardResponse> postcard = client.getPostcard(<id>);
-```
-
-#### Postcard creation
-```java
-// Create a Postcard Using IDs for Address
-final PostcardRequest postcardRequest = PostcardRequest.builder()
-    .to(<addressId>)
-    .from(<addressId>)
-    .front("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-    .back("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-    .build();
-final ListenableFuture<PostcardResponse> postcard = client.createPostcard(postcardRequest);
-
-// Create a Postcard Using Lob Java Objects
-final AddressResponseList addresses = client.getAddresses(2).get();
-
-final PostcardRequest postcardRequest = PostcardRequest.builder()
-    .to(addresses.get(0))
-    .from(addresses.get(1))
-    .front("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-    .back("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-    .build();
-final ListenableFuture<PostcardResponse> postcard = client.createPostcard(postcardRequest);
-
-// Create Postcard Using Inline Addresses
-final PostcardRequest postcardRequest = PostcardRequest.builder()
-    .to(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .from(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .front("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-    .back("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-    .build();
-final ListenableFuture<PostcardResponse> postcard = client.createPostcard(postcardRequest);
-
-// Create Postcard Using Inline Addresses and Local File
-final File file = new File("/path/to/local/file");
-final PostcardRequest postcardRequest = PostcardRequest.builder()
-    .to(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .from(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .front(file)
-    .back(file)
-    .build();
-final ListenableFuture<PostcardResponse> postcard = client.createPostcard(postcardRequest);
-
-// Create a Postcard Using HTML
-final PostcardRequest postcardRequest = PostcardRequest.builder()
-    .to(<addressId>)
-    .from(<addressId>)
-    .front("<html style="margin: 130px; font-size: 50;">Front HTML</html>")
-    .back("<html style="margin: 130px; font-size: 50;">Back HTML</html>")
-    .build();
-final ListenableFuture<PostcardResponse> postcard = client.createPostcard(postcardRequest);
-
-// Create Postcard with Message Instead of Back
-final PostcardRequest postcardRequest = PostcardRequest.builder()
-    .to(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .from(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .front(file)
-    .message("Hello, this is the message!")
-    .build();
-final ListenableFuture<PostcardResponse> postcard = client.createPostcard(postcardRequest);
-```
-
-## Simple Letter Service
-
-### Letter
-
-#### Letter listing
-
-```java
-// Returns a list of Letter objects
-final ListenableFuture<LetterResponseList> letters = client.getLetters();
-
-// Can specify count and offset
-final ListenableFuture<LetterResponseList> letters = client.getLetters(Filters.ofCount(4).withOffset(2));
-```
-
-#### Letter retrieval
-```java
-// Retrieve a specific postcard by id
-final ListenableFuture<LetterResponse> letters = client.getLetter(<id>);
-```
-
-#### Letter creation
-```java
-// Create a Letter Using IDs for Address
-final LetterRequest letterRequest = LetterRequest.builder()
-    .to(<addressId>)
-    .from(<addressId>)
-    .file("https://s3-us-west-2.amazonaws.com/lob-assets/letter-goblue.pdf")
-    .color(true)
-    .build();
-final ListenableFuture<LetterResponse> letter = client.createLetter(letterRequest);
-
-// Create Letter Using Inline Addresses
-final LetterRequest letterRequest = LetterRequest.builder()
-    .to(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .from(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .file("https://s3-us-west-2.amazonaws.com/lob-assets/letter-goblue.pdf")
-    .color(true)
-    .build();
-final ListenableFuture<LetterResponse> letter = client.createLetter(letterRequest);
-
-// Create Letter Using Inline Addresses and Local File
-final File file = new File("/path/to/local/file");
-final LetterRequest letterRequest = LetterRequest.builder()
-    .to(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .from(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .file(file)
-    .color(true)
-    .build();
-final ListenableFuture<LetterResponse> letter = client.createLetter(letterRequest);
-
-// Create a Letter Using HTML
-final LetterRequest letterRequest = LetterRequest.builder()
-    .to(<addressId>)
-    .from(<addressId>)
-    .file("<html style="margin: 130px; font-size: 50;">Front HTML</html>")
-    .color(true)
-    .build();
-final ListenableFuture<LetterResponse> letter = client.createLetter(letterRequest);
-```
-
-## Simple Check Service
-
-### Check
-
-#### Check listing
-```java
-// Returns a list of Check objects
-final ListenableFuture<CheckResponseList> checks = client.getChecks();
-
-// Can specify count and offset
-final ListenableFuture<CheckResponseList> checks = client.getChecks(Filters.ofCount(4).withOffset(2));
-```
-
-#### Check retrieval
-```java
-// Retrieve a specific Check by id
-final ListenableFuture<CheckResponse> check = client.getCheck(<id>);
-```
-
-#### Check creation
-
-```java
-// Create Check with Address Id
-final CheckRequest checkRequest = CheckRequest.builder()
-    .to(<addressId>)
-    .bankAccount(<bankAccountId>)
-    .amount(1000)
-    .memo("Services Rendered")
-    .logo("https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png")
-    .build();
-final ListenableFuture<CheckResponse> check = client.createCheck(checkRequest);
-
-// Create Check with Inline Address
-final CheckRequest checkRequest = CheckRequest.builder()
-    .to(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .bankAccount(<bankAccountId>)
-    .amount(1000)
-    .memo("Services Rendered")
-    .logo("https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png")
-    .build();
-final ListenableFuture<CheckResponse> check = client.createCheck(checkRequest);
-```
-
-### BankAccount
-
-#### BankAccount listing
-
-```java
-// Returns a list of BankAccount objects
-final ListenableFuture<BankAccountResponseList> bankAccounts = client.getBankAccounts();
-
-// Can specify count and offset
-final ListenableFuture<BankAccountResponseList> bankAccounts = client.getBankAccounts(Filters.ofCount(4).withOffset(2));
-```
-
-#### BankAccount retrieval
-
-```java
-// Retrieve a specific BankAccount by id
-final ListenableFuture<BankAccountResponse> bankAccount = client.getBankAccount(<id>);
-```
-
-#### BankAccount creation
-
-```java
-// Create Bank Account Using Address Ids
-final BankAccountRequest bankAccountRequest = BankAccountRequest.builder()
-    .routingNumber("123456789")
-    .accountNumber("123456789")
-    .signatory("John Doe")
-    .bankAddress(<addressId>)
-    .accountAddress(<addressId>)
-    .build();
-final ListenableFuture<BankAccountResponse> bankAccount = client.createBankAccount(bankAccountRequest);
-
-// Create Bank Account with Inline Addresses
-final BankAccountRequest bankAccountRequest = BankAccountRequest.builder()
-    .routingNumber("123456789")
-    .accountNumber("123456789")
-    .signatory("John Doe")
-    .bankAddress(AddressRequest.builder()
-        .line1("123 Wall Street")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94158")
-        .country("US")
-        .build())
-    .accountAddress(AddressRequest.builder()
-        .name("Lob")
-        .line1("185 Berry Street")
-        .line2("Suite 1510")
-        .city("San Francisco")
-        .state("CA")
-        .zip("94107")
-        .country("US")
-        .build())
-    .build();
-final ListenableFuture<BankAccountResponse> bankAccount = client.createBankAccount(bankAccountRequest);
-```
-
-#### BankAccount deletion
-
-```java
-// Delete a specific BankAccount by id
-final ListenableFuture<BankAccountDeleteResponse> bankAccountDeleteResponse = client.deleteBankAccount(<id>);
-```
-
-
-## Simple Area Mail
-
-### Area
-
-#### Area listing
-
-```java
-// List areas
-final ListenableFuture<AreaMailResponseList> areaMails = client.getAreaMails();
-
-// Can specify count and offset
-final ListenableFuture<AreaMailResponseList> areaMails = client.getAreaMails(Filters.ofCount(4).withOffset(2));
-```
-
-#### Area retrieval
-
-```java
-// You can query an area with its `ID`
-final ListenableFuture<AreaMailResponse> areaMail = client.getAreaMail(<id>);
-```
-
-#### Area creation
-
-```java
-// Basic Area Create with Zip Codes
-final AreaMailRequest areaMailRequest = AreaMailRequest.builder()
-    .front("https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf")
-    .back("https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf")
-    .routesForZips("94158", "60031")
-    .targetType(TargetType.ALL)
-    .build();
-final ListenableFuture<AreaMailResponse> areaMail = client.createAreaMail(areaMailRequest);
-
-// Basic Area Create with Routes Object
-final ZipCodeRouteResponseList routes = client.getZipCodeRoutes(
-    ZipCodeRouteRequest.builder()
-        .addStringZips("94158", "60031")
-        .build())
-    .get();
-final AreaMailRequest areaMailRequest = AreaMailRequest.builder()
-    .front("https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf")
-    .back("https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf")
-    .routes(routes)
-    .targetType(TargetType.ALL)
-    .build();
-final ListenableFuture<AreaMailResponse> areaMail = client.createAreaMail(areaMailRequest);
-
-// Basic Area Create with HTML
-final AreaMailRequest areaMailRequest = AreaMailRequest.builder()
-    .front("<html style="margin: 130px; font-size: 50;">Front HTML</html>")
-    .back("<html style="margin: 130px; font-size: 50;">Back HTML</html>")
-    .routesForZips("94158", "60031")
-    .targetType(TargetType.ALL)
-    .build();
-final ListenableFuture<AreaMailResponse> areaMail = client.createAreaMail(areaMailRequest);
-
-// Create Area without Optional Parameters
-final AreaMailRequest areaMailRequest = AreaMailRequest.builder()
-    .front("https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf")
-    .back("https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf")
-    .routesForZips("94158")
-    .build();
-final ListenableFuture<AreaMailResponse> areaMail = client.createAreaMail(areaMailRequest);
-```
-
-### Route
-
-#### Route listing
-
-```java
-// Retrieve routes for given zip codes
-final ListenableFuture<ZipCodeRouteResponseList> zipCodeRoutes = client.getZipCodeRoutes(
-    ZipCodeRouteRequest.builder()
-        .addStringZips("94158", "60031")
-        .build());
-```
-
-## Address Verification
-
-###  Verification
-
-#### Verification creation
-```java
-// You can verify an address using the following code:
-System.out.println(client.verifyAddress(VerifyAddressRequest.builder()
-    .line1("185 Berry Street")
-    .line2("Suite 1510")
-    .city("San Francisco")
-    .state("CA")
-    .zip("94107")
-    .country("US")
-    .build()).get());
-```
-This will output:
-```bash
-{
-  "address": {
-    "address_city": "SAN FRANCISCO",
-    "address_country": "US",
-    "address_line1": "185 BERRY ST STE 1510",
-    "address_line2": "",
-    "address_state": "CA",
-    "address_zip": "94107-5705"
-  },
-}
-```
+## Examples
+
+We've provided various examples for you to try out [here](https://github.com/lob/lob-java/tree/master/lob-java-examples/src/main/java/com/lob/examples).
+
+There are simple scripts to demonstrate how to create all the core Lob objects (checks, letters, postcards, etc.) As well as more complex examples that utilize other libraries and external files:
+
+- [Verifying Addresses in a CSV](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvVerificationExample.java)
+- [Async Job Example](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/AsyncJobExample.java)
+
+## API Documentation
+
+- [Introduction](https://lob.com/docs/java#introduction)
+- [Versioning](https://lob.com/docs/java#version)
+- [Errors](https://lob.com/docs/java#errors)
+- [Metadata](https://lob.com/docs/java#metadata)
+- **Addresses**
+  - [Address Book](https://lob.com/docs/java#addresses)
+    - [Create an Address](https://lob.com/docs/java#addresses_create)
+    - [Retrieve an Address](https://lob.com/docs/java#addresses_retrieve)
+    - [Delete an Address](https://lob.com/docs/java#addresses_delete)
+    - [List all Addresses](https://lob.com/docs/java#addresses_list)
+  - [Simple Address Verification](https://lob.com/docs/java#verify)
+    - [Verify an Address](https://lob.com/docs/java#verify_create)
+- **Simple Postcard Service**
+  - [Postcards](https://lob.com/docs/java#postcards)
+    - [Create a Postcard](https://lob.com/docs/java#postcards_create)
+    - [Retrieve a Postcard](https://lob.com/docs/java#postcards_retrieve)
+    - [List all Postcards](https://lob.com/docs/java#postcards_list)
+- **Simple Letter Service**
+  - [Letters](https://lob.com/docs/java#letters)
+    - [Create a Letter](https://lob.com/docs/java#letters_create)
+    - [Retrieve a Letter](https://lob.com/docs/java#letters_retrieve)
+    - [List all Letters](https://lob.com/docs/java#letters_list)
+- **Simple Check Service**
+  - [Checks](https://lob.com/docs/java#checks)
+    - [Create a Check](https://lob.com/docs/java#checks_create)
+    - [Retrieve a Check](https://lob.com/docs/java#checks_retrieve)
+    - [List all Checks](https://lob.com/docs/java#checks_list)
+  - [Bank Accounts](https://lob.com/docs/java#bank-accounts)
+    - [Create a Bank Account](https://lob.com/docs/java#bankaccounts_create)
+    - [Retrieve a Bank Account](https://lob.com/docs/java#bankaccounts_retrieve)
+    - [List all Bank Accounts](https://lob.com/docs/java#bankaccounts_list)
+    - [Verify a Bank Account](https://lob.com/docs/java#bankaccounts_verify)
+    - [Delete a Bank Account](https://lob.com/docs/java#bankaccounts_delete)
+- **Simple Print Service**
+  - [Jobs](https://lob.com/docs/java#jobs)
+    - [Create a Job](https://lob.com/docs/java#jobs_create)
+    - [Create a MultiObject Job](https://lob.com/docs/java#jobs_multi)
+    - [Retrieve a Job](https://lob.com/docs/java#jobs_retrieve)
+    - [List all Jobs](https://lob.com/docs/java#jobs_list)
+  - [Objects](https://lob.com/docs/java#objects)
+    - [Create an Object](https://lob.com/docs/java#objects_create)
+    - [Retrieve an Object](https://lob.com/docs/java#objects_retrieve)
+    - [Delete an Object](https://lob.com/docs/java#objects_delete)
+    - [List all Objects](https://lob.com/docs/java#objects_list)
+  - [Settings](https://lob.com/docs/java#settings)
+    - [Retrieve a Setting](https://lob.com/docs/java#settings_retrieve)
+    - [List all Settings](https://lob.com/docs/java#settings_list)
+- **Simple Area Mail**
+  - [Areas](https://lob.com/docs/java#areas)
+    - [Create an Area Mailing](https://lob.com/docs/java#areas_create)
+    - [Retrieve an Area Mailing](https://lob.com/docs/java#areas_retrieve)
+    - [List all Area Mailings](https://lob.com/docs/java#areas_list)
+  - [Routes](https://lob.com/docs/java#routes)
+    - [Retrieve a Zip Code](https://lob.com/docs/java#routes_retrieve)
+    - [List all Zip Codes](https://lob.com/docs/java#routes_list)
+- **Resources**
+  - [Countries](https://lob.com/docs/java#countries)
+    - [List all Countries](https://lob.com/docs/java#countries_list)
+  - [States](https://lob.com/docs/java#states)
+    - [List all States](https://lob.com/docs/java#states_list)
+- **Appendix**
+  - [HTML Examples](https://lob.com/docs/java#html-examples)
+  - [Image Prepping](https://lob.com/docs/java#prepping)
+  - [SPS Templates](https://lob.com/docs/java#sps-templates)
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Make sure the tests pass
+6. Open up coverage/index.html in your browser and add tests if required
+7. Create new Pull Request
 
 ## Testing
 
 You can run all tests with the command `mvn test` in the main directory.
+
+=======================
+
+Copyright &copy; 2013 Lob.com
+
+Released under the MIT License, which can be found in the repository in `LICENSE.txt`.
