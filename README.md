@@ -110,7 +110,7 @@ for their execution. Otherwise, the callbacks will be executed on internal I/O t
 
 We've provided various examples for you to try out [here](https://github.com/lob/lob-java/tree/master/lob-java-examples/src/main/java/com/lob/examples).
 
-There are simple scripts to demonstrate how to create all the core Lob objects (checks, letters, postcards. etc.) As well as more complex examples that utilize other libraries and external files:
+There are simple scripts to demonstrate how to create all the core Lob objects (checks, letters, postcards, etc.) As well as more complex examples that utilize other libraries and external files:
 
 - [Verifying Addresses in a CSV](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvVerificationExample.java)
 - [Async Job Example](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/AsyncJobExample.java)
