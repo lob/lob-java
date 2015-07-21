@@ -1,5 +1,6 @@
 # lob-java
 
+[![Maven Central](https://img.shields.io/maven-central/v/com.lob/lob-java.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.lob%22%20AND%20a%3A%22lob-java%22)
 [![Build Status](https://secure.travis-ci.org/lob/lob-java.png)](https://travis-ci.org/lob/lob-java)
 [![Coverage Status](https://coveralls.io/repos/javadev/lob-java/badge.png?branch=master)](https://coveralls.io/r/javadev/lob-java)
 
