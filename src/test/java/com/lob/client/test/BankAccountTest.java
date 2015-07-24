@@ -65,11 +65,13 @@ public class BankAccountTest extends BaseTest {
             .bankAddress(address.getId())
             .accountAddress(address.getId())
             .signatory("John Doe")
+            .description("bank account")
             .metadata(metadata);
 
         final BankAccountResponse response = client.createBankAccount(builder.build()).get();
         assertTrue(response instanceof BankAccountResponse);
         assertThat(response.getAccountAddress().getId(), is(address.getId()));
+        assertThat(response.getDescription(), is("bank account"));
         assertFalse(response.isVerified());
         assertFalse(response.getAccountNumber().isEmpty());
         assertFalse(response.getRoutingNumber().isEmpty());

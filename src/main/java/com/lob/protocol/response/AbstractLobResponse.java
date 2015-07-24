@@ -6,20 +6,27 @@ import org.joda.time.DateTime;
 import java.util.Map;
 
 public abstract class AbstractLobResponse {
+    @JsonProperty private final String description;
     @JsonProperty private final DateTime dateCreated;
     @JsonProperty private final DateTime dateModified;
     @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final String object;
 
     public AbstractLobResponse(
+            @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
             @JsonProperty("metadata")final Map<String, String> metadata,
             @JsonProperty("object") final String object) {
+        this.description = description;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
         this.metadata = metadata;
         this.object = object;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public DateTime getDateCreated() {
@@ -40,7 +47,8 @@ public abstract class AbstractLobResponse {
 
     @Override
     public String toString() {
-        return ", dateCreated=" + dateCreated +
+        return ", description=" + description + '\'' +
+            ", dateCreated=" + dateCreated +
             ", dateModified=" + dateModified +
             ", metadata=" + metadata +
             ", object='" + object + '\'' +

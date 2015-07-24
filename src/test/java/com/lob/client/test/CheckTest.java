@@ -93,8 +93,9 @@ public class CheckTest extends BaseTest {
 
         final CheckRequest.Builder builder = CheckRequest.builder()
             .bankAccount(bankAccount.getId())
+            .description("check")
             .to(address.getId())
-            .amount(1000)
+                .amount(1000)
             .message("test message")
             .checkNumber(100)
             .memo("Test Check")
@@ -104,6 +105,7 @@ public class CheckTest extends BaseTest {
         assertTrue(response instanceof CheckResponse);
         assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
         assertThat(response.getTo().getId(), is(address.getId()));
+        assertThat(response.getDescription(), is("check"));
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
 

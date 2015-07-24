@@ -28,11 +28,12 @@ public class JobResponse extends AbstractLobResponse {
             @JsonProperty("tracking") final TrackingResponse tracking,
             @JsonProperty("service") final ServiceResponse service,
             @JsonProperty("objects") final List<LobObjectResponse> objects,
+            @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("object") final String object) {
-        super(dateCreated, dateModified, metadata, object);
+        super(description, dateCreated, dateModified, metadata, object);
         this.id = id;
         this.price = price;
         this.to = to;

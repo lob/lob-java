@@ -30,11 +30,12 @@ public class AreaMailResponse extends AbstractLobResponse {
             @JsonProperty("zip_codes") final Collection<ZipCodeRouteResponse> zipCodeRouteResponses,
             @JsonProperty("thumbnails") final Collection<ThumbnailResponse> thumbnails,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
+            @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("object") final String object) {
-        super(dateCreated, dateModified, metadata, object);
+        super(description, dateCreated, dateModified, metadata, object);
         this.id = id;
         this.price = price;
         this.url = url;
