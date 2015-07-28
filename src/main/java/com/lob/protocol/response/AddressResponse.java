@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class AddressResponse extends BaseAddressResponse {
     @JsonProperty private final AddressId id;
+    @JsonProperty private final String description;
     @JsonProperty private final String name;
     @JsonProperty private final String company;
     @JsonProperty private final String email;
@@ -22,6 +23,7 @@ public class AddressResponse extends BaseAddressResponse {
     @JsonCreator
     public AddressResponse(
             @JsonProperty("id") final AddressId id,
+            @JsonProperty("description") final String description,
             @JsonProperty("name") final String name,
             @JsonProperty("company") final String company,
             @JsonProperty("email") final String email,
@@ -39,6 +41,7 @@ public class AddressResponse extends BaseAddressResponse {
 
         super(line1, line2, city, state, zip, country, object);
         this.id = id;
+        this.description = description;
         this.name = name;
         this.company = company;
         this.email = email;
@@ -52,9 +55,14 @@ public class AddressResponse extends BaseAddressResponse {
         return id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public String getName() {
         return name;
     }
+
     public String getCompany() {
         return company;
     }
@@ -83,6 +91,7 @@ public class AddressResponse extends BaseAddressResponse {
     public String toString() {
         return "AddressResponse{" +
             "id=" + id +
+            ", description='" + description + '\'' +
             ", name='" + name + '\'' +
             ", company='" + company + '\'' +
             ", email='" + email + '\'' +

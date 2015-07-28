@@ -38,13 +38,14 @@ public class CheckResponse extends AbstractLobResponse {
             @JsonProperty("price") final Money price,
             @JsonProperty("url") final String url,
             @JsonProperty("tracking") final TrackingResponse tracking,
+            @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
             @JsonProperty("thumbnails") final List<ThumbnailResponse> thumbnails,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("object") final String object) {
-        super(dateCreated, dateModified, metadata, object);
+        super(description, dateCreated, dateModified, metadata, object);
         this.id = id;
         this.checkNumber = checkNumber;
         this.memo = memo;

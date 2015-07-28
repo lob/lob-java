@@ -64,6 +64,7 @@ public class JobTest extends BaseTest {
         final LobObjectResponse lobObject = objects.get(0);
 
         final JobRequest.Builder builder = JobRequest.builder()
+            .description("description")
             .to(address.getId())
             .from(address.getId())
             .objectIds(lobObject.getId())
@@ -72,6 +73,7 @@ public class JobTest extends BaseTest {
         final JobResponse response = client.createJob(builder.build()).get();
         assertTrue(response instanceof JobResponse);
         assertThat(response.getTo().getId(), is(address.getId()));
+        assertThat(response.getDescription(), is("description"));
         assertThat(response.getFrom().getId(), is(address.getId()));
         assertThat(response.getObjects().get(0).getId(), is(lobObject.getId()));
         assertThat(response.getMetadata().get("key0"), is(value0));

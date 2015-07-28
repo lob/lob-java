@@ -25,10 +25,11 @@ public class PostcardResponse extends AbstractLobResponse {
             @JsonProperty("from") final AddressResponse from,
             @JsonProperty("price") final Money price,
             @JsonProperty("date_created") final DateTime dateCreated,
+            @JsonProperty("description") final String description,
             @JsonProperty("date_modified") final DateTime dateModified,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("object") final String object) {
-        super(dateCreated, dateModified, metadata, object);
+        super(description, dateCreated, dateModified, metadata, object);
         this.id = id;
         this.message = message;
         this.setting = setting;

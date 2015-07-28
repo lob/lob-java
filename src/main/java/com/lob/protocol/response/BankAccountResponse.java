@@ -25,11 +25,12 @@ public class BankAccountResponse extends AbstractLobResponse {
             @JsonProperty("account_address") final AddressResponse accountAddress,
             @JsonProperty("verified") final boolean verified,
             @JsonProperty("signatory") final String signatory,
+            @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("object") final String object) {
-        super(dateCreated, dateModified, metadata, object);
+        super(description, dateCreated, dateModified, metadata, object);
         this.id = id;
         this.routingNumber = routingNumber;
         this.accountNumber = accountNumber;

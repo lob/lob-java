@@ -62,6 +62,7 @@ public class PostcardTest extends BaseTest {
         final AddressResponse address = Iterables.get(client.getAddresses(1).get(), 0);
 
         final PostcardRequest.Builder builder = PostcardRequest.builder()
+            .description("postcard")
             .to(address.getId())
             .from(address.getId())
             .front("https://lob.com/4x6_postcard_template.pdf")
@@ -71,6 +72,7 @@ public class PostcardTest extends BaseTest {
         final PostcardResponse response = client.createPostcard(builder.build()).get();
         assertTrue(response instanceof PostcardResponse);
         assertThat(response.getTo().getId(), is(address.getId()));
+        assertThat(response.getDescription(), is("postcard"));
         assertThat(response.getFrom().getId(), is(address.getId()));
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));

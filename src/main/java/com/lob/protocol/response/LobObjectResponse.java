@@ -12,7 +12,6 @@ import static com.lob.Util.defensiveCopy;
 
 public class LobObjectResponse extends AbstractLobResponse {
     @JsonProperty private final LobObjectId id;
-    @JsonProperty private final String description;
     @JsonProperty private final int quantity;
     @JsonProperty private final int pages;
     @JsonProperty private final String url;
@@ -22,19 +21,18 @@ public class LobObjectResponse extends AbstractLobResponse {
     @JsonCreator
     public LobObjectResponse(
             @JsonProperty("id") final LobObjectId id,
-            @JsonProperty("description") final String description,
             @JsonProperty("quantity") final int quantity,
             @JsonProperty("pages") final int pages,
             @JsonProperty("url") final String url,
             @JsonProperty("thumbnails") final List<ThumbnailResponse> thumbnails,
+            @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("setting") final SettingResponse setting,
             @JsonProperty("object") final String object) {
-        super(dateCreated, dateModified, metadata, object);
+        super(description, dateCreated, dateModified, metadata, object);
         this.id = id;
-        this.description = description;
         this.quantity = quantity;
         this.pages = pages;
         this.url = url;
@@ -44,10 +42,6 @@ public class LobObjectResponse extends AbstractLobResponse {
 
     public LobObjectId getId() {
         return id;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public int getQuantity() {
@@ -74,7 +68,6 @@ public class LobObjectResponse extends AbstractLobResponse {
     public String toString() {
         return "LobObjectResponse{" +
             "id=" + id +
-            ", description='" + description + '\'' +
             ", quantity=" + quantity +
             ", pages=" + pages +
             ", url='" + url + '\'' +

@@ -41,6 +41,7 @@ public class AreaMailTest extends BaseTest {
         metadata.put("key1", value1);
 
         final AreaMailRequest.Builder builder = AreaMailRequest.builder()
+            .description("area mail")
             .front("https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf")
             .back("https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf")
             .routesForZips("94158", "60031")
@@ -54,6 +55,7 @@ public class AreaMailTest extends BaseTest {
         final ZipCodeRouteResponseList route = client.getZipCodeRoutes(routeRequest).get();
 
         assertTrue(response.getId() instanceof AreaMailId);
+        assertThat(response.getDescription(), is("area mail"));
         assertFalse(response.getUrl().isEmpty());
         assertThat(response.getObject(), is("area"));
         assertTrue(response.getExpectedDeliveryDate() instanceof DateTime);
