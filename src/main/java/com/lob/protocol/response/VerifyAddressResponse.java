@@ -7,10 +7,13 @@ import com.lob.id.ZipCode;
 
 public class VerifyAddressResponse {
     @JsonProperty private final BaseAddressResponse address;
+    @JsonProperty private final String message;
 
     @JsonCreator
-    public VerifyAddressResponse(@JsonProperty("address") final BaseAddressResponse address) {
+    public VerifyAddressResponse(@JsonProperty("address") final BaseAddressResponse address,
+                                 @JsonProperty("message") final String message) {
         this.address = address;
+        this.message = message;
     }
 
     public String getLine1() {
@@ -41,9 +44,15 @@ public class VerifyAddressResponse {
         return address.getObject();
     }
 
+    public String getMessage() {
+        return message;
+    }
+
     @Override
     public String toString() {
         return "VerifyAddressResponse{" +
-            "address={" + address.toStringWithoutLeadingComma();
+            "message='" + message + '\'' +
+            ", address={" + address.toStringWithoutLeadingComma() +
+            '}';
     }
 }
