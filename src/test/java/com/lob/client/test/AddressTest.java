@@ -24,9 +24,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class AddressTest extends BaseTest {
     @Test
@@ -168,7 +166,19 @@ public class AddressTest extends BaseTest {
         assertTrue(response.getZip() instanceof ZipCode);
         assertTrue(response.getCountry() instanceof CountryCode);
         assertThat(response.getObject(), is("address"));
+        assertNull(response.getMessage());
+    }
 
-        client.verifyAddress(builder.butWith().country(CountryCode.parse("US")).zip(ZipCode.parse("02125")).build()).get();
+    @Test
+    public void testAddressVerificationMessage() throws Exception {
+        final VerifyAddressRequest.Builder builder = VerifyAddressRequest.builder()
+            .line1("185 Berry St.")
+            .city("San Francisco")
+            .state("CA")
+            .zip("94107")
+            .country("US");
+
+        final VerifyAddressResponse response = client.verifyAddress(builder.build()).get();
+        assertNotNull(response.getMessage());
     }
 }
