@@ -26,11 +26,11 @@ public class PostcardExample extends BaseExample {
 
         // Creating a postcard
         final PostcardRequest examplePostcardRequest = PostcardRequest.builder()
-            .name("Test Postcard")
+            .description("Test Postcard")
             .to(exampleAddressResponse.getId())
             .from(exampleAddressResponse.getId())
-            .front("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-            .back("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
+            .front("https://lob.com/postcardfront.pdf")
+            .back("https://lob.com/postcardback.pdf")
             .build();
 
         final PostcardResponse examplePostcardResponse = client.createPostcard(examplePostcardRequest).get();

@@ -13,11 +13,10 @@ public class ObjectFromFileExample extends BaseExample {
         final String apiKey = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc"; // Replace this API key with your own.
         final LobClient client = AsyncLobClient.createDefault(apiKey);
 
-        final File file = fileFromResource("goblue.pdf");
         final LobObjectRequest objectRequest = LobObjectRequest.builder()
-            .name("Example File Object")
-            .file(file)
-            .setting(200)
+            .description("Example File Object")
+            .file("https://s3-us-west-2.amazonaws.com/lob-assets/lob-jelly-photo.jpg")
+            .setting(500)
             .build();
         final LobObjectResponse objectResponse = client.createLobObject(objectRequest).get();
 

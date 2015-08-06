@@ -40,13 +40,12 @@ public class AsyncJobExample extends BaseExample {
 
         // Create 5 objects
         final LobObjectRequest.Builder objectBuilder = LobObjectRequest.builder()
-            .name("Example Object")
-            .file("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-            .setting(200)
-            .quantity(1)
-            .doubleSided(true);
+            .description("Example Object")
+            .file("https://s3-us-west-2.amazonaws.com/lob-assets/lob-jelly-photo.jpg")
+            .setting(500)
+            .quantity(1);
         for (int i = 0; i < 5; ++i) {
-            final LobObjectRequest objectRequest = objectBuilder.butWith().name("Example Object " + i).build();
+            final LobObjectRequest objectRequest = objectBuilder.butWith().description("Example Object " + i).build();
             final ListenableFuture<LobObjectResponse> objectFuture = client.createLobObject(objectRequest);
             futures.add(objectFuture);
         }
@@ -58,7 +57,7 @@ public class AsyncJobExample extends BaseExample {
                 @Override
                 public ListenableFuture<JobResponse> apply(final List<Object> inputs) throws Exception {
                     // Creating a Job using the previously created address and object
-                    final JobRequest.Builder builder = JobRequest.builder().name("Test Job");
+                    final JobRequest.Builder builder = JobRequest.builder().description("Test Job");
 
                     final List<LobObjectId> objectIds = Lists.newArrayList();
                     for (final Object input : inputs) {

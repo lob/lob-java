@@ -5,6 +5,7 @@ import com.lob.client.LobClient;
 import com.lob.id.CountryCode;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.BankAccountRequest;
+import com.lob.protocol.request.BankAccountVerifyRequest;
 import com.lob.protocol.request.CheckRequest;
 import com.lob.protocol.response.AddressResponse;
 import com.lob.protocol.response.BankAccountResponse;
@@ -48,9 +49,19 @@ public class CheckExample extends BaseExample {
 
         printResponse("Bank Account Response", exampleBankAccountResponse);
 
+        // Verify a the previously created bank account
+        final BankAccountVerifyRequest exampleBankAccountVerifyRequest = BankAccountVerifyRequest.builder()
+            .id(exampleBankAccountResponse.getId())
+            .amounts(25, 63)
+            .build();
+
+        final BankAccountResponse exampleBankAccountVerifyResponse = client.verifyBankAccount(exampleBankAccountVerifyRequest).get();
+
+        printResponse("Bank Account Verify Response", exampleBankAccountVerifyResponse);
+
         // Creating a Check using the previously created bank account
         final CheckRequest exampleCheckRequest = CheckRequest.builder()
-            .name("Example Check")
+            .description("Example Check")
             .to(AddressRequest.builder()
                 .name("Lob")
                 .line1("185 Berry Street")
