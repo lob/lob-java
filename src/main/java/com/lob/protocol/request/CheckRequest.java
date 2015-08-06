@@ -15,6 +15,7 @@ import static com.lob.Util.checkNotNull;
 
 public class CheckRequest extends AbstractDataFieldRequest implements HasLobParams {
     public static final String LOGO = "logo";
+    public static final String FILE = "file";
 
     private final Integer checkNumber; // optional parameter, needs to be null if not set
     private final BankAccountId bankAccount;
@@ -23,6 +24,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
     private final String message;
     private final String memo;
     private final LobParam logo;
+    private final LobParam file;
 
     public CheckRequest(
             final Integer checkNumber,
@@ -32,6 +34,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             final String message,
             final String memo,
             final LobParam logo,
+            final LobParam file,
             final Map<String, String> metadata,
             final Map<String, String> data,
             final String description) {
@@ -43,6 +46,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         this.message = message;
         this.memo = memo;
         this.logo = logo;
+        this.file = file;
     }
 
     @Override
@@ -55,6 +59,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             .put("message", message)
             .put("memo", memo)
             .put(logo)
+            .put(file)
             .build();
     }
 
@@ -86,6 +91,10 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         return logo;
     }
 
+    public LobParam getFile() {
+        return file;
+    }
+
     @Override
     public String toString() {
         return "CheckRequest{" +
@@ -96,6 +105,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             ", message='" + message + '\'' +
             ", memo='" + memo + '\'' +
             ", logo='" + logo + '\'' +
+            ", file='" + file + '\'' +
             super.toString();
     }
 
@@ -111,6 +121,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         private String message;
         private String memo;
         private LobParam logo;
+        private LobParam file;
 
         private Builder() {}
 
@@ -174,6 +185,21 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             return this;
         }
 
+        public Builder file(final String file) {
+            this.file = LobParam.strings(FILE, file);
+            return this;
+        }
+
+        public Builder file(final File file) {
+            this.file = LobParam.file(FILE, file);
+            return this;
+        }
+
+        public Builder file(final LobParam file) {
+            this.file = file;
+            return this;
+        }
+
         public Builder butWith() {
             return new Builder()
                 .checkNumber(checkNumber)
@@ -183,13 +209,14 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
                 .message(message)
                 .memo(memo)
                 .logo(logo)
+                .file(file)
                 .metadata(metadata)
                 .data(data)
                 .description(description);
         }
 
         public CheckRequest build() {
-            return new CheckRequest(checkNumber, bankAccount, to, amount, message, memo, logo, metadata, data, description);
+            return new CheckRequest(checkNumber, bankAccount, to, amount, message, memo, logo, file, metadata, data, description);
         }
     }
 }
