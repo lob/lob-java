@@ -8,7 +8,7 @@ jdk:
 
 env:
   global:
-    - MAVEN_OPTS="-XX:MaxPermSize=512m -Xmx4g"
+    - MAVEN_OPTS="-XX:MaxPermSize=512m -Xmx2048m"
 
 script:
   - mvn clean package jacoco:report coveralls:jacoco
