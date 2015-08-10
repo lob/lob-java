@@ -27,10 +27,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class CheckTest extends BaseTest {
     private BankAccountResponse getAndVerifyBankAccount() throws Exception {
@@ -137,6 +134,40 @@ public class CheckTest extends BaseTest {
         assertTrue(otherRequest.getTo() instanceof Or);
         assertFalse(otherRequest.getLogo().getStringParam().isEmpty());
     }
+
+    @Test
+    public void testCreateCheckWithFile() throws Exception {
+        final Map<String, String> data = Maps.newHashMap();
+        data.put("name", "Donald");
+        final AddressResponse address = getAddress();
+        final BankAccountResponse bankAccount = getAndVerifyBankAccount();
+
+        final CheckRequest.Builder builder = CheckRequest.builder()
+                .bankAccount(bankAccount.getId())
+                .description("check")
+                .to(address.getId())
+                .amount(1000)
+                .file("<h1 style='padding-top:4in;'>Demo Check for {{name}}</h1>")
+                .checkNumber(100)
+                .memo("Test Check")
+                .data(data);
+
+        final CheckResponse response = client.createCheck(builder.build()).get();
+        assertTrue(response instanceof CheckResponse);
+        assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
+        assertThat(response.getTo().getId(), is(address.getId()));
+        assertThat(response.getDescription(), is("check"));
+
+        assertNull(response.getMessage());
+        assertFalse(response.getMemo().isEmpty());
+        assertFalse(response.getUrl().isEmpty());
+        assertTrue(response.getCheckNumber() > 0);
+        assertTrue(response.getExpectedDeliveryDate() instanceof DateTime);
+        assertTrue(response.getPrice() instanceof Money);
+        assertTrue(response.getAmount() instanceof Money);
+        assertFalse(response.getThumbnails().isEmpty());
+    }
+
 
     @Test
     public void testCreateCheckInline() throws Exception {
