@@ -29,11 +29,10 @@ public class JobExample extends BaseExample {
 
         // Creating an Object
         final LobObjectRequest exampleObjectRequest = LobObjectRequest.builder()
-            .name("Example Object")
-            .file("https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf")
-            .setting(200)
+            .description("Example Object")
+            .file("https://s3-us-west-2.amazonaws.com/lob-assets/lob-jelly-photo.jpg")
+            .setting(500)
             .quantity(1)
-            .doubleSided(true)
             .build();
         final LobObjectResponse exampleObjectResponse = client.createLobObject(exampleObjectRequest).get();
 
@@ -41,7 +40,7 @@ public class JobExample extends BaseExample {
 
         // Creating a Job using the previously created address and object
         final JobRequest exampleJobRequest = JobRequest.builder()
-            .name("Test Job")
+            .description("Test Job")
             .to(exampleAddressResponse.getId())
             .from(exampleAddressResponse.getId())
             .objectIds(exampleObjectResponse.getId())

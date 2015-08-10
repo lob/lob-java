@@ -26,10 +26,9 @@ public class ObjectFromHtmlExample extends BaseExample {
             "</html>";
 
         final LobObjectRequest objectRequest = LobObjectRequest.builder()
-            .name("Example Object")
+            .description("Example Object")
             .file(body)
             .setting(200)
-            .fullBleed(true)
             .build();
         final LobObjectResponse objectResponse = client.createLobObject(objectRequest).get();
 
