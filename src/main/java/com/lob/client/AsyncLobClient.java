@@ -21,12 +21,13 @@ import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClient.BoundRequestBuilder;
 import com.ning.http.client.AsyncHttpClientConfig;
 import com.ning.http.client.AsyncHttpClientConfig.Builder;
-import com.ning.http.client.FilePart;
+import com.ning.http.client.multipart.FilePart;
 import com.ning.http.client.FluentStringsMap;
 import com.ning.http.client.Realm;
 import com.ning.http.client.Realm.AuthScheme;
 import com.ning.http.client.Response;
-import com.ning.http.client.StringPart;
+import com.ning.http.client.multipart.StringPart;
+import com.ning.http.client.uri.Uri;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 
@@ -432,7 +433,7 @@ public class AsyncLobClient implements LobClient {
     }
 
     private BoundRequestBuilder get(final String resourceUrl, final FluentStringsMap params) {
-        return this.httpClient.prepareGet(this.baseUrl + resourceUrl).setQueryParameters(params);
+        return this.httpClient.prepareGet(this.baseUrl + resourceUrl).setQueryParams(params);
     }
 
     private BoundRequestBuilder post(final String resourceUrl, final HasLobParams hasLobParams) {
@@ -462,28 +463,21 @@ public class AsyncLobClient implements LobClient {
         else {
             for (final LobParam param : params) {
                 for (final String s : param.getStringParam()) {
-                    builder.addParameter(param.getName(), s);
+                    builder.addFormParam(param.getName(), s);
                 }
             }
         }
         return builder;
     }
 
-    private static <T> ListenableFuture<T> execute(
-            final Class<T> clazz,
-            final BoundRequestBuilder request) {
+    private static <T> ListenableFuture<T> execute(final Class<T> clazz, final BoundRequestBuilder request) {
         final SettableFuture<T> guavaFut = SettableFuture.create();
-        try {
-            final Optional<String> apiVersionOpt = Lob.getApiVersion();
-            if (apiVersionOpt.isPresent()) {
-                request.addHeader(LobClient.LOB_VERSION_HEADER, apiVersionOpt.get());
-            }
+        final Optional<String> apiVersionOpt = Lob.getApiVersion();
+        if (apiVersionOpt.isPresent()) {
+            request.addHeader(LobClient.LOB_VERSION_HEADER, apiVersionOpt.get());
+        }
 
-            request.execute(new GuavaFutureConverter<T>(clazz, guavaFut));
-        }
-        catch (final IOException e) {
-            guavaFut.setException(e);
-        }
+        request.execute(new GuavaFutureConverter<T>(clazz, guavaFut));
         return guavaFut;
     }
 

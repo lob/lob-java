@@ -1,8 +1,5 @@
 package com.lob;
 
-import com.lob.protocol.request.AddressRequest;
-import com.lob.protocol.response.AddressResponse;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -63,8 +60,4 @@ public final class Util {
         return copy;
     }
 
-    public static <T> T print(final T t) {
-        System.out.println(t);
-        return t;
-    }
 }

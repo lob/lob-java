@@ -1,20 +1,19 @@
 package com.lob;
 
 import com.lob.protocol.response.ErrorResponse;
-
-import java.net.URI;
+import com.ning.http.client.uri.Uri;
 
 public class LobApiException extends RuntimeException {
-    private final URI uri;
+    private final Uri uri;
     private final ErrorResponse errorResponse;
 
-    public LobApiException(final URI uri, final ErrorResponse errorResponse) {
+    public LobApiException(final Uri uri, final ErrorResponse errorResponse) {
         super(uri + " " + errorResponse.getError().toString());
         this.uri = uri;
         this.errorResponse = errorResponse;
     }
 
-    public URI getUri() {
+    public Uri getUri() {
         return uri;
     }
 
