@@ -22,10 +22,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class PostcardTest extends BaseTest {
     @Test
@@ -76,6 +73,11 @@ public class PostcardTest extends BaseTest {
         assertThat(response.getFrom().getId(), is(address.getId()));
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
+        assertNotNull(response.getTracking());
+        assertNotNull(response.getTracking().getId());
+        assertNotNull(response.getTracking().getTrackingNumber());
+        assertNotNull(response.getTracking().getCarrier());
+        assertThat(response.getTracking().getObject(), is("tracking"));
 
         final PostcardResponse metadataResponse = client.getPostcards(Filters.ofMetadata(metadata)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));

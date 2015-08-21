@@ -8,6 +8,7 @@ import com.lob.id.AddressId;
 import com.lob.id.CountryCode;
 import com.lob.id.ZipCode;
 import com.lob.protocol.request.AddressRequest;
+import com.lob.protocol.request.Filter;
 import com.lob.protocol.request.Filters;
 import com.lob.protocol.request.VerifyAddressRequest;
 import com.lob.protocol.response.AddressDeleteResponse;
@@ -15,6 +16,7 @@ import com.lob.protocol.response.AddressResponse;
 import com.lob.protocol.response.AddressResponseList;
 import com.lob.protocol.response.ErrorResponse;
 import com.lob.protocol.response.VerifyAddressResponse;
+import com.ning.http.client.uri.Uri;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
@@ -39,6 +41,24 @@ public class AddressTest extends BaseTest {
         assertFalse(addresses.getNextUrl().isEmpty());
         assertTrue(addresses.getCount() > 0);
     }
+
+    @Test
+    public void testListAddressesWithOffset() throws Exception {
+
+        final Filter filter = Filters.ofCount(10).withOffset(10);
+
+        final AddressResponseList addresses = client.getAddresses(filter).get();
+        final AddressResponse response = addresses.get(0);
+        assertTrue(response instanceof AddressResponse);
+        assertThat(addresses.getObject(), is("list"));
+
+        assertFalse(addresses.isEmpty());
+        assertFalse(addresses.getData().isEmpty());
+        assertFalse(addresses.getNextUrl().isEmpty());
+        assertFalse(addresses.getPreviousUrl().isEmpty());
+        assertTrue(addresses.getCount() > 0);
+    }
+
 
     @Test
     public void testListAddressesLimit() throws Exception {
@@ -68,7 +88,7 @@ public class AddressTest extends BaseTest {
         catch (final ExecutionException e) {
             final LobApiException lobException = (LobApiException) e.getCause();
             assertFalse(lobException.getMessage().isEmpty());
-            assertTrue(lobException.getUri() instanceof URI);
+            assertTrue(lobException.getUri() instanceof Uri);
             assertTrue(lobException.getErrorResponse() instanceof ErrorResponse);
         }
     }
@@ -171,6 +191,10 @@ public class AddressTest extends BaseTest {
 
     @Test
     public void testAddressVerificationMessage() throws Exception {
+
+        final ZipCode zipCode = ZipCode.parse("94107");
+        final CountryCode US = CountryCode.parse("US");
+
         final VerifyAddressRequest.Builder builder = VerifyAddressRequest.builder()
             .line1("185 Berry St.")
             .city("San Francisco")
@@ -178,7 +202,11 @@ public class AddressTest extends BaseTest {
             .zip("94107")
             .country("US");
 
-        final VerifyAddressResponse response = client.verifyAddress(builder.build()).get();
+        final VerifyAddressRequest.Builder modifiedBuilder = builder.butWith()
+            .zip(zipCode)
+            .country(US);
+
+        final VerifyAddressResponse response = client.verifyAddress(modifiedBuilder.build()).get();
         assertNotNull(response.getMessage());
     }
 }

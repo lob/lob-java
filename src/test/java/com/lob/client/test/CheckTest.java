@@ -168,6 +168,46 @@ public class CheckTest extends BaseTest {
         assertFalse(response.getThumbnails().isEmpty());
     }
 
+    @Test
+    public void testCreateCheckWithLocalLogoFile() throws Exception {
+        final Map<String, String> data = Maps.newHashMap();
+        data.put("name", "Donald");
+        final AddressResponse address = getAddress();
+        final BankAccountResponse bankAccount = getAndVerifyBankAccount();
+
+        final File file = ClientUtil.fileFromResource("lobCheckLogo.png");
+
+        final CheckRequest.Builder builder = CheckRequest.builder()
+                .bankAccount(bankAccount.getId())
+                .description("check")
+                .to(address.getId())
+                .amount(1000)
+                .logo(file)
+                .file("<h1 style='padding-top:4in;'>Demo Check for {{name}}</h1>")
+                .checkNumber(100)
+                .memo("Test Check")
+                .data(data);
+
+
+        assertNotNull(builder.build().getFile());
+
+        final CheckResponse response = client.createCheck(builder.build()).get();
+        assertTrue(response instanceof CheckResponse);
+        assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
+        assertThat(response.getTo().getId(), is(address.getId()));
+        assertThat(response.getDescription(), is("check"));
+
+        assertNull(response.getMessage());
+        assertFalse(response.getMemo().isEmpty());
+        assertFalse(response.getUrl().isEmpty());
+        assertTrue(response.getCheckNumber() > 0);
+        assertTrue(response.getExpectedDeliveryDate() instanceof DateTime);
+        assertTrue(response.getPrice() instanceof Money);
+        assertTrue(response.getAmount() instanceof Money);
+        assertFalse(response.getThumbnails().isEmpty());
+    }
+
+
 
     @Test
     public void testCreateCheckInline() throws Exception {
