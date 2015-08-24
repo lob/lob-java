@@ -7,9 +7,7 @@ import com.lob.protocol.response.StateResponseList;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class StateTest extends BaseTest {
     @Test
@@ -26,5 +24,7 @@ public class StateTest extends BaseTest {
         assertFalse(response.getName().isEmpty());
         assertFalse(response.getShortName().isEmpty());
         assertThat(response.getObject(), is("state"));
+        assertNotNull(responseList.toString());
+        assertNotNull(response.toString());
     }
 }

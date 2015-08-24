@@ -8,9 +8,7 @@ import com.lob.protocol.response.ServiceResponseList;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class ServiceTest extends BaseTest {
     @Test
@@ -29,5 +27,7 @@ public class ServiceTest extends BaseTest {
         assertFalse(response.getDescription().isEmpty());
         assertFalse(response.getName().isEmpty());
         assertFalse(response.getObject().isEmpty());
+        assertNotNull(responseList.toString());
+        assertNotNull(response.toString());
     }
 }

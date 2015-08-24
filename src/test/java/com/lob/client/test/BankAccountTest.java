@@ -20,9 +20,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class BankAccountTest extends BaseTest {
     @Test
@@ -32,6 +30,8 @@ public class BankAccountTest extends BaseTest {
 
         assertTrue(response instanceof BankAccountResponse);
         assertThat(responseList.getObject(), is("list"));
+        assertNotNull(responseList.toString());
+        assertNotNull(response.toString());
     }
 
     @Test
@@ -141,5 +141,6 @@ public class BankAccountTest extends BaseTest {
         final BankAccountResponse response = client.getBankAccounts().get().get(0);
         final BankAccountDeleteResponse deleteResponse = client.deleteBankAccount(response.getId()).get();
         assertThat(deleteResponse.getId(), is(response.getId()));
+        assertNotNull(deleteResponse.toString());
     }
 }

@@ -22,10 +22,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class PostcardTest extends BaseTest {
     @Test
@@ -35,6 +32,10 @@ public class PostcardTest extends BaseTest {
 
         assertTrue(response instanceof PostcardResponse);
         assertThat(responseList.getObject(), is("list"));
+        assertNotNull(responseList.toString());
+        assertNotNull(response.toString());
+        assertNull(response.getMessage());
+        assertNull(response.getSetting());
     }
 
     @Test

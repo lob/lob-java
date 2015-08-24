@@ -7,6 +7,7 @@ public class OrTest extends BaseTest {
 
     @Test(expected = IllegalStateException.class)
     public void testOrWrongTypeA() throws Exception {
+        Or.typeA("a").toString();
         Or.typeA("a").getTypeB();
     }
 

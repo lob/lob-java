@@ -38,6 +38,9 @@ public class AddressTest extends BaseTest {
         assertFalse(addresses.getData().isEmpty());
         assertFalse(addresses.getNextUrl().isEmpty());
         assertTrue(addresses.getCount() > 0);
+        assertNull(addresses.getPreviousUrl());
+        assertNotNull(addresses.toString());
+        assertNotNull(response.toString());
     }
 
     @Test
@@ -70,6 +73,9 @@ public class AddressTest extends BaseTest {
             assertFalse(lobException.getMessage().isEmpty());
             assertTrue(lobException.getUri() instanceof URI);
             assertTrue(lobException.getErrorResponse() instanceof ErrorResponse);
+            assertNotNull(lobException.getErrorResponse().toString());
+            assertNotNull(lobException.getErrorResponse().getError().getMessage());
+            assertNotNull(lobException.getErrorResponse().getError().getStatusCode());
         }
     }
 
@@ -146,6 +152,7 @@ public class AddressTest extends BaseTest {
         final AddressDeleteResponse response = client.deleteAddress(id).get();
         assertThat(response.getId(), is(id));
         assertTrue(response.isDeleted());
+        assertNotNull(response.toString());
     }
 
     @Test
@@ -167,6 +174,7 @@ public class AddressTest extends BaseTest {
         assertTrue(response.getCountry() instanceof CountryCode);
         assertThat(response.getObject(), is("address"));
         assertNull(response.getMessage());
+        assertNotNull(response.toString());
     }
 
     @Test

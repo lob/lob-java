@@ -49,7 +49,16 @@ public class CheckTest extends BaseTest {
         final CheckResponse response = responseList.get(0);
 
         assertTrue(response instanceof CheckResponse);
+        assertNotNull(response.getTracking().toString());
+        assertNotNull(response.getTracking().getEvents());
+        assertNotNull(response.getTracking().getId());
+        assertNotNull(response.getTracking().getTrackingNumber());
+        assertNotNull(response.getTracking().getCarrier());
+        assertNull(response.getTracking().getLink());
+        assertThat(response.getTracking().getObject(), is("tracking"));
         assertThat(responseList.getObject(), is("list"));
+        assertNotNull(responseList.toString());
+        assertNotNull(response.toString());
     }
 
     @Test
