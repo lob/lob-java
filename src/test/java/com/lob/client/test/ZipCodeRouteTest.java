@@ -10,9 +10,7 @@ import com.lob.protocol.response.ZipCodeRouteResponseList;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class ZipCodeRouteTest extends BaseTest {
     @Test
@@ -29,6 +27,10 @@ public class ZipCodeRouteTest extends BaseTest {
         final RouteResponse route = response.getRoutes().get(0);
         assertFalse(route.getObject().isEmpty());
         assertFalse(request.getZipCodes().isEmpty());
+        assertNotNull(responseList.toString());
+        assertNotNull(response.toString());
+        assertNotNull(route.getResidential());
+        assertNotNull(route.getBusiness());
     }
 
     @Test(expected = IllegalArgumentException.class)

@@ -10,9 +10,7 @@ import org.junit.Test;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SettingTest extends BaseTest {
     public static final SettingId SETTING_ID = SettingId.parse(200);
@@ -29,6 +27,8 @@ public class SettingTest extends BaseTest {
         assertFalse(responseList.isEmpty());
         assertTrue(responseList.size() > 0);
         assertTrue(responseList.iterator().hasNext());
+        assertNotNull(responseList.toString());
+        assertNotNull(response.toString());
     }
 
     @Test

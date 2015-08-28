@@ -27,9 +27,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class AreaMailTest extends BaseTest {
     @Test
@@ -68,6 +66,8 @@ public class AreaMailTest extends BaseTest {
         assertTrue(response.getDateModified() instanceof DateTime);
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
+        assertNotNull(route.toString());
+        assertNotNull(response.toString());
 
         final AreaMailResponse metadataResponse = client.getAreaMails(Filters.ofMetadata(metadata)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));
@@ -85,6 +85,7 @@ public class AreaMailTest extends BaseTest {
         final AreaMailId id = response.getId();
         final AreaMailResponse retrievedResponse = client.getAreaMail(id).get();
         assertThat(retrievedResponse.getId(), is(id));
+        assertNotNull(retrievedResponse.toString());
     }
 
     @Test
@@ -111,6 +112,7 @@ public class AreaMailTest extends BaseTest {
         final AreaMailResponse response = responseList.get(0);
         assertTrue(response instanceof AreaMailResponse);
         assertThat(responseList.getObject(), is("list"));
+        assertNotNull(responseList.toString());
     }
 
     @Test

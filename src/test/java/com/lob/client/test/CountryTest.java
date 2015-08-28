@@ -7,8 +7,7 @@ import com.lob.protocol.response.CountryResponseList;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class CountryTest extends BaseTest {
     @Test
@@ -18,5 +17,7 @@ public class CountryTest extends BaseTest {
 
         assertTrue(response instanceof CountryResponse);
         assertThat(responseList.getObject(), is("list"));
+        assertNotNull(responseList.toString());
+        assertNotNull(response.toString());
     }
 }
