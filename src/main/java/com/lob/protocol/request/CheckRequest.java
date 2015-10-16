@@ -155,6 +155,11 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             return this;
         }
 
+        public Builder amount(final double amount) {
+            this.amount = Money.of(CurrencyUnit.USD, amount);
+            return this;
+        }
+
         public Builder amount(final Money amount) {
             this.amount = amount;
             return this;
