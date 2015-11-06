@@ -1,8 +1,5 @@
 package com.lob;
 
-import com.lob.protocol.request.AddressRequest;
-import com.lob.protocol.response.AddressResponse;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -34,21 +31,6 @@ public final class Util {
             throw new IllegalArgumentException(message);
         }
         return ref;
-    }
-
-    final private static String hexRegex = "[a-fA-F0-9]+";
-
-    public static String checkValidHex(final String s) {
-        // handle the null and empty check right away
-        if (checkNotNull(s).isEmpty()) {
-            throw new IllegalArgumentException("string cannot be empty!");
-        }
-
-        if (!s.matches(hexRegex)) {
-            throw new IllegalArgumentException("string " + s + " is not valid hex!");
-        }
-
-        return s;
     }
 
     public static <T> List<T> defensiveCopy(final Collection<T> original) {
