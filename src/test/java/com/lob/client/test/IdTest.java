@@ -47,26 +47,6 @@ public class IdTest extends BaseTest {
         }
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testLobIdBad() throws Exception {
-        new FakeId("BLARGHBLARGHBLARGHBLA");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testLobIdBadLength() throws Exception {
-        new FakeId("adr_BLARGH");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testLobIdWrongPrefix() throws Exception {
-        new FakeId("obj_BLARGHBLARGHBLAR");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testLobIdBadPrefix() throws Exception {
-        new FakeId("blargh_BLARGHBLARGHB");
-    }
-
     @Test
     public void testLobId() throws Exception {
         final LobId id = AddressId.parse("adr_1111111111111111");

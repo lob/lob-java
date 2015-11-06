@@ -28,16 +28,6 @@ public class UtilTest extends BaseTest {
         Util.checkPresent(OrCollection.typeA(Collections.emptyList()), "");
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testValidHexWithEmptyString() throws Exception {
-        Util.checkValidHex("");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testInvalidHex() throws Exception {
-        Util.checkValidHex("NOT HEX AT ALL LOL");
-    }
-
     @Test
     public void testDefensiveCopyWithEmptyList() {
         assertEquals(Util.defensiveCopy(Collections.emptyList()), Collections.emptyList());
