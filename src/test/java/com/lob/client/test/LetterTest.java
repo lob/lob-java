@@ -3,8 +3,6 @@ package com.lob.client.test;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
 import com.lob.id.LetterId;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.Filters;
@@ -86,6 +84,9 @@ public class LetterTest extends BaseTest {
         assertTrue(response.isColor());
         assertFalse(response.isDoubleSided());
         assertTrue(response.isTemplate());
+        assertNull(response.getExtraService());
+        assertFalse(response.isReturnEnvelope());
+        assertNull(response.getPerforatedPage());
         assertThat(response.getPages(), is(1));
         assertTrue(response.getId() instanceof LetterId);
         assertTrue(response.getPrice() instanceof Money);
@@ -121,5 +122,58 @@ public class LetterTest extends BaseTest {
         assertFalse(otherRequest.isColor());
         assertFalse(otherRequest.isDoubleSided());
         assertTrue(otherRequest.isTemplate());
+    }
+
+    @Test
+    public void testCreateCertifiedLetter() throws Exception {
+        final AddressResponse address = client.getAddresses(1).get().get(0);
+        final String file = "<html style='padding-top: 3in; margin: .5in;'>HTML Letter</html>";
+        final String extraService = "certified";
+
+        final LetterRequest.Builder builder = LetterRequest.builder()
+                .to(address.getId())
+                .from(address.getId())
+                .file(file)
+                .color(true)
+                .template(true)
+                .doubleSided(false)
+                .extraService(extraService)
+                .description("letter");
+
+        final LetterRequest request = builder.build();
+
+        assertThat(request.getExtraService(), is(extraService));
+
+        final LetterResponse response = client.createLetter(request).get();
+
+        assertThat(response.getExtraService(), is(extraService));
+    }
+
+    @Test
+    public void testCreateReturnEnvelopeLetter() throws Exception {
+        final AddressResponse address = client.getAddresses(1).get().get(0);
+        final String file = "<html style='padding-top: 3in; margin: .5in;'>HTML Letter</html>";
+        final int perforatedPage = 1;
+
+        final LetterRequest.Builder builder = LetterRequest.builder()
+                .to(address.getId())
+                .from(address.getId())
+                .file(file)
+                .color(true)
+                .template(true)
+                .doubleSided(false)
+                .returnEnvelope(true)
+                .perforatedPage(perforatedPage)
+                .description("letter");
+
+        final LetterRequest request = builder.build();
+
+        assertTrue(request.isReturnEnvelope());
+        assertThat(request.getPerforatedPage(), is(perforatedPage));
+
+        final LetterResponse response = client.createLetter(request).get();
+
+        assertTrue(response.isReturnEnvelope());
+        assertThat(response.getPerforatedPage(), is(perforatedPage));
     }
 }

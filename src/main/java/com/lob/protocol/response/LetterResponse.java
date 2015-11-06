@@ -18,6 +18,9 @@ public class LetterResponse extends AbstractLobResponse {
     @JsonProperty private final boolean doubleSided;
     @JsonProperty private final int pages;
     @JsonProperty private final boolean template;
+    @JsonProperty private final String extraService;
+    @JsonProperty private final boolean returnEnvelope;
+    @JsonProperty private final Integer perforatedPage;
     @JsonProperty private final Money price;
     @JsonProperty private final String url;
     @JsonProperty private final DateTime expectedDeliveryDate;
@@ -31,6 +34,9 @@ public class LetterResponse extends AbstractLobResponse {
             @JsonProperty("double_sided") final boolean doubleSided,
             @JsonProperty("pages") final int pages,
             @JsonProperty("template") final boolean template,
+            @JsonProperty("extra_service") final String extraService,
+            @JsonProperty("return_envelope") final boolean returnEnvelope,
+            @JsonProperty("perforated_page") final Integer perforatedPage,
             @JsonProperty("price") final Money price,
             @JsonProperty("url") final String url,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
@@ -47,6 +53,9 @@ public class LetterResponse extends AbstractLobResponse {
         this.doubleSided = doubleSided;
         this.pages = pages;
         this.template = template;
+        this.extraService = extraService;
+        this.returnEnvelope = returnEnvelope;
+        this.perforatedPage = perforatedPage;
         this.price = price;
         this.url = url;
         this.expectedDeliveryDate = expectedDeliveryDate;
@@ -66,6 +75,12 @@ public class LetterResponse extends AbstractLobResponse {
 
     public boolean isTemplate() { return template; }
 
+    public String getExtraService() { return extraService; }
+
+    public boolean isReturnEnvelope() { return returnEnvelope; }
+
+    public Integer getPerforatedPage() { return perforatedPage; }
+
     public Money getPrice() { return price; }
 
     public String getUrl() { return url; }
@@ -82,6 +97,9 @@ public class LetterResponse extends AbstractLobResponse {
                 ", doubleSided=" + doubleSided +
                 ", pages=" + pages +
                 ", template=" + template +
+                ", extraService=" + extraService +
+                ", returnEnvelope=" + returnEnvelope +
+                ", perforatedPage=" + perforatedPage +
                 ", price='" + price + "'" +
                 ", url='" + url + "'" +
                 ", expectedDeliveryDate='" + expectedDeliveryDate + "'" +
