@@ -17,9 +17,9 @@ public class CheckResponse extends AbstractLobResponse {
     @JsonProperty private final String memo;
     @JsonProperty private final Money amount;
     @JsonProperty private final AddressResponse to;
+    @JsonProperty private final AddressResponse from;
     @JsonProperty private final BankAccountResponse bankAccount;
     @JsonProperty private final String message;
-    @JsonProperty private final Money price;
     @JsonProperty private final String url;
     @JsonProperty private final TrackingResponse tracking;
     @JsonProperty private final DateTime expectedDeliveryDate;
@@ -32,10 +32,9 @@ public class CheckResponse extends AbstractLobResponse {
             @JsonProperty("memo") final String memo,
             @JsonProperty("amount") final Money amount,
             @JsonProperty("to") final AddressResponse to,
+            @JsonProperty("from") final AddressResponse from,
             @JsonProperty("bank_account") final BankAccountResponse bankAccount,
-            @JsonProperty("status") final String status,
             @JsonProperty("message") final String message,
-            @JsonProperty("price") final Money price,
             @JsonProperty("url") final String url,
             @JsonProperty("tracking") final TrackingResponse tracking,
             @JsonProperty("description") final String description,
@@ -51,9 +50,9 @@ public class CheckResponse extends AbstractLobResponse {
         this.memo = memo;
         this.amount = amount;
         this.to = to;
+        this.from = from;
         this.bankAccount = bankAccount;
         this.message = message;
-        this.price = price;
         this.url = url;
         this.tracking = tracking;
         this.expectedDeliveryDate = expectedDeliveryDate;
@@ -80,16 +79,16 @@ public class CheckResponse extends AbstractLobResponse {
         return to;
     }
 
+    public AddressResponse getFrom() {
+        return from;
+    }
+
     public BankAccountResponse getBankAccount() {
         return bankAccount;
     }
 
     public String getMessage() {
         return message;
-    }
-
-    public Money getPrice() {
-        return price;
     }
 
     public String getUrl() {
@@ -116,9 +115,9 @@ public class CheckResponse extends AbstractLobResponse {
             ", memo='" + memo + '\'' +
             ", amount=" + amount +
             ", to=" + to +
+            ", from=" + from +
             ", bankAccount=" + bankAccount +
             ", message='" + message + '\'' +
-            ", price=" + price +
             ", url='" + url + '\'' +
             ", tracking=" + tracking +
             ", expectedDeliveryDate=" + expectedDeliveryDate +

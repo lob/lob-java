@@ -11,9 +11,7 @@ public class BankAccountResponse extends AbstractLobResponse {
     @JsonProperty private final BankAccountId id;
     @JsonProperty private final String routingNumber;
     @JsonProperty private final String accountNumber;
-    @JsonProperty private final AddressResponse bankAddress;
     @JsonProperty private final boolean verified;
-    @JsonProperty private final AddressResponse accountAddress;
     @JsonProperty private final String signatory;
 
     @JsonCreator
@@ -21,8 +19,6 @@ public class BankAccountResponse extends AbstractLobResponse {
             @JsonProperty("id") final BankAccountId id,
             @JsonProperty("routing_number") final String routingNumber,
             @JsonProperty("account_number") final String accountNumber,
-            @JsonProperty("bank_address") final AddressResponse bankAddress,
-            @JsonProperty("account_address") final AddressResponse accountAddress,
             @JsonProperty("verified") final boolean verified,
             @JsonProperty("signatory") final String signatory,
             @JsonProperty("description") final String description,
@@ -34,8 +30,6 @@ public class BankAccountResponse extends AbstractLobResponse {
         this.id = id;
         this.routingNumber = routingNumber;
         this.accountNumber = accountNumber;
-        this.bankAddress = bankAddress;
-        this.accountAddress = accountAddress;
         this.verified = verified;
         this.signatory = signatory;
     }
@@ -52,14 +46,6 @@ public class BankAccountResponse extends AbstractLobResponse {
         return accountNumber;
     }
 
-    public AddressResponse getBankAddress() {
-        return bankAddress;
-    }
-
-    public AddressResponse getAccountAddress() {
-        return accountAddress;
-    }
-
     public boolean isVerified() {
         return verified;
     }
@@ -74,9 +60,7 @@ public class BankAccountResponse extends AbstractLobResponse {
             "id=" + id +
             ", routingNumber='" + routingNumber + '\'' +
             ", accountNumber='" + accountNumber + '\'' +
-            ", bankAddress=" + bankAddress +
             ", verified=" + verified +
-            ", accountAddress=" + accountAddress +
             ", signatory='" + signatory + '\'' +
             super.toString();
     }

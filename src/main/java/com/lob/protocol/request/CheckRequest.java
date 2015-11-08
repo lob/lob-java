@@ -1,6 +1,5 @@
 package com.lob.protocol.request;
 
-import com.lob.LobParamsBuilder;
 import com.lob.Or;
 import com.lob.id.AddressId;
 import com.lob.id.BankAccountId;
@@ -20,6 +19,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
     private final Integer checkNumber; // optional parameter, needs to be null if not set
     private final BankAccountId bankAccount;
     private final Or<AddressId, AddressRequest> to;
+    private final Or<AddressId, AddressRequest> from;
     private final Money amount;
     private final String message;
     private final String memo;
@@ -30,6 +30,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             final Integer checkNumber,
             final BankAccountId bankAccount,
             final Or<AddressId, AddressRequest> to,
+            final Or<AddressId, AddressRequest> from,
             final Money amount,
             final String message,
             final String memo,
@@ -42,6 +43,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         this.checkNumber = checkNumber;
         this.bankAccount = checkNotNull(bankAccount, "bank account is required");
         this.to = checkNotNull(to, "to is required");
+        this.from = checkNotNull(from, "from is required");
         this.amount = checkNotNull(amount, "amount is required");
         this.message = message;
         this.memo = memo;
@@ -55,6 +57,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             .put("check_number", checkNumber)
             .put("bank_account", bankAccount)
             .put("to", to)
+            .put("from", from)
             .put("amount", amount)
             .put("message", message)
             .put("memo", memo)
@@ -73,6 +76,10 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
 
     public Or<AddressId, AddressRequest> getTo() {
         return to;
+    }
+
+    public Or<AddressId, AddressRequest> getFrom() {
+        return from;
     }
 
     public Money getAmount() {
@@ -101,6 +108,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             "checkNumber=" + checkNumber +
             ", bankAccount=" + bankAccount +
             ", to=" + to +
+            ", from=" + from +
             ", amount=" + amount +
             ", message='" + message + '\'' +
             ", memo='" + memo + '\'' +
@@ -117,6 +125,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         private Integer checkNumber;
         private BankAccountId bankAccount;
         private Or<AddressId, AddressRequest> to;
+        private Or<AddressId, AddressRequest> from;
         private Money amount;
         private String message;
         private String memo;
@@ -147,6 +156,21 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
 
         public Builder to(final Or<AddressId, AddressRequest> to) {
             this.to = to;
+            return this;
+        }
+
+        public Builder from(final AddressId from) {
+            this.from = Or.typeA(from);
+            return this;
+        }
+
+        public Builder from(final AddressRequest from) {
+            this.from = Or.typeB(from);
+            return this;
+        }
+
+        public Builder from(final Or<AddressId, AddressRequest> from) {
+            this.from = from;
             return this;
         }
 
@@ -210,6 +234,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
                 .checkNumber(checkNumber)
                 .bankAccount(bankAccount)
                 .to(to)
+                .from(from)
                 .amount(amount)
                 .message(message)
                 .memo(memo)
@@ -221,7 +246,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         }
 
         public CheckRequest build() {
-            return new CheckRequest(checkNumber, bankAccount, to, amount, message, memo, logo, file, metadata, data, description);
+            return new CheckRequest(checkNumber, bankAccount, to, from, amount, message, memo, logo, file, metadata, data, description);
         }
     }
 }

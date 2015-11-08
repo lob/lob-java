@@ -5,8 +5,6 @@ import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
 import com.lob.LobApiException;
 import com.lob.Or;
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
 import com.lob.id.BankAccountId;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.BankAccountVerifyRequest;
@@ -101,6 +99,7 @@ public class CheckTest extends BaseTest {
             .bankAccount(bankAccount.getId())
             .description("check")
             .to(address.getId())
+            .from(address.getId())
             .amount(1000)
             .message("test message")
             .checkNumber(100)
@@ -111,6 +110,7 @@ public class CheckTest extends BaseTest {
         assertTrue(response instanceof CheckResponse);
         assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
         assertThat(response.getTo().getId(), is(address.getId()));
+        assertThat(response.getFrom().getId(), is(address.getId()));
         assertThat(response.getDescription(), is("check"));
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
@@ -120,7 +120,6 @@ public class CheckTest extends BaseTest {
         assertFalse(response.getUrl().isEmpty());
         assertTrue(response.getCheckNumber() > 0);
         assertTrue(response.getExpectedDeliveryDate() instanceof DateTime);
-        assertTrue(response.getPrice() instanceof Money);
         assertTrue(response.getAmount() instanceof Money);
         assertFalse(response.getThumbnails().isEmpty());
         final CheckResponse metadataResponse = client.getChecks(Filters.ofMetadata(metadata)).get().get(0);
@@ -141,6 +140,7 @@ public class CheckTest extends BaseTest {
         assertTrue(otherRequest.getBankAccount() instanceof BankAccountId);
         assertTrue(otherRequest.getCheckNumber() instanceof Integer);
         assertTrue(otherRequest.getTo() instanceof Or);
+        assertTrue(otherRequest.getFrom() instanceof Or);
         assertFalse(otherRequest.getLogo().getStringParam().isEmpty());
     }
 
@@ -155,6 +155,7 @@ public class CheckTest extends BaseTest {
                 .bankAccount(bankAccount.getId())
                 .description("check")
                 .to(address.getId())
+                .from(address.getId())
                 .amount(10.50)
                 .file("<h1 style='padding-top:4in;'>Demo Check for {{name}}</h1>")
                 .checkNumber(100)
@@ -165,6 +166,7 @@ public class CheckTest extends BaseTest {
         assertTrue(response instanceof CheckResponse);
         assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
         assertThat(response.getTo().getId(), is(address.getId()));
+        assertThat(response.getFrom().getId(), is(address.getId()));
         assertThat(response.getDescription(), is("check"));
 
         assertNull(response.getMessage());
@@ -172,7 +174,6 @@ public class CheckTest extends BaseTest {
         assertFalse(response.getUrl().isEmpty());
         assertTrue(response.getCheckNumber() > 0);
         assertTrue(response.getExpectedDeliveryDate() instanceof DateTime);
-        assertTrue(response.getPrice() instanceof Money);
         assertTrue(response.getAmount() instanceof Money);
         assertFalse(response.getThumbnails().isEmpty());
     }
@@ -185,7 +186,16 @@ public class CheckTest extends BaseTest {
         final CheckRequest request = CheckRequest.builder()
             .bankAccount(bankAccount.getId())
             .to(AddressRequest.builder()
-                .name("Lob")
+                .name("Lob To")
+                .line1("185 Berry Street")
+                .line2("Suite 1510")
+                .city("San Francisco")
+                .state("CA")
+                .zip("94107")
+                .country("US")
+                .build())
+            .from(AddressRequest.builder()
+                .name("Lob From")
                 .line1("185 Berry Street")
                 .line2("Suite 1510")
                 .city("San Francisco")
@@ -200,6 +210,7 @@ public class CheckTest extends BaseTest {
         final CheckResponse response = client.createCheck(request).get();
         assertTrue(response instanceof CheckResponse);
         assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
-        assertThat(response.getTo().getName(), is("Lob"));
+        assertThat(response.getTo().getName(), is("Lob To"));
+        assertThat(response.getFrom().getName(), is("Lob From"));
     }
 }
