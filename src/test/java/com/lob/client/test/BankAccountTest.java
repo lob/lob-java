@@ -58,19 +58,15 @@ public class BankAccountTest extends BaseTest {
         metadata.put("key0", value0);
         metadata.put("key1", value1);
 
-        final AddressResponse address = client.getAddresses(1).get().get(0);
         final BankAccountRequest.Builder builder = BankAccountRequest.builder()
             .routingNumber("122100024")
             .accountNumber("123456789")
-            .bankAddress(address.getId())
-            .accountAddress(address.getId())
             .signatory("John Doe")
             .description("bank account")
             .metadata(metadata);
 
         final BankAccountResponse response = client.createBankAccount(builder.build()).get();
         assertTrue(response instanceof BankAccountResponse);
-        assertThat(response.getAccountAddress().getId(), is(address.getId()));
         assertThat(response.getDescription(), is("bank account"));
         assertFalse(response.isVerified());
         assertFalse(response.getAccountNumber().isEmpty());
@@ -100,40 +96,6 @@ public class BankAccountTest extends BaseTest {
         assertFalse(request.getAccountNumber().isEmpty());
         assertFalse(request.getRoutingNumber().isEmpty());
         assertFalse(request.getSignatory().isEmpty());
-        assertTrue(request.getAccountAddress() instanceof Or);
-        assertTrue(request.getBankAddress() instanceof Or);
-    }
-
-    @Test
-    public void testCreateBankAccountInlineAddresses() throws Exception {
-        final BankAccountRequest request = BankAccountRequest.builder()
-            .routingNumber("122100024")
-            .accountNumber("123456789")
-            .bankAddress(AddressRequest.builder()
-                    .name("Lob0")
-                    .line1("185 Berry Street")
-                    .line2("Suite 1510")
-                    .city("San Francisco")
-                    .state("CA")
-                    .zip("94107")
-                    .country("US")
-                    .build())
-            .accountAddress(AddressRequest.builder()
-                    .name("Lob1")
-                    .line1("185 Berry Street")
-                    .line2("Suite 1510")
-                    .city("San Francisco")
-                    .state("CA")
-                    .zip("94107")
-                    .country("US")
-                    .build())
-            .signatory("John Doe")
-            .build();
-
-        final BankAccountResponse response = client.createBankAccount(request).get();
-        assertTrue(response instanceof BankAccountResponse);
-        assertThat(response.getBankAddress().getName(), is("Lob0"));
-        assertThat(response.getAccountAddress().getName(), is("Lob1"));
     }
 
     @Test
