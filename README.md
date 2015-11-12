@@ -45,7 +45,7 @@ Include the following in your `pom.xml` for Maven:
   <dependency>
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
-    <version>2.2.0</version>
+    <version>3.0.0</version>
   </dependency>
   ...
 </dependencies>
