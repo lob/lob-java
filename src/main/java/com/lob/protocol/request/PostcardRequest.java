@@ -1,6 +1,5 @@
 package com.lob.protocol.request;
 
-import com.lob.LobParamsBuilder;
 import com.lob.Or;
 import com.lob.id.AddressId;
 import com.lob.id.SettingId;
@@ -35,7 +34,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
 
         super(metadata, data, description);
         this.to = checkNotNull(to, "to is required");
-        this.from = checkNotNull(from, "from is required");
+        this.from = from;
         this.message = message;
         this.front = checkNotNull(front, "front is required");
         this.back = back;

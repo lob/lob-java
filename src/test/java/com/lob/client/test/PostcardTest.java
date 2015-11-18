@@ -126,6 +126,29 @@ public class PostcardTest extends BaseTest {
     }
 
     @Test
+    public void testCreatePostcardNoFrom() throws Exception {
+        final PostcardRequest request = PostcardRequest.builder()
+            .to(
+                AddressRequest.builder()
+                    .name("Lob0")
+                    .line1("185 Berry Street")
+                    .line2("Suite 1510")
+                    .city("San Francisco")
+                    .state("CA")
+                    .zip("94107")
+                    .country("US")
+                    .build())
+            .front("https://lob.com/4x6_postcard_template.pdf")
+            .back("https://lob.com/4x6_postcard_template.pdf")
+            .build();
+
+        final PostcardResponse response = client.createPostcard(request).get();
+        assertTrue(response instanceof PostcardResponse);
+        assertThat(response.getTo().getName(), is("Lob0"));
+        assertNull(response.getFrom());
+    }
+
+    @Test
     public void testCreatePostcardLocalFile() throws Exception {
         final AddressResponse address = Iterables.get(client.getAddresses(1).get(), 0);
         final File file = ClientUtil.fileFromResource("postcardfront.pdf");
