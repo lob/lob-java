@@ -72,9 +72,6 @@ public interface LobClient {
 
     public ListenableFuture<SettingResponseList> getSettings();
 
-    // Service methods
-    public ListenableFuture<ServiceResponseList> getServices();
-
     // Letter methods
     public ListenableFuture<LetterResponse> createLetter(final LetterRequest letterRequest);
 

@@ -189,11 +189,6 @@ public class AsyncLobClient implements LobClient {
     }
 
     @Override
-    public ListenableFuture<ServiceResponseList> getServices() {
-        return execute(ServiceResponseList.class, get(Router.SERVICES));
-    }
-
-    @Override
     public ListenableFuture<LetterResponse> createLetter(final LetterRequest letterRequest) {
         return execute(LetterResponse.class, post(Router.LETTERS, letterRequest));
     }
