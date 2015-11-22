@@ -79,6 +79,16 @@ public class AsyncLobClient implements LobClient {
     }
 
     @Override
+    public void close() {
+        this.httpClient.close();
+    }
+
+    @Override
+    public void closeAsynchronously() {
+        this.httpClient.closeAsynchronously();
+    }
+
+    @Override
     public ListenableFuture<JobResponse> createJob(final JobRequest jobRequest) {
         return execute(JobResponse.class, post(Router.JOBS, jobRequest));
     }

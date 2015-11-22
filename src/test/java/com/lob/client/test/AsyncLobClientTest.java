@@ -62,4 +62,14 @@ public class AsyncLobClientTest extends BaseTest {
         final ListenableFuture<AddressResponseList> responseList = lobClient.getAddresses();
         responseList.get();
     }
+
+    @Test
+    public void closeTest() throws Exception {
+        lobClient.close();
+    }
+
+    @Test
+    public void closeAsynchronouslyTest() throws Exception {
+        lobClient.closeAsynchronously();
+    }
 }
