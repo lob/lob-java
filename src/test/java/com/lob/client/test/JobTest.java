@@ -36,7 +36,6 @@ public class JobTest extends BaseTest {
         assertNotNull(responseList.toString());
         assertNotNull(response.toString());
         assertNotNull(response.getTracking());
-        assertNull(response.getService());
     }
 
     @Test

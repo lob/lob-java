@@ -16,7 +16,6 @@ public class JobResponse extends AbstractLobResponse {
     @JsonProperty("to") private final AddressResponse to;
     @JsonProperty("from") private final AddressResponse from;
     @JsonProperty("tracking") private final TrackingResponse tracking;
-    @JsonProperty("service") private final ServiceResponse service;
     @JsonProperty("objects") private final List<LobObjectResponse> objects;
 
     @JsonCreator
@@ -26,7 +25,6 @@ public class JobResponse extends AbstractLobResponse {
             @JsonProperty("to") final AddressResponse to,
             @JsonProperty("from") final AddressResponse from,
             @JsonProperty("tracking") final TrackingResponse tracking,
-            @JsonProperty("service") final ServiceResponse service,
             @JsonProperty("objects") final List<LobObjectResponse> objects,
             @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
@@ -39,7 +37,6 @@ public class JobResponse extends AbstractLobResponse {
         this.to = to;
         this.from = from;
         this.tracking = tracking;
-        this.service = service;
         this.objects = objects;
     }
 
@@ -63,10 +60,6 @@ public class JobResponse extends AbstractLobResponse {
         return tracking;
     }
 
-    public ServiceResponse getService() {
-        return service;
-    }
-
     public List<LobObjectResponse> getObjects() {
         return defensiveCopy(objects);
     }
@@ -79,7 +72,6 @@ public class JobResponse extends AbstractLobResponse {
             ", to=" + to +
             ", from=" + from +
             ", tracking='" + tracking + '\'' +
-            ", service=" + service +
             ", objects=" + objects +
             super.toString();
     }

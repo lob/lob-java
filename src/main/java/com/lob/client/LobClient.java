@@ -18,6 +18,10 @@ import java.util.Map;
 public interface LobClient {
     public final static String LOB_VERSION_HEADER = "Lob-Version";
 
+    public void close();
+
+    public void closeAsynchronously();
+
     // Job methods
     public ListenableFuture<JobResponse> createJob(final JobRequest jobRequest);
 
@@ -71,9 +75,6 @@ public interface LobClient {
     public ListenableFuture<SettingResponse> getSetting(final SettingId id);
 
     public ListenableFuture<SettingResponseList> getSettings();
-
-    // Service methods
-    public ListenableFuture<ServiceResponseList> getServices();
 
     // Letter methods
     public ListenableFuture<LetterResponse> createLetter(final LetterRequest letterRequest);
