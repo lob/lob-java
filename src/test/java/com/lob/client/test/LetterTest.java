@@ -87,9 +87,9 @@ public class LetterTest extends BaseTest {
         assertNull(response.getExtraService());
         assertFalse(response.isReturnEnvelope());
         assertNull(response.getPerforatedPage());
-        assertThat(response.getPages(), is(1));
+        assertThat(response.getPages(), is(0));
         assertTrue(response.getId() instanceof LetterId);
-        assertTrue(response.getPrice() instanceof Money);
+        assertNull(response.getPrice());
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
 

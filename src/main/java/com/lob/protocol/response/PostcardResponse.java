@@ -58,6 +58,7 @@ public class PostcardResponse extends AbstractLobResponse {
         return from;
     }
 
+    @Deprecated
     public Money getPrice() {
         return price;
     }

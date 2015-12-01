@@ -71,6 +71,7 @@ public class LetterResponse extends AbstractLobResponse {
 
     public boolean isDoubleSided() { return doubleSided; }
 
+    @Deprecated
     public int getPages() { return pages; }
 
     public boolean isTemplate() { return template; }
@@ -81,6 +82,7 @@ public class LetterResponse extends AbstractLobResponse {
 
     public Integer getPerforatedPage() { return perforatedPage; }
 
+    @Deprecated
     public Money getPrice() { return price; }
 
     public String getUrl() { return url; }

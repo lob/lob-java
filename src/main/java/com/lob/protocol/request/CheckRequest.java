@@ -14,7 +14,7 @@ import static com.lob.Util.checkNotNull;
 
 public class CheckRequest extends AbstractDataFieldRequest implements HasLobParams {
     public static final String LOGO = "logo";
-    public static final String FILE = "file";
+    public static final String CHECK_BOTTOM = "check_bottom";
 
     private final Integer checkNumber; // optional parameter, needs to be null if not set
     private final BankAccountId bankAccount;
@@ -24,7 +24,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
     private final String message;
     private final String memo;
     private final LobParam logo;
-    private final LobParam file;
+    private final LobParam checkBottom;
 
     public CheckRequest(
             final Integer checkNumber,
@@ -35,7 +35,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             final String message,
             final String memo,
             final LobParam logo,
-            final LobParam file,
+            final LobParam checkBottom,
             final Map<String, String> metadata,
             final Map<String, String> data,
             final String description) {
@@ -48,7 +48,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         this.message = message;
         this.memo = memo;
         this.logo = logo;
-        this.file = file;
+        this.checkBottom = checkBottom;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             .put("message", message)
             .put("memo", memo)
             .put(logo)
-            .put(file)
+            .put(checkBottom)
             .build();
     }
 
@@ -98,8 +98,13 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         return logo;
     }
 
+    @Deprecated
     public LobParam getFile() {
-        return file;
+        return getCheckBottom();
+    }
+
+    public LobParam getCheckBottom() {
+        return checkBottom;
     }
 
     @Override
@@ -113,7 +118,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             ", message='" + message + '\'' +
             ", memo='" + memo + '\'' +
             ", logo='" + logo + '\'' +
-            ", file='" + file + '\'' +
+            ", checkBottom='" + checkBottom + '\'' +
             super.toString();
     }
 
@@ -130,7 +135,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         private String message;
         private String memo;
         private LobParam logo;
-        private LobParam file;
+        private LobParam checkBottom;
 
         private Builder() {}
 
@@ -214,18 +219,33 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             return this;
         }
 
+        @Deprecated
         public Builder file(final String file) {
-            this.file = LobParam.strings(FILE, file);
-            return this;
+            return this.checkBottom(file);
         }
 
+        @Deprecated
         public Builder file(final File file) {
-            this.file = LobParam.file(FILE, file);
+            return this.checkBottom(file);
+        }
+
+        @Deprecated
+        public Builder file(final LobParam file) {
+            return this.checkBottom(file);
+        }
+
+        public Builder checkBottom(final String checkBottom) {
+            this.checkBottom = LobParam.strings(CHECK_BOTTOM, checkBottom);
             return this;
         }
 
-        public Builder file(final LobParam file) {
-            this.file = file;
+        public Builder checkBottom(final File checkBottom) {
+            this.checkBottom = LobParam.file(CHECK_BOTTOM, checkBottom);
+            return this;
+        }
+
+        public Builder checkBottom(final LobParam checkBottom) {
+            this.checkBottom = checkBottom;
             return this;
         }
 
@@ -239,14 +259,14 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
                 .message(message)
                 .memo(memo)
                 .logo(logo)
-                .file(file)
+                .checkBottom(checkBottom)
                 .metadata(metadata)
                 .data(data)
                 .description(description);
         }
 
         public CheckRequest build() {
-            return new CheckRequest(checkNumber, bankAccount, to, from, amount, message, memo, logo, file, metadata, data, description);
+            return new CheckRequest(checkNumber, bankAccount, to, from, amount, message, memo, logo, checkBottom, metadata, data, description);
         }
     }
 }
