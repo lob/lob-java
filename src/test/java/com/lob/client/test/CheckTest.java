@@ -205,6 +205,7 @@ public class CheckTest extends BaseTest {
                 .build())
             .amount(1000)
             .memo("Test Check")
+            .checkBottom("<h1 style='padding-top:4in;'>Demo Check</h1>")
             .build();
 
         final CheckResponse response = client.createCheck(request).get();
