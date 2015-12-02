@@ -168,7 +168,6 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
   - [API Changelog](https://lob.com/docs/java#changelog)
   - [HTML Examples](https://lob.com/docs/java#html-examples)
   - [Image Prepping](https://lob.com/docs/java#prepping)
-  - [Prints API Templates](https://lob.com/docs/java#prints-templates)
 
 ## Contributing
 
