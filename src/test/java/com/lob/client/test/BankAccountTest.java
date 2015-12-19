@@ -86,6 +86,7 @@ public class BankAccountTest extends BaseTest {
             .amounts(20, 40)
             .build();
         assertThat(verifyRequest.getAmounts(), is(Arrays.asList(20, 40)));
+        assertNotNull(verifyRequest.toString());
 
         final BankAccountResponse verifyResponse = client.verifyBankAccount(verifyRequest).get();
         assertTrue(verifyResponse.isVerified());
@@ -96,6 +97,7 @@ public class BankAccountTest extends BaseTest {
         assertFalse(request.getAccountNumber().isEmpty());
         assertFalse(request.getRoutingNumber().isEmpty());
         assertFalse(request.getSignatory().isEmpty());
+        assertNotNull(request.toString());
     }
 
     @Test

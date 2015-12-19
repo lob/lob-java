@@ -110,6 +110,7 @@ public class LobObjectTest extends BaseTest {
         assertTrue(request.getFile() instanceof LobParam);
         assertNull(request.getQuantity());
         assertTrue(request.getSetting() instanceof SettingId);
+        assertNotNull(request.toString());
     }
 
     @Test

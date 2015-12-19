@@ -2,19 +2,16 @@ package com.lob.client.test;
 
 import com.google.common.collect.Maps;
 import com.lob.LobApiException;
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
 import com.lob.id.AddressId;
 import com.lob.id.CountryCode;
 import com.lob.id.ZipCode;
 import com.lob.protocol.request.AddressRequest;
+import com.lob.protocol.request.Filter;
 import com.lob.protocol.request.Filters;
-import com.lob.protocol.request.VerifyAddressRequest;
 import com.lob.protocol.response.AddressDeleteResponse;
 import com.lob.protocol.response.AddressResponse;
 import com.lob.protocol.response.AddressResponseList;
 import com.lob.protocol.response.ErrorResponse;
-import com.lob.protocol.response.VerifyAddressResponse;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
@@ -50,10 +47,15 @@ public class AddressTest extends BaseTest {
         assertTrue(response instanceof AddressResponse);
         assertThat(addresses.getCount(), is(2));
 
+        final Filter filter1 = Filters.ofCount(1);
+        final Filter filter2 = Filters.ofCount(1).withOffset(2);
+        final Filter filter3 = Filters.ofOffset(2).withCount(1);
+        assertNotNull(filter1.toString());
+
         assertThat(client.getAddresses(1, 2).get().getCount(), is(1));
-        assertThat(client.getAddresses(Filters.ofCount(1)).get().getCount(), is(1));
-        assertThat(client.getAddresses(Filters.ofCount(1).withOffset(2)).get().getCount(), is(1));
-        assertThat(client.getAddresses(Filters.ofOffset(2).withCount(1)).get().getCount(), is(1));
+        assertThat(client.getAddresses(filter1).get().getCount(), is(1));
+        assertThat(client.getAddresses(filter2).get().getCount(), is(1));
+        assertThat(client.getAddresses(filter3).get().getCount(), is(1));
 
         assertFalse(addresses.isEmpty());
     }
@@ -134,6 +136,7 @@ public class AddressTest extends BaseTest {
         assertThat(request.getName(), is("Lob"));
         assertThat(request.getCompany(), is("Lob"));
         assertTrue(request.getZip() instanceof ZipCode);
+        assertNotNull(request.toString());
 
         final AddressId id = response.getId();
         final AddressResponse retrievedResponse = client.getAddress(id).get();
@@ -153,40 +156,5 @@ public class AddressTest extends BaseTest {
         assertThat(response.getId(), is(id));
         assertTrue(response.isDeleted());
         assertNotNull(response.toString());
-    }
-
-    @Test
-    public void testAddressVerification() throws Exception {
-        final VerifyAddressRequest.Builder builder = VerifyAddressRequest.builder()
-            .line1("220 William T Morrissey")
-            .line2("Suite 1510")
-            .city("Boston")
-            .state("MA")
-            .zip("02125")
-            .country("US");
-
-        final VerifyAddressResponse response = client.verifyAddress(builder.build()).get();
-        assertThat(response.getLine1(), is("220 WILLIAM T MORRISSEY BLVD"));
-        assertFalse(response.getLine2().isEmpty());
-        assertFalse(response.getCity().isEmpty());
-        assertFalse(response.getState().isEmpty());
-        assertTrue(response.getZip() instanceof ZipCode);
-        assertTrue(response.getCountry() instanceof CountryCode);
-        assertThat(response.getObject(), is("address"));
-        assertNull(response.getMessage());
-        assertNotNull(response.toString());
-    }
-
-    @Test
-    public void testAddressVerificationMessage() throws Exception {
-        final VerifyAddressRequest.Builder builder = VerifyAddressRequest.builder()
-            .line1("185 Berry St.")
-            .city("San Francisco")
-            .state("CA")
-            .zip("94107")
-            .country("US");
-
-        final VerifyAddressResponse response = client.verifyAddress(builder.build()).get();
-        assertNotNull(response.getMessage());
     }
 }

@@ -22,6 +22,7 @@ import org.joda.time.DateTime;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
@@ -46,7 +47,9 @@ public class AreaMailTest extends BaseTest {
             .targetType(TargetType.ALL)
             .metadata(metadata);
 
-        final AreaMailResponse response = client.createAreaMail(builder.build()).get();
+        final AreaMailRequest request1 = builder.build();
+        assertNotNull(request1.toString());
+        final AreaMailResponse response = client.createAreaMail(request1).get();
         assertTrue(response instanceof AreaMailResponse);
 
         final ZipCodeRouteRequest routeRequest = ZipCodeRouteRequest.builder().addStringZips("94158").build();
@@ -73,19 +76,54 @@ public class AreaMailTest extends BaseTest {
         assertThat(metadataResponse.getId(), is(response.getId()));
 
         final ZipCodeRouteId routeId = ZipCodeRouteId.parse("94158-C001");
+        assertNotNull(routeId.toString());
         assertTrue(routeId.getRouteId() instanceof RouteId);
         assertTrue(routeId.getZipCode() instanceof ZipCode);
-
-        final AreaMailRequest request = builder.build();
-        assertTrue(request.getBack() instanceof LobParam);
-        assertTrue(request.getFront() instanceof LobParam);
-        assertTrue(request.getRoutes() instanceof OrCollection);
-        assertTrue(request.getTargetType() instanceof TargetType);
 
         final AreaMailId id = response.getId();
         final AreaMailResponse retrievedResponse = client.getAreaMail(id).get();
         assertThat(retrievedResponse.getId(), is(id));
         assertNotNull(retrievedResponse.toString());
+
+        final AreaMailRequest otherRequest = builder.butWith()
+                .front(LobParam.file("front", ClientUtil.fileFromResource("areafront.pdf")))
+                .back(LobParam.file("back", ClientUtil.fileFromResource("areaback.pdf")))
+                .routesForZips(ZipCode.parse("94158"), ZipCode.parse("94107"))
+                .build();
+        assertTrue(otherRequest.getBack() instanceof LobParam);
+        assertTrue(otherRequest.getFront() instanceof LobParam);
+        assertTrue(otherRequest.getRoutes() instanceof OrCollection);
+        assertTrue(otherRequest.getTargetType() instanceof TargetType);
+
+        final AreaMailRequest request2 = builder.butWith()
+                .routesForZips(Arrays.asList(ZipCode.parse("94158"), ZipCode.parse("94107")))
+                .build();
+        assertTrue(request2.getBack() instanceof LobParam);
+        assertTrue(request2.getFront() instanceof LobParam);
+        assertTrue(request2.getRoutes() instanceof OrCollection);
+
+        final AreaMailRequest request3 = builder.butWith()
+                .routesForZips(Arrays.asList(ZipCode.parse("94158"), ZipCode.parse("94107")))
+                .build();
+        assertTrue(request3.getBack() instanceof LobParam);
+        assertTrue(request3.getFront() instanceof LobParam);
+        assertTrue(request3.getRoutes() instanceof OrCollection);
+
+        final AreaMailRequest request4 = builder.butWith()
+                .routesForIds(ZipCode.parse("94158").toZipCodeRouteId(RouteId.parse("C001")))
+                .build();
+        assertTrue(request4.getRoutes() instanceof OrCollection);
+
+        final AreaMailRequest request5 = builder.butWith()
+                .routesForIds(Arrays.asList(routeId))
+                .build();
+        assertTrue(request5.getRoutes() instanceof OrCollection);
+
+        final OrCollection<ZipCode, ZipCodeRouteId> routes = OrCollection.typeB(Arrays.asList(routeId));
+        final AreaMailRequest request6 = builder.butWith()
+                .routes(routes)
+                .build();
+        assertTrue(request6.getRoutes() instanceof OrCollection);
     }
 
     @Test

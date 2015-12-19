@@ -5,11 +5,9 @@ import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
 import com.lob.LobApiException;
 import com.lob.Or;
+import com.lob.Util;
 import com.lob.id.BankAccountId;
-import com.lob.protocol.request.AddressRequest;
-import com.lob.protocol.request.BankAccountVerifyRequest;
-import com.lob.protocol.request.CheckRequest;
-import com.lob.protocol.request.Filters;
+import com.lob.protocol.request.*;
 import com.lob.protocol.response.AddressResponse;
 import com.lob.protocol.response.BankAccountResponse;
 import com.lob.protocol.response.CheckResponse;
@@ -106,7 +104,9 @@ public class CheckTest extends BaseTest {
             .memo("Test Check")
             .metadata(metadata);
 
-        final CheckResponse response = client.createCheck(builder.build()).get();
+        final CheckRequest request = builder.build();
+        assertNotNull(request.toString());
+        final CheckResponse response = client.createCheck(request).get();
         assertTrue(response instanceof CheckResponse);
         assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
         assertThat(response.getTo().getId(), is(address.getId()));
@@ -162,13 +162,14 @@ public class CheckTest extends BaseTest {
                 .memo("Test Check")
                 .data(data);
 
-        final CheckResponse response = client.createCheck(builder.build()).get();
+        final CheckRequest request = builder.build();
+        assertNotNull(request.getFile());
+        final CheckResponse response = client.createCheck(request).get();
         assertTrue(response instanceof CheckResponse);
         assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
         assertThat(response.getTo().getId(), is(address.getId()));
         assertThat(response.getFrom().getId(), is(address.getId()));
         assertThat(response.getDescription(), is("check"));
-
         assertNull(response.getMessage());
         assertFalse(response.getMemo().isEmpty());
         assertFalse(response.getUrl().isEmpty());
@@ -178,6 +179,40 @@ public class CheckTest extends BaseTest {
         assertFalse(response.getThumbnails().isEmpty());
     }
 
+    @Test
+    public void testCreateCheckWithLocalFile() throws Exception {
+        final Map<String, String> data = Maps.newHashMap();
+        data.put("name", "Donald");
+        final AddressResponse address = getAddress();
+        final BankAccountResponse bankAccount = getAndVerifyBankAccount();
+
+        final CheckRequest.Builder builder = CheckRequest.builder()
+                .bankAccount(bankAccount.getId())
+                .description("check")
+                .to(address.getId())
+                .from(address.getId())
+                .amount(10.50)
+                .file(ClientUtil.fileFromResource("8.5x11.pdf"))
+                .checkNumber(100)
+                .memo("Test Check")
+                .data(data);
+
+        final CheckRequest request1 = builder.build();
+        assertNotNull(request1.getFile());
+        final CheckResponse response1 = client.createCheck(request1).get();
+        assertTrue(response1 instanceof CheckResponse);
+        assertThat(response1.getDescription(), is("check"));
+        assertFalse(response1.getUrl().isEmpty());
+
+        final CheckRequest request2 = builder
+                .butWith()
+                .file(LobParam.file("check_bottom", ClientUtil.fileFromResource("8.5x11.pdf")))
+                .build();
+        final CheckResponse response2 = client.createCheck(request2).get();
+        assertTrue(response2 instanceof CheckResponse);
+        assertThat(response2.getDescription(), is("check"));
+        assertFalse(response2.getUrl().isEmpty());
+    }
 
     @Test
     public void testCreateCheckInline() throws Exception {

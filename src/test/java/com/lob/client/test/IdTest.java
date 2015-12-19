@@ -41,12 +41,6 @@ public class IdTest extends BaseTest {
         assertEquals(ServiceId.create(1).getId(), 1);
     }
 
-    private static class FakeId extends LobId {
-        public FakeId(final String id) {
-            super(Prefix.ADDRESS, id);
-        }
-    }
-
     @Test
     public void testLobId() throws Exception {
         final LobId id = AddressId.parse("adr_1111111111111111");

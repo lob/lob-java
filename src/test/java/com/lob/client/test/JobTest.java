@@ -5,8 +5,6 @@ import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
 import com.lob.Or;
 import com.lob.OrCollection;
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.Filters;
 import com.lob.protocol.request.JobRequest;
@@ -89,6 +87,7 @@ public class JobTest extends BaseTest {
         assertTrue(otherRequest.getTo() instanceof Or);
         assertTrue(otherRequest.getObjects() instanceof OrCollection);
         assertNull(otherRequest.getService());
+        assertNotNull(otherRequest.toString());
 
     }
 
