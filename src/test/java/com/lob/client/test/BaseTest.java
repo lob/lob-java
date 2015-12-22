@@ -8,7 +8,7 @@ import org.junit.BeforeClass;
 import org.slf4j.LoggerFactory;
 
 public abstract class BaseTest {
-    protected final static LobClient client = AsyncLobClient.createDefault("test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc");
+    protected final static LobClient client = AsyncLobClient.createDefault("test_7b1960d06d6dfe28d3862b98380b8b0dc93");
 
     @BeforeClass
     public static void beforeClass() {

@@ -13,8 +13,7 @@ import com.lob.protocol.response.LobObjectResponse;
 
 public class JobExample extends BaseExample {
     public static void main(final String[] args) throws Exception {
-        final String apiKey = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc"; // Replace this API key with your own.
-        final LobClient client = AsyncLobClient.createDefault(apiKey);
+        final LobClient client = AsyncLobClient.createDefault(API_KEY);
 
         // Creating an Address Object
         final AddressRequest exampleAddressRequest = AddressRequest.builder()

@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class BaseExample {
+
+    protected static final String API_KEY = "test_7b1960d06d6dfe28d3862b98380b8b0dc93"; // Replace this API key with your own.
+
     public static void printResponse(final String name, final Object response) {
         System.out.println(name);
         System.out.println("=======================================================");
