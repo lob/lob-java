@@ -44,9 +44,4 @@ public final class Util {
         }
         return copy;
     }
-
-    public static <T> T print(final T t) {
-        System.out.println(t);
-        return t;
-    }
 }

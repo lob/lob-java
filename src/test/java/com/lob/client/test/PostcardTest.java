@@ -6,6 +6,8 @@ import com.lob.ClientUtil;
 import com.lob.Or;
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
+import com.lob.id.AddressId;
+import com.lob.id.SettingId;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.Filters;
 import com.lob.protocol.request.LobParam;
@@ -63,14 +65,17 @@ public class PostcardTest extends BaseTest {
         final AddressResponse address = Iterables.get(client.getAddresses(1).get(), 0);
 
         final PostcardRequest.Builder builder = PostcardRequest.builder()
-            .description("postcard")
-            .to(address.getId())
-            .from(address.getId())
-            .front("https://lob.com/4x6_postcard_template.pdf")
-            .back("https://lob.com/4x6_postcard_template.pdf")
-            .metadata(metadata);
+                .description("postcard")
+                .to(address.getId())
+                .from(address.getId())
+                .front("<h1>testing</h1>")
+                .back("<h1>testing</h1>")
+                .setting(SettingId.parse(1002))
+                .metadata(metadata);
 
-        final PostcardResponse response = client.createPostcard(builder.build()).get();
+        final PostcardRequest request1 = builder.build();
+        assertNotNull(request1.toString());
+        final PostcardResponse response = client.createPostcard(request1).get();
         assertTrue(response instanceof PostcardResponse);
         assertThat(response.getTo().getId(), is(address.getId()));
         assertThat(response.getDescription(), is("postcard"));
@@ -83,41 +88,47 @@ public class PostcardTest extends BaseTest {
 
         assertNull(response.getPrice());
 
-        final PostcardRequest request = builder.build();
-        assertNull(request.getMessage());
-        assertTrue(request.getBack() instanceof LobParam);
-        assertTrue(request.getFrom() instanceof Or);
-        assertTrue(request.getFront() instanceof LobParam);
-        assertNull(request.getSetting());
-        assertTrue(request.getTo() instanceof Or);
+        final Or<AddressId, AddressRequest> orAddress = Or.typeA(address.getId());
+        final PostcardRequest request2 = builder
+                .butWith()
+                .to(orAddress)
+                .from(orAddress)
+                .message("Hello World!")
+                .build();
+        assertTrue(request2.getBack() instanceof LobParam);
+        assertEquals(request2.getMessage(), "Hello World!");
+        assertTrue(request2.getFrom() instanceof Or);
+        assertTrue(request2.getFront() instanceof LobParam);
+        assertEquals(request2.getSetting(), SettingId.parse(1002));
+        assertTrue(request2.getTo() instanceof Or);
     }
 
     @Test
     public void testCreatePostcardInline() throws Exception {
         final PostcardRequest request = PostcardRequest.builder()
-            .to(
-                AddressRequest.builder()
-                    .name("Lob0")
-                    .line1("185 Berry Street")
-                    .line2("Suite 1510")
-                    .city("San Francisco")
-                    .state("CA")
-                    .zip("94107")
-                    .country("US")
-                    .build())
-            .from(
-                AddressRequest.builder()
-                    .name("Lob1")
-                    .line1("185 Berry Street")
-                    .line2("Suite 1510")
-                    .city("San Francisco")
-                    .state("CA")
-                    .zip("94107")
-                    .country("US")
-                    .build())
-            .front("https://lob.com/4x6_postcard_template.pdf")
-            .back("https://lob.com/4x6_postcard_template.pdf")
-            .build();
+                .to(
+                        AddressRequest.builder()
+                                .name("Lob0")
+                                .line1("185 Berry Street")
+                                .line2("Suite 1510")
+                                .city("San Francisco")
+                                .state("CA")
+                                .zip("94107")
+                                .country("US")
+                                .build())
+                .from(
+                        AddressRequest.builder()
+                                .name("Lob1")
+                                .line1("185 Berry Street")
+                                .line2("Suite 1510")
+                                .city("San Francisco")
+                                .state("CA")
+                                .zip("94107")
+                                .country("US")
+                                .build())
+                .front(LobParam.file("front", ClientUtil.fileFromResource("postcardfront.pdf")))
+                .back(LobParam.file("back", ClientUtil.fileFromResource("postcardback.pdf")))
+                .build();
 
         final PostcardResponse response = client.createPostcard(request).get();
         assertTrue(response instanceof PostcardResponse);
@@ -128,19 +139,19 @@ public class PostcardTest extends BaseTest {
     @Test
     public void testCreatePostcardNoFrom() throws Exception {
         final PostcardRequest request = PostcardRequest.builder()
-            .to(
-                AddressRequest.builder()
-                    .name("Lob0")
-                    .line1("185 Berry Street")
-                    .line2("Suite 1510")
-                    .city("San Francisco")
-                    .state("CA")
-                    .zip("94107")
-                    .country("US")
-                    .build())
-            .front("https://lob.com/4x6_postcard_template.pdf")
-            .back("https://lob.com/4x6_postcard_template.pdf")
-            .build();
+                .to(
+                        AddressRequest.builder()
+                                .name("Lob0")
+                                .line1("185 Berry Street")
+                                .line2("Suite 1510")
+                                .city("San Francisco")
+                                .state("CA")
+                                .zip("94107")
+                                .country("US")
+                                .build())
+                .front("https://lob.com/4x6_postcard_template.pdf")
+                .back("https://lob.com/4x6_postcard_template.pdf")
+                .build();
 
         final PostcardResponse response = client.createPostcard(request).get();
         assertTrue(response instanceof PostcardResponse);
@@ -154,11 +165,11 @@ public class PostcardTest extends BaseTest {
         final File file = ClientUtil.fileFromResource("postcardfront.pdf");
 
         final PostcardRequest request = PostcardRequest.builder()
-            .to(address.getId())
-            .from(address.getId())
-            .front(file)
-            .back(file)
-            .build();
+                .to(address.getId())
+                .from(address.getId())
+                .front(file)
+                .back(file)
+                .build();
 
         final PostcardResponse response = client.createPostcard(request).get();
         assertTrue(response instanceof PostcardResponse);

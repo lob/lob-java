@@ -143,6 +143,7 @@ public class LetterTest extends BaseTest {
         final LetterRequest request = builder.build();
 
         assertThat(request.getExtraService(), is(extraService));
+        assertNotNull(request.toString());
 
         final LetterResponse response = client.createLetter(request).get();
 
