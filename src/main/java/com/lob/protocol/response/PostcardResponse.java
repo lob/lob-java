@@ -11,7 +11,7 @@ import java.util.Map;
 public class PostcardResponse extends AbstractLobResponse {
     @JsonProperty private final PostcardId id;
     @JsonProperty private final String message;
-    @JsonProperty private final SettingResponse setting;
+    @JsonProperty private final String size;
     @JsonProperty private final AddressResponse to;
     @JsonProperty private final AddressResponse from;
     @JsonProperty private final Money price;
@@ -20,7 +20,7 @@ public class PostcardResponse extends AbstractLobResponse {
     public PostcardResponse(
             @JsonProperty("id") final PostcardId id,
             @JsonProperty("message") final String message,
-            @JsonProperty("setting") final SettingResponse setting,
+            @JsonProperty("size") final String size,
             @JsonProperty("to") final AddressResponse to,
             @JsonProperty("from") final AddressResponse from,
             @JsonProperty("price") final Money price,
@@ -32,7 +32,7 @@ public class PostcardResponse extends AbstractLobResponse {
         super(description, dateCreated, dateModified, metadata, object);
         this.id = id;
         this.message = message;
-        this.setting = setting;
+        this.size = size;
         this.to = to;
         this.from = from;
         this.price = price;
@@ -46,8 +46,8 @@ public class PostcardResponse extends AbstractLobResponse {
         return message;
     }
 
-    public SettingResponse getSetting() {
-        return setting;
+    public String getSize() {
+        return size;
     }
 
     public AddressResponse getTo() {
@@ -68,7 +68,7 @@ public class PostcardResponse extends AbstractLobResponse {
         return "PostcardResponse{" +
             "id=" + id +
             ", message='" + message + '\'' +
-            ", setting=" + setting +
+            ", size=" + size +
             ", to=" + to +
             ", from=" + from +
             ", price='" + price + '\'' +

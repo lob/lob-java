@@ -19,7 +19,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
     private final String message;
     private final LobParam front;
     private final LobParam back;
-    private final SettingId setting;
+    private final String size;
 
     public PostcardRequest(
             final Or<AddressId, AddressRequest> to,
@@ -27,7 +27,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
             final String message,
             final LobParam front,
             final LobParam back,
-            final SettingId setting,
+            final String size,
             final Map<String, String> metadata,
             final Map<String, String> data,
             final String description) {
@@ -38,7 +38,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
         this.message = message;
         this.front = checkNotNull(front, "front is required");
         this.back = back;
-        this.setting = setting;
+        this.size = size;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
             .put("to", to)
             .put("from", from)
             .put("message", message)
-            .put("setting", setting)
+            .put("size", size)
             .put(front)
             .put(back)
             .build();
@@ -73,8 +73,8 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
         return back;
     }
 
-    public SettingId getSetting() {
-        return setting;
+    public String getSize() {
+      return size;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
             ", message='" + message + '\'' +
             ", front='" + front + '\'' +
             ", back='" + back + '\'' +
-            ", setting=" + setting +
+            ", size=" + size +
             super.toString();
     }
 
@@ -99,7 +99,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
         private String message;
         private LobParam front;
         private LobParam back;
-        private SettingId setting;
+        private String size;
 
         private Builder() {}
 
@@ -168,8 +168,8 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
             return this;
         }
 
-        public Builder setting(final SettingId setting) {
-            this.setting = setting;
+        public Builder size(final String size) {
+            this.size = size;
             return this;
         }
 
@@ -180,14 +180,14 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
                 .message(message)
                 .front(front)
                 .back(back)
-                .setting(setting)
+                .size(size)
                 .metadata(metadata)
                 .data(data)
                 .description(description);
         }
 
         public PostcardRequest build() {
-            return new PostcardRequest(to, from, message, front, back, setting, metadata, data, description);
+            return new PostcardRequest(to, from, message, front, back, size, metadata, data, description);
         }
     }
 }

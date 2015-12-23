@@ -37,7 +37,6 @@ public class PostcardTest extends BaseTest {
         assertNotNull(responseList.toString());
         assertNotNull(response.toString());
         assertNull(response.getMessage());
-        assertNull(response.getSetting());
     }
 
     @Test
@@ -70,7 +69,7 @@ public class PostcardTest extends BaseTest {
                 .from(address.getId())
                 .front("<h1>testing</h1>")
                 .back("<h1>testing</h1>")
-                .setting(SettingId.parse(1002))
+                .size("6x11")
                 .metadata(metadata);
 
         final PostcardRequest request1 = builder.build();
@@ -80,6 +79,7 @@ public class PostcardTest extends BaseTest {
         assertThat(response.getTo().getId(), is(address.getId()));
         assertThat(response.getDescription(), is("postcard"));
         assertThat(response.getFrom().getId(), is(address.getId()));
+        assertThat(response.getSize(), is("6x11"));
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
 
@@ -99,7 +99,7 @@ public class PostcardTest extends BaseTest {
         assertEquals(request2.getMessage(), "Hello World!");
         assertTrue(request2.getFrom() instanceof Or);
         assertTrue(request2.getFront() instanceof LobParam);
-        assertEquals(request2.getSetting(), SettingId.parse(1002));
+        assertEquals(request2.getSize(), "6x11");
         assertTrue(request2.getTo() instanceof Or);
     }
 
