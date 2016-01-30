@@ -408,9 +408,9 @@ public class AsyncLobClient implements LobClient {
 
     private BoundRequestBuilder get(final String resourceUrl, final Filter filter) {
         final FluentStringsMap paramMap = new FluentStringsMap();
-        final Integer count = filter.getCount();
-        if (count != null) {
-            paramMap.add("count", Integer.toString(count));
+        final Integer limit = filter.getLimit();
+        if (limit != null) {
+            paramMap.add("limit", Integer.toString(limit));
         }
 
         final Integer offset = filter.getOffset();
@@ -429,11 +429,11 @@ public class AsyncLobClient implements LobClient {
     }
 
     private BoundRequestBuilder get(final String resourceUrl, final int count) {
-        return get(resourceUrl, Filters.ofCount(count));
+        return get(resourceUrl, Filters.ofLimit(count));
     }
 
     private BoundRequestBuilder get(final String resourceUrl, final int count, final int offset) {
-        return get(resourceUrl, Filters.ofCount(count).withOffset(offset));
+        return get(resourceUrl, Filters.ofLimit(count).withOffset(offset));
     }
 
     private BoundRequestBuilder get(final String resourceUrl, final FluentStringsMap params) {

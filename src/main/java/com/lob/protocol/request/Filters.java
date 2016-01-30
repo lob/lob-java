@@ -3,8 +3,8 @@ package com.lob.protocol.request;
 import java.util.Map;
 
 public class Filters {
-    public static Filter ofCount(final int count) {
-        return new Filter(count, null, null);
+    public static Filter ofLimit(final int limit) {
+        return new Filter(limit, null, null);
     }
 
     public static Filter ofOffset(final int offset) {

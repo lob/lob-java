@@ -3,18 +3,18 @@ package com.lob.protocol.request;
 import java.util.Map;
 
 public class Filter {
-    private Integer count;
+    private Integer limit;
     private Integer offset;
     private Map<String, String> metadata;
 
     public Filter(final Integer count, final Integer offset, final Map<String, String> metadata) {
-        this.count = count;
+        this.limit = count;
         this.offset = offset;
         this.metadata = metadata;
     }
 
-    public Filter withCount(final int count) {
-        this.count = count;
+    public Filter withLimit(final int limit) {
+        this.limit = limit;
         return this;
     }
 
@@ -28,8 +28,8 @@ public class Filter {
         return this;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getLimit() {
+        return limit;
     }
 
     public Integer getOffset() {
@@ -43,7 +43,7 @@ public class Filter {
     @Override
     public String toString() {
         return "Filter{" +
-            "count=" + count +
+            "limit=" + limit +
             ", offset=" + offset +
             ", metadata=" + metadata +
             '}';

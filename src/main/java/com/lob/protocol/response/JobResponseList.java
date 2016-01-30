@@ -8,10 +8,8 @@ public class JobResponseList extends AbstractPagedResponseList<JobResponse> {
     public JobResponseList(
             @JsonProperty("data") final List<JobResponse> data,
             @JsonProperty("object") final String object,
-            @JsonProperty("next_url") final String nextUrl,
-            @JsonProperty("previous_url") final String previousUrl,
             @JsonProperty("count") final int count) {
-        super(data, object, nextUrl, previousUrl, count);
+        super(data, object, count);
     }
 
     @Override

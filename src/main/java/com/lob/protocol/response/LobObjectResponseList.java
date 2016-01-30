@@ -8,10 +8,8 @@ public class LobObjectResponseList extends AbstractPagedResponseList<LobObjectRe
     public LobObjectResponseList(
             @JsonProperty("data") final List<LobObjectResponse> data,
             @JsonProperty("object") final String object,
-            @JsonProperty("next_url") final String nextUrl,
-            @JsonProperty("previous_url") final String previousUrl,
             @JsonProperty("count") final int count) {
-        super(data, object, nextUrl, previousUrl, count);
+        super(data, object, count);
     }
 
     @Override
