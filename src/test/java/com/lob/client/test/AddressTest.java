@@ -33,9 +33,7 @@ public class AddressTest extends BaseTest {
 
         assertFalse(addresses.isEmpty());
         assertFalse(addresses.getData().isEmpty());
-        assertFalse(addresses.getNextUrl().isEmpty());
         assertTrue(addresses.getCount() > 0);
-        assertNull(addresses.getPreviousUrl());
         assertNotNull(addresses.toString());
         assertNotNull(response.toString());
     }
@@ -47,9 +45,9 @@ public class AddressTest extends BaseTest {
         assertTrue(response instanceof AddressResponse);
         assertThat(addresses.getCount(), is(2));
 
-        final Filter filter1 = Filters.ofCount(1);
-        final Filter filter2 = Filters.ofCount(1).withOffset(2);
-        final Filter filter3 = Filters.ofOffset(2).withCount(1);
+        final Filter filter1 = Filters.ofLimit(1);
+        final Filter filter2 = Filters.ofLimit(1).withOffset(2);
+        final Filter filter3 = Filters.ofOffset(2).withLimit(1);
         assertNotNull(filter1.toString());
 
         assertThat(client.getAddresses(1, 2).get().getCount(), is(1));
@@ -117,7 +115,7 @@ public class AddressTest extends BaseTest {
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
 
-        final AddressResponse metadataResponse = client.getAddresses(Filters.ofMetadata(metadata).withMetadata(metadata).withCount(1)).get().get(0);
+        final AddressResponse metadataResponse = client.getAddresses(Filters.ofMetadata(metadata).withMetadata(metadata).withLimit(1)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));
 
         client.createAddress(builder.butWith()

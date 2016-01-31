@@ -8,10 +8,8 @@ public class BankAccountResponseList extends AbstractPagedResponseList<BankAccou
     public BankAccountResponseList(
             @JsonProperty("data") final List<BankAccountResponse> data,
             @JsonProperty("object") final String object,
-            @JsonProperty("next_url") final String nextUrl,
-            @JsonProperty("previous_url") final String previousUrl,
             @JsonProperty("count") final int count) {
-        super(data, object, nextUrl, previousUrl, count);
+        super(data, object, count);
     }
 
     @Override

@@ -8,10 +8,8 @@ public class PostcardResponseList extends AbstractPagedResponseList<PostcardResp
     public PostcardResponseList(
             @JsonProperty("data") final List<PostcardResponse> data,
             @JsonProperty("object") final String object,
-            @JsonProperty("next_url") final String nextUrl,
-            @JsonProperty("previous_url") final String previousUrl,
             @JsonProperty("count") final int count) {
-        super(data, object, nextUrl, previousUrl, count);
+        super(data, object, count);
     }
 
     @Override
