@@ -3,11 +3,10 @@ package com.lob.protocol.response;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.LetterId;
-import com.lob.protocol.request.LetterRequest;
 import org.joda.money.Money;
 import org.joda.time.DateTime;
 
-import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class LetterResponse extends AbstractLobResponse {
@@ -24,6 +23,8 @@ public class LetterResponse extends AbstractLobResponse {
     @JsonProperty private final Money price;
     @JsonProperty private final String url;
     @JsonProperty private final DateTime expectedDeliveryDate;
+    @JsonProperty private final List<ThumbnailResponse> thumbnails;
+    @JsonProperty private final TrackingResponse tracking;
 
     @JsonCreator
     public LetterResponse(
@@ -40,6 +41,8 @@ public class LetterResponse extends AbstractLobResponse {
             @JsonProperty("price") final Money price,
             @JsonProperty("url") final String url,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
+            @JsonProperty("thumbnails") final List<ThumbnailResponse> thumbnails,
+            @JsonProperty("tracking") final TrackingResponse tracking,
             @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
@@ -59,6 +62,8 @@ public class LetterResponse extends AbstractLobResponse {
         this.price = price;
         this.url = url;
         this.expectedDeliveryDate = expectedDeliveryDate;
+        this.thumbnails = thumbnails;
+        this.tracking = tracking;
     }
 
     public LetterId getId() { return id; }
@@ -89,6 +94,10 @@ public class LetterResponse extends AbstractLobResponse {
 
     public DateTime getExpectedDeliveryDate() { return expectedDeliveryDate; }
 
+    public List<ThumbnailResponse> getThumbnails() { return thumbnails; }
+
+    public TrackingResponse getTracking() { return tracking; }
+
     @Override
     public String toString() {
         return "LetterResponse{" +
@@ -105,6 +114,8 @@ public class LetterResponse extends AbstractLobResponse {
                 ", price='" + price + "'" +
                 ", url='" + url + "'" +
                 ", expectedDeliveryDate='" + expectedDeliveryDate + "'" +
+                ", thumbnails='" + thumbnails + "'" +
+                ", tracking='" + tracking + "'" +
                 super.toString();
 
     }

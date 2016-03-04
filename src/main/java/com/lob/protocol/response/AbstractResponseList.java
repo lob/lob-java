@@ -3,7 +3,6 @@ package com.lob.protocol.response;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 

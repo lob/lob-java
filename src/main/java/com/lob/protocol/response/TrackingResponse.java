@@ -4,17 +4,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.TrackingId;
 
-import java.util.Collection;
-
-import static com.lob.Util.defensiveCopy;
-
+import java.util.List;
 
 public class TrackingResponse {
     @JsonProperty("id") private final TrackingId id;
     @JsonProperty("tracking_number") private final String trackingNumber;
 	@JsonProperty("carrier") private final String carrier;
 	@JsonProperty("link") private final String link;
-	@JsonProperty("events") private final Collection<String> events; // TODO: figure out what type events are
+	@JsonProperty("events") private final List<TrackingEventResponse> events;
 	@JsonProperty("object") private final String object;
 
     @JsonCreator
@@ -23,7 +20,7 @@ public class TrackingResponse {
         @JsonProperty("tracking_number") final String trackingNumber,
         @JsonProperty("carrier") final String carrier,
         @JsonProperty("link") final String link,
-        @JsonProperty("events") final Collection<String> events,
+        @JsonProperty("events") final List<TrackingEventResponse> events,
         @JsonProperty("object") final String object) {
             this.id = id;
             this.trackingNumber = trackingNumber;
@@ -49,8 +46,8 @@ public class TrackingResponse {
         return link;
     }
 
-    public Collection<String> getEvents() {
-        return defensiveCopy(events);
+    public List<TrackingEventResponse> getEvents() {
+        return events;
     }
 
     public String getObject() {
