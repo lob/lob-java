@@ -4,18 +4,13 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
 import com.lob.Or;
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
 import com.lob.id.AddressId;
-import com.lob.id.SettingId;
+import com.lob.id.PostcardId;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.Filters;
 import com.lob.protocol.request.LobParam;
 import com.lob.protocol.request.PostcardRequest;
-import com.lob.protocol.response.AddressResponse;
-import com.lob.protocol.response.PostcardResponse;
-import com.lob.protocol.response.PostcardResponseList;
-import org.joda.money.Money;
+import com.lob.protocol.response.*;
 import org.junit.Test;
 
 import java.io.File;
@@ -24,6 +19,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.*;
 
 public class PostcardTest extends BaseTest {
@@ -78,6 +74,9 @@ public class PostcardTest extends BaseTest {
         assertTrue(response instanceof PostcardResponse);
         assertThat(response.getTo().getId(), is(address.getId()));
         assertThat(response.getDescription(), is("postcard"));
+        assertThat(response.getUrl(), containsString(response.getId().toString()));
+        assertNotNull(response.getExpectedDeliveryDate());
+        assertEquals(response.getThumbnails().size(), 2);
         assertThat(response.getFrom().getId(), is(address.getId()));
         assertThat(response.getSize(), is("6x11"));
         assertThat(response.getMetadata().get("key0"), is(value0));
@@ -176,5 +175,26 @@ public class PostcardTest extends BaseTest {
 
         final PostcardResponse retrievedResponse = client.getPostcard(response.getId()).get();
         assertThat(retrievedResponse.getId(), is(response.getId()));
+    }
+
+    @Test
+    public void testTrackingEvents() throws Exception {
+        final PostcardResponse response = client.getPostcard(PostcardId.parse("psc_d1f8830b03cde4ef")).get();
+        final TrackingResponse trackings = response.getTracking();
+
+        assertEquals(trackings.getId().toString(), "trk_b4bb17e6d0e5c3d4");
+        assertEquals(trackings.getTrackingNumber(), "897714123456789");
+        assertEquals(trackings.getCarrier(), "USPS");
+        assertNull(trackings.getLink());
+        assertEquals(trackings.getEvents().size(), 1);
+
+        final TrackingEventResponse event = trackings.getEvents().get(0);
+
+        assertEquals(event.getName(), "Scanned");
+        assertEquals(event.getLocation(), "14692");
+        assertNotNull(event.getTime());
+        assertNotNull(event.getDateCreated());
+        assertNotNull(event.getDateModified());
+        assertEquals(event.getObject(), "tracking_event");
     }
 }
