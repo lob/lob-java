@@ -61,6 +61,7 @@ public class BankAccountTest extends BaseTest {
         final BankAccountRequest.Builder builder = BankAccountRequest.builder()
             .routingNumber("122100024")
             .accountNumber("123456789")
+            .accountType("company")
             .signatory("John Doe")
             .description("bank account")
             .metadata(metadata);
@@ -70,6 +71,7 @@ public class BankAccountTest extends BaseTest {
         assertThat(response.getDescription(), is("bank account"));
         assertFalse(response.isVerified());
         assertFalse(response.getAccountNumber().isEmpty());
+        assertFalse(response.getAccountType().isEmpty());
         assertFalse(response.getRoutingNumber().isEmpty());
         assertFalse(response.getSignatory().isEmpty());
         assertThat(response.getMetadata().get("key0"), is(value0));
@@ -95,6 +97,7 @@ public class BankAccountTest extends BaseTest {
 
         final BankAccountRequest request = builder.build();
         assertFalse(request.getAccountNumber().isEmpty());
+        assertFalse(request.getAccountType().isEmpty());
         assertFalse(request.getRoutingNumber().isEmpty());
         assertFalse(request.getSignatory().isEmpty());
         assertNotNull(request.toString());

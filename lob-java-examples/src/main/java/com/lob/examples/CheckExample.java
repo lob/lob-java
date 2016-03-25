@@ -19,6 +19,7 @@ public class CheckExample extends BaseExample {
         final BankAccountRequest exampleBankAccountRequest = BankAccountRequest.builder()
             .routingNumber("122100024")
             .accountNumber("1234564789")
+            .accountType("company")
             .signatory("John Doe")
             .build();
 

@@ -10,7 +10,6 @@ public class TrackingResponse {
     @JsonProperty("id") private final TrackingId id;
     @JsonProperty("tracking_number") private final String trackingNumber;
 	@JsonProperty("carrier") private final String carrier;
-	@JsonProperty("link") private final String link;
 	@JsonProperty("events") private final List<TrackingEventResponse> events;
 	@JsonProperty("object") private final String object;
 
@@ -19,13 +18,11 @@ public class TrackingResponse {
         @JsonProperty("id") final TrackingId id,
         @JsonProperty("tracking_number") final String trackingNumber,
         @JsonProperty("carrier") final String carrier,
-        @JsonProperty("link") final String link,
         @JsonProperty("events") final List<TrackingEventResponse> events,
         @JsonProperty("object") final String object) {
             this.id = id;
             this.trackingNumber = trackingNumber;
             this.carrier = carrier;
-            this.link = link;
             this.events = events;
             this.object = object;
     }
@@ -42,10 +39,6 @@ public class TrackingResponse {
         return carrier;
     }
 
-    public String getLink() {
-        return link;
-    }
-
     public List<TrackingEventResponse> getEvents() {
         return events;
     }
@@ -60,7 +53,6 @@ public class TrackingResponse {
             "id='" + id + '\'' +
             ", trackingNumber='" + trackingNumber + '\'' +
             ", carrier='" + carrier + '\'' +
-            ", link='" + link + '\'' +
             ", events=" + events +
             ", object='" + object + '\'' +
             '}';

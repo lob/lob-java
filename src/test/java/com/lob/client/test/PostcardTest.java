@@ -183,9 +183,8 @@ public class PostcardTest extends BaseTest {
         final TrackingResponse trackings = response.getTracking();
 
         assertEquals(trackings.getId().toString(), "trk_b4bb17e6d0e5c3d4");
-        assertEquals(trackings.getTrackingNumber(), "897714123456789");
+        assertNull(trackings.getTrackingNumber());
         assertEquals(trackings.getCarrier(), "USPS");
-        assertNull(trackings.getLink());
         assertEquals(trackings.getEvents().size(), 1);
 
         final TrackingEventResponse event = trackings.getEvents().get(0);
