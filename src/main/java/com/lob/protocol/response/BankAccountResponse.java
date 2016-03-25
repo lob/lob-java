@@ -11,6 +11,7 @@ public class BankAccountResponse extends AbstractLobResponse {
     @JsonProperty private final BankAccountId id;
     @JsonProperty private final String routingNumber;
     @JsonProperty private final String accountNumber;
+    @JsonProperty private final String accountType;
     @JsonProperty private final boolean verified;
     @JsonProperty private final String signatory;
 
@@ -19,6 +20,7 @@ public class BankAccountResponse extends AbstractLobResponse {
             @JsonProperty("id") final BankAccountId id,
             @JsonProperty("routing_number") final String routingNumber,
             @JsonProperty("account_number") final String accountNumber,
+            @JsonProperty("account_type") final String accountType,
             @JsonProperty("verified") final boolean verified,
             @JsonProperty("signatory") final String signatory,
             @JsonProperty("description") final String description,
@@ -30,6 +32,7 @@ public class BankAccountResponse extends AbstractLobResponse {
         this.id = id;
         this.routingNumber = routingNumber;
         this.accountNumber = accountNumber;
+        this.accountType = accountType;
         this.verified = verified;
         this.signatory = signatory;
     }
@@ -46,6 +49,10 @@ public class BankAccountResponse extends AbstractLobResponse {
         return accountNumber;
     }
 
+    public String getAccountType() {
+        return accountType;
+    }
+
     public boolean isVerified() {
         return verified;
     }
@@ -60,6 +67,7 @@ public class BankAccountResponse extends AbstractLobResponse {
             "id=" + id +
             ", routingNumber='" + routingNumber + '\'' +
             ", accountNumber='" + accountNumber + '\'' +
+            ", accountType='" + accountType + '\'' +
             ", verified=" + verified +
             ", signatory='" + signatory + '\'' +
             super.toString();

@@ -9,17 +9,20 @@ import static com.lob.Util.checkPresent;
 public class BankAccountRequest extends AbstractLobRequest implements HasLobParams {
     private final String routingNumber;
     private final String accountNumber;
+    private final String accountType;
     private final String signatory;
 
     public BankAccountRequest(
             final String routingNumber,
             final String accountNumber,
+            final String accountType,
             final String signatory,
             final Map<String, String> metadata,
             final String description) {
         super(metadata, description);
         this.routingNumber = checkNotNull(routingNumber, "routing number is required");
         this.accountNumber = checkNotNull(accountNumber, "account number is required");
+        this.accountType = checkNotNull(accountType, "account type is required");
         this.signatory = checkPresent(signatory, "signatory is required");
     }
 
@@ -28,6 +31,7 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
         return super.beginParams()
             .put("routing_number", routingNumber)
             .put("account_number", accountNumber)
+            .put("account_type", accountType)
             .put("signatory", signatory)
             .build();
     }
@@ -40,6 +44,10 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
         return accountNumber;
     }
 
+    public String getAccountType() {
+        return accountType;
+    }
+
     public String getSignatory() {
         return signatory;
     }
@@ -49,6 +57,7 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
         return "BankAccountRequest{" +
             "routingNumber='" + routingNumber + '\'' +
             ", accountNumber='" + accountNumber + '\'' +
+            ", accountType='" + accountType + '\'' +
             ", signatory='" + signatory + '\'' +
             super.toString();
     }
@@ -60,6 +69,7 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
     public static class Builder extends AbstractLobRequest.Builder<Builder> {
         private String routingNumber;
         private String accountNumber;
+        private String accountType;
         private String signatory;
 
         private Builder() {
@@ -75,6 +85,11 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
             return this;
         }
 
+        public Builder accountType(final String accountType) {
+            this.accountType = accountType;
+            return this;
+        }
+
         public Builder signatory(final String signatory) {
             this.signatory = signatory;
             return this;
@@ -84,13 +99,14 @@ public class BankAccountRequest extends AbstractLobRequest implements HasLobPara
             return new Builder()
                 .routingNumber(routingNumber)
                 .accountNumber(accountNumber)
+                .accountType(accountType)
                 .signatory(signatory)
                 .metadata(metadata)
                 .description(description);
         }
 
         public BankAccountRequest build() {
-            return new BankAccountRequest(routingNumber, accountNumber, signatory, metadata, description);
+            return new BankAccountRequest(routingNumber, accountNumber, accountType, signatory, metadata, description);
         }
     }
 }
