@@ -5,7 +5,6 @@ import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
 import com.lob.LobApiException;
 import com.lob.Or;
-import com.lob.Util;
 import com.lob.id.BankAccountId;
 import com.lob.protocol.request.*;
 import com.lob.protocol.response.AddressResponse;
@@ -192,12 +191,14 @@ public class CheckTest extends BaseTest {
                 .from(address.getId())
                 .amount(10.50)
                 .file(ClientUtil.fileFromResource("8.5x11.pdf"))
+                .attachment(ClientUtil.fileFromResource("8.5x11.pdf"))
                 .checkNumber(100)
                 .memo("Test Check")
                 .data(data);
 
         final CheckRequest request1 = builder.build();
         assertNotNull(request1.getFile());
+        assertNotNull(request1.getAttachment());
         final CheckResponse response1 = client.createCheck(request1).get();
         assertTrue(response1 instanceof CheckResponse);
         assertThat(response1.getDescription(), is("check"));
@@ -206,6 +207,7 @@ public class CheckTest extends BaseTest {
         final CheckRequest request2 = builder
                 .butWith()
                 .file(LobParam.file("check_bottom", ClientUtil.fileFromResource("8.5x11.pdf")))
+                .attachment(LobParam.file("attachment", ClientUtil.fileFromResource("8.5x11.pdf")))
                 .build();
         final CheckResponse response2 = client.createCheck(request2).get();
         assertTrue(response2 instanceof CheckResponse);
@@ -240,6 +242,7 @@ public class CheckTest extends BaseTest {
             .amount(1000)
             .memo("Test Check")
             .checkBottom("<h1 style='padding-top:4in;'>Demo Check</h1>")
+            .attachment("<h1 style='padding-top:4in;'>Demo Check</h1>")
             .build();
 
         final CheckResponse response = client.createCheck(request).get();
