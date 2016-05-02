@@ -66,7 +66,7 @@ public class LetterTest extends BaseTest {
             .file(file)
             .data(data)
             .color(true)
-            .template(true)
+            .addressPlacement("top_first_page")
             .doubleSided(false)
             .metadata(metadata)
             .description("letter");
@@ -83,7 +83,7 @@ public class LetterTest extends BaseTest {
         assertFalse(response.getUrl().isEmpty());
         assertTrue(response.isColor());
         assertFalse(response.isDoubleSided());
-        assertTrue(response.isTemplate());
+        assertThat(response.getAddressPlacement(), is("top_first_page"));
         assertNull(response.getExtraService());
         assertFalse(response.isReturnEnvelope());
         assertNull(response.getPerforatedPage());
@@ -123,7 +123,7 @@ public class LetterTest extends BaseTest {
         assertThat(otherRequest.getMetadata(), is(metadata));
         assertFalse(otherRequest.isColor());
         assertFalse(otherRequest.isDoubleSided());
-        assertTrue(otherRequest.isTemplate());
+        assertThat(otherRequest.getAddressPlacement(), is("top_first_page"));
     }
 
     @Test
@@ -137,7 +137,7 @@ public class LetterTest extends BaseTest {
                 .from(address.getId())
                 .file(file)
                 .color(true)
-                .template(true)
+                .addressPlacement("top_first_page")
                 .doubleSided(false)
                 .extraService(extraService)
                 .description("letter");
@@ -163,7 +163,7 @@ public class LetterTest extends BaseTest {
                 .from(address.getId())
                 .file(file)
                 .color(true)
-                .template(true)
+                .addressPlacement("top_first_page")
                 .doubleSided(false)
                 .returnEnvelope(true)
                 .perforatedPage(perforatedPage)
