@@ -16,7 +16,7 @@ public class LetterResponse extends AbstractLobResponse {
     @JsonProperty private final boolean color;
     @JsonProperty private final boolean doubleSided;
     @JsonProperty private final int pages;
-    @JsonProperty private final boolean template;
+    @JsonProperty private final String addressPlacement;
     @JsonProperty private final String extraService;
     @JsonProperty private final boolean returnEnvelope;
     @JsonProperty private final Integer perforatedPage;
@@ -34,7 +34,7 @@ public class LetterResponse extends AbstractLobResponse {
             @JsonProperty("color") final boolean color,
             @JsonProperty("double_sided") final boolean doubleSided,
             @JsonProperty("pages") final int pages,
-            @JsonProperty("template") final boolean template,
+            @JsonProperty("address_placement") final String addressPlacement,
             @JsonProperty("extra_service") final String extraService,
             @JsonProperty("return_envelope") final boolean returnEnvelope,
             @JsonProperty("perforated_page") final Integer perforatedPage,
@@ -55,7 +55,7 @@ public class LetterResponse extends AbstractLobResponse {
         this.color = color;
         this.doubleSided = doubleSided;
         this.pages = pages;
-        this.template = template;
+        this.addressPlacement = addressPlacement;
         this.extraService = extraService;
         this.returnEnvelope = returnEnvelope;
         this.perforatedPage = perforatedPage;
@@ -79,7 +79,7 @@ public class LetterResponse extends AbstractLobResponse {
     @Deprecated
     public int getPages() { return pages; }
 
-    public boolean isTemplate() { return template; }
+    public String getAddressPlacement() { return addressPlacement; }
 
     public String getExtraService() { return extraService; }
 
@@ -107,7 +107,7 @@ public class LetterResponse extends AbstractLobResponse {
                 ", color=" + color +
                 ", doubleSided=" + doubleSided +
                 ", pages=" + pages +
-                ", template=" + template +
+                ", addressPlacement=" + addressPlacement +
                 ", extraService=" + extraService +
                 ", returnEnvelope=" + returnEnvelope +
                 ", perforatedPage=" + perforatedPage +

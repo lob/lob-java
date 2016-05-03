@@ -16,7 +16,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
     private final LobParam file;
     private final Boolean color;
     private final Boolean doubleSided;
-    private final Boolean template;
+    private final String addressPlacement;
     private final String extraService;
     private final Boolean returnEnvelope;
     private final Integer perforatedPage;
@@ -28,7 +28,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             final LobParam file,
             final Boolean color,
             final Boolean doubleSided,
-            final Boolean template,
+            final String addressPlacement,
             final String extraService,
             final Boolean returnEnvelope,
             final Integer perforatedPage,
@@ -41,7 +41,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
         this.file = checkNotNull(file, "file is required");
         this.color = checkNotNull(color, "color is required");
         this.doubleSided = doubleSided;
-        this.template = template;
+        this.addressPlacement = addressPlacement;
         this.extraService = extraService;
         this.returnEnvelope = returnEnvelope;
         this.perforatedPage = perforatedPage;
@@ -55,7 +55,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             .put(file)
             .put("color", color)
             .put("double_sided", doubleSided)
-            .put("template", template)
+            .put("address_placement", addressPlacement)
             .put("extra_service", extraService)
             .put("return_envelope", returnEnvelope)
             .put("perforated_page", perforatedPage)
@@ -72,7 +72,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
 
     public Boolean isDoubleSided() { return doubleSided; }
 
-    public Boolean isTemplate() { return template; }
+    public String getAddressPlacement() { return addressPlacement; }
 
     public String getExtraService() { return extraService; }
 
@@ -88,7 +88,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             ", file=" + file +
             ", color=" + color +
             ", doubleSided=" + doubleSided +
-            ", template=" + template +
+            ", addressPlacement=" + addressPlacement +
             ", extraService=" + extraService +
             ", returnEnvelope=" + returnEnvelope +
             ", perforatedPage=" + perforatedPage +
@@ -103,7 +103,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
         private LobParam file;
         private Boolean color;
         private Boolean doubleSided;
-        private Boolean template;
+        private String addressPlacement;
         private String extraService;
         private Boolean returnEnvelope;
         private Integer perforatedPage;
@@ -170,8 +170,8 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             return this;
         }
 
-        public Builder template(final Boolean template) {
-            this.template = template;
+        public Builder addressPlacement(final String addressPlacement) {
+            this.addressPlacement = addressPlacement;
             return this;
         }
 
@@ -198,7 +198,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
                 .file(file)
                 .color(color)
                 .doubleSided(doubleSided)
-                .template(template)
+                .addressPlacement(addressPlacement)
                 .extraService(extraService)
                 .returnEnvelope(returnEnvelope)
                 .perforatedPage(perforatedPage)
@@ -207,7 +207,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
         }
 
         public LetterRequest build() {
-            return new LetterRequest(description, to, from, file, color, doubleSided, template, extraService, returnEnvelope, perforatedPage, metadata, data);
+            return new LetterRequest(description, to, from, file, color, doubleSided, addressPlacement, extraService, returnEnvelope, perforatedPage, metadata, data);
         }
     }
 }
