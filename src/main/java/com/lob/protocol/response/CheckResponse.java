@@ -21,7 +21,9 @@ public class CheckResponse extends AbstractLobResponse {
     @JsonProperty private final BankAccountResponse bankAccount;
     @JsonProperty private final String message;
     @JsonProperty private final String url;
-    @JsonProperty private final TrackingResponse tracking;
+    @JsonProperty private final String carrier;
+    @JsonProperty private final String trackingNumber;
+    @JsonProperty private final List<TrackingEventResponse> trackingEvents;
     @JsonProperty private final DateTime expectedDeliveryDate;
     @JsonProperty private final List<ThumbnailResponse> thumbnails;
 
@@ -36,7 +38,9 @@ public class CheckResponse extends AbstractLobResponse {
             @JsonProperty("bank_account") final BankAccountResponse bankAccount,
             @JsonProperty("message") final String message,
             @JsonProperty("url") final String url,
-            @JsonProperty("tracking") final TrackingResponse tracking,
+            @JsonProperty("carrier") final String carrier,
+            @JsonProperty("tracking_number") final String trackingNumber,
+            @JsonProperty("tracking_events") final List<TrackingEventResponse> trackingEvents,
             @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
@@ -54,7 +58,9 @@ public class CheckResponse extends AbstractLobResponse {
         this.bankAccount = bankAccount;
         this.message = message;
         this.url = url;
-        this.tracking = tracking;
+        this.carrier = carrier;
+        this.trackingNumber = trackingNumber;
+        this.trackingEvents = trackingEvents;
         this.expectedDeliveryDate = expectedDeliveryDate;
         this.thumbnails = thumbnails;
     }
@@ -95,8 +101,16 @@ public class CheckResponse extends AbstractLobResponse {
         return url;
     }
 
-    public TrackingResponse getTracking() {
-        return tracking;
+    public String getCarrier() {
+        return carrier;
+    }
+
+    public String getTrackingNumber() {
+        return trackingNumber;
+    }
+
+    public List<TrackingEventResponse> getTrackingEvents() {
+        return defensiveCopy(this.trackingEvents);
     }
 
     public DateTime getExpectedDeliveryDate() {
@@ -119,7 +133,9 @@ public class CheckResponse extends AbstractLobResponse {
             ", bankAccount=" + bankAccount +
             ", message='" + message + '\'' +
             ", url='" + url + '\'' +
-            ", tracking=" + tracking +
+            ", carrier='" + carrier + '\'' +
+            ", trackingNumber='" + trackingNumber + '\'' +
+            ", trackingEvents='" + trackingEvents + '\'' +
             ", expectedDeliveryDate=" + expectedDeliveryDate +
             ", thumbnails=" + thumbnails +
             super.toString();

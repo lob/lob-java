@@ -34,6 +34,11 @@ public class JobTest extends BaseTest {
         assertNotNull(responseList.toString());
         assertNotNull(response.toString());
         assertNotNull(response.getTracking());
+        assertNotNull(response.getTracking().getEvents());
+        assertNotNull(response.getTracking().getId());
+        assertNull(response.getTracking().getTrackingNumber());
+        assertNotNull(response.getTracking().getCarrier());
+        assertThat(response.getTracking().getObject(), is("tracking"));
     }
 
     @Test
