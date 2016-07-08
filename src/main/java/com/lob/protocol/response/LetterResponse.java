@@ -9,6 +9,8 @@ import org.joda.time.DateTime;
 import java.util.List;
 import java.util.Map;
 
+import static com.lob.Util.defensiveCopy;
+
 public class LetterResponse extends AbstractLobResponse {
     @JsonProperty private final LetterId id;
     @JsonProperty private final AddressResponse to;
@@ -24,7 +26,9 @@ public class LetterResponse extends AbstractLobResponse {
     @JsonProperty private final String url;
     @JsonProperty private final DateTime expectedDeliveryDate;
     @JsonProperty private final List<ThumbnailResponse> thumbnails;
-    @JsonProperty private final TrackingResponse tracking;
+    @JsonProperty private final String carrier;
+    @JsonProperty private final String trackingNumber;
+    @JsonProperty private final List<TrackingEventResponse> trackingEvents;
 
     @JsonCreator
     public LetterResponse(
@@ -42,7 +46,9 @@ public class LetterResponse extends AbstractLobResponse {
             @JsonProperty("url") final String url,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
             @JsonProperty("thumbnails") final List<ThumbnailResponse> thumbnails,
-            @JsonProperty("tracking") final TrackingResponse tracking,
+            @JsonProperty("carrier") final String carrier,
+            @JsonProperty("tracking_number") final String trackingNumber,
+            @JsonProperty("tracking_events") final List<TrackingEventResponse> trackingEvents,
             @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
@@ -63,7 +69,9 @@ public class LetterResponse extends AbstractLobResponse {
         this.url = url;
         this.expectedDeliveryDate = expectedDeliveryDate;
         this.thumbnails = thumbnails;
-        this.tracking = tracking;
+        this.carrier = carrier;
+        this.trackingNumber = trackingNumber;
+        this.trackingEvents = trackingEvents;
     }
 
     public LetterId getId() { return id; }
@@ -94,9 +102,13 @@ public class LetterResponse extends AbstractLobResponse {
 
     public DateTime getExpectedDeliveryDate() { return expectedDeliveryDate; }
 
-    public List<ThumbnailResponse> getThumbnails() { return thumbnails; }
+    public List<ThumbnailResponse> getThumbnails() { return defensiveCopy(this.thumbnails); }
 
-    public TrackingResponse getTracking() { return tracking; }
+    public String getCarrier() { return carrier; }
+
+    public String getTrackingNumber() { return trackingNumber; }
+
+    public List<TrackingEventResponse> getTrackingEvents() { return defensiveCopy(this.trackingEvents); }
 
     @Override
     public String toString() {
@@ -115,7 +127,9 @@ public class LetterResponse extends AbstractLobResponse {
                 ", url='" + url + "'" +
                 ", expectedDeliveryDate='" + expectedDeliveryDate + "'" +
                 ", thumbnails='" + thumbnails + "'" +
-                ", tracking='" + tracking + "'" +
+                ", carrier='" + carrier + "'" +
+                ", trackingNumber='" + trackingNumber + "'" +
+                ", trackingEvents='" + trackingEvents + "'" +
                 super.toString();
 
     }

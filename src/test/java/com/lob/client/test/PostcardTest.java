@@ -180,14 +180,11 @@ public class PostcardTest extends BaseTest {
     @Test
     public void testTrackingEvents() throws Exception {
         final PostcardResponse response = client.getPostcard(PostcardId.parse("psc_d1f8830b03cde4ef")).get();
-        final TrackingResponse trackings = response.getTracking();
 
-        assertEquals(trackings.getId().toString(), "trk_b4bb17e6d0e5c3d4");
-        assertNull(trackings.getTrackingNumber());
-        assertEquals(trackings.getCarrier(), "USPS");
-        assertEquals(trackings.getEvents().size(), 1);
+        assertEquals(response.getCarrier(), "USPS");
+        assertEquals(response.getTrackingEvents().size(), 1);
 
-        final TrackingEventResponse event = trackings.getEvents().get(0);
+        final TrackingEventResponse event = response.getTrackingEvents().get(0);
 
         assertEquals(event.getName(), "Scanned");
         assertEquals(event.getLocation(), "14692");
@@ -195,5 +192,6 @@ public class PostcardTest extends BaseTest {
         assertNotNull(event.getDateCreated());
         assertNotNull(event.getDateModified());
         assertEquals(event.getObject(), "tracking_event");
+        assertNotNull(event.toString());
     }
 }

@@ -9,9 +9,9 @@ import java.util.List;
 public class TrackingResponse {
     @JsonProperty("id") private final TrackingId id;
     @JsonProperty("tracking_number") private final String trackingNumber;
-	@JsonProperty("carrier") private final String carrier;
-	@JsonProperty("events") private final List<TrackingEventResponse> events;
-	@JsonProperty("object") private final String object;
+    @JsonProperty("carrier") private final String carrier;
+    @JsonProperty("events") private final List<TrackingEventResponse> events;
+    @JsonProperty("object") private final String object;
 
     @JsonCreator
     public TrackingResponse(

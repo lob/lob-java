@@ -10,6 +10,8 @@ import org.joda.time.DateTime;
 import java.util.List;
 import java.util.Map;
 
+import static com.lob.Util.defensiveCopy;
+
 public class PostcardResponse extends AbstractLobResponse {
     @JsonProperty private final PostcardId id;
     @JsonProperty private final String message;
@@ -20,7 +22,8 @@ public class PostcardResponse extends AbstractLobResponse {
     @JsonProperty private final String url;
     @JsonProperty private final DateTime expectedDeliveryDate;
     @JsonProperty private final List<ThumbnailResponse> thumbnails;
-    @JsonProperty private final TrackingResponse tracking;
+    @JsonProperty private final String carrier;
+    @JsonProperty private final List<TrackingEventResponse> trackingEvents;
 
     @JsonCreator
     public PostcardResponse(
@@ -33,7 +36,8 @@ public class PostcardResponse extends AbstractLobResponse {
             @JsonProperty("url") final String url,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
             @JsonProperty("thumbnails") final List<ThumbnailResponse> thumbnails,
-            @JsonProperty("tracking") final TrackingResponse tracking,
+            @JsonProperty("carrier") final String carrier,
+            @JsonProperty("tracking_events") final List<TrackingEventResponse> trackingEvents,
             @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
@@ -49,7 +53,8 @@ public class PostcardResponse extends AbstractLobResponse {
         this.url = url;
         this.expectedDeliveryDate = expectedDeliveryDate;
         this.thumbnails = thumbnails;
-        this.tracking = tracking;
+        this.carrier = carrier;
+        this.trackingEvents = trackingEvents;
     }
 
     public PostcardId getId() {
@@ -86,11 +91,15 @@ public class PostcardResponse extends AbstractLobResponse {
     }
 
     public List<ThumbnailResponse> getThumbnails() {
-        return thumbnails;
+        return defensiveCopy(this.thumbnails);
     }
 
-    public TrackingResponse getTracking() {
-        return tracking;
+    public String getCarrier() {
+        return carrier;
+    }
+
+    public List<TrackingEventResponse> getTrackingEvents() {
+        return defensiveCopy(this.trackingEvents);
     }
 
     @Override
@@ -105,7 +114,8 @@ public class PostcardResponse extends AbstractLobResponse {
             ", url='" + url + '\'' +
             ", expectedDeliveryDate='" + expectedDeliveryDate + '\'' +
             ", thumbnails='" + thumbnails + '\'' +
-            ", tracking='" + tracking + '\'' +
+            ", carrier='" + carrier + '\'' +
+            ", trackingEvents='" + trackingEvents + '\'' +
             super.toString();
     }
 }
