@@ -1,8 +1,6 @@
 package com.lob.protocol.request;
 
-import com.lob.LobParamsBuilder;
 import com.lob.OrCollection;
-import com.lob.id.StringId;
 import com.lob.id.ZipCode;
 import com.lob.id.ZipCodeRouteId;
 import com.lob.protocol.response.ZipCodeRouteResponseList;

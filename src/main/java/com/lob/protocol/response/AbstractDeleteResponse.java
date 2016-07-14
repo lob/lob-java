@@ -1,6 +1,5 @@
 package com.lob.protocol.response;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.LobId;
 

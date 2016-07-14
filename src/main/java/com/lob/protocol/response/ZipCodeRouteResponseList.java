@@ -1,7 +1,6 @@
 package com.lob.protocol.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lob.id.RouteId;
 import com.lob.id.ZipCodeRouteId;
 
 import java.util.ArrayList;

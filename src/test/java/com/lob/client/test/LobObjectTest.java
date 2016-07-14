@@ -3,8 +3,6 @@ package com.lob.client.test;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import com.lob.ClientUtil;
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
 import com.lob.id.LobObjectId;
 import com.lob.id.SettingId;
 import com.lob.protocol.request.Filters;

@@ -8,7 +8,6 @@ import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

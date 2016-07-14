@@ -1,7 +1,6 @@
 package com.lob.protocol.request;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.StringValued;
 
 import java.util.HashMap;

@@ -229,6 +229,11 @@ public class AsyncLobClient implements LobClient {
     }
 
     @Override
+    public ListenableFuture<LetterDeleteResponse> deleteLetter(final LetterId id) {
+        return execute(LetterDeleteResponse.class, delete(Router.LETTERS, id));
+    }
+
+    @Override
     public ListenableFuture<PostcardResponse> createPostcard(final PostcardRequest postcardRequest) {
         return execute(PostcardResponse.class, post(Router.POSTCARDS, postcardRequest));
     }
@@ -259,6 +264,11 @@ public class AsyncLobClient implements LobClient {
     }
 
     @Override
+    public ListenableFuture<PostcardDeleteResponse> deletePostcard(final PostcardId id) {
+        return execute(PostcardDeleteResponse.class, delete(Router.POSTCARDS, id));
+    }
+
+    @Override
     public ListenableFuture<CheckResponse> createCheck(final CheckRequest checkRequest) {
         return execute(CheckResponse.class, post(Router.CHECKS, checkRequest));
     }
@@ -286,6 +296,11 @@ public class AsyncLobClient implements LobClient {
     @Override
     public ListenableFuture<CheckResponseList> getChecks(final Filter filter) {
         return execute(CheckResponseList.class, get(Router.CHECKS, filter));
+    }
+
+    @Override
+    public ListenableFuture<CheckDeleteResponse> deleteCheck(final CheckId id) {
+        return execute(CheckDeleteResponse.class, delete(Router.CHECKS, id));
     }
 
     @Override

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.ZipCode;
 
-import java.util.Collection;
 import java.util.List;
 
 import static com.lob.Util.defensiveCopy;

@@ -1,14 +1,9 @@
 package com.lob.client.test;
 
 import com.google.common.collect.Maps;
-import com.lob.Or;
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
-import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.BankAccountRequest;
 import com.lob.protocol.request.BankAccountVerifyRequest;
 import com.lob.protocol.request.Filters;
-import com.lob.protocol.response.AddressResponse;
 import com.lob.protocol.response.BankAccountDeleteResponse;
 import com.lob.protocol.response.BankAccountResponse;
 import com.lob.protocol.response.BankAccountResponseList;

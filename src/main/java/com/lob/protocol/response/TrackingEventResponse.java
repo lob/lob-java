@@ -2,12 +2,7 @@ package com.lob.protocol.response;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lob.id.TrackingId;
 import org.joda.time.DateTime;
-
-import java.util.Collection;
-
-import static com.lob.Util.defensiveCopy;
 
 public class TrackingEventResponse {
     @JsonProperty("name") private final String name;

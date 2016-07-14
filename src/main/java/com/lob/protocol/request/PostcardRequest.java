@@ -2,7 +2,6 @@ package com.lob.protocol.request;
 
 import com.lob.Or;
 import com.lob.id.AddressId;
-import com.lob.id.SettingId;
 
 import java.io.File;
 import java.util.Collection;
