@@ -173,8 +173,6 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 
 To contribute, please see the [CONTRIBUTING.md](https://github.com/lob/lob-java/blob/master/CONTRIBUTING.md) file.
 
-
-
 ## Testing
 
 You can run all tests with the command `mvn test` in the main directory.

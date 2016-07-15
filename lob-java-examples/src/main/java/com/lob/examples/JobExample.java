@@ -2,8 +2,6 @@ package com.lob.examples;
 
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
-import com.lob.id.CountryCode;
-import com.lob.id.SettingId;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.JobRequest;
 import com.lob.protocol.request.LobObjectRequest;
@@ -47,5 +45,7 @@ public class JobExample extends BaseExample {
         final JobResponse exampleJobResponse = client.createJob(exampleJobRequest).get();
 
         printResponse("Job Response", exampleJobResponse);
+
+        System.exit(0);
     }
 }

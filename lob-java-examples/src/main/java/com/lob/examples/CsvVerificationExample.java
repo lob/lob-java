@@ -5,10 +5,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import com.lob.LobApiException;
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
-import com.lob.id.CountryCode;
 import com.lob.protocol.request.VerifyAddressRequest;
 import com.lob.protocol.response.VerifyAddressResponse;
 
@@ -19,7 +17,7 @@ public class CsvVerificationExample extends BaseExample {
         final CsvMapper mapper = new CsvMapper();
 
         final CsvSchema schema = mapper.schemaFor(CsvAddress.class).withHeader();
-        final MappingIterator<CsvAddress> iterator = mapper.reader(CsvAddress.class).with(schema).readValues(fileFromResource("input.csv"));
+        final MappingIterator<CsvAddress> iterator = mapper.reader(CsvAddress.class).with(schema).readValues(fileFromResource("addresses/input.csv"));
         while (iterator.hasNext()) {
             final CsvAddress address = iterator.next();
 
@@ -40,6 +38,8 @@ public class CsvVerificationExample extends BaseExample {
                 printResponse("Failed Address", address);
             }
         }
+
+        System.exit(0);
     }
 
     @JsonPropertyOrder(value = {"address1", "address2", "city", "state", "postcode", "country"})

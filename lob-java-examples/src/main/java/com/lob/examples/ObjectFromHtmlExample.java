@@ -2,13 +2,8 @@ package com.lob.examples;
 
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
-import com.lob.id.SettingId;
-import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.LobObjectRequest;
-import com.lob.protocol.request.PostcardRequest;
-import com.lob.protocol.response.AddressResponse;
 import com.lob.protocol.response.LobObjectResponse;
-import com.lob.protocol.response.PostcardResponse;
 
 public class ObjectFromHtmlExample extends BaseExample {
     public static void main(final String[] args) throws Exception {
@@ -32,5 +27,7 @@ public class ObjectFromHtmlExample extends BaseExample {
         final LobObjectResponse objectResponse = client.createLobObject(objectRequest).get();
 
         System.out.println("Check out the created PDF here: " + objectResponse.getUrl());
+
+        System.exit(0);
     }
 }

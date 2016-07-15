@@ -2,11 +2,8 @@ package com.lob.examples;
 
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
-import com.lob.id.SettingId;
 import com.lob.protocol.request.LobObjectRequest;
 import com.lob.protocol.response.LobObjectResponse;
-
-import java.io.File;
 
 public class ObjectFromFileExample extends BaseExample {
     public static void main(final String[] args) throws Exception {
@@ -21,5 +18,7 @@ public class ObjectFromFileExample extends BaseExample {
 
         printResponse("File Object Response", objectResponse);
         System.out.println("Check out the object here: " + objectResponse.getUrl());
+
+        System.exit(0);
     }
 }
