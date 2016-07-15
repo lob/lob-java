@@ -171,13 +171,9 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Make sure the tests pass
-6. Open up coverage/index.html in your browser and add tests if required
-7. Create new Pull Request
+To contribute, please see the [CONTRIBUTING.md](https://github.com/lob/lob-java/blob/master/CONTRIBUTING.md) file.
+
+
 
 ## Testing
 
@@ -185,6 +181,6 @@ You can run all tests with the command `mvn test` in the main directory.
 
 =======================
 
-Copyright &copy; 2013 Lob.com
+Copyright &copy; 2016 Lob.com
 
 Released under the MIT License, which can be found in the repository in `LICENSE.txt`.
