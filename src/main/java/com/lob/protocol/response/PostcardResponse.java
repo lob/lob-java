@@ -3,7 +3,6 @@ package com.lob.protocol.response;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.PostcardId;
-import com.lob.id.StringId;
 import org.joda.money.Money;
 import org.joda.time.DateTime;
 

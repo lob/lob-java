@@ -1,7 +1,5 @@
 package com.lob.client.test;
 
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
 import com.lob.protocol.response.CountryResponse;
 import com.lob.protocol.response.CountryResponseList;
 import org.junit.Test;

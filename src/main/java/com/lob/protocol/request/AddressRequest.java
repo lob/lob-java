@@ -4,7 +4,6 @@ import com.lob.id.CountryCode;
 import com.lob.id.ZipCode;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import static com.lob.Util.checkNotNull;

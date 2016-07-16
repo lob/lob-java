@@ -2,10 +2,6 @@ package com.lob.protocol.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Collection;
-
-import static com.lob.Util.defensiveCopy;
-
 public class ErrorResponse {
     @JsonProperty private final ErrorResponseItem error;
 

@@ -1,6 +1,5 @@
 package com.lob.protocol.request;
 
-import com.lob.LobParamsBuilder;
 import com.lob.id.SettingId;
 
 import java.io.File;

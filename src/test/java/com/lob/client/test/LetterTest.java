@@ -8,9 +8,9 @@ import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.Filters;
 import com.lob.protocol.request.LetterRequest;
 import com.lob.protocol.response.AddressResponse;
+import com.lob.protocol.response.LetterDeleteResponse;
 import com.lob.protocol.response.LetterResponse;
 import com.lob.protocol.response.LetterResponseList;
-import org.joda.money.Money;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
@@ -180,5 +180,24 @@ public class LetterTest extends BaseTest {
 
         assertTrue(response.isReturnEnvelope());
         assertThat(response.getPerforatedPage(), is(perforatedPage));
+    }
+    @Test
+    public void testDeleteLetter() throws Exception {
+        final AddressResponse address = client.getAddresses(1).get().get(0);
+        final String file = "<html style='padding-top: 3in; margin: .5in;'>HTML Letter for {{name}}</html>";
+
+        final LetterRequest.Builder builder = LetterRequest.builder()
+                .to(address.getId())
+                .from(address.getId())
+                .color(false)
+                .file(file);
+
+        final LetterRequest request = builder.build();
+
+        final LetterId id = client.createLetter(request).get().getId();
+        final LetterDeleteResponse response = client.deleteLetter(id).get();
+        assertThat(response.getId(), is(id));
+        assertTrue(response.isDeleted());
+        assertNotNull(response.toString());
     }
 }

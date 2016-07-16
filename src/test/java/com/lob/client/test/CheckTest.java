@@ -6,11 +6,13 @@ import com.lob.ClientUtil;
 import com.lob.LobApiException;
 import com.lob.Or;
 import com.lob.id.BankAccountId;
+import com.lob.id.CheckId;
 import com.lob.protocol.request.*;
 import com.lob.protocol.response.AddressResponse;
 import com.lob.protocol.response.BankAccountResponse;
 import com.lob.protocol.response.CheckResponse;
 import com.lob.protocol.response.CheckResponseList;
+import com.lob.protocol.response.CheckDeleteResponse;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.joda.time.DateTime;
@@ -247,5 +249,25 @@ public class CheckTest extends BaseTest {
         assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
         assertThat(response.getTo().getName(), is("Lob To"));
         assertThat(response.getFrom().getName(), is("Lob From"));
+    }
+
+    @Test
+    public void testCheckDelete() throws Exception {
+        final AddressResponse address = getAddress();
+        final BankAccountResponse bankAccount = getAndVerifyBankAccount();
+
+        final CheckRequest.Builder builder = CheckRequest.builder()
+                .bankAccount(bankAccount.getId())
+                .to(address.getId())
+                .from(address.getId())
+                .amount(1000);
+
+        final CheckRequest request = builder.build();
+
+        final CheckId id = client.createCheck(request).get().getId();
+        final CheckDeleteResponse response = client.deleteCheck(id).get();
+        assertThat(response.getId(), is(id));
+        assertTrue(response.isDeleted());
+        assertNotNull(response.toString());
     }
 }

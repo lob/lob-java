@@ -1,7 +1,5 @@
 package com.lob.client.test;
 
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
 import com.lob.id.SettingId;
 import com.lob.protocol.response.SettingResponse;
 import com.lob.protocol.response.SettingResponseList;

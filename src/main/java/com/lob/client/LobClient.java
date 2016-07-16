@@ -13,8 +13,6 @@ import com.lob.id.SettingId;
 import com.lob.protocol.request.*;
 import com.lob.protocol.response.*;
 
-import java.util.Map;
-
 public interface LobClient {
     public final static String LOB_VERSION_HEADER = "Lob-Version";
 
@@ -91,6 +89,8 @@ public interface LobClient {
 
     public ListenableFuture<LetterResponseList> getLetters(final Filter filter);
 
+    public ListenableFuture<LetterDeleteResponse> deleteLetter(final LetterId id);
+
     // Postcard methods
     public ListenableFuture<PostcardResponse> createPostcard(final PostcardRequest postcardRequest);
 
@@ -106,6 +106,8 @@ public interface LobClient {
 
     public ListenableFuture<PostcardResponseList> getPostcards(final Filter filter);
 
+    public ListenableFuture<PostcardDeleteResponse> deletePostcard(final PostcardId id);
+
     // Check methods
     public ListenableFuture<CheckResponse> createCheck(final CheckRequest checkRequest);
 
@@ -120,6 +122,8 @@ public interface LobClient {
     public ListenableFuture<CheckResponseList> getChecks(final int count, final int offset);
 
     public ListenableFuture<CheckResponseList> getChecks(final Filter filter);
+
+    public ListenableFuture<CheckDeleteResponse> deleteCheck(final CheckId id);
 
     // Bank account methods
     public ListenableFuture<BankAccountResponse> createBankAccount(final BankAccountRequest bankAccountRequest);

@@ -194,4 +194,22 @@ public class PostcardTest extends BaseTest {
         assertEquals(event.getObject(), "tracking_event");
         assertNotNull(event.toString());
     }
+
+    @Test
+    public void testDeletePostcard() throws Exception {
+        final AddressResponse address = Iterables.get(client.getAddresses(1).get(), 0);
+
+        final PostcardRequest.Builder builder = PostcardRequest.builder()
+                .to(address.getId())
+                .front("<h1>testing</h1>")
+                .back("<h1>testing</h1>");
+
+        final PostcardRequest request = builder.build();
+
+        final PostcardId id = client.createPostcard(request).get().getId();
+        final PostcardDeleteResponse response = client.deletePostcard(id).get();
+        assertThat(response.getId(), is(id));
+        assertTrue(response.isDeleted());
+        assertNotNull(response.toString());
+    }
 }
