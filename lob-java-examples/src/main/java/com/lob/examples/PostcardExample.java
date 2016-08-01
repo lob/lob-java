@@ -2,7 +2,6 @@ package com.lob.examples;
 
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
-import com.lob.id.CountryCode;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.PostcardRequest;
 import com.lob.protocol.response.AddressResponse;
@@ -35,5 +34,7 @@ public class PostcardExample extends BaseExample {
         final PostcardResponse examplePostcardResponse = client.createPostcard(examplePostcardRequest).get();
 
         printResponse("Postcard Response", examplePostcardResponse);
+
+        System.exit(0);
     }
 }

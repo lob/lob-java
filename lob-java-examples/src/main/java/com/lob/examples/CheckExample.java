@@ -2,7 +2,6 @@ package com.lob.examples;
 
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
-import com.lob.id.CountryCode;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.BankAccountRequest;
 import com.lob.protocol.request.BankAccountVerifyRequest;
@@ -71,5 +70,7 @@ public class CheckExample extends BaseExample {
         final CheckResponse exampleCheckResponse = client.createCheck(exampleCheckRequest).get();
 
         printResponse("Check Response", exampleCheckResponse);
+
+        System.exit(0);
     }
 }

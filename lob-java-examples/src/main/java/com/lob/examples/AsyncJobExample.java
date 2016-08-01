@@ -7,7 +7,6 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.lob.client.AsyncLobClient;
 import com.lob.client.LobClient;
 import com.lob.id.LobObjectId;
-import com.lob.id.SettingId;
 import com.lob.protocol.request.AddressRequest;
 import com.lob.protocol.request.JobRequest;
 import com.lob.protocol.request.LobObjectRequest;
@@ -81,5 +80,7 @@ public class AsyncJobExample extends BaseExample {
 
         System.out.println("Look at all the work I got done in the " + (System.currentTimeMillis() - startTime) +
                                " milliseconds I was waiting for the responses to come in!");
+
+        System.exit(0);
     }
 }
