@@ -6,13 +6,14 @@ jdk:
   - oraclejdk7
   - oraclejdk8
 
+addons:
+   hosts:
+       - travis
+   hostname: travis
+
 env:
   global:
     - MAVEN_OPTS="-XX:MaxPermSize=512m -Xmx2048m"
-
-before_install:
-  - sudo hostname "$(hostname | cut -c1-63)"
-  - sed -e "s/^\\(127\\.0\\.0\\.1.*\\)/\\1 $(hostname | cut -c1-63)/" /etc/hosts | sudo tee /etc/hosts
 
 script:
   - mvn clean package jacoco:report coveralls:jacoco
