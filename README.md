@@ -123,8 +123,10 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - [Errors](https://lob.com/docs/java#errors)
 - [Rate Limiting](https://lob.com/docs/java#rate-limits)
 - [Metadata](https://lob.com/docs/java#metadata)
+- [Asset URLs](https://lob.com/docs/java#urls)
 - **Addresses**
   - [Address Book](https://lob.com/docs/java#addresses)
+    - [The Address Object](https://lob.com/docs/java#addresses_object)
     - [Create an Address](https://lob.com/docs/java#addresses_create)
     - [Retrieve an Address](https://lob.com/docs/java#addresses_retrieve)
     - [Delete an Address](https://lob.com/docs/java#addresses_delete)
@@ -133,20 +135,24 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [Verify an Address](https://lob.com/docs/java#verify_create)
 - **Postcards API**
   - [Postcards](https://lob.com/docs/java#postcards)
+    - [The Postcard Object](https://lob.com/docs/java#postcards_object)
     - [Create a Postcard](https://lob.com/docs/java#postcards_create)
     - [Retrieve a Postcard](https://lob.com/docs/java#postcards_retrieve)
     - [List all Postcards](https://lob.com/docs/java#postcards_list)
 - **Letters API**
   - [Letters](https://lob.com/docs/java#letters)
+    - [The Letter Object](https://lob.com/docs/java#letters_object)
     - [Create a Letter](https://lob.com/docs/java#letters_create)
     - [Retrieve a Letter](https://lob.com/docs/java#letters_retrieve)
     - [List all Letters](https://lob.com/docs/java#letters_list)
 - **Checks API**
   - [Checks](https://lob.com/docs/java#checks)
+    - [The Check Object](https://lob.com/docs/java#checks_object)
     - [Create a Check](https://lob.com/docs/java#checks_create)
     - [Retrieve a Check](https://lob.com/docs/java#checks_retrieve)
     - [List all Checks](https://lob.com/docs/java#checks_list)
   - [Bank Accounts](https://lob.com/docs/java#bank-accounts)
+    - [The Bank Account Object](https://lob.com/docs/java#bankaccounts_object)
     - [Create a Bank Account](https://lob.com/docs/java#bankaccounts_create)
     - [Retrieve a Bank Account](https://lob.com/docs/java#bankaccounts_retrieve)
     - [Delete a Bank Account](https://lob.com/docs/java#bankaccounts_delete)
@@ -154,12 +160,14 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [List all Bank Accounts](https://lob.com/docs/java#bankaccounts_list)
 - **Area Mail API**
   - [Areas](https://lob.com/docs/java#areas)
+    - [The Area Object](https://lob.com/docs/java#areas_object)
     - [Create an Area Mailing](https://lob.com/docs/java#areas_create)
     - [Retrieve an Area Mailing](https://lob.com/docs/java#areas_retrieve)
     - [List all Area Mailings](https://lob.com/docs/java#areas_list)
   - [Routes](https://lob.com/docs/java#routes)
-    - [Retrieve a Zip Code](https://lob.com/docs/java#routes_retrieve)
-    - [List all Zip Codes](https://lob.com/docs/java#routes_list)
+    - [The Routes Object](https://lob.com/docs/java#routes_object)
+    - [Retrieve Routes](https://lob.com/docs/java#routes_retrieve)
+    - [List all Routes](https://lob.com/docs/java#routes_list)
 - **Resources**
   - [Countries](https://lob.com/docs/java#countries)
     - [List all Countries](https://lob.com/docs/java#countries_list)
@@ -167,6 +175,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [List all States](https://lob.com/docs/java#states_list)
 - **Appendix**
   - [API Changelog](https://lob.com/docs/java#changelog)
+  - [The Tracking Event Object](https://lob.com/docs/java#tracking_event_object)
   - [HTML Examples](https://lob.com/docs/java#html-examples)
   - [Image Prepping](https://lob.com/docs/java#prepping)
 
