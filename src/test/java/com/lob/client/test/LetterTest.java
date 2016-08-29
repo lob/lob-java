@@ -91,7 +91,7 @@ public class LetterTest extends BaseTest {
         assertNull(response.getExtraService());
         assertFalse(response.isReturnEnvelope());
         assertNull(response.getPerforatedPage());
-        assertEquals(response.getThumbnails().size(), 1);
+        assertEquals(1, response.getThumbnails().size());
         assertNotNull(response.getTrackingEvents());
         assertNull(response.getTrackingNumber());
         assertNotNull(response.getCarrier());

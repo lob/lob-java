@@ -38,7 +38,7 @@ public class IdTest extends BaseTest {
 
     @Test
     public void testServiceId() throws Exception {
-        assertEquals(ServiceId.create(1).getId(), 1);
+        assertEquals(1, ServiceId.create(1).getId());
     }
 
     @Test
