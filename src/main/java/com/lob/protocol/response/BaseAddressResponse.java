@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.CountryCode;
 import com.lob.id.ZipCode;
 
-public class BaseAddressResponse {
+public class BaseAddressResponse extends AbstractResponse {
     @JsonProperty("address_line1") private final String line1;
     @JsonProperty("address_line2") private final String line2;
     @JsonProperty("address_city") private final String city;

@@ -489,7 +489,7 @@ public class AsyncLobClient implements LobClient {
         return builder;
     }
 
-    private static <T> ListenableFuture<T> execute(
+    private static <T extends AbstractResponse> ListenableFuture<T> execute(
             final Class<T> clazz,
             final BoundRequestBuilder request) {
         final SettableFuture<T> guavaFut = SettableFuture.create();
@@ -507,7 +507,7 @@ public class AsyncLobClient implements LobClient {
         return guavaFut;
     }
 
-    private static class GuavaFutureConverter<T> extends AsyncCompletionHandler<T> {
+    private static class GuavaFutureConverter<T extends AbstractResponse> extends AsyncCompletionHandler<T> {
         final Class<T> clazz;
         final SettableFuture<T> guavaFut;
 
@@ -532,12 +532,16 @@ public class AsyncLobClient implements LobClient {
         public T onCompleted(final Response response) throws Exception {
             if (isSuccess(response)) {
                 final T value = MAPPER.readValue(response.getResponseBody(), clazz);
+
+                value.setStatusCode(response.getStatusCode());
+                value.setHeaders(response.getHeaders());
+
                 guavaFut.set(value);
                 return value;
             }
             else {
                 final ErrorResponse error = MAPPER.readValue(response.getResponseBody(), ErrorResponse.class);
-                final LobApiException exception = new LobApiException(response.getUri(), error);
+                final LobApiException exception = new LobApiException(response.getUri(), error, response.getStatusCode(), response.getHeaders());
                 guavaFut.setException(exception);
                 throw exception;
             }

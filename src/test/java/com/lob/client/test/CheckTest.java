@@ -43,6 +43,10 @@ public class CheckTest extends BaseTest {
     @Test
     public void testListChecks() throws Exception {
         final CheckResponseList responseList = client.getChecks().get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final CheckResponse response = responseList.get(0);
 
         assertTrue(response instanceof CheckResponse);
@@ -121,6 +125,9 @@ public class CheckTest extends BaseTest {
         assertFalse(response.getThumbnails().isEmpty());
         final CheckResponse metadataResponse = client.getChecks(Filters.ofMetadata(metadata)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
 
         final CheckResponse retrievedResponse = client.getCheck(response.getId()).get();
         assertThat(retrievedResponse.getId(), is(response.getId()));
@@ -269,5 +276,8 @@ public class CheckTest extends BaseTest {
         assertThat(response.getId(), is(id));
         assertTrue(response.isDeleted());
         assertNotNull(response.toString());
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
     }
 }

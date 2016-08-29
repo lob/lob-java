@@ -69,6 +69,9 @@ public class AreaMailTest extends BaseTest {
         assertThat(response.getMetadata().get("key1"), is(value1));
         assertNotNull(route.toString());
         assertNotNull(response.toString());
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
 
         final AreaMailResponse metadataResponse = client.getAreaMails(Filters.ofMetadata(metadata)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));
@@ -145,6 +148,10 @@ public class AreaMailTest extends BaseTest {
     @Test
     public void testListAreas() throws Exception {
         final AreaMailResponseList responseList = client.getAreaMails().get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final AreaMailResponse response = responseList.get(0);
         assertTrue(response instanceof AreaMailResponse);
         assertThat(responseList.getObject(), is("list"));

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.SettingId;
 
-public class SettingResponse {
+public class SettingResponse extends AbstractResponse {
 	@JsonProperty private final SettingId id;
 	@JsonProperty private final String type;
 	@JsonProperty private final String description;

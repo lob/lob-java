@@ -33,6 +33,9 @@ public class VerifyAddressTest extends BaseTest {
         assertThat(response.getObject(), is("address"));
         assertNull(response.getMessage());
         assertNotNull(response.toString());
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
 
         final VerifyAddressRequest otherRequest = builder.butWith()
                 .zip(ZipCode.parse("02125"))

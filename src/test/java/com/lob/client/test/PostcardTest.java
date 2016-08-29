@@ -26,6 +26,10 @@ public class PostcardTest extends BaseTest {
     @Test
     public void testListPostcards() throws Exception {
         final PostcardResponseList responseList = client.getPostcards().get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final PostcardResponse response = responseList.get(0);
 
         assertTrue(response instanceof PostcardResponse);
@@ -81,6 +85,9 @@ public class PostcardTest extends BaseTest {
         assertThat(response.getSize(), is("6x11"));
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
 
         final PostcardResponse metadataResponse = client.getPostcards(Filters.ofMetadata(metadata)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));
@@ -211,5 +218,8 @@ public class PostcardTest extends BaseTest {
         assertThat(response.getId(), is(id));
         assertTrue(response.isDeleted());
         assertNotNull(response.toString());
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
     }
 }

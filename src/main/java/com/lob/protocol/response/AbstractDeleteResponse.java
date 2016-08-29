@@ -3,7 +3,7 @@ package com.lob.protocol.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.LobId;
 
-public abstract class AbstractDeleteResponse<T extends LobId> {
+public abstract class AbstractDeleteResponse<T extends LobId> extends AbstractResponse {
     @JsonProperty private final boolean deleted;
     @JsonProperty private final T id;
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 import static com.lob.Util.defensiveCopy;
 
-public class SettingResponseList {
+public class SettingResponseList extends AbstractResponse {
     @JsonProperty private final List<SettingResponse> data;
     @JsonProperty private final String object;
 

@@ -5,7 +5,7 @@ import org.joda.time.DateTime;
 
 import java.util.Map;
 
-public abstract class AbstractLobResponse {
+public abstract class AbstractLobResponse extends AbstractResponse {
     @JsonProperty private final String description;
     @JsonProperty private final DateTime dateCreated;
     @JsonProperty private final DateTime dateModified;

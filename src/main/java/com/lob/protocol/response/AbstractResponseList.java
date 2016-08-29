@@ -8,7 +8,7 @@ import java.util.List;
 
 import static com.lob.Util.defensiveCopy;
 
-public abstract class AbstractResponseList<T> implements Iterable<T> {
+public abstract class AbstractResponseList<T> extends AbstractResponse implements Iterable<T> {
     @JsonProperty private final List<T> data;
     @JsonProperty private final String object;
 

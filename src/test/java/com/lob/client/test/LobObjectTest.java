@@ -27,6 +27,10 @@ public class LobObjectTest extends BaseTest {
     @Test
     public void testListObjects() throws Exception {
         final LobObjectResponseList responseList = client.getLobObjects().get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final LobObjectResponse response = responseList.get(0);
 
         assertTrue(response instanceof LobObjectResponse);
@@ -93,6 +97,9 @@ public class LobObjectTest extends BaseTest {
         assertTrue(response.getSetting() instanceof SettingResponse);
         assertFalse(response.getThumbnails().isEmpty());
         assertFalse(response.getUrl().isEmpty());
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
 
         final ThumbnailResponse thumbnail = response.getThumbnails().get(0);
         assertFalse(thumbnail.getLarge().isEmpty());
