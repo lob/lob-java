@@ -27,6 +27,10 @@ public class JobTest extends BaseTest {
     @Test
     public void testListJobs() throws Exception {
         final JobResponseList responseList = client.getJobs().get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final JobResponse response = responseList.get(0);
 
         assertTrue(response instanceof JobResponse);
@@ -81,6 +85,9 @@ public class JobTest extends BaseTest {
         assertThat(response.getObjects().get(0).getId(), is(lobObject.getId()));
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
 
         final JobResponse metadataResponse = client.getJobs(Filters.ofMetadata(metadata)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));

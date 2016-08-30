@@ -8,7 +8,7 @@ import java.util.List;
 
 import static com.lob.Util.defensiveCopy;
 
-public abstract class AbstractPagedResponseList<T> implements Iterable<T> {
+public abstract class AbstractPagedResponseList<T> extends AbstractResponse implements Iterable<T> {
     @JsonProperty private final List<T> data;
     @JsonProperty private final String object;
     @JsonProperty private final int count;

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.CountryCode;
 import com.lob.id.ZipCode;
 
-public class VerifyAddressResponse {
+public class VerifyAddressResponse extends AbstractResponse {
     @JsonProperty private final BaseAddressResponse address;
     @JsonProperty private final String message;
 

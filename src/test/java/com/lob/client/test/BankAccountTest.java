@@ -21,6 +21,10 @@ public class BankAccountTest extends BaseTest {
     @Test
     public void testListBankAccounts() throws Exception {
         final BankAccountResponseList responseList = client.getBankAccounts().get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final BankAccountResponse response = responseList.get(0);
 
         assertTrue(response instanceof BankAccountResponse);
@@ -71,6 +75,9 @@ public class BankAccountTest extends BaseTest {
         assertFalse(response.getSignatory().isEmpty());
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
 
         final BankAccountResponse metadataResponse = client.getBankAccounts(Filters.ofMetadata(metadata)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));
@@ -104,5 +111,8 @@ public class BankAccountTest extends BaseTest {
         final BankAccountDeleteResponse deleteResponse = client.deleteBankAccount(response.getId()).get();
         assertThat(deleteResponse.getId(), is(response.getId()));
         assertNotNull(deleteResponse.toString());
+        assertEquals(200, deleteResponse.getStatusCode());
+        assertNotNull(deleteResponse.getHeaders());
+        assertEquals("application/json; charset=utf-8", deleteResponse.getHeaders().getFirstValue("content-type"));
     }
 }

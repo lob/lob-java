@@ -20,6 +20,10 @@ public class ZipCodeRouteTest extends BaseTest {
             .build();
         assertNotNull(request.toString());
         final ZipCodeRouteResponseList responseList = client.getZipCodeRoutes(request).get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final ZipCodeRouteResponse response = responseList.get(0);
 
         assertTrue(response instanceof ZipCodeRouteResponse);

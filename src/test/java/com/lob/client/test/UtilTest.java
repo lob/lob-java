@@ -30,7 +30,7 @@ public class UtilTest extends BaseTest {
 
     @Test
     public void testDefensiveCopyWithEmptyList() {
-        assertEquals(Util.defensiveCopy(Collections.emptyList()), Collections.emptyList());
+        assertEquals(Collections.emptyList(), Util.defensiveCopy(Collections.emptyList()));
     }
 
     @Test

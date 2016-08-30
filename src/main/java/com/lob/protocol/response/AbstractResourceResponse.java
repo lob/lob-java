@@ -3,7 +3,7 @@ package com.lob.protocol.response;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public abstract class AbstractResourceResponse {
+public abstract class AbstractResourceResponse extends AbstractResponse {
     @JsonProperty private final int id;
     @JsonProperty private final String name;
     @JsonProperty private final String shortName;

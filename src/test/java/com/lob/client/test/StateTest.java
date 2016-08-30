@@ -11,6 +11,10 @@ public class StateTest extends BaseTest {
     @Test
     public void testStates() throws Exception {
         final StateResponseList responseList = client.getStates().get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final StateResponse response = responseList.get(0);
 
         assertTrue(responseList.iterator().hasNext());

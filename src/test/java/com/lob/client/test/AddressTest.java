@@ -27,6 +27,10 @@ public class AddressTest extends BaseTest {
     @Test
     public void testListAddresses() throws Exception {
         final AddressResponseList addresses = client.getAddresses().get();
+        assertEquals(200, addresses.getStatusCode());
+        assertNotNull(addresses.getHeaders());
+        assertEquals("application/json; charset=utf-8", addresses.getHeaders().getFirstValue("content-type"));
+
         final AddressResponse response = addresses.get(0);
         assertTrue(response instanceof AddressResponse);
         assertThat(addresses.getObject(), is("list"));
@@ -76,6 +80,9 @@ public class AddressTest extends BaseTest {
             assertNotNull(lobException.getErrorResponse().toString());
             assertNotNull(lobException.getErrorResponse().getError().getMessage());
             assertNotNull(lobException.getErrorResponse().getError().getStatusCode());
+            assertEquals(422, lobException.getStatusCode());
+            assertNotNull(lobException.getHeaders());
+            assertEquals("application/json; charset=utf-8", lobException.getHeaders().getFirstValue("content-type"));
         }
     }
 
@@ -114,6 +121,9 @@ public class AddressTest extends BaseTest {
         assertThat(response.getObject(), is("address"));
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
 
         final AddressResponse metadataResponse = client.getAddresses(Filters.ofMetadata(metadata).withMetadata(metadata).withLimit(1)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));
@@ -139,6 +149,8 @@ public class AddressTest extends BaseTest {
         final AddressId id = response.getId();
         final AddressResponse retrievedResponse = client.getAddress(id).get();
         assertThat(retrievedResponse.getId(), is(id));
+        assertEquals(200, retrievedResponse.getStatusCode());
+        assertNotNull(retrievedResponse.getHeaders());
     }
 
     @Test
@@ -154,5 +166,8 @@ public class AddressTest extends BaseTest {
         assertThat(response.getId(), is(id));
         assertTrue(response.isDeleted());
         assertNotNull(response.toString());
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
     }
 }

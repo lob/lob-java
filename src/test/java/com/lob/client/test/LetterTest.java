@@ -25,6 +25,10 @@ public class LetterTest extends BaseTest {
     @Test
     public void testListLetters() throws Exception {
         final LetterResponseList responseList = client.getLetters().get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final LetterResponse response = responseList.get(0);
 
         assertThat(client.getLetter(response.getId()).get().getId(), is(response.getId()));
@@ -87,7 +91,7 @@ public class LetterTest extends BaseTest {
         assertNull(response.getExtraService());
         assertFalse(response.isReturnEnvelope());
         assertNull(response.getPerforatedPage());
-        assertEquals(response.getThumbnails().size(), 1);
+        assertEquals(1, response.getThumbnails().size());
         assertNotNull(response.getTrackingEvents());
         assertNull(response.getTrackingNumber());
         assertNotNull(response.getCarrier());
@@ -96,6 +100,9 @@ public class LetterTest extends BaseTest {
         assertNull(response.getPrice());
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
 
         final LetterResponse metadataResponse = client.getLetters(Filters.ofMetadata(metadata)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));
@@ -199,5 +206,8 @@ public class LetterTest extends BaseTest {
         assertThat(response.getId(), is(id));
         assertTrue(response.isDeleted());
         assertNotNull(response.toString());
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
     }
 }

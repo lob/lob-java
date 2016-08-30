@@ -16,6 +16,10 @@ public class SettingTest extends BaseTest {
     @Test
     public void testSettings() throws Exception {
         final SettingResponseList responseList = client.getSettings().get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final SettingResponse response = responseList.get(0);
         assertThat(responseList.getData().get(0), is(response));
 
@@ -44,6 +48,8 @@ public class SettingTest extends BaseTest {
         assertFalse(response.getPaper().isEmpty());
         assertFalse(response.getType().isEmpty());
         assertFalse(response.getWidth().isEmpty());
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
     }
 
     @Test(expected = ExecutionException.class)

@@ -26,6 +26,10 @@ public class PostcardTest extends BaseTest {
     @Test
     public void testListPostcards() throws Exception {
         final PostcardResponseList responseList = client.getPostcards().get();
+        assertEquals(200, responseList.getStatusCode());
+        assertNotNull(responseList.getHeaders());
+        assertEquals("application/json; charset=utf-8", responseList.getHeaders().getFirstValue("content-type"));
+
         final PostcardResponse response = responseList.get(0);
 
         assertTrue(response instanceof PostcardResponse);
@@ -76,11 +80,14 @@ public class PostcardTest extends BaseTest {
         assertThat(response.getDescription(), is("postcard"));
         assertThat(response.getUrl(), containsString(response.getId().toString()));
         assertNotNull(response.getExpectedDeliveryDate());
-        assertEquals(response.getThumbnails().size(), 2);
+        assertEquals(2, response.getThumbnails().size());
         assertThat(response.getFrom().getId(), is(address.getId()));
         assertThat(response.getSize(), is("6x11"));
         assertThat(response.getMetadata().get("key0"), is(value0));
         assertThat(response.getMetadata().get("key1"), is(value1));
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
 
         final PostcardResponse metadataResponse = client.getPostcards(Filters.ofMetadata(metadata)).get().get(0);
         assertThat(metadataResponse.getId(), is(response.getId()));
@@ -95,10 +102,10 @@ public class PostcardTest extends BaseTest {
                 .message("Hello World!")
                 .build();
         assertTrue(request2.getBack() instanceof LobParam);
-        assertEquals(request2.getMessage(), "Hello World!");
+        assertEquals("Hello World!", request2.getMessage());
         assertTrue(request2.getFrom() instanceof Or);
         assertTrue(request2.getFront() instanceof LobParam);
-        assertEquals(request2.getSize(), "6x11");
+        assertEquals("6x11", request2.getSize());
         assertTrue(request2.getTo() instanceof Or);
     }
 
@@ -181,17 +188,17 @@ public class PostcardTest extends BaseTest {
     public void testTrackingEvents() throws Exception {
         final PostcardResponse response = client.getPostcard(PostcardId.parse("psc_d1f8830b03cde4ef")).get();
 
-        assertEquals(response.getCarrier(), "USPS");
-        assertEquals(response.getTrackingEvents().size(), 1);
+        assertEquals("USPS", response.getCarrier());
+        assertEquals(1, response.getTrackingEvents().size());
 
         final TrackingEventResponse event = response.getTrackingEvents().get(0);
 
-        assertEquals(event.getName(), "Scanned");
-        assertEquals(event.getLocation(), "14692");
+        assertEquals("Scanned", event.getName());
+        assertEquals("14692", event.getLocation());
         assertNotNull(event.getTime());
         assertNotNull(event.getDateCreated());
         assertNotNull(event.getDateModified());
-        assertEquals(event.getObject(), "tracking_event");
+        assertEquals("tracking_event", event.getObject());
         assertNotNull(event.toString());
     }
 
@@ -211,5 +218,8 @@ public class PostcardTest extends BaseTest {
         assertThat(response.getId(), is(id));
         assertTrue(response.isDeleted());
         assertNotNull(response.toString());
+        assertEquals(200, response.getStatusCode());
+        assertNotNull(response.getHeaders());
+        assertEquals("application/json; charset=utf-8", response.getHeaders().getFirstValue("content-type"));
     }
 }
