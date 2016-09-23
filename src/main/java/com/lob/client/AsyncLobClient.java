@@ -33,6 +33,7 @@ import org.joda.money.Money;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Properties;
 
 import static com.google.common.base.Preconditions.*;
 
@@ -47,6 +48,8 @@ public class AsyncLobClient implements LobClient {
 
     private final AsyncHttpClient httpClient;
     private final String baseUrl;
+
+    private final static String JAVA_VERSION = System.getProperty("java.version");
 
     private AsyncLobClient(
             final AsyncHttpClient httpClient,
@@ -495,9 +498,21 @@ public class AsyncLobClient implements LobClient {
         final SettableFuture<T> guavaFut = SettableFuture.create();
         try {
             final Optional<String> apiVersionOpt = Lob.getApiVersion();
+            String wrapperVersion;
+
             if (apiVersionOpt.isPresent()) {
                 request.addHeader(LobClient.LOB_VERSION_HEADER, apiVersionOpt.get());
             }
+
+            try {
+                Properties prop = new Properties();
+                prop.load(AsyncLobClient.class.getClassLoader().getResourceAsStream("project.properties"));
+                wrapperVersion = prop.getProperty("version");
+            } catch (IOException e) {
+                wrapperVersion = "";
+            }
+
+            request.addHeader("user-agent", new StringBuilder().append("LobJava/").append(wrapperVersion).append(" JDK/").append(JAVA_VERSION).toString());
 
             request.execute(new GuavaFutureConverter<T>(clazz, guavaFut));
         }

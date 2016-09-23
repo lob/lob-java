@@ -3,7 +3,6 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.lob/lob-java.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.lob%22%20AND%20a%3A%22lob-java%22)
 [![Build Status](https://secure.travis-ci.org/lob/lob-java.svg)](https://travis-ci.org/lob/lob-java)
 [![Coverage Status](https://coveralls.io/repos/lob/lob-java/badge.svg?branch=master)](https://coveralls.io/r/lob/lob-java)
-[![Dependency Status](https://www.versioneye.com/user/projects/5788653cc3d40f0046851db1/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5788653cc3d40f0046851db1)
 
 Java wrapper for the [Lob.com](http://lob.com) API. See the full Lob.com [API Documentation](https://lob.com/docs/java).  For best results, be sure that you're using [the latest version](https://lob.com/docs/java#version) of the Lob API and the latest version of the java wrapper.
 
