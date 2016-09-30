@@ -5,11 +5,8 @@ import com.lob.id.AddressId;
 import com.lob.id.AreaMailId;
 import com.lob.id.BankAccountId;
 import com.lob.id.CheckId;
-import com.lob.id.JobId;
 import com.lob.id.LetterId;
-import com.lob.id.LobObjectId;
 import com.lob.id.PostcardId;
-import com.lob.id.SettingId;
 import com.lob.protocol.request.*;
 import com.lob.protocol.response.*;
 
@@ -19,21 +16,6 @@ public interface LobClient {
     public void close();
 
     public void closeAsynchronously();
-
-    // Job methods
-    public ListenableFuture<JobResponse> createJob(final JobRequest jobRequest);
-
-    public ListenableFuture<JobResponse> getJob(final JobId id);
-
-    public ListenableFuture<JobResponseList> getJobs();
-
-    @Deprecated
-    public ListenableFuture<JobResponseList> getJobs(final int count);
-
-    @Deprecated
-    public ListenableFuture<JobResponseList> getJobs(final int count, final int offset);
-
-    public ListenableFuture<JobResponseList> getJobs(final Filter filter);
 
     // Address methods
     public ListenableFuture<AddressResponse> createAddress(final AddressRequest addressRequest);
@@ -51,28 +33,6 @@ public interface LobClient {
     public ListenableFuture<AddressResponseList> getAddresses(final Filter filter);
 
     public ListenableFuture<AddressDeleteResponse> deleteAddress(final AddressId id);
-
-    // Object methods
-    public ListenableFuture<LobObjectResponse> createLobObject(final LobObjectRequest lobObjectRequest);
-
-    public ListenableFuture<LobObjectResponse> getLobObject(final LobObjectId id);
-
-    public ListenableFuture<LobObjectResponseList> getLobObjects();
-
-    @Deprecated
-    public ListenableFuture<LobObjectResponseList> getLobObjects(final int count);
-
-    @Deprecated
-    public ListenableFuture<LobObjectResponseList> getLobObjects(final int count, final int offset);
-
-    public ListenableFuture<LobObjectResponseList> getLobObjects(final Filter filter);
-
-    public ListenableFuture<LobObjectDeleteResponse> deleteLobObject(final LobObjectId id);
-
-    // Setting methods
-    public ListenableFuture<SettingResponse> getSetting(final SettingId id);
-
-    public ListenableFuture<SettingResponseList> getSettings();
 
     // Letter methods
     public ListenableFuture<LetterResponse> createLetter(final LetterRequest letterRequest);
