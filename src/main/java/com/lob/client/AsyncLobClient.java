@@ -92,36 +92,6 @@ public class AsyncLobClient implements LobClient {
     }
 
     @Override
-    public ListenableFuture<JobResponse> createJob(final JobRequest jobRequest) {
-        return execute(JobResponse.class, post(Router.JOBS, jobRequest));
-    }
-
-    @Override
-    public ListenableFuture<JobResponse> getJob(final JobId id) {
-        return execute(JobResponse.class, get(Router.JOBS, id));
-    }
-
-    @Override
-    public ListenableFuture<JobResponseList> getJobs() {
-        return execute(JobResponseList.class, get(Router.JOBS));
-    }
-
-    @Override
-    public ListenableFuture<JobResponseList> getJobs(final int count) {
-        return execute(JobResponseList.class, get(Router.JOBS, count));
-    }
-
-    @Override
-    public ListenableFuture<JobResponseList> getJobs(final int count, final int offset) {
-        return execute(JobResponseList.class, get(Router.JOBS, count, offset));
-    }
-
-    @Override
-    public ListenableFuture<JobResponseList> getJobs(final Filter filter) {
-        return execute(JobResponseList.class, get(Router.JOBS, filter));
-    }
-
-    @Override
     public ListenableFuture<AddressResponse> createAddress(final AddressRequest addressRequest) {
         return execute(AddressResponse.class, post(Router.ADDRESSES, addressRequest));
     }
@@ -154,51 +124,6 @@ public class AsyncLobClient implements LobClient {
     @Override
     public ListenableFuture<AddressDeleteResponse> deleteAddress(final AddressId id) {
         return execute(AddressDeleteResponse.class, delete(Router.ADDRESSES, id));
-    }
-
-    @Override
-    public ListenableFuture<LobObjectResponse> createLobObject(final LobObjectRequest lobObjectRequest) {
-        return execute(LobObjectResponse.class, post(Router.OBJECTS, lobObjectRequest));
-    }
-
-    @Override
-    public ListenableFuture<LobObjectResponse> getLobObject(final LobObjectId id) {
-        return execute(LobObjectResponse.class, get(Router.OBJECTS, id));
-    }
-
-    @Override
-    public ListenableFuture<LobObjectResponseList> getLobObjects() {
-        return execute(LobObjectResponseList.class, get(Router.OBJECTS));
-    }
-
-    @Override
-    public ListenableFuture<LobObjectResponseList> getLobObjects(final int count) {
-        return execute(LobObjectResponseList.class, get(Router.OBJECTS, count));
-    }
-
-    @Override
-    public ListenableFuture<LobObjectResponseList> getLobObjects(final int count, final int offset) {
-        return execute(LobObjectResponseList.class, get(Router.OBJECTS, count, offset));
-    }
-
-    @Override
-    public ListenableFuture<LobObjectResponseList> getLobObjects(final Filter filter) {
-        return execute(LobObjectResponseList.class, get(Router.OBJECTS, filter));
-    }
-
-    @Override
-    public ListenableFuture<LobObjectDeleteResponse> deleteLobObject(final LobObjectId id) {
-        return execute(LobObjectDeleteResponse.class, delete(Router.OBJECTS, id));
-    }
-
-    @Override
-    public ListenableFuture<SettingResponse> getSetting(final SettingId id) {
-        return execute(SettingResponse.class, get(Router.SETTINGS, id));
-    }
-
-    @Override
-    public ListenableFuture<SettingResponseList> getSettings() {
-        return execute(SettingResponseList.class, get(Router.SETTINGS));
     }
 
     @Override
