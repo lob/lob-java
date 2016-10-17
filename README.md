@@ -39,15 +39,21 @@ Once you have created an account, you can access your API Keys from the [Setting
 
 Include the following in your `pom.xml` for Maven:
 
-```
+```xml
 <dependencies>
   <dependency>
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
-    <version>4.4.0</version>
+    <version>4.5.0</version>
   </dependency>
   ...
 </dependencies>
+```
+
+Gradle:
+
+```groovy
+compile 'com.lob:lob-java:4.5.0'
 ```
 
 ### Usage
