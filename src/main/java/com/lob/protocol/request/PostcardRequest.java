@@ -19,6 +19,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
     private final LobParam front;
     private final LobParam back;
     private final String size;
+    private final String mailType;
 
     public PostcardRequest(
             final Or<AddressId, AddressRequest> to,
@@ -27,6 +28,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
             final LobParam front,
             final LobParam back,
             final String size,
+            final String mailType,
             final Map<String, String> metadata,
             final Map<String, String> data,
             final String description) {
@@ -38,6 +40,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
         this.front = checkNotNull(front, "front is required");
         this.back = back;
         this.size = size;
+        this.mailType = mailType;
     }
 
     @Override
@@ -47,6 +50,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
             .put("from", from)
             .put("message", message)
             .put("size", size)
+            .put("mail_type", mailType)
             .put(front)
             .put(back)
             .build();
@@ -76,6 +80,10 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
       return size;
     }
 
+    public String getMailType() {
+        return mailType;
+    }
+
     @Override
     public String toString() {
         return "PostcardRequest{" +
@@ -84,7 +92,8 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
             ", message='" + message + '\'' +
             ", front='" + front + '\'' +
             ", back='" + back + '\'' +
-            ", size=" + size +
+            ", size='" + size + '\'' +
+            ", mailType='" + mailType + '\'' +
             super.toString();
     }
 
@@ -99,6 +108,7 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
         private LobParam front;
         private LobParam back;
         private String size;
+        private String mailType;
 
         private Builder() {}
 
@@ -172,6 +182,11 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
             return this;
         }
 
+        public Builder mailType(final String mailType) {
+            this.mailType = mailType;
+            return this;
+        }
+
         public Builder butWith() {
             return new Builder()
                 .to(to)
@@ -180,13 +195,14 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
                 .front(front)
                 .back(back)
                 .size(size)
+                .mailType(mailType)
                 .metadata(metadata)
                 .data(data)
                 .description(description);
         }
 
         public PostcardRequest build() {
-            return new PostcardRequest(to, from, message, front, back, size, metadata, data, description);
+            return new PostcardRequest(to, from, message, front, back, size, mailType, metadata, data, description);
         }
     }
 }

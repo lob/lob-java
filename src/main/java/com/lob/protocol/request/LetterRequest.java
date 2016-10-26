@@ -20,6 +20,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
     private final String extraService;
     private final Boolean returnEnvelope;
     private final Integer perforatedPage;
+    private final String mailType;
 
     public LetterRequest(
             final String description,
@@ -32,6 +33,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             final String extraService,
             final Boolean returnEnvelope,
             final Integer perforatedPage,
+            final String mailType,
             final Map<String, String> metadata,
             final Map<String, String> data) {
 
@@ -45,6 +47,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
         this.extraService = extraService;
         this.returnEnvelope = returnEnvelope;
         this.perforatedPage = perforatedPage;
+        this.mailType = mailType;
     }
 
     @Override
@@ -59,6 +62,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             .put("extra_service", extraService)
             .put("return_envelope", returnEnvelope)
             .put("perforated_page", perforatedPage)
+            .put("mail_type", mailType)
             .build();
     }
 
@@ -80,6 +84,8 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
 
     public Integer getPerforatedPage() { return perforatedPage; }
 
+    public String getMailType() { return mailType; }
+
     @Override
     public String toString() {
         return "LetterRequest{" +
@@ -92,6 +98,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             ", extraService=" + extraService +
             ", returnEnvelope=" + returnEnvelope +
             ", perforatedPage=" + perforatedPage +
+            ", mailType=" + mailType +
             super.toString();
     }
 
@@ -107,6 +114,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
         private String extraService;
         private Boolean returnEnvelope;
         private Integer perforatedPage;
+        private String mailType;
 
         private Builder() {}
 
@@ -190,6 +198,11 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             return this;
         }
 
+        public Builder mailType(final String mailType) {
+            this.mailType = mailType;
+            return this;
+        }
+
         public Builder butWith() {
             return new Builder()
                 .description(description)
@@ -202,12 +215,13 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
                 .extraService(extraService)
                 .returnEnvelope(returnEnvelope)
                 .perforatedPage(perforatedPage)
+                .mailType(mailType)
                 .metadata(metadata)
                 .data(data);
         }
 
         public LetterRequest build() {
-            return new LetterRequest(description, to, from, file, color, doubleSided, addressPlacement, extraService, returnEnvelope, perforatedPage, metadata, data);
+            return new LetterRequest(description, to, from, file, color, doubleSided, addressPlacement, extraService, returnEnvelope, perforatedPage, mailType, metadata, data);
         }
     }
 }

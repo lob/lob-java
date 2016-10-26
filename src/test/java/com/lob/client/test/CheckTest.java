@@ -28,11 +28,19 @@ import static org.junit.Assert.*;
 
 public class CheckTest extends BaseTest {
     private BankAccountResponse getAndVerifyBankAccount() throws Exception {
-        final BankAccountResponse bankAccount = Iterables.get(client.getBankAccounts(1).get(), 0);
-        if (!bankAccount.isVerified()) {
-            client.verifyBankAccount(
-                BankAccountVerifyRequest.builder().id(bankAccount.getId()).amounts(20, 40).build()).get();
-        }
+
+        final BankAccountRequest request = BankAccountRequest.builder()
+                .routingNumber("122100024")
+                .accountNumber("123456789")
+                .accountType("company")
+                .signatory("John Doe")
+                .description("java test suite bank account")
+                .build();
+
+        final BankAccountResponse bankAccount = client.createBankAccount(request).get();
+
+        client.verifyBankAccount(BankAccountVerifyRequest.builder().id(bankAccount.getId()).amounts(20, 40).build()).get();
+
         return bankAccount;
     }
 
@@ -256,6 +264,27 @@ public class CheckTest extends BaseTest {
         assertThat(response.getBankAccount().getId(), is(bankAccount.getId()));
         assertThat(response.getTo().getName(), is("Lob To"));
         assertThat(response.getFrom().getName(), is("Lob From"));
+    }
+
+    @Test
+    public void testCreateCustomMailType() throws Exception {
+        final BankAccountResponse bankAccount = getAndVerifyBankAccount();
+        final AddressResponse address = client.getAddresses(1).get().get(0);
+
+        final CheckRequest request = CheckRequest.builder()
+                .bankAccount(bankAccount.getId())
+                .to(address.getId())
+                .from(address.getId())
+                .amount(1000)
+                .memo("Test Check")
+                .mailType("ups_next_day_air")
+                .build();
+
+        assertThat(request.getMailType(), is("ups_next_day_air"));
+
+        final CheckResponse response = client.createCheck(request).get();
+
+        assertThat(response.getMailType(), is("ups_next_day_air"));
     }
 
     @Test
