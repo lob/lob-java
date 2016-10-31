@@ -188,6 +188,7 @@ public class LetterTest extends BaseTest {
         assertTrue(response.isReturnEnvelope());
         assertThat(response.getPerforatedPage(), is(perforatedPage));
     }
+
     @Test
     public void testDeleteLetter() throws Exception {
         final AddressResponse address = client.getAddresses(1).get().get(0);

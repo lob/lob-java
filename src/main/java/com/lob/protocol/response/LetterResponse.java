@@ -25,6 +25,7 @@ public class LetterResponse extends AbstractLobResponse {
     @JsonProperty private final Money price;
     @JsonProperty private final String url;
     @JsonProperty private final DateTime expectedDeliveryDate;
+    @JsonProperty private final String mailType;
     @JsonProperty private final List<ThumbnailResponse> thumbnails;
     @JsonProperty private final String carrier;
     @JsonProperty private final String trackingNumber;
@@ -45,6 +46,7 @@ public class LetterResponse extends AbstractLobResponse {
             @JsonProperty("price") final Money price,
             @JsonProperty("url") final String url,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
+            @JsonProperty("mail_type") final String mailType,
             @JsonProperty("thumbnails") final List<ThumbnailResponse> thumbnails,
             @JsonProperty("carrier") final String carrier,
             @JsonProperty("tracking_number") final String trackingNumber,
@@ -68,6 +70,7 @@ public class LetterResponse extends AbstractLobResponse {
         this.price = price;
         this.url = url;
         this.expectedDeliveryDate = expectedDeliveryDate;
+        this.mailType = mailType;
         this.thumbnails = thumbnails;
         this.carrier = carrier;
         this.trackingNumber = trackingNumber;
@@ -102,6 +105,8 @@ public class LetterResponse extends AbstractLobResponse {
 
     public DateTime getExpectedDeliveryDate() { return expectedDeliveryDate; }
 
+    public String getMailType() { return mailType; }
+
     public List<ThumbnailResponse> getThumbnails() { return defensiveCopy(this.thumbnails); }
 
     public String getCarrier() { return carrier; }
@@ -126,6 +131,7 @@ public class LetterResponse extends AbstractLobResponse {
                 ", price='" + price + "'" +
                 ", url='" + url + "'" +
                 ", expectedDeliveryDate='" + expectedDeliveryDate + "'" +
+                ", mailType='" + mailType + "'" +
                 ", thumbnails='" + thumbnails + "'" +
                 ", carrier='" + carrier + "'" +
                 ", trackingNumber='" + trackingNumber + "'" +

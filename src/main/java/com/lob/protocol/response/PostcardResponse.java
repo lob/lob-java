@@ -20,6 +20,7 @@ public class PostcardResponse extends AbstractLobResponse {
     @JsonProperty private final Money price;
     @JsonProperty private final String url;
     @JsonProperty private final DateTime expectedDeliveryDate;
+    @JsonProperty private final String mailType;
     @JsonProperty private final List<ThumbnailResponse> thumbnails;
     @JsonProperty private final String carrier;
     @JsonProperty private final List<TrackingEventResponse> trackingEvents;
@@ -34,6 +35,7 @@ public class PostcardResponse extends AbstractLobResponse {
             @JsonProperty("price") final Money price,
             @JsonProperty("url") final String url,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
+            @JsonProperty("mail_type") final String mailType,
             @JsonProperty("thumbnails") final List<ThumbnailResponse> thumbnails,
             @JsonProperty("carrier") final String carrier,
             @JsonProperty("tracking_events") final List<TrackingEventResponse> trackingEvents,
@@ -51,6 +53,7 @@ public class PostcardResponse extends AbstractLobResponse {
         this.price = price;
         this.url = url;
         this.expectedDeliveryDate = expectedDeliveryDate;
+        this.mailType = mailType;
         this.thumbnails = thumbnails;
         this.carrier = carrier;
         this.trackingEvents = trackingEvents;
@@ -89,6 +92,10 @@ public class PostcardResponse extends AbstractLobResponse {
         return expectedDeliveryDate;
     }
 
+    public String getMailType() {
+        return mailType;
+    }
+
     public List<ThumbnailResponse> getThumbnails() {
         return defensiveCopy(this.thumbnails);
     }
@@ -112,6 +119,7 @@ public class PostcardResponse extends AbstractLobResponse {
             ", price='" + price + '\'' +
             ", url='" + url + '\'' +
             ", expectedDeliveryDate='" + expectedDeliveryDate + '\'' +
+            ", mailType='" + mailType + '\'' +
             ", thumbnails='" + thumbnails + '\'' +
             ", carrier='" + carrier + '\'' +
             ", trackingEvents='" + trackingEvents + '\'' +

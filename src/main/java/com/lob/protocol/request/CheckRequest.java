@@ -27,6 +27,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
     private final LobParam logo;
     private final LobParam checkBottom;
     private final LobParam attachment;
+    private final String mailType;
 
     public CheckRequest(
             final Integer checkNumber,
@@ -39,6 +40,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             final LobParam logo,
             final LobParam checkBottom,
             final LobParam attachment,
+            final String mailType,
             final Map<String, String> metadata,
             final Map<String, String> data,
             final String description) {
@@ -53,6 +55,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         this.logo = logo;
         this.checkBottom = checkBottom;
         this.attachment = attachment;
+        this.mailType = mailType;
     }
 
     @Override
@@ -68,6 +71,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             .put(logo)
             .put(checkBottom)
             .put(attachment)
+            .put("mail_type", mailType)
             .build();
     }
 
@@ -116,6 +120,10 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         return attachment;
     }
 
+    public String getMailType() {
+        return mailType;
+    }
+
     @Override
     public String toString() {
         return "CheckRequest{" +
@@ -129,6 +137,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             ", logo='" + logo + '\'' +
             ", checkBottom='" + checkBottom + '\'' +
             ", attachment='" + attachment + '\'' +
+            ", mailType='" + mailType + '\'' +
             super.toString();
     }
 
@@ -147,6 +156,7 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
         private LobParam logo;
         private LobParam checkBottom;
         private LobParam attachment;
+        private String mailType;
 
         private Builder() {}
 
@@ -275,6 +285,11 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             return this;
         }
 
+        public Builder mailType(final String mailType) {
+            this.mailType = mailType;
+            return this;
+        }
+
         public Builder butWith() {
             return new Builder()
                 .checkNumber(checkNumber)
@@ -287,13 +302,14 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
                 .logo(logo)
                 .checkBottom(checkBottom)
                 .attachment(attachment)
+                .mailType(mailType)
                 .metadata(metadata)
                 .data(data)
                 .description(description);
         }
 
         public CheckRequest build() {
-            return new CheckRequest(checkNumber, bankAccount, to, from, amount, message, memo, logo, checkBottom, attachment, metadata, data, description);
+            return new CheckRequest(checkNumber, bankAccount, to, from, amount, message, memo, logo, checkBottom, attachment, mailType, metadata, data, description);
         }
     }
 }
