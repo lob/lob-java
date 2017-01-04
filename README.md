@@ -126,6 +126,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - [Versioning](https://lob.com/docs/java#version)
 - [Errors](https://lob.com/docs/java#errors)
 - [Rate Limiting](https://lob.com/docs/java#rate-limits)
+- [Webhooks](https://lob.com/docs/java#webhooks)
 - [Metadata](https://lob.com/docs/java#metadata)
 - [Asset URLs](https://lob.com/docs/java#urls)
 - **Addresses**
@@ -180,6 +181,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - **Appendix**
   - [API Changelog](https://lob.com/docs/java#changelog)
   - [The Tracking Event Object](https://lob.com/docs/java#tracking_event_object)
+  - [Events](https://lob.com/docs/java#events)
   - [HTML Examples](https://lob.com/docs/java#html-examples)
   - [Image Prepping](https://lob.com/docs/java#prepping)
 
