@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title></title>
     <style>
       @font-face {
@@ -11,11 +12,11 @@
       }
 
       *, *:before, *:after {
-
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
       }
+      
       body {
         width: 8.5in;
         height: 11in;
@@ -23,11 +24,16 @@
         padding: 0;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
+      
       .page {
         page-break-after: always;
-      }
-      .page-content {
         position: relative;
+        width: 8.5in;
+        height: 11in;
+      }
+
+      .page-content {
+        position: absolute;
         width: 7in;
         height: 10.625in;
         left: 0.75in;
