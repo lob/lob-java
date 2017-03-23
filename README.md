@@ -44,7 +44,7 @@ Include the following in your `pom.xml` for Maven:
   <dependency>
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
-    <version>4.5.0</version>
+    <version>4.7.0</version>
   </dependency>
   ...
 </dependencies>
@@ -53,7 +53,7 @@ Include the following in your `pom.xml` for Maven:
 Gradle:
 
 ```groovy
-compile 'com.lob:lob-java:4.5.0'
+compile 'com.lob:lob-java:4.7.0'
 ```
 
 ### Usage
