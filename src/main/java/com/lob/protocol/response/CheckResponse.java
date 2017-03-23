@@ -2,7 +2,10 @@ package com.lob.protocol.response;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.lob.id.CheckId;
+import com.lob.protocol.serializer.DateTimeSerializer;
+import com.lob.protocol.serializer.MoneySerializer;
 import org.joda.money.Money;
 import org.joda.time.DateTime;
 
@@ -80,6 +83,7 @@ public class CheckResponse extends AbstractLobResponse {
         return memo;
     }
 
+    @JsonSerialize(using=MoneySerializer.class)
     public Money getAmount() {
         return amount;
     }
@@ -116,6 +120,7 @@ public class CheckResponse extends AbstractLobResponse {
         return defensiveCopy(this.trackingEvents);
     }
 
+    @JsonSerialize(using=DateTimeSerializer.class)
     public DateTime getExpectedDeliveryDate() {
         return expectedDeliveryDate;
     }

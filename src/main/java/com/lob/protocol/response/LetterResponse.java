@@ -2,7 +2,9 @@ package com.lob.protocol.response;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.lob.id.LetterId;
+import com.lob.protocol.serializer.DateTimeSerializer;
 import org.joda.money.Money;
 import org.joda.time.DateTime;
 
@@ -103,6 +105,7 @@ public class LetterResponse extends AbstractLobResponse {
 
     public String getUrl() { return url; }
 
+    @JsonSerialize(using=DateTimeSerializer.class)
     public DateTime getExpectedDeliveryDate() { return expectedDeliveryDate; }
 
     public String getMailType() { return mailType; }

@@ -1,6 +1,10 @@
 package com.lob.id;
 
-public abstract class LobId implements StringValued {
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.lob.protocol.serializer.IdSerializer;
+
+@JsonSerialize(using = IdSerializer.class)
+public class LobId implements StringValued {
     protected final String id;
 
     protected LobId(final String id) {
