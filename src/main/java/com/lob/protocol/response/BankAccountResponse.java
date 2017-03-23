@@ -1,7 +1,6 @@
 package com.lob.protocol.response;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import com.lob.id.BankAccountId;
 import org.joda.time.DateTime;
 
@@ -12,8 +11,10 @@ public class BankAccountResponse extends AbstractLobResponse {
     @JsonProperty private final String routingNumber;
     @JsonProperty private final String accountNumber;
     @JsonProperty private final String accountType;
+    @JsonProperty private final String bankName;
     @JsonProperty private final boolean verified;
     @JsonProperty private final String signatory;
+    @JsonProperty private final String signatureUrl;
 
     @JsonCreator
     public BankAccountResponse(
@@ -21,8 +22,10 @@ public class BankAccountResponse extends AbstractLobResponse {
             @JsonProperty("routing_number") final String routingNumber,
             @JsonProperty("account_number") final String accountNumber,
             @JsonProperty("account_type") final String accountType,
+            @JsonProperty("bank_name") final String bankName,
             @JsonProperty("verified") final boolean verified,
             @JsonProperty("signatory") final String signatory,
+            @JsonProperty("signature_url") final String signatureUrl,
             @JsonProperty("description") final String description,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
@@ -33,8 +36,10 @@ public class BankAccountResponse extends AbstractLobResponse {
         this.routingNumber = routingNumber;
         this.accountNumber = accountNumber;
         this.accountType = accountType;
+        this.bankName = bankName;
         this.verified = verified;
         this.signatory = signatory;
+        this.signatureUrl = signatureUrl;
     }
 
     public BankAccountId getId() {
@@ -59,6 +64,14 @@ public class BankAccountResponse extends AbstractLobResponse {
 
     public String getSignatory() {
         return signatory;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public String getSignatureUrl() {
+        return signatureUrl;
     }
 
     @Override

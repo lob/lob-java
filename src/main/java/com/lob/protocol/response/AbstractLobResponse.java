@@ -1,6 +1,8 @@
 package com.lob.protocol.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.lob.protocol.serializer.DateTimeSerializer;
 import org.joda.time.DateTime;
 
 import java.util.Map;
@@ -29,10 +31,12 @@ public abstract class AbstractLobResponse extends AbstractResponse {
         return description;
     }
 
+    @JsonSerialize(using=DateTimeSerializer.class)
     public DateTime getDateCreated() {
         return dateCreated;
     }
 
+    @JsonSerialize(using=DateTimeSerializer.class)
     public DateTime getDateModified() {
         return dateModified;
     }

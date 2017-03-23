@@ -1,10 +1,11 @@
 package com.lob.protocol.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ning.http.client.FluentCaseInsensitiveStringsMap;
 
 public abstract class AbstractResponse {
-    private int statusCode;
-    private FluentCaseInsensitiveStringsMap headers;
+    @JsonIgnore private int statusCode;
+    @JsonIgnore private FluentCaseInsensitiveStringsMap headers;
 
     public void setStatusCode(int statusCode) {
         this.statusCode = statusCode;

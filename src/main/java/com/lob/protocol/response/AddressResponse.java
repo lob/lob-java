@@ -2,9 +2,11 @@ package com.lob.protocol.response;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.lob.id.AddressId;
 import com.lob.id.CountryCode;
 import com.lob.id.ZipCode;
+import com.lob.protocol.serializer.DateTimeSerializer;
 import org.joda.time.DateTime;
 
 import java.util.Map;
@@ -75,10 +77,12 @@ public class AddressResponse extends BaseAddressResponse {
         return phone;
     }
 
+    @JsonSerialize(using=DateTimeSerializer.class)
     public DateTime getDateCreated() {
         return dateCreated;
     }
 
+    @JsonSerialize(using=DateTimeSerializer.class)
     public DateTime getDateModified() {
         return dateModified;
     }

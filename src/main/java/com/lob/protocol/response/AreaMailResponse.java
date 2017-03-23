@@ -2,8 +2,11 @@ package com.lob.protocol.response;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.lob.id.AreaMailId;
 import com.lob.protocol.request.TargetType;
+import com.lob.protocol.serializer.DateTimeSerializer;
+import com.lob.protocol.serializer.MoneySerializer;
 import org.joda.money.Money;
 import org.joda.time.DateTime;
 
@@ -50,6 +53,7 @@ public class AreaMailResponse extends AbstractLobResponse {
         return id;
     }
 
+    @JsonSerialize(using=MoneySerializer.class)
     public Money getPrice() {
         return price;
     }
@@ -74,6 +78,7 @@ public class AreaMailResponse extends AbstractLobResponse {
         return thumbnails;
     }
 
+    @JsonSerialize(using=DateTimeSerializer.class)
     public DateTime getExpectedDeliveryDate() {
         return expectedDeliveryDate;
     }
