@@ -42,7 +42,7 @@ public class AsyncLobClientTest extends BaseTest {
         this.lobClient = ctor.newInstance(httpClient, baseUrl);
 
         when(httpClient.prepareGet(anyString())).thenReturn(builder);
-        when(builder.setQueryParameters(any(FluentStringsMap.class))).thenReturn(builder);
+        when(builder.setQueryParams(any(FluentStringsMap.class))).thenReturn(builder);
 
         Lob.setApiVersion("lol");
 
@@ -53,14 +53,6 @@ public class AsyncLobClientTest extends BaseTest {
     public static void tearDown() throws Exception {
         Lob.setBaseUrl(baseUrl);
         Lob.clearApiVersion();
-    }
-
-    @Test(expected = ExecutionException.class)
-    public void requestIOExceptionTest() throws Exception {
-        when(builder.execute(any(AsyncHandler.class))).thenThrow(new IOException());
-
-        final ListenableFuture<AddressResponseList> responseList = lobClient.getAddresses();
-        responseList.get();
     }
 
     @Test
