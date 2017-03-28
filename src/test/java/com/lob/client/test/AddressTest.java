@@ -12,6 +12,7 @@ import com.lob.protocol.response.AddressDeleteResponse;
 import com.lob.protocol.response.AddressResponse;
 import com.lob.protocol.response.AddressResponseList;
 import com.lob.protocol.response.ErrorResponse;
+import com.ning.http.client.uri.Uri;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
@@ -75,7 +76,7 @@ public class AddressTest extends BaseTest {
         catch (final ExecutionException e) {
             final LobApiException lobException = (LobApiException) e.getCause();
             assertFalse(lobException.getMessage().isEmpty());
-            assertTrue(lobException.getUri() instanceof URI);
+            assertTrue(lobException.getUri() instanceof Uri);
             assertTrue(lobException.getErrorResponse() instanceof ErrorResponse);
             assertNotNull(lobException.getErrorResponse().toString());
             assertNotNull(lobException.getErrorResponse().getError().getMessage());
