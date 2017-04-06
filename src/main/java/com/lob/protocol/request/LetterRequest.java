@@ -5,6 +5,9 @@ import com.lob.id.AddressId;
 import java.io.File;
 import java.util.Collection;
 import java.util.Map;
+import org.joda.time.DateTime;
+import org.joda.time.format.ISODateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import static com.lob.Util.checkNotNull;
 
@@ -21,6 +24,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
     private final Boolean returnEnvelope;
     private final Integer perforatedPage;
     private final String mailType;
+    private final String sendDate;
 
     public LetterRequest(
             final String description,
@@ -33,6 +37,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             final String extraService,
             final Boolean returnEnvelope,
             final Integer perforatedPage,
+            final String sendDate,
             final String mailType,
             final Map<String, String> metadata,
             final Map<String, String> data) {
@@ -48,6 +53,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
         this.returnEnvelope = returnEnvelope;
         this.perforatedPage = perforatedPage;
         this.mailType = mailType;
+        this.sendDate = sendDate;
     }
 
     @Override
@@ -63,6 +69,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             .put("return_envelope", returnEnvelope)
             .put("perforated_page", perforatedPage)
             .put("mail_type", mailType)
+            .put("send_date", sendDate)
             .build();
     }
 
@@ -86,6 +93,8 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
 
     public String getMailType() { return mailType; }
 
+    public String getSendDate() { return sendDate; }
+
     @Override
     public String toString() {
         return "LetterRequest{" +
@@ -99,12 +108,15 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             ", returnEnvelope=" + returnEnvelope +
             ", perforatedPage=" + perforatedPage +
             ", mailType=" + mailType +
+            ", sendDate='" + sendDate + '\'' +
             super.toString();
     }
 
     public static Builder builder() { return new Builder(); }
 
     public static class Builder extends AbstractDataFieldRequest.Builder<Builder> {
+        private final static DateTimeFormatter DATE_FORMAT = ISODateTimeFormat.dateTime();
+
         private Or<AddressId, AddressRequest> to;
         private Or<AddressId, AddressRequest> from;
         private LobParam file;
@@ -115,6 +127,7 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
         private Boolean returnEnvelope;
         private Integer perforatedPage;
         private String mailType;
+        private String sendDate;
 
         private Builder() {}
 
@@ -203,6 +216,16 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             return this;
         }
 
+        public Builder sendDate(final DateTime sendDate) {
+            this.sendDate = sendDate.toString(DATE_FORMAT);
+            return this;
+        }
+
+        public Builder sendDate(final String sendDate) {
+            this.sendDate = sendDate;
+            return this;
+        }
+
         public Builder butWith() {
             return new Builder()
                 .description(description)
@@ -215,13 +238,14 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
                 .extraService(extraService)
                 .returnEnvelope(returnEnvelope)
                 .perforatedPage(perforatedPage)
+                .sendDate(sendDate)
                 .mailType(mailType)
                 .metadata(metadata)
                 .data(data);
         }
 
         public LetterRequest build() {
-            return new LetterRequest(description, to, from, file, color, doubleSided, addressPlacement, extraService, returnEnvelope, perforatedPage, mailType, metadata, data);
+            return new LetterRequest(description, to, from, file, color, doubleSided, addressPlacement, extraService, returnEnvelope, perforatedPage, sendDate, mailType, metadata, data);
         }
     }
 }

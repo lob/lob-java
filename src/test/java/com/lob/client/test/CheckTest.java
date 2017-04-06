@@ -284,6 +284,27 @@ public class CheckTest extends BaseTest {
     }
 
     @Test
+    public void testCreateCheckSendDate() throws Exception {
+        // Date time 5 days in the future
+        final DateTime fiveDaysFromNow = new DateTime().plusDays(5);
+
+        final BankAccountResponse bankAccount = getAndVerifyBankAccount();
+        final AddressResponse address = client.getAddresses(1).get().get(0);
+
+        final CheckRequest request = CheckRequest.builder()
+                .bankAccount(bankAccount.getId())
+                .to(address.getId())
+                .from(address.getId())
+                .amount(1000)
+                .memo("Test Check")
+                .sendDate(fiveDaysFromNow)
+                .build();
+
+        final CheckResponse response = client.createCheck(request).get();
+        assertTrue(response.getSendDate() instanceof String);
+    }
+
+    @Test
     public void testCheckDelete() throws Exception {
         final AddressResponse address = getAddress();
         final BankAccountResponse bankAccount = getAndVerifyBankAccount();

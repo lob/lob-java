@@ -162,6 +162,31 @@ public class LetterTest extends BaseTest {
     }
 
     @Test
+    public void testCreateLetterSendDate() throws Exception {
+        // Date time 5 days in the future
+        final DateTime fiveDaysFromNow = new DateTime().plusDays(5);
+
+        final AddressResponse address = client.getAddresses(1).get().get(0);
+        final String file = "<html style='padding-top: 3in; margin: .5in;'>HTML Letter</html>";
+
+        final LetterRequest.Builder builder = LetterRequest.builder()
+                .to(address.getId())
+                .from(address.getId())
+                .file(file)
+                .color(true)
+                .addressPlacement("top_first_page")
+                .doubleSided(false)
+                .sendDate(fiveDaysFromNow)
+                .description("letter");
+
+        final LetterRequest request = builder.build();
+        assertNotNull(request.toString());
+
+        final LetterResponse response = client.createLetter(request).get();
+        assertTrue(response.getSendDate() instanceof String);
+    }
+
+    @Test
     public void testCreateReturnEnvelopeLetter() throws Exception {
         final AddressResponse address = client.getAddresses(1).get().get(0);
         final String file = "<html style='padding-top: 3in; margin: .5in;'>HTML Letter</html>";

@@ -11,6 +11,7 @@ import com.lob.protocol.request.Filters;
 import com.lob.protocol.request.LobParam;
 import com.lob.protocol.request.PostcardRequest;
 import com.lob.protocol.response.*;
+import org.joda.time.DateTime;
 import org.junit.Test;
 
 import java.io.File;
@@ -179,6 +180,30 @@ public class PostcardTest extends BaseTest {
 
         final PostcardResponse response = client.createPostcard(request).get();
         assertTrue(response instanceof PostcardResponse);
+
+        final PostcardResponse retrievedResponse = client.getPostcard(response.getId()).get();
+        assertThat(retrievedResponse.getId(), is(response.getId()));
+    }
+
+    @Test
+    public void testCreatePostcardSendDate() throws Exception {
+        // Date time 5 days in the future
+        final DateTime fiveDaysFromNow = new DateTime().plusDays(5);
+
+        final AddressResponse address = Iterables.get(client.getAddresses(1).get(), 0);
+        final File file = ClientUtil.fileFromResource("postcardfront.pdf");
+
+        final PostcardRequest request = PostcardRequest.builder()
+                .to(address.getId())
+                .from(address.getId())
+                .front(file)
+                .back(file)
+                .sendDate(fiveDaysFromNow)
+                .build();
+
+        final PostcardResponse response = client.createPostcard(request).get();
+        assertTrue(response instanceof PostcardResponse);
+        assertTrue(response.getSendDate() instanceof String);
 
         final PostcardResponse retrievedResponse = client.getPostcard(response.getId()).get();
         assertThat(retrievedResponse.getId(), is(response.getId()));
