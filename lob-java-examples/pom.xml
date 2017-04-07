@@ -14,7 +14,7 @@
     <dependency>
       <groupId>com.lob</groupId>
       <artifactId>lob-java</artifactId>
-      <version>4.4.0</version>
+      <version>5.0.0</version>
     </dependency>
 
     <dependency>
