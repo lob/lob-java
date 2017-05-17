@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.id.CountryCode;
 import com.lob.id.ZipCode;
 
-public class VerifyAddressResponse extends AbstractResponse {
+public class IntlVerificationResponse extends AbstractResponse {
     @JsonProperty private final BaseAddressResponse address;
     @JsonProperty private final String message;
 
     @JsonCreator
-    public VerifyAddressResponse(@JsonProperty("address") final BaseAddressResponse address,
-                                 @JsonProperty("message") final String message) {
+    public IntlVerificationResponse(@JsonProperty("address") final BaseAddressResponse address,
+                                    @JsonProperty("message") final String message) {
         this.address = address;
         this.message = message;
     }
@@ -50,7 +50,7 @@ public class VerifyAddressResponse extends AbstractResponse {
 
     @Override
     public String toString() {
-        return "VerifyAddressResponse{" +
+        return "IntlVerificationResponse{" +
             "message='" + message + '\'' +
             ", address={" + address.toStringWithoutLeadingComma() +
             '}';
