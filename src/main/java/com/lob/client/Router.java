@@ -11,4 +11,6 @@ public interface Router {
     String ROUTES = "routes";
     String STATES = "states";
     String VERIFY = "verify";
+    String US_VERIFICATIONS = "us_verifications";
+    String INTL_VERIFICATIONS = "intl_verifications";
 }

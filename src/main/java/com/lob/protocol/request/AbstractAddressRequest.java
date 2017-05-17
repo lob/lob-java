@@ -7,8 +7,6 @@ import com.lob.id.ZipCode;
 import java.util.Map;
 
 public abstract class AbstractAddressRequest extends AbstractLobRequest {
-    private final static int MAX_LENGTH = 50;
-
     private final String line1;
     private final String line2;
     private final String city;

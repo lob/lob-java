@@ -121,8 +121,9 @@ public interface LobClient {
 
     public ListenableFuture<ZipCodeRouteResponseList> getZipCodeRoutes(final ZipCodeRouteRequest request);
 
-    // Address verification methods
-    public ListenableFuture<VerifyAddressResponse> verifyAddress(final VerifyAddressRequest request);
+    public ListenableFuture<USVerificationResponse> verifyUSAddress(final USVerificationRequest request);
+
+    public ListenableFuture<IntlVerificationResponse> verifyIntlAddress(final IntlVerificationRequest request);
 
     // Resources
     public ListenableFuture<CountryResponseList> getCountries();
