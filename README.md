@@ -142,7 +142,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [Verify a US Address](https://lob.com/docs/java#us_verifications_create)
 - **Int'l Verification API**
   - [International Verifications](https://lob.com/docs/java#intl_verifications)
-    - [Verify an International Address](https://lob.com/java/node#intl_verifications_create)
+    - [Verify an International Address](https://lob.com/java/java#intl_verifications_create)
 - **Postcards API**
   - [Postcards](https://lob.com/docs/java#postcards)
     - [The Postcard Object](https://lob.com/docs/java#postcards_object)
@@ -189,7 +189,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
   - [Events](https://lob.com/docs/java#events)
   - [HTML Examples](https://lob.com/docs/java#html-examples)
   - [Image Prepping](https://lob.com/docs/java#prepping)
-  - [US Verification Details](https://lob.com/docs/node#us_verification_details)
+  - [US Verification Details](https://lob.com/docs/java#us_verification_details)
 
 ## Contributing
 
