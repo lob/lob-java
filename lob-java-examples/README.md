@@ -26,12 +26,12 @@ An example showing how to dynamically create postcards from a CSV using HTML, a 
 lob-java-examples$ mvn exec:java -Dexec.mainClass="com.lob.examples.CsvPostcardExample"
 ```
 
-### Verify addresses from CSV
+### Verify US addresses from CSV
 
-An example showing how to validate and cleanse a CSV spreadsheet full of shipping addresses using Lob's [Address Verification API](https://lob.com/verification/address). The code to verify addresses from a CSV can be found [here](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvVerificationExample.java).
+An example showing how to validate and cleanse a CSV spreadsheet full of shipping addresses using Lob's [US Verification API](https://lob.com/verification/address). The code to verify addresses from a CSV can be found [here](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvUSVerificationExample.java).
 
 ```bash
-lob-java-examples$ mvn exec:java -Dexec.mainClass="com.lob.examples.CsvVerificationExample"
+lob-java-examples$ mvn exec:java -Dexec.mainClass="com.lob.examples.CsvUSVerificationExample"
 ```
 
 ### Create a check
