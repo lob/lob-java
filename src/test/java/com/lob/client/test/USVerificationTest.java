@@ -23,6 +23,8 @@ public class USVerificationTest extends BaseTest {
         USVerificationResponse response = client.verifyUSAddress(request).get();
         assertThat(response.getPrimaryLine(), is("185 BERRY ST STE 6600"));
         assertThat(response.getDeliverability(), is("deliverable"));
+        assertThat(response.getComponents().getPrimaryNumber(), is("185"));
+        assertThat(response.getDeliverabilityAnalysis().getDpvConfirmation(), is("Y"));
     }
 
 }
