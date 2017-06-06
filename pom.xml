@@ -3,7 +3,7 @@
   <groupId>com.lob</groupId>
   <artifactId>lob-java</artifactId>
   <packaging>jar</packaging>
-  <version>6.0.1</version>
+  <version>6.0.2-SNAPSHOT</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>Parent pom for the Lob API Java Wrapper</description>
@@ -36,7 +36,7 @@
     <connection>scm:git:https://github.com/lob/lob-java.git</connection>
     <developerConnection>scm:git:https://github.com/lob/lob-java.git</developerConnection>
     <url>https://github.com/lob/lob-java</url>
-    <tag>v6.0.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>
