@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public class USVerificationResponse extends AbstractResponse {
 
-    private static class Components {
+    public static class Components {
         private String primaryNumber;
         private String streetPredirection;
         private String streetName;
@@ -171,7 +171,7 @@ public class USVerificationResponse extends AbstractResponse {
         }
     }
 
-    private static class Deliverability {
+    public static class Deliverability {
         private String dpvConfirmation;
         private String dpvCmra;
         private String dpvVacant;
