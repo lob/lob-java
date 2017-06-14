@@ -5,35 +5,35 @@ import com.lob.LobParamsBuilder;
 import java.util.Map;
 
 public abstract class AbstractDataFieldRequest extends AbstractLobRequest {
-    private final Map<String, String> data;
+    private final Map<String, String> mergeVariables;
 
     public AbstractDataFieldRequest(
             final Map<String, String> metadata,
-            final Map<String, String> data,
+            final Map<String, String> mergeVariables,
             final String description) {
         super(metadata, description);
-        this.data = data;
+        this.mergeVariables = mergeVariables;
     }
 
     public Map<String, String> getData() {
-        return data;
+        return mergeVariables;
     }
 
     @Override
     protected LobParamsBuilder beginParams() {
-        return super.beginParams().putMap("data", this.data);
+        return super.beginParams().putMap("merge_variables", this.mergeVariables);
     }
 
     @Override
     public String toString() {
-        return ", data=" + data + super.toString();
+        return ", mergeVariables=" + mergeVariables + super.toString();
     }
 
     public static abstract class Builder<B extends Builder<B>> extends AbstractLobRequest.Builder<B> {
-        protected Map<String, String> data;
+        protected Map<String, String> mergeVariables;
 
-        public B data(final Map<String, String> data) {
-            this.data = data;
+        public B mergeVariables(final Map<String, String> mergeVariables) {
+            this.mergeVariables = mergeVariables;
             return (B)this;
         }
     }

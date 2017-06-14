@@ -154,8 +154,8 @@ public class CheckTest extends BaseTest {
 
     @Test
     public void testCreateCheckWithFile() throws Exception {
-        final Map<String, String> data = Maps.newHashMap();
-        data.put("name", "Donald");
+        final Map<String, String> mergeVariables = Maps.newHashMap();
+        mergeVariables.put("name", "Donald");
         final AddressResponse address = getAddress();
         final BankAccountResponse bankAccount = getAndVerifyBankAccount();
 
@@ -168,7 +168,7 @@ public class CheckTest extends BaseTest {
                 .file("<h1 style='padding-top:4in;'>Demo Check for {{name}}</h1>")
                 .checkNumber(100)
                 .memo("Test Check")
-                .data(data);
+                .mergeVariables(mergeVariables);
 
         final CheckRequest request = builder.build();
         assertNotNull(request.getFile());
@@ -189,8 +189,8 @@ public class CheckTest extends BaseTest {
 
     @Test
     public void testCreateCheckWithLocalFile() throws Exception {
-        final Map<String, String> data = Maps.newHashMap();
-        data.put("name", "Donald");
+        final Map<String, String> mergeVariables = Maps.newHashMap();
+        mergeVariables.put("name", "Donald");
         final AddressResponse address = getAddress();
         final BankAccountResponse bankAccount = getAndVerifyBankAccount();
 
@@ -204,7 +204,7 @@ public class CheckTest extends BaseTest {
                 .attachment(ClientUtil.fileFromResource("8.5x11.pdf"))
                 .checkNumber(100)
                 .memo("Test Check")
-                .data(data);
+                .mergeVariables(mergeVariables);
 
         final CheckRequest request1 = builder.build();
         assertNotNull(request1.getFile());

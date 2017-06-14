@@ -47,9 +47,9 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
             final String sendDate,
             final String mailType,
             final Map<String, String> metadata,
-            final Map<String, String> data,
+            final Map<String, String> mergeVariables,
             final String description) {
-        super(metadata, data, description);
+        super(metadata, mergeVariables, description);
         this.checkNumber = checkNumber;
         this.bankAccount = checkNotNull(bankAccount, "bank account is required");
         this.to = checkNotNull(to, "to is required");
@@ -330,12 +330,12 @@ public class CheckRequest extends AbstractDataFieldRequest implements HasLobPara
                 .sendDate(sendDate)
                 .mailType(mailType)
                 .metadata(metadata)
-                .data(data)
+                .mergeVariables(mergeVariables)
                 .description(description);
         }
 
         public CheckRequest build() {
-            return new CheckRequest(checkNumber, bankAccount, to, from, amount, message, memo, logo, checkBottom, attachment, sendDate, mailType, metadata, data, description);
+            return new CheckRequest(checkNumber, bankAccount, to, from, amount, message, memo, logo, checkBottom, attachment, sendDate, mailType, metadata, mergeVariables, description);
         }
     }
 }
