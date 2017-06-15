@@ -26,12 +26,15 @@ public class USVerificationResponse extends AbstractResponse {
         private String zipCodePlus4;
         private String zipCodeType;
         private String deliveryPointBarcode;
+        private String addressType;
         private String recordType;
         private String defaultBuildingAddress;
         private String county;
         private String countyFips;
         private String carrierRoute;
         private String carrierRouteType;
+        private String latitude;
+        private String longitude;
 
         @JsonCreator
         public Components(
@@ -51,12 +54,15 @@ public class USVerificationResponse extends AbstractResponse {
             @JsonProperty("zip_code_plus_4") final String zipCodePlus4,
             @JsonProperty("zip_code_type") final String zipCodeType,
             @JsonProperty("delivery_point_barcode") final String deliveryPointBarcode,
+            @JsonProperty("address_type") final String addressType,
             @JsonProperty("record_type") final String recordType,
             @JsonProperty("default_building_address") final String defaultBuildingAddress,
             @JsonProperty("county") final String county,
             @JsonProperty("county_fips") final String countyFips,
             @JsonProperty("carrier_route") final String carrierRoute,
-            @JsonProperty("carrier_route_type") final String carrierRouteType
+            @JsonProperty("carrier_route_type") final String carrierRouteType,
+            @JsonProperty("latitude") final String latitude,
+            @JsonProperty("longitude") final String longitude
         ) {
             this.primaryNumber = primaryNumber;
             this.streetPredirection = streetPredirection;
@@ -74,12 +80,15 @@ public class USVerificationResponse extends AbstractResponse {
             this.zipCodePlus4 = zipCodePlus4;
             this.zipCodeType = zipCodeType;
             this.deliveryPointBarcode = deliveryPointBarcode;
+            this.addressType = addressType;
             this.recordType = recordType;
             this.defaultBuildingAddress = defaultBuildingAddress;
             this.county = county;
             this.countyFips = countyFips;
             this.carrierRoute = carrierRoute;
             this.carrierRouteType = carrierRouteType;
+            this.latitude = latitude;
+            this.longitude = longitude;
         }
 
         public String getPrimaryNumber() {
@@ -146,6 +155,10 @@ public class USVerificationResponse extends AbstractResponse {
             return deliveryPointBarcode;
         }
 
+        public String getAddressType() {
+            return addressType;
+        }
+
         public String getRecordType() {
             return recordType;
         }
@@ -168,6 +181,14 @@ public class USVerificationResponse extends AbstractResponse {
 
         public String getCarrierRouteType() {
             return carrierRouteType;
+        }
+
+        public String getLatitude() {
+            return latitude;
+        }
+
+        public String getLongitude() {
+            return longitude;
         }
     }
 
