@@ -35,10 +35,10 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
             final String mailType,
             final String sendDate,
             final Map<String, String> metadata,
-            final Map<String, String> data,
+            final Map<String, String> mergeVariables,
             final String description) {
 
-        super(metadata, data, description);
+        super(metadata, mergeVariables, description);
         this.to = checkNotNull(to, "to is required");
         this.from = from;
         this.message = message;
@@ -221,12 +221,12 @@ public class PostcardRequest extends AbstractDataFieldRequest implements HasLobP
                 .sendDate(sendDate)
                 .mailType(mailType)
                 .metadata(metadata)
-                .data(data)
+                .mergeVariables(mergeVariables)
                 .description(description);
         }
 
         public PostcardRequest build() {
-            return new PostcardRequest(to, from, message, front, back, size, mailType, sendDate, metadata, data, description);
+            return new PostcardRequest(to, from, message, front, back, size, mailType, sendDate, metadata, mergeVariables, description);
         }
     }
 }

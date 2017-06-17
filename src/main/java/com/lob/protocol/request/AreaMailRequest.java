@@ -29,9 +29,9 @@ public class AreaMailRequest extends AbstractDataFieldRequest implements HasLobP
             final OrCollection<ZipCode, ZipCodeRouteId> routes,
             final TargetType targetType,
             final Map<String, String> metadata,
-            final Map<String, String> data,
+            final Map<String, String> mergeVariables,
             final String description) {
-        super(metadata, data, description);
+        super(metadata, mergeVariables, description);
         this.front = checkNotNull(front, "front is required");
         this.back = checkNotNull(back, "back is required");
         this.routes = checkPresent(routes, "routes is required");
@@ -173,12 +173,12 @@ public class AreaMailRequest extends AbstractDataFieldRequest implements HasLobP
                 .routes(routes)
                 .targetType(targetType)
                 .metadata(metadata)
-                .data(data)
+                .mergeVariables(mergeVariables)
                 .description(description);
         }
 
         public AreaMailRequest build() {
-            return new AreaMailRequest(front, back, routes, targetType, metadata, data, description);
+            return new AreaMailRequest(front, back, routes, targetType, metadata, mergeVariables, description);
         }
     }
 }

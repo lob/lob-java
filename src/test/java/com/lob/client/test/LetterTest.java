@@ -61,14 +61,14 @@ public class LetterTest extends BaseTest {
         metadata.put("key1", value1);
         final AddressResponse address = client.getAddresses(1).get().get(0);
 
-        final Map<String, String> data = Maps.newHashMap();
-        data.put("name", "peter");
+        final Map<String, String> mergeVariables = Maps.newHashMap();
+        mergeVariables.put("name", "peter");
         final String file = "<html style='padding-top: 3in; margin: .5in;'>HTML Letter for {{name}}</html>";
         final LetterRequest.Builder builder = LetterRequest.builder()
             .to(address.getId())
             .from(address.getId())
             .file(file)
-            .data(data)
+            .mergeVariables(mergeVariables)
             .color(true)
             .addressPlacement("top_first_page")
             .doubleSided(false)
@@ -128,7 +128,7 @@ public class LetterTest extends BaseTest {
         assertThat(otherRequest.getDescription(), is("otherRequest"));
         assertThat(otherRequest.getFrom().getTypeB(), is(addrRequest));
         assertThat(otherRequest.getTo().getTypeB(), is(addrRequest));
-        assertThat(otherRequest.getData(), is(data));
+        assertThat(otherRequest.getData(), is(mergeVariables));
         assertThat(otherRequest.getMetadata(), is(metadata));
         assertFalse(otherRequest.isColor());
         assertFalse(otherRequest.isDoubleSided());

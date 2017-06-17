@@ -40,9 +40,9 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
             final String sendDate,
             final String mailType,
             final Map<String, String> metadata,
-            final Map<String, String> data) {
+            final Map<String, String> mergeVariables) {
 
-        super(metadata, data, description);
+        super(metadata, mergeVariables, description);
         this.to = checkNotNull(to, "to is required");
         this.from = checkNotNull(from, "from is required");
         this.file = checkNotNull(file, "file is required");
@@ -241,11 +241,11 @@ public class LetterRequest extends AbstractDataFieldRequest implements HasLobPar
                 .sendDate(sendDate)
                 .mailType(mailType)
                 .metadata(metadata)
-                .data(data);
+                .mergeVariables(mergeVariables);
         }
 
         public LetterRequest build() {
-            return new LetterRequest(description, to, from, file, color, doubleSided, addressPlacement, extraService, returnEnvelope, perforatedPage, sendDate, mailType, metadata, data);
+            return new LetterRequest(description, to, from, file, color, doubleSided, addressPlacement, extraService, returnEnvelope, perforatedPage, sendDate, mailType, metadata, mergeVariables);
         }
     }
 }
