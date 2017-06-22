@@ -14,14 +14,14 @@ lob-java-examples$ mvn clean package
 
 ### Create letters from CSV
 
-An example showing how to dynamically create letters from a CSV using HTML, a custom font, variable data, and Lob's [Letter API](https://lob.com/services/letters). The example code to create letters from a CSV can be found [here](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvLetterExample.java).
+An example showing how to dynamically create letters from a CSV using HTML, a custom font, merge variables, and Lob's [Letter API](https://lob.com/services/letters). The example code to create letters from a CSV can be found [here](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvLetterExample.java).
 ```bash
 lob-java-examples$ mvn exec:java -Dexec.mainClass="com.lob.examples.CsvLetterExample"
 ```
 
 ### Create postcards from CSV
 
-An example showing how to dynamically create postcards from a CSV using HTML, a custom font, variable data, and Lob's [Postcard API](https://lob.com/services/postcards). The example code to create postcards from a CSV can be found [here](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvPostcardExample.java).
+An example showing how to dynamically create postcards from a CSV using HTML, a custom font, merge variables, and Lob's [Postcard API](https://lob.com/services/postcards). The example code to create postcards from a CSV can be found [here](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvPostcardExample.java).
 ```bash
 lob-java-examples$ mvn exec:java -Dexec.mainClass="com.lob.examples.CsvPostcardExample"
 ```
