@@ -31,12 +31,12 @@ public class CsvPostcardExample extends BaseExample {
         while (iterator.hasNext()) {
             final CsvPostcard postcard = iterator.next();
 
-            final Map<String, String> data = new HashMap<String, String>();
-            data.put("background_image", postcard.background_image);
-            data.put("background_color", postcard.background_color);
-            data.put("name", postcard.name);
-            data.put("car", postcard.car);
-            data.put("mileage", postcard.mileage);
+            final Map<String, String> mergeVariables = new HashMap<String, String>();
+            mergeVariables.put("background_image", postcard.background_image);
+            mergeVariables.put("background_color", postcard.background_color);
+            mergeVariables.put("name", postcard.name);
+            mergeVariables.put("car", postcard.car);
+            mergeVariables.put("mileage", postcard.mileage);
 
             final PostcardRequest postcardRequest = PostcardRequest.builder()
                 .to(
@@ -52,7 +52,7 @@ public class CsvPostcardExample extends BaseExample {
                 .size("4x6")
                 .front(frontHTML)
                 .back(backHTML)
-                .data(data)
+                .mergeVariables(mergeVariables)
                 .build();
 
             try {

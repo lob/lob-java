@@ -44,10 +44,10 @@ public class CsvLetterExample extends BaseExample {
         while (iterator.hasNext()) {
             final CsvLetter letter = iterator.next();
 
-            final Map<String, String> data = new HashMap<String, String>();
-            data.put("date", today);
-            data.put("name", letter.name);
-            data.put("amountDue", letter.amount);
+            final Map<String, String> mergeVariables = new HashMap<String, String>();
+            mergeVariables.put("date", today);
+            mergeVariables.put("name", letter.name);
+            mergeVariables.put("amountDue", letter.amount);
 
             final LetterRequest letterRequest = LetterRequest.builder()
                     .to(
@@ -63,7 +63,7 @@ public class CsvLetterExample extends BaseExample {
                     .from(companyAddress)
                     .file(letterTemplate)
                     .color(true)
-                    .data(data)
+                    .mergeVariables(mergeVariables)
                     .build();
 
             try {
