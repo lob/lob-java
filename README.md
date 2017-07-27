@@ -29,6 +29,8 @@ Here's a general overview of the Lob services available, click through to read m
 - [Area Mail API](https://lob.com/services/area)
 - [Address Verification API](https://lob.com/verification/address)
 
+Please read through the official [API Documentation](#api-documentation) to get a complete sense of what to expect from each endpoint.
+
 ### Registration
 
 First, you will need to first create an account at [Lob.com](https://dashboard.lob.com/#/register) and obtain your Test and Live API Keys.
@@ -116,9 +118,7 @@ for their execution. Otherwise, the callbacks will be executed on internal I/O t
 
 We've provided various examples for you to try out [here](https://github.com/lob/lob-java/tree/master/lob-java-examples/src/main/java/com/lob/examples).
 
-There are simple scripts to demonstrate how to create all the core Lob objects (checks, letters, postcards, etc.) As well as more complex examples that utilize other libraries and external files:
-
-- [Verifying Addresses in a CSV](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvVerificationExample.java)
+There are simple scripts to demonstrate how to create all the core Lob objects (checks, letters, postcards. etc.) as well as more complex examples that utilize other libraries and external files.
 
 ## API Documentation
 
@@ -127,7 +127,10 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - [Errors](https://lob.com/docs/java#errors)
 - [Rate Limiting](https://lob.com/docs/java#rate-limits)
 - [Webhooks](https://lob.com/docs/java#webhooks)
+- [Cancellation Windows](https://lob.com/docs/java#cancellation)
+- [Scheduled Mailings](https://lob.com/docs/java#scheduled)
 - [Metadata](https://lob.com/docs/java#metadata)
+- [HTML Templates](https://lob.com/docs/java#templates)
 - [Asset URLs](https://lob.com/docs/java#urls)
 - **Addresses**
   - [Address Book](https://lob.com/docs/java#addresses)
@@ -142,24 +145,27 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [Verify a US Address](https://lob.com/docs/java#us_verifications_create)
 - **Int'l Verification API**
   - [International Verifications](https://lob.com/docs/java#intl_verifications)
-    - [Verify an International Address](https://lob.com/java/java#intl_verifications_create)
+    - [Verify an International Address](https://lob.com/docs/java#intl_verifications_create)
 - **Postcards API**
   - [Postcards](https://lob.com/docs/java#postcards)
     - [The Postcard Object](https://lob.com/docs/java#postcards_object)
     - [Create a Postcard](https://lob.com/docs/java#postcards_create)
     - [Retrieve a Postcard](https://lob.com/docs/java#postcards_retrieve)
+    - [Cancel a Postcard](https://lob.com/docs/java#postcards_delete)
     - [List all Postcards](https://lob.com/docs/java#postcards_list)
 - **Letters API**
   - [Letters](https://lob.com/docs/java#letters)
     - [The Letter Object](https://lob.com/docs/java#letters_object)
     - [Create a Letter](https://lob.com/docs/java#letters_create)
     - [Retrieve a Letter](https://lob.com/docs/java#letters_retrieve)
+    - [Cancel a Letter](https://lob.com/docs/java#letters_delete)
     - [List all Letters](https://lob.com/docs/java#letters_list)
 - **Checks API**
   - [Checks](https://lob.com/docs/java#checks)
     - [The Check Object](https://lob.com/docs/java#checks_object)
     - [Create a Check](https://lob.com/docs/java#checks_create)
     - [Retrieve a Check](https://lob.com/docs/java#checks_retrieve)
+    - [Cancel a Check](https://lob.com/docs/java#checks_delete)
     - [List all Checks](https://lob.com/docs/java#checks_list)
   - [Bank Accounts](https://lob.com/docs/java#bank-accounts)
     - [The Bank Account Object](https://lob.com/docs/java#bankaccounts_object)
