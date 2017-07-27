@@ -1,5 +1,5 @@
 # Java Examples
-Here we have put together a hand full of java examples to help get you started. As always feel free to [contact us](https://lob.com/support) directly if you have any questions on implementation.
+Here we have put together a hand full of java examples to help get you started. Please read through the official [API Documentation](../README.md#api-documentation) to get a complete sense of what to expect from each endpoint. As always, feel free to [contact us](https://lob.com/support) directly if you have any questions on implementation.
 
 
 ## Getting started
@@ -28,7 +28,7 @@ lob-java-examples$ mvn exec:java -Dexec.mainClass="com.lob.examples.CsvPostcardE
 
 ### Verify US addresses from CSV
 
-An example showing how to validate and cleanse a CSV spreadsheet full of shipping addresses using Lob's [US Verification API](https://lob.com/verification/address). The code to verify addresses from a CSV can be found [here](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvUSVerificationExample.java).
+An example showing how to validate and cleanse a CSV spreadsheet full of shipping addresses using Lob's [US Verification API](https://lob.com/verification/address). Please note that if you are running this with a Test API Key, the verification API will always return [a dummy address](https://lob.com/docs#us_verifications_create). The code to verify addresses from a CSV can be found [here](https://github.com/lob/lob-java/blob/master/lob-java-examples/src/main/java/com/lob/examples/CsvUSVerificationExample.java).
 
 ```bash
 lob-java-examples$ mvn exec:java -Dexec.mainClass="com.lob.examples.CsvUSVerificationExample"
