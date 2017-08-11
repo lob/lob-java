@@ -1,8 +1,12 @@
 package com.lob.model;
 
 import com.lob.BaseTest;
+import com.lob.exception.AuthenticationException;
+import com.lob.exception.InvalidRequestException;
+import com.lob.exception.RateLimitException;
 import com.lob.net.LobResponse;
 
+import com.lob.net.RequestOptions;
 import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +37,6 @@ public class AddressTest extends BaseTest {
         assertThat(response.getResponseBody().getData().get(0), instanceOf(Address.class));
     }
 
-
     @Test
     public void testRetrieveAddress() throws Exception {
         Address testAddress = ((AddressCollection) Address.list().getResponseBody()).getData().get(0);
@@ -42,6 +45,106 @@ public class AddressTest extends BaseTest {
         Address address = response.getResponseBody();
 
         assertEquals(testAddress.getId(), address.getId());
+    }
+
+    @Test
+    public void testCreateAddress() throws Exception {
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put("a", "b");
+
+        LobResponse<Address> response = Address.creator()
+                .setCompany("Lob.com")
+                .setName("Donald")
+                .setLine1("185 Berry St")
+                .setLine2("Ste 6600")
+                .setCity("San Francisco")
+                .setState("CA")
+                .setZip("94107")
+                .setCountry("US")
+                .setPhone("123-456-7890")
+                .setEmail("test@lob.com")
+                .setDescription("Java Wrapper Automated Test")
+                .setMetadata(metadata)
+                .create();
+
+        Address address = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertEquals("address", address.getObject());
+        assertNotNull(address.getId());
+        assertEquals("Lob.com", address.getCompany());
+        assertEquals("Donald", address.getName());
+        assertEquals("185 Berry St", address.getLine1());
+        assertEquals("Ste 6600", address.getLine2());
+        assertEquals("San Francisco", address.getCity());
+        assertEquals("CA", address.getState());
+        assertEquals("94107", address.getZip());
+        assertEquals("United States", address.getCountry());
+        assertEquals("123-456-7890", address.getPhone());
+        assertEquals("test@lob.com", address.getEmail());
+        assertEquals("Java Wrapper Automated Test", address.getDescription());
+        assertNotNull(address.getMetadata());
+        assertNotNull(address.getDateCreated());
+        assertNotNull(address.getDateModified());
+        assertFalse(address.getDeleted());
+
+        assertNotNull(address.toString());
+    }
+
+    @Test
+    public void testDeleteAddress() throws Exception {
+        Address address = Address.creator()
+                .setCompany("Lob.com")
+                .setName("Donald")
+                .setLine1("185 Berry St")
+                .setLine2("Ste 6600")
+                .setCity("San Francisco")
+                .setState("CA")
+                .setZip("94107")
+                .setCountry("US")
+                .setPhone("123-456-7890")
+                .setEmail("test@lob.com")
+                .setDescription("Java Wrapper Automated Test")
+                .create()
+                .getResponseBody();
+
+        assertFalse(address.getDeleted());
+
+        LobResponse<Address> response = Address.delete(address.getId());
+
+        assertEquals(200, response.getResponseCode());
+        assertThat(response.getResponseBody(), instanceOf(Address.class));
+        assertTrue(response.getResponseBody().getDeleted());
+    }
+
+    @Test(expected = AuthenticationException.class)
+    public void testAddressNoAuth() throws Exception {
+        RequestOptions options = RequestOptions.builder().setApiKey("").build();
+        Address.creator().create(options);
+    }
+
+    @Test(expected = InvalidRequestException.class)
+    public void testAddressInvalidRequest() throws Exception {
+        Address.creator().create();
+    }
+
+    @Test(expected = RateLimitException.class)
+    public void testAddressRateLimit() throws Exception {
+        RequestOptions options = RequestOptions.builder().setApiKey("test_03b4c5206b1f4c04b8d9fb5b4dd72ffd2d4").build();
+
+        Address.creator()
+                .setCompany("Lob.com")
+                .setName("Donald")
+                .setLine1("185 Berry St")
+                .setLine2("Ste 6600")
+                .setCity("San Francisco")
+                .setState("CA")
+                .setZip("94107")
+                .setCountry("US")
+                .setPhone("123-456-7890")
+                .setEmail("test@lob.com")
+                .setDescription("Java Wrapper Automated Test")
+                .create(options);
     }
 
 }

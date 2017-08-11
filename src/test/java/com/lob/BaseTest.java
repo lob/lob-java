@@ -6,7 +6,7 @@ public class BaseTest {
 
     @BeforeClass
     public static void beforeClass() {
-        Lob.init("test_4c3bcf7696dbec938dbb34da8b311350dca");
+        Lob.init("test_7b1960d06d6dfe28d3862b98380b8b0dc93");
     }
 
 }

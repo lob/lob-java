@@ -3,9 +3,15 @@ package com.lob.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lob.exception.APIException;
+import com.lob.exception.AuthenticationException;
+import com.lob.exception.InvalidRequestException;
+import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
 import com.lob.net.LobResponse;
 import com.lob.net.RequestOptions;
+
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import org.joda.time.DateTime;
 
@@ -28,6 +34,7 @@ public class Address extends APIResource {
     @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final DateTime dateCreated;
     @JsonProperty private final DateTime dateModified;
+    @JsonProperty private final boolean deleted;
     @JsonProperty private final String object;
 
     @JsonCreator
@@ -47,6 +54,7 @@ public class Address extends APIResource {
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
+            @JsonProperty("deleted") final boolean deleted,
             @JsonProperty("object") final String object) {
         this.id = id;
         this.description = description;
@@ -63,6 +71,7 @@ public class Address extends APIResource {
         this.metadata = metadata;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
+        this.deleted = deleted;
         this.object = object;
     }
 
@@ -126,6 +135,10 @@ public class Address extends APIResource {
         return dateModified;
     }
 
+    public boolean getDeleted() {
+        return deleted;
+    }
+
     public String getObject() {
         return object;
     }
@@ -138,6 +151,7 @@ public class Address extends APIResource {
                 ", name='" + name + '\'' +
                 ", company='" + company + '\'' +
                 ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
                 ", line1='" + line1 + '\'' +
                 ", line2='" + line2 + '\'' +
                 ", city='" + city + '\'' +
@@ -146,32 +160,121 @@ public class Address extends APIResource {
                 ", metadata=" + metadata +
                 ", dateCreated=" + dateCreated +
                 ", dateModified=" + dateModified +
+                ", deleted=" + deleted +
                 ", object=" + object +
                 '}';
     }
 
-    public static LobResponse retrieve(String id) throws APIException, Exception {
-        return request(RequestMethod.GET, String.format("%s/%s", ENDPOINT, id), null, Address.class, null);
+    public static AddressCreator creator() {
+        return new AddressCreator();
     }
 
-    public static LobResponse retrieve(String id, RequestOptions options) throws APIException, Exception {
+    public static final class AddressCreator {
+        private Map<String, Object> params = new HashMap<>();
+
+        public AddressCreator() {
+        }
+
+        public AddressCreator setDescription(String description) {
+            params.put("description", description);
+            return this;
+        }
+
+        public AddressCreator setName(String name) {
+            params.put("name", name);
+            return this;
+        }
+
+        public AddressCreator setCompany(String company) {
+            params.put("company", company);
+            return this;
+        }
+
+        public AddressCreator setPhone(String phone) {
+            params.put("phone", phone);
+            return this;
+        }
+
+        public AddressCreator setEmail(String email) {
+            params.put("email", email);
+            return this;
+        }
+
+        public AddressCreator setLine1(String line1) {
+            params.put("address_line1", line1);
+            return this;
+        }
+
+        public AddressCreator setLine2(String line2) {
+            params.put("address_line2", line2);
+            return this;
+        }
+
+        public AddressCreator setCity(String city) {
+            params.put("address_city", city);
+            return this;
+        }
+
+        public AddressCreator setState(String state) {
+            params.put("address_state", state);
+            return this;
+        }
+
+        public AddressCreator setZip(String zip) {
+            params.put("address_zip", zip);
+            return this;
+        }
+
+        public AddressCreator setCountry(String country) {
+            params.put("address_country", country);
+            return this;
+        }
+
+        public AddressCreator setMetadata(Map<String, String> metadata) {
+            params.put("metadata", metadata);
+            return this;
+        }
+
+
+        public LobResponse<Address> create() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+            return create(null);
+        }
+
+        public LobResponse<Address> create(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
+            return request(RequestMethod.POST, ENDPOINT, params, Address.class, options);
+        }
+    }
+
+    public static LobResponse<Address> retrieve(String id) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return retrieve(id, null);
+    }
+
+    public static LobResponse<Address> retrieve(String id, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
         return request(RequestMethod.GET, String.format("%s/%s", ENDPOINT, id), null, Address.class, options);
     }
 
-    public static LobResponse list() throws APIException, Exception {
-        return request(RequestMethod.GET, ENDPOINT, null, AddressCollection.class, null);
+    public static LobResponse<AddressCollection> list() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return list(null, null);
     }
 
-    public static LobResponse list(Map<String, Object> params) throws APIException, Exception {
-        return request(RequestMethod.GET, ENDPOINT, params, AddressCollection.class, null);
+    public static LobResponse<AddressCollection> list(Map<String, Object> params) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return list(params, null);
     }
 
-    public static LobResponse list(RequestOptions options) throws APIException, Exception {
-        return request(RequestMethod.GET, ENDPOINT, null, AddressCollection.class, options);
+    public static LobResponse<AddressCollection> list(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return list(null, options);
     }
 
-    public static LobResponse list(Map<String, Object> params, RequestOptions options) throws APIException, Exception {
+    public static LobResponse<AddressCollection> list(Map<String, Object> params, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
         return request(RequestMethod.GET, ENDPOINT, params, AddressCollection.class, options);
+    }
+
+    public static LobResponse<Address> delete(String id) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return delete(id, null);
+    }
+
+    public static LobResponse<Address> delete(String id, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return request(RequestMethod.DELETE, String.format("%s/%s", ENDPOINT, id), null, Address.class, options);
     }
 
 }

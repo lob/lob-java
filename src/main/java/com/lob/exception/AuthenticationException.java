@@ -6,6 +6,4 @@ public class AuthenticationException extends LobException {
         super(message, statusCode);
     }
 
-    private static final long serialVersionUID = 1L;
-
 }
