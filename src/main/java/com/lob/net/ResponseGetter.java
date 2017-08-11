@@ -5,12 +5,17 @@ import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.lob.exception.APIException;
 import com.lob.exception.AuthenticationException;
 import com.lob.Lob;
+
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.*;
+
+import com.lob.exception.InvalidRequestException;
+import com.lob.exception.RateLimitException;
 import org.apache.commons.codec.binary.Base64;
 
 import static com.lob.net.APIResource.CHARSET;
@@ -36,7 +41,7 @@ public class ResponseGetter implements IResponseGetter {
             Map<String, Object> params,
             Class<T> clazz,
             APIResource.RequestType type,
-            RequestOptions options) throws AuthenticationException, APIException, IOException {
+            RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
         return _request(method, url, params, clazz, type, options);
     }
 
@@ -78,7 +83,38 @@ public class ResponseGetter implements IResponseGetter {
         return conn;
     }
 
+    private static java.net.HttpURLConnection createPostConnection(String url, String query, RequestOptions options) throws IOException {
+        java.net.HttpURLConnection conn = createDefaultConnection(url, options);
+
+        conn.setDoOutput(true);
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", String.format("application/x-www-form-urlencoded;charset=%s", APIResource.CHARSET));
+
+        OutputStream output = null;
+        try {
+            output = conn.getOutputStream();
+            output.write(query.getBytes(APIResource.CHARSET));
+        } finally {
+            if (output != null) {
+                output.close();
+            }
+        }
+        return conn;
+    }
+
+    private static java.net.HttpURLConnection createDeleteConnection(String url, RequestOptions options) throws IOException {
+        java.net.HttpURLConnection conn = createDefaultConnection(url, options);
+
+        conn.setRequestMethod("DELETE");
+
+        return conn;
+    }
+
     static String createQuery(Map<String, Object> params) throws UnsupportedEncodingException {
+        if (params == null) {
+            return "";
+        }
+
         StringBuilder queryStringBuffer = new StringBuilder();
         List<Parameter> flatParams = flattenParams(params);
         Iterator<Parameter> it = flatParams.iterator();
@@ -129,18 +165,20 @@ public class ResponseGetter implements IResponseGetter {
         if (value instanceof Map<?, ?>) {
             flatParams = flattenParamsMap((Map<String, Object>) value, keyPrefix);
         } else {
-            flatParams = new LinkedList<Parameter>();
+            flatParams = new LinkedList<>();
             flatParams.add(new Parameter(keyPrefix, value.toString()));
         }
 
         return flatParams;
     }
 
-    private static <T> LobResponse makeURLConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, String query, RequestOptions options) throws APIException, IOException {
+    private static <T> LobResponse makeURLConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, String query, RequestOptions options) throws APIException, RateLimitException, InvalidRequestException, IOException {
         java.net.HttpURLConnection conn = null;
         try {
-            if (method == GET) {
-                conn = createGetConnection(url, query, options);
+            if (method == POST) {
+                conn = createPostConnection(url, query, options);
+            } else if (method == DELETE) {
+                conn = createDeleteConnection(url, options);
             } else {
                 conn = createGetConnection(url, query, options);
             }
@@ -152,6 +190,10 @@ public class ResponseGetter implements IResponseGetter {
                 T value = MAPPER.readValue(conn.getInputStream(), clazz);
 
                 return new LobResponse<T>(responseCode, value, headers);
+            } else if (responseCode == 422) {
+                throw MAPPER.readValue(conn.getErrorStream(), InvalidRequestException.class);
+            } else if (responseCode == 429) {
+                throw MAPPER.readValue(conn.getErrorStream(), RateLimitException.class);
             } else {
                 throw MAPPER.readValue(conn.getErrorStream(), APIException.class);
             }
@@ -166,7 +208,7 @@ public class ResponseGetter implements IResponseGetter {
 
     private static <T> LobResponse _request(APIResource.RequestMethod method,
                                   String url, Map<String, Object> params, Class<T> clazz,
-                                  APIResource.RequestType type, RequestOptions options) throws AuthenticationException, APIException, IOException {
+                                  APIResource.RequestType type, RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
         if (options == null) {
             options = RequestOptions.getDefault();
         }
@@ -175,8 +217,6 @@ public class ResponseGetter implements IResponseGetter {
         if (apiKey == null || apiKey.trim().length() == 0) {
             throw new AuthenticationException("Missing API Key. Make sure 'Lob.init(<API_KEY>)' is called with a key from your Dashboard.", null);
         }
-
-        LobResponse response;
 
         String lobURL = String.format("%s%s", Lob.API_BASE_URL, url);
         String query = createQuery(params);

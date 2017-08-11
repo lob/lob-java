@@ -1,6 +1,11 @@
 package com.lob.net;
 
 import com.lob.exception.APIException;
+import com.lob.exception.AuthenticationException;
+import com.lob.exception.InvalidRequestException;
+import com.lob.exception.RateLimitException;
+
+import java.io.IOException;
 import java.util.Map;
 
 public abstract class APIResource  {
@@ -19,7 +24,7 @@ public abstract class APIResource  {
 
     public static <T> LobResponse request(APIResource.RequestMethod method,
                                   String url, Map<String, Object> params, Class<T> clazz,
-                                  RequestOptions options) throws APIException, Exception {
+                                  RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
         return responseGetter.request(method, url, params, clazz, RequestType.NORMAL, options);
     }
 
