@@ -56,7 +56,7 @@ public class AddressTest extends BaseTest {
                 .setCompany("Lob.com")
                 .setName("Donald")
                 .setLine1("185 Berry St")
-                .setLine2("Ste 6600")
+                .setLine2("Ste 6100")
                 .setCity("San Francisco")
                 .setState("CA")
                 .setZip("94107")
@@ -72,14 +72,14 @@ public class AddressTest extends BaseTest {
         assertEquals(200, response.getResponseCode());
         assertEquals("address", address.getObject());
         assertNotNull(address.getId());
-        assertEquals("Lob.com", address.getCompany());
-        assertEquals("Donald", address.getName());
-        assertEquals("185 Berry St", address.getLine1());
-        assertEquals("Ste 6600", address.getLine2());
-        assertEquals("San Francisco", address.getCity());
+        assertEquals("LOB.COM", address.getCompany());
+        assertEquals("DONALD", address.getName());
+        assertEquals("185 BERRY ST STE 6100", address.getLine1());
+        assertEquals("", address.getLine2());
+        assertEquals("SAN FRANCISCO", address.getCity());
         assertEquals("CA", address.getState());
-        assertEquals("94107", address.getZip());
-        assertEquals("United States", address.getCountry());
+        assertEquals("94107-1741", address.getZip());
+        assertEquals("UNITED STATES", address.getCountry());
         assertEquals("123-456-7890", address.getPhone());
         assertEquals("test@lob.com", address.getEmail());
         assertEquals("Java Wrapper Automated Test", address.getDescription());
