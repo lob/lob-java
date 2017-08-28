@@ -6,6 +6,7 @@ import com.lob.exception.APIException;
 import com.lob.exception.AuthenticationException;
 import com.lob.Lob;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
@@ -27,9 +28,9 @@ public class ResponseGetter implements IResponseGetter {
 
     private final static class Parameter {
         public final String key;
-        public final String value;
+        public final Object value;
 
-        public Parameter(String key, String value) {
+        public Parameter(String key, Object value) {
             this.key = key;
             this.value = value;
         }
@@ -124,7 +125,7 @@ public class ResponseGetter implements IResponseGetter {
                 queryStringBuffer.append("&");
             }
             Parameter param = it.next();
-            queryStringBuffer.append(urlEncodePair(param.key, param.value));
+            queryStringBuffer.append(urlEncodePair(param.key, (String) param.value));
         }
 
         return queryStringBuffer.toString();
@@ -164,12 +165,32 @@ public class ResponseGetter implements IResponseGetter {
 
         if (value instanceof Map<?, ?>) {
             flatParams = flattenParamsMap((Map<String, Object>) value, keyPrefix);
+        } else if (value instanceof File) {
+            flatParams = new LinkedList<>();
+            flatParams.add(new Parameter(keyPrefix, value));
         } else {
             flatParams = new LinkedList<>();
             flatParams.add(new Parameter(keyPrefix, value.toString()));
         }
 
         return flatParams;
+    }
+
+    private static <T> LobResponse handleConnectionResponse(HttpURLConnection conn, Class<T> clazz) throws IOException, InvalidRequestException, RateLimitException, APIException {
+        int responseCode = conn.getResponseCode();
+
+        if (responseCode >= 200 && responseCode < 300) {
+            Map<String, List<String>> headers = conn.getHeaderFields();
+            T value = MAPPER.readValue(conn.getInputStream(), clazz);
+
+            return new LobResponse<>(responseCode, value, headers);
+        } else if (responseCode == 422) {
+            throw MAPPER.readValue(conn.getErrorStream(), InvalidRequestException.class);
+        } else if (responseCode == 429) {
+            throw MAPPER.readValue(conn.getErrorStream(), RateLimitException.class);
+        } else {
+            throw MAPPER.readValue(conn.getErrorStream(), APIException.class);
+        }
     }
 
     private static <T> LobResponse makeURLConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, String query, RequestOptions options) throws APIException, RateLimitException, InvalidRequestException, IOException {
@@ -183,20 +204,7 @@ public class ResponseGetter implements IResponseGetter {
                 conn = createGetConnection(url, query, options);
             }
 
-            int responseCode = conn.getResponseCode();
-
-            if (responseCode >= 200 && responseCode < 300) {
-                Map<String, List<String>> headers = conn.getHeaderFields();
-                T value = MAPPER.readValue(conn.getInputStream(), clazz);
-
-                return new LobResponse<T>(responseCode, value, headers);
-            } else if (responseCode == 422) {
-                throw MAPPER.readValue(conn.getErrorStream(), InvalidRequestException.class);
-            } else if (responseCode == 429) {
-                throw MAPPER.readValue(conn.getErrorStream(), RateLimitException.class);
-            } else {
-                throw MAPPER.readValue(conn.getErrorStream(), APIException.class);
-            }
+            return handleConnectionResponse(conn, clazz);
         } catch (IOException e) {
             throw e;
         } finally {
@@ -205,6 +213,37 @@ public class ResponseGetter implements IResponseGetter {
             }
         }
     }
+
+    private static <T> LobResponse makeMultipartConectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, Map<String, Object> params, RequestOptions options) throws IOException, InvalidRequestException, APIException, RateLimitException {
+        java.net.HttpURLConnection conn = createDefaultConnection(url, options);
+        String boundary = MultipartProcessor.getBoundary();
+
+        conn.setDoOutput(true);
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", String.format("multipart/form-data; boundary=%s", boundary));
+
+        MultipartProcessor multipartProcessor = null;
+        try {
+            multipartProcessor = new MultipartProcessor(conn, boundary, APIResource.CHARSET);
+
+            for (Parameter p : flattenParams(params)) {
+                if (p.value instanceof File) {
+                    File currentFile = (File) p.value;
+                    multipartProcessor.addFileField(p.key, currentFile);
+                } else {
+                    multipartProcessor.addFormField(p.key, (String) p.value);
+                }
+            }
+
+        } finally {
+            if (multipartProcessor != null) {
+                multipartProcessor.finish();
+            }
+        }
+
+        return handleConnectionResponse(conn, clazz);
+    }
+
 
     private static <T> LobResponse _request(APIResource.RequestMethod method,
                                   String url, Map<String, Object> params, Class<T> clazz,
@@ -219,8 +258,12 @@ public class ResponseGetter implements IResponseGetter {
         }
 
         String lobURL = String.format("%s%s", Lob.API_BASE_URL, url);
-        String query = createQuery(params);
 
+        if (type == APIResource.RequestType.MULTIPART) {
+            return makeMultipartConectionRequest(method, clazz, lobURL, params, options);
+        }
+
+        String query = createQuery(params);
         return makeURLConnectionRequest(method, clazz, lobURL, query, options);
     }
 

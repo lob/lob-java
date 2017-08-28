@@ -22,10 +22,10 @@ public abstract class APIResource  {
         NORMAL, MULTIPART
     }
 
-    public static <T> LobResponse request(APIResource.RequestMethod method,
+    public static <T> LobResponse request(APIResource.RequestMethod method, APIResource.RequestType type,
                                   String url, Map<String, Object> params, Class<T> clazz,
                                   RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
-        return responseGetter.request(method, url, params, clazz, RequestType.NORMAL, options);
+        return responseGetter.request(method, url, params, clazz, type, options);
     }
 
 }

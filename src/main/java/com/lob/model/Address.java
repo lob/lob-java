@@ -235,13 +235,16 @@ public class Address extends APIResource {
             return this;
         }
 
+        public Map<String, Object> build() {
+            return params;
+        }
 
         public LobResponse<Address> create() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
             return create(null);
         }
 
         public LobResponse<Address> create(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
-            return request(RequestMethod.POST, ENDPOINT, params, Address.class, options);
+            return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, params, Address.class, options);
         }
     }
 
@@ -250,7 +253,7 @@ public class Address extends APIResource {
     }
 
     public static LobResponse<Address> retrieve(String id, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.GET, String.format("%s/%s", ENDPOINT, id), null, Address.class, options);
+        return request(RequestMethod.GET, RequestType.NORMAL, String.format("%s/%s", ENDPOINT, id), null, Address.class, options);
     }
 
     public static LobResponse<AddressCollection> list() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
@@ -266,7 +269,7 @@ public class Address extends APIResource {
     }
 
     public static LobResponse<AddressCollection> list(Map<String, Object> params, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.GET, ENDPOINT, params, AddressCollection.class, options);
+        return request(RequestMethod.GET, RequestType.NORMAL, ENDPOINT, params, AddressCollection.class, options);
     }
 
     public static LobResponse<Address> delete(String id) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
@@ -274,7 +277,7 @@ public class Address extends APIResource {
     }
 
     public static LobResponse<Address> delete(String id, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.DELETE, String.format("%s/%s", ENDPOINT, id), null, Address.class, options);
+        return request(RequestMethod.DELETE, RequestType.NORMAL, String.format("%s/%s", ENDPOINT, id), null, Address.class, options);
     }
 
 }
