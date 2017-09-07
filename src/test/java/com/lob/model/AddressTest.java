@@ -49,7 +49,7 @@ public class AddressTest extends BaseTest {
 
     @Test
     public void testCreateAddress() throws Exception {
-        Map<String, String> metadata = new HashMap<>();
+        Map<String, String> metadata = new HashMap<String, String>();
         metadata.put("a", "b");
 
         LobResponse<Address> response = new Address.RequestBuilder()
@@ -86,7 +86,7 @@ public class AddressTest extends BaseTest {
         assertNotNull(address.getMetadata());
         assertNotNull(address.getDateCreated());
         assertNotNull(address.getDateModified());
-        assertFalse(address.getDeleted());
+        assertFalse(address.isDeleted());
 
         assertNotNull(address.toString());
     }
@@ -108,13 +108,13 @@ public class AddressTest extends BaseTest {
                 .create()
                 .getResponseBody();
 
-        assertFalse(address.getDeleted());
+        assertFalse(address.isDeleted());
 
         LobResponse<Address> response = Address.delete(address.getId());
 
         assertEquals(200, response.getResponseCode());
         assertThat(response.getResponseBody(), instanceOf(Address.class));
-        assertTrue(response.getResponseBody().getDeleted());
+        assertTrue(response.getResponseBody().isDeleted());
     }
 
     @Test(expected = AuthenticationException.class)

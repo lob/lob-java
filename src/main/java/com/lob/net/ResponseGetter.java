@@ -166,10 +166,10 @@ public class ResponseGetter implements IResponseGetter {
         if (value instanceof Map<?, ?>) {
             flatParams = flattenParamsMap((Map<String, Object>) value, keyPrefix);
         } else if (value instanceof File) {
-            flatParams = new LinkedList<>();
+            flatParams = new LinkedList<Parameter>();
             flatParams.add(new Parameter(keyPrefix, value));
         } else {
-            flatParams = new LinkedList<>();
+            flatParams = new LinkedList<Parameter>();
             flatParams.add(new Parameter(keyPrefix, value.toString()));
         }
 
@@ -183,7 +183,7 @@ public class ResponseGetter implements IResponseGetter {
             Map<String, List<String>> headers = conn.getHeaderFields();
             T value = MAPPER.readValue(conn.getInputStream(), clazz);
 
-            return new LobResponse<>(responseCode, value, headers);
+            return new LobResponse<T>(responseCode, value, headers);
         } else if (responseCode == 422) {
             throw MAPPER.readValue(conn.getErrorStream(), InvalidRequestException.class);
         } else if (responseCode == 429) {
@@ -214,7 +214,7 @@ public class ResponseGetter implements IResponseGetter {
         }
     }
 
-    private static <T> LobResponse makeMultipartConectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, Map<String, Object> params, RequestOptions options) throws IOException, InvalidRequestException, APIException, RateLimitException {
+    private static <T> LobResponse makeMultipartConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, Map<String, Object> params, RequestOptions options) throws IOException, InvalidRequestException, APIException, RateLimitException {
         java.net.HttpURLConnection conn = createDefaultConnection(url, options);
         String boundary = MultipartProcessor.getBoundary();
 
@@ -260,7 +260,7 @@ public class ResponseGetter implements IResponseGetter {
         String lobURL = String.format("%s%s", Lob.API_BASE_URL, url);
 
         if (type == APIResource.RequestType.MULTIPART) {
-            return makeMultipartConectionRequest(method, clazz, lobURL, params, options);
+            return makeMultipartConnectionRequest(method, clazz, lobURL, params, options);
         }
 
         String query = createQuery(params);

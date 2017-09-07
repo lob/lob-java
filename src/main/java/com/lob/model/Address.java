@@ -135,7 +135,7 @@ public class Address extends APIResource {
         return dateModified;
     }
 
-    public boolean getDeleted() {
+    public boolean isDeleted() {
         return deleted;
     }
 
