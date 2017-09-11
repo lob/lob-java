@@ -14,34 +14,34 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class USVerification extends APIResource {
+public class InternationalVerification extends APIResource {
 
-    public static final String ENDPOINT = "us_verifications";
+    public static final String ENDPOINT = "intl_verifications";
 
     @JsonProperty private final String id;
     @JsonProperty private final String primaryLine;
     @JsonProperty private final String secondaryLine;
-    @JsonProperty private final String urbanization;
     @JsonProperty private final String city;
     @JsonProperty private final String state;
-    @JsonProperty private final String zipCode;
+    @JsonProperty private final String postalCode;
+    @JsonProperty private final String country;
 
     @JsonCreator
-    public USVerification(
+    public InternationalVerification(
             @JsonProperty("id") final String id,
             @JsonProperty("primary_line") final String primaryLine,
             @JsonProperty("secondary_line") final String secondaryLine,
-            @JsonProperty("urbanization") final String urbanization,
             @JsonProperty("city") final String city,
             @JsonProperty("state") final String state,
-            @JsonProperty("zip_code") final String zipCode) {
+            @JsonProperty("postal_code") final String postalCode,
+            @JsonProperty("country") final String country) {
         this.id = id;
         this.primaryLine = primaryLine;
         this.secondaryLine = secondaryLine;
-        this.urbanization = urbanization;
         this.city = city;
         this.state = state;
-        this.zipCode = zipCode;
+        this.postalCode = postalCode;
+        this.country = country;
     }
 
     public String getId() {
@@ -56,10 +56,6 @@ public class USVerification extends APIResource {
         return secondaryLine;
     }
 
-    public String getUrbanization() {
-        return urbanization;
-    }
-
     public String getCity() {
         return city;
     }
@@ -68,60 +64,55 @@ public class USVerification extends APIResource {
         return state;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public String getPostalCode() {
+        return postalCode;
     }
 
     @Override
     public String toString() {
-        return "USVerification{" +
+        return "InternationalVerification{" +
                 "id=" + id +
                 ", primaryLine='" + primaryLine + '\'' +
                 ", secondaryLine='" + secondaryLine + '\'' +
-                ", urbanization='" + urbanization + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
-                ", zipCode='" + zipCode + '\'' +
+                ", postcalCode='" + postalCode + '\'' +
+                ", country='" + country + '\'' +
                 '}';
     }
 
-    public static USVerificationCreator creator() {
-        return new USVerificationCreator();
+    public static InternationalVerificationCreator creator() {
+        return new InternationalVerificationCreator();
     }
 
-    public static final class USVerificationCreator {
+    public static final class InternationalVerificationCreator {
         private Map<String, Object> params = new HashMap<String, Object>();
 
-        public USVerificationCreator() {
+        public InternationalVerificationCreator() {
         }
 
-        public USVerificationCreator setPrimaryLine(String primaryLine) {
+        public InternationalVerificationCreator setPrimaryLine(String primaryLine) {
             params.put("primary_line", primaryLine);
             return this;
         }
 
-        public USVerificationCreator setSecondaryLine(String secondaryLine) {
+        public InternationalVerificationCreator setSecondaryLine(String secondaryLine) {
             params.put("secondary_line", secondaryLine);
             return this;
         }
 
-        public USVerificationCreator setUrbanization(String urbanization) {
-            params.put("urbanization", urbanization);
-            return this;
-        }
-
-        public USVerificationCreator setCity(String city) {
+        public InternationalVerificationCreator setCity(String city) {
             params.put("city", city);
             return this;
         }
 
-        public USVerificationCreator setState(String state) {
+        public InternationalVerificationCreator setState(String state) {
             params.put("state", state);
             return this;
         }
 
-        public USVerificationCreator setZipCode(String zipCode) {
-            params.put("zip_code", zipCode);
+        public InternationalVerificationCreator setPostalCode(String postalCode) {
+            params.put("postal_code", postalCode);
             return this;
         }
 
@@ -129,17 +120,17 @@ public class USVerification extends APIResource {
             return params;
         }
 
-        public LobResponse<USVerification> verify() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        public LobResponse<InternationalVerification> verify() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
             return verify(null);
         }
 
-        public LobResponse<USVerification> verify(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
-            return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, params, USVerification.class, options);
+        public LobResponse<InternationalVerification> verify(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
+            return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, params, InternationalVerification.class, options);
         }
     }
 
     public static LobResponse<Address> verify(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, null, USVerification.class, options);
+        return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, null, InternationalVerification.class, options);
     }
 
 }

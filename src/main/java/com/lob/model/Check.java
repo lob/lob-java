@@ -275,6 +275,11 @@ public class Check extends APIResource {
             return this;
         }
 
+        public CheckCreator setFrom(Address.AddressCreator from) {
+            params.put("from", from.build());
+            return this;
+        }
+
         public CheckCreator setCheckNumber(int checkNumber) {
             params.put("check_number", checkNumber);
             return this;
@@ -287,11 +292,6 @@ public class Check extends APIResource {
 
         public CheckCreator setMemo(String memo) {
             params.put("memo", memo);
-            return this;
-        }
-
-        public CheckCreator setFrom(Address.AddressCreator from) {
-            params.put("from", from.build());
             return this;
         }
 

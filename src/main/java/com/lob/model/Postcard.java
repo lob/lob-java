@@ -36,6 +36,7 @@ public class Postcard extends APIResource {
     @JsonProperty private final List<Thumbnail> thumbnails;
     @JsonProperty private final String size;
     @JsonProperty private final String mailType;
+    @JsonProperty private final String customEnvelope;
     @JsonProperty private final DateTime expectedDeliveryDate;
     @JsonProperty private final DateTime dateCreated;
     @JsonProperty private final DateTime dateModified;
@@ -61,6 +62,7 @@ public class Postcard extends APIResource {
             @JsonProperty("thumbnails") final List<Thumbnail> thumbnails,
             @JsonProperty("size") final String size,
             @JsonProperty("mail_type") final String mailType,
+            @JsonProperty("custom_envelope") final String customEnvelope,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
@@ -83,6 +85,7 @@ public class Postcard extends APIResource {
         this.thumbnails = thumbnails;
         this.size = size;
         this.mailType = mailType;
+        this.customEnvelope = customEnvelope;
         this.expectedDeliveryDate = expectedDeliveryDate;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;

@@ -39,6 +39,8 @@ public class Letter extends APIResource {
     @JsonProperty private final List<Thumbnail> thumbnails;
     @JsonProperty private final String size;
     @JsonProperty private final String mailType;
+    @JsonProperty private final String customEnvelope;
+    @JsonProperty private final String customReturnEnvelope;
     @JsonProperty private final DateTime expectedDeliveryDate;
     @JsonProperty private final DateTime dateCreated;
     @JsonProperty private final DateTime dateModified;
@@ -67,6 +69,8 @@ public class Letter extends APIResource {
             @JsonProperty("thumbnails") final List<Thumbnail> thumbnails,
             @JsonProperty("size") final String size,
             @JsonProperty("mail_type") final String mailType,
+            @JsonProperty("custom_envelope") final String customEnvelope,
+            @JsonProperty("custom_return_envelope") final String customReturnEnvelope,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
@@ -92,6 +96,8 @@ public class Letter extends APIResource {
         this.thumbnails = thumbnails;
         this.size = size;
         this.mailType = mailType;
+        this.customEnvelope = customEnvelope;
+        this.customReturnEnvelope = customReturnEnvelope;
         this.expectedDeliveryDate = expectedDeliveryDate;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
@@ -173,6 +179,10 @@ public class Letter extends APIResource {
         return mailType;
     }
 
+    public String getCustomEnvelope() { return customEnvelope; }
+
+    public String getCustomReturnEnvelope() { return customReturnEnvelope; }
+
     public DateTime getExpectedDeliveryDate() {
         return expectedDeliveryDate;
     }
@@ -227,6 +237,8 @@ public class Letter extends APIResource {
                 ", dateModified=" + dateModified +
                 ", sendDate=" + sendDate +
                 ", mailType='" + mailType + '\'' +
+                ", customEnvelope='" + customEnvelope + '\'' +
+                ", customReturnEnvelope='" + customReturnEnvelope + '\'' +
                 ", metadata=" + metadata +
                 ", deleted=" + deleted +
                 ", object=" + object +
@@ -322,6 +334,16 @@ public class Letter extends APIResource {
 
         public LetterCreator setMailType(String mailType) {
             params.put("mail_type", mailType);
+            return this;
+        }
+
+        public LetterCreator setCustomEnvelope(String customEnvelope) {
+            params.put("custom_envelope", customEnvelope);
+            return this;
+        }
+
+        public LetterCreator setCustomReturnEnvelope(String customReturnEnvelope) {
+            params.put("custom_return_envelope", customReturnEnvelope);
             return this;
         }
 

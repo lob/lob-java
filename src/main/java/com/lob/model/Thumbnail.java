@@ -46,9 +46,9 @@ public class Thumbnail {
     @Override
     public String toString() {
         return "Thumbnail{" +
-                "small=" + small +
+                "small=" + small + + '\'' +
                 ", medium='" + medium + '\'' +
-                ", large=" + large +
+                ", large=" + large + '\'' +
                 '}';
     }
 
