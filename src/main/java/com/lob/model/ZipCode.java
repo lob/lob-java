@@ -9,7 +9,10 @@ public class ZipCode {
     @JsonProperty private final List<Route> routes;
     @JsonProperty private final String object;
 
-    public ZipCode(String zipCode, List<Route> routes, String object) {
+    public ZipCode(
+            @JsonProperty("zip_code") String zipCode,
+            @JsonProperty("routes") List<Route> routes,
+            @JsonProperty("object") String object) {
         this.zipCode = zipCode;
         this.routes = routes;
         this.object = object;

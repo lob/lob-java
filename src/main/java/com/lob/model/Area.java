@@ -2,9 +2,16 @@ package com.lob.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lob.exception.APIException;
+import com.lob.exception.AuthenticationException;
+import com.lob.exception.InvalidRequestException;
+import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
+import com.lob.net.LobResponse;
+import com.lob.net.RequestOptions;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +49,7 @@ public class Area extends APIResource {
                 @JsonProperty("back_template_id") final String backTemplateId,
                 @JsonProperty("front_template_version_id") final String frontTemplateVersionId,
                 @JsonProperty("back_template_version_id") final String backTemplateVersionId,
-                @JsonProperty("target_types") final String targetType,
+                @JsonProperty("target_type") final String targetType,
                 @JsonProperty("thumbnails") final List<Thumbnail> thumbnails,
                 @JsonProperty("expected_delivery_date") final String expectedDeliveryDate,
                 @JsonProperty("trackings") final List<TrackingEvent> trackings,
@@ -68,6 +75,8 @@ public class Area extends APIResource {
         this.dateModified = dateModified;
         this.object = object;
     }
+
+    public String getId() { return id; }
 
     public String getDescription() {
         return description;
@@ -132,6 +141,8 @@ public class Area extends APIResource {
     public String getDateModified() {
         return dateModified;
     }
+
+    public String getObject() { return object; }
 
     @Override
     public String toString() {
@@ -214,5 +225,40 @@ public class Area extends APIResource {
             return this;
         }
 
+        public LobResponse<Area> create() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+            return create(null);
+        }
+
+        public LobResponse<Area> create(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
+            if (isMultipart) {
+                return request(RequestMethod.POST, RequestType.MULTIPART, ENDPOINT, params, Area.class, options);
+            }
+
+            return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, params, Area.class, options);
+        }
+    }
+
+    public static LobResponse<Area> retrieve(String id) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return retrieve(id, null);
+    }
+
+    public static LobResponse<Area> retrieve(String id, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return request(RequestMethod.GET, RequestType.NORMAL, String.format("%s/%s", ENDPOINT, id), null, Area.class, options);
+    }
+
+    public static LobResponse<AreaCollection> list() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return list(null, null);
+    }
+
+    public static LobResponse<AreaCollection> list(Map<String, Object> params) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return list(params, null);
+    }
+
+    public static LobResponse<AreaCollection> list(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return list(null, options);
+    }
+
+    public static LobResponse<AreaCollection> list(Map<String, Object> params, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return request(RequestMethod.GET, RequestType.NORMAL, ENDPOINT, params, AreaCollection.class, options);
     }
 }

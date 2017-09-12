@@ -40,6 +40,7 @@ public class Letter extends APIResource {
     @JsonProperty private final String size;
     @JsonProperty private final String mailType;
     @JsonProperty private final String customEnvelope;
+    @JsonProperty private final String trackingNumber;
     @JsonProperty private final String customReturnEnvelope;
     @JsonProperty private final DateTime expectedDeliveryDate;
     @JsonProperty private final DateTime dateCreated;
@@ -70,6 +71,7 @@ public class Letter extends APIResource {
             @JsonProperty("size") final String size,
             @JsonProperty("mail_type") final String mailType,
             @JsonProperty("custom_envelope") final String customEnvelope,
+            @JsonProperty("tracking_number") final String trackingNumber,
             @JsonProperty("custom_return_envelope") final String customReturnEnvelope,
             @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
             @JsonProperty("date_created") final DateTime dateCreated,
@@ -97,6 +99,7 @@ public class Letter extends APIResource {
         this.size = size;
         this.mailType = mailType;
         this.customEnvelope = customEnvelope;
+        this.trackingNumber = trackingNumber;
         this.customReturnEnvelope = customReturnEnvelope;
         this.expectedDeliveryDate = expectedDeliveryDate;
         this.dateCreated = dateCreated;
@@ -171,15 +174,13 @@ public class Letter extends APIResource {
         return thumbnails;
     }
 
-    public String getSize() {
-        return size;
-    }
-
     public String getMailType() {
         return mailType;
     }
 
     public String getCustomEnvelope() { return customEnvelope; }
+
+    public String getTrackingNumber() { return trackingNumber; }
 
     public String getCustomReturnEnvelope() { return customReturnEnvelope; }
 
@@ -238,6 +239,7 @@ public class Letter extends APIResource {
                 ", sendDate=" + sendDate +
                 ", mailType='" + mailType + '\'' +
                 ", customEnvelope='" + customEnvelope + '\'' +
+                ", trackingNumber='" + trackingNumber + '\'' +
                 ", customReturnEnvelope='" + customReturnEnvelope + '\'' +
                 ", metadata=" + metadata +
                 ", deleted=" + deleted +
@@ -324,11 +326,6 @@ public class Letter extends APIResource {
 
         public LetterCreator setMergeVariables(Map<String, String> mergeVariables) {
             params.put("merge_variables", mergeVariables);
-            return this;
-        }
-
-        public LetterCreator setSize(String size) {
-            params.put("size", size);
             return this;
         }
 

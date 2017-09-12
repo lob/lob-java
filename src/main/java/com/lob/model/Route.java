@@ -8,10 +8,10 @@ public class Route {
     @JsonProperty private final int business;
     @JsonProperty private final String object;
 
-    public Route(@JsonProperty final String route,
-                 @JsonProperty final int residential,
-                 @JsonProperty final int business,
-                 @JsonProperty final String object) {
+    public Route(@JsonProperty("route") final String route,
+                 @JsonProperty("residential") final int residential,
+                 @JsonProperty("business") final int business,
+                 @JsonProperty("object") final String object) {
         this.route = route;
         this.residential = residential;
         this.business = business;

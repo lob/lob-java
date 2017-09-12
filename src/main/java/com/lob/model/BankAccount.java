@@ -12,6 +12,7 @@ import com.lob.net.RequestOptions;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.joda.time.DateTime;
 
@@ -31,6 +32,7 @@ public class BankAccount extends APIResource {
     @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final DateTime dateCreated;
     @JsonProperty private final DateTime dateModified;
+    @JsonProperty private final boolean deleted;
     @JsonProperty private final String object;
 
     @JsonCreator
@@ -47,6 +49,7 @@ public class BankAccount extends APIResource {
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
+            @JsonProperty("deleted") final boolean deleted,
             @JsonProperty("object") final String object) {
         this.id = id;
         this.description = description;
@@ -60,6 +63,7 @@ public class BankAccount extends APIResource {
         this.metadata = metadata;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
+        this.deleted = deleted;
         this.object = object;
     }
 
@@ -110,6 +114,8 @@ public class BankAccount extends APIResource {
     public DateTime getDateModified() {
         return dateModified;
     }
+
+    public boolean getDeleted() { return deleted; }
 
     public String getObject() {
         return object;
@@ -198,7 +204,7 @@ public class BankAccount extends APIResource {
         }
 
         public LobResponse<BankAccount> create(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
-            return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, params, Address.class, options);
+            return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, params, BankAccount.class, options);
         }
     }
 
@@ -207,7 +213,13 @@ public class BankAccount extends APIResource {
     }
 
     public static LobResponse<BankAccount> retrieve(String id, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.GET, RequestType.NORMAL, String.format("%s/%s", ENDPOINT, id), null, Address.class, options);
+        return request(RequestMethod.GET, RequestType.NORMAL, String.format("%s/%s", ENDPOINT, id), null, BankAccount.class, options);
+    }
+
+    public static LobResponse<BankAccount> verify(String id, List amounts, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        Map params = new HashMap();
+        params.put("amounts", amounts);
+        return request(RequestMethod.POST, RequestType.NORMAL, String.format("%s/%s/verify", ENDPOINT, id), params, BankAccount.class, options);
     }
 
     public static LobResponse<BankAccountCollection> list() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
@@ -223,7 +235,7 @@ public class BankAccount extends APIResource {
     }
 
     public static LobResponse<BankAccountCollection> list(Map<String, Object> params, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.GET, RequestType.NORMAL, ENDPOINT, params, AddressCollection.class, options);
+        return request(RequestMethod.GET, RequestType.NORMAL, ENDPOINT, params, BankAccountCollection.class, options);
     }
 
     public static LobResponse<BankAccount> delete(String id) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
@@ -231,7 +243,7 @@ public class BankAccount extends APIResource {
     }
 
     public static LobResponse<BankAccount> delete(String id, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.DELETE, RequestType.NORMAL, String.format("%s/%s", ENDPOINT, id), null, Address.class, options);
+        return request(RequestMethod.DELETE, RequestType.NORMAL, String.format("%s/%s", ENDPOINT, id), null, BankAccount.class, options);
     }
 
 }

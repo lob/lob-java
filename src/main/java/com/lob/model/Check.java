@@ -19,7 +19,7 @@ import org.joda.time.DateTime;
 
 public class Check extends APIResource {
 
-    public static final String ENDPOINT = "postcards";
+    public static final String ENDPOINT = "checks";
 
     @JsonProperty private final String id;
     @JsonProperty private final String description;
@@ -43,6 +43,7 @@ public class Check extends APIResource {
     @JsonProperty private final DateTime expectedDeliveryDate;
     @JsonProperty private final DateTime dateCreated;
     @JsonProperty private final DateTime dateModified;
+    @JsonProperty private final String trackingNumber;
     @JsonProperty private final DateTime sendDate;
     @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final boolean deleted;
@@ -73,6 +74,7 @@ public class Check extends APIResource {
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
             @JsonProperty("send_date") final DateTime sendDate,
+            @JsonProperty("tracking_number") final String trackingNumber,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("deleted") final boolean deleted,
             @JsonProperty("object") final String object) {
@@ -99,6 +101,7 @@ public class Check extends APIResource {
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
         this.sendDate = sendDate;
+        this.trackingNumber = trackingNumber;
         this.metadata = metadata;
         this.deleted = deleted;
         this.object = object;
@@ -198,6 +201,8 @@ public class Check extends APIResource {
         return metadata;
     }
 
+    public String getTrackingNumber() { return trackingNumber; }
+
     public boolean isDeleted() {
         return deleted;
     }
@@ -256,7 +261,7 @@ public class Check extends APIResource {
         }
 
         public CheckCreator setBankaccount(BankAccount bankAccount) {
-            params.put("bank_account", bankAccount);
+            params.put("bank_account", bankAccount.getId());
             return this;
         }
 
@@ -302,7 +307,7 @@ public class Check extends APIResource {
 
         public CheckCreator setCheckBottom(File checkBottom) {
             isMultipart = true;
-            params.put("checkBottom", checkBottom);
+            params.put("check_bottom", checkBottom);
             return this;
         }
 
