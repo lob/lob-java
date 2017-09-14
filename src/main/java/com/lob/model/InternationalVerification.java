@@ -24,6 +24,7 @@ public class InternationalVerification extends APIResource {
     @JsonProperty private final String city;
     @JsonProperty private final String state;
     @JsonProperty private final String postalCode;
+    @JsonProperty private final Map<String, String> components;
     @JsonProperty private final String country;
 
     @JsonCreator
@@ -34,6 +35,7 @@ public class InternationalVerification extends APIResource {
             @JsonProperty("city") final String city,
             @JsonProperty("state") final String state,
             @JsonProperty("postal_code") final String postalCode,
+            @JsonProperty("components") final Map<String, String> components,
             @JsonProperty("country") final String country) {
         this.id = id;
         this.primaryLine = primaryLine;
@@ -41,6 +43,7 @@ public class InternationalVerification extends APIResource {
         this.city = city;
         this.state = state;
         this.postalCode = postalCode;
+        this.components = components;
         this.country = country;
     }
 
@@ -68,6 +71,10 @@ public class InternationalVerification extends APIResource {
         return postalCode;
     }
 
+    public String getCountry(){ return country; }
+
+    public Map<String, String> getComponents() { return components; }
+
     @Override
     public String toString() {
         return "InternationalVerification{" +
@@ -77,6 +84,7 @@ public class InternationalVerification extends APIResource {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", postcalCode='" + postalCode + '\'' +
+                ", components='" + components + '\'' +
                 ", country='" + country + '\'' +
                 '}';
     }
@@ -108,6 +116,11 @@ public class InternationalVerification extends APIResource {
 
         public InternationalVerificationCreator setState(String state) {
             params.put("state", state);
+            return this;
+        }
+
+        public InternationalVerificationCreator setCountry(String country) {
+            params.put("country", country);
             return this;
         }
 

@@ -81,7 +81,6 @@ public class USZipLookup extends APIResource {
             return this;
         }
 
-
         public Map<String, Object> build() {
             return params;
         }
