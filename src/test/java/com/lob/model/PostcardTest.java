@@ -26,7 +26,7 @@ public class PostcardTest extends BaseTest {
 
     @Test
     public void testListPostcardWithParams() throws Exception {
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("limit", 1);
 
         LobResponse<PostcardCollection> response = Postcard.list(params);
@@ -54,13 +54,13 @@ public class PostcardTest extends BaseTest {
         Map<String, String> mergeVariables = new HashMap<>();
         mergeVariables.put("name", "Lob");
 
-        LobResponse<Postcard> response = Postcard.creator()
+        LobResponse<Postcard> response = new Postcard.RequestBuilder()
                 .setDescription("Test Postcard")
                 .setFront("<h1>Hello {{name}}</h1>")
                 .setBack("<h1>Back</h1>")
                 .setMergeVariables(mergeVariables)
                 .setTo(
-                        Address.creator()
+                        new Address.RequestBuilder()
                                 .setCompany("Lob.com")
                                 .setLine1("185 Berry St Ste 6100")
                                 .setCity("San Francisco")
@@ -105,12 +105,12 @@ public class PostcardTest extends BaseTest {
     public void testCreateFilePostcard() throws Exception {
         final File front = new File(getClass().getClassLoader().getResource("postcardfront.pdf").getPath());
 
-        LobResponse<Postcard> response = Postcard.creator()
+        LobResponse<Postcard> response = new Postcard.RequestBuilder()
                 .setDescription("Test Postcard")
                 .setFront(front)
                 .setMessage("this is a message")
                 .setTo(
-                        Address.creator()
+                        new Address.RequestBuilder()
                                 .setCompany("Lob.com")
                                 .setLine1("185 Berry St Ste 6100")
                                 .setCity("San Francisco")
@@ -119,7 +119,7 @@ public class PostcardTest extends BaseTest {
                                 .setCountry("US")
                 )
                 .setFrom(
-                        Address.creator()
+                        new Address.RequestBuilder()
                                 .setName("Donald Little")
                                 .setLine1("185 Berry St Ste 6100")
                                 .setCity("San Francisco")
@@ -162,11 +162,11 @@ public class PostcardTest extends BaseTest {
 
     @Test
     public void testDeletePostcard() throws Exception {
-        Postcard postcard = Postcard.creator()
+        Postcard postcard = new Postcard.RequestBuilder()
                 .setFront("<h1>Front</h1>")
                 .setBack("<h1>Back</h1>")
                 .setTo(
-                        Address.creator()
+                        new Address.RequestBuilder()
                                 .setCompany("Lob.com")
                                 .setLine1("185 Berry St Ste 6100")
                                 .setCity("San Francisco")

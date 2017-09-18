@@ -27,7 +27,7 @@ public class AddressTest extends BaseTest {
 
     @Test
     public void testListAddressesWithParams() throws Exception {
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("limit", 1);
 
         LobResponse<AddressCollection> response = Address.list(params);
@@ -39,7 +39,7 @@ public class AddressTest extends BaseTest {
 
     @Test
     public void testRetrieveAddress() throws Exception {
-        Address testAddress = ((AddressCollection) Address.list().getResponseBody()).getData().get(0);
+        Address testAddress = Address.list().getResponseBody().getData().get(0);
 
         LobResponse<Address> response = Address.retrieve(testAddress.getId());
         Address address = response.getResponseBody();
@@ -52,7 +52,7 @@ public class AddressTest extends BaseTest {
         Map<String, String> metadata = new HashMap<>();
         metadata.put("a", "b");
 
-        LobResponse<Address> response = Address.creator()
+        LobResponse<Address> response = new Address.RequestBuilder()
                 .setCompany("Lob.com")
                 .setName("Donald")
                 .setLine1("185 Berry St")
@@ -93,7 +93,7 @@ public class AddressTest extends BaseTest {
 
     @Test
     public void testDeleteAddress() throws Exception {
-        Address address = Address.creator()
+        Address address = new Address.RequestBuilder()
                 .setCompany("Lob.com")
                 .setName("Donald")
                 .setLine1("185 Berry St")
@@ -120,19 +120,19 @@ public class AddressTest extends BaseTest {
     @Test(expected = AuthenticationException.class)
     public void testAddressNoAuth() throws Exception {
         RequestOptions options = RequestOptions.builder().setApiKey("").build();
-        Address.creator().create(options);
+        new Address.RequestBuilder().create(options);
     }
 
     @Test(expected = InvalidRequestException.class)
     public void testAddressInvalidRequest() throws Exception {
-        Address.creator().create();
+        new Address.RequestBuilder().create();
     }
 
     @Test(expected = RateLimitException.class)
     public void testAddressRateLimit() throws Exception {
         RequestOptions options = RequestOptions.builder().setApiKey("test_03b4c5206b1f4c04b8d9fb5b4dd72ffd2d4").build();
 
-        Address.creator()
+        new Address.RequestBuilder()
                 .setCompany("Lob.com")
                 .setName("Donald")
                 .setLine1("185 Berry St")

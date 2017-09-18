@@ -19,7 +19,7 @@ import org.joda.time.DateTime;
 
 public class Postcard extends APIResource {
 
-    public static final String ENDPOINT = "postcards";
+    public static final String RESOURCE = "postcards";
 
     @JsonProperty private final String id;
     @JsonProperty private final String description;
@@ -209,90 +209,86 @@ public class Postcard extends APIResource {
                 '}';
     }
 
-    public static PostcardCreator creator() {
-        return new PostcardCreator();
-    }
-
-    public static final class PostcardCreator {
+    public static final class RequestBuilder {
         private Map<String, Object> params = new HashMap<>();
         private boolean isMultipart = false;
 
-        public PostcardCreator() {
+        public RequestBuilder() {
         }
 
-        public PostcardCreator setDescription(String description) {
+        public RequestBuilder setDescription(String description) {
             params.put("description", description);
             return this;
         }
 
-        public PostcardCreator setTo(String to) {
+        public RequestBuilder setTo(String to) {
             params.put("to", to);
             return this;
         }
 
-        public PostcardCreator setTo(Address.AddressCreator to) {
+        public RequestBuilder setTo(Address.RequestBuilder to) {
             params.put("to", to.build());
             return this;
         }
 
-        public PostcardCreator setFrom(String from) {
+        public RequestBuilder setFrom(String from) {
             params.put("from", from);
             return this;
         }
 
-        public PostcardCreator setFrom(Address.AddressCreator from) {
+        public RequestBuilder setFrom(Address.RequestBuilder from) {
             params.put("from", from.build());
             return this;
         }
 
-        public PostcardCreator setFront(String front) {
+        public RequestBuilder setFront(String front) {
             params.put("front", front);
             return this;
         }
 
-        public PostcardCreator setFront(File front) {
+        public RequestBuilder setFront(File front) {
             isMultipart = true;
             params.put("front", front);
             return this;
         }
 
-        public PostcardCreator setBack(String back) {
+        public RequestBuilder setBack(String back) {
             params.put("back", back);
             return this;
         }
 
-        public PostcardCreator setBack(File back) {
+        public RequestBuilder setBack(File back) {
             isMultipart = true;
             params.put("back", back);
             return this;
         }
 
-        public PostcardCreator setMergeVariables(Map<String, String> mergeVariables) {
+        public RequestBuilder setMergeVariables(Map<String, String> mergeVariables) {
             params.put("merge_variables", mergeVariables);
             return this;
         }
 
-        public PostcardCreator setMessage(String message) {
+        public RequestBuilder setMessage(String message) {
             params.put("message", message);
             return this;
         }
 
-        public PostcardCreator setSize(String size) {
+        public RequestBuilder setSize(String size) {
             params.put("size", size);
             return this;
         }
 
-        public PostcardCreator setMailType(String mailType) {
+        public RequestBuilder setMailType(String mailType) {
             params.put("mail_type", mailType);
             return this;
         }
 
-        public PostcardCreator setSendDate(DateTime sendDate) {
+        public RequestBuilder setSendDate(DateTime sendDate) {
             params.put("send_date", sendDate);
             return this;
         }
 
-        public PostcardCreator setMetadata(Map<String, String> metadata) {
+        public RequestBuilder setMetadata(Map<String, String> metadata) {
             params.put("metadata", metadata);
             return this;
         }
@@ -304,10 +300,10 @@ public class Postcard extends APIResource {
 
         public LobResponse<Postcard> create(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
             if (isMultipart) {
-                return request(RequestMethod.POST, RequestType.MULTIPART, ENDPOINT, params, Postcard.class, options);
+                return request(RequestMethod.POST, RequestType.MULTIPART, RESOURCE, params, Postcard.class, options);
             }
 
-            return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, params, Postcard.class, options);
+            return request(RequestMethod.POST, RequestType.NORMAL, RESOURCE, params, Postcard.class, options);
         }
     }
 
@@ -316,7 +312,7 @@ public class Postcard extends APIResource {
     }
 
     public static LobResponse<Postcard> retrieve(String id, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.GET, RequestType.NORMAL, String.format("%s/%s", ENDPOINT, id), null, Postcard.class, options);
+        return request(RequestMethod.GET, RequestType.NORMAL, String.format("%s/%s", RESOURCE, id), null, Postcard.class, options);
     }
 
     public static LobResponse<PostcardCollection> list() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
@@ -332,7 +328,7 @@ public class Postcard extends APIResource {
     }
 
     public static LobResponse<PostcardCollection> list(Map<String, Object> params, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.GET, RequestType.NORMAL, ENDPOINT, params, PostcardCollection.class, options);
+        return request(RequestMethod.GET, RequestType.NORMAL, RESOURCE, params, PostcardCollection.class, options);
     }
 
     public static LobResponse<Postcard> delete(String id) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
@@ -340,7 +336,7 @@ public class Postcard extends APIResource {
     }
 
     public static LobResponse<Postcard> delete(String id, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.DELETE, RequestType.NORMAL, String.format("%s/%s", ENDPOINT, id), null, Postcard.class, options);
+        return request(RequestMethod.DELETE, RequestType.NORMAL, String.format("%s/%s", RESOURCE, id), null, Postcard.class, options);
     }
 
 }
