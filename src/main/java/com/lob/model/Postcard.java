@@ -186,7 +186,7 @@ public class Postcard extends APIResource {
     @Override
     public String toString() {
         return "Postcard{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", description='" + description + '\'' +
                 ", to=" + to +
                 ", from=" + from +
@@ -208,7 +208,7 @@ public class Postcard extends APIResource {
                 ", mailType='" + mailType + '\'' +
                 ", metadata=" + metadata +
                 ", deleted=" + deleted +
-                ", object=" + object +
+                ", object='" + object + '\'' +
                 '}';
     }
 
@@ -283,6 +283,11 @@ public class Postcard extends APIResource {
 
         public RequestBuilder setMailType(String mailType) {
             params.put("mail_type", mailType);
+            return this;
+        }
+
+        public RequestBuilder setSendDate(String sendDate) {
+            params.put("send_date", sendDate);
             return this;
         }
 

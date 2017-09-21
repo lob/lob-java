@@ -17,7 +17,61 @@ import java.util.Map;
 
 public class USZipLookup extends APIResource {
 
-    public static final String ENDPOINT = "us_zip_lookups";
+    public static final String RESOURCE = "us_zip_lookups";
+
+    public static class City {
+
+        @JsonProperty private final String city;
+        @JsonProperty private final String state;
+        @JsonProperty private final String county;
+        @JsonProperty private final String countyFips;
+        @JsonProperty private final boolean preferred;
+
+        @JsonCreator
+        public City(
+                @JsonProperty("city") final String city,
+                @JsonProperty("state") final String state,
+                @JsonProperty("county") final String county,
+                @JsonProperty("county_fips") final String countyFips,
+                @JsonProperty("preferred") final boolean preferred) {
+            this.city = city;
+            this.state = state;
+            this.county = county;
+            this.countyFips = countyFips;
+            this.preferred = preferred;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public String getState() {
+            return state;
+        }
+
+        public String getCounty() {
+            return county;
+        }
+
+        public String getCountyFips() {
+            return countyFips;
+        }
+
+        public boolean isPreferred() {
+            return preferred;
+        }
+
+        @Override
+        public String toString() {
+            return "City{" +
+                    "city='" + city + '\'' +
+                    ", state='" + state + '\'' +
+                    ", county='" + county + '\'' +
+                    ", countyFips='" + countyFips + '\'' +
+                    '}';
+        }
+
+    }
 
     @JsonProperty private final String id;
     @JsonProperty private final String zipCode;
@@ -30,7 +84,7 @@ public class USZipLookup extends APIResource {
             @JsonProperty("id") final String id,
             @JsonProperty("zip_code") final String zipCode,
             @JsonProperty("zip_code_type") final String zipCodeType,
-            @JsonProperty("cities") final List cities,
+            @JsonProperty("cities") final List<City> cities,
             @JsonProperty("object") final String object) {
         this.id = id;
         this.zipCode = zipCode;
@@ -55,34 +109,30 @@ public class USZipLookup extends APIResource {
         return cities;
     }
 
+    public String getObject() {
+        return object;
+    }
+
     @Override
     public String toString() {
         return "USZipLookup{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", zipCodeType='" + zipCodeType + '\'' +
-                ", cities='" + cities + '\'' +
+                ", cities=" + cities +
                 ", object='" + object + '\'' +
                 '}';
     }
 
-    public static USZipLookupCreator creator() {
-        return new USZipLookupCreator();
-    }
+    public static final class RequestBuilder {
+        private Map<String, Object> params = new HashMap<>();
 
-    public static final class USZipLookupCreator {
-        private Map<String, Object> params = new HashMap<String, Object>();
-
-        public USZipLookupCreator() {
+        public RequestBuilder() {
         }
 
-        public USZipLookupCreator setZipCode(String zipCode) {
+        public RequestBuilder setZipCode(String zipCode) {
             params.put("zip_code", zipCode);
             return this;
-        }
-
-        public Map<String, Object> build() {
-            return params;
         }
 
         public LobResponse<USZipLookup> lookup() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
@@ -90,12 +140,8 @@ public class USZipLookup extends APIResource {
         }
 
         public LobResponse<USZipLookup> lookup(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
-            return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, params, USZipLookup.class, options);
+            return request(RequestMethod.POST, RequestType.NORMAL, RESOURCE, params, USZipLookup.class, options);
         }
-    }
-
-    public static LobResponse<Address> lookup(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, null, USZipLookup.class, options);
     }
 
 }

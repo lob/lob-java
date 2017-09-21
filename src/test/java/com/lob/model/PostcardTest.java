@@ -37,6 +37,22 @@ public class PostcardTest extends BaseTest {
     }
 
     @Test
+    public void testListPostcardWithMetadata() throws Exception {
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put("key0", "8f43a8f2-360d-4fea-bdeb-6f545f084c74");
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("metadata", metadata);
+
+        LobResponse<PostcardCollection> response = Postcard.list(params);
+
+        assertEquals(200, response.getResponseCode());
+        assertEquals(1, response.getResponseBody().getCount());
+        assertEquals("psc_7cdbf7c54d44005d", response.getResponseBody().getData().get(0).getId());
+        assertThat(response.getResponseBody().getData().get(0), instanceOf(Postcard.class));
+    }
+
+    @Test
     public void testRetrievePostcard() throws Exception {
         Postcard testPostcard = Postcard.list().getResponseBody().getData().get(0);
 
@@ -70,6 +86,7 @@ public class PostcardTest extends BaseTest {
                 )
                 .setSize("4x6")
                 .setMetadata(metadata)
+                .setMailType("usps_first_class")
                 .create();
 
         Postcard postcard = response.getResponseBody();
@@ -99,6 +116,33 @@ public class PostcardTest extends BaseTest {
         assertFalse(postcard.isDeleted());
         assertEquals("postcard", postcard.getObject());
         assertNotNull(postcard.toString());
+    }
+
+    @Test
+    public void testCreateTemplatePostcard() throws Exception {
+        LobResponse<Postcard> response = new Postcard.RequestBuilder()
+                .setFront("tmpl_c4aa2dc83ebad7e")
+                .setBack("tmpl_c4aa2dc83ebad7e")
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setSize("4x6")
+                .create();
+
+        Postcard postcard = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(postcard.getId());
+        assertEquals("tmpl_c4aa2dc83ebad7e", postcard.getFrontTemplateId());
+        assertEquals("tmpl_c4aa2dc83ebad7e", postcard.getBackTemplateId());
+        assertNotNull(postcard.getFrontTemplateVersionId());
+        assertNotNull(postcard.getBackTemplateVersionId());
     }
 
     @Test
@@ -161,6 +205,35 @@ public class PostcardTest extends BaseTest {
     }
 
     @Test
+    public void testCreateFuturePostcard() throws Exception {
+        DateTime today = new DateTime();
+        DateTime futureDate = today.plusDays(1);
+
+        LobResponse<Postcard> response = new Postcard.RequestBuilder()
+                .setDescription("Test Postcard")
+                .setFront("<h1>Hello from Lob</h1>")
+                .setBack("<h1>Back</h1>")
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setSize("4x6")
+                .setSendDate(futureDate)
+                .create();
+
+        Postcard postcard = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(postcard.getId());
+        assertTrue(postcard.getSendDate().isAfter(today));
+    }
+
+    @Test
     public void testDeletePostcard() throws Exception {
         Postcard postcard = new Postcard.RequestBuilder()
                 .setFront("<h1>Front</h1>")
@@ -175,7 +248,6 @@ public class PostcardTest extends BaseTest {
                                 .setCountry("US")
                 )
                 .setSize("4x6")
-                .setSendDate(DateTime.now().plusMinutes(5))
                 .create()
                 .getResponseBody();
 

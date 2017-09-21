@@ -5,6 +5,7 @@ import com.lob.net.LobResponse;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public class AreaTest extends BaseTest {
 
     @Test
     public void testListAreaWithParams() throws Exception {
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("limit", 1);
 
         LobResponse<AreaCollection> response = Area.list(params);
@@ -51,72 +52,70 @@ public class AreaTest extends BaseTest {
         Map<String, String> mergeVariables = new HashMap<>();
         mergeVariables.put("name", "Lob");
 
-        LobResponse<Area> response = Area.creator()
+        LobResponse<Area> response = new Area.RequestBuilder()
                 .setDescription("Test Area")
                 .setFront("<h1>Hello {{name}}</h1>")
                 .setBack("<h1>Back</h1>")
-                .setRoutes("94939")
+                .setRoutes(Arrays.asList("94158-C001", "94107-C031"))
+                .setTargetType("residential")
                 .setMergeVariables(mergeVariables)
                 .setMetadata(metadata)
                 .create();
 
-        Area postcard = response.getResponseBody();
+        Area area = response.getResponseBody();
 
         assertEquals(200, response.getResponseCode());
-        assertNotNull(postcard.getId());
-        assertEquals("Test Area", postcard.getDescription());
-
-        assertNotNull(postcard.getUrl());
-        assertNull(postcard.getFrontTemplateId());
-        assertNull(postcard.getBackTemplateId());
-        assertNull(postcard.getFrontTemplateVersionId());
-        assertNull(postcard.getBackTemplateVersionId());
-        assertNotNull(postcard.getThumbnails());
-        assertNotNull(postcard.getExpectedDeliveryDate());
-        assertNotNull(postcard.getDateCreated());
-        assertNotNull(postcard.getDateModified());
-        assertEquals(metadata, postcard.getMetadata());
-        assertEquals("area", postcard.getObject());
-        assertNotNull(postcard.toString());
+        assertNotNull(area.getId());
+        assertEquals("Test Area", area.getDescription());
+        assertNotNull(area.getZipCodes());
+        assertEquals(938, area.getAddresses());
+        assertEquals("729.77", area.getPrice());
+        assertNotNull(area.getUrl());
+        assertEquals("residential", area.getTargetType());
+        assertNotNull(area.getThumbnails());
+        assertNotNull(area.getTrackings());
+        assertNotNull(area.getExpectedDeliveryDate());
+        assertNotNull(area.getDateCreated());
+        assertNotNull(area.getDateModified());
+        assertEquals(metadata, area.getMetadata());
+        assertEquals("area", area.getObject());
+        assertNotNull(area.toString());
     }
 
     @Test
     public void testCreateFileArea() throws Exception {
-        final File front = new File(getClass().getClassLoader().getResource("areafront.pdf").getPath());
-        final File back = new File(getClass().getClassLoader().getResource("areaback.pdf").getPath());
+        final File file = new File(getClass().getClassLoader().getResource("6_25x11_25.pdf").getPath());
 
         Map<String, String> metadata = new HashMap<>();
         metadata.put("a", "b");
 
-        Map<String, String> mergeVariables = new HashMap<>();
-        mergeVariables.put("name", "Lob");
-
-        LobResponse<Area> response = Area.creator()
+        LobResponse<Area> response = new Area.RequestBuilder()
                 .setDescription("Test Area")
-                .setFront(front)
-                .setBack(back)
+                .setFront(file)
+                .setBack(file)
                 .setRoutes("94939")
-                .setMergeVariables(mergeVariables)
+                .setTargetType("residential")
                 .setMetadata(metadata)
                 .create();
 
-        Area postcard = response.getResponseBody();
+        Area area = response.getResponseBody();
 
         assertEquals(200, response.getResponseCode());
-        assertNotNull(postcard.getId());
-        assertEquals("Test Area", postcard.getDescription());
-
-        assertNotNull(postcard.getUrl());
-        assertNull(postcard.getFrontTemplateId());
-        assertNull(postcard.getBackTemplateId());
-        assertNull(postcard.getFrontTemplateVersionId());
-        assertNull(postcard.getBackTemplateVersionId());
-        assertNotNull(postcard.getThumbnails());
-        assertNotNull(postcard.getExpectedDeliveryDate());
-        assertNotNull(postcard.getDateCreated());
-        assertNotNull(postcard.getDateModified());
-        assertEquals(metadata, postcard.getMetadata());
-        assertEquals("area", postcard.getObject());
-        assertNotNull(postcard.toString());
+        assertNotNull(area.getId());
+        assertEquals("Test Area", area.getDescription());
+        assertNotNull(area.getZipCodes());
+        assertEquals(3589, area.getAddresses());
+        assertEquals("1309.99", area.getPrice());
+        assertNotNull(area.getUrl());
+        assertEquals("residential", area.getTargetType());
+        assertNotNull(area.getThumbnails());
+        assertNotNull(area.getTrackings());
+        assertNotNull(area.getExpectedDeliveryDate());
+        assertNotNull(area.getDateCreated());
+        assertNotNull(area.getDateModified());
+        assertEquals(metadata, area.getMetadata());
+        assertEquals("area", area.getObject());
+        assertNotNull(area.toString());
     }
+
 }

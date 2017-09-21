@@ -146,7 +146,7 @@ public class Address extends APIResource {
     @Override
     public String toString() {
         return "Address{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
                 ", company='" + company + '\'' +
@@ -161,7 +161,7 @@ public class Address extends APIResource {
                 ", dateCreated=" + dateCreated +
                 ", dateModified=" + dateModified +
                 ", deleted=" + deleted +
-                ", object=" + object +
+                ", object='" + object + '\'' +
                 '}';
     }
 

@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
-public class PostcardCollection extends LobCollection<Postcard> {
+public class RoutesCollection extends LobCollection<Routes> {
 
     @JsonCreator
-    public PostcardCollection(
-            @JsonProperty("data") final List<Postcard> data,
+    public RoutesCollection(
+            @JsonProperty("data") final List<Routes> data,
             @JsonProperty("count") final int count,
             @JsonProperty("object") final String object) {
         super(data, count, object);

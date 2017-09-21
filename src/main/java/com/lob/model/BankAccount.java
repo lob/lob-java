@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.joda.time.DateTime;
+import org.joda.time.chrono.StrictChronology;
 
 public class BankAccount extends APIResource {
 
@@ -22,16 +23,16 @@ public class BankAccount extends APIResource {
 
     @JsonProperty private final String id;
     @JsonProperty private final String description;
+    @JsonProperty private final String bankName;
     @JsonProperty private final String routingNumber;
     @JsonProperty private final String accountNumber;
     @JsonProperty private final String accountType;
     @JsonProperty private final String signatory;
     @JsonProperty private final String signatureUrl;
-    @JsonProperty private final String bankName;
     @JsonProperty private final boolean verified;
-    @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final DateTime dateCreated;
     @JsonProperty private final DateTime dateModified;
+    @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final boolean deleted;
     @JsonProperty private final String object;
 
@@ -39,26 +40,26 @@ public class BankAccount extends APIResource {
     public BankAccount(
             @JsonProperty("id") final String id,
             @JsonProperty("description") final String description,
+            @JsonProperty("bank_name") final String bankName,
             @JsonProperty("routing_number") final String routingNumber,
             @JsonProperty("account_number") final String accountNumber,
             @JsonProperty("account_type") final String accountType,
             @JsonProperty("signatory") final String signatory,
             @JsonProperty("signature_url") final String signatureUrl,
-            @JsonProperty("bank_name") final String bankName,
             @JsonProperty("verified") final boolean verified,
-            @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("date_created") final DateTime dateCreated,
             @JsonProperty("date_modified") final DateTime dateModified,
+            @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("deleted") final boolean deleted,
             @JsonProperty("object") final String object) {
         this.id = id;
         this.description = description;
+        this.bankName = bankName;
         this.routingNumber = routingNumber;
         this.accountNumber = accountNumber;
         this.accountType = accountType;
         this.signatory = signatory;
         this.signatureUrl = signatureUrl;
-        this.bankName = bankName;
         this.verified = verified;
         this.metadata = metadata;
         this.dateCreated = dateCreated;
@@ -73,6 +74,10 @@ public class BankAccount extends APIResource {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getBankName() {
+        return bankName;
     }
 
     public String getRoutingNumber() {
@@ -95,16 +100,8 @@ public class BankAccount extends APIResource {
         return signatureUrl;
     }
 
-    public String getBankName() {
-        return bankName;
-    }
-
-    public boolean getVerified() {
+    public boolean isVerified() {
         return verified;
-    }
-
-    public Map<String, String> getMetadata() {
-        return metadata;
     }
 
     public DateTime getDateCreated() {
@@ -115,7 +112,13 @@ public class BankAccount extends APIResource {
         return dateModified;
     }
 
-    public boolean getDeleted() { return deleted; }
+    public Map<String, String> getMetadata() {
+        return metadata;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
 
     public String getObject() {
         return object;
@@ -124,79 +127,56 @@ public class BankAccount extends APIResource {
     @Override
     public String toString() {
         return "BankAccount{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", description='" + description + '\'' +
+                ", bankName='" + bankName + '\'' +
                 ", routingNumber='" + routingNumber + '\'' +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", accountType='" + accountType + '\'' +
                 ", signatory='" + signatory + '\'' +
                 ", signatureUrl='" + signatureUrl + '\'' +
-                ", bankName='" + bankName + '\'' +
-                ", verified='" + verified + '\'' +
-                ", metadata='" + metadata + '\'' +
+                ", verified=" + verified +
+                ", metadata=" + metadata +
                 ", dateCreated=" + dateCreated +
                 ", dateModified=" + dateModified +
-                ", object=" + object +
+                ", object='" + object + '\'' +
                 '}';
     }
 
-    public static BankAccountCreator creator() {
-        return new BankAccountCreator();
-    }
+    public static final class RequestBuilder {
+        private Map<String, Object> params = new HashMap<>();
 
-    public static final class BankAccountCreator {
-        private Map<String, Object> params = new HashMap<String, Object>();
-
-        public BankAccountCreator() {
+        public RequestBuilder() {
         }
 
-        public BankAccountCreator setDescription(String description) {
+        public RequestBuilder setDescription(String description) {
             params.put("description", description);
             return this;
         }
 
-        public BankAccountCreator setRoutingNumber(String routingNumber) {
+        public RequestBuilder setRoutingNumber(String routingNumber) {
             params.put("routing_number", routingNumber);
             return this;
         }
 
-        public BankAccountCreator setAccountNumber(String accountNumber) {
+        public RequestBuilder setAccountNumber(String accountNumber) {
             params.put("account_number", accountNumber);
             return this;
         }
 
-        public BankAccountCreator setAccountType(String accountType) {
+        public RequestBuilder setAccountType(String accountType) {
             params.put("account_type", accountType);
             return this;
         }
 
-        public BankAccountCreator setSignatory(String signatory) {
+        public RequestBuilder setSignatory(String signatory) {
             params.put("signatory", signatory);
             return this;
         }
 
-        public BankAccountCreator setSignatureUrl(String signatureUrl) {
-            params.put("signature_url", signatureUrl);
-            return this;
-        }
-
-        public BankAccountCreator setBankName(String bankName) {
-            params.put("bank_name", bankName);
-            return this;
-        }
-
-        public BankAccountCreator setVerified(String verified) {
-            params.put("verified", verified);
-            return this;
-        }
-
-        public BankAccountCreator setMetadata(Map<String, String> metadata) {
+        public RequestBuilder setMetadata(Map<String, String> metadata) {
             params.put("metadata", metadata);
             return this;
-        }
-
-        public Map<String, Object> build() {
-            return params;
         }
 
         public LobResponse<BankAccount> create() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
@@ -216,9 +196,14 @@ public class BankAccount extends APIResource {
         return request(RequestMethod.GET, RequestType.NORMAL, String.format("%s/%s", ENDPOINT, id), null, BankAccount.class, options);
     }
 
-    public static LobResponse<BankAccount> verify(String id, List amounts, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        Map params = new HashMap();
+    public static LobResponse<BankAccount> verify(String id, List<Integer> amounts) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        return verify(id, amounts, null);
+    }
+
+    public static LobResponse<BankAccount> verify(String id, List<Integer> amounts, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
+        Map<String, Object> params = new HashMap();
         params.put("amounts", amounts);
+
         return request(RequestMethod.POST, RequestType.NORMAL, String.format("%s/%s/verify", ENDPOINT, id), params, BankAccount.class, options);
     }
 

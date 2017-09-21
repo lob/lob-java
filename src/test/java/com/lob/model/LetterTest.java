@@ -7,6 +7,7 @@ import org.joda.time.DateTime;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.*;
 
 public class LetterTest extends BaseTest {
+
     @Test
     public void testListLetters() throws Exception {
         LobResponse<LetterCollection> response = Letter.list();
@@ -53,12 +55,12 @@ public class LetterTest extends BaseTest {
         Map<String, String> mergeVariables = new HashMap<>();
         mergeVariables.put("name", "Lob");
 
-        LobResponse<Letter> response = Letter.creator()
+        LobResponse<Letter> response = new Letter.RequestBuilder()
                 .setDescription("Test Letter")
                 .setFile("<h1>Hello {{name}}</h1>")
                 .setMergeVariables(mergeVariables)
                 .setTo(
-                        Address.creator()
+                        new Address.RequestBuilder()
                                 .setCompany("Lob.com")
                                 .setLine1("185 Berry St Ste 6100")
                                 .setCity("San Francisco")
@@ -67,8 +69,8 @@ public class LetterTest extends BaseTest {
                                 .setCountry("US")
                 )
                 .setFrom(
-                        Address.creator()
-                                .setCompany("Lob.com")
+                        new Address.RequestBuilder()
+                                .setName("Donald")
                                 .setLine1("185 Berry St Ste 6100")
                                 .setCity("San Francisco")
                                 .setState("CA")
@@ -76,50 +78,89 @@ public class LetterTest extends BaseTest {
                                 .setCountry("US")
                 )
                 .setColor(true)
+                .setDoubleSided(false)
+                .setAddressPlacement("insert_blank_page")
+                .setReturnEnvelope(true)
+                .setPerforatedPage(1)
                 .setMetadata(metadata)
+                .setMailType("usps_first_class")
                 .create();
 
-        Letter Letter = response.getResponseBody();
+        Letter letter = response.getResponseBody();
 
         assertEquals(200, response.getResponseCode());
-        assertNotNull(Letter.getId());
-        assertEquals("Test Letter", Letter.getDescription());
-        assertNotNull(Letter.getTo());
-        assertEquals("LOB.COM", Letter.getTo().getCompany());
-        assertNotNull(Letter.getFrom());
-        assertNotNull(Letter.getUrl());
-        assertNull(Letter.getTemplateId());
-        assertNull(Letter.getTemplateVersionId());
-        assertEquals("USPS", Letter.getCarrier());
-        assertNotNull(Letter.getTrackingEvents());
-        assertNotNull(Letter.getThumbnails());
-        assertEquals("usps_first_class", Letter.getMailType());
-        assertNotNull(Letter.getExpectedDeliveryDate());
-        assertNotNull(Letter.getDateCreated());
-        assertNotNull(Letter.getDateModified());
-        assertNotNull(Letter.getSendDate());
-        assertEquals(metadata, Letter.getMetadata());
-        assertFalse(Letter.isDeleted());
-        assertEquals("letter", Letter.getObject());
-        assertNotNull(Letter.toString());
+        assertNotNull(letter.getId());
+        assertEquals("Test Letter", letter.getDescription());
+        assertNotNull(letter.getTo());
+        assertEquals("LOB.COM", letter.getTo().getCompany());
+        assertNotNull(letter.getFrom());
+        assertEquals("DONALD", letter.getFrom().getName());
+        assertTrue(letter.isColor());
+        assertFalse(letter.isDoubleSided());
+        assertEquals("insert_blank_page", letter.getAddressPlacement());
+        assertTrue(letter.isReturnEnvelope());
+        assertEquals(new Integer(2), letter.getPerforatedPage());
+        assertNull(letter.getExtraService());
+        assertEquals("usps_first_class", letter.getMailType());
+        assertNotNull(letter.getUrl());
+        assertNull(letter.getTemplateId());
+        assertNull(letter.getTemplateVersionId());
+        assertEquals("USPS", letter.getCarrier());
+        assertNull(letter.getTrackingNumber());
+        assertNotNull(letter.getTrackingEvents());
+        assertNotNull(letter.getThumbnails());
+        assertNotNull(letter.getExpectedDeliveryDate());
+        assertNotNull(letter.getDateCreated());
+        assertNotNull(letter.getDateModified());
+        assertNotNull(letter.getSendDate());
+        assertEquals(metadata, letter.getMetadata());
+        assertFalse(letter.isDeleted());
+        assertEquals("letter", letter.getObject());
+        assertNotNull(letter.toString());
+    }
+
+    @Test
+    public void testCreateTemplateLetter() throws Exception {
+        LobResponse<Letter> response = new Letter.RequestBuilder()
+                .setFile("tmpl_c4aa2dc83ebad7e")
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setFrom(
+                        new Address.RequestBuilder()
+                                .setName("Donald")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setColor(true)
+                .create();
+
+        Letter letter = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(letter.getId());
+        assertEquals("tmpl_c4aa2dc83ebad7e", letter.getTemplateId());
+        assertNotNull(letter.getTemplateVersionId());
     }
 
     @Test
     public void testCreateFileLetter() throws Exception {
-        final File file = new File(getClass().getClassLoader().getResource("8.5x11.pdf").getPath());
+        final File file = new File(getClass().getClassLoader().getResource("8.5x11.2.pdf").getPath());
 
-        Map<String, String> metadata = new HashMap<>();
-        metadata.put("a", "b");
-
-        Map<String, String> mergeVariables = new HashMap<>();
-        mergeVariables.put("name", "Lob");
-
-        LobResponse<Letter> response = Letter.creator()
+        LobResponse<Letter> response = new Letter.RequestBuilder()
                 .setDescription("Test Letter")
                 .setFile(file)
-                .setMergeVariables(mergeVariables)
                 .setTo(
-                        Address.creator()
+                        new Address.RequestBuilder()
                                 .setCompany("Lob.com")
                                 .setLine1("185 Berry St Ste 6100")
                                 .setCity("San Francisco")
@@ -128,8 +169,8 @@ public class LetterTest extends BaseTest {
                                 .setCountry("US")
                 )
                 .setFrom(
-                        Address.creator()
-                                .setCompany("Lob.com")
+                        new Address.RequestBuilder()
+                                .setCompany("Donald")
                                 .setLine1("185 Berry St Ste 6100")
                                 .setCity("San Francisco")
                                 .setState("CA")
@@ -137,40 +178,95 @@ public class LetterTest extends BaseTest {
                                 .setCountry("US")
                 )
                 .setColor(true)
-                .setMetadata(metadata)
                 .create();
 
-        Letter Letter = response.getResponseBody();
+        Letter letter = response.getResponseBody();
 
         assertEquals(200, response.getResponseCode());
-        assertNotNull(Letter.getId());
-        assertEquals("Test Letter", Letter.getDescription());
-        assertNotNull(Letter.getTo());
-        assertEquals("LOB.COM", Letter.getTo().getCompany());
-        assertNotNull(Letter.getFrom());
-        assertNotNull(Letter.getUrl());
-        assertNull(Letter.getTemplateId());
-        assertNull(Letter.getTemplateVersionId());
-        assertEquals("USPS", Letter.getCarrier());
-        assertNotNull(Letter.getTrackingEvents());
-        assertNotNull(Letter.getThumbnails());
-        assertEquals("usps_first_class", Letter.getMailType());
-        assertNotNull(Letter.getExpectedDeliveryDate());
-        assertNotNull(Letter.getDateCreated());
-        assertNotNull(Letter.getDateModified());
-        assertNotNull(Letter.getSendDate());
-        assertEquals(metadata, Letter.getMetadata());
-        assertFalse(Letter.isDeleted());
-        assertEquals("letter", Letter.getObject());
-        assertNotNull(Letter.toString());
+        assertNotNull(letter.getId());
+        assertNotNull(letter.getUrl());
+        assertFalse(letter.isDeleted());
+        assertEquals("letter", letter.getObject());
+    }
+
+    @Test
+    public void testCreateCertifiedLetter() throws Exception {
+        LobResponse<Letter> response = new Letter.RequestBuilder()
+                .setFile("<h1>Hello from Lob</h1>")
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setFrom(
+                        new Address.RequestBuilder()
+                                .setCompany("Donald")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setExtraService("certified")
+                .setColor(false)
+                .create();
+
+        Letter letter = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(letter.getId());
+        assertEquals("certified", letter.getExtraService());
+        assertFalse(letter.isDeleted());
+        assertEquals("letter", letter.getObject());
+    }
+
+    @Test
+    public void testCreateFutureLetter() throws Exception {
+        DateTime today = new DateTime();
+        DateTime futureDate = today.plusDays(1);
+
+        LobResponse<Letter> response = new Letter.RequestBuilder()
+                .setDescription("Test Letter")
+                .setFile("<h1>Hello from Lob</h1>")
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setFrom(
+                        new Address.RequestBuilder()
+                                .setName("Donald")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setColor(true)
+                .setSendDate(futureDate)
+                .create();
+
+        Letter letter = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(letter.getId());
+        assertTrue(letter.getSendDate().isAfter(today));
     }
 
     @Test
     public void testDeleteLetter() throws Exception {
-        Letter letter = Letter.creator()
+        Letter letter = new Letter.RequestBuilder()
                 .setFile("<h1>Hello {{name}}</h1>")
                 .setTo(
-                        Address.creator()
+                        new Address.RequestBuilder()
                                 .setCompany("Lob.com")
                                 .setLine1("185 Berry St Ste 6100")
                                 .setCity("San Francisco")
@@ -180,7 +276,7 @@ public class LetterTest extends BaseTest {
                 )
                 .setColor(true)
                 .setFrom(
-                        Address.creator()
+                        new Address.RequestBuilder()
                                 .setCompany("Lob.com")
                                 .setLine1("185 Berry St Ste 6100")
                                 .setCity("San Francisco")
@@ -188,7 +284,6 @@ public class LetterTest extends BaseTest {
                                 .setZip("94107")
                                 .setCountry("US")
                 )
-                .setSendDate(DateTime.now().plusMinutes(5))
                 .create()
                 .getResponseBody();
 
@@ -198,4 +293,5 @@ public class LetterTest extends BaseTest {
 
         assertTrue(deletedLetter.isDeleted());
     }
+
 }

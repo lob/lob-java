@@ -51,16 +51,12 @@ public class RequestOptions {
         return true;
     }
 
-    public static RequestOptionsBuilder builder() {
-        return new RequestOptionsBuilder();
-    }
-
-    public static final class RequestOptionsBuilder {
+    public static final class Builder {
         private String apiKey;
         private String lobVersion;
         private String idempotencyKey;
 
-        public RequestOptionsBuilder() {
+        public Builder() {
             this.apiKey = Lob.apiKey;
             this.lobVersion = Lob.apiVersion;
         }
@@ -69,12 +65,12 @@ public class RequestOptions {
             return this.apiKey;
         }
 
-        public RequestOptionsBuilder setApiKey(String apiKey) {
+        public Builder setApiKey(String apiKey) {
             this.apiKey = apiKey;
             return this;
         }
 
-        public RequestOptionsBuilder setLobVersion(String lobVersion) {
+        public Builder setLobVersion(String lobVersion) {
             this.lobVersion = lobVersion;
             return this;
         }
@@ -83,7 +79,7 @@ public class RequestOptions {
             return this.lobVersion;
         }
 
-        public RequestOptionsBuilder setIdempotencyKey(String idempotencyKey) {
+        public Builder setIdempotencyKey(String idempotencyKey) {
             this.idempotencyKey = idempotencyKey;
             return this;
         }
