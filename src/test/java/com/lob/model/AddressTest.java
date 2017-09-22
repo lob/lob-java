@@ -49,7 +49,7 @@ public class AddressTest extends BaseTest {
 
     @Test
     public void testCreateAddress() throws Exception {
-        Map<String, String> metadata = new HashMap<>();
+        Map<String, String> metadata = new HashMap<String, String>();
         metadata.put("a", "b");
 
         LobResponse<Address> response = new Address.RequestBuilder()
@@ -86,7 +86,7 @@ public class AddressTest extends BaseTest {
         assertNotNull(address.getMetadata());
         assertNotNull(address.getDateCreated());
         assertNotNull(address.getDateModified());
-        assertFalse(address.getDeleted());
+        assertFalse(address.isDeleted());
 
         assertNotNull(address.toString());
     }
@@ -108,18 +108,18 @@ public class AddressTest extends BaseTest {
                 .create()
                 .getResponseBody();
 
-        assertFalse(address.getDeleted());
+        assertFalse(address.isDeleted());
 
         LobResponse<Address> response = Address.delete(address.getId());
 
         assertEquals(200, response.getResponseCode());
         assertThat(response.getResponseBody(), instanceOf(Address.class));
-        assertTrue(response.getResponseBody().getDeleted());
+        assertTrue(response.getResponseBody().isDeleted());
     }
 
     @Test(expected = AuthenticationException.class)
     public void testAddressNoAuth() throws Exception {
-        RequestOptions options = RequestOptions.builder().setApiKey("").build();
+        RequestOptions options = new RequestOptions.Builder().setApiKey("").build();
         new Address.RequestBuilder().create(options);
     }
 
@@ -130,7 +130,7 @@ public class AddressTest extends BaseTest {
 
     @Test(expected = RateLimitException.class)
     public void testAddressRateLimit() throws Exception {
-        RequestOptions options = RequestOptions.builder().setApiKey("test_03b4c5206b1f4c04b8d9fb5b4dd72ffd2d4").build();
+        RequestOptions options = new RequestOptions.Builder().setApiKey("test_03b4c5206b1f4c04b8d9fb5b4dd72ffd2d4").build();
 
         new Address.RequestBuilder()
                 .setCompany("Lob.com")

@@ -18,12 +18,17 @@ import java.util.*;
 import com.lob.exception.InvalidRequestException;
 import com.lob.exception.RateLimitException;
 import org.apache.commons.codec.binary.Base64;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import static com.lob.net.APIResource.CHARSET;
 import static com.lob.net.APIResource.RequestMethod.*;
 
 public class ResponseGetter implements IResponseGetter {
 
+    private final static DateTimeFormatter DATE_FORMATTER = DateTimeFormat.forPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSZ" ).withZone(DateTimeZone.UTC);
     private final static ObjectMapper MAPPER = new ObjectMapper().registerModule(new JodaModule());
 
     private final static class Parameter {
@@ -125,7 +130,7 @@ public class ResponseGetter implements IResponseGetter {
                 queryStringBuffer.append("&");
             }
             Parameter param = it.next();
-            queryStringBuffer.append(urlEncodePair(param.key, (String) param.value));
+            queryStringBuffer.append(urlEncodePair(param.key, param.value.toString()));
         }
 
         return queryStringBuffer.toString();
@@ -140,7 +145,7 @@ public class ResponseGetter implements IResponseGetter {
     }
 
     private static List<Parameter> flattenParamsMap(Map<String, Object> params, String keyPrefix) {
-        List<Parameter> flatParams = new LinkedList<Parameter>();
+        List<Parameter> flatParams = new LinkedList<>();
         if (params == null) {
             return flatParams;
         }
@@ -165,9 +170,17 @@ public class ResponseGetter implements IResponseGetter {
 
         if (value instanceof Map<?, ?>) {
             flatParams = flattenParamsMap((Map<String, Object>) value, keyPrefix);
+        } else if (value instanceof List) {
+            flatParams = new LinkedList<>();
+            for(Object item : (List<Object>) value) {
+                flatParams.add(new Parameter(keyPrefix + "[]", item));
+            }
         } else if (value instanceof File) {
             flatParams = new LinkedList<>();
             flatParams.add(new Parameter(keyPrefix, value));
+        } else if (value instanceof DateTime) {
+            flatParams = new LinkedList<>();
+            flatParams.add(new Parameter(keyPrefix, DATE_FORMATTER.print((DateTime) value)));
         } else {
             flatParams = new LinkedList<>();
             flatParams.add(new Parameter(keyPrefix, value.toString()));
@@ -183,7 +196,7 @@ public class ResponseGetter implements IResponseGetter {
             Map<String, List<String>> headers = conn.getHeaderFields();
             T value = MAPPER.readValue(conn.getInputStream(), clazz);
 
-            return new LobResponse<>(responseCode, value, headers);
+            return new LobResponse<T>(responseCode, value, headers);
         } else if (responseCode == 422) {
             throw MAPPER.readValue(conn.getErrorStream(), InvalidRequestException.class);
         } else if (responseCode == 429) {
@@ -214,7 +227,7 @@ public class ResponseGetter implements IResponseGetter {
         }
     }
 
-    private static <T> LobResponse makeMultipartConectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, Map<String, Object> params, RequestOptions options) throws IOException, InvalidRequestException, APIException, RateLimitException {
+    private static <T> LobResponse makeMultipartConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, Map<String, Object> params, RequestOptions options) throws IOException, InvalidRequestException, APIException, RateLimitException {
         java.net.HttpURLConnection conn = createDefaultConnection(url, options);
         String boundary = MultipartProcessor.getBoundary();
 
@@ -231,7 +244,7 @@ public class ResponseGetter implements IResponseGetter {
                     File currentFile = (File) p.value;
                     multipartProcessor.addFileField(p.key, currentFile);
                 } else {
-                    multipartProcessor.addFormField(p.key, (String) p.value);
+                    multipartProcessor.addFormField(p.key, p.value.toString());
                 }
             }
 
@@ -260,7 +273,7 @@ public class ResponseGetter implements IResponseGetter {
         String lobURL = String.format("%s%s", Lob.API_BASE_URL, url);
 
         if (type == APIResource.RequestType.MULTIPART) {
-            return makeMultipartConectionRequest(method, clazz, lobURL, params, options);
+            return makeMultipartConnectionRequest(method, clazz, lobURL, params, options);
         }
 
         String query = createQuery(params);

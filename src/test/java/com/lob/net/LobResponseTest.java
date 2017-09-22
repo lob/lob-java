@@ -1,5 +1,6 @@
 package com.lob.net;
 
+import com.lob.BaseTest;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -8,7 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class LobResponseTest {
+public class LobResponseTest extends BaseTest {
 
     @Test
     public void testLobResponse() {

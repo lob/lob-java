@@ -10,6 +10,7 @@ public class Lob {
 
     public static void init(final String apiKey) {
         Lob.apiKey = apiKey;
+        Lob.apiVersion = null;
     }
 
     public static void init(final String apiKey, final String apiVersion) {
