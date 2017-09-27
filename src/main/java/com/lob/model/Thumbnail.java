@@ -2,18 +2,6 @@ package com.lob.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lob.exception.APIException;
-import com.lob.exception.AuthenticationException;
-import com.lob.exception.InvalidRequestException;
-import com.lob.exception.RateLimitException;
-import com.lob.net.APIResource;
-import com.lob.net.LobResponse;
-import com.lob.net.RequestOptions;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import org.joda.time.DateTime;
 
 public class Thumbnail {
 

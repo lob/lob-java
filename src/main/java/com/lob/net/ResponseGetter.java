@@ -2,19 +2,9 @@ package com.lob.net;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.lob.Lob;
 import com.lob.exception.APIException;
 import com.lob.exception.AuthenticationException;
-import com.lob.Lob;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.*;
-
 import com.lob.exception.InvalidRequestException;
 import com.lob.exception.RateLimitException;
 import org.apache.commons.codec.binary.Base64;
@@ -23,15 +13,29 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 import static com.lob.net.APIResource.CHARSET;
-import static com.lob.net.APIResource.RequestMethod.*;
+import static com.lob.net.APIResource.RequestMethod.DELETE;
+import static com.lob.net.APIResource.RequestMethod.POST;
 
 public class ResponseGetter implements IResponseGetter {
 
-    private final static DateTimeFormatter DATE_FORMATTER = DateTimeFormat.forPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSZ" ).withZone(DateTimeZone.UTC);
-    private final static ObjectMapper MAPPER = new ObjectMapper().registerModule(new JodaModule());
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormat.forPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSZ" ).withZone(DateTimeZone.UTC);
+    private static final ObjectMapper MAPPER = new ObjectMapper().registerModule(new JodaModule());
 
-    private final static class Parameter {
+    private static final class Parameter {
         public final String key;
         public final Object value;
 
@@ -172,7 +176,7 @@ public class ResponseGetter implements IResponseGetter {
             flatParams = flattenParamsMap((Map<String, Object>) value, keyPrefix);
         } else if (value instanceof List) {
             flatParams = new LinkedList<>();
-            for(Object item : (List<Object>) value) {
+            for (Object item : (List<Object>) value) {
                 flatParams.add(new Parameter(keyPrefix + "[]", item));
             }
         } else if (value instanceof File) {

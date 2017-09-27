@@ -11,11 +11,8 @@ import com.lob.net.LobResponse;
 import com.lob.net.RequestOptions;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.lob.net.APIResource.request;
 
 public class Routes extends APIResource {
 

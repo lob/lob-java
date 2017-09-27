@@ -2,7 +2,6 @@ package com.lob.model;
 
 import com.lob.BaseTest;
 import com.lob.net.LobResponse;
-
 import org.joda.time.DateTime;
 import org.junit.Test;
 

@@ -2,12 +2,10 @@ package com.lob.model;
 
 import com.lob.BaseTest;
 import com.lob.net.LobResponse;
-
 import org.joda.time.DateTime;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 

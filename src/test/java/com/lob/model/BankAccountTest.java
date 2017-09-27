@@ -2,10 +2,8 @@ package com.lob.model;
 
 import com.lob.BaseTest;
 import com.lob.net.LobResponse;
-
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;

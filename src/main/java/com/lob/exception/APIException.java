@@ -2,6 +2,7 @@ package com.lob.exception;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Map;
 
 public class APIException extends LobException {

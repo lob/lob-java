@@ -9,13 +9,13 @@ import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
 import com.lob.net.LobResponse;
 import com.lob.net.RequestOptions;
+import org.joda.time.DateTime;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.joda.time.DateTime;
 
 public class Check extends APIResource {
 
@@ -334,7 +334,6 @@ public class Check extends APIResource {
             params.put("mail_type", mailType);
             return this;
         }
-
 
         public RequestBuilder setSendDate(String sendDate) {
             params.put("send_date", sendDate);

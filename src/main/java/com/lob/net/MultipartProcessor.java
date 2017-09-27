@@ -2,14 +2,11 @@ package com.lob.net;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.net.URLConnection;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.net.URLConnection;
 import java.util.Random;
 
 public class MultipartProcessor {

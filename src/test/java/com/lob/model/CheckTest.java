@@ -2,19 +2,13 @@ package com.lob.model;
 
 import com.lob.BaseTest;
 import com.lob.Lob;
-import com.lob.exception.APIException;
-import com.lob.exception.AuthenticationException;
-import com.lob.exception.InvalidRequestException;
-import com.lob.exception.RateLimitException;
 import com.lob.net.LobResponse;
 import org.joda.time.DateTime;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

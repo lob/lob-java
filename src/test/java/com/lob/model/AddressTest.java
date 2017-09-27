@@ -5,9 +5,9 @@ import com.lob.exception.AuthenticationException;
 import com.lob.exception.InvalidRequestException;
 import com.lob.exception.RateLimitException;
 import com.lob.net.LobResponse;
-
 import com.lob.net.RequestOptions;
 import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 

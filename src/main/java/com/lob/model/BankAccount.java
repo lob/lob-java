@@ -9,13 +9,12 @@ import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
 import com.lob.net.LobResponse;
 import com.lob.net.RequestOptions;
+import org.joda.time.DateTime;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.joda.time.DateTime;
-import org.joda.time.chrono.StrictChronology;
 
 public class BankAccount extends APIResource {
 
