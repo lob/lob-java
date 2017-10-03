@@ -149,7 +149,7 @@ public class ResponseGetter implements IResponseGetter {
     }
 
     private static List<Parameter> flattenParamsMap(Map<String, Object> params, String keyPrefix) {
-        List<Parameter> flatParams = new LinkedList<>();
+        List<Parameter> flatParams = new LinkedList<Parameter>();
         if (params == null) {
             return flatParams;
         }
@@ -175,18 +175,18 @@ public class ResponseGetter implements IResponseGetter {
         if (value instanceof Map<?, ?>) {
             flatParams = flattenParamsMap((Map<String, Object>) value, keyPrefix);
         } else if (value instanceof List) {
-            flatParams = new LinkedList<>();
+            flatParams = new LinkedList<Parameter>();
             for (Object item : (List<Object>) value) {
                 flatParams.add(new Parameter(keyPrefix + "[]", item));
             }
         } else if (value instanceof File) {
-            flatParams = new LinkedList<>();
+            flatParams = new LinkedList<Parameter>();
             flatParams.add(new Parameter(keyPrefix, value));
         } else if (value instanceof DateTime) {
-            flatParams = new LinkedList<>();
+            flatParams = new LinkedList<Parameter>();
             flatParams.add(new Parameter(keyPrefix, DATE_FORMATTER.print((DateTime) value)));
         } else {
-            flatParams = new LinkedList<>();
+            flatParams = new LinkedList<Parameter>();
             flatParams.add(new Parameter(keyPrefix, value.toString()));
         }
 

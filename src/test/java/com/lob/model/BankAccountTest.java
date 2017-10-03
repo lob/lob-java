@@ -24,7 +24,7 @@ public class BankAccountTest extends BaseTest {
 
     @Test
     public void testListBankAccountsWithParams() throws Exception {
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<String, Object>();
         params.put("limit", 1);
 
         LobResponse<BankAccountCollection> response = BankAccount.list(params);
@@ -46,7 +46,7 @@ public class BankAccountTest extends BaseTest {
 
     @Test
     public void testCreateBankAccount() throws Exception {
-        Map<String, String> metadata = new HashMap<>();
+        Map<String, String> metadata = new HashMap<String, String>();
         metadata.put("a", "b");
 
         LobResponse<BankAccount> response = new BankAccount.RequestBuilder()

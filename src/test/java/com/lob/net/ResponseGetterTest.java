@@ -31,15 +31,15 @@ public class ResponseGetterTest extends BaseTest {
 
     @Test
     public void testCreateQuery() throws Exception {
-        final Map<String, Object> nested = new HashMap<>();
+        final Map<String, Object> nested = new HashMap<String, Object>();
         nested.put("b", "1");
         nested.put("c", "2");
 
-        final List<String> list = new LinkedList<>();
+        final List<String> list = new LinkedList<String>();
         list.add("f");
         list.add("g");
 
-        final Map<String, Object> query = new HashMap<>();
+        final Map<String, Object> query = new HashMap<String, Object>();
         query.put("a", nested);
         query.put("d", 3);
         query.put("e", list);

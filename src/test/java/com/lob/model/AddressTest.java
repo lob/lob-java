@@ -27,7 +27,7 @@ public class AddressTest extends BaseTest {
 
     @Test
     public void testListAddressesWithParams() throws Exception {
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<String, Object>();
         params.put("limit", 1);
 
         LobResponse<AddressCollection> response = Address.list(params);

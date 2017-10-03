@@ -47,10 +47,10 @@ public class LetterTest extends BaseTest {
 
     @Test
     public void testCreateHTMLLetter() throws Exception {
-        Map<String, String> metadata = new HashMap<>();
+        Map<String, String> metadata = new HashMap<String, String>();
         metadata.put("a", "b");
 
-        Map<String, String> mergeVariables = new HashMap<>();
+        Map<String, String> mergeVariables = new HashMap<String, String>();
         mergeVariables.put("name", "Lob");
 
         LobResponse<Letter> response = new Letter.RequestBuilder()

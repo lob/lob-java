@@ -32,7 +32,7 @@ public class CheckTest extends BaseTest {
                     .create()
                     .getResponseBody();
 
-            ArrayList<Integer> verificationAmounts = new ArrayList<>();
+            ArrayList<Integer> verificationAmounts = new ArrayList<Integer>();
             verificationAmounts.add(25);
             verificationAmounts.add(63);
 
@@ -54,7 +54,7 @@ public class CheckTest extends BaseTest {
 
     @Test
     public void testListCheckWithParams() throws Exception {
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<String, Object>();
         params.put("limit", 1);
 
         LobResponse<CheckCollection> response = Check.list(params);
@@ -76,10 +76,10 @@ public class CheckTest extends BaseTest {
 
     @Test
     public void testCreateHTMLCheck() throws Exception {
-        Map<String, String> metadata = new HashMap<>();
+        Map<String, String> metadata = new HashMap<String, String>();
         metadata.put("a", "b");
 
-        Map<String, String> mergeVariables = new HashMap<>();
+        Map<String, String> mergeVariables = new HashMap<String, String>();
         mergeVariables.put("name", "Lob");
 
         LobResponse<Check> response = new Check.RequestBuilder()

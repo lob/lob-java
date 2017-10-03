@@ -16,10 +16,10 @@ public class RoutesTest extends BaseTest {
 
     @Test
     public void testListRoutes() throws Exception {
-        ArrayList<String> zipCodes = new ArrayList<>();
+        ArrayList<String> zipCodes = new ArrayList<String>();
         zipCodes.add("94158");
 
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<String, Object>();
         params.put("zip_codes", zipCodes);
 
         LobResponse<RoutesCollection> response = Routes.list(params);

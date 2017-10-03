@@ -24,7 +24,7 @@ public class AreaTest extends BaseTest {
 
     @Test
     public void testListAreaWithParams() throws Exception {
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<String, Object>();
         params.put("limit", 1);
 
         LobResponse<AreaCollection> response = Area.list(params);
@@ -46,10 +46,10 @@ public class AreaTest extends BaseTest {
 
     @Test
     public void testCreateHTMLArea() throws Exception {
-        Map<String, String> metadata = new HashMap<>();
+        Map<String, String> metadata = new HashMap<String, String>();
         metadata.put("a", "b");
 
-        Map<String, String> mergeVariables = new HashMap<>();
+        Map<String, String> mergeVariables = new HashMap<String, String>();
         mergeVariables.put("name", "Lob");
 
         LobResponse<Area> response = new Area.RequestBuilder()
@@ -86,7 +86,7 @@ public class AreaTest extends BaseTest {
     public void testCreateFileArea() throws Exception {
         final File file = new File(getClass().getClassLoader().getResource("6_25x11_25.pdf").getPath());
 
-        Map<String, String> metadata = new HashMap<>();
+        Map<String, String> metadata = new HashMap<String, String>();
         metadata.put("a", "b");
 
         LobResponse<Area> response = new Area.RequestBuilder()

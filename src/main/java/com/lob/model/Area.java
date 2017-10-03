@@ -197,7 +197,7 @@ public class Area extends APIResource {
 
 
     public static final class RequestBuilder {
-        private Map<String, Object> params = new HashMap<>();
+        private Map<String, Object> params = new HashMap<String, Object>();
         private boolean isMultipart = false;
 
         public RequestBuilder() {

@@ -25,7 +25,7 @@ public class PostcardTest extends BaseTest {
 
     @Test
     public void testListPostcardWithParams() throws Exception {
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<String, Object>();
         params.put("limit", 1);
 
         LobResponse<PostcardCollection> response = Postcard.list(params);
@@ -37,10 +37,10 @@ public class PostcardTest extends BaseTest {
 
     @Test
     public void testListPostcardWithMetadata() throws Exception {
-        Map<String, String> metadata = new HashMap<>();
+        Map<String, String> metadata = new HashMap<String, String>();
         metadata.put("key0", "8f43a8f2-360d-4fea-bdeb-6f545f084c74");
 
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<String, Object>();
         params.put("metadata", metadata);
 
         LobResponse<PostcardCollection> response = Postcard.list(params);
@@ -63,10 +63,10 @@ public class PostcardTest extends BaseTest {
 
     @Test
     public void testCreateHTMLPostcard() throws Exception {
-        Map<String, String> metadata = new HashMap<>();
+        Map<String, String> metadata = new HashMap<String, String>();
         metadata.put("a", "b");
 
-        Map<String, String> mergeVariables = new HashMap<>();
+        Map<String, String> mergeVariables = new HashMap<String, String>();
         mergeVariables.put("name", "Lob");
 
         LobResponse<Postcard> response = new Postcard.RequestBuilder()
