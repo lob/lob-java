@@ -9,6 +9,12 @@
     <description>Parent pom for the Lob API Java Wrapper</description>
     <url>https://github.com/lob/lob-java</url>
 
+    <developers>
+        <developer>
+            <name>Lob Engineering</name>
+        </developer>
+    </developers>
+
     <licenses>
         <license>
             <name>The MIT License</name>
