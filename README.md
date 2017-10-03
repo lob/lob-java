@@ -6,8 +6,6 @@
 
 Java wrapper for the [Lob.com](http://lob.com) API. See the full Lob.com [API Documentation](https://lob.com/docs/java).  For best results, be sure that you're using [the latest version](https://lob.com/docs/java#version) of the Lob API and the latest version of the java wrapper.
 
-lob-java uses Guava's [ListenableFuture](https://code.google.com/p/guava-libraries/wiki/ListenableFutureExplained), the Ning [AsyncHttpClient](https://github.com/AsyncHttpClient/async-http-client), and the [Jackson](https://github.com/FasterXML/jackson) serialization library to make robust, asynchronous integration with Lob's API easy.
-
 ## Table of Contents
 
 - [Getting Started](#getting-started)
@@ -46,7 +44,7 @@ Include the following in your `pom.xml` for Maven:
   <dependency>
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
-    <version>6.0.1</version>
+    <version>7.0.0</version>
   </dependency>
   ...
 </dependencies>
@@ -55,70 +53,26 @@ Include the following in your `pom.xml` for Maven:
 Gradle:
 
 ```groovy
-compile 'com.lob:lob-java:6.0.1'
+compile 'com.lob:lob-java:7.0.0'
 ```
 
 ### Usage
 
 We've provided examples in the `lob-java-examples/` package that has examples of how to use the lob-java wrapper with some of our core endpoints.
 
-#### Project Structure
-
-- **lob-java** contains the actual client for interacting with Lob's API. It depends on:
-  - guava
-  - asynchttpclient
-  - netty
-  - joda-money
-  - joda-time
-  - jackson-annotations
-  - two jackson-databind packages
-- **lob-java-examples** contains usage examples and is not intended to be consumed by your code.
-
 #### Initialization and Configuration
-
-To initialize the wrapper, create an instance of `AsyncLobClient` as follows:
-
 ```java
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
+import com.lob;
 
-final LobClient client = AsyncLobClient.createDefault("yourApiKey");
-```
-
-You can customize your http client configuration by passing in an `AsyncHttpClientConfiguration`:
-
-```java
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
-
-final AsyncHttpClientConfiguration.Builder configBuilder = new AsyncHttpClientConfiguration.Builder();
-
-// configuration...
-
-final LobClient client = AsyncLobClient.create("yourApiKey", configBuilder.build());
+Lob.init("yourApiKey");
 ```
 
 You may optionally set an API version. This is useful for testing your code against new API versions before you upgrade.
-
-Note that setting the API version only affects future instances of `LobClient`s, so be sure to set it before creating your client.
-
 ```java
-import com.lob.client.AsyncLobClient;
-import com.lob.client.LobClient;
+import com.lob;
 
-Lob.setApiVersion("apiVersion");
-final LobClient client = AsyncLobClient.createDefault("yourApiKey");
+Lob.init("yourApiKey", "yourApiVersion");
 ```
-
-#### Callbacks
-Please ensure any callbacks attached to the `ListenableFuture`s returned from the `LobClient` have a dedicated `Executor`
-for their execution. Otherwise, the callbacks will be executed on internal I/O threads, adversely affecting performance.
-
-## Examples
-
-We've provided various examples for you to try out [here](https://github.com/lob/lob-java/tree/master/lob-java-examples/src/main/java/com/lob/examples).
-
-There are simple scripts to demonstrate how to create all the core Lob objects (checks, letters, postcards. etc.) as well as more complex examples that utilize other libraries and external files.
 
 ## API Documentation
 
@@ -197,9 +151,6 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
   - [Image Prepping](https://lob.com/docs/java#prepping)
   - [US Verification Details](https://lob.com/docs/java#us_verification_details)
 
-## Contributing
-
-To contribute, please see the [CONTRIBUTING.md](https://github.com/lob/lob-java/blob/master/CONTRIBUTING.md) file.
 
 ## Testing
 
@@ -207,6 +158,6 @@ You can run all tests with the command `mvn test` in the main directory.
 
 =======================
 
-Copyright &copy; 2016 Lob.com
+Copyright &copy; 2017 Lob.com
 
 Released under the MIT License, which can be found in the repository in `LICENSE.txt`.
