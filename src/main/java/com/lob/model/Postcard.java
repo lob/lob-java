@@ -25,7 +25,6 @@ public class Postcard extends APIResource {
     @JsonProperty private final String description;
     @JsonProperty private final Address to;
     @JsonProperty private final Address from;
-    @JsonProperty private final String message;
     @JsonProperty private final String url;
     @JsonProperty private final String frontTemplateId;
     @JsonProperty private final String backTemplateId;
@@ -50,7 +49,6 @@ public class Postcard extends APIResource {
             @JsonProperty("description") final String description,
             @JsonProperty("to") final Address to,
             @JsonProperty("from") final Address from,
-            @JsonProperty("message") final String message,
             @JsonProperty("url") final String url,
             @JsonProperty("front_template_id") final String frontTemplateId,
             @JsonProperty("back_template_id") final String backTemplateId,
@@ -72,7 +70,6 @@ public class Postcard extends APIResource {
         this.description = description;
         this.to = to;
         this.from = from;
-        this.message = message;
         this.url = url;
         this.frontTemplateId = frontTemplateId;
         this.backTemplateId = backTemplateId;
@@ -106,10 +103,6 @@ public class Postcard extends APIResource {
 
     public Address getFrom() {
         return from;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public String getUrl() {
@@ -187,7 +180,6 @@ public class Postcard extends APIResource {
                 ", description='" + description + '\'' +
                 ", to=" + to +
                 ", from=" + from +
-                ", message='" + message + '\'' +
                 ", url='" + url + '\'' +
                 ", frontTemplateId='" + frontTemplateId + '\'' +
                 ", backTemplateId='" + backTemplateId + '\'' +
@@ -268,11 +260,6 @@ public class Postcard extends APIResource {
             return this;
         }
 
-        public RequestBuilder setMessage(String message) {
-            params.put("message", message);
-            return this;
-        }
-
         public RequestBuilder setSize(String size) {
             params.put("size", size);
             return this;
@@ -310,6 +297,7 @@ public class Postcard extends APIResource {
 
             return request(RequestMethod.POST, RequestType.NORMAL, RESOURCE, params, Postcard.class, options);
         }
+
     }
 
     public static LobResponse<Postcard> retrieve(String id) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {

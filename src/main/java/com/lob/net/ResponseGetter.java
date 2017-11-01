@@ -1,5 +1,6 @@
 package com.lob.net;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.lob.Lob;
@@ -33,7 +34,9 @@ import static com.lob.net.APIResource.RequestMethod.POST;
 public class ResponseGetter implements IResponseGetter {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormat.forPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSZ" ).withZone(DateTimeZone.UTC);
-    private static final ObjectMapper MAPPER = new ObjectMapper().registerModule(new JodaModule());
+    private static final ObjectMapper MAPPER = new ObjectMapper()
+            .registerModule(new JodaModule())
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     private static final class Parameter {
         public final String key;

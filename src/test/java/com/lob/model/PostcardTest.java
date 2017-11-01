@@ -96,7 +96,6 @@ public class PostcardTest extends BaseTest {
         assertNotNull(postcard.getTo());
         assertEquals("LOB.COM", postcard.getTo().getCompany());
         assertNull(postcard.getFrom());
-        assertNull(postcard.getMessage());
         assertNotNull(postcard.getUrl());
         assertNull(postcard.getFrontTemplateId());
         assertNull(postcard.getBackTemplateId());
@@ -151,7 +150,7 @@ public class PostcardTest extends BaseTest {
         LobResponse<Postcard> response = new Postcard.RequestBuilder()
                 .setDescription("Test Postcard")
                 .setFront(front)
-                .setMessage("this is a message")
+                .setBack("<h1>this is a message</h1>")
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
@@ -182,7 +181,6 @@ public class PostcardTest extends BaseTest {
         assertEquals("LOB.COM", postcard.getTo().getCompany());
         assertNotNull(postcard.getFrom());
         assertEquals("DONALD LITTLE", postcard.getFrom().getName());
-        assertEquals("this is a message", postcard.getMessage());
         assertNotNull(postcard.getUrl());
         assertNull(postcard.getFrontTemplateId());
         assertNull(postcard.getBackTemplateId());
