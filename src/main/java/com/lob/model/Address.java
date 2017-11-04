@@ -9,9 +9,9 @@ import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
 import com.lob.net.LobResponse;
 import com.lob.net.RequestOptions;
-import org.joda.time.DateTime;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,8 +32,8 @@ public class Address extends APIResource {
     @JsonProperty private final String zip;
     @JsonProperty private final String country;
     @JsonProperty private final Map<String, String> metadata;
-    @JsonProperty private final DateTime dateCreated;
-    @JsonProperty private final DateTime dateModified;
+    @JsonProperty private final ZonedDateTime dateCreated;
+    @JsonProperty private final ZonedDateTime dateModified;
     @JsonProperty private final boolean deleted;
     @JsonProperty private final String object;
 
@@ -52,8 +52,8 @@ public class Address extends APIResource {
             @JsonProperty("address_zip") final String zip,
             @JsonProperty("address_country") final String country,
             @JsonProperty("metadata") final Map<String, String> metadata,
-            @JsonProperty("date_created") final DateTime dateCreated,
-            @JsonProperty("date_modified") final DateTime dateModified,
+            @JsonProperty("date_created") final ZonedDateTime dateCreated,
+            @JsonProperty("date_modified") final ZonedDateTime dateModified,
             @JsonProperty("deleted") final boolean deleted,
             @JsonProperty("object") final String object) {
         this.id = id;
@@ -127,11 +127,11 @@ public class Address extends APIResource {
         return metadata;
     }
 
-    public DateTime getDateCreated() {
+    public ZonedDateTime getDateCreated() {
         return dateCreated;
     }
 
-    public DateTime getDateModified() {
+    public ZonedDateTime getDateModified() {
         return dateModified;
     }
 

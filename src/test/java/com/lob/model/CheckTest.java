@@ -3,11 +3,11 @@ package com.lob.model;
 import com.lob.BaseTest;
 import com.lob.Lob;
 import com.lob.net.LobResponse;
-import org.joda.time.DateTime;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -231,8 +231,8 @@ public class CheckTest extends BaseTest {
 
     @Test
     public void testCreateFutureCheck() throws Exception {
-        DateTime today = new DateTime();
-        DateTime futureDate = today.plusDays(1);
+        ZonedDateTime today = ZonedDateTime.now();
+        ZonedDateTime futureDate = today.plusDays(1);
 
         LobResponse<Check> response = new Check.RequestBuilder()
                 .setDescription("Test Future Check")

@@ -9,10 +9,11 @@ import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
 import com.lob.net.LobResponse;
 import com.lob.net.RequestOptions;
-import org.joda.time.DateTime;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +41,10 @@ public class Check extends APIResource {
     @JsonProperty private final List<TrackingEvent> trackingEvents;
     @JsonProperty private final List<Thumbnail> thumbnails;
     @JsonProperty private final String mailType;
-    @JsonProperty private final DateTime expectedDeliveryDate;
-    @JsonProperty private final DateTime dateCreated;
-    @JsonProperty private final DateTime dateModified;
-    @JsonProperty private final DateTime sendDate;
+    @JsonProperty private final LocalDate expectedDeliveryDate;
+    @JsonProperty private final ZonedDateTime dateCreated;
+    @JsonProperty private final ZonedDateTime dateModified;
+    @JsonProperty private final ZonedDateTime sendDate;
     @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final boolean deleted;
     @JsonProperty private final String object;
@@ -69,10 +70,10 @@ public class Check extends APIResource {
             @JsonProperty("tracking_events") final List<TrackingEvent> trackingEvents,
             @JsonProperty("thumbnails") final List<Thumbnail> thumbnails,
             @JsonProperty("mail_type") final String mailType,
-            @JsonProperty("expected_delivery_date") final DateTime expectedDeliveryDate,
-            @JsonProperty("date_created") final DateTime dateCreated,
-            @JsonProperty("date_modified") final DateTime dateModified,
-            @JsonProperty("send_date") final DateTime sendDate,
+            @JsonProperty("expected_delivery_date") final LocalDate expectedDeliveryDate,
+            @JsonProperty("date_created") final ZonedDateTime dateCreated,
+            @JsonProperty("date_modified") final ZonedDateTime dateModified,
+            @JsonProperty("send_date") final ZonedDateTime sendDate,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("deleted") final boolean deleted,
             @JsonProperty("object") final String object) {
@@ -180,19 +181,19 @@ public class Check extends APIResource {
         return mailType;
     }
 
-    public DateTime getExpectedDeliveryDate() {
+    public LocalDate getExpectedDeliveryDate() {
         return expectedDeliveryDate;
     }
 
-    public DateTime getDateCreated() {
+    public ZonedDateTime getDateCreated() {
         return dateCreated;
     }
 
-    public DateTime getDateModified() {
+    public ZonedDateTime getDateModified() {
         return dateModified;
     }
 
-    public DateTime getSendDate() {
+    public ZonedDateTime getSendDate() {
         return sendDate;
     }
 
@@ -340,7 +341,7 @@ public class Check extends APIResource {
             return this;
         }
 
-        public RequestBuilder setSendDate(DateTime sendDate) {
+        public RequestBuilder setSendDate(ZonedDateTime sendDate) {
             params.put("send_date", sendDate);
             return this;
         }
