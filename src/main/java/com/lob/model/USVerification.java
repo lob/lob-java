@@ -29,7 +29,8 @@ public class USVerification extends APIResource {
         @JsonProperty private String secondaryNumber;
         @JsonProperty private String pmbDesignator;
         @JsonProperty private String pmbNumber;
-        @JsonProperty private String extraSecondaryInformation;
+        @JsonProperty private String extraSecondaryDesignator;
+        @JsonProperty private String extraSecondaryNumber;
         @JsonProperty private String city;
         @JsonProperty private String state;
         @JsonProperty private String zipCode;
@@ -57,7 +58,8 @@ public class USVerification extends APIResource {
                 @JsonProperty("secondary_number") final String secondaryNumber,
                 @JsonProperty("pmb_designator") final String pmbDesignator,
                 @JsonProperty("pmb_number") final String pmbNumber,
-                @JsonProperty("extra_secondary_information") final String extraSecondaryInformation,
+                @JsonProperty("extra_secondary_designator") final String extraSecondaryDesignator,
+                @JsonProperty("extra_secondary_number") final String extraSecondaryNumber,
                 @JsonProperty("city") final String city,
                 @JsonProperty("state") final String state,
                 @JsonProperty("zip_code") final String zipCode,
@@ -82,7 +84,8 @@ public class USVerification extends APIResource {
             this.secondaryNumber = secondaryNumber;
             this.pmbDesignator = pmbDesignator;
             this.pmbNumber = pmbNumber;
-            this.extraSecondaryInformation = extraSecondaryInformation;
+            this.extraSecondaryDesignator = extraSecondaryDesignator;
+            this.extraSecondaryNumber = extraSecondaryNumber;
             this.city = city;
             this.state = state;
             this.zipCode = zipCode;
@@ -136,8 +139,12 @@ public class USVerification extends APIResource {
             return pmbNumber;
         }
 
-        public String getExtraSecondaryInformation() {
-            return extraSecondaryInformation;
+        public String getExtraSecondaryDesignator() {
+            return extraSecondaryDesignator;
+        }
+
+        public String getExtraSecondaryNumber() {
+            return extraSecondaryNumber;
         }
 
         public String getCity() {
@@ -212,7 +219,8 @@ public class USVerification extends APIResource {
                     ", secondaryNumber='" + secondaryNumber + '\'' +
                     ", pmbDesignator='" + pmbDesignator + '\'' +
                     ", pmbNumber='" + pmbNumber + '\'' +
-                    ", extraSecondaryInformation='" + extraSecondaryInformation + '\'' +
+                    ", extraSecondaryDesignator='" + extraSecondaryDesignator + '\'' +
+                    ", extraSecondaryNumber='" + extraSecondaryNumber + '\'' +
                     ", city='" + city + '\'' +
                     ", state='" + state + '\'' +
                     ", zipCode='" + zipCode + '\'' +
