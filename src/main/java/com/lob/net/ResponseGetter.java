@@ -47,6 +47,7 @@ public class ResponseGetter implements IResponseGetter {
         }
     }
 
+    @Override
     public <T> LobResponse<T> request(
             APIResource.RequestMethod method,
             String url,
