@@ -2,16 +2,17 @@ package com.lob.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.joda.time.DateTime;
+
+import java.time.ZonedDateTime;
 
 public class TrackingEvent {
 
     @JsonProperty private final String id;
     @JsonProperty private final String name;
     @JsonProperty private final String location;
-    @JsonProperty private final DateTime time;
-    @JsonProperty private final DateTime dateCreated;
-    @JsonProperty private final DateTime dateModified;
+    @JsonProperty private final ZonedDateTime time;
+    @JsonProperty private final ZonedDateTime dateCreated;
+    @JsonProperty private final ZonedDateTime dateModified;
     @JsonProperty private final String object;
 
     @JsonCreator
@@ -19,9 +20,9 @@ public class TrackingEvent {
             @JsonProperty("id") final String id,
             @JsonProperty("name") final String name,
             @JsonProperty("location") final String location,
-            @JsonProperty("time") final DateTime time,
-            @JsonProperty("date_created") final DateTime dateCreated,
-            @JsonProperty("date_modified") final DateTime dateModified,
+            @JsonProperty("time") final ZonedDateTime time,
+            @JsonProperty("date_created") final ZonedDateTime dateCreated,
+            @JsonProperty("date_modified") final ZonedDateTime dateModified,
             @JsonProperty("object") final String object) {
         this.id = id;
         this.name = name;
@@ -44,15 +45,15 @@ public class TrackingEvent {
         return location;
     }
 
-    public DateTime getTime() {
+    public ZonedDateTime getTime() {
         return time;
     }
 
-    public DateTime getDateCreated() {
+    public ZonedDateTime getDateCreated() {
         return dateCreated;
     }
 
-    public DateTime getDateModified() {
+    public ZonedDateTime getDateModified() {
         return dateModified;
     }
 

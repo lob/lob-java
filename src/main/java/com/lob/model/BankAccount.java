@@ -9,9 +9,9 @@ import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
 import com.lob.net.LobResponse;
 import com.lob.net.RequestOptions;
-import org.joda.time.DateTime;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +29,8 @@ public class BankAccount extends APIResource {
     @JsonProperty private final String signatory;
     @JsonProperty private final String signatureUrl;
     @JsonProperty private final boolean verified;
-    @JsonProperty private final DateTime dateCreated;
-    @JsonProperty private final DateTime dateModified;
+    @JsonProperty private final ZonedDateTime dateCreated;
+    @JsonProperty private final ZonedDateTime dateModified;
     @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final boolean deleted;
     @JsonProperty private final String object;
@@ -46,8 +46,8 @@ public class BankAccount extends APIResource {
             @JsonProperty("signatory") final String signatory,
             @JsonProperty("signature_url") final String signatureUrl,
             @JsonProperty("verified") final boolean verified,
-            @JsonProperty("date_created") final DateTime dateCreated,
-            @JsonProperty("date_modified") final DateTime dateModified,
+            @JsonProperty("date_created") final ZonedDateTime dateCreated,
+            @JsonProperty("date_modified") final ZonedDateTime dateModified,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("deleted") final boolean deleted,
             @JsonProperty("object") final String object) {
@@ -103,11 +103,11 @@ public class BankAccount extends APIResource {
         return verified;
     }
 
-    public DateTime getDateCreated() {
+    public ZonedDateTime getDateCreated() {
         return dateCreated;
     }
 
-    public DateTime getDateModified() {
+    public ZonedDateTime getDateModified() {
         return dateModified;
     }
 
@@ -200,7 +200,7 @@ public class BankAccount extends APIResource {
     }
 
     public static LobResponse<BankAccount> verify(String id, List<Integer> amounts, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-        Map<String, Object> params = new HashMap();
+        Map<String, Object> params = new HashMap<>();
         params.put("amounts", amounts);
 
         return request(RequestMethod.POST, RequestType.NORMAL, String.format("%s/%s/verify", ENDPOINT, id), params, BankAccount.class, options);

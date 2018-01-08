@@ -14,7 +14,7 @@ public class LobResponseTest extends BaseTest {
 
     @Test
     public void testLobResponse() {
-        final LobResponse response = new LobResponse(200, "{}");
+        final LobResponse<String> response = new LobResponse<String>(200, "{}");
 
         assertEquals(200, response.getResponseCode());
         assertEquals("{}", response.getResponseBody());
@@ -26,7 +26,7 @@ public class LobResponseTest extends BaseTest {
         HashMap<String, List<String>> headers = new HashMap<String, List<String>>();
         headers.put("User-Agent", Arrays.asList("LobBindingsTest"));
 
-        final LobResponse response = new LobResponse(200, "{}", headers);
+        final LobResponse<String> response = new LobResponse<String>(200, "{}", headers);
 
         assertEquals(200, response.getResponseCode());
         assertEquals("{}", response.getResponseBody());

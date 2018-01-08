@@ -3,7 +3,7 @@ package com.lob.exception;
 public abstract class LobException extends Exception {
 
     private static final long serialVersionUID = 1L;
-
+    
     private Integer statusCode;
 
     public LobException(String message, Integer statusCode) {

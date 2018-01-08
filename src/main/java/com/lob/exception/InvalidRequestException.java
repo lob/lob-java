@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 public class InvalidRequestException extends LobException {
+    
+    private static final long serialVersionUID = 1L;
 
     @JsonCreator
     public InvalidRequestException(@JsonProperty("error") final Map<String, Object> error) {

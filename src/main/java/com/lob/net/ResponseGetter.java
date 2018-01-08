@@ -2,17 +2,13 @@ package com.lob.net;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.lob.Lob;
 import com.lob.exception.APIException;
 import com.lob.exception.AuthenticationException;
 import com.lob.exception.InvalidRequestException;
 import com.lob.exception.RateLimitException;
 import org.apache.commons.codec.binary.Base64;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +17,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -33,9 +32,9 @@ import static com.lob.net.APIResource.RequestMethod.POST;
 
 public class ResponseGetter implements IResponseGetter {
 
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormat.forPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSZ" ).withZone(DateTimeZone.UTC);
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_INSTANT.withZone(ZoneId.of("UTC"));
     private static final ObjectMapper MAPPER = new ObjectMapper()
-            .registerModule(new JodaModule())
+            .registerModule(new JavaTimeModule())
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     private static final class Parameter {
@@ -48,7 +47,8 @@ public class ResponseGetter implements IResponseGetter {
         }
     }
 
-    public <T> LobResponse request(
+    @Override
+    public <T> LobResponse<T> request(
             APIResource.RequestMethod method,
             String url,
             Map<String, Object> params,
@@ -103,14 +103,8 @@ public class ResponseGetter implements IResponseGetter {
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", String.format("application/x-www-form-urlencoded;charset=%s", APIResource.CHARSET));
 
-        OutputStream output = null;
-        try {
-            output = conn.getOutputStream();
+        try (OutputStream output = conn.getOutputStream()) {
             output.write(query.getBytes(APIResource.CHARSET));
-        } finally {
-            if (output != null) {
-                output.close();
-            }
         }
         return conn;
     }
@@ -172,6 +166,7 @@ public class ResponseGetter implements IResponseGetter {
         return flatParams;
     }
 
+    @SuppressWarnings("unchecked")
     private static List<Parameter> flattenParamsValue(Object value, String keyPrefix) {
         List<Parameter> flatParams;
 
@@ -185,9 +180,9 @@ public class ResponseGetter implements IResponseGetter {
         } else if (value instanceof File) {
             flatParams = new LinkedList<Parameter>();
             flatParams.add(new Parameter(keyPrefix, value));
-        } else if (value instanceof DateTime) {
+        } else if (value instanceof ZonedDateTime) {
             flatParams = new LinkedList<Parameter>();
-            flatParams.add(new Parameter(keyPrefix, DATE_FORMATTER.print((DateTime) value)));
+            flatParams.add(new Parameter(keyPrefix, DATE_FORMATTER.format(((ZonedDateTime) value))));
         } else {
             flatParams = new LinkedList<Parameter>();
             flatParams.add(new Parameter(keyPrefix, value.toString()));
@@ -196,7 +191,7 @@ public class ResponseGetter implements IResponseGetter {
         return flatParams;
     }
 
-    private static <T> LobResponse handleConnectionResponse(HttpURLConnection conn, Class<T> clazz) throws IOException, InvalidRequestException, RateLimitException, APIException {
+    private static <T> LobResponse<T> handleConnectionResponse(HttpURLConnection conn, Class<T> clazz) throws IOException, InvalidRequestException, RateLimitException, APIException {
         int responseCode = conn.getResponseCode();
 
         if (responseCode >= 200 && responseCode < 300) {
@@ -213,7 +208,7 @@ public class ResponseGetter implements IResponseGetter {
         }
     }
 
-    private static <T> LobResponse makeURLConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, String query, RequestOptions options) throws APIException, RateLimitException, InvalidRequestException, IOException {
+    private static <T> LobResponse<T> makeURLConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, String query, RequestOptions options) throws APIException, RateLimitException, InvalidRequestException, IOException {
         java.net.HttpURLConnection conn = null;
         try {
             if (method == POST) {
@@ -234,12 +229,12 @@ public class ResponseGetter implements IResponseGetter {
         }
     }
 
-    private static <T> LobResponse makeMultipartConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, Map<String, Object> params, RequestOptions options) throws IOException, InvalidRequestException, APIException, RateLimitException {
+    private static <T> LobResponse<T> makeMultipartConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, Map<String, Object> params, RequestOptions options) throws IOException, InvalidRequestException, APIException, RateLimitException {
         java.net.HttpURLConnection conn = createDefaultConnection(url, options);
         String boundary = MultipartProcessor.getBoundary();
 
         conn.setDoOutput(true);
-        conn.setRequestMethod("POST");
+        conn.setRequestMethod(method.name());
         conn.setRequestProperty("Content-Type", String.format("multipart/form-data; boundary=%s", boundary));
 
         MultipartProcessor multipartProcessor = null;
@@ -265,7 +260,7 @@ public class ResponseGetter implements IResponseGetter {
     }
 
 
-    private static <T> LobResponse _request(APIResource.RequestMethod method,
+    private static <T> LobResponse<T> _request(APIResource.RequestMethod method,
                                   String url, Map<String, Object> params, Class<T> clazz,
                                   APIResource.RequestType type, RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
         if (options == null) {

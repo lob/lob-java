@@ -1,5 +1,7 @@
 package com.lob.net;
 
+import java.util.Objects;
+
 import com.lob.Lob;
 
 public class RequestOptions {
@@ -34,27 +36,31 @@ public class RequestOptions {
         if (this == o) {
             return true;
         }
-
-        if (o == null || getClass() != o.getClass()) {
+        else if (o instanceof RequestOptions) {
+            RequestOptions that = (RequestOptions) o;
+            
+            if (!Objects.equals(this.apiKey, that.getApiKey())) {
+                return false;
+            }
+            
+            if (!Objects.equals(this.lobVersion, that.getLobVersion())) {
+                return false;
+            }
+    
+            if (!Objects.equals(this.idempotencyKey, that.getIdempotencyKey())) {
+                return false;
+            }       
+            
+            return true;
+        } else {
             return false;
         }
-
-        RequestOptions that = (RequestOptions) o;
-
-        if (apiKey != null ? !apiKey.equals(that.apiKey) : that.apiKey != null) {
-            return false;
-        }
-
-        if (idempotencyKey != null ? !idempotencyKey.equals(that.idempotencyKey) : that.idempotencyKey != null) {
-            return false;
-        }
-
-        if (lobVersion != null ? !lobVersion.equals(that.lobVersion) : that.lobVersion != null) {
-            return false;
-        }
-
-        return true;
     }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(apiKey, lobVersion, idempotencyKey);
+    }    
 
     public static final class Builder {
         private String apiKey;

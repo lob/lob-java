@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public interface IResponseGetter {
-    <T> LobResponse request(
+    <T> LobResponse<T> request(
             APIResource.RequestMethod method,
             String url,
             Map<String, Object> params,

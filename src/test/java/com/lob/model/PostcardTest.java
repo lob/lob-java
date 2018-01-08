@@ -2,10 +2,10 @@ package com.lob.model;
 
 import com.lob.BaseTest;
 import com.lob.net.LobResponse;
-import org.joda.time.DateTime;
 import org.junit.Test;
 
 import java.io.File;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -203,8 +203,8 @@ public class PostcardTest extends BaseTest {
 
     @Test
     public void testCreateFuturePostcard() throws Exception {
-        DateTime today = new DateTime();
-        DateTime futureDate = today.plusDays(1);
+        ZonedDateTime today = ZonedDateTime.now();
+        ZonedDateTime futureDate = today.plusDays(1);
 
         LobResponse<Postcard> response = new Postcard.RequestBuilder()
                 .setDescription("Test Postcard")
