@@ -11,6 +11,7 @@ import com.lob.net.LobResponse;
 import com.lob.net.RequestOptions;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -452,11 +453,19 @@ public class USVerification extends APIResource {
         }
 
         public LobResponse<USVerification> verify() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
-            return verify(null);
+            return verify(Collections.emptyMap(), null);
+        }
+
+        public LobResponse<USVerification> verify(Map<String, Object> query) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
+            return verify(query, null);
         }
 
         public LobResponse<USVerification> verify(RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
-            return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, params, USVerification.class, options);
+            return verify(Collections.emptyMap(), options);
+        }
+
+        public LobResponse<USVerification> verify(Map<String, Object> query, RequestOptions options) throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException  {
+            return request(RequestMethod.POST, RequestType.NORMAL, ENDPOINT, params, query, USVerification.class, options);
         }
     }
 
