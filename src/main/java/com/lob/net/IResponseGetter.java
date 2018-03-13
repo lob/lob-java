@@ -12,7 +12,16 @@ public interface IResponseGetter {
     <T> LobResponse<T> request(
             APIResource.RequestMethod method,
             String url,
-            Map<String, Object> params,
+            Map<String, Object> data,
+            Map<String, Object> query,
+            Class<T> clazz,
+            APIResource.RequestType type,
+            RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException;
+
+    <T> LobResponse<T> request(
+            APIResource.RequestMethod method,
+            String url,
+            Map<String, Object> data,
             Class<T> clazz,
             APIResource.RequestType type,
             RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException;

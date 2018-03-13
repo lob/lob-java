@@ -20,6 +20,7 @@ import java.net.URLEncoder;
 import java.time.ZonedDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -51,11 +52,24 @@ public class ResponseGetter implements IResponseGetter {
     public <T> LobResponse<T> request(
             APIResource.RequestMethod method,
             String url,
-            Map<String, Object> params,
+            Map<String, Object> data,
+            Map<String, Object> query,
             Class<T> clazz,
             APIResource.RequestType type,
             RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
-        return _request(method, url, params, clazz, type, options);
+        return _request(method, url, data, query, clazz, type, options);
+    }
+
+    @Override
+    public <T> LobResponse<T> request(
+            APIResource.RequestMethod method,
+            String url,
+            Map<String, Object> data,
+            Class<T> clazz,
+            APIResource.RequestType type,
+            RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
+
+        return _request(method, url, data, Collections.emptyMap(), clazz, type, options);
     }
 
     static Map<String, String> getHeaders(RequestOptions options) {
@@ -96,15 +110,16 @@ public class ResponseGetter implements IResponseGetter {
         return conn;
     }
 
-    private static java.net.HttpURLConnection createPostConnection(String url, String query, RequestOptions options) throws IOException {
-        java.net.HttpURLConnection conn = createDefaultConnection(url, options);
+    private static java.net.HttpURLConnection createPostConnection(String url, String data, String query, RequestOptions options) throws IOException {
+        String getURL = query.isEmpty() ? url : String.format("%s?%s", url, query);
+        java.net.HttpURLConnection conn = createDefaultConnection(getURL, options);
 
         conn.setDoOutput(true);
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", String.format("application/x-www-form-urlencoded;charset=%s", APIResource.CHARSET));
 
         try (OutputStream output = conn.getOutputStream()) {
-            output.write(query.getBytes(APIResource.CHARSET));
+            output.write(data.getBytes(APIResource.CHARSET));
         }
         return conn;
     }
@@ -208,15 +223,15 @@ public class ResponseGetter implements IResponseGetter {
         }
     }
 
-    private static <T> LobResponse<T> makeURLConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, String query, RequestOptions options) throws APIException, RateLimitException, InvalidRequestException, IOException {
+    private static <T> LobResponse<T> makeURLConnectionRequest(APIResource.RequestMethod method, Class<T> clazz, String url, String data, String qs, RequestOptions options) throws APIException, RateLimitException, InvalidRequestException, IOException {
         java.net.HttpURLConnection conn = null;
         try {
             if (method == POST) {
-                conn = createPostConnection(url, query, options);
+                conn = createPostConnection(url, data, qs, options);
             } else if (method == DELETE) {
                 conn = createDeleteConnection(url, options);
             } else {
-                conn = createGetConnection(url, query, options);
+                conn = createGetConnection(url, data, options);
             }
 
             return handleConnectionResponse(conn, clazz);
@@ -260,9 +275,7 @@ public class ResponseGetter implements IResponseGetter {
     }
 
 
-    private static <T> LobResponse<T> _request(APIResource.RequestMethod method,
-                                  String url, Map<String, Object> params, Class<T> clazz,
-                                  APIResource.RequestType type, RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
+    private static <T> LobResponse<T> _request(APIResource.RequestMethod method, String url, Map<String, Object> data, Map<String, Object> query, Class<T> clazz, APIResource.RequestType type, RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
         if (options == null) {
             options = RequestOptions.getDefault();
         }
@@ -275,11 +288,12 @@ public class ResponseGetter implements IResponseGetter {
         String lobURL = String.format("%s%s", Lob.API_BASE_URL, url);
 
         if (type == APIResource.RequestType.MULTIPART) {
-            return makeMultipartConnectionRequest(method, clazz, lobURL, params, options);
+            return makeMultipartConnectionRequest(method, clazz, lobURL, data, options);
         }
 
-        String query = createQuery(params);
-        return makeURLConnectionRequest(method, clazz, lobURL, query, options);
+        String encodedData = createQuery(data);
+        String queryString = createQuery(query);
+        return makeURLConnectionRequest(method, clazz, lobURL, encodedData, queryString, options);
     }
 
 }

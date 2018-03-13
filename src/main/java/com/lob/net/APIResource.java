@@ -23,9 +23,15 @@ public abstract class APIResource  {
     }
 
     public static <T> LobResponse<T> request(APIResource.RequestMethod method, APIResource.RequestType type,
-                                  String url, Map<String, Object> params, Class<T> clazz,
-                                  RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
+                                             String url, Map<String, Object> params, Class<T> clazz,
+                                             RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
         return responseGetter.request(method, url, params, clazz, type, options);
+    }
+
+    public static <T> LobResponse<T> request(APIResource.RequestMethod method, APIResource.RequestType type,
+                                             String url, Map<String, Object> params, Map<String, Object> query, Class<T> clazz,
+                                             RequestOptions options) throws AuthenticationException, APIException, RateLimitException, InvalidRequestException, IOException {
+        return responseGetter.request(method, url, params, query, clazz, type, options);
     }
 
 }
