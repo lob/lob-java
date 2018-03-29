@@ -37,6 +37,24 @@ public class USVerificationTest extends BaseTest {
     }
 
     @Test
+    public void testUsVerificationSingleLineAddress() throws Exception {
+        LobResponse<USVerification> response = new USVerification.RequestBuilder()
+                .setAddress("deliverable")
+                .verify();
+
+        USVerification usVerification = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertEquals("1 TELEGRAPH HILL BLVD", usVerification.getPrimaryLine());
+        assertEquals("", usVerification.getSecondaryLine());
+        assertEquals("", usVerification.getUrbanization());
+        assertEquals("SAN FRANCISCO CA 94133-3106", usVerification.getLastLine());
+        assertEquals("deliverable", usVerification.getDeliverability());
+        assertNotNull(usVerification.getComponents());
+        assertNotNull(usVerification.getDeliverabilityAnalysis());
+    }
+    
+    @Test
     public void testUsVerificationWithCustomCase() throws Exception {
         Map<String, Object> query = new HashMap<>();
         query.put("case", "proper");

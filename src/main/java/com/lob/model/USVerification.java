@@ -417,6 +417,11 @@ public class USVerification extends APIResource {
         public RequestBuilder() {
         }
 
+        public RequestBuilder setAddress(String address) {
+            params.put("address", address);
+            return this;
+        }
+
         public RequestBuilder setRecipient(String recipient) {
             params.put("recipient", recipient);
             return this;
