@@ -97,6 +97,10 @@ Lob.init("yourApiKey", "yourApiVersion");
   - [US Verification API](https://lob.com/docs/java#us_verifications)
     - [The US Verification Object](https://lob.com/docs/java#us_verifications_object)
     - [Verify a US Address](https://lob.com/docs/java#us_verifications_create)
+  - [US Autocompletion API](https://lob.com/docs/java#us_autocompletions)
+    - [The US Autocompletion Object](https://lob.com/docs/java#us_autocompletions_object)
+    - [Autocomplete a US Address](https://lob.com/docs/java#us_autocompletions_create)
+    - [The US Autocompletion Test Environment](https://lob.com/docs/java#us-autocompletions-test-environment)
 - **Int'l Verification API**
   - [International Verifications](https://lob.com/docs/java#intl_verifications)
     - [Verify an International Address](https://lob.com/docs/java#intl_verifications_create)
