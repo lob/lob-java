@@ -24,7 +24,6 @@ Here's a general overview of the Lob services available, click through to read m
 - [Postcards API](https://lob.com/services/postcards)
 - [Letters API](https://lob.com/services/letters)
 - [Checks API](https://lob.com/services/checks)
-- [Area Mail API](https://lob.com/services/area)
 - [Address Verification API](https://lob.com/verification/address)
 
 Please read through the official [API Documentation](#api-documentation) to get a complete sense of what to expect from each endpoint.
@@ -132,16 +131,6 @@ Lob.init("yourApiKey", "yourApiVersion");
     - [Delete a Bank Account](https://lob.com/docs/java#bankaccounts_delete)
     - [Verify a Bank Account](https://lob.com/docs/java#bankaccounts_verify)
     - [List all Bank Accounts](https://lob.com/docs/java#bankaccounts_list)
-- **Area Mail API**
-  - [Areas](https://lob.com/docs/java#areas)
-    - [The Area Object](https://lob.com/docs/java#areas_object)
-    - [Create an Area Mailing](https://lob.com/docs/java#areas_create)
-    - [Retrieve an Area Mailing](https://lob.com/docs/java#areas_retrieve)
-    - [List all Area Mailings](https://lob.com/docs/java#areas_list)
-  - [Routes](https://lob.com/docs/java#routes)
-    - [The Routes Object](https://lob.com/docs/java#routes_object)
-    - [Retrieve Routes](https://lob.com/docs/java#routes_retrieve)
-    - [List all Routes](https://lob.com/docs/java#routes_list)
 - **Resources**
   - [Countries](https://lob.com/docs/java#countries)
     - [List all Countries](https://lob.com/docs/java#countries_list)
