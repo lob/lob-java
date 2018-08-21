@@ -75,7 +75,7 @@ public class AddressTest extends BaseTest {
         assertEquals("LOB.COM", address.getCompany());
         assertEquals("DONALD", address.getName());
         assertEquals("185 BERRY ST STE 6100", address.getLine1());
-        assertEquals("", address.getLine2());
+        assertNull(address.getLine2());
         assertEquals("SAN FRANCISCO", address.getCity());
         assertEquals("CA", address.getState());
         assertEquals("94107-1741", address.getZip());
