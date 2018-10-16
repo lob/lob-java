@@ -1,22 +1,25 @@
 package com.lob.net;
 
+import java.net.Proxy;
 import java.util.Objects;
 
 import com.lob.Lob;
 
 public class RequestOptions {
     public static RequestOptions getDefault() {
-        return new RequestOptions(Lob.apiKey, Lob.apiVersion, null);
+        return new RequestOptions(Lob.apiKey, Lob.apiVersion, null, null);
     }
 
     private final String apiKey;
     private final String lobVersion;
     private final String idempotencyKey;
+    private final Proxy proxy;
 
-    private RequestOptions(String apiKey, String lobVersion, String idempotencyKey) {
+    private RequestOptions(String apiKey, String lobVersion, String idempotencyKey, Proxy proxy) {
         this.apiKey = apiKey;
         this.lobVersion = lobVersion;
         this.idempotencyKey = idempotencyKey;
+        this.proxy = proxy;
     }
 
     public String getApiKey() {
@@ -29,6 +32,10 @@ public class RequestOptions {
 
     public String getIdempotencyKey() {
         return idempotencyKey;
+    }
+    
+    public Proxy getProxy() {
+    	return proxy;
     }
 
     @Override
@@ -66,6 +73,7 @@ public class RequestOptions {
         private String apiKey;
         private String lobVersion;
         private String idempotencyKey;
+        private Proxy proxy;
 
         public Builder() {
             this.apiKey = Lob.apiKey;
@@ -98,9 +106,18 @@ public class RequestOptions {
         public String getIdempotencyKey() {
             return this.idempotencyKey;
         }
+        
+        public Builder setProxy(Proxy proxy) {
+        	this.proxy = proxy;
+        	return this;
+        }
+        
+        public Proxy getProxy() {
+        	return this.proxy;
+        }
 
         public RequestOptions build() {
-            return new RequestOptions(this.apiKey, this.lobVersion, this.idempotencyKey);
+            return new RequestOptions(this.apiKey, this.lobVersion, this.idempotencyKey, this.proxy);
         }
     }
 
