@@ -92,7 +92,7 @@ public class ResponseGetter implements IResponseGetter {
     private static java.net.HttpURLConnection createDefaultConnection(String url, RequestOptions options) throws IOException {
         URL lobURL = new URL(url);
 
-        HttpURLConnection conn = (HttpURLConnection) (options.getProxy() == null ? lobURL.openConnection() : lobURL.openConnection(options.getProxy()));
+        HttpURLConnection conn = (HttpURLConnection) (options.getProxy() ? lobURL.openConnection(options.getProxy()) : lobURL.openConnection());
         conn.setUseCaches(false);
         for (Map.Entry<String, String> header : getHeaders(options).entrySet()) {
             conn.setRequestProperty(header.getKey(), header.getValue());
