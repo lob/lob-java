@@ -89,7 +89,7 @@ public class CheckTest extends BaseTest {
                 .setMergeVariables(mergeVariables)
                 .setAmount(1.00f)
                 .setMemo("memo")
-                .setLogo("https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png")
+                .setLogo("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/check_logo.png")
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
