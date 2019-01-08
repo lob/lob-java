@@ -21,7 +21,7 @@ public class CheckTest extends BaseTest {
 
     @BeforeClass
     public static void beforeClass() {
-        Lob.init("test_7b1960d06d6dfe28d3862b98380b8b0dc93");
+        Lob.init(System.getenv("LOB_API_KEY"));
 
         try {
             BankAccount newBankAccount = new BankAccount.RequestBuilder()

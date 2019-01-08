@@ -147,7 +147,7 @@ Lob.init("yourApiKey", "yourApiVersion");
 
 ## Testing
 
-You can run all tests with the command `mvn test` in the main directory.
+You can run all tests with the command `LOB_API_KEY=<your_test_api_key> mvn test` in the main directory.
 
 =======================
 

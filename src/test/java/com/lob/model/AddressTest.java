@@ -128,23 +128,4 @@ public class AddressTest extends BaseTest {
         new Address.RequestBuilder().create();
     }
 
-    @Test(expected = RateLimitException.class)
-    public void testAddressRateLimit() throws Exception {
-        RequestOptions options = new RequestOptions.Builder().setApiKey("test_03b4c5206b1f4c04b8d9fb5b4dd72ffd2d4").build();
-
-        new Address.RequestBuilder()
-                .setCompany("Lob.com")
-                .setName("Donald")
-                .setLine1("185 Berry St")
-                .setLine2("Ste 6600")
-                .setCity("San Francisco")
-                .setState("CA")
-                .setZip("94107")
-                .setCountry("US")
-                .setPhone("123-456-7890")
-                .setEmail("test@lob.com")
-                .setDescription("Java Wrapper Automated Test")
-                .create(options);
-    }
-
 }
