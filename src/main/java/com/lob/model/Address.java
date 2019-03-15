@@ -31,6 +31,7 @@ public class Address extends APIResource {
     @JsonProperty private final String state;
     @JsonProperty private final String zip;
     @JsonProperty private final String country;
+    @JsonProperty private final Boolean recipientMoved;
     @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final ZonedDateTime dateCreated;
     @JsonProperty private final ZonedDateTime dateModified;
@@ -51,6 +52,7 @@ public class Address extends APIResource {
             @JsonProperty("address_state") final String state,
             @JsonProperty("address_zip") final String zip,
             @JsonProperty("address_country") final String country,
+            @JsonProperty("recipient_moved") final Boolean recipientMoved,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("date_created") final ZonedDateTime dateCreated,
             @JsonProperty("date_modified") final ZonedDateTime dateModified,
@@ -68,6 +70,7 @@ public class Address extends APIResource {
         this.state = state;
         this.zip = zip;
         this.country = country;
+        this.recipientMoved = recipientMoved;
         this.metadata = metadata;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
@@ -123,6 +126,10 @@ public class Address extends APIResource {
         return country;
     }
 
+    public Boolean getRecipientMoved() {
+        return recipientMoved;
+    }
+
     public Map<String, String> getMetadata() {
         return metadata;
     }
@@ -157,6 +164,7 @@ public class Address extends APIResource {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
+                ", recipientMoved='" + recipientMoved + '\'' +
                 ", metadata=" + metadata +
                 ", dateCreated=" + dateCreated +
                 ", dateModified=" + dateModified +
