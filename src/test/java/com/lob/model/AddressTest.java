@@ -83,7 +83,7 @@ public class AddressTest extends BaseTest {
         assertEquals("123-456-7890", address.getPhone());
         assertEquals("test@lob.com", address.getEmail());
         assertEquals("Java Wrapper Automated Test", address.getDescription());
-        assertFalse(address.getRecipientMoved());
+        assertNull(address.getRecipientMoved());
         assertNotNull(address.getMetadata());
         assertNotNull(address.getDateCreated());
         assertNotNull(address.getDateModified());
