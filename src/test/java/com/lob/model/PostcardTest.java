@@ -106,6 +106,7 @@ public class PostcardTest extends BaseTest {
         assertNotNull(postcard.getThumbnails());
         assertEquals("4x6", postcard.getSize());
         assertEquals("usps_first_class", postcard.getMailType());
+        assertEquals(mergeVariables, postcard.getMergeVariables());
         assertNotNull(postcard.getExpectedDeliveryDate());
         assertNotNull(postcard.getDateCreated());
         assertNotNull(postcard.getDateModified());
@@ -191,6 +192,7 @@ public class PostcardTest extends BaseTest {
         assertNotNull(postcard.getThumbnails());
         assertEquals("4x6", postcard.getSize());
         assertEquals("usps_first_class", postcard.getMailType());
+        assertNull(postcard.getMergeVariables());
         assertNotNull(postcard.getExpectedDeliveryDate());
         assertNotNull(postcard.getDateCreated());
         assertNotNull(postcard.getDateModified());

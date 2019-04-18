@@ -70,6 +70,7 @@ public class Letter extends APIResource {
     @JsonProperty private final List<TrackingEvent> trackingEvents;
     @JsonProperty private final List<Thumbnail> thumbnails;
     @JsonProperty private final CustomEnvelope customEnvelope;
+    @JsonProperty private final Map<String, String> mergeVariables;
     @JsonProperty private final LocalDate expectedDeliveryDate;
     @JsonProperty private final ZonedDateTime dateCreated;
     @JsonProperty private final ZonedDateTime dateModified;
@@ -99,6 +100,7 @@ public class Letter extends APIResource {
             @JsonProperty("tracking_events") final List<TrackingEvent> trackingEvents,
             @JsonProperty("thumbnails") final List<Thumbnail> thumbnails,
             @JsonProperty("custom_envelope") final CustomEnvelope customEnvelope,
+            @JsonProperty("merge_variables") final Map<String, String> mergeVariables,
             @JsonProperty("expected_delivery_date") final LocalDate expectedDeliveryDate,
             @JsonProperty("date_created") final ZonedDateTime dateCreated,
             @JsonProperty("date_modified") final ZonedDateTime dateModified,
@@ -125,6 +127,7 @@ public class Letter extends APIResource {
         this.trackingEvents = trackingEvents;
         this.thumbnails = thumbnails;
         this.customEnvelope = customEnvelope;
+        this.mergeVariables = mergeVariables;
         this.expectedDeliveryDate = expectedDeliveryDate;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
@@ -210,6 +213,10 @@ public class Letter extends APIResource {
         return customEnvelope;
     }
 
+    public Map<String, String> getMergeVariables() {
+        return mergeVariables;
+    }
+
     public LocalDate getExpectedDeliveryDate() {
         return expectedDeliveryDate;
     }
@@ -260,6 +267,7 @@ public class Letter extends APIResource {
                 ", trackingEvents=" + trackingEvents +
                 ", thumbnails=" + thumbnails +
                 ", customEnvelope=" + customEnvelope +
+                ", mergeVariables=" + mergeVariables +
                 ", expectedDeliveryDate=" + expectedDeliveryDate +
                 ", dateCreated=" + dateCreated +
                 ", dateModified=" + dateModified +

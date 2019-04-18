@@ -139,6 +139,7 @@ public class CheckTest extends BaseTest {
         assertNotNull(check.getTrackingEvents());
         assertNotNull(check.getThumbnails());
         assertEquals("usps_first_class", check.getMailType());
+        assertEquals(mergeVariables, check.getMergeVariables());
         assertNotNull(check.getExpectedDeliveryDate());
         assertNotNull(check.getDateCreated());
         assertNotNull(check.getDateModified());

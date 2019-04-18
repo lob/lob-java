@@ -36,6 +36,7 @@ public class Postcard extends APIResource {
     @JsonProperty private final List<Thumbnail> thumbnails;
     @JsonProperty private final String size;
     @JsonProperty private final String mailType;
+    @JsonProperty private final Map<String, String> mergeVariables;
     @JsonProperty private final LocalDate expectedDeliveryDate;
     @JsonProperty private final ZonedDateTime dateCreated;
     @JsonProperty private final ZonedDateTime dateModified;
@@ -60,6 +61,7 @@ public class Postcard extends APIResource {
             @JsonProperty("thumbnails") final List<Thumbnail> thumbnails,
             @JsonProperty("size") final String size,
             @JsonProperty("mail_type") final String mailType,
+            @JsonProperty("merge_variables") final Map<String, String> mergeVariables,
             @JsonProperty("expected_delivery_date") final LocalDate expectedDeliveryDate,
             @JsonProperty("date_created") final ZonedDateTime dateCreated,
             @JsonProperty("date_modified") final ZonedDateTime dateModified,
@@ -81,6 +83,7 @@ public class Postcard extends APIResource {
         this.thumbnails = thumbnails;
         this.size = size;
         this.mailType = mailType;
+        this.mergeVariables = mergeVariables;
         this.expectedDeliveryDate = expectedDeliveryDate;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
@@ -146,6 +149,10 @@ public class Postcard extends APIResource {
         return mailType;
     }
 
+    public Map<String, String> getMergeVariables() {
+        return mergeVariables;
+    }
+
     public LocalDate getExpectedDeliveryDate() {
         return expectedDeliveryDate;
     }
@@ -191,6 +198,7 @@ public class Postcard extends APIResource {
                 ", thumbnails='" + thumbnails + '\'' +
                 ", size='" + size + '\'' +
                 ", mailType='" + mailType + '\'' +
+                ", mergeVariables=" + mergeVariables +
                 ", expectedDeliveryDate=" + expectedDeliveryDate +
                 ", dateCreated=" + dateCreated +
                 ", dateModified=" + dateModified +
