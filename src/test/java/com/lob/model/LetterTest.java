@@ -111,6 +111,7 @@ public class LetterTest extends BaseTest {
         assertNotNull(letter.getDateCreated());
         assertNotNull(letter.getDateModified());
         assertNotNull(letter.getSendDate());
+        assertEquals(mergeVariables, letter.getMergeVariables());
         assertEquals(metadata, letter.getMetadata());
         assertFalse(letter.isDeleted());
         assertEquals("letter", letter.getObject());
