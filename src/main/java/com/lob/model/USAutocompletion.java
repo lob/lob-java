@@ -117,6 +117,11 @@ public class USAutocompletion extends APIResource {
             return this;
         }
 
+        public RequestBuilder setZipCode (String zipCode) {
+            params.put("zip_code", zipCode);
+            return this;
+        }
+
         public RequestBuilder setGeoIpSort (Boolean geoIpSort) {
             params.put("geo_ip_sort", geoIpSort);
             return this;
