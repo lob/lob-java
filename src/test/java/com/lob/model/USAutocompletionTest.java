@@ -15,6 +15,7 @@ public class USAutocompletionTest extends BaseTest {
             .setAddressPrefix("185 BER")
             .setCity("SAN FRANCISCO")
             .setState("CA")
+            .setZipCode("94107")
             .autocomplete();
 
         USAutocompletion usAutocompletion = response.getResponseBody();
