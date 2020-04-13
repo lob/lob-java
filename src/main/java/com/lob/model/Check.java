@@ -29,7 +29,7 @@ public class Check extends APIResource {
     @JsonProperty private final BankAccount bankAccount;
     @JsonProperty private final int checkNumber;
     @JsonProperty private final String memo;
-    @JsonProperty private final float amount;
+    @JsonProperty private final double amount;
     @JsonProperty private final String message;
     @JsonProperty private final String url;
     @JsonProperty private final String checkBottomTemplateId;
@@ -59,7 +59,7 @@ public class Check extends APIResource {
             @JsonProperty("bank_account") final BankAccount bankAccount,
             @JsonProperty("check_number") final int checkNumber,
             @JsonProperty("memo") final String memo,
-            @JsonProperty("amount") final float amount,
+            @JsonProperty("amount") final double amount,
             @JsonProperty("message") final String message,
             @JsonProperty("url") final String url,
             @JsonProperty("check_bottom_template_id") final String checkBottomTemplateId,
@@ -136,7 +136,7 @@ public class Check extends APIResource {
         return memo;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
@@ -295,8 +295,8 @@ public class Check extends APIResource {
             params.put("check_number", checkNumber);
             return this;
         }
-
-        public RequestBuilder setAmount(float amount) {
+        
+        public RequestBuilder setAmount(String amount) {
             params.put("amount", amount);
             return this;
         }

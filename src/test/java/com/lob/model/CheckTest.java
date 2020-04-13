@@ -87,7 +87,7 @@ public class CheckTest extends BaseTest {
                 .setCheckBottom("<h1>Hello {{name}}</h1>")
                 .setAttachment("<h1>This is a HTML attachment</h1")
                 .setMergeVariables(mergeVariables)
-                .setAmount(1.00f)
+                .setAmount("1.00")
                 .setMemo("memo")
                 .setLogo("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/check_logo.png")
                 .setTo(
@@ -127,7 +127,7 @@ public class CheckTest extends BaseTest {
         assertEquals(12345, check.getCheckNumber());
         assertEquals("memo", check.getMemo());
         assertNotNull(check.getUrl());
-        assertEquals(1.00f, check.getAmount(), 0.0001);
+        assertEquals(1.00, check.getAmount(), 0);
         assertNull(check.getMessage());
         assertNotNull(check.getUrl());
         assertNull(check.getCheckBottomTemplateId());
@@ -155,7 +155,7 @@ public class CheckTest extends BaseTest {
         LobResponse<Check> response = new Check.RequestBuilder()
                 .setCheckBottom("tmpl_c4aa2dc83ebad7e")
                 .setAttachment("tmpl_c4aa2dc83ebad7e")
-                .setAmount(1.00f)
+                .setAmount("1.00")
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
@@ -195,7 +195,7 @@ public class CheckTest extends BaseTest {
 
         LobResponse<Check> response = new Check.RequestBuilder()
                 .setMessage("Hello Check")
-                .setAmount(1.00f)
+                .setAmount("1.00")
                 .setMemo("memo")
                 .setLogo(logo)
                 .setAttachment(attachment)
@@ -237,7 +237,7 @@ public class CheckTest extends BaseTest {
 
         LobResponse<Check> response = new Check.RequestBuilder()
                 .setDescription("Test Future Check")
-                .setAmount(1.00f)
+                .setAmount("1.00")
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
@@ -269,10 +269,43 @@ public class CheckTest extends BaseTest {
     }
 
     @Test
+    public void testCreateCheckWithStringAmount() throws Exception {
+        LobResponse<Check> response = new Check.RequestBuilder()
+                .setAmount("131072.01")
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setFrom(
+                        new Address.RequestBuilder()
+                                .setName("Donald")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setBankAccount(VERIFIED_BANK_ACCOUNT)
+                .setMailType("usps_first_class")
+                .create();
+
+        Check check = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(check.getId());
+        assertEquals(131072.01, check.getAmount(), 0);
+    }
+
+    @Test
     public void testDeleteCheck() throws Exception {
         Check newCheck = new Check.RequestBuilder()
                 .setMessage("Check to be deleted")
-                .setAmount(1.00f)
+                .setAmount("1.00")
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
