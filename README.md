@@ -43,7 +43,7 @@ Include the following in your `pom.xml` for Maven:
   <dependency>
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
-    <version>9.0.5</version>
+    <version>10.0.0</version>
   </dependency>
   ...
 </dependencies>
@@ -52,7 +52,7 @@ Include the following in your `pom.xml` for Maven:
 Gradle:
 
 ```groovy
-compile 'com.lob:lob-java:9.0.5'
+compile 'com.lob:lob-java:10.0.0'
 ```
 
 ### Usage
@@ -151,6 +151,6 @@ You can run all tests with the command `LOB_API_KEY=<your_test_api_key> mvn test
 
 =======================
 
-Copyright &copy; 2017 Lob.com
+Copyright &copy; 2020 Lob.com
 
 Released under the MIT License, which can be found in the repository in `LICENSE.txt`.
