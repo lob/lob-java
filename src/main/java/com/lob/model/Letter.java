@@ -9,6 +9,7 @@ import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
 import com.lob.net.LobResponse;
 import com.lob.net.RequestOptions;
+import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,7 +71,7 @@ public class Letter extends APIResource {
     @JsonProperty private final List<TrackingEvent> trackingEvents;
     @JsonProperty private final List<Thumbnail> thumbnails;
     @JsonProperty private final CustomEnvelope customEnvelope;
-    @JsonProperty private final Map<String, String> mergeVariables;
+    @JsonProperty private final Map<String, Object> mergeVariables;
     @JsonProperty private final LocalDate expectedDeliveryDate;
     @JsonProperty private final ZonedDateTime dateCreated;
     @JsonProperty private final ZonedDateTime dateModified;
@@ -100,7 +101,7 @@ public class Letter extends APIResource {
             @JsonProperty("tracking_events") final List<TrackingEvent> trackingEvents,
             @JsonProperty("thumbnails") final List<Thumbnail> thumbnails,
             @JsonProperty("custom_envelope") final CustomEnvelope customEnvelope,
-            @JsonProperty("merge_variables") final Map<String, String> mergeVariables,
+            @JsonProperty("merge_variables") final Map<String, Object> mergeVariables,
             @JsonProperty("expected_delivery_date") final LocalDate expectedDeliveryDate,
             @JsonProperty("date_created") final ZonedDateTime dateCreated,
             @JsonProperty("date_modified") final ZonedDateTime dateModified,
@@ -213,7 +214,7 @@ public class Letter extends APIResource {
         return customEnvelope;
     }
 
-    public Map<String, String> getMergeVariables() {
+    public Map<String, Object> getMergeVariables() {
         return mergeVariables;
     }
 
@@ -326,8 +327,8 @@ public class Letter extends APIResource {
             return this;
         }
 
-        public RequestBuilder setMergeVariables(Map<String, String> mergeVariables) {
-            params.put("merge_variables", mergeVariables);
+        public RequestBuilder setMergeVariables(Map mergeVariables) {
+            params.put("merge_variables", new JSONObject(mergeVariables).toJSONString());
             return this;
         }
 

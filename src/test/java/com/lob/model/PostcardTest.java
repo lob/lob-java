@@ -8,6 +8,8 @@ import java.io.File;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.*;
@@ -115,6 +117,46 @@ public class PostcardTest extends BaseTest {
         assertFalse(postcard.isDeleted());
         assertEquals("postcard", postcard.getObject());
         assertNotNull(postcard.toString());
+    }
+
+    @Test
+    public void testCreatePostcardWithMergeVariableList() throws Exception {
+        Map<String, Object> mergeVariables = new HashMap<String, Object>();
+        List<Object> list = new ArrayList<Object>();
+        Map<String, String> data1 = new HashMap<String, String>();
+        Map<String, String> data2 = new HashMap<String, String>();
+
+        data1.put("name", "Larissa");
+        data2.put("name", "Larry");
+        list.add(data1);
+        list.add(data2);
+        mergeVariables.put("list", list);
+
+        LobResponse<Postcard> response = new Postcard.RequestBuilder()
+                .setDescription("Test Postcard with Merge Variable List")
+                .setFront("<html>{{#list}} {{name}} {{/list}}</html>")
+                .setBack("<h1>Back</h1>")
+                .setMergeVariables(mergeVariables)
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setSize("4x6")
+                .setMailType("usps_first_class")
+                .create();
+
+        Postcard postcard = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(postcard.getId());
+        assertEquals("Test Postcard with Merge Variable List", postcard.getDescription());
+        assertEquals(mergeVariables, postcard.getMergeVariables());
+        assertEquals("postcard", postcard.getObject());
     }
 
     @Test

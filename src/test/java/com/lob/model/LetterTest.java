@@ -261,6 +261,52 @@ public class LetterTest extends BaseTest {
     }
 
     @Test
+    public void testCreateLetterWithMergeVariableObject() throws Exception {
+        Map<String, Object> mergeVariables = new HashMap<String, Object>();
+        Map<String, String> data = new HashMap<String, String>();
+
+        data.put("name", "Shraddha");
+        mergeVariables.put("data", data);
+
+        LobResponse<Letter> response = new Letter.RequestBuilder()
+                .setDescription("Test Letter with Merge Variable Object")
+                .setFile("<html>{{data.name}}</html>")
+                .setMergeVariables(mergeVariables)
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setFrom(
+                        new Address.RequestBuilder()
+                                .setName("Nathan")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setColor(true)
+                .setDoubleSided(false)
+                .setAddressPlacement("insert_blank_page")
+                .setMailType("usps_first_class")
+                .create();
+
+        Letter letter = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(letter.getId());
+        assertEquals("Test Letter with Merge Variable Object", letter.getDescription());
+        assertNotNull(letter.getUrl());
+        assertEquals(mergeVariables, letter.getMergeVariables());
+        assertEquals("letter", letter.getObject());
+    }
+
+    @Test
     public void testDeleteLetter() throws Exception {
         Letter letter = new Letter.RequestBuilder()
                 .setFile("<h1>Hello {{name}}</h1>")
