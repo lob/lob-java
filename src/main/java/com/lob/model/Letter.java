@@ -2,6 +2,8 @@ package com.lob.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lob.exception.APIException;
 import com.lob.exception.AuthenticationException;
 import com.lob.exception.InvalidRequestException;
@@ -9,7 +11,6 @@ import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
 import com.lob.net.LobResponse;
 import com.lob.net.RequestOptions;
-import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -282,6 +283,7 @@ public class Letter extends APIResource {
     public static final class RequestBuilder {
         private Map<String, Object> params = new HashMap<String, Object>();
         private boolean isMultipart = false;
+        private ObjectMapper objectMapper = new ObjectMapper();
 
         public RequestBuilder() {
         }
@@ -327,8 +329,8 @@ public class Letter extends APIResource {
             return this;
         }
 
-        public RequestBuilder setMergeVariables(Map mergeVariables) {
-            params.put("merge_variables", new JSONObject(mergeVariables).toJSONString());
+        public RequestBuilder setMergeVariables(Map mergeVariables) throws JsonProcessingException {
+            params.put("merge_variables", objectMapper.writeValueAsString(mergeVariables));
             return this;
         }
 
