@@ -151,6 +151,51 @@ public class CheckTest extends BaseTest {
     }
 
     @Test
+    public void testCreateCheckWithMergeVariableBoolean() throws Exception {
+        Map<String, Boolean> mergeVariables = new HashMap<String, Boolean>();
+        mergeVariables.put("is_awesome", true);
+
+        LobResponse<Check> response = new Check.RequestBuilder()
+                .setDescription("Test Check with Merge Variable Boolean")
+                .setCheckBottom("<html>{{#is_awesome}}You are awesome!{{/is_awesome}}</html>")
+                .setAttachment("<h1>This is a HTML attachment</h1")
+                .setMergeVariables(mergeVariables)
+                .setAmount("1.00")
+                .setMemo("memo")
+                .setLogo("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/check_logo.png")
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setFrom(
+                        new Address.RequestBuilder()
+                                .setName("Anonymous")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setBankAccount(VERIFIED_BANK_ACCOUNT)
+                .setMailType("usps_first_class")
+                .setCheckNumber(12345)
+                .create();
+
+        Check check = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(check.getId());
+        assertEquals("Test Check with Merge Variable Boolean", check.getDescription());
+        assertEquals(mergeVariables, check.getMergeVariables());
+        assertEquals("check", check.getObject());
+    }
+
+    @Test
     public void testCreateTemplateCheck() throws Exception {
         LobResponse<Check> response = new Check.RequestBuilder()
                 .setCheckBottom("tmpl_c4aa2dc83ebad7e")

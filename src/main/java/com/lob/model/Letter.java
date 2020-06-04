@@ -2,9 +2,12 @@ package com.lob.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lob.exception.APIException;
 import com.lob.exception.AuthenticationException;
 import com.lob.exception.InvalidRequestException;
+import com.lob.exception.ParsingException;
 import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
 import com.lob.net.LobResponse;
@@ -70,7 +73,7 @@ public class Letter extends APIResource {
     @JsonProperty private final List<TrackingEvent> trackingEvents;
     @JsonProperty private final List<Thumbnail> thumbnails;
     @JsonProperty private final CustomEnvelope customEnvelope;
-    @JsonProperty private final Map<String, String> mergeVariables;
+    @JsonProperty private final Map<String, Object> mergeVariables;
     @JsonProperty private final LocalDate expectedDeliveryDate;
     @JsonProperty private final ZonedDateTime dateCreated;
     @JsonProperty private final ZonedDateTime dateModified;
@@ -100,7 +103,7 @@ public class Letter extends APIResource {
             @JsonProperty("tracking_events") final List<TrackingEvent> trackingEvents,
             @JsonProperty("thumbnails") final List<Thumbnail> thumbnails,
             @JsonProperty("custom_envelope") final CustomEnvelope customEnvelope,
-            @JsonProperty("merge_variables") final Map<String, String> mergeVariables,
+            @JsonProperty("merge_variables") final Map<String, Object> mergeVariables,
             @JsonProperty("expected_delivery_date") final LocalDate expectedDeliveryDate,
             @JsonProperty("date_created") final ZonedDateTime dateCreated,
             @JsonProperty("date_modified") final ZonedDateTime dateModified,
@@ -213,7 +216,7 @@ public class Letter extends APIResource {
         return customEnvelope;
     }
 
-    public Map<String, String> getMergeVariables() {
+    public Map<String, Object> getMergeVariables() {
         return mergeVariables;
     }
 
@@ -281,6 +284,7 @@ public class Letter extends APIResource {
     public static final class RequestBuilder {
         private Map<String, Object> params = new HashMap<String, Object>();
         private boolean isMultipart = false;
+        private ObjectMapper objectMapper = new ObjectMapper();
 
         public RequestBuilder() {
         }
@@ -326,9 +330,13 @@ public class Letter extends APIResource {
             return this;
         }
 
-        public RequestBuilder setMergeVariables(Map<String, String> mergeVariables) {
-            params.put("merge_variables", mergeVariables);
-            return this;
+        public RequestBuilder setMergeVariables(Map mergeVariables) throws ParsingException {
+            try {
+                params.put("merge_variables", objectMapper.writeValueAsString(mergeVariables));
+                return this;
+            } catch (JsonProcessingException e) {
+               throw new ParsingException(e);
+            }
         }
 
         public RequestBuilder setDoubleSided(boolean doubleSided) {
