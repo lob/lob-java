@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lob.exception.APIException;
 import com.lob.exception.AuthenticationException;
 import com.lob.exception.InvalidRequestException;
+import com.lob.exception.ParsingException;
 import com.lob.exception.RateLimitException;
 import com.lob.net.APIResource;
 import com.lob.net.LobResponse;
@@ -329,9 +330,13 @@ public class Letter extends APIResource {
             return this;
         }
 
-        public RequestBuilder setMergeVariables(Map mergeVariables) throws JsonProcessingException {
-            params.put("merge_variables", objectMapper.writeValueAsString(mergeVariables));
-            return this;
+        public RequestBuilder setMergeVariables(Map mergeVariables) throws ParsingException {
+            try {
+                params.put("merge_variables", objectMapper.writeValueAsString(mergeVariables));
+                return this;
+            } catch (JsonProcessingException e) {
+               throw new ParsingException(e);
+            }
         }
 
         public RequestBuilder setDoubleSided(boolean doubleSided) {
