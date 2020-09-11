@@ -1,6 +1,7 @@
 package com.lob.model;
 
 import com.lob.BaseTest;
+import com.lob.exception.InvalidRequestException;
 import com.lob.net.LobResponse;
 import org.junit.Test;
 
@@ -304,6 +305,41 @@ public class LetterTest extends BaseTest {
         assertNotNull(letter.getUrl());
         assertEquals(mergeVariables, letter.getMergeVariables());
         assertEquals("letter", letter.getObject());
+    }
+
+    @Test(expected=InvalidRequestException.class)
+    public void testCreateLetterSizeThrows() throws Exception {
+        LetterSize expectedSize = LetterSize.US_LETTER;
+
+        LobResponse<Letter> response = new Letter.RequestBuilder()
+                .setDescription("Test Letter with Size")
+                .setFile("<h1>Hello Lob</h1>")
+                .setSize(expectedSize)
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setFrom(
+                        new Address.RequestBuilder()
+                                .setName("Nathan")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setColor(true)
+                .setDoubleSided(false)
+                .setAddressPlacement("insert_blank_page")
+                .setMailType("usps_first_class")
+                .create();
+
+        response.getResponseBody();
     }
 
     @Test

@@ -78,6 +78,7 @@ public class Letter extends APIResource {
     @JsonProperty private final ZonedDateTime dateCreated;
     @JsonProperty private final ZonedDateTime dateModified;
     @JsonProperty private final ZonedDateTime sendDate;
+    @JsonProperty private final LetterSize letterSize;
     @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final boolean deleted;
     @JsonProperty private final String object;
@@ -108,6 +109,7 @@ public class Letter extends APIResource {
             @JsonProperty("date_created") final ZonedDateTime dateCreated,
             @JsonProperty("date_modified") final ZonedDateTime dateModified,
             @JsonProperty("send_date") final ZonedDateTime sendDate,
+            @JsonProperty("size") final LetterSize letterSize,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("deleted") final boolean deleted,
             @JsonProperty("object") final String object) {
@@ -135,6 +137,7 @@ public class Letter extends APIResource {
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
         this.sendDate = sendDate;
+        this.letterSize = letterSize;
         this.metadata = metadata;
         this.deleted = deleted;
         this.object = object;
@@ -234,6 +237,10 @@ public class Letter extends APIResource {
 
     public ZonedDateTime getSendDate() {
         return sendDate;
+    }
+
+    public LetterSize getLetterSize() {
+        return letterSize;
     }
 
     public Map<String, String> getMetadata() {
@@ -381,6 +388,14 @@ public class Letter extends APIResource {
 
         public RequestBuilder setSendDate(ZonedDateTime sendDate) {
             params.put("send_date", sendDate);
+            return this;
+        }
+
+        /**
+         * You may only set the Letter size if this is enabled for your account otherwise leave this field empty
+         */
+        public RequestBuilder setSize(LetterSize letterSize) {
+            params.put("size", letterSize);
             return this;
         }
 
