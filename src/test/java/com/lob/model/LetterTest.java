@@ -121,8 +121,10 @@ public class LetterTest extends BaseTest {
 
     @Test
     public void testCreateTemplateLetter() throws Exception {
+        String template = "tmpl_9610a8c3e16ce7b";
+
         LobResponse<Letter> response = new Letter.RequestBuilder()
-                .setFile("tmpl_c4aa2dc83ebad7e")
+                .setFile(template)
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
@@ -148,7 +150,7 @@ public class LetterTest extends BaseTest {
 
         assertEquals(200, response.getResponseCode());
         assertNotNull(letter.getId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", letter.getTemplateId());
+        assertEquals(template, letter.getTemplateId());
         assertNotNull(letter.getTemplateVersionId());
     }
 

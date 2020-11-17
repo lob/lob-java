@@ -197,9 +197,10 @@ public class CheckTest extends BaseTest {
 
     @Test
     public void testCreateTemplateCheck() throws Exception {
+        String template = "tmpl_9610a8c3e16ce7b";
         LobResponse<Check> response = new Check.RequestBuilder()
-                .setCheckBottom("tmpl_c4aa2dc83ebad7e")
-                .setAttachment("tmpl_c4aa2dc83ebad7e")
+                .setCheckBottom(template)
+                .setAttachment(template)
                 .setAmount("1.00")
                 .setTo(
                         new Address.RequestBuilder()
@@ -227,8 +228,8 @@ public class CheckTest extends BaseTest {
 
         assertEquals(200, response.getResponseCode());
         assertNotNull(check.getId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", check.getCheckBottomTemplateId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", check.getAttachmentTemplateId());
+        assertEquals(template, check.getCheckBottomTemplateId());
+        assertEquals(template, check.getAttachmentTemplateId());
         assertNotNull(check.getCheckBottomTemplateVersionId());
         assertNotNull(check.getAttachmentTemplateVersionId());
     }

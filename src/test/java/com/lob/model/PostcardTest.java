@@ -2,6 +2,8 @@ package com.lob.model;
 
 import com.lob.BaseTest;
 import com.lob.net.LobResponse;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -37,19 +39,47 @@ public class PostcardTest extends BaseTest {
         assertThat(response.getResponseBody().getData().get(0), instanceOf(Postcard.class));
     }
 
+    @Test @Ignore 
+    public void testCreatePostcardWithMetadata() throws Exception {
+        //can call this if your test postcard with metadata is missing in order to create it
+        String template = "tmpl_9610a8c3e16ce7b";
+        Map<String,String> metadata = new HashMap<>();
+        String value = "lob-java-key";
+        metadata.put("key0", value);
+        LobResponse<Postcard> createResponse = new Postcard.RequestBuilder()
+                .setFront(template)
+                .setBack(template)
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setSize("4x6")
+                .setMetadata(metadata)
+                .create();
+
+        assertEquals(200, createResponse.getResponseCode());
+    }
+
     @Test
     public void testListPostcardWithMetadata() throws Exception {
-        Map<String, String> metadata = new HashMap<String, String>();
-        metadata.put("key0", "8f43a8f2-360d-4fea-bdeb-6f545f084c74");
+        Map<String,String> metadata = new HashMap<>();
+        String value = "lob-java-key";
+        metadata.put("key0", value);
+        //if this test is failing, uncomment below, and see above testCreatePostcardWithMetadata()
+        //this.testCreatePostcardWithMetadata();
 
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
         params.put("metadata", metadata);
 
         LobResponse<PostcardCollection> response = Postcard.list(params);
 
         assertEquals(200, response.getResponseCode());
         assertEquals(1, response.getResponseBody().getCount());
-        assertEquals("psc_7cdbf7c54d44005d", response.getResponseBody().getData().get(0).getId());
         assertThat(response.getResponseBody().getData().get(0), instanceOf(Postcard.class));
     }
 
@@ -161,9 +191,11 @@ public class PostcardTest extends BaseTest {
 
     @Test
     public void testCreateTemplatePostcard() throws Exception {
+        String template = "tmpl_9610a8c3e16ce7b";
+
         LobResponse<Postcard> response = new Postcard.RequestBuilder()
-                .setFront("tmpl_c4aa2dc83ebad7e")
-                .setBack("tmpl_c4aa2dc83ebad7e")
+                .setFront(template)
+                .setBack(template)
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
@@ -180,8 +212,8 @@ public class PostcardTest extends BaseTest {
 
         assertEquals(200, response.getResponseCode());
         assertNotNull(postcard.getId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", postcard.getFrontTemplateId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", postcard.getBackTemplateId());
+        assertEquals(template, postcard.getFrontTemplateId());
+        assertEquals(template, postcard.getBackTemplateId());
         assertNotNull(postcard.getFrontTemplateVersionId());
         assertNotNull(postcard.getBackTemplateVersionId());
     }
