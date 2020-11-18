@@ -24,8 +24,8 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:https://github.com/lob/lob-java.git</connection>
-        <developerConnection>scm:git:https://github.com/lob/lob-java.git</developerConnection>
+        <connection>scm:git:git@github.com:lob/lob-java.git</connection>
+        <developerConnection>scm:git:git@github.com:lob/lob-java.git</developerConnection>
         <url>https://github.com/lob/lob-java</url>
         <tag>HEAD</tag>
     </scm>
