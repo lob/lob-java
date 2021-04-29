@@ -131,6 +131,13 @@ Lob.init("yourApiKey", "yourApiVersion");
     - [Delete a Bank Account](https://lob.com/docs/java#bankaccounts_delete)
     - [Verify a Bank Account](https://lob.com/docs/java#bankaccounts_verify)
     - [List all Bank Accounts](https://lob.com/docs/java#bankaccounts_list)
+- **Self Mailers API**
+  - [Self Mailers](https://lob.com/docs/php#self_mailers)
+    - [The Postcard Object](https://lob.com/docs/php#self_mailers_object)
+    - [Create a Postcard](https://lob.com/docs/php#self_mailers_create)
+    - [Retrieve a Postcard](https://lob.com/docs/php#self_mailers_retrieve)
+    - [Cancel a Postcard](https://lob.com/docs/php#self_mailers_delete)
+    - [List all Self Mailers](https://lob.com/docs/php#self_mailers_list)
 - **Resources**
   - [Countries](https://lob.com/docs/java#countries)
     - [List all Countries](https://lob.com/docs/java#countries_list)
