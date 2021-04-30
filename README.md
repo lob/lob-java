@@ -110,6 +110,13 @@ Lob.init("yourApiKey", "yourApiVersion");
     - [Retrieve a Postcard](https://lob.com/docs/java#postcards_retrieve)
     - [Cancel a Postcard](https://lob.com/docs/java#postcards_delete)
     - [List all Postcards](https://lob.com/docs/java#postcards_list)
+- **Self Mailers API**
+  - [Self Mailers](https://lob.com/docs/java#self_mailers)
+    - [The Self Mailer Object](https://lob.com/docs/java#self_mailers_object)
+    - [Create a Self Mailer](https://lob.com/docs/java#self_mailers_create)
+    - [Retrieve a Self Mailer](https://lob.com/docs/java#self_mailers_retrieve)
+    - [Cancel a Self Mailer](https://lob.com/docs/java#self_mailers_delete)
+    - [List all Self Mailers](https://lob.com/docs/java#self_mailers_list)
 - **Letters API**
   - [Letters](https://lob.com/docs/java#letters)
     - [The Letter Object](https://lob.com/docs/java#letters_object)

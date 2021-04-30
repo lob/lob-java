@@ -79,7 +79,7 @@ public class PostcardTest extends BaseTest {
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
-                                .setLine1("185 Berry St Ste 6100")
+                                .setLine1("210 King St")
                                 .setCity("San Francisco")
                                 .setState("CA")
                                 .setZip("94107")
@@ -140,7 +140,7 @@ public class PostcardTest extends BaseTest {
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
-                                .setLine1("185 Berry St Ste 6100")
+                                .setLine1("210 King St")
                                 .setCity("San Francisco")
                                 .setState("CA")
                                 .setZip("94107")
@@ -167,7 +167,7 @@ public class PostcardTest extends BaseTest {
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
-                                .setLine1("185 Berry St Ste 6100")
+                                .setLine1("210 King St")
                                 .setCity("San Francisco")
                                 .setState("CA")
                                 .setZip("94107")
@@ -197,7 +197,7 @@ public class PostcardTest extends BaseTest {
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
-                                .setLine1("185 Berry St Ste 6100")
+                                .setLine1("210 King St")
                                 .setCity("San Francisco")
                                 .setState("CA")
                                 .setZip("94107")
@@ -206,7 +206,7 @@ public class PostcardTest extends BaseTest {
                 .setFrom(
                         new Address.RequestBuilder()
                                 .setName("Donald Little")
-                                .setLine1("185 Berry St Ste 6100")
+                                .setLine1("210 King St")
                                 .setCity("San Francisco")
                                 .setState("CA")
                                 .setZip("94107")
@@ -257,7 +257,7 @@ public class PostcardTest extends BaseTest {
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
-                                .setLine1("185 Berry St Ste 6100")
+                                .setLine1("210 King St")
                                 .setCity("San Francisco")
                                 .setState("CA")
                                 .setZip("94107")
@@ -282,7 +282,7 @@ public class PostcardTest extends BaseTest {
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
-                                .setLine1("185 Berry St Ste 6100")
+                                .setLine1("210 King St")
                                 .setCity("San Francisco")
                                 .setState("CA")
                                 .setZip("94107")
