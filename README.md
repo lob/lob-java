@@ -8,14 +8,15 @@ Java wrapper for the [Lob.com](https://lob.com) API. See the full Lob.com [API D
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
-  - [Registration](#registration)
-  - [Installation](#installation)
-  - [Usage](#usage)
-- [Examples](#examples)
-- [API Documentation](#api-documentation)
-- [Contributing](#contributing)
-- [Testing](#testing)
+- [lob-java](#lob-java)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+    - [Registration](#registration)
+    - [Installation](#installation)
+    - [Usage](#usage)
+      - [Initialization and Configuration](#initialization-and-configuration)
+  - [API Documentation](#api-documentation)
+  - [Testing](#testing)
 
 ## Getting Started
 
@@ -43,7 +44,7 @@ Include the following in your `pom.xml` for Maven:
   <dependency>
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
-    <version>12.0.0</version>
+    <version>12.1.0</version>
   </dependency>
   ...
 </dependencies>
@@ -52,7 +53,7 @@ Include the following in your `pom.xml` for Maven:
 Gradle:
 
 ```groovy
-compile 'com.lob:lob-java:12.0.0'
+compile 'com.lob:lob-java:12.1.0'
 ```
 
 ### Usage
