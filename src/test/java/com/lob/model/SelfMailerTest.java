@@ -188,7 +188,7 @@ public class SelfMailerTest extends BaseTest {
         assertNotNull(selfMailer.getTo());
         assertEquals("LOB.COM", selfMailer.getTo().getCompany());
         assertNotNull(selfMailer.getFrom());
-        assertEquals("Donald Little", selfMailer.getFrom().getName());
+        assertEquals("DONALD LITTLE", selfMailer.getFrom().getName());
         assertNotNull(selfMailer.getUrl());
         assertNull(selfMailer.getOutsideTemplateId());
         assertNull(selfMailer.getInsideTemplateId());
@@ -248,7 +248,7 @@ public class SelfMailerTest extends BaseTest {
         assertNotNull(selfMailer.getTo());
         assertEquals("LOB.COM", selfMailer.getTo().getCompany());
         assertNotNull(selfMailer.getFrom());
-        assertEquals("Donald Little", selfMailer.getFrom().getName());
+        assertEquals("DONALD LITTLE", selfMailer.getFrom().getName());
         assertNotNull(selfMailer.getUrl());
         assertNull(selfMailer.getOutsideTemplateId());
         assertNull(selfMailer.getInsideTemplateId());
