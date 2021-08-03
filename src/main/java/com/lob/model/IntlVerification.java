@@ -195,6 +195,10 @@ public class IntlVerification extends APIResource {
             return this;
         }
 
+        public Map<String, Object> build() {
+            return params;
+        }
+
         public LobResponse<IntlVerification> verify() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
             return verify(null);
         }

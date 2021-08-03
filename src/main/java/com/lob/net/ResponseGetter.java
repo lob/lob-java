@@ -124,6 +124,20 @@ public class ResponseGetter implements IResponseGetter {
         return conn;
     }
 
+    private static java.net.HttpURLConnection createJsonPostConnection(String url, String data, String query, RequestOptions options) throws IOException {
+        String getURL = query.isEmpty() ? url : String.format("%s?%s", url, query);
+        java.net.HttpURLConnection conn = createDefaultConnection(getURL, options);
+
+        conn.setDoOutput(true);
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", String.format("application/json;charset=%s", APIResource.CHARSET));
+
+        try (OutputStream output = conn.getOutputStream()) {
+            output.write(data.getBytes(APIResource.CHARSET));
+        }
+        return conn;
+    }
+
     private static java.net.HttpURLConnection createDeleteConnection(String url, RequestOptions options) throws IOException {
         java.net.HttpURLConnection conn = createDefaultConnection(url, options);
 
@@ -286,14 +300,27 @@ public class ResponseGetter implements IResponseGetter {
         }
 
         String lobURL = String.format("%s%s", Lob.API_BASE_URL, url);
-
         if (type == APIResource.RequestType.MULTIPART) {
             return makeMultipartConnectionRequest(method, clazz, lobURL, data, options);
+        } else if (method == POST && type == APIResource.RequestType.JSON) {
+            java.net.HttpURLConnection conn = null;
+            try {
+                String jsonString = MAPPER.writeValueAsString(data);
+                String qs = createQuery(query);
+                conn = createJsonPostConnection(lobURL, jsonString, qs, options);
+                return handleConnectionResponse(conn, clazz);
+            } catch (IOException e) {
+                throw e;
+            } finally {
+                if (conn != null) {
+                    conn.disconnect();
+                }
+            }
         }
-
         String encodedData = createQuery(data);
         String queryString = createQuery(query);
         return makeURLConnectionRequest(method, clazz, lobURL, encodedData, queryString, options);
+
     }
 
 }

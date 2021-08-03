@@ -19,7 +19,7 @@ public abstract class APIResource  {
     }
 
     public enum RequestType {
-        NORMAL, MULTIPART
+        NORMAL, MULTIPART, JSON
     }
 
     public static <T> LobResponse<T> request(APIResource.RequestMethod method, APIResource.RequestType type,
