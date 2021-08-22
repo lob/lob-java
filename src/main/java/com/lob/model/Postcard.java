@@ -47,6 +47,7 @@ public class Postcard extends APIResource {
     @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final boolean deleted;
     @JsonProperty private final String object;
+    @JsonProperty private final String billingGroupId;
 
     @JsonCreator
     public Postcard(
@@ -71,7 +72,8 @@ public class Postcard extends APIResource {
             @JsonProperty("send_date") final ZonedDateTime sendDate,
             @JsonProperty("metadata") final Map<String, String> metadata,
             @JsonProperty("deleted") final boolean deleted,
-            @JsonProperty("object") final String object) {
+            @JsonProperty("object") final String object,
+            @JsonProperty("billing_group_id") final String billingGroupId) {
         this.id = id;
         this.description = description;
         this.to = to;
@@ -94,6 +96,7 @@ public class Postcard extends APIResource {
         this.metadata = metadata;
         this.deleted = deleted;
         this.object = object;
+        this.billingGroupId = billingGroupId;
     }
 
     public String getId() {
@@ -184,6 +187,10 @@ public class Postcard extends APIResource {
         return object;
     }
 
+    public String getBillingGroupId() {
+        return billingGroupId;
+    }
+
     @Override
     public String toString() {
         return "Postcard{" +
@@ -209,7 +216,8 @@ public class Postcard extends APIResource {
                 ", mailType='" + mailType + '\'' +
                 ", metadata=" + metadata +
                 ", deleted=" + deleted +
-                ", object='" + object + '\'' +
+                ", object=" + object +
+                ", billingGroupId='" + billingGroupId + '\'' +
                 '}';
     }
 
@@ -302,6 +310,10 @@ public class Postcard extends APIResource {
             return this;
         }
 
+        public RequestBuilder setBillingGroupId(String billingGroupId) {
+            params.put("billing_group_id", billingGroupId);
+            return this;
+        }
 
         public LobResponse<Postcard> create() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
             return create(null);
