@@ -82,37 +82,39 @@ public class Letter extends APIResource {
     @JsonProperty private final Map<String, String> metadata;
     @JsonProperty private final boolean deleted;
     @JsonProperty private final String object;
+    @JsonProperty private final String billingGroupId;
 
     @JsonCreator
     public Letter(
-            @JsonProperty("id") final String id,
-            @JsonProperty("description") final String description,
-            @JsonProperty("to") final Address to,
-            @JsonProperty("from") final Address from,
-            @JsonProperty("color") final boolean color,
-            @JsonProperty("double_sided") final boolean doubleSided,
-            @JsonProperty("address_placement") final String addressPlacement,
-            @JsonProperty("return_envelope") final boolean returnEnvelope,
-            @JsonProperty("perforated_page") final Integer perforatedPage,
-            @JsonProperty("extra_service") final String extraService,
-            @JsonProperty("mail_type") final String mailType,
-            @JsonProperty("url") final String url,
-            @JsonProperty("template_id") final String templateId,
-            @JsonProperty("template_version_id") final String templateVersionId,
-            @JsonProperty("carrier") final String carrier,
-            @JsonProperty("tracking_number") final String trackingNumber,
-            @JsonProperty("tracking_events") final List<TrackingEvent> trackingEvents,
-            @JsonProperty("thumbnails") final List<Thumbnail> thumbnails,
-            @JsonProperty("custom_envelope") final CustomEnvelope customEnvelope,
-            @JsonProperty("merge_variables") final Map<String, Object> mergeVariables,
-            @JsonProperty("expected_delivery_date") final LocalDate expectedDeliveryDate,
-            @JsonProperty("date_created") final ZonedDateTime dateCreated,
-            @JsonProperty("date_modified") final ZonedDateTime dateModified,
-            @JsonProperty("send_date") final ZonedDateTime sendDate,
-            @JsonProperty("size") final LetterSize letterSize,
-            @JsonProperty("metadata") final Map<String, String> metadata,
-            @JsonProperty("deleted") final boolean deleted,
-            @JsonProperty("object") final String object) {
+        @JsonProperty("id") final String id,
+        @JsonProperty("description") final String description,
+        @JsonProperty("to") final Address to,
+        @JsonProperty("from") final Address from,
+        @JsonProperty("color") final boolean color,
+        @JsonProperty("double_sided") final boolean doubleSided,
+        @JsonProperty("address_placement") final String addressPlacement,
+        @JsonProperty("return_envelope") final boolean returnEnvelope,
+        @JsonProperty("perforated_page") final Integer perforatedPage,
+        @JsonProperty("extra_service") final String extraService,
+        @JsonProperty("mail_type") final String mailType,
+        @JsonProperty("url") final String url,
+        @JsonProperty("template_id") final String templateId,
+        @JsonProperty("template_version_id") final String templateVersionId,
+        @JsonProperty("carrier") final String carrier,
+        @JsonProperty("tracking_number") final String trackingNumber,
+        @JsonProperty("tracking_events") final List<TrackingEvent> trackingEvents,
+        @JsonProperty("thumbnails") final List<Thumbnail> thumbnails,
+        @JsonProperty("custom_envelope") final CustomEnvelope customEnvelope,
+        @JsonProperty("merge_variables") final Map<String, Object> mergeVariables,
+        @JsonProperty("expected_delivery_date") final LocalDate expectedDeliveryDate,
+        @JsonProperty("date_created") final ZonedDateTime dateCreated,
+        @JsonProperty("date_modified") final ZonedDateTime dateModified,
+        @JsonProperty("send_date") final ZonedDateTime sendDate,
+        @JsonProperty("size") final LetterSize letterSize,
+        @JsonProperty("metadata") final Map<String, String> metadata,
+        @JsonProperty("deleted") final boolean deleted,
+        @JsonProperty("object") final String object,
+        @JsonProperty("billing_group_id") final String billingGroupId) {
         this.id = id;
         this.description = description;
         this.to = to;
@@ -141,6 +143,7 @@ public class Letter extends APIResource {
         this.metadata = metadata;
         this.deleted = deleted;
         this.object = object;
+        this.billingGroupId = billingGroupId;
     }
 
     public String getId() {
@@ -255,6 +258,10 @@ public class Letter extends APIResource {
         return object;
     }
 
+    public String getBillingGroupId() {
+        return billingGroupId;
+    }
+
     @Override
     public String toString() {
         return "Letter{" +
@@ -284,7 +291,8 @@ public class Letter extends APIResource {
                 ", sendDate=" + sendDate +
                 ", metadata=" + metadata +
                 ", deleted=" + deleted +
-                ", object='" + object + '\'' +
+                ", object=" + object +
+                ", billingGroupId='" + billingGroupId + '\'' +
                 '}';
     }
 
@@ -405,6 +413,10 @@ public class Letter extends APIResource {
             return this;
         }
 
+        public RequestBuilder setBillingGroupId(String billingGroupId) {
+            params.put("billing_group_id", billingGroupId);
+            return this;
+        }
 
         public LobResponse<Letter> create() throws APIException, IOException, AuthenticationException, InvalidRequestException, RateLimitException {
             return create(null);
