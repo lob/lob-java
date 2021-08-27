@@ -44,7 +44,7 @@ Include the following in your `pom.xml` for Maven:
   <dependency>
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
-    <version>12.1.0</version>
+    <version>12.2.0</version>
   </dependency>
   ...
 </dependencies>
@@ -53,7 +53,7 @@ Include the following in your `pom.xml` for Maven:
 Gradle:
 
 ```groovy
-compile 'com.lob:lob-java:12.1.0'
+compile 'com.lob:lob-java:12.2.0'
 ```
 
 ### Usage
@@ -97,6 +97,7 @@ Lob.init("yourApiKey", "yourApiVersion");
   - [US Verification API](https://lob.com/docs/java#us_verifications)
     - [The US Verification Object](https://lob.com/docs/java#us_verifications_object)
     - [Verify a US Address](https://lob.com/docs/java#us_verifications_create)
+    - [Bulk Verify US Addresses](https://lob.com/docs/java#us_verifications_bulk_create)
   - [US Autocompletion API](https://lob.com/docs/java#us_autocompletions)
     - [The US Autocompletion Object](https://lob.com/docs/java#us_autocompletions_object)
     - [Autocomplete a US Address](https://lob.com/docs/java#us_autocompletions_create)
@@ -104,6 +105,7 @@ Lob.init("yourApiKey", "yourApiVersion");
 - **Int'l Verification API**
   - [International Verifications](https://lob.com/docs/java#intl_verifications)
     - [Verify an International Address](https://lob.com/docs/java#intl_verifications_create)
+    - [Bulk Verify International Addresses](https://lob.com/docs/java#intl_verifications_bulk_create)
 - **Postcards API**
   - [Postcards](https://lob.com/docs/java#postcards)
     - [The Postcard Object](https://lob.com/docs/java#postcards_object)
