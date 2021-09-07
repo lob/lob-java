@@ -255,8 +255,8 @@ public class Check extends APIResource {
                 ", sendDate=" + sendDate +
                 ", metadata=" + metadata +
                 ", deleted=" + deleted +
-                ", object=" + object +
                 ", billingGroupId='" + billingGroupId + '\'' +
+                ", object=" + object +
                 '}';
     }
 

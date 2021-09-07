@@ -216,8 +216,8 @@ public class SelfMailer extends APIResource {
                 ", mailType='" + mailType + '\'' +
                 ", metadata=" + metadata +
                 ", deleted=" + deleted +
-                ", object=" + object +
                 ", billingGroupId='" + billingGroupId + '\'' +
+                ", object=" + object +
                 '}';
     }
 
