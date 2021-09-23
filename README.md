@@ -8,15 +8,13 @@ Java wrapper for the [Lob.com](https://lob.com) API. See the full Lob.com [API D
 
 ## Table of Contents
 
-- [lob-java](#lob-java)
-  - [Table of Contents](#table-of-contents)
-  - [Getting Started](#getting-started)
-    - [Registration](#registration)
-    - [Installation](#installation)
-    - [Usage](#usage)
-      - [Initialization and Configuration](#initialization-and-configuration)
-  - [API Documentation](#api-documentation)
-  - [Testing](#testing)
+- [Table of Contents](#table-of-contents)
+- [Getting Started](#getting-started)
+  - [Registration](#registration)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Initialization and Configuration](#initialization-and-configuration)
+- [Testing](#testing)
 
 ## Getting Started
 
@@ -27,7 +25,7 @@ Here's a general overview of the Lob services available, click through to read m
 - [Checks API](https://lob.com/products/print-mail/checks)
 - [Address Verification API](https://lob.com/products/address-verification)
 
-Please read through the official [API Documentation](#api-documentation) to get a complete sense of what to expect from each endpoint.
+Please read through the official [API Documentation](https://docs.lob.com/) to get a complete sense of what to expect from each endpoint.
 
 ### Registration
 
@@ -73,87 +71,6 @@ import com.lob;
 
 Lob.init("yourApiKey", "yourApiVersion");
 ```
-
-## API Documentation
-
-- [Introduction](https://lob.com/docs/java#introduction)
-- [Versioning](https://lob.com/docs/java#version)
-- [Errors](https://lob.com/docs/java#errors)
-- [Rate Limiting](https://lob.com/docs/java#rate-limits)
-- [Webhooks](https://lob.com/docs/java#webhooks)
-- [Cancellation Windows](https://lob.com/docs/java#cancellation)
-- [Scheduled Mailings](https://lob.com/docs/java#scheduled)
-- [Metadata](https://lob.com/docs/java#metadata)
-- [HTML Templates](https://lob.com/docs/java#templates)
-- [Asset URLs](https://lob.com/docs/java#urls)
-- **Addresses**
-  - [Address Book](https://lob.com/docs/java#addresses)
-    - [The Address Object](https://lob.com/docs/java#addresses_object)
-    - [Create an Address](https://lob.com/docs/java#addresses_create)
-    - [Retrieve an Address](https://lob.com/docs/java#addresses_retrieve)
-    - [Delete an Address](https://lob.com/docs/java#addresses_delete)
-    - [List all Addresses](https://lob.com/docs/java#addresses_list)
-- **US Verification API**
-  - [US Verification API](https://lob.com/docs/java#us_verifications)
-    - [The US Verification Object](https://lob.com/docs/java#us_verifications_object)
-    - [Verify a US Address](https://lob.com/docs/java#us_verifications_create)
-    - [Bulk Verify US Addresses](https://lob.com/docs/java#us_verifications_bulk_create)
-  - [US Autocompletion API](https://lob.com/docs/java#us_autocompletions)
-    - [The US Autocompletion Object](https://lob.com/docs/java#us_autocompletions_object)
-    - [Autocomplete a US Address](https://lob.com/docs/java#us_autocompletions_create)
-    - [The US Autocompletion Test Environment](https://lob.com/docs/java#us-autocompletions-test-environment)
-- **Int'l Verification API**
-  - [International Verifications](https://lob.com/docs/java#intl_verifications)
-    - [Verify an International Address](https://lob.com/docs/java#intl_verifications_create)
-    - [Bulk Verify International Addresses](https://lob.com/docs/java#intl_verifications_bulk_create)
-- **Postcards API**
-  - [Postcards](https://lob.com/docs/java#postcards)
-    - [The Postcard Object](https://lob.com/docs/java#postcards_object)
-    - [Create a Postcard](https://lob.com/docs/java#postcards_create)
-    - [Retrieve a Postcard](https://lob.com/docs/java#postcards_retrieve)
-    - [Cancel a Postcard](https://lob.com/docs/java#postcards_delete)
-    - [List all Postcards](https://lob.com/docs/java#postcards_list)
-- **Self Mailers API**
-  - [Self Mailers](https://lob.com/docs/java#self_mailers)
-    - [The Self Mailer Object](https://lob.com/docs/java#self_mailers_object)
-    - [Create a Self Mailer](https://lob.com/docs/java#self_mailers_create)
-    - [Retrieve a Self Mailer](https://lob.com/docs/java#self_mailers_retrieve)
-    - [Cancel a Self Mailer](https://lob.com/docs/java#self_mailers_delete)
-    - [List all Self Mailers](https://lob.com/docs/java#self_mailers_list)
-- **Letters API**
-  - [Letters](https://lob.com/docs/java#letters)
-    - [The Letter Object](https://lob.com/docs/java#letters_object)
-    - [Create a Letter](https://lob.com/docs/java#letters_create)
-    - [Retrieve a Letter](https://lob.com/docs/java#letters_retrieve)
-    - [Cancel a Letter](https://lob.com/docs/java#letters_delete)
-    - [List all Letters](https://lob.com/docs/java#letters_list)
-- **Checks API**
-  - [Checks](https://lob.com/docs/java#checks)
-    - [The Check Object](https://lob.com/docs/java#checks_object)
-    - [Create a Check](https://lob.com/docs/java#checks_create)
-    - [Retrieve a Check](https://lob.com/docs/java#checks_retrieve)
-    - [Cancel a Check](https://lob.com/docs/java#checks_delete)
-    - [List all Checks](https://lob.com/docs/java#checks_list)
-  - [Bank Accounts](https://lob.com/docs/java#bank-accounts)
-    - [The Bank Account Object](https://lob.com/docs/java#bankaccounts_object)
-    - [Create a Bank Account](https://lob.com/docs/java#bankaccounts_create)
-    - [Retrieve a Bank Account](https://lob.com/docs/java#bankaccounts_retrieve)
-    - [Delete a Bank Account](https://lob.com/docs/java#bankaccounts_delete)
-    - [Verify a Bank Account](https://lob.com/docs/java#bankaccounts_verify)
-    - [List all Bank Accounts](https://lob.com/docs/java#bankaccounts_list)
-- **Resources**
-  - [Countries](https://lob.com/docs/java#countries)
-    - [List all Countries](https://lob.com/docs/java#countries_list)
-  - [States](https://lob.com/docs/java#states)
-    - [List all States](https://lob.com/docs/java#states_list)
-- **Appendix**
-  - [API Changelog](https://lob.com/docs/java#changelog)
-  - [The Tracking Event Object](https://lob.com/docs/java#tracking_event_object)
-  - [Events](https://lob.com/docs/java#events)
-  - [HTML Examples](https://lob.com/docs/java#html-examples)
-  - [Image Prepping](https://lob.com/docs/java#prepping)
-  - [US Verification Details](https://lob.com/docs/java#us_verification_details)
-
 
 ## Testing
 
