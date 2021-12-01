@@ -79,7 +79,7 @@ public class LetterTest extends BaseTest {
                 .setColor(true)
                 .setDoubleSided(false)
                 .setAddressPlacement("insert_blank_page")
-                .setReturnEnvelope(true)
+                .setUseDefaultReturnEnvelope(true)
                 .setPerforatedPage(1)
                 .setReturnAddress(
                         new Address.RequestBuilder()
@@ -107,6 +107,7 @@ public class LetterTest extends BaseTest {
         assertFalse(letter.isDoubleSided());
         assertEquals("insert_blank_page", letter.getAddressPlacement());
         assertTrue(letter.isReturnEnvelope());
+        assertNotNull(letter.getReturnEnvelope().getAlias());
         assertNotNull(letter.getReturnAddress());
         assertEquals(new Integer(2), letter.getPerforatedPage());
         assertNull(letter.getExtraService());

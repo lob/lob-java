@@ -54,6 +54,41 @@ public class Letter extends APIResource {
         }
     }
 
+    public static class ReturnEnvelope {
+        @JsonProperty private final String id;
+        @JsonProperty private final String alias;
+        @JsonProperty private final String url;
+        @JsonProperty private final String object;
+
+        @JsonCreator
+        public ReturnEnvelope(
+                @JsonProperty("id") final String id,
+                @JsonProperty("alias") final String alias,
+                @JsonProperty("url") final String url,
+                @JsonProperty("object") final String object) {
+            this.id = id;
+            this.alias = alias;
+            this.url = url;
+            this.object = object;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public String getAlias() {
+            return alias;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public String getObject() {
+            return object;
+        }
+    }
+
     @JsonProperty private final String id;
     @JsonProperty private final String description;
     @JsonProperty private final Address to;
@@ -61,7 +96,7 @@ public class Letter extends APIResource {
     @JsonProperty private final boolean color;
     @JsonProperty private final boolean doubleSided;
     @JsonProperty private final String addressPlacement;
-    @JsonProperty private final Object returnEnvelope;
+    @JsonProperty private final ReturnEnvelope returnEnvelope;
     @JsonProperty private final Address returnAddress;
     @JsonProperty private final Integer perforatedPage;
     @JsonProperty private final String extraService;
@@ -94,7 +129,7 @@ public class Letter extends APIResource {
         @JsonProperty("color") final boolean color,
         @JsonProperty("double_sided") final boolean doubleSided,
         @JsonProperty("address_placement") final String addressPlacement,
-        @JsonProperty("return_envelope") final Object returnEnvelope,
+        @JsonProperty("return_envelope") final ReturnEnvelope returnEnvelope,
         @JsonProperty("return_address") final Address returnAddress,
         @JsonProperty("perforated_page") final Integer perforatedPage,
         @JsonProperty("extra_service") final String extraService,
@@ -181,7 +216,7 @@ public class Letter extends APIResource {
         return returnEnvelope != null;
     }
 
-    public Object getReturnEnvelope() { return returnEnvelope; }
+    public ReturnEnvelope getReturnEnvelope() { return returnEnvelope; }
 
     public Address getReturnAddress() { return returnAddress; }
 
@@ -371,8 +406,12 @@ public class Letter extends APIResource {
             return this;
         }
 
-        public RequestBuilder setReturnEnvelope(boolean returnEnvelope) {
+        public RequestBuilder setUseDefaultReturnEnvelope(boolean returnEnvelope) {
             params.put("return_envelope", returnEnvelope);
+            return this;
+        }
+        public RequestBuilder setReturnEnvelope(String alias) {
+            params.put("return_envelope", alias);
             return this;
         }
 
