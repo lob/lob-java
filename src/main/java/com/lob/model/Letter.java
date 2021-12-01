@@ -61,7 +61,8 @@ public class Letter extends APIResource {
     @JsonProperty private final boolean color;
     @JsonProperty private final boolean doubleSided;
     @JsonProperty private final String addressPlacement;
-    @JsonProperty private final boolean returnEnvelope;
+    @JsonProperty private final Object returnEnvelope;
+    @JsonProperty private final Address returnAddress;
     @JsonProperty private final Integer perforatedPage;
     @JsonProperty private final String extraService;
     @JsonProperty private final String mailType;
@@ -93,7 +94,8 @@ public class Letter extends APIResource {
         @JsonProperty("color") final boolean color,
         @JsonProperty("double_sided") final boolean doubleSided,
         @JsonProperty("address_placement") final String addressPlacement,
-        @JsonProperty("return_envelope") final boolean returnEnvelope,
+        @JsonProperty("return_envelope") final Object returnEnvelope,
+        @JsonProperty("return_address") final Address returnAddress,
         @JsonProperty("perforated_page") final Integer perforatedPage,
         @JsonProperty("extra_service") final String extraService,
         @JsonProperty("mail_type") final String mailType,
@@ -123,6 +125,7 @@ public class Letter extends APIResource {
         this.doubleSided = doubleSided;
         this.addressPlacement = addressPlacement;
         this.returnEnvelope = returnEnvelope;
+        this.returnAddress = returnAddress;
         this.perforatedPage = perforatedPage;
         this.extraService = extraService;
         this.mailType = mailType;
@@ -175,8 +178,10 @@ public class Letter extends APIResource {
     }
 
     public boolean isReturnEnvelope() {
-        return returnEnvelope;
+        return true;
     }
+
+    public Address getReturnAddress() { return returnAddress; }
 
     public Integer getPerforatedPage() {
         return perforatedPage;
@@ -371,6 +376,11 @@ public class Letter extends APIResource {
 
         public RequestBuilder setPerforatedPage(int perforatedPage) {
             params.put("perforated_page", perforatedPage);
+            return this;
+        }
+
+        public RequestBuilder setReturnAddress(Address.RequestBuilder returnAddress) {
+            params.put("return_address", returnAddress.build());
             return this;
         }
 

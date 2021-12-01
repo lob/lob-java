@@ -81,6 +81,15 @@ public class LetterTest extends BaseTest {
                 .setAddressPlacement("insert_blank_page")
                 .setReturnEnvelope(true)
                 .setPerforatedPage(1)
+                .setReturnAddress(
+                        new Address.RequestBuilder()
+                            .setName("Reply To Address")
+                            .setLine1("185 Berry St Ste 6100")
+                            .setCity("San Francisco")
+                            .setState("CA")
+                            .setZip("94107")
+                            .setCountry("US")
+                )
                 .setMetadata(metadata)
                 .setMailType("usps_first_class")
                 .create();
@@ -98,6 +107,7 @@ public class LetterTest extends BaseTest {
         assertFalse(letter.isDoubleSided());
         assertEquals("insert_blank_page", letter.getAddressPlacement());
         assertTrue(letter.isReturnEnvelope());
+        assertNotNull(letter.getReturnAddress());
         assertEquals(new Integer(2), letter.getPerforatedPage());
         assertNull(letter.getExtraService());
         assertEquals("usps_first_class", letter.getMailType());
