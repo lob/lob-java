@@ -178,8 +178,10 @@ public class Letter extends APIResource {
     }
 
     public boolean isReturnEnvelope() {
-        return true;
+        return returnEnvelope != null;
     }
+
+    public Object getReturnEnvelope() { return returnEnvelope; }
 
     public Address getReturnAddress() { return returnAddress; }
 
