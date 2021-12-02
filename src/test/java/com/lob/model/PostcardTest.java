@@ -4,6 +4,7 @@ import com.lob.BaseTest;
 import com.lob.net.LobResponse;
 import org.junit.Test;
 
+import javax.xml.transform.Templates;
 import java.io.File;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
@@ -47,7 +48,7 @@ public class PostcardTest extends BaseTest {
 
         LobResponse<Postcard> createResponse = new Postcard.RequestBuilder()
                 .setDescription("Test Postcard with Merge Variable List")
-                .setFront("<html>{{#list}} {{name}} {{/list}}</html>")
+                .setFront("<html>Content</html>")
                 .setBack("<h1>Back</h1>")
                 .setMetadata(metadata)
                 .setTo(
@@ -179,6 +180,8 @@ public class PostcardTest extends BaseTest {
 
     @Test
     public void testCreateTemplatePostcard() throws Exception {
+
+
         LobResponse<Postcard> response = new Postcard.RequestBuilder()
                 .setFront("tmpl_c4aa2dc83ebad7e")
                 .setBack("tmpl_c4aa2dc83ebad7e")

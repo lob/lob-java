@@ -71,6 +71,13 @@ public class Letter extends APIResource {
             this.url = url;
             this.object = object;
         }
+        @JsonCreator
+        public ReturnEnvelope(boolean useDefault) {
+            this.id = null;
+            this.alias = null;
+            this.url = null;
+            this.object = null;
+        }
 
         public String getId() {
             return id;

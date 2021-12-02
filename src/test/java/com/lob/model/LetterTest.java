@@ -356,7 +356,7 @@ public class LetterTest extends BaseTest {
     @Test
     public void testDeleteLetter() throws Exception {
         Letter letter = new Letter.RequestBuilder()
-                .setFile("<h1>Hello {{name}}</h1>")
+                .setFile("<h1>Hello</h1>")
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")

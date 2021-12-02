@@ -48,7 +48,7 @@ public class SelfMailerTest extends BaseTest {
         LobResponse<SelfMailer> createResponse = new SelfMailer.RequestBuilder()
                 .setDescription("Test Self Mailer with MetaData")
                 .setOutside("<h1>Outside</h1>")
-                .setInside("<html>{{#list}} {{name}} {{/list}}</html>")
+                .setInside("<html>Content</html>")
                 .setMetadata(metadata)
                 .setTo(
                         new Address.RequestBuilder()
