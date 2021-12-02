@@ -45,11 +45,29 @@ public class PostcardTest extends BaseTest {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("metadata", metadata);
 
+        LobResponse<Postcard> createResponse = new Postcard.RequestBuilder()
+                .setDescription("Test Postcard with Merge Variable List")
+                .setFront("<html>{{#list}} {{name}} {{/list}}</html>")
+                .setBack("<h1>Back</h1>")
+                .setMetadata(metadata)
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("210 King St")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setSize("4x6")
+                .setMailType("usps_first_class")
+                .create();
+        assertEquals(200, createResponse.getResponseCode());
+
         LobResponse<PostcardCollection> response = Postcard.list(params);
 
         assertEquals(200, response.getResponseCode());
-        assertEquals(1, response.getResponseBody().getCount());
-        assertEquals("psc_7cdbf7c54d44005d", response.getResponseBody().getData().get(0).getId());
+        assertTrue(response.getResponseBody().getCount() > 0);
         assertThat(response.getResponseBody().getData().get(0), instanceOf(Postcard.class));
     }
 
