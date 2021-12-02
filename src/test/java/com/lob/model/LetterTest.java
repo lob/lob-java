@@ -79,7 +79,7 @@ public class LetterTest extends BaseTest {
                 .setColor(true)
                 .setDoubleSided(false)
                 .setAddressPlacement("insert_blank_page")
-                .setUseDefaultReturnEnvelope(true)
+                .setReturnEnvelope(true)
                 .setPerforatedPage(1)
                 .setReturnAddress(
                         new Address.RequestBuilder()

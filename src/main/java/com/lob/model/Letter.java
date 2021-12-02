@@ -406,12 +406,12 @@ public class Letter extends APIResource {
             return this;
         }
 
-        public RequestBuilder setUseDefaultReturnEnvelope(boolean returnEnvelope) {
-            params.put("return_envelope", returnEnvelope);
-            return this;
-        }
         public RequestBuilder setReturnEnvelope(String alias) {
             params.put("return_envelope", alias);
+            return this;
+        }
+        public RequestBuilder setReturnEnvelope(boolean useDefault) {
+            params.put("return_envelope", useDefault);
             return this;
         }
 
