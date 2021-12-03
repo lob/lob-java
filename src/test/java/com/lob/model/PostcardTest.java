@@ -1,10 +1,11 @@
 package com.lob.model;
 
 import com.lob.BaseTest;
+import com.lob.Lob;
 import com.lob.net.LobResponse;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.xml.transform.Templates;
 import java.io.File;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
@@ -16,6 +17,26 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.*;
 
 public class PostcardTest extends BaseTest {
+
+    private static String templateId;
+
+    @BeforeClass
+    public static void beforeClass() {
+        Lob.init(System.getenv("LOB_API_KEY"));
+
+        try {
+            LobResponse<Template> templateResponse = new Template.RequestBuilder()
+                    .setDescription("Test Template")
+                    .setHtml("<h1>Hello</h1>")
+                    .setEngine("handlebars")
+                    .create();
+
+            Template template = templateResponse.getResponseBody();
+            templateId = template.getId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void testListPostcards() throws Exception {
@@ -180,11 +201,9 @@ public class PostcardTest extends BaseTest {
 
     @Test
     public void testCreateTemplatePostcard() throws Exception {
-
-
         LobResponse<Postcard> response = new Postcard.RequestBuilder()
-                .setFront("tmpl_c4aa2dc83ebad7e")
-                .setBack("tmpl_c4aa2dc83ebad7e")
+                .setFront(templateId)
+                .setBack(templateId)
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
@@ -201,8 +220,8 @@ public class PostcardTest extends BaseTest {
 
         assertEquals(200, response.getResponseCode());
         assertNotNull(postcard.getId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", postcard.getFrontTemplateId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", postcard.getBackTemplateId());
+        assertEquals(templateId, postcard.getFrontTemplateId());
+        assertEquals(templateId, postcard.getBackTemplateId());
         assertNotNull(postcard.getFrontTemplateVersionId());
         assertNotNull(postcard.getBackTemplateVersionId());
     }

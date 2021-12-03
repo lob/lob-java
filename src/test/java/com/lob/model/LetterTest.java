@@ -1,8 +1,10 @@
 package com.lob.model;
 
 import com.lob.BaseTest;
+import com.lob.Lob;
 import com.lob.exception.InvalidRequestException;
 import com.lob.net.LobResponse;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
@@ -14,6 +16,26 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.*;
 
 public class LetterTest extends BaseTest {
+
+    private static String templateId;
+
+    @BeforeClass
+    public static void beforeClass() {
+        Lob.init(System.getenv("LOB_API_KEY"));
+
+        try {
+            LobResponse<Template> templateResponse = new Template.RequestBuilder()
+                    .setDescription("Test Template")
+                    .setHtml("<h1>Hello</h1>")
+                    .setEngine("handlebars")
+                    .create();
+
+            Template template = templateResponse.getResponseBody();
+            templateId = template.getId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void testListLetters() throws Exception {
@@ -44,6 +66,123 @@ public class LetterTest extends BaseTest {
         Letter Letter = response.getResponseBody();
 
         assertEquals(testLetter.getId(), Letter.getId());
+    }
+
+    @Test
+    public void testCreateLetter() throws Exception {
+        LobResponse<Letter> response = new Letter.RequestBuilder()
+                .setDescription("Test Letter")
+                .setFile("<h1>Content}</h1>")
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setFrom(
+                        new Address.RequestBuilder()
+                                .setName("Donald")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setColor(true)
+                .create();
+
+        Letter letter = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(letter.getId());
+        assertFalse(letter.isReturnEnvelope());
+        assertNull(letter.getReturnAddress());
+    }
+
+    @Test
+    public void testCreateLetterWithDefaultReturnEnvelope() throws Exception {
+        LobResponse<Letter> response = new Letter.RequestBuilder()
+                .setDescription("Test Letter")
+                .setFile("<h1>Content}</h1>")
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setFrom(
+                        new Address.RequestBuilder()
+                                .setName("Donald")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setReturnEnvelope(true)
+                .setPerforatedPage(1)
+                .setColor(true)
+                .create();
+
+        Letter letter = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(letter.getId());
+        assertTrue(letter.isReturnEnvelope());
+        assertNotNull(letter.getReturnEnvelope().getAlias());
+        assertNull(letter.getReturnAddress());
+    }
+
+    @Test
+    public void testCreateLetterWithReturnEnvelope() throws Exception {
+        LobResponse<Letter> response = new Letter.RequestBuilder()
+                .setDescription("Test Letter")
+                .setFile("<h1>Content}</h1>")
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setFrom(
+                        new Address.RequestBuilder()
+                                .setName("Donald")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setReturnEnvelope(true)
+                .setPerforatedPage(1)
+                .setReturnAddress(
+                        new Address.RequestBuilder()
+                                .setName("Reply To Address")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setColor(true)
+                .create();
+
+        Letter letter = response.getResponseBody();
+
+        assertEquals(200, response.getResponseCode());
+        assertNotNull(letter.getId());
+        assertTrue(letter.isReturnEnvelope());
+        assertNotNull(letter.getReturnEnvelope().getAlias());
+        assertNotNull(letter.getReturnAddress());
     }
 
     @Test
@@ -81,15 +220,6 @@ public class LetterTest extends BaseTest {
                 .setAddressPlacement("insert_blank_page")
                 .setReturnEnvelope(true)
                 .setPerforatedPage(1)
-                .setReturnAddress(
-                        new Address.RequestBuilder()
-                            .setName("Reply To Address")
-                            .setLine1("185 Berry St Ste 6100")
-                            .setCity("San Francisco")
-                            .setState("CA")
-                            .setZip("94107")
-                            .setCountry("US")
-                )
                 .setMetadata(metadata)
                 .setMailType("usps_first_class")
                 .create();
@@ -106,9 +236,6 @@ public class LetterTest extends BaseTest {
         assertTrue(letter.isColor());
         assertFalse(letter.isDoubleSided());
         assertEquals("insert_blank_page", letter.getAddressPlacement());
-        assertTrue(letter.isReturnEnvelope());
-        assertNotNull(letter.getReturnEnvelope().getAlias());
-        assertNotNull(letter.getReturnAddress());
         assertEquals(new Integer(2), letter.getPerforatedPage());
         assertNull(letter.getExtraService());
         assertEquals("usps_first_class", letter.getMailType());
@@ -133,7 +260,7 @@ public class LetterTest extends BaseTest {
     @Test
     public void testCreateTemplateLetter() throws Exception {
         LobResponse<Letter> response = new Letter.RequestBuilder()
-                .setFile("tmpl_c4aa2dc83ebad7e")
+                .setFile(templateId)
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
@@ -159,8 +286,9 @@ public class LetterTest extends BaseTest {
 
         assertEquals(200, response.getResponseCode());
         assertNotNull(letter.getId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", letter.getTemplateId());
+        assertEquals(templateId, letter.getTemplateId());
         assertNotNull(letter.getTemplateVersionId());
+        assertFalse(letter.isReturnEnvelope());
     }
 
     @Test

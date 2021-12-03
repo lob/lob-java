@@ -220,7 +220,7 @@ public class Letter extends APIResource {
     }
 
     public boolean isReturnEnvelope() {
-        return returnEnvelope != null;
+        return returnEnvelope != null && returnEnvelope.getId() != null;
     }
 
     public ReturnEnvelope getReturnEnvelope() { return returnEnvelope; }
