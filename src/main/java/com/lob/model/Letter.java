@@ -71,13 +71,6 @@ public class Letter extends APIResource {
             this.url = url;
             this.object = object;
         }
-        @JsonCreator
-        public ReturnEnvelope(boolean useDefault) {
-            this.id = null;
-            this.alias = null;
-            this.url = null;
-            this.object = null;
-        }
 
         public String getId() {
             return id;
@@ -413,10 +406,11 @@ public class Letter extends APIResource {
             return this;
         }
 
-        public RequestBuilder setReturnEnvelope(String alias) {
-            params.put("return_envelope", alias);
+        public RequestBuilder setReturnEnvelope(String id) {
+            params.put("return_envelope", id);
             return this;
         }
+
         public RequestBuilder setReturnEnvelope(boolean useDefault) {
             params.put("return_envelope", useDefault);
             return this;
