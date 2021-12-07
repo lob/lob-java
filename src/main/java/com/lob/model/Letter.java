@@ -72,6 +72,17 @@ public class Letter extends APIResource {
             this.object = object;
         }
 
+        @JsonCreator
+        public ReturnEnvelope(boolean useDefault) {
+            // When a boolean value is provided by the API,
+            // it is always false and indicates that a
+            // return envelope is not used
+            this.id = null;
+            this.alias = null;
+            this.url = null;
+            this.object = null;
+        }
+
         public String getId() {
             return id;
         }
