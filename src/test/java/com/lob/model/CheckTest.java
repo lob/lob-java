@@ -19,6 +19,8 @@ public class CheckTest extends BaseTest {
 
     private static String VERIFIED_BANK_ACCOUNT;
 
+    private static String templateId;
+
     @BeforeClass
     public static void beforeClass() {
         Lob.init(System.getenv("LOB_API_KEY"));
@@ -37,6 +39,15 @@ public class CheckTest extends BaseTest {
             verificationAmounts.add(63);
 
             VERIFIED_BANK_ACCOUNT = BankAccount.verify(newBankAccount.getId(), verificationAmounts).getResponseBody().getId();
+
+            LobResponse<Template> templateResponse = new Template.RequestBuilder()
+                    .setDescription("Test Template")
+                    .setHtml("<h1>Hello</h1>")
+                    .setEngine("handlebars")
+                    .create();
+
+            Template template = templateResponse.getResponseBody();
+            templateId = template.getId();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -198,8 +209,8 @@ public class CheckTest extends BaseTest {
     @Test
     public void testCreateTemplateCheck() throws Exception {
         LobResponse<Check> response = new Check.RequestBuilder()
-                .setCheckBottom("tmpl_c4aa2dc83ebad7e")
-                .setAttachment("tmpl_c4aa2dc83ebad7e")
+                .setCheckBottom(templateId)
+                .setAttachment(templateId)
                 .setAmount("1.00")
                 .setTo(
                         new Address.RequestBuilder()
@@ -227,8 +238,8 @@ public class CheckTest extends BaseTest {
 
         assertEquals(200, response.getResponseCode());
         assertNotNull(check.getId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", check.getCheckBottomTemplateId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", check.getAttachmentTemplateId());
+        assertEquals(templateId, check.getCheckBottomTemplateId());
+        assertEquals(templateId, check.getAttachmentTemplateId());
         assertNotNull(check.getCheckBottomTemplateVersionId());
         assertNotNull(check.getAttachmentTemplateVersionId());
     }

@@ -45,6 +45,24 @@ public class SelfMailerTest extends BaseTest {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("metadata", metadata);
 
+        LobResponse<SelfMailer> createResponse = new SelfMailer.RequestBuilder()
+                .setDescription("Test Self Mailer with MetaData")
+                .setOutside("<h1>Outside</h1>")
+                .setInside("<html>Content</html>")
+                .setMetadata(metadata)
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("185 Berry St Ste 6100")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setMailType("usps_first_class")
+                .create();
+        assertEquals(200, createResponse.getResponseCode());
+
         LobResponse<SelfMailerCollection> response = SelfMailer.list(params);
 
         assertEquals(200, response.getResponseCode());
@@ -208,7 +226,6 @@ public class SelfMailerTest extends BaseTest {
         assertEquals("self_mailer", selfMailer.getObject());
         assertNotNull(selfMailer.toString());
     }
-
 
     @Test
     public void testCreateFileSelfMailer12x9() throws Exception {

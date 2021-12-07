@@ -1,7 +1,9 @@
 package com.lob.model;
 
 import com.lob.BaseTest;
+import com.lob.Lob;
 import com.lob.net.LobResponse;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
@@ -15,6 +17,26 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.*;
 
 public class PostcardTest extends BaseTest {
+
+    private static String templateId;
+
+    @BeforeClass
+    public static void beforeClass() {
+        Lob.init(System.getenv("LOB_API_KEY"));
+
+        try {
+            LobResponse<Template> templateResponse = new Template.RequestBuilder()
+                    .setDescription("Test Template")
+                    .setHtml("<h1>Hello</h1>")
+                    .setEngine("handlebars")
+                    .create();
+
+            Template template = templateResponse.getResponseBody();
+            templateId = template.getId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void testListPostcards() throws Exception {
@@ -45,11 +67,29 @@ public class PostcardTest extends BaseTest {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("metadata", metadata);
 
+        LobResponse<Postcard> createResponse = new Postcard.RequestBuilder()
+                .setDescription("Test Postcard with Merge Variable List")
+                .setFront("<html>Content</html>")
+                .setBack("<h1>Back</h1>")
+                .setMetadata(metadata)
+                .setTo(
+                        new Address.RequestBuilder()
+                                .setCompany("Lob.com")
+                                .setLine1("210 King St")
+                                .setCity("San Francisco")
+                                .setState("CA")
+                                .setZip("94107")
+                                .setCountry("US")
+                )
+                .setSize("4x6")
+                .setMailType("usps_first_class")
+                .create();
+        assertEquals(200, createResponse.getResponseCode());
+
         LobResponse<PostcardCollection> response = Postcard.list(params);
 
         assertEquals(200, response.getResponseCode());
-        assertEquals(1, response.getResponseBody().getCount());
-        assertEquals("psc_7cdbf7c54d44005d", response.getResponseBody().getData().get(0).getId());
+        assertTrue(response.getResponseBody().getCount() > 0);
         assertThat(response.getResponseBody().getData().get(0), instanceOf(Postcard.class));
     }
 
@@ -162,8 +202,8 @@ public class PostcardTest extends BaseTest {
     @Test
     public void testCreateTemplatePostcard() throws Exception {
         LobResponse<Postcard> response = new Postcard.RequestBuilder()
-                .setFront("tmpl_c4aa2dc83ebad7e")
-                .setBack("tmpl_c4aa2dc83ebad7e")
+                .setFront(templateId)
+                .setBack(templateId)
                 .setTo(
                         new Address.RequestBuilder()
                                 .setCompany("Lob.com")
@@ -180,8 +220,8 @@ public class PostcardTest extends BaseTest {
 
         assertEquals(200, response.getResponseCode());
         assertNotNull(postcard.getId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", postcard.getFrontTemplateId());
-        assertEquals("tmpl_c4aa2dc83ebad7e", postcard.getBackTemplateId());
+        assertEquals(templateId, postcard.getFrontTemplateId());
+        assertEquals(templateId, postcard.getBackTemplateId());
         assertNotNull(postcard.getFrontTemplateVersionId());
         assertNotNull(postcard.getBackTemplateVersionId());
     }

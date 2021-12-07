@@ -54,6 +54,41 @@ public class Letter extends APIResource {
         }
     }
 
+    public static class ReturnEnvelope {
+        @JsonProperty private final String id;
+        @JsonProperty private final String alias;
+        @JsonProperty private final String url;
+        @JsonProperty private final String object;
+
+        @JsonCreator
+        public ReturnEnvelope(
+                @JsonProperty("id") final String id,
+                @JsonProperty("alias") final String alias,
+                @JsonProperty("url") final String url,
+                @JsonProperty("object") final String object) {
+            this.id = id;
+            this.alias = alias;
+            this.url = url;
+            this.object = object;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public String getAlias() {
+            return alias;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public String getObject() {
+            return object;
+        }
+    }
+
     @JsonProperty private final String id;
     @JsonProperty private final String description;
     @JsonProperty private final Address to;
@@ -61,7 +96,8 @@ public class Letter extends APIResource {
     @JsonProperty private final boolean color;
     @JsonProperty private final boolean doubleSided;
     @JsonProperty private final String addressPlacement;
-    @JsonProperty private final boolean returnEnvelope;
+    @JsonProperty private final ReturnEnvelope returnEnvelope;
+    @JsonProperty private final Address returnAddress;
     @JsonProperty private final Integer perforatedPage;
     @JsonProperty private final String extraService;
     @JsonProperty private final String mailType;
@@ -93,7 +129,8 @@ public class Letter extends APIResource {
         @JsonProperty("color") final boolean color,
         @JsonProperty("double_sided") final boolean doubleSided,
         @JsonProperty("address_placement") final String addressPlacement,
-        @JsonProperty("return_envelope") final boolean returnEnvelope,
+        @JsonProperty("return_envelope") final ReturnEnvelope returnEnvelope,
+        @JsonProperty("return_address") final Address returnAddress,
         @JsonProperty("perforated_page") final Integer perforatedPage,
         @JsonProperty("extra_service") final String extraService,
         @JsonProperty("mail_type") final String mailType,
@@ -123,6 +160,7 @@ public class Letter extends APIResource {
         this.doubleSided = doubleSided;
         this.addressPlacement = addressPlacement;
         this.returnEnvelope = returnEnvelope;
+        this.returnAddress = returnAddress;
         this.perforatedPage = perforatedPage;
         this.extraService = extraService;
         this.mailType = mailType;
@@ -175,8 +213,12 @@ public class Letter extends APIResource {
     }
 
     public boolean isReturnEnvelope() {
-        return returnEnvelope;
+        return returnEnvelope != null && returnEnvelope.getId() != null;
     }
+
+    public ReturnEnvelope getReturnEnvelope() { return returnEnvelope; }
+
+    public Address getReturnAddress() { return returnAddress; }
 
     public Integer getPerforatedPage() {
         return perforatedPage;
@@ -364,13 +406,23 @@ public class Letter extends APIResource {
             return this;
         }
 
-        public RequestBuilder setReturnEnvelope(boolean returnEnvelope) {
-            params.put("return_envelope", returnEnvelope);
+        public RequestBuilder setReturnEnvelope(String id) {
+            params.put("return_envelope", id);
+            return this;
+        }
+
+        public RequestBuilder setReturnEnvelope(boolean useDefault) {
+            params.put("return_envelope", useDefault);
             return this;
         }
 
         public RequestBuilder setPerforatedPage(int perforatedPage) {
             params.put("perforated_page", perforatedPage);
+            return this;
+        }
+
+        public RequestBuilder setReturnAddress(Address.RequestBuilder returnAddress) {
+            params.put("return_address", returnAddress.build());
             return this;
         }
 
