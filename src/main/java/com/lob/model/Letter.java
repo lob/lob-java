@@ -73,7 +73,7 @@ public class Letter extends APIResource {
         }
 
         @JsonCreator
-        public ReturnEnvelope(boolean useDefault) {
+        public ReturnEnvelope(boolean hasReturnEnvelope) {
             // When a boolean value is provided by the API,
             // it is always false and indicates that a
             // return envelope is not used
