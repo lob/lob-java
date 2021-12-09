@@ -39,7 +39,7 @@ public class TemplateTest extends BaseTest {
         LobResponse<TemplateCollection> response = Template.list();
 
         assertEquals(200, response.getResponseCode());
-        assertEquals(10, response.getResponseBody().getCount());
+        assertTrue(response.getResponseBody().getCount() > 0);
         assertThat(response.getResponseBody().getData().get(0), instanceOf(Template.class));
     }
 
