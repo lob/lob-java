@@ -23,5 +23,5 @@ jobs:
           distribution: 'temurin'
       - name: Run tests with Maven
         env:
-          API_KEY: ${{ secrets.API_KEY }}
+          LOB_API_KEY: ${{ secrets.API_KEY }}
         run: mvn -B test --file pom.xml
