@@ -1,7 +1,6 @@
 name: Run tests
 
 on: 
-  push:
   pull_request:
     types: [ opened, reopened, edited ]
     branches:
@@ -21,11 +20,7 @@ jobs:
           java-version: ${{ matrix.java }}
           architecture: x64
           distribution: 'temurin'
-      - name: Dump api key
-        env:
-          LOB_API_KEY: ${{ secrets.LOB_API_KEY }}
-        run: echo "$LOB_API_KEY"
       - name: Run tests with Maven
         env: 
           LOB_API_KEY: ${{ secrets.LOB_API_KEY }}
-        run: LOB_API_KEY=$LOB_API_KEY mvn test
+        run: LOB_API_KEY=${{ secrets.LOB_API_KEY }} mvn test
