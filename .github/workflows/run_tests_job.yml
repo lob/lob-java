@@ -24,7 +24,7 @@ jobs:
       - name: Dump api key
         env:
           LOB_API_KEY: ${{ secrets.LOB_API_KEY }}
-          run: echo "$LOB_API_KEY"
+        run: echo "$LOB_API_KEY"
       - name: Run tests with Maven
         env: 
           LOB_API_KEY: ${{ secrets.LOB_API_KEY }}
