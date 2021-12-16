@@ -25,3 +25,5 @@ jobs:
         env: 
           LOB_API_KEY: ${{ secrets.LOB_API_KEY }}
         run: LOB_API_KEY=${{ secrets.LOB_API_KEY }} mvn test
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
