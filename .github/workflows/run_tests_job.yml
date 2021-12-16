@@ -13,7 +13,6 @@ jobs:
     strategy:
       matrix:
         java: [ '13', '14', '17' ]
-    name: Java ${{ matrix.java }} sample
     steps:
       - uses: actions/checkout@v2
       - name: Setup java
@@ -21,11 +20,5 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           architecture: x64
-      - name: Cache Maven packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
       - name: Run tests with Maven
         run: mvn -B test --file pom.xml
