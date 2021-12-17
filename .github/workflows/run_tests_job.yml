@@ -1,6 +1,7 @@
 name: Run tests
 
 on: 
+  push:
   pull_request:
     types: [ opened, reopened, edited ]
     branches:
@@ -24,3 +25,8 @@ jobs:
         env: 
           LOB_API_KEY: ${{ secrets.LOB_API_KEY }}
         run: LOB_API_KEY=${{ secrets.LOB_API_KEY }} mvn test
+      - name: Send coverage to Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/lcov/lcov.info
