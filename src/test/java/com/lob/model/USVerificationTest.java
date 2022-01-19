@@ -1,9 +1,13 @@
 package com.lob.model;
 
 import com.lob.BaseTest;
+import com.lob.model.USVerification.Components;
+import com.lob.model.USVerification.ConfidenceScore;
+import com.lob.model.USVerification.Deliverability;
 import com.lob.net.LobResponse;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +15,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class USVerificationTest extends BaseTest {
+    @Test
+    public void testUsVerificationConfidenceScore() throws Exception {
+        USVerification usVerificationMock =  new USVerification("test-id","test-recipient", "primary_line", "secondary_line", "urbanization", "last_line", "deliverability", new Components("primaryNumber", "streetPredirection", "streetName", "streetSuffix", "streetPostdirection", "secondaryDesignator", "secondaryNumber", "pmbDesignator", "pmbNumber", "extraSecondaryDesignator", "extraSecondaryNumber", "city", "state", "zipCode", "zipCodePlus4", "zipCodeType", "deliveryPointBarcode", "addressType", "recordType", "defaultBuildingAddress", "county", "countyFips", "carrierRoute", "carrierRouteType", "latitude", "longitude"), new Deliverability("dpvConfirmation", "dpvCmra", "dpvVacant", new ArrayList<String>(), "ewsMatch", "lacsIndicator", "lacsReturnCode", "suiteReturnCode") ,new ConfidenceScore(3, "low"), "object");
+        assertNotNull(usVerificationMock.getLobConfidenceScore());
+    }
 
     @Test
     public void testUsVerification() throws Exception {

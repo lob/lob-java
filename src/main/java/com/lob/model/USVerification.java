@@ -320,6 +320,35 @@ public class USVerification extends APIResource {
 
     }
 
+    public static class ConfidenceScore {
+        @JsonProperty private double score;
+        @JsonProperty private String level;
+
+        @JsonCreator
+        public ConfidenceScore(
+                @JsonProperty("score") final double score,
+                @JsonProperty("level") final String level) {
+            this.score = score;
+            this.level = level;
+        }
+
+        public double getScore() {
+            return score;
+        }
+
+        public String getLevel() {
+            return level;
+        }
+
+        @Override
+        public String toString() {
+            return "{" +
+                    "score='" + score + '\'' +
+                    ", level='" + level + '\'' +
+                    '}';
+        }
+    }
+
     @JsonProperty private final String id;
     @JsonProperty private final String recipient;
     @JsonProperty private final String primaryLine;
@@ -329,6 +358,7 @@ public class USVerification extends APIResource {
     @JsonProperty private final String deliverability;
     @JsonProperty private final Components components;
     @JsonProperty private final Deliverability deliverabilityAnalysis;
+    @JsonProperty private final ConfidenceScore lobConfidenceScore;
     @JsonProperty private final String object;
 
     @JsonCreator
@@ -342,6 +372,7 @@ public class USVerification extends APIResource {
             @JsonProperty("deliverability") final String deliverability,
             @JsonProperty("components") final Components components,
             @JsonProperty("deliverability_analysis") final Deliverability deliverabilityAnalysis,
+            @JsonProperty("lob_confidence_score") final ConfidenceScore lobConfidenceScore,
             @JsonProperty("object") final String object
     ) {
         this.id = id;
@@ -353,6 +384,7 @@ public class USVerification extends APIResource {
         this.deliverability = deliverability;
         this.components = components;
         this.deliverabilityAnalysis = deliverabilityAnalysis;
+        this.lobConfidenceScore = lobConfidenceScore;
         this.object = object;
     }
 
@@ -392,6 +424,10 @@ public class USVerification extends APIResource {
         return deliverabilityAnalysis;
     }
 
+    public ConfidenceScore getLobConfidenceScore() {
+        return lobConfidenceScore;
+    }
+
     public String getObject() {
         return object;
     }
@@ -408,6 +444,7 @@ public class USVerification extends APIResource {
                 ", deliverability='" + deliverability + '\'' +
                 ", components=" + components +
                 ", deliverabilityAnalysis=" + deliverabilityAnalysis +
+                ", lobConfidenceScore=" + lobConfidenceScore +
                 '}';
     }
 
