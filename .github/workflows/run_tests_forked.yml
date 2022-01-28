@@ -1,0 +1,25 @@
+name: Run tests for forked repos
+
+on: 
+  pull_request_target:
+    types: [labeled]
+
+jobs:
+  java_tests:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'Approved')
+    strategy:
+      matrix:
+        java: [ '8', '11', '16', '17' ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup java
+        uses: actions/setup-java@v2
+        with:
+          java-version: ${{ matrix.java }}
+          architecture: x64
+          distribution: 'temurin'
+      - name: Run tests with Maven
+        env: 
+          LOB_API_KEY: ${{ secrets.LOB_API_KEY }}
+        run: LOB_API_KEY=${{ secrets.LOB_API_KEY }} mvn test
