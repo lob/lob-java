@@ -56,7 +56,7 @@ compile 'com.lob:lob-java:12.2.0'
 
 ### Usage
 
-We've provided examples in the `lob-java-examples/` package that has examples of how to use the lob-java wrapper with some of our core endpoints.
+We've provided examples in a separate repository [lob-java-examples](https://github.com/lob/lob-java-examples). It has examples of how to use the lob-java wrapper with some of our core endpoints.
 
 #### Initialization and Configuration
 ```java
