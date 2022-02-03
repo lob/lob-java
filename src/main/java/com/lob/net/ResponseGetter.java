@@ -75,7 +75,7 @@ public class ResponseGetter implements IResponseGetter {
     static Map<String, String> getHeaders(RequestOptions options) {
         Map<String, String> headers = new HashMap<String, String>();
 
-        headers.put("Authorization", String.format("Basic %s", Base64.encodeBase64String((options.getApiKey() + ":").getBytes())));
+        headers.put("Authorization", String.format("Basic %s", new String(Base64.encodeBase64((options.getApiKey() + ":").getBytes()))));
         headers.put("User-Agent", String.format("LobJava/%s JDK/%s", Lob.VERSION, System.getProperty("java.version")));
 
         if (options.getLobVersion() != null) {
