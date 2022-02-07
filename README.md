@@ -50,8 +50,13 @@ Include the following in your `pom.xml` for Maven:
 
 Gradle:
 
+Make sure you [install Gradle](https://docs.gradle.org/current/userguide/installation.html) and run `gradle init`. Then add this to `app/build.gradle.kts`:
+
 ```groovy
-compile 'com.lob:lob-java:12.3.7'
+dependencies {
+		...
+    implementation("com.lob:lob-java:12.3.7")
+}
 ```
 
 ### Usage
