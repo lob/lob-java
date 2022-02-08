@@ -42,7 +42,7 @@ Include the following in your `pom.xml` for Maven:
   <dependency>
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
-    <version>12.2.0</version>
+    <version>12.3.7</version>
   </dependency>
   ...
 </dependencies>
@@ -50,8 +50,30 @@ Include the following in your `pom.xml` for Maven:
 
 Gradle:
 
-```groovy
-compile 'com.lob:lob-java:12.2.0'
+Make sure you [install Gradle](https://docs.gradle.org/current/userguide/installation.html) and run `gradle init`. Then add this to `app/build.gradle.kts`:
+
+```kotlin
+var javaMainClass = "";
+dependencies {
+		...
+    implementation("com.lob:lob-java:12.3.7")
+}
+
+ext {
+   javaMainClass = "<PATH TO YOUR MAIN CLASS>"
+}
+
+application {
+    // Define the main class for the application.
+    mainClass.set(javaMainClass)
+}
+```
+
+Finally, to build the dependencies, compile, and execute your code, enter this into your terminal:
+
+```
+./gradlew build
+./gradlew run
 ```
 
 ### Usage
