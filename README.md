@@ -52,11 +52,28 @@ Gradle:
 
 Make sure you [install Gradle](https://docs.gradle.org/current/userguide/installation.html) and run `gradle init`. Then add this to `app/build.gradle.kts`:
 
-```groovy
+```kotlin
+var javaMainClass = "";
 dependencies {
 		...
     implementation("com.lob:lob-java:12.3.7")
 }
+
+ext {
+   javaMainClass = "<PATH TO YOUR MAIN CLASS>"
+}
+
+application {
+    // Define the main class for the application.
+    mainClass.set(javaMainClass)
+}
+```
+
+Finally, to build the dependencies, compile, and execute your code, enter this into your terminal:
+
+```
+./gradlew build
+./gradlew run
 ```
 
 ### Usage
