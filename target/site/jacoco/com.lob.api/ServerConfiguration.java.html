@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServerConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lob-java</a> &gt; <a href="index.source.html" class="el_package">com.lob.api</a> &gt; <span class="el_source">ServerConfiguration.java</span></div><h1>ServerConfiguration.java</h1><pre class="source lang-java linenums">package com.lob.api;
+
+import java.util.Map;
+
+/**
+ * Representing a Server configuration.
+ */
+public class ServerConfiguration {
+    public String URL;
+    public String description;
+    public Map&lt;String, ServerVariable&gt; variables;
+
+    /**
+     * @param URL A URL to the target host.
+     * @param description A description of the host designated by the URL.
+     * @param variables A map between a variable name and its value. The value is used for substitution in the server's URL template.
+     */
+<span class="nc" id="L18">    public ServerConfiguration(String URL, String description, Map&lt;String, ServerVariable&gt; variables) {</span>
+<span class="nc" id="L19">        this.URL = URL;</span>
+<span class="nc" id="L20">        this.description = description;</span>
+<span class="nc" id="L21">        this.variables = variables;</span>
+<span class="nc" id="L22">    }</span>
+
+    /**
+     * Format URL template using given variables.
+     *
+     * @param variables A map between a variable name and its value.
+     * @return Formatted URL.
+     */
+    public String URL(Map&lt;String, String&gt; variables) {
+<span class="nc" id="L31">        String url = this.URL;</span>
+
+        // go through variables and replace placeholders
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        for (Map.Entry&lt;String, ServerVariable&gt; variable: this.variables.entrySet()) {</span>
+<span class="nc" id="L35">            String name = variable.getKey();</span>
+<span class="nc" id="L36">            ServerVariable serverVariable = variable.getValue();</span>
+<span class="nc" id="L37">            String value = serverVariable.defaultValue;</span>
+
+<span class="nc bnc" id="L39" title="All 4 branches missed.">            if (variables != null &amp;&amp; variables.containsKey(name)) {</span>
+<span class="nc" id="L40">                value = variables.get(name);</span>
+<span class="nc bnc" id="L41" title="All 4 branches missed.">                if (serverVariable.enumValues.size() &gt; 0 &amp;&amp; !serverVariable.enumValues.contains(value)) {</span>
+<span class="nc" id="L42">                    throw new RuntimeException(&quot;The variable &quot; + name + &quot; in the server URL has invalid value &quot; + value + &quot;.&quot;);</span>
+                }
+            }
+<span class="nc" id="L45">            url = url.replaceAll(&quot;\\{&quot; + name + &quot;\\}&quot;, value);</span>
+<span class="nc" id="L46">        }</span>
+<span class="nc" id="L47">        return url;</span>
+    }
+
+    /**
+     * Format URL template using default server variables.
+     *
+     * @return Formatted URL.
+     */
+    public String URL() {
+<span class="nc" id="L56">        return URL(null);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
