@@ -57,8 +57,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Geographic direction preceding a street name (&amp;#x60;N&amp;#x60;, &amp;#x60;S&amp;#x60;, &amp;#x60;E&amp;#x60;, &amp;#x60;W&amp;#x60;, &amp;#x60;NE&amp;#x60;, &amp;#x60;SW&amp;#x60;, &amp;#x60;SE&amp;#x60;, &amp;#x60;NW&amp;#x60;). 
    */
-<span class="fc" id="L60">  @JsonAdapter(StreetPredirectionEnum.Adapter.class)</span>
-  public enum StreetPredirectionEnum {
+  @JsonAdapter(StreetPredirectionEnum.Adapter.class)
+<span class="fc" id="L61">  public enum StreetPredirectionEnum {</span>
 <span class="fc" id="L62">    N(&quot;N&quot;),</span>
     
 <span class="fc" id="L64">    S(&quot;S&quot;),</span>
@@ -184,8 +184,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Geographic direction following a street name (&amp;#x60;N&amp;#x60;, &amp;#x60;S&amp;#x60;, &amp;#x60;E&amp;#x60;, &amp;#x60;W&amp;#x60;, &amp;#x60;NE&amp;#x60;, &amp;#x60;SW&amp;#x60;, &amp;#x60;SE&amp;#x60;, &amp;#x60;NW&amp;#x60;). 
    */
-<span class="fc" id="L187">  @JsonAdapter(StreetPostdirectionEnum.Adapter.class)</span>
-  public enum StreetPostdirectionEnum {
+  @JsonAdapter(StreetPostdirectionEnum.Adapter.class)
+<span class="fc" id="L188">  public enum StreetPostdirectionEnum {</span>
 <span class="fc" id="L189">    N(&quot;N&quot;),</span>
     
 <span class="fc" id="L191">    S(&quot;S&quot;),</span>
@@ -539,8 +539,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Uses USPS&amp;#39;s [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * &amp;#x60;residential&amp;#x60; –– The address is residential or a PO Box. * &amp;#x60;commercial&amp;#x60; –– The address is commercial. * &amp;#x60;&amp;#39;&amp;#39;&amp;#x60; –– Not enough information provided to be determined. 
    */
-<span class="fc" id="L542">  @JsonAdapter(AddressTypeEnum.Adapter.class)</span>
-  public enum AddressTypeEnum {
+  @JsonAdapter(AddressTypeEnum.Adapter.class)
+<span class="fc" id="L543">  public enum AddressTypeEnum {</span>
 <span class="fc" id="L544">    RESIDENTIAL(&quot;residential&quot;),</span>
     
 <span class="fc" id="L546">    COMMERCIAL(&quot;commercial&quot;),</span>
@@ -610,8 +610,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * A description of the type of address. Populated if a DPV match is made (&amp;#x60;deliverability_analysis[dpv_confirmation]&amp;#x60; is &amp;#x60;Y&amp;#x60;, &amp;#x60;S&amp;#x60;, or &amp;#x60;D&amp;#x60;). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types). 
    */
-<span class="fc" id="L613">  @JsonAdapter(RecordTypeEnum.Adapter.class)</span>
-  public enum RecordTypeEnum {
+  @JsonAdapter(RecordTypeEnum.Adapter.class)
+<span class="fc" id="L614">  public enum RecordTypeEnum {</span>
 <span class="fc" id="L615">    STREET(&quot;street&quot;),</span>
     
 <span class="fc" id="L617">    HIGHRISE(&quot;highrise&quot;),</span>
@@ -781,8 +781,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * The type of &amp;#x60;components[carrier_route]&amp;#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). 
    */
-<span class="fc" id="L784">  @JsonAdapter(CarrierRouteTypeEnum.Adapter.class)</span>
-  public enum CarrierRouteTypeEnum {
+  @JsonAdapter(CarrierRouteTypeEnum.Adapter.class)
+<span class="fc" id="L785">  public enum CarrierRouteTypeEnum {</span>
 <span class="fc" id="L786">    CITY_DELIVERY(&quot;city_delivery&quot;),</span>
     
 <span class="fc" id="L788">    RURAL_ROUTE(&quot;rural_route&quot;),</span>

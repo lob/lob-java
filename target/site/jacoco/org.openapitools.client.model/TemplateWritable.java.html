@@ -73,8 +73,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_METADATA = &quot;metadata&quot;;
 
-<span class="fc" id="L76">  @SerializedName(SERIALIZED_NAME_METADATA)</span>
-  private Map&lt;String, String&gt; metadata = null;
+  @SerializedName(SERIALIZED_NAME_METADATA)
+<span class="fc" id="L77">  private Map&lt;String, String&gt; metadata = null;</span>
   public Map&lt;String, String&gt; getMetadata() {     
 <span class="nc bnc" id="L79" title="All 2 branches missed.">    if (this.metadata == null) {</span>
 <span class="nc" id="L80">      this.metadata = new HashMap&lt;String,String&gt;();</span>
@@ -84,10 +84,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_ENGINE = &quot;engine&quot;;
 
-<span class="fc" id="L87">  @SerializedName(SERIALIZED_NAME_ENGINE)</span>
+  @SerializedName(SERIALIZED_NAME_ENGINE)
   
 
-  private EngineHtml engine = EngineHtml.LEGACY;
+<span class="fc" id="L90">  private EngineHtml engine = EngineHtml.LEGACY;</span>
   /**
   * Get engine
   * @return engine

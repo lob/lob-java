@@ -79,8 +79,8 @@ import java.io.IOException;
   /**
    * Value is type of resource.
    */
-<span class="fc" id="L82">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L83">  public enum ObjectEnum {</span>
 <span class="fc" id="L84">    ADDRESS_DELETED(&quot;address_deleted&quot;);</span>
 
     private String value;
@@ -123,10 +123,10 @@ import java.io.IOException;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L126">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.ADDRESS_DELETED;
+<span class="fc" id="L129">  private ObjectEnum _object = ObjectEnum.ADDRESS_DELETED;</span>
   /**
   * Value is type of resource.
   * @return _object

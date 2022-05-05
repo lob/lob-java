@@ -165,7 +165,7 @@ public class JSON {
         public void write(JsonWriter out, byte[] value) throws IOException {
 <span class="nc bnc" id="L166" title="All 2 branches missed.">            if (value == null) {</span>
 <span class="nc" id="L167">                out.nullValue();</span>
-            } else {
+<span class="nc" id="L168">            } else {</span>
 <span class="nc" id="L169">                out.value(ByteString.of(value).base64());</span>
             }
 <span class="nc" id="L171">        }</span>
@@ -207,7 +207,7 @@ public class JSON {
         public void write(JsonWriter out, OffsetDateTime date) throws IOException {
 <span class="nc bnc" id="L208" title="All 2 branches missed.">            if (date == null) {</span>
 <span class="nc" id="L209">                out.nullValue();</span>
-            } else {
+<span class="nc" id="L210">            } else {</span>
 <span class="nc" id="L211">                out.value(formatter.format(date));</span>
             }
 <span class="nc" id="L213">        }</span>
@@ -251,7 +251,7 @@ public class JSON {
         public void write(JsonWriter out, LocalDate date) throws IOException {
 <span class="nc bnc" id="L252" title="All 2 branches missed.">            if (date == null) {</span>
 <span class="nc" id="L253">                out.nullValue();</span>
-            } else {
+<span class="nc" id="L254">            } else {</span>
 <span class="nc" id="L255">                out.value(formatter.format(date));</span>
             }
 <span class="nc" id="L257">        }</span>
@@ -302,11 +302,11 @@ public class JSON {
         public void write(JsonWriter out, java.sql.Date date) throws IOException {
 <span class="nc bnc" id="L303" title="All 2 branches missed.">            if (date == null) {</span>
 <span class="nc" id="L304">                out.nullValue();</span>
-            } else {
+<span class="nc" id="L305">            } else {</span>
                 String value;
 <span class="nc bnc" id="L307" title="All 2 branches missed.">                if (dateFormat != null) {</span>
 <span class="nc" id="L308">                    value = dateFormat.format(date);</span>
-                } else {
+<span class="nc" id="L309">                } else {</span>
 <span class="nc" id="L310">                    value = date.toString();</span>
                 }
 <span class="nc" id="L312">                out.value(value);</span>
@@ -355,11 +355,11 @@ public class JSON {
         public void write(JsonWriter out, Date date) throws IOException {
 <span class="nc bnc" id="L356" title="All 2 branches missed.">            if (date == null) {</span>
 <span class="nc" id="L357">                out.nullValue();</span>
-            } else {
+<span class="nc" id="L358">            } else {</span>
                 String value;
 <span class="nc bnc" id="L360" title="All 2 branches missed.">                if (dateFormat != null) {</span>
 <span class="nc" id="L361">                    value = dateFormat.format(date);</span>
-                } else {
+<span class="nc" id="L362">                } else {</span>
 <span class="nc" id="L363">                    value = ISO8601Utils.format(date, true);</span>
                 }
 <span class="nc" id="L365">                out.value(value);</span>

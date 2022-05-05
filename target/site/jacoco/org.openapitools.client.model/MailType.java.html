@@ -27,8 +27,8 @@ import com.google.gson.stream.JsonWriter;
 /**
  * A string designating the mail postage type: * &amp;#x60;usps_first_class&amp;#x60; - (default) * &amp;#x60;usps_standard&amp;#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &amp;#x60;usps_standard&amp;#x60; cannot be used with &amp;#x60;4x6&amp;#x60; postcards or for any postcards sent outside of the United States. 
  */
-<span class="fc" id="L30">@JsonAdapter(MailType.Adapter.class)</span>
-public enum MailType {
+@JsonAdapter(MailType.Adapter.class)
+<span class="fc" id="L31">public enum MailType {</span>
   
 <span class="fc" id="L33">  FIRST_CLASS(&quot;usps_first_class&quot;),</span>
   

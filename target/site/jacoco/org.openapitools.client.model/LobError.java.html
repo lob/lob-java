@@ -55,8 +55,8 @@ import java.io.IOException;
   /**
    * A conventional HTTP status code.
    */
-<span class="fc" id="L58">  @JsonAdapter(StatusCodeEnum.Adapter.class)</span>
-  public enum StatusCodeEnum {
+  @JsonAdapter(StatusCodeEnum.Adapter.class)
+<span class="fc" id="L59">  public enum StatusCodeEnum {</span>
 <span class="fc" id="L60">    NUMBER_401(401),</span>
     
 <span class="fc" id="L62">    NUMBER_403(403),</span>
@@ -134,8 +134,8 @@ import java.io.IOException;
   /**
    * A pre-defined string identifying an error.
    */
-<span class="fc" id="L137">  @JsonAdapter(CodeEnum.Adapter.class)</span>
-  public enum CodeEnum {
+  @JsonAdapter(CodeEnum.Adapter.class)
+<span class="fc" id="L138">  public enum CodeEnum {</span>
 <span class="fc" id="L139">    BAD_REQUEST(&quot;bad_request&quot;),</span>
     
 <span class="fc" id="L141">    CONFLICT(&quot;conflict&quot;),</span>

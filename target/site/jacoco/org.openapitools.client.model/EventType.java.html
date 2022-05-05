@@ -76,8 +76,8 @@ import java.io.IOException;
   /**
    * Gets or Sets resource
    */
-<span class="nc" id="L79">  @JsonAdapter(ResourceEnum.Adapter.class)</span>
-  public enum ResourceEnum {
+  @JsonAdapter(ResourceEnum.Adapter.class)
+<span class="nc" id="L80">  public enum ResourceEnum {</span>
 <span class="nc" id="L81">    POSTCARDS(&quot;postcards&quot;),</span>
     
 <span class="nc" id="L83">    SELF_MAILERS(&quot;self mailers&quot;),</span>
@@ -153,8 +153,8 @@ import java.io.IOException;
   /**
    * Value is resource type.
    */
-<span class="fc" id="L156">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L157">  public enum ObjectEnum {</span>
 <span class="fc" id="L158">    EVENT_TYPE(&quot;event_type&quot;);</span>
 
     private String value;
@@ -197,10 +197,10 @@ import java.io.IOException;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L200">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.EVENT_TYPE;
+<span class="fc" id="L203">  private ObjectEnum _object = ObjectEnum.EVENT_TYPE;</span>
 
   /**
   * Value is resource type.

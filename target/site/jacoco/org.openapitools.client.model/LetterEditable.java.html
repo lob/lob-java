@@ -36,10 +36,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 <span class="fc" id="L36">public class LetterEditable {</span>
   public static final String SERIALIZED_NAME_MAIL_TYPE = &quot;mail_type&quot;;
 
-<span class="fc" id="L39">  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)</span>
+  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)
   
 
-  private MailType mailType = MailType.FIRST_CLASS;
+<span class="fc" id="L42">  private MailType mailType = MailType.FIRST_CLASS;</span>
   /**
   * Get mailType
   * @return mailType
@@ -78,7 +78,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
   public static final String SERIALIZED_NAME_DOUBLE_SIDED = &quot;double_sided&quot;;
 
-<span class="fc" id="L81">  @SerializedName(SERIALIZED_NAME_DOUBLE_SIDED)</span>
+  @SerializedName(SERIALIZED_NAME_DOUBLE_SIDED)
   
 
 <span class="fc" id="L84">  private Boolean doubleSided = true;</span>
@@ -100,8 +100,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &amp;#x60;top_first_page&amp;#x60; - (default) print address information at the top of your provided first page   * &amp;#x60;insert_blank_page&amp;#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &amp;#x60;bottom_first_page_center&amp;#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &amp;#x60;bottom_first_page&amp;#x60; - print address information at the bottom of your provided first page 
    */
-<span class="fc" id="L103">  @JsonAdapter(AddressPlacementEnum.Adapter.class)</span>
-  public enum AddressPlacementEnum {
+  @JsonAdapter(AddressPlacementEnum.Adapter.class)
+<span class="fc" id="L104">  public enum AddressPlacementEnum {</span>
 <span class="fc" id="L105">    TOP_FIRST_PAGE(&quot;top_first_page&quot;),</span>
     
 <span class="fc" id="L107">    INSERT_BLANK_PAGE(&quot;insert_blank_page&quot;),</span>
@@ -150,10 +150,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
   public static final String SERIALIZED_NAME_ADDRESS_PLACEMENT = &quot;address_placement&quot;;
 
-<span class="fc" id="L153">  @SerializedName(SERIALIZED_NAME_ADDRESS_PLACEMENT)</span>
+  @SerializedName(SERIALIZED_NAME_ADDRESS_PLACEMENT)
   
 
-  private AddressPlacementEnum addressPlacement = AddressPlacementEnum.TOP_FIRST_PAGE;
+<span class="fc" id="L156">  private AddressPlacementEnum addressPlacement = AddressPlacementEnum.TOP_FIRST_PAGE;</span>
   /**
   * Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * `top_first_page` - (default) print address information at the top of your provided first page   * `insert_blank_page` - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * `bottom_first_page_center` - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * `bottom_first_page` - print address information at the bottom of your provided first page 
   * @return addressPlacement
@@ -286,8 +286,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Add an extra service to your letter:   * &amp;#x60;certified&amp;#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &amp;#x60;certified_return_receipt&amp;#x60; - request an electronic copy of the recipient&amp;#39;s signature to prove delivery of your certified letter   * &amp;#x60;registered&amp;#x60; - provides tracking and confirmation for international addresses 
    */
-<span class="fc" id="L289">  @JsonAdapter(ExtraServiceEnum.Adapter.class)</span>
-  public enum ExtraServiceEnum {
+  @JsonAdapter(ExtraServiceEnum.Adapter.class)
+<span class="fc" id="L290">  public enum ExtraServiceEnum {</span>
 <span class="fc" id="L291">    CERTIFIED(&quot;certified&quot;),</span>
     
 <span class="fc" id="L293">    CERTIFIED_RETURN_RECEIPT(&quot;certified_return_receipt&quot;),</span>
@@ -357,8 +357,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
   public static final String SERIALIZED_NAME_CARDS = &quot;cards&quot;;
 
-<span class="fc" id="L360">  @SerializedName(SERIALIZED_NAME_CARDS)</span>
-  private List&lt;String&gt; cards = null;
+  @SerializedName(SERIALIZED_NAME_CARDS)
+<span class="fc" id="L361">  private List&lt;String&gt; cards = null;</span>
   public List&lt;String&gt; getCards() {     
 <span class="pc bpc" id="L363" title="1 of 2 branches missed.">    if (this.cards == null) {</span>
 <span class="nc" id="L364">      this.cards = new ArrayList&lt;String&gt;();</span>

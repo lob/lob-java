@@ -128,8 +128,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_METADATA = &quot;metadata&quot;;
 
-<span class="fc" id="L131">  @SerializedName(SERIALIZED_NAME_METADATA)</span>
-  private Map&lt;String, String&gt; metadata = null;
+  @SerializedName(SERIALIZED_NAME_METADATA)
+<span class="fc" id="L132">  private Map&lt;String, String&gt; metadata = null;</span>
   public Map&lt;String, String&gt; getMetadata() {     
 <span class="nc bnc" id="L134" title="All 2 branches missed.">    if (this.metadata == null) {</span>
 <span class="nc" id="L135">      this.metadata = new HashMap&lt;String,String&gt;();</span>
@@ -182,8 +182,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Checks must be sent &amp;#x60;usps_first_class&amp;#x60;
    */
-<span class="fc" id="L185">  @JsonAdapter(MailTypeEnum.Adapter.class)</span>
-  public enum MailTypeEnum {
+  @JsonAdapter(MailTypeEnum.Adapter.class)
+<span class="fc" id="L186">  public enum MailTypeEnum {</span>
 <span class="fc" id="L187">    USPS_FIRST_CLASS(&quot;usps_first_class&quot;);</span>
 
     private String value;
@@ -226,10 +226,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_MAIL_TYPE = &quot;mail_type&quot;;
 
-<span class="fc" id="L229">  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)</span>
+  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)
   
 
-  private MailTypeEnum mailType = MailTypeEnum.USPS_FIRST_CLASS;
+<span class="fc" id="L232">  private MailTypeEnum mailType = MailTypeEnum.USPS_FIRST_CLASS;</span>
   /**
   * Checks must be sent `usps_first_class`
   * @return mailType
@@ -481,8 +481,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Gets or Sets carrier
    */
-<span class="fc" id="L484">  @JsonAdapter(CarrierEnum.Adapter.class)</span>
-  public enum CarrierEnum {
+  @JsonAdapter(CarrierEnum.Adapter.class)
+<span class="fc" id="L485">  public enum CarrierEnum {</span>
 <span class="fc" id="L486">    USPS(&quot;USPS&quot;);</span>
 
     private String value;
@@ -525,10 +525,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_CARRIER = &quot;carrier&quot;;
 
-<span class="fc" id="L528">  @SerializedName(SERIALIZED_NAME_CARRIER)</span>
+  @SerializedName(SERIALIZED_NAME_CARRIER)
   
 
-  private CarrierEnum carrier = CarrierEnum.USPS;
+<span class="fc" id="L531">  private CarrierEnum carrier = CarrierEnum.USPS;</span>
   /**
   * Get carrier
   * @return carrier
@@ -546,8 +546,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_THUMBNAILS = &quot;thumbnails&quot;;
 
-<span class="fc" id="L549">  @SerializedName(SERIALIZED_NAME_THUMBNAILS)</span>
-  private List&lt;Thumbnail&gt; thumbnails = null;
+  @SerializedName(SERIALIZED_NAME_THUMBNAILS)
+<span class="fc" id="L550">  private List&lt;Thumbnail&gt; thumbnails = null;</span>
   public List&lt;Thumbnail&gt; getThumbnails() {     
 <span class="nc bnc" id="L552" title="All 2 branches missed.">    if (this.thumbnails == null) {</span>
 <span class="nc" id="L553">      this.thumbnails = new ArrayList&lt;Thumbnail&gt;();</span>
@@ -578,8 +578,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_TRACKING_EVENTS = &quot;tracking_events&quot;;
 
-<span class="fc" id="L581">  @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)</span>
-  private List&lt;TrackingEventNormal&gt; trackingEvents = null;
+  @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)
+<span class="fc" id="L582">  private List&lt;TrackingEventNormal&gt; trackingEvents = null;</span>
   public List&lt;TrackingEventNormal&gt; getTrackingEvents() {     
 <span class="nc bnc" id="L584" title="All 2 branches missed.">    if (this.trackingEvents == null) {</span>
 <span class="nc" id="L585">      this.trackingEvents = new ArrayList&lt;TrackingEventNormal&gt;();</span>
@@ -590,8 +590,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Gets or Sets _object
    */
-<span class="fc" id="L593">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L594">  public enum ObjectEnum {</span>
 <span class="fc" id="L595">    CHECK(&quot;check&quot;);</span>
 
     private String value;
@@ -634,10 +634,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L637">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.CHECK;
+<span class="fc" id="L640">  private ObjectEnum _object = ObjectEnum.CHECK;</span>
   /**
   * Get _object
   * @return _object

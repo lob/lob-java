@@ -77,8 +77,8 @@ import java.io.IOException;
   /**
    * Gets or Sets _object
    */
-<span class="fc" id="L80">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L81">  public enum ObjectEnum {</span>
 <span class="fc" id="L82">    ENVELOPE(&quot;envelope&quot;);</span>
 
     private String value;
@@ -121,10 +121,10 @@ import java.io.IOException;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L124">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.ENVELOPE;
+<span class="fc" id="L127">  private ObjectEnum _object = ObjectEnum.ENVELOPE;</span>
 
   /**
   * Get _object

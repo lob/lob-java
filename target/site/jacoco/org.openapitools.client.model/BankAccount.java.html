@@ -101,8 +101,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * The type of entity that holds the account.
    */
-<span class="fc" id="L104">  @JsonAdapter(AccountTypeEnum.Adapter.class)</span>
-  public enum AccountTypeEnum {
+  @JsonAdapter(AccountTypeEnum.Adapter.class)
+<span class="fc" id="L105">  public enum AccountTypeEnum {</span>
 <span class="fc" id="L106">    COMPANY(&quot;company&quot;),</span>
     
 <span class="fc" id="L108">    INDIVIDUAL(&quot;individual&quot;);</span>
@@ -189,8 +189,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_METADATA = &quot;metadata&quot;;
 
-<span class="fc" id="L192">  @SerializedName(SERIALIZED_NAME_METADATA)</span>
-  private Map&lt;String, String&gt; metadata = null;
+  @SerializedName(SERIALIZED_NAME_METADATA)
+<span class="fc" id="L193">  private Map&lt;String, String&gt; metadata = null;</span>
   public Map&lt;String, String&gt; getMetadata() {     
 <span class="nc bnc" id="L195" title="All 2 branches missed.">    if (this.metadata == null) {</span>
 <span class="nc" id="L196">      this.metadata = new HashMap&lt;String,String&gt;();</span>
@@ -271,7 +271,7 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_VERIFIED = &quot;verified&quot;;
 
-<span class="fc" id="L274">  @SerializedName(SERIALIZED_NAME_VERIFIED)</span>
+  @SerializedName(SERIALIZED_NAME_VERIFIED)
   
 
 <span class="fc" id="L277">  private Boolean verified = false;</span>
@@ -356,8 +356,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Gets or Sets _object
    */
-<span class="fc" id="L359">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L360">  public enum ObjectEnum {</span>
 <span class="fc" id="L361">    BANK_ACCOUNT(&quot;bank_account&quot;);</span>
 
     private String value;
@@ -400,10 +400,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L403">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.BANK_ACCOUNT;
+<span class="fc" id="L406">  private ObjectEnum _object = ObjectEnum.BANK_ACCOUNT;</span>
   /**
   * Get _object
   * @return _object

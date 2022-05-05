@@ -84,7 +84,7 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_AUTO_REORDER = &quot;auto_reorder&quot;;
 
-<span class="fc" id="L87">  @SerializedName(SERIALIZED_NAME_AUTO_REORDER)</span>
+  @SerializedName(SERIALIZED_NAME_AUTO_REORDER)
   
 
 <span class="fc" id="L90">  private Boolean autoReorder = false;</span>
@@ -189,8 +189,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_THUMBNAILS = &quot;thumbnails&quot;;
 
-<span class="fc" id="L192">  @SerializedName(SERIALIZED_NAME_THUMBNAILS)</span>
-  private List&lt;Thumbnail&gt; thumbnails = null;
+  @SerializedName(SERIALIZED_NAME_THUMBNAILS)
+<span class="fc" id="L193">  private List&lt;Thumbnail&gt; thumbnails = null;</span>
   public List&lt;Thumbnail&gt; getThumbnails() {     
 <span class="nc bnc" id="L195" title="All 2 branches missed.">    if (this.thumbnails == null) {</span>
 <span class="nc" id="L196">      this.thumbnails = new ArrayList&lt;Thumbnail&gt;();</span>
@@ -200,7 +200,7 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_AVAILABLE_QUANTITY = &quot;available_quantity&quot;;
 
-<span class="fc" id="L203">  @SerializedName(SERIALIZED_NAME_AVAILABLE_QUANTITY)</span>
+  @SerializedName(SERIALIZED_NAME_AVAILABLE_QUANTITY)
   
 
 <span class="fc" id="L206">  private Integer availableQuantity = 0;</span>
@@ -221,7 +221,7 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_PENDING_QUANTITY = &quot;pending_quantity&quot;;
 
-<span class="fc" id="L224">  @SerializedName(SERIALIZED_NAME_PENDING_QUANTITY)</span>
+  @SerializedName(SERIALIZED_NAME_PENDING_QUANTITY)
   
 
 <span class="fc" id="L227">  private Integer pendingQuantity = 0;</span>
@@ -243,8 +243,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Gets or Sets status
    */
-<span class="fc" id="L246">  @JsonAdapter(StatusEnum.Adapter.class)</span>
-  public enum StatusEnum {
+  @JsonAdapter(StatusEnum.Adapter.class)
+<span class="fc" id="L247">  public enum StatusEnum {</span>
 <span class="fc" id="L248">    PROCESSED(&quot;processed&quot;),</span>
     
 <span class="fc" id="L250">    RENDERED(&quot;rendered&quot;);</span>
@@ -311,8 +311,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * The orientation of the card.
    */
-<span class="fc" id="L314">  @JsonAdapter(OrientationEnum.Adapter.class)</span>
-  public enum OrientationEnum {
+  @JsonAdapter(OrientationEnum.Adapter.class)
+<span class="fc" id="L315">  public enum OrientationEnum {</span>
 <span class="fc" id="L316">    HORIZONTAL(&quot;horizontal&quot;),</span>
     
 <span class="fc" id="L318">    VERTICAL(&quot;vertical&quot;);</span>
@@ -357,10 +357,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_ORIENTATION = &quot;orientation&quot;;
 
-<span class="fc" id="L360">  @SerializedName(SERIALIZED_NAME_ORIENTATION)</span>
+  @SerializedName(SERIALIZED_NAME_ORIENTATION)
   
 
-  private OrientationEnum orientation = OrientationEnum.HORIZONTAL;
+<span class="fc" id="L363">  private OrientationEnum orientation = OrientationEnum.HORIZONTAL;</span>
   /**
   * The orientation of the card.
   * @return orientation
@@ -378,7 +378,7 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_THRESHOLD_AMOUNT = &quot;threshold_amount&quot;;
 
-<span class="fc" id="L381">  @SerializedName(SERIALIZED_NAME_THRESHOLD_AMOUNT)</span>
+  @SerializedName(SERIALIZED_NAME_THRESHOLD_AMOUNT)
   
 
 <span class="fc" id="L384">  private Integer thresholdAmount = 0;</span>
@@ -463,8 +463,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * object
    */
-<span class="fc" id="L466">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L467">  public enum ObjectEnum {</span>
 <span class="fc" id="L468">    CARD(&quot;card&quot;);</span>
 
     private String value;
@@ -507,10 +507,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L510">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.CARD;
+<span class="fc" id="L513">  private ObjectEnum _object = ObjectEnum.CARD;</span>
   /**
   * object
   * @return _object
@@ -550,8 +550,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * The size of the card
    */
-<span class="fc" id="L553">  @JsonAdapter(SizeEnum.Adapter.class)</span>
-  public enum SizeEnum {
+  @JsonAdapter(SizeEnum.Adapter.class)
+<span class="fc" id="L554">  public enum SizeEnum {</span>
 <span class="fc" id="L555">    _3_375X2_125(&quot;3.375x2.125&quot;),</span>
     
 <span class="fc" id="L557">    _2_125X3_375(&quot;2.125x3.375&quot;);</span>
@@ -596,10 +596,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_SIZE = &quot;size&quot;;
 
-<span class="fc" id="L599">  @SerializedName(SERIALIZED_NAME_SIZE)</span>
+  @SerializedName(SERIALIZED_NAME_SIZE)
   
 
-  private SizeEnum size = SizeEnum._2_125X3_375;
+<span class="fc" id="L602">  private SizeEnum size = SizeEnum._2_125X3_375;</span>
   /**
   * The size of the card
   * @return size

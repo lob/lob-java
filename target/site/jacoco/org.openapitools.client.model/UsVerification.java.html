@@ -172,8 +172,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Summarizes the deliverability of the &amp;#x60;us_verification&amp;#x60; object. For full details, see the &amp;#x60;deliverability_analysis&amp;#x60; field. Possible values are: * &amp;#x60;deliverable&amp;#x60; – The address is deliverable by the USPS. * &amp;#x60;deliverable_unnecessary_unit&amp;#x60; – The address is deliverable, but the secondary unit information is unnecessary. * &amp;#x60;deliverable_incorrect_unit&amp;#x60; – The address is deliverable to the building&amp;#39;s default address but the secondary unit provided may not exist. There is a chance the mail will not reach the intended recipient. * &amp;#x60;deliverable_missing_unit&amp;#x60; – The address is deliverable to the building&amp;#39;s default address but is missing secondary unit information. There is a chance the mail will not reach the intended recipient. * &amp;#x60;undeliverable&amp;#x60; – The address is not deliverable according to the USPS. 
    */
-<span class="fc" id="L175">  @JsonAdapter(DeliverabilityEnum.Adapter.class)</span>
-  public enum DeliverabilityEnum {
+  @JsonAdapter(DeliverabilityEnum.Adapter.class)
+<span class="fc" id="L176">  public enum DeliverabilityEnum {</span>
 <span class="fc" id="L177">    DELIVERABLE(&quot;deliverable&quot;),</span>
     
 <span class="fc" id="L179">    DELIVERABLE_UNNECESSARY_UNIT(&quot;deliverable_unnecessary_unit&quot;),</span>
@@ -313,8 +313,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Gets or Sets _object
    */
-<span class="fc" id="L316">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L317">  public enum ObjectEnum {</span>
 <span class="fc" id="L318">    US_VERIFICATION(&quot;us_verification&quot;);</span>
 
     private String value;
@@ -357,10 +357,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L360">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.US_VERIFICATION;
+<span class="fc" id="L363">  private ObjectEnum _object = ObjectEnum.US_VERIFICATION;</span>
 
   /**
   * Get _object

@@ -87,8 +87,8 @@ import org.openapitools.client.model.ZipLookupCity;
 
   public static final String SERIALIZED_NAME_CITIES = &quot;cities&quot;;
 
-<span class="fc" id="L90">  @SerializedName(SERIALIZED_NAME_CITIES)</span>
-  private List&lt;ZipLookupCity&gt; cities = null;
+  @SerializedName(SERIALIZED_NAME_CITIES)
+<span class="fc" id="L91">  private List&lt;ZipLookupCity&gt; cities = null;</span>
 
   public static final String SERIALIZED_NAME_ZIP_CODE_TYPE = &quot;zip_code_type&quot;;
 
@@ -115,8 +115,8 @@ import org.openapitools.client.model.ZipLookupCity;
   /**
    * Gets or Sets _object
    */
-<span class="fc" id="L118">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L119">  public enum ObjectEnum {</span>
 <span class="fc" id="L120">    US_ZIP_LOOKUP(&quot;us_zip_lookup&quot;);</span>
 
     private String value;
@@ -159,10 +159,10 @@ import org.openapitools.client.model.ZipLookupCity;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L162">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.US_ZIP_LOOKUP;
+<span class="fc" id="L165">  private ObjectEnum _object = ObjectEnum.US_ZIP_LOOKUP;</span>
 
   /**
   * Get _object

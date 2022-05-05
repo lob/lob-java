@@ -83,8 +83,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Gets or Sets carrier
    */
-<span class="fc" id="L86">  @JsonAdapter(CarrierEnum.Adapter.class)</span>
-  public enum CarrierEnum {
+  @JsonAdapter(CarrierEnum.Adapter.class)
+<span class="fc" id="L87">  public enum CarrierEnum {</span>
 <span class="fc" id="L88">    USPS(&quot;USPS&quot;);</span>
 
     private String value;
@@ -127,10 +127,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_CARRIER = &quot;carrier&quot;;
 
-<span class="fc" id="L130">  @SerializedName(SERIALIZED_NAME_CARRIER)</span>
+  @SerializedName(SERIALIZED_NAME_CARRIER)
   
 
-  private CarrierEnum carrier = CarrierEnum.USPS;
+<span class="fc" id="L133">  private CarrierEnum carrier = CarrierEnum.USPS;</span>
   /**
   * Get carrier
   * @return carrier
@@ -148,8 +148,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_THUMBNAILS = &quot;thumbnails&quot;;
 
-<span class="fc" id="L151">  @SerializedName(SERIALIZED_NAME_THUMBNAILS)</span>
-  private List&lt;Thumbnail&gt; thumbnails = null;
+  @SerializedName(SERIALIZED_NAME_THUMBNAILS)
+<span class="fc" id="L152">  private List&lt;Thumbnail&gt; thumbnails = null;</span>
   public List&lt;Thumbnail&gt; getThumbnails() {     
 <span class="pc bpc" id="L154" title="1 of 2 branches missed.">    if (this.thumbnails == null) {</span>
 <span class="nc" id="L155">      this.thumbnails = new ArrayList&lt;Thumbnail&gt;();</span>
@@ -319,8 +319,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Gets or Sets _object
    */
-<span class="fc" id="L322">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L323">  public enum ObjectEnum {</span>
 <span class="fc" id="L324">    LETTER(&quot;letter&quot;);</span>
 
     private String value;
@@ -363,10 +363,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L366">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.LETTER;
+<span class="fc" id="L369">  private ObjectEnum _object = ObjectEnum.LETTER;</span>
   /**
   * Get _object
   * @return _object
@@ -405,8 +405,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_METADATA = &quot;metadata&quot;;
 
-<span class="fc" id="L408">  @SerializedName(SERIALIZED_NAME_METADATA)</span>
-  private Map&lt;String, String&gt; metadata = null;
+  @SerializedName(SERIALIZED_NAME_METADATA)
+<span class="fc" id="L409">  private Map&lt;String, String&gt; metadata = null;</span>
   public Map&lt;String, String&gt; getMetadata() {     
 <span class="pc bpc" id="L411" title="1 of 2 branches missed.">    if (this.metadata == null) {</span>
 <span class="nc" id="L412">      this.metadata = new HashMap&lt;String,String&gt;();</span>
@@ -500,8 +500,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_TRACKING_EVENTS = &quot;tracking_events&quot;;
 
-<span class="fc" id="L503">  @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)</span>
-  private List&lt;TrackingEventNormal&gt; trackingEvents = null;
+  @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)
+<span class="fc" id="L504">  private List&lt;TrackingEventNormal&gt; trackingEvents = null;</span>
   public List&lt;TrackingEventNormal&gt; getTrackingEvents() {     
 <span class="pc bpc" id="L506" title="1 of 2 branches missed.">    if (this.trackingEvents == null) {</span>
 <span class="nc" id="L507">      this.trackingEvents = new ArrayList&lt;TrackingEventNormal&gt;();</span>
@@ -528,10 +528,10 @@ import io.swagger.annotations.ApiModelProperty;
 <span class="fc" id="L528">  }</span>
   public static final String SERIALIZED_NAME_MAIL_TYPE = &quot;mail_type&quot;;
 
-<span class="fc" id="L531">  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)</span>
+  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)
   
 
-  private MailType mailType = MailType.FIRST_CLASS;
+<span class="fc" id="L534">  private MailType mailType = MailType.FIRST_CLASS;</span>
   /**
   * Get mailType
   * @return mailType
@@ -570,7 +570,7 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_DOUBLE_SIDED = &quot;double_sided&quot;;
 
-<span class="fc" id="L573">  @SerializedName(SERIALIZED_NAME_DOUBLE_SIDED)</span>
+  @SerializedName(SERIALIZED_NAME_DOUBLE_SIDED)
   
 
 <span class="fc" id="L576">  private Boolean doubleSided = true;</span>
@@ -592,8 +592,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &amp;#x60;top_first_page&amp;#x60; - (default) print address information at the top of your provided first page   * &amp;#x60;insert_blank_page&amp;#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &amp;#x60;bottom_first_page_center&amp;#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &amp;#x60;bottom_first_page&amp;#x60; - print address information at the bottom of your provided first page 
    */
-<span class="fc" id="L595">  @JsonAdapter(AddressPlacementEnum.Adapter.class)</span>
-  public enum AddressPlacementEnum {
+  @JsonAdapter(AddressPlacementEnum.Adapter.class)
+<span class="fc" id="L596">  public enum AddressPlacementEnum {</span>
 <span class="fc" id="L597">    TOP_FIRST_PAGE(&quot;top_first_page&quot;),</span>
     
 <span class="fc" id="L599">    INSERT_BLANK_PAGE(&quot;insert_blank_page&quot;),</span>
@@ -642,10 +642,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_ADDRESS_PLACEMENT = &quot;address_placement&quot;;
 
-<span class="fc" id="L645">  @SerializedName(SERIALIZED_NAME_ADDRESS_PLACEMENT)</span>
+  @SerializedName(SERIALIZED_NAME_ADDRESS_PLACEMENT)
   
 
-  private AddressPlacementEnum addressPlacement = AddressPlacementEnum.TOP_FIRST_PAGE;
+<span class="fc" id="L648">  private AddressPlacementEnum addressPlacement = AddressPlacementEnum.TOP_FIRST_PAGE;</span>
   /**
   * Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * `top_first_page` - (default) print address information at the top of your provided first page   * `insert_blank_page` - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * `bottom_first_page_center` - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * `bottom_first_page` - print address information at the bottom of your provided first page 
   * @return addressPlacement

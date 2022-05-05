@@ -173,8 +173,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Gets or Sets deliverability
    */
-<span class="fc" id="L176">  @JsonAdapter(DeliverabilityEnum.Adapter.class)</span>
-  public enum DeliverabilityEnum {
+  @JsonAdapter(DeliverabilityEnum.Adapter.class)
+<span class="fc" id="L177">  public enum DeliverabilityEnum {</span>
 <span class="fc" id="L178">    DELIVERABLE(&quot;deliverable&quot;),</span>
     
 <span class="fc" id="L180">    DELIVERABLE_UNNECESSARY_UNIT(&quot;deliverable_unnecessary_unit&quot;),</span>
@@ -314,8 +314,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Gets or Sets _object
    */
-<span class="fc" id="L317">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L318">  public enum ObjectEnum {</span>
 <span class="fc" id="L319">    US_VERIFICATION(&quot;us_verification&quot;);</span>
 
     private String value;
@@ -358,10 +358,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L361">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.US_VERIFICATION;
+<span class="fc" id="L364">  private ObjectEnum _object = ObjectEnum.US_VERIFICATION;</span>
 
   /**
   * Get _object

@@ -36,8 +36,8 @@ import org.openapitools.client.model.DpvFootnote;
   /**
    * Result of Delivery Point Validation (DPV), which determines whether or not the address is deliverable by the USPS. Possible values are: * &amp;#x60;Y&amp;#x60; –– The address is deliverable by the USPS. * &amp;#x60;S&amp;#x60; –– The address is deliverable by removing the provided secondary unit designator. This information may be incorrect or unnecessary. * &amp;#x60;D&amp;#x60; –– The address is deliverable to the building&amp;#39;s default address but is missing a secondary unit designator and/or number.   There is a chance the mail will not reach the intended recipient. * &amp;#x60;N&amp;#x60; –– The address is not deliverable according to the USPS, but parts of the address are valid (such as the street and ZIP code). * &amp;#x60;&amp;#39;&amp;#39;&amp;#x60; –– This address is not deliverable. No matching street could be found within the city or ZIP code. 
    */
-<span class="fc" id="L39">  @JsonAdapter(DpvConfirmationEnum.Adapter.class)</span>
-  public enum DpvConfirmationEnum {
+  @JsonAdapter(DpvConfirmationEnum.Adapter.class)
+<span class="fc" id="L40">  public enum DpvConfirmationEnum {</span>
 <span class="fc" id="L41">    Y(&quot;Y&quot;),</span>
     
 <span class="fc" id="L43">    S(&quot;S&quot;),</span>
@@ -111,8 +111,8 @@ import org.openapitools.client.model.DpvFootnote;
   /**
    * indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * &amp;#x60;Y&amp;#x60; –– Address is CMRA-authorized. * &amp;#x60;N&amp;#x60; –– Address is not CMRA-authorized. * &amp;#x60;&amp;#39;&amp;#39;&amp;#x60; –– A DPV match is not made (&amp;#x60;deliverability_analysis[dpv_confirmation]&amp;#x60; is &amp;#x60;N&amp;#x60; or an empty string). 
    */
-<span class="fc" id="L114">  @JsonAdapter(DpvCmraEnum.Adapter.class)</span>
-  public enum DpvCmraEnum {
+  @JsonAdapter(DpvCmraEnum.Adapter.class)
+<span class="fc" id="L115">  public enum DpvCmraEnum {</span>
 <span class="fc" id="L116">    Y(&quot;Y&quot;),</span>
     
 <span class="fc" id="L118">    N(&quot;N&quot;),</span>
@@ -182,8 +182,8 @@ import org.openapitools.client.model.DpvFootnote;
   /**
    * indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * &amp;#x60;Y&amp;#x60; –– Address is vacant. * &amp;#x60;N&amp;#x60; –– Address is not vacant. * &amp;#x60;&amp;#39;&amp;#39;&amp;#x60; –– A DPV match is not made (&amp;#x60;deliverability_analysis[dpv_confirmation]&amp;#x60; is &amp;#x60;N&amp;#x60; or an empty string). 
    */
-<span class="fc" id="L185">  @JsonAdapter(DpvVacantEnum.Adapter.class)</span>
-  public enum DpvVacantEnum {
+  @JsonAdapter(DpvVacantEnum.Adapter.class)
+<span class="fc" id="L186">  public enum DpvVacantEnum {</span>
 <span class="fc" id="L187">    Y(&quot;Y&quot;),</span>
     
 <span class="fc" id="L189">    N(&quot;N&quot;),</span>
@@ -253,8 +253,8 @@ import org.openapitools.client.model.DpvFootnote;
   /**
    * Corresponds to the USPS field &amp;#x60;dpv_no_stat&amp;#x60;. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it&amp;#39;s been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * &amp;#x60;Y&amp;#x60; –– Address is active. * &amp;#x60;N&amp;#x60; –– Address is not active. * &amp;#x60;&amp;#39;&amp;#39;&amp;#x60; –– A DPV match is not made (&amp;#x60;deliverability_analysis[dpv_confirmation]&amp;#x60; is &amp;#x60;N&amp;#x60; or an empty string). 
    */
-<span class="fc" id="L256">  @JsonAdapter(DpvActiveEnum.Adapter.class)</span>
-  public enum DpvActiveEnum {
+  @JsonAdapter(DpvActiveEnum.Adapter.class)
+<span class="fc" id="L257">  public enum DpvActiveEnum {</span>
 <span class="fc" id="L258">    Y(&quot;Y&quot;),</span>
     
 <span class="fc" id="L260">    N(&quot;N&quot;),</span>
@@ -323,8 +323,8 @@ import org.openapitools.client.model.DpvFootnote;
 
   public static final String SERIALIZED_NAME_DPV_FOOTNOTES = &quot;dpv_footnotes&quot;;
 
-<span class="fc" id="L326">  @SerializedName(SERIALIZED_NAME_DPV_FOOTNOTES)</span>
-  private List&lt;DpvFootnote&gt; dpvFootnotes = null;
+  @SerializedName(SERIALIZED_NAME_DPV_FOOTNOTES)
+<span class="fc" id="L327">  private List&lt;DpvFootnote&gt; dpvFootnotes = null;</span>
 
   public static final String SERIALIZED_NAME_EWS_MATCH = &quot;ews_match&quot;;
 
@@ -351,8 +351,8 @@ import org.openapitools.client.model.DpvFootnote;
   /**
    * indicates whether this address has been converted by [LACS&amp;lt;sup&amp;gt;Link&amp;lt;/sup&amp;gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&amp;lt;sup&amp;gt;Link&amp;lt;/sup&amp;gt; corrects outdated addresses into their modern counterparts. Possible values are: * &amp;#x60;Y&amp;#x60; –– New address produced with a matching record in LACS&amp;lt;sup&amp;gt;Link&amp;lt;/sup&amp;gt;. * &amp;#x60;N&amp;#x60; –– New address could not be produced with a matching record in LACS&amp;lt;sup&amp;gt;Link&amp;lt;/sup&amp;gt;. * &amp;#x60;&amp;#39;&amp;#39;&amp;#x60; –– A DPV match is not made (&amp;#x60;deliverability_analysis[dpv_confirmation]&amp;#x60; is &amp;#x60;N&amp;#x60; or an empty string). 
    */
-<span class="fc" id="L354">  @JsonAdapter(LacsIndicatorEnum.Adapter.class)</span>
-  public enum LacsIndicatorEnum {
+  @JsonAdapter(LacsIndicatorEnum.Adapter.class)
+<span class="fc" id="L355">  public enum LacsIndicatorEnum {</span>
 <span class="fc" id="L356">    Y(&quot;Y&quot;),</span>
     
 <span class="fc" id="L358">    N(&quot;N&quot;),</span>
@@ -444,8 +444,8 @@ import org.openapitools.client.model.DpvFootnote;
   /**
    * A return code that indicates whether the address was matched and corrected by [Suite&amp;lt;sup&amp;gt;Link&amp;lt;/sup&amp;gt;](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite&amp;lt;sup&amp;gt;Link&amp;lt;/sup&amp;gt; attempts to provide secondary information to business addresses. Possible values are: * &amp;#x60;A&amp;#x60; –– A Suite&amp;lt;sup&amp;gt;Link&amp;lt;/sup&amp;gt; match was found and secondary information was added. * &amp;#x60;00&amp;#x60; –– A Suite&amp;lt;sup&amp;gt;Link&amp;lt;/sup&amp;gt; match could not be found and no secondary information was added. * &amp;#x60;&amp;#39;&amp;#39;&amp;#x60; –– Suite&amp;lt;sup&amp;gt;Link&amp;lt;/sup&amp;gt; lookup was not attempted. 
    */
-<span class="fc" id="L447">  @JsonAdapter(SuiteReturnCodeEnum.Adapter.class)</span>
-  public enum SuiteReturnCodeEnum {
+  @JsonAdapter(SuiteReturnCodeEnum.Adapter.class)
+<span class="fc" id="L448">  public enum SuiteReturnCodeEnum {</span>
 <span class="fc" id="L449">    A(&quot;A&quot;),</span>
     
 <span class="fc" id="L451">    _00(&quot;00&quot;),</span>

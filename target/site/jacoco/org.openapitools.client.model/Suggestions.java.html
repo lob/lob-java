@@ -120,8 +120,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Value is resource type.
    */
-<span class="fc" id="L123">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L124">  public enum ObjectEnum {</span>
 <span class="fc" id="L125">    US_AUTOCOMPLETION(&quot;us_autocompletion&quot;);</span>
 
     private String value;
@@ -164,10 +164,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L167">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.US_AUTOCOMPLETION;
+<span class="fc" id="L170">  private ObjectEnum _object = ObjectEnum.US_AUTOCOMPLETION;</span>
 
   /**
   * Value is resource type.

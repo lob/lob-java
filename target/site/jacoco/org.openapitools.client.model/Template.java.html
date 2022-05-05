@@ -85,8 +85,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_VERSIONS = &quot;versions&quot;;
 
-<span class="fc" id="L88">  @SerializedName(SERIALIZED_NAME_VERSIONS)</span>
-  private List&lt;TemplateVersion&gt; versions = null;
+  @SerializedName(SERIALIZED_NAME_VERSIONS)
+<span class="fc" id="L89">  private List&lt;TemplateVersion&gt; versions = null;</span>
 
   public static final String SERIALIZED_NAME_PUBLISHED_VERSION = &quot;published_version&quot;;
 
@@ -112,8 +112,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Value is resource type.
    */
-<span class="fc" id="L115">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L116">  public enum ObjectEnum {</span>
 <span class="fc" id="L117">    TEMPLATE(&quot;template&quot;);</span>
 
     private String value;
@@ -156,10 +156,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L159">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.TEMPLATE;
+<span class="fc" id="L162">  private ObjectEnum _object = ObjectEnum.TEMPLATE;</span>
   /**
   * Value is resource type.
   * @return _object
@@ -177,8 +177,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_METADATA = &quot;metadata&quot;;
 
-<span class="fc" id="L180">  @SerializedName(SERIALIZED_NAME_METADATA)</span>
-  private Map&lt;String, String&gt; metadata = null;
+  @SerializedName(SERIALIZED_NAME_METADATA)
+<span class="fc" id="L181">  private Map&lt;String, String&gt; metadata = null;</span>
   public Map&lt;String, String&gt; getMetadata() {     
 <span class="nc bnc" id="L183" title="All 2 branches missed.">    if (this.metadata == null) {</span>
 <span class="nc" id="L184">      this.metadata = new HashMap&lt;String,String&gt;();</span>

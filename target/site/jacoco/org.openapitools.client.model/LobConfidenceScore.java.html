@@ -58,8 +58,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * indicates the likelihood that the address is a valid, mail-receiving address. Possible values are:   - &amp;#x60;high&amp;#x60; — Over 70% of mailpieces Lob has sent to this address were delivered successfully and recent mailings were also successful.   - &amp;#x60;medium&amp;#x60; — Between 40% and 70% of mailpieces Lob has sent to this address were delivered successfully.   - &amp;#x60;low&amp;#x60; — Less than 40% of mailpieces Lob has sent to this address were delivered successfully and recent mailings weren&amp;#39;t successful.   - &amp;#x60;\&amp;quot;\&amp;quot;&amp;#x60; — No tracking data exists for this address or lob deliverability was unable to find a corresponding level of mail success. 
    */
-<span class="fc" id="L61">  @JsonAdapter(LevelEnum.Adapter.class)</span>
-  public enum LevelEnum {
+  @JsonAdapter(LevelEnum.Adapter.class)
+<span class="fc" id="L62">  public enum LevelEnum {</span>
 <span class="fc" id="L63">    HIGH(&quot;high&quot;),</span>
     
 <span class="fc" id="L65">    MEDIUM(&quot;medium&quot;),</span>

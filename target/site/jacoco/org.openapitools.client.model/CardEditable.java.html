@@ -54,10 +54,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
   public static final String SERIALIZED_NAME_BACK = &quot;back&quot;;
 
-<span class="fc" id="L57">  @SerializedName(SERIALIZED_NAME_BACK)</span>
+  @SerializedName(SERIALIZED_NAME_BACK)
   
 
-  private String back = &quot;https://s3.us-west-2.amazonaws.com/public.lob.com/assets/card_blank_horizontal.pdf&quot;;
+<span class="fc" id="L60">  private String back = &quot;https://s3.us-west-2.amazonaws.com/public.lob.com/assets/card_blank_horizontal.pdf&quot;;</span>
 
   /**
   * A PDF template for the back of the card
@@ -77,8 +77,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * The size of the card
    */
-<span class="fc" id="L80">  @JsonAdapter(SizeEnum.Adapter.class)</span>
-  public enum SizeEnum {
+  @JsonAdapter(SizeEnum.Adapter.class)
+<span class="fc" id="L81">  public enum SizeEnum {</span>
 <span class="fc" id="L82">    _3_375X2_125(&quot;3.375x2.125&quot;),</span>
     
 <span class="fc" id="L84">    _2_125X3_375(&quot;2.125x3.375&quot;);</span>
@@ -123,10 +123,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
   public static final String SERIALIZED_NAME_SIZE = &quot;size&quot;;
 
-<span class="fc" id="L126">  @SerializedName(SERIALIZED_NAME_SIZE)</span>
+  @SerializedName(SERIALIZED_NAME_SIZE)
   
 
-  private SizeEnum size = SizeEnum._2_125X3_375;
+<span class="fc" id="L129">  private SizeEnum size = SizeEnum._2_125X3_375;</span>
 
   /**
   * The size of the card

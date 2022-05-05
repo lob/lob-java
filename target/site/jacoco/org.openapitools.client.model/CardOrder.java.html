@@ -86,8 +86,8 @@ import org.threeten.bp.OffsetDateTime;
   /**
    * The status of the card order.
    */
-<span class="fc" id="L89">  @JsonAdapter(StatusEnum.Adapter.class)</span>
-  public enum StatusEnum {
+  @JsonAdapter(StatusEnum.Adapter.class)
+<span class="fc" id="L90">  public enum StatusEnum {</span>
 <span class="fc" id="L91">    PENDING(&quot;pending&quot;),</span>
     
 <span class="fc" id="L93">    PRINTING(&quot;printing&quot;),</span>
@@ -160,10 +160,10 @@ import org.threeten.bp.OffsetDateTime;
 
   public static final String SERIALIZED_NAME_INVENTORY = &quot;inventory&quot;;
 
-<span class="fc" id="L163">  @SerializedName(SERIALIZED_NAME_INVENTORY)</span>
+  @SerializedName(SERIALIZED_NAME_INVENTORY)
   
 
-  private BigDecimal inventory = new BigDecimal(&quot;0&quot;);
+<span class="fc" id="L166">  private BigDecimal inventory = new BigDecimal(&quot;0&quot;);</span>
 
   /**
   * The inventory of the card order.
@@ -182,10 +182,10 @@ import org.threeten.bp.OffsetDateTime;
 
   public static final String SERIALIZED_NAME_QUANTITY_ORDERED = &quot;quantity_ordered&quot;;
 
-<span class="fc" id="L185">  @SerializedName(SERIALIZED_NAME_QUANTITY_ORDERED)</span>
+  @SerializedName(SERIALIZED_NAME_QUANTITY_ORDERED)
   
 
-  private BigDecimal quantityOrdered = new BigDecimal(&quot;0&quot;);
+<span class="fc" id="L188">  private BigDecimal quantityOrdered = new BigDecimal(&quot;0&quot;);</span>
 
   /**
   * The quantity of cards ordered
@@ -204,10 +204,10 @@ import org.threeten.bp.OffsetDateTime;
 
   public static final String SERIALIZED_NAME_UNIT_PRICE = &quot;unit_price&quot;;
 
-<span class="fc" id="L207">  @SerializedName(SERIALIZED_NAME_UNIT_PRICE)</span>
+  @SerializedName(SERIALIZED_NAME_UNIT_PRICE)
   
 
-  private BigDecimal unitPrice = new BigDecimal(&quot;0&quot;);
+<span class="fc" id="L210">  private BigDecimal unitPrice = new BigDecimal(&quot;0&quot;);</span>
 
   /**
   * The unit price for the card order.

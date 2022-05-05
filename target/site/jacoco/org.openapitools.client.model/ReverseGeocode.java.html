@@ -60,14 +60,14 @@ import org.openapitools.client.model.GeocodeAddresses;
 
   public static final String SERIALIZED_NAME_ADDRESSES = &quot;addresses&quot;;
 
-<span class="fc" id="L63">  @SerializedName(SERIALIZED_NAME_ADDRESSES)</span>
-  private List&lt;GeocodeAddresses&gt; addresses = null;
+  @SerializedName(SERIALIZED_NAME_ADDRESSES)
+<span class="fc" id="L64">  private List&lt;GeocodeAddresses&gt; addresses = null;</span>
 
   /**
    * Value is resource type.
    */
-<span class="fc" id="L69">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L70">  public enum ObjectEnum {</span>
 <span class="fc" id="L71">    US_REVERSE_GEOCODE_LOOKUP(&quot;us_reverse_geocode_lookup&quot;);</span>
 
     private String value;
@@ -110,10 +110,10 @@ import org.openapitools.client.model.GeocodeAddresses;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L113">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.US_REVERSE_GEOCODE_LOOKUP;
+<span class="fc" id="L116">  private ObjectEnum _object = ObjectEnum.US_REVERSE_GEOCODE_LOOKUP;</span>
 
   /**
   * Value is resource type.

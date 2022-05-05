@@ -147,8 +147,8 @@ import org.threeten.bp.OffsetDateTime;
   /**
    * Value is resource type.
    */
-<span class="fc" id="L150">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L151">  public enum ObjectEnum {</span>
 <span class="fc" id="L152">    BILLING_GROUP(&quot;billing_group&quot;);</span>
 
     private String value;
@@ -191,10 +191,10 @@ import org.threeten.bp.OffsetDateTime;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L194">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.BILLING_GROUP;
+<span class="fc" id="L197">  private ObjectEnum _object = ObjectEnum.BILLING_GROUP;</span>
 
   /**
   * Value is resource type.

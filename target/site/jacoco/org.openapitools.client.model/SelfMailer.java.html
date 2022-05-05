@@ -97,10 +97,10 @@ import io.swagger.annotations.ApiModelProperty;
 <span class="nc" id="L97">  }</span>
   public static final String SERIALIZED_NAME_SIZE = &quot;size&quot;;
 
-<span class="fc" id="L100">  @SerializedName(SERIALIZED_NAME_SIZE)</span>
+  @SerializedName(SERIALIZED_NAME_SIZE)
   
 
-  private SelfMailerSize size = SelfMailerSize._6X18_BIFOLD;
+<span class="fc" id="L103">  private SelfMailerSize size = SelfMailerSize._6X18_BIFOLD;</span>
   /**
   * Get size
   * @return size
@@ -139,8 +139,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_METADATA = &quot;metadata&quot;;
 
-<span class="fc" id="L142">  @SerializedName(SERIALIZED_NAME_METADATA)</span>
-  private Map&lt;String, String&gt; metadata = null;
+  @SerializedName(SERIALIZED_NAME_METADATA)
+<span class="fc" id="L143">  private Map&lt;String, String&gt; metadata = null;</span>
   public Map&lt;String, String&gt; getMetadata() {     
 <span class="nc bnc" id="L145" title="All 2 branches missed.">    if (this.metadata == null) {</span>
 <span class="nc" id="L146">      this.metadata = new HashMap&lt;String,String&gt;();</span>
@@ -150,10 +150,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_MAIL_TYPE = &quot;mail_type&quot;;
 
-<span class="fc" id="L153">  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)</span>
+  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)
   
 
-  private MailType mailType = MailType.FIRST_CLASS;
+<span class="fc" id="L156">  private MailType mailType = MailType.FIRST_CLASS;</span>
   /**
   * Get mailType
   * @return mailType
@@ -314,8 +314,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Value is resource type.
    */
-<span class="fc" id="L317">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L318">  public enum ObjectEnum {</span>
 <span class="fc" id="L319">    SELF_MAILER(&quot;self_mailer&quot;);</span>
 
     private String value;
@@ -358,10 +358,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L361">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.SELF_MAILER;
+<span class="fc" id="L364">  private ObjectEnum _object = ObjectEnum.SELF_MAILER;</span>
   /**
   * Value is resource type.
   * @return _object
@@ -379,8 +379,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_TRACKING_EVENTS = &quot;tracking_events&quot;;
 
-<span class="fc" id="L382">  @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)</span>
-  private List&lt;TrackingEventCertified&gt; trackingEvents = null;
+  @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)
+<span class="fc" id="L383">  private List&lt;TrackingEventCertified&gt; trackingEvents = null;</span>
   public List&lt;TrackingEventCertified&gt; getTrackingEvents() {     
 <span class="nc bnc" id="L385" title="All 2 branches missed.">    if (this.trackingEvents == null) {</span>
 <span class="nc" id="L386">      this.trackingEvents = new ArrayList&lt;TrackingEventCertified&gt;();</span>

@@ -170,8 +170,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * The coverage level for the country. This represents the maximum level of accuracy an input address can be verified to.  * &amp;#x60;SUBBUILDING&amp;#x60; - Coverage down to unit numbers. For example, in an apartment or a large building * &amp;#x60;HOUSENUMBER/BUILDING&amp;#x60; - Coverage down to house number. For example, the address where a house or building may be located * &amp;#x60;STREET&amp;#x60; - Coverage down to street. This means that we can verify that an street exists in a city, state, country * &amp;#x60;LOCALITY&amp;#x60; - Coverage down to city, state, or village or province. This means that we can verify that a city, village, province, or state exists in a country. Countries differ in how they define what is a province, state, city, village, etc. This attempts to group eveyrthing together. * &amp;#x60;SPARSE&amp;#x60; - Some addresses for this country exist in our databases 
    */
-<span class="fc" id="L173">  @JsonAdapter(CoverageEnum.Adapter.class)</span>
-  public enum CoverageEnum {
+  @JsonAdapter(CoverageEnum.Adapter.class)
+<span class="fc" id="L174">  public enum CoverageEnum {</span>
 <span class="fc" id="L175">    SUBBUILDING(&quot;SUBBUILDING&quot;),</span>
     
 <span class="fc" id="L177">    HOUSENUMBER_BUILDING(&quot;HOUSENUMBER/BUILDING&quot;),</span>
@@ -245,8 +245,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Summarizes the deliverability of the &amp;#x60;intl_verification&amp;#x60; object. Possible values are: * &amp;#x60;deliverable&amp;#x60; — The address is deliverable. * &amp;#x60;deliverable_missing_info&amp;#x60; — The address is missing some information, but is most likely deliverable. * &amp;#x60;undeliverable&amp;#x60; — The address is most likely not deliverable. Some components of the address (such as city or postal code) may have been found. * &amp;#x60;no_match&amp;#x60; — This address is not deliverable. No matching street could be found within the city or postal code. 
    */
-<span class="fc" id="L248">  @JsonAdapter(DeliverabilityEnum.Adapter.class)</span>
-  public enum DeliverabilityEnum {
+  @JsonAdapter(DeliverabilityEnum.Adapter.class)
+<span class="fc" id="L249">  public enum DeliverabilityEnum {</span>
 <span class="fc" id="L250">    DELIVERABLE(&quot;deliverable&quot;),</span>
     
 <span class="fc" id="L252">    DELIVERABLE_MISSING_INFO(&quot;deliverable_missing_info&quot;),</span>
@@ -318,8 +318,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * The status level for the country. This represents the maximum level of accuracy an input address can be verified to.  * &amp;#x60;LV4&amp;#x60; - Verified. The input data is correct. All input data was able to match in databases. * &amp;#x60;LV3&amp;#x60; - Verified. The input data is correct. All input data was able to match in databases &amp;lt;em&amp;gt;after&amp;lt;/em&amp;gt; some or all elements were standarized. The input data may also be using outdated city, state, or country names. * &amp;#x60;LV2&amp;#x60; - Verified. The input data is correct although some input data is unverifiable due to incomplete data. * &amp;#x60;LV1&amp;#x60; - Verified. The input data is acceptable but in an attempt to standarize user input, errors were introduced. * &amp;#x60;LF4&amp;#x60; - Fixed. The input data is matched and fixed. (Example: Brighon, UK -&amp;gt; Brighton, UK) * &amp;#x60;LF3&amp;#x60; - Fixed. The input data is matched and fixed but some elements such as Subbuilding number and house number cannot be checked. * &amp;#x60;LF2&amp;#x60; - Fixed. The input data is matched but some elements such as Street cannot be checked. * &amp;#x60;LF1&amp;#x60; - Fixed. The input data is acceptable but in an attempt to standarize user input, errors were introduced. * &amp;#x60;LM4&amp;#x60; - Missing Info. The input data cannot be corrected completely. * &amp;#x60;LM3&amp;#x60; - Missing Info. The input data cannot be corrected completely and there were multiple matches found in databases. * &amp;#x60;LM2&amp;#x60; - Missing Info. The input data cannot be corrected completely and only some elements were found. * &amp;#x60;LU1&amp;#x60; - Unverified. The input data cannot be corrected or matched. 
    */
-<span class="fc" id="L321">  @JsonAdapter(StatusEnum.Adapter.class)</span>
-  public enum StatusEnum {
+  @JsonAdapter(StatusEnum.Adapter.class)
+<span class="fc" id="L322">  public enum StatusEnum {</span>
 <span class="fc" id="L323">    LV4(&quot;LV4&quot;),</span>
     
 <span class="fc" id="L325">    LV3(&quot;LV3&quot;),</span>
@@ -429,8 +429,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
   /**
    * Value is resource type.
    */
-<span class="fc" id="L432">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L433">  public enum ObjectEnum {</span>
 <span class="fc" id="L434">    INTL_VERIFICATION(&quot;intl_verification&quot;);</span>
 
     private String value;
@@ -473,10 +473,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L476">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.INTL_VERIFICATION;
+<span class="fc" id="L479">  private ObjectEnum _object = ObjectEnum.INTL_VERIFICATION;</span>
 
   /**
   * Value is resource type.

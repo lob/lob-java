@@ -104,10 +104,10 @@ import org.threeten.bp.OffsetDateTime;
 
   public static final String SERIALIZED_NAME_ENGINE = &quot;engine&quot;;
 
-<span class="fc" id="L107">  @SerializedName(SERIALIZED_NAME_ENGINE)</span>
+  @SerializedName(SERIALIZED_NAME_ENGINE)
   
 
-  private EngineHtml engine = EngineHtml.LEGACY;
+<span class="fc" id="L110">  private EngineHtml engine = EngineHtml.LEGACY;</span>
 
   /**
   * Get engine
@@ -237,8 +237,8 @@ import org.threeten.bp.OffsetDateTime;
   /**
    * Value is resource type.
    */
-<span class="fc" id="L240">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L241">  public enum ObjectEnum {</span>
 <span class="fc" id="L242">    VERSION(&quot;version&quot;);</span>
 
     private String value;
@@ -281,10 +281,10 @@ import org.threeten.bp.OffsetDateTime;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L284">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.VERSION;
+<span class="fc" id="L287">  private ObjectEnum _object = ObjectEnum.VERSION;</span>
 
   /**
   * Value is resource type.

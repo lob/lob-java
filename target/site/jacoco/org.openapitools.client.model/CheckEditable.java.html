@@ -113,10 +113,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_LOGO = &quot;logo&quot;;
 
-<span class="fc" id="L116">  @SerializedName(SERIALIZED_NAME_LOGO)</span>
+  @SerializedName(SERIALIZED_NAME_LOGO)
   
 
-  private Object logo = null;
+<span class="fc" id="L119">  private Object logo = null;</span>
   /**
   * Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check.
   * @return logo
@@ -197,8 +197,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_METADATA = &quot;metadata&quot;;
 
-<span class="fc" id="L200">  @SerializedName(SERIALIZED_NAME_METADATA)</span>
-  private Map&lt;String, String&gt; metadata = null;
+  @SerializedName(SERIALIZED_NAME_METADATA)
+<span class="fc" id="L201">  private Map&lt;String, String&gt; metadata = null;</span>
   public Map&lt;String, String&gt; getMetadata() {     
 <span class="nc bnc" id="L203" title="All 2 branches missed.">    if (this.metadata == null) {</span>
 <span class="nc" id="L204">      this.metadata = new HashMap&lt;String,String&gt;();</span>
@@ -251,8 +251,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Checks must be sent &amp;#x60;usps_first_class&amp;#x60;
    */
-<span class="fc" id="L254">  @JsonAdapter(MailTypeEnum.Adapter.class)</span>
-  public enum MailTypeEnum {
+  @JsonAdapter(MailTypeEnum.Adapter.class)
+<span class="fc" id="L255">  public enum MailTypeEnum {</span>
 <span class="fc" id="L256">    USPS_FIRST_CLASS(&quot;usps_first_class&quot;);</span>
 
     private String value;
@@ -295,10 +295,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_MAIL_TYPE = &quot;mail_type&quot;;
 
-<span class="fc" id="L298">  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)</span>
+  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)
   
 
-  private MailTypeEnum mailType = MailTypeEnum.USPS_FIRST_CLASS;
+<span class="fc" id="L301">  private MailTypeEnum mailType = MailTypeEnum.USPS_FIRST_CLASS;</span>
   /**
   * Checks must be sent `usps_first_class`
   * @return mailType

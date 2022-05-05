@@ -115,7 +115,7 @@ public class ApiClient {
 <span class="fc" id="L115">        builder.addNetworkInterceptor(getProgressInterceptor());</span>
 <span class="pc bpc" id="L116" title="1 of 2 branches missed.">        for (Interceptor interceptor: interceptors) {</span>
 <span class="nc" id="L117">            builder.addInterceptor(interceptor);</span>
-<span class="nc" id="L118">        }</span>
+        }
 
 <span class="fc" id="L120">        httpClient = builder.build();</span>
 <span class="fc" id="L121">    }</span>
@@ -314,7 +314,7 @@ public class ApiClient {
 <span class="nc" id="L314">                ((HttpBasicAuth) auth).setUsername(username);</span>
 <span class="nc" id="L315">                return;</span>
             }
-<span class="nc" id="L317">        }</span>
+        }
 <span class="nc" id="L318">        throw new RuntimeException(&quot;No HTTP basic authentication configured!&quot;);</span>
     }
 
@@ -329,7 +329,7 @@ public class ApiClient {
 <span class="nc" id="L329">                ((HttpBasicAuth) auth).setPassword(password);</span>
 <span class="nc" id="L330">                return;</span>
             }
-<span class="nc" id="L332">        }</span>
+        }
 <span class="nc" id="L333">        throw new RuntimeException(&quot;No HTTP basic authentication configured!&quot;);</span>
     }
 
@@ -344,7 +344,7 @@ public class ApiClient {
 <span class="nc" id="L344">                ((ApiKeyAuth) auth).setApiKey(apiKey);</span>
 <span class="nc" id="L345">                return;</span>
             }
-<span class="nc" id="L347">        }</span>
+        }
 <span class="nc" id="L348">        throw new RuntimeException(&quot;No API key authentication configured!&quot;);</span>
     }
 
@@ -359,7 +359,7 @@ public class ApiClient {
 <span class="nc" id="L359">                ((ApiKeyAuth) auth).setApiKeyPrefix(apiKeyPrefix);</span>
 <span class="nc" id="L360">                return;</span>
             }
-<span class="nc" id="L362">        }</span>
+        }
 <span class="nc" id="L363">        throw new RuntimeException(&quot;No API key authentication configured!&quot;);</span>
     }
 
@@ -428,7 +428,7 @@ public class ApiClient {
 <span class="nc" id="L428">                loggingInterceptor = new HttpLoggingInterceptor();</span>
 <span class="nc" id="L429">                loggingInterceptor.setLevel(Level.BODY);</span>
 <span class="nc" id="L430">                httpClient = httpClient.newBuilder().addInterceptor(loggingInterceptor).build();</span>
-            } else {
+<span class="nc" id="L431">            } else {</span>
 <span class="nc" id="L432">                final OkHttpClient.Builder builder = httpClient.newBuilder();</span>
 <span class="nc" id="L433">                builder.interceptors().remove(loggingInterceptor);</span>
 <span class="nc" id="L434">                httpClient = builder.build();</span>
@@ -549,7 +549,7 @@ public class ApiClient {
 <span class="nc" id="L549">                    b.append(&quot;,&quot;);</span>
                 }
 <span class="nc" id="L551">                b.append(String.valueOf(o));</span>
-<span class="nc" id="L552">            }</span>
+            }
 <span class="nc" id="L553">            return b.toString();</span>
         } else {
 <span class="fc" id="L555">            return String.valueOf(param);</span>
@@ -602,7 +602,7 @@ public class ApiClient {
 <span class="fc" id="L602">                    params.add(new Pair(name, escapeString(parameterToString(item))));</span>
                 }
 <span class="fc" id="L604">                params.add(new Pair(name, escapeString(parameterToString(item))));</span>
-<span class="fc" id="L605">            }</span>
+            }
 <span class="fc" id="L606">            return params;</span>
         }
 
@@ -623,7 +623,7 @@ public class ApiClient {
 <span class="nc bnc" id="L623" title="All 2 branches missed.">        for (Object item : value) {</span>
 <span class="nc" id="L624">            sb.append(delimiter);</span>
 <span class="nc" id="L625">            sb.append(escapeString(parameterToString(item)));</span>
-<span class="nc" id="L626">        }</span>
+        }
 
 <span class="nc" id="L628">        params.add(new Pair(name, sb.substring(delimiter.length())));</span>
 
@@ -659,7 +659,7 @@ public class ApiClient {
 <span class="nc bnc" id="L659" title="All 2 branches missed.">        for (Object item : value) {</span>
 <span class="nc" id="L660">            sb.append(delimiter);</span>
 <span class="nc" id="L661">            sb.append(parameterToString(item));</span>
-<span class="nc" id="L662">        }</span>
+        }
 
 <span class="nc" id="L664">        return sb.substring(delimiter.length());</span>
     }
@@ -784,7 +784,7 @@ public class ApiClient {
 <span class="nc" id="L784">                respBody = null;</span>
 <span class="nc" id="L785">        } catch (IOException e) {</span>
 <span class="nc" id="L786">            throw new ApiException(e);</span>
-<span class="fc" id="L787">        }</span>
+        }
 
 <span class="pc bpc" id="L789" title="2 of 4 branches missed.">        if (respBody == null || &quot;&quot;.equals(respBody)) {</span>
 <span class="nc" id="L790">            return null;</span>
@@ -802,10 +802,10 @@ public class ApiClient {
 <span class="nc" id="L802">            return (T) respBody;</span>
         } else {
 <span class="nc" id="L804">            throw new ApiException(</span>
-                    &quot;Content type \&quot;&quot; + contentType + &quot;\&quot; is not supported for type: &quot; + returnType,
+<span class="nc" id="L805">                    &quot;Content type \&quot;&quot; + contentType + &quot;\&quot; is not supported for type: &quot; + returnType,</span>
 <span class="nc" id="L806">                    response.code(),</span>
 <span class="nc" id="L807">                    response.headers().toMultimap(),</span>
-                    respBody);
+<span class="nc" id="L808">                    respBody);</span>
         }
     }
 
@@ -829,7 +829,7 @@ public class ApiClient {
             String content;
 <span class="pc bpc" id="L830" title="1 of 2 branches missed.">            if (obj != null) {</span>
 <span class="fc" id="L831">                content = json.serialize(obj);</span>
-            } else {
+<span class="fc" id="L832">            } else {</span>
 <span class="nc" id="L833">                content = null;</span>
             }
 <span class="fc" id="L835">            return RequestBody.create(content, MediaType.parse(contentType));</span>
@@ -881,11 +881,11 @@ public class ApiClient {
 <span class="nc bnc" id="L881" title="All 2 branches missed.">        if (filename == null) {</span>
 <span class="nc" id="L882">            prefix = &quot;download-&quot;;</span>
 <span class="nc" id="L883">            suffix = &quot;&quot;;</span>
-        } else {
+<span class="nc" id="L884">        } else {</span>
 <span class="nc" id="L885">            int pos = filename.lastIndexOf(&quot;.&quot;);</span>
 <span class="nc bnc" id="L886" title="All 2 branches missed.">            if (pos == -1) {</span>
 <span class="nc" id="L887">                prefix = filename + &quot;-&quot;;</span>
-            } else {
+<span class="nc" id="L888">            } else {</span>
 <span class="nc" id="L889">                prefix = filename.substring(0, pos) + &quot;-&quot;;</span>
 <span class="nc" id="L890">                suffix = filename.substring(pos);</span>
             }
@@ -974,7 +974,7 @@ public class ApiClient {
 <span class="nc" id="L974">                } catch (Exception e) {</span>
 <span class="nc" id="L975">                    callback.onFailure(new ApiException(e), response.code(), response.headers().toMultimap());</span>
 <span class="nc" id="L976">                    return;</span>
-<span class="nc" id="L977">                }</span>
+                }
 <span class="nc" id="L978">                callback.onSuccess(result, response.code(), response.headers().toMultimap());</span>
 <span class="nc" id="L979">            }</span>
         });
@@ -1000,7 +1000,7 @@ public class ApiClient {
 <span class="nc" id="L1000">                        response.body().close();</span>
 <span class="nc" id="L1001">                    } catch (Exception e) {</span>
 <span class="nc" id="L1002">                        throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());</span>
-<span class="nc" id="L1003">                    }</span>
+                    }
                 }
 <span class="nc" id="L1005">                return null;</span>
             } else {
@@ -1011,9 +1011,9 @@ public class ApiClient {
 <span class="pc bpc" id="L1011" title="1 of 2 branches missed.">            if (response.body() != null) {</span>
                 try {
 <span class="fc" id="L1013">                    respBody = response.body().string();</span>
-<span class="nc" id="L1014">                } catch (IOException e) {</span>
+<span class="pc" id="L1014">                } catch (IOException e) {</span>
 <span class="nc" id="L1015">                    throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());</span>
-<span class="fc" id="L1016">                }</span>
+                }
             }
             try {
 <span class="fc" id="L1019">                JSONObject outerObject = new JSONObject(respBody);</span>
@@ -1084,15 +1084,15 @@ public class ApiClient {
 <span class="nc" id="L1084">            reqBody = buildRequestBodyFormEncoding(formParams);</span>
 <span class="pc bpc" id="L1085" title="1 of 2 branches missed.">        } else if (&quot;multipart/form-data&quot;.equals(contentType)) {</span>
 <span class="nc" id="L1086">            reqBody = buildRequestBodyMultipart(formParams);</span>
-<span class="fc bfc" id="L1087" title="All 2 branches covered.">        } else if (body == null) {</span>
+<span class="pc bfc" id="L1087" title="All 2 branches covered.">        } else if (body == null) {</span>
 <span class="pc bpc" id="L1088" title="1 of 2 branches missed.">            if (&quot;DELETE&quot;.equals(method)) {</span>
                 // allow calling DELETE without sending a request body
 <span class="fc" id="L1090">                reqBody = null;</span>
-            } else {
+<span class="fc" id="L1091">            } else {</span>
                 // use an empty request body (for POST, PUT and PATCH)
 <span class="nc" id="L1093">                reqBody = RequestBody.create(&quot;&quot;, MediaType.parse(contentType));</span>
             }
-        } else {
+<span class="nc" id="L1095">        } else {</span>
 <span class="fc" id="L1096">            reqBody = serialize(body, contentType);</span>
         }
 
@@ -1132,13 +1132,13 @@ public class ApiClient {
 <span class="fc bfc" id="L1132" title="All 2 branches covered.">                    if (prefix != null) {</span>
 <span class="fc" id="L1133">                        url.append(prefix);</span>
 <span class="fc" id="L1134">                        prefix = null;</span>
-                    } else {
+<span class="fc" id="L1135">                    } else {</span>
 <span class="fc" id="L1136">                        url.append(&quot;&amp;&quot;);</span>
                     }
 <span class="fc" id="L1138">                    String value = parameterToString(param.getValue());</span>
 <span class="fc" id="L1139">                    url.append(escapeString(param.getName())).append(&quot;=&quot;).append(escapeString(value));</span>
                 }
-<span class="fc" id="L1141">            }</span>
+            }
         }
 
 <span class="pc bpc" id="L1144" title="1 of 4 branches missed.">        if (collectionQueryParams != null &amp;&amp; !collectionQueryParams.isEmpty()) {</span>
@@ -1148,14 +1148,14 @@ public class ApiClient {
 <span class="fc bfc" id="L1148" title="All 2 branches covered.">                    if (prefix != null) {</span>
 <span class="fc" id="L1149">                        url.append(prefix);</span>
 <span class="fc" id="L1150">                        prefix = null;</span>
-                    } else {
+<span class="fc" id="L1151">                    } else {</span>
 <span class="fc" id="L1152">                        url.append(&quot;&amp;&quot;);</span>
                     }
 <span class="fc" id="L1154">                    String value = parameterToString(param.getValue());</span>
                     // collection query parameter value already escaped as part of parameterToPairs
 <span class="fc" id="L1156">                    url.append(escapeString(param.getName())).append(&quot;=&quot;).append(value);</span>
                 }
-<span class="fc" id="L1158">            }</span>
+            }
         }
 
 <span class="fc" id="L1161">        return url.toString();</span>
@@ -1170,12 +1170,12 @@ public class ApiClient {
     public void processHeaderParams(Map&lt;String, String&gt; headerParams, Request.Builder reqBuilder) {
 <span class="fc bfc" id="L1171" title="All 2 branches covered.">        for (Entry&lt;String, String&gt; param : headerParams.entrySet()) {</span>
 <span class="fc" id="L1172">            reqBuilder.header(param.getKey(), parameterToString(param.getValue()));</span>
-<span class="fc" id="L1173">        }</span>
+        }
 <span class="fc bfc" id="L1174" title="All 2 branches covered.">        for (Entry&lt;String, String&gt; header : defaultHeaderMap.entrySet()) {</span>
 <span class="pc bpc" id="L1175" title="1 of 2 branches missed.">            if (!headerParams.containsKey(header.getKey())) {</span>
 <span class="fc" id="L1176">                reqBuilder.header(header.getKey(), parameterToString(header.getValue()));</span>
             }
-<span class="fc" id="L1178">        }</span>
+        }
 <span class="fc" id="L1179">    }</span>
 
     /**
@@ -1187,12 +1187,12 @@ public class ApiClient {
     public void processCookieParams(Map&lt;String, String&gt; cookieParams, Request.Builder reqBuilder) {
 <span class="pc bpc" id="L1188" title="1 of 2 branches missed.">        for (Entry&lt;String, String&gt; param : cookieParams.entrySet()) {</span>
 <span class="nc" id="L1189">            reqBuilder.addHeader(&quot;Cookie&quot;, String.format(&quot;%s=%s&quot;, param.getKey(), param.getValue()));</span>
-<span class="nc" id="L1190">        }</span>
+        }
 <span class="pc bpc" id="L1191" title="1 of 2 branches missed.">        for (Entry&lt;String, String&gt; param : defaultCookieMap.entrySet()) {</span>
 <span class="nc bnc" id="L1192" title="All 2 branches missed.">            if (!cookieParams.containsKey(param.getKey())) {</span>
 <span class="nc" id="L1193">                reqBuilder.addHeader(&quot;Cookie&quot;, String.format(&quot;%s=%s&quot;, param.getKey(), param.getValue()));</span>
             }
-<span class="nc" id="L1195">        }</span>
+        }
 <span class="fc" id="L1196">    }</span>
 
     /**
@@ -1223,7 +1223,7 @@ public class ApiClient {
 <span class="nc" id="L1223">        okhttp3.FormBody.Builder formBuilder = new okhttp3.FormBody.Builder();</span>
 <span class="nc bnc" id="L1224" title="All 2 branches missed.">        for (Entry&lt;String, Object&gt; param : formParams.entrySet()) {</span>
 <span class="nc" id="L1225">            formBuilder.add(param.getKey(), parameterToString(param.getValue()));</span>
-<span class="nc" id="L1226">        }</span>
+        }
 <span class="nc" id="L1227">        return formBuilder.build();</span>
     }
 
@@ -1246,7 +1246,7 @@ public class ApiClient {
 <span class="nc" id="L1246">                Headers partHeaders = Headers.of(&quot;Content-Disposition&quot;, &quot;form-data; name=\&quot;&quot; + param.getKey() + &quot;\&quot;&quot;);</span>
 <span class="nc" id="L1247">                mpBuilder.addPart(partHeaders, RequestBody.create(parameterToString(param.getValue()), null));</span>
             }
-<span class="nc" id="L1249">        }</span>
+        }
 <span class="nc" id="L1250">        return mpBuilder.build();</span>
     }
 
@@ -1317,12 +1317,12 @@ public class ApiClient {
 <span class="nc" id="L1317">                        return true;</span>
                     }
                 };
-            } else {
+<span class="nc" id="L1320">            } else {</span>
 <span class="nc" id="L1321">                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());</span>
 
 <span class="nc bnc" id="L1323" title="All 2 branches missed.">                if (sslCaCert == null) {</span>
 <span class="nc" id="L1324">                    trustManagerFactory.init((KeyStore) null);</span>
-                } else {
+<span class="nc" id="L1325">                } else {</span>
 <span class="nc" id="L1326">                    char[] password = null; // Any password will work.</span>
 <span class="nc" id="L1327">                    CertificateFactory certificateFactory = CertificateFactory.getInstance(&quot;X.509&quot;);</span>
 <span class="nc" id="L1328">                    Collection&lt;? extends Certificate&gt; certificates = certificateFactory.generateCertificates(sslCaCert);</span>
@@ -1334,7 +1334,7 @@ public class ApiClient {
 <span class="nc bnc" id="L1334" title="All 2 branches missed.">                    for (Certificate certificate : certificates) {</span>
 <span class="nc" id="L1335">                        String certificateAlias = &quot;ca&quot; + Integer.toString(index++);</span>
 <span class="nc" id="L1336">                        caKeyStore.setCertificateEntry(certificateAlias, certificate);</span>
-<span class="nc" id="L1337">                    }</span>
+                    }
 <span class="nc" id="L1338">                    trustManagerFactory.init(caKeyStore);</span>
                 }
 <span class="nc" id="L1340">                trustManagers = trustManagerFactory.getTrustManagers();</span>
@@ -1349,7 +1349,7 @@ public class ApiClient {
 <span class="nc" id="L1349">                            .build();</span>
 <span class="nc" id="L1350">        } catch (GeneralSecurityException e) {</span>
 <span class="nc" id="L1351">            throw new RuntimeException(e);</span>
-<span class="nc" id="L1352">        }</span>
+        }
 <span class="nc" id="L1353">    }</span>
 
     private KeyStore newEmptyKeyStore(char[] password) throws GeneralSecurityException {

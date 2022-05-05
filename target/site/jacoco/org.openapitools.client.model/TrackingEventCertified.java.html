@@ -35,8 +35,8 @@ import org.threeten.bp.OffsetDateTime;
   /**
    * a Certified letter tracking event
    */
-<span class="nc" id="L38">  @JsonAdapter(TypeEnum.Adapter.class)</span>
-  public enum TypeEnum {
+  @JsonAdapter(TypeEnum.Adapter.class)
+<span class="nc" id="L39">  public enum TypeEnum {</span>
 <span class="nc" id="L40">    CERTIFIED(&quot;certified&quot;);</span>
 
     private String value;
@@ -102,8 +102,8 @@ import org.threeten.bp.OffsetDateTime;
   /**
    * Name of tracking event for Certified letters. Letters sent with USPS Certified Mail are fully tracked by USPS, therefore their tracking events have an additional details object with more detailed information about the tracking event. Some certified tracking event names have multiple meanings, noted in the list here. See the description of the details object for the full set of combined certified tracking event name meanings.    * &amp;#x60;Mailed&amp;#x60; - Package has been accepted into the carrier network for delivery.    * &amp;#x60;In Transit&amp;#x60; - Maps to four distinct stages of transit.    * &amp;#x60;In Local Area&amp;#x60; - Package is at a location near the end destination.    * &amp;#x60;Processed for Delivery&amp;#x60; - Maps to two distinct stages of delivery.    * &amp;#x60;Pickup Available&amp;#x60; - Package is available for pickup at carrier location.    * &amp;#x60;Delivered&amp;#x60; - Package has been delivered.    * &amp;#x60;Re-Routed&amp;#x60; - Package has been forwarded.    * &amp;#x60;Returned to Sender&amp;#x60; - Package is to be returned to sender.    * &amp;#x60;Issue&amp;#x60; - Maps to (at least) 15 possible issues, some of which are actionable. 
    */
-<span class="nc" id="L105">  @JsonAdapter(NameEnum.Adapter.class)</span>
-  public enum NameEnum {
+  @JsonAdapter(NameEnum.Adapter.class)
+<span class="nc" id="L106">  public enum NameEnum {</span>
 <span class="nc" id="L107">    MAILED(&quot;Mailed&quot;),</span>
     
 <span class="nc" id="L109">    IN_TRANSIT(&quot;In Transit&quot;),</span>
@@ -321,8 +321,8 @@ import org.threeten.bp.OffsetDateTime;
   /**
    * Gets or Sets _object
    */
-<span class="fc" id="L324">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L325">  public enum ObjectEnum {</span>
 <span class="fc" id="L326">    TRACKING_EVENT(&quot;tracking_event&quot;);</span>
 
     private String value;
@@ -365,10 +365,10 @@ import org.threeten.bp.OffsetDateTime;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L368">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.TRACKING_EVENT;
+<span class="fc" id="L371">  private ObjectEnum _object = ObjectEnum.TRACKING_EVENT;</span>
 
   /**
   * Get _object

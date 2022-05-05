@@ -167,8 +167,8 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_METADATA = &quot;metadata&quot;;
 
-<span class="fc" id="L170">  @SerializedName(SERIALIZED_NAME_METADATA)</span>
-  private Map&lt;String, String&gt; metadata = null;
+  @SerializedName(SERIALIZED_NAME_METADATA)
+<span class="fc" id="L171">  private Map&lt;String, String&gt; metadata = null;</span>
   public Map&lt;String, String&gt; getMetadata() {     
 <span class="nc bnc" id="L173" title="All 2 branches missed.">    if (this.metadata == null) {</span>
 <span class="nc" id="L174">      this.metadata = new HashMap&lt;String,String&gt;();</span>
@@ -313,8 +313,8 @@ import io.swagger.annotations.ApiModelProperty;
   /**
    * Gets or Sets _object
    */
-<span class="fc" id="L316">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L317">  public enum ObjectEnum {</span>
 <span class="fc" id="L318">    ADDRESS(&quot;address&quot;);</span>
 
     private String value;
@@ -357,10 +357,10 @@ import io.swagger.annotations.ApiModelProperty;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L360">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.ADDRESS;
+<span class="fc" id="L363">  private ObjectEnum _object = ObjectEnum.ADDRESS;</span>
   /**
   * Get _object
   * @return _object

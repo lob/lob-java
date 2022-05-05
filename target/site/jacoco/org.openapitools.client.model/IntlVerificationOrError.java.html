@@ -172,8 +172,8 @@ import org.openapitools.client.model.LobError;
   /**
    * Gets or Sets coverage
    */
-<span class="fc" id="L175">  @JsonAdapter(CoverageEnum.Adapter.class)</span>
-  public enum CoverageEnum {
+  @JsonAdapter(CoverageEnum.Adapter.class)
+<span class="fc" id="L176">  public enum CoverageEnum {</span>
 <span class="fc" id="L177">    SUBBUILDING(&quot;SUBBUILDING&quot;),</span>
     
 <span class="fc" id="L179">    HOUSENUMBER_BUILDING(&quot;HOUSENUMBER/BUILDING&quot;),</span>
@@ -247,8 +247,8 @@ import org.openapitools.client.model.LobError;
   /**
    * Gets or Sets deliverability
    */
-<span class="fc" id="L250">  @JsonAdapter(DeliverabilityEnum.Adapter.class)</span>
-  public enum DeliverabilityEnum {
+  @JsonAdapter(DeliverabilityEnum.Adapter.class)
+<span class="fc" id="L251">  public enum DeliverabilityEnum {</span>
 <span class="fc" id="L252">    DELIVERABLE(&quot;deliverable&quot;),</span>
     
 <span class="fc" id="L254">    DELIVERABLE_MISSING_INFO(&quot;deliverable_missing_info&quot;),</span>
@@ -320,8 +320,8 @@ import org.openapitools.client.model.LobError;
   /**
    * Gets or Sets status
    */
-<span class="fc" id="L323">  @JsonAdapter(StatusEnum.Adapter.class)</span>
-  public enum StatusEnum {
+  @JsonAdapter(StatusEnum.Adapter.class)
+<span class="fc" id="L324">  public enum StatusEnum {</span>
 <span class="fc" id="L325">    LV4(&quot;LV4&quot;),</span>
     
 <span class="fc" id="L327">    LV3(&quot;LV3&quot;),</span>
@@ -431,8 +431,8 @@ import org.openapitools.client.model.LobError;
   /**
    * Gets or Sets _object
    */
-<span class="fc" id="L434">  @JsonAdapter(ObjectEnum.Adapter.class)</span>
-  public enum ObjectEnum {
+  @JsonAdapter(ObjectEnum.Adapter.class)
+<span class="fc" id="L435">  public enum ObjectEnum {</span>
 <span class="fc" id="L436">    INTL_VERIFICATION(&quot;intl_verification&quot;);</span>
 
     private String value;
@@ -475,10 +475,10 @@ import org.openapitools.client.model.LobError;
 
   public static final String SERIALIZED_NAME_OBJECT = &quot;object&quot;;
 
-<span class="fc" id="L478">  @SerializedName(SERIALIZED_NAME_OBJECT)</span>
+  @SerializedName(SERIALIZED_NAME_OBJECT)
   
 
-  private ObjectEnum _object = ObjectEnum.INTL_VERIFICATION;
+<span class="fc" id="L481">  private ObjectEnum _object = ObjectEnum.INTL_VERIFICATION;</span>
 
   /**
   * Get _object
