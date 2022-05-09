@@ -6,6 +6,7 @@ import java.util.List;
 import org.openapitools.client.model.AddressEditable;
 import org.openapitools.client.model.BankAccountWritable;
 import org.openapitools.client.model.BankTypeEnum;
+import org.openapitools.client.model.BillingGroupEditable;
 import org.openapitools.client.model.CountryExtended;
 
 public class TestFixtures {
@@ -13,8 +14,12 @@ public class TestFixtures {
         return "https://lob-assets.com/bank-accounts/asd_asdfghjkqwertyui.pdf?version=123&expires=1234567890&signature=aksdf";
     }
 
+    public String get_FILE_LOCATION() {
+        return "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf";
+    }
     private final List<AddressEditable> ADDRESSES_EDITABLE = new ArrayList<AddressEditable>();
     private final List<BankAccountWritable> BANK_ACCOUNTS_WRITABLE = new ArrayList<BankAccountWritable>();
+    private final List<BillingGroupEditable> BILLING_GROUP_EDITABLE = new ArrayList<BillingGroupEditable>();
 
     public List<AddressEditable> get_ADDRESSES_EDITABLE() {
         return ADDRESSES_EDITABLE;
@@ -24,9 +29,15 @@ public class TestFixtures {
         return BANK_ACCOUNTS_WRITABLE ;
     }
 
+
+    public List<BillingGroupEditable> get_BILLING_GROUP_EDITABLE() {
+        return BILLING_GROUP_EDITABLE ;
+    }
+
     public TestFixtures() {
         createBankAccountsList();
         createAddressesList();
+        createBillingGroupsList();
     }
 
     private AddressEditable populateAddressEditable(
@@ -54,6 +65,13 @@ public class TestFixtures {
             return address;
     }
 
+    private BillingGroupEditable populateBillingGroupEditable(String name, String description, BillingGroupEditable billingGroup) {
+            billingGroup.setName(name);
+            billingGroup.setDescription(description);
+
+            return billingGroup;
+    }
+
     private void  createAddressesList() {
         AddressEditable addressEditable0 = new AddressEditable();
         AddressEditable addressEditable1 = new AddressEditable();
@@ -63,13 +81,13 @@ public class TestFixtures {
         AddressEditable addressEditable5 = new AddressEditable();
         AddressEditable addressEditable6 = new AddressEditable();
 
-        addressEditable0 = populateAddressEditable(addressEditable0, "Thing T. Thing", "1313 CEMETERY LN", null, "WESTFIELD", "NJ", "07000", null);
-        addressEditable1 = populateAddressEditable(addressEditable1, "FESTER", "001 CEMETERY LN", "SUITE 666", "WESTFIELD", "NJ", "07000",null);
-        addressEditable2 = populateAddressEditable(addressEditable2, "MORTICIA ADDAMS", "1313 CEMETERY LN", null, "WESTFIELD", "NJ", "07000", null);
-        addressEditable3 = populateAddressEditable(addressEditable3, "COUSIN ITT", "1515 CEMETERY LN", "FLOOR 0", "WESTFIELD", "NJ", "07000", null);
-        addressEditable4 = populateAddressEditable(addressEditable4, "WEDNESDAY ADDAMS", "1313 CEMETERY LN", "# 000", "WESTFIELD", "NJ", "07000", CountryExtended.US);
-        addressEditable5 = populateAddressEditable(addressEditable5, "GORDON CRAVEN", "1313 CEMETERY LN", null, "WESTFIELD", "NJ", "07000", CountryExtended.US);
-        addressEditable6 = populateAddressEditable(addressEditable6, "PUGSLEY", "1313 CEMETERY LN", null, "WESTFIELD", "NJ", "07000", CountryExtended.US);
+        addressEditable0 = populateAddressEditable(addressEditable0, "Thing T. Thing", "1313 CEMETERY LN", null, "WESTFIELD", "NJ", "07091", null);
+        addressEditable1 = populateAddressEditable(addressEditable1, "FESTER", "001 CEMETERY LN", "SUITE 666", "WESTFIELD", "NJ", "07091",null);
+        addressEditable2 = populateAddressEditable(addressEditable2, "MORTICIA ADDAMS", "1313 CEMETERY LN", null, "WESTFIELD", "NJ", "07091", null);
+        addressEditable3 = populateAddressEditable(addressEditable3, "COUSIN ITT", "1515 CEMETERY LN", "FLOOR 0", "WESTFIELD", "NJ", "07091", null);
+        addressEditable4 = populateAddressEditable(addressEditable4, "WEDNESDAY ADDAMS", "1313 CEMETERY LN", "# 000", "WESTFIELD", "NJ", "07091", CountryExtended.US);
+        addressEditable5 = populateAddressEditable(addressEditable5, "GORDON CRAVEN", "155 Elm St", null, "WESTFIELD", "NJ", "07090", CountryExtended.US);
+        addressEditable6 = populateAddressEditable(addressEditable6, "PUGSLEY", "155 Elm St", null, "WESTFIELD", "NJ", "07090", CountryExtended.US);
 
         ADDRESSES_EDITABLE.add(addressEditable0);
         ADDRESSES_EDITABLE.add(addressEditable1);
@@ -106,5 +124,20 @@ public class TestFixtures {
         BANK_ACCOUNTS_WRITABLE.add(bankAccountWritable0);
         BANK_ACCOUNTS_WRITABLE.add(bankAccountWritable1);
         BANK_ACCOUNTS_WRITABLE.add(bankAccountWritable2);
+    }
+
+    private void  createBillingGroupsList() {
+        BillingGroupEditable billingGroupEditable0 = new BillingGroupEditable();
+        BillingGroupEditable billingGroupEditable1 = new BillingGroupEditable();
+        BillingGroupEditable billingGroupEditable2 = new BillingGroupEditable();
+
+
+        billingGroupEditable0 = populateBillingGroupEditable("TestBillingGroup1", "Billing Group 1", billingGroupEditable0);
+        billingGroupEditable1 = populateBillingGroupEditable("TestBillingGroup2", "Billing Group 2", billingGroupEditable0);
+        billingGroupEditable2 = populateBillingGroupEditable("TestBillingGroup3", "Billing Group 3", billingGroupEditable0);
+
+        BILLING_GROUP_EDITABLE.add(billingGroupEditable0);
+        BILLING_GROUP_EDITABLE.add(billingGroupEditable1);
+        BILLING_GROUP_EDITABLE.add(billingGroupEditable2);
     }
 }
