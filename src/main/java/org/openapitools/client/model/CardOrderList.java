@@ -44,7 +44,6 @@ public class CardOrderList {
   
 
   private String _object;
-
   /**
   * Value is type of resource.
   * @return _object
@@ -66,7 +65,6 @@ public class CardOrderList {
   
 
   private String nextUrl;
-
   /**
   * url of next page of items in list.
   * @return nextUrl
@@ -88,7 +86,6 @@ public class CardOrderList {
   
 
   private String previousUrl;
-
   /**
   * url of previous page of items in list.
   * @return previousUrl
@@ -110,7 +107,6 @@ public class CardOrderList {
   
 
   private Integer count;
-
   /**
   * number of resources in a set
   * @return count

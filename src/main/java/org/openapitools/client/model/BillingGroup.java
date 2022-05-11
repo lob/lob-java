@@ -36,7 +36,6 @@ public class BillingGroup {
   
 
   private String description;
-
   /**
   * Description of the billing group.
   * @return description
@@ -58,7 +57,6 @@ public class BillingGroup {
   
 
   private String name;
-
   /**
   * Name of the billing group.
   * @return name
@@ -80,7 +78,6 @@ public class BillingGroup {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `bg_`.
   * @return id
@@ -106,7 +103,6 @@ public class BillingGroup {
   
 
   private OffsetDateTime dateCreated;
-
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -128,7 +124,6 @@ public class BillingGroup {
   
 
   private OffsetDateTime dateModified;
-
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -195,7 +190,6 @@ public class BillingGroup {
   
 
   private ObjectEnum _object = ObjectEnum.BILLING_GROUP;
-
   /**
   * Value is resource type.
   * @return _object

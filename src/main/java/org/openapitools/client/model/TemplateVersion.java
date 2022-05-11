@@ -38,7 +38,6 @@ public class TemplateVersion {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `vrsn_`.
   * @return id
@@ -64,7 +63,6 @@ public class TemplateVersion {
   
 
   private String description;
-
   /**
   * An internal description that identifies this resource. Must be no longer than 255 characters. 
   * @return description
@@ -86,7 +84,6 @@ public class TemplateVersion {
   
 
   private String html;
-
   /**
   * An HTML string of less than 100,000 characters to be used as the `published_version` of this template. See [here](#section/HTML-Examples) for guidance on designing HTML templates. Please see endpoint specific documentation for any other product-specific HTML details: - [Postcards](#operation/postcard_create) - `front` and `back` - [Self Mailers](#operation/self_mailer_create) - `inside` and `outside` - [Letters](#operation/letter_create) - `file` - [Checks](#operation/check_create) - `check_bottom` and `attachment` - [Cards](#operation/card_create) - `front` and `back`  If there is a syntax error with your variable names within your HTML, then an error will be thrown, e.g. using a `{{#users}}` opening tag without the corresponding closing tag `{{/users}}`. 
   * @return html
@@ -108,7 +105,6 @@ public class TemplateVersion {
   
 
   private EngineHtml engine = EngineHtml.LEGACY;
-
   /**
   * Get engine
   * @return engine
@@ -130,7 +126,6 @@ public class TemplateVersion {
   
 
   private Boolean suggestJsonEditor;
-
   /**
   * Used by frontend, true if the template uses advanced features. 
   * @return suggestJsonEditor
@@ -152,7 +147,6 @@ public class TemplateVersion {
   
 
   private Object mergeVariables;
-
   /**
   * Used by frontend, an object representing the keys of every merge variable present in the template. It has one key named 'keys', and its value is an array of strings. 
   * @return mergeVariables
@@ -174,7 +168,6 @@ public class TemplateVersion {
   
 
   private OffsetDateTime dateCreated;
-
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -196,7 +189,6 @@ public class TemplateVersion {
   
 
   private OffsetDateTime dateModified;
-
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -218,7 +210,6 @@ public class TemplateVersion {
   
 
   private Boolean deleted;
-
   /**
   * Only returned if the resource has been successfully deleted.
   * @return deleted
@@ -285,7 +276,6 @@ public class TemplateVersion {
   
 
   private ObjectEnum _object = ObjectEnum.VERSION;
-
   /**
   * Value is resource type.
   * @return _object

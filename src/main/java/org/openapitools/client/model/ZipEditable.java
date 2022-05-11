@@ -35,7 +35,6 @@ public class ZipEditable {
   
 
   private String zipCode;
-
   /**
   * A 5-digit ZIP code.
   * @return zipCode

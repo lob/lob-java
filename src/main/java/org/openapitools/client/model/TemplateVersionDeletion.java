@@ -36,7 +36,6 @@ public class TemplateVersionDeletion {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `vrsn_`.
   * @return id
@@ -62,7 +61,6 @@ public class TemplateVersionDeletion {
   
 
   private Boolean deleted;
-
   /**
   * Only returned if the resource has been successfully deleted.
   * @return deleted
@@ -129,7 +127,6 @@ public class TemplateVersionDeletion {
   
 
   private ObjectEnum _object = ObjectEnum.TEMPLATE_VERSION_DELETED;
-
   /**
   * Value is type of resource.
   * @return _object

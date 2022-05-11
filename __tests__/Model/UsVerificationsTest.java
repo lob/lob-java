@@ -34,33 +34,11 @@ public class UsVerificationsTest {
         if (prop == "addresses") {
             List<UsVerificationOrError> castedVal = (ArrayList<UsVerificationOrError>)val;
             rec.setAddresses(castedVal);
-            // Assert.assertEquals(rec.getAddresses(), castedVal); // TODO: DXP-920
+            Assert.assertEquals(rec.getAddresses(), castedVal);
         } else {
             Boolean castedVal = (Boolean)val;
             rec.setErrors(castedVal);
             Assert.assertEquals(rec.getErrors(), castedVal);
         }
-    }
-
-    @Test(enabled=true)
-    public void usVerificationsTestErrObjsInErrArr() {
-        UsVerifications rec = new UsVerifications();
-        LobError.StatusCodeEnum tmp = (LobError.StatusCodeEnum)LobError.StatusCodeEnum.NUMBER_500;
-        Integer castedVal = (Integer)(tmp.getValue());
-        UsVerificationOrError lobError = new UsVerificationOrError();
-        lobError.setStatusCode(castedVal);
-
-        rec.addAddressesItem(lobError);
-
-        Assert.assertNotNull(rec);
-
-        String recAsStr = rec.toString();
-        String[] arrOfStr = recAsStr.split("(    addresses: |    errors: )", 0);
-
-        List<String> addresses = new ArrayList<String>(Arrays.asList(arrOfStr[1].split(", class", 0)));
-        List<String> errorAddresses = new ArrayList<String>(Arrays.asList(arrOfStr[2].split(", class", 0)));
-
-        Assert.assertEquals(addresses.size(), 1);
-        Assert.assertEquals(errorAddresses.size(), 1);
     }
 }

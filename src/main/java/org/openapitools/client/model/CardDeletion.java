@@ -36,7 +36,6 @@ public class CardDeletion {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `card_`.
   * @return id
@@ -62,7 +61,6 @@ public class CardDeletion {
   
 
   private Boolean deleted;
-
   /**
   * Only returned if the resource has been successfully deleted.
   * @return deleted
@@ -129,7 +127,6 @@ public class CardDeletion {
   
 
   private ObjectEnum _object = ObjectEnum.CARD_DELETED;
-
   /**
   * Value is type of resource.
   * @return _object

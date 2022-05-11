@@ -36,7 +36,6 @@ public class LobError {
   
 
   private String message;
-
   /**
   * A human-readable message with more details about the error
   * @return message
@@ -115,7 +114,6 @@ public class LobError {
   
 
   private StatusCodeEnum statusCode;
-
   /**
   * A conventional HTTP status code.
   * @return statusCode
@@ -226,7 +224,9 @@ public class LobError {
     
     UNAUTHORIZED("unauthorized"),
     
-    UNAUTHORIZED_TOKEN("unauthorized_token");
+    UNAUTHORIZED_TOKEN("unauthorized_token"),
+    
+    CARD_QUANTITY_BELOW_MIN("card_quantity_below_min");
 
     private String value;
 
@@ -272,7 +272,6 @@ public class LobError {
   
 
   private CodeEnum code;
-
   /**
   * A pre-defined string identifying an error.
   * @return code

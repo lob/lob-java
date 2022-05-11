@@ -23,9 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.client.model.BulkError;
 import org.openapitools.client.model.IntlComponents;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.client.model.LobError;
 
 /**
  * A model used to represent an entry in a result list where the entry can either be a intl_verification or an Error. The SDK will perform necessary casting into the correct corresponding type. 
@@ -39,7 +39,6 @@ public class IntlVerificationOrError {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `intl_ver_`.
   * @return id
@@ -65,7 +64,6 @@ public class IntlVerificationOrError {
   
 
   private String recipient;
-
   /**
   * The intended recipient, typically a person's or firm's name.
   * @return recipient
@@ -87,7 +85,6 @@ public class IntlVerificationOrError {
   
 
   private String primaryLine;
-
   /**
   * Get primaryLine
   * @return primaryLine
@@ -109,7 +106,6 @@ public class IntlVerificationOrError {
   
 
   private String secondaryLine;
-
   /**
   * The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long. 
   * @return secondaryLine
@@ -131,7 +127,6 @@ public class IntlVerificationOrError {
   
 
   private String lastLine;
-
   /**
   * Get lastLine
   * @return lastLine
@@ -153,7 +148,6 @@ public class IntlVerificationOrError {
   
 
   private String country;
-
   /**
   * Get country
   * @return country
@@ -228,7 +222,6 @@ public class IntlVerificationOrError {
   
 
   private CoverageEnum coverage;
-
   /**
   * Get coverage
   * @return coverage
@@ -301,7 +294,6 @@ public class IntlVerificationOrError {
   
 
   private DeliverabilityEnum deliverability;
-
   /**
   * Get deliverability
   * @return deliverability
@@ -390,7 +382,6 @@ public class IntlVerificationOrError {
   
 
   private StatusEnum status;
-
   /**
   * Get status
   * @return status
@@ -412,7 +403,6 @@ public class IntlVerificationOrError {
   
 
   private IntlComponents components;
-
   /**
   * Get components
   * @return components
@@ -479,7 +469,6 @@ public class IntlVerificationOrError {
   
 
   private ObjectEnum _object = ObjectEnum.INTL_VERIFICATION;
-
   /**
   * Get _object
   * @return _object
@@ -495,68 +484,23 @@ public class IntlVerificationOrError {
   
   
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  public static final String SERIALIZED_NAME_ERROR = "error";
 
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @SerializedName(SERIALIZED_NAME_ERROR)
   
 
-  private String message;
-
+  private BulkError error;
   /**
-  * Get message
-  * @return message
+  * Get error
+  * @return error
   **/
   
   @javax.annotation.Nullable
   
   @ApiModelProperty(value = "")
   
-  public String getMessage() {
-      return message;
-  }
-  
-  
-
-  public static final String SERIALIZED_NAME_STATUS_CODE = "status_code";
-
-  @SerializedName(SERIALIZED_NAME_STATUS_CODE)
-  
-
-  private Integer statusCode;
-
-  /**
-  * A conventional HTTP status code.
-  * @return statusCode
-  **/
-  
-  @javax.annotation.Nullable
-  
-  @ApiModelProperty(value = "A conventional HTTP status code.")
-  
-  public Integer getStatusCode() {
-      return statusCode;
-  }
-  
-  
-
-  public static final String SERIALIZED_NAME_CODE = "code";
-
-  @SerializedName(SERIALIZED_NAME_CODE)
-  
-
-  private LobError.CodeEnum code;
-
-  /**
-  * A pre-defined string identifying an error.
-  * @return code
-  **/
-  
-  @javax.annotation.Nullable
-  
-  @ApiModelProperty(value = "A pre-defined string identifying an error.")
-  
-  public LobError.CodeEnum getCode() {
-      return code;
+  public BulkError getError() {
+      return error;
   }
   
   
@@ -725,46 +669,16 @@ public class IntlVerificationOrError {
 
 
   /*
-  public IntlVerificationOrError message(String message) {
+  public IntlVerificationOrError error(BulkError error) {
     
-    this.message = message;
+    this.error = error;
     return this;
   }
   */
 
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-
-
-  /*
-  public IntlVerificationOrError statusCode(Integer statusCode) {
-    
-    this.statusCode = statusCode;
-    return this;
-  }
-  */
-
-
-  public void setStatusCode(Integer statusCode) {
-    this.statusCode = statusCode;
-  }
-
-
-
-  /*
-  public IntlVerificationOrError code(String code) {
-    
-    this.code = code;
-    return this;
-  }
-  */
-
-
-  public void setCode(LobError.CodeEnum code) {
-    this.code = code;
+  public void setError(BulkError error) {
+    this.error = error;
   }
 
 
@@ -789,9 +703,7 @@ public class IntlVerificationOrError {
         Objects.equals(this.status, intlVerificationOrError.status) &&
         Objects.equals(this.components, intlVerificationOrError.components) &&
         Objects.equals(this._object, intlVerificationOrError._object) &&
-        Objects.equals(this.message, intlVerificationOrError.message) &&
-        Objects.equals(this.statusCode, intlVerificationOrError.statusCode) &&
-        Objects.equals(this.code, intlVerificationOrError.code);
+        Objects.equals(this.error, intlVerificationOrError.error);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -800,7 +712,7 @@ public class IntlVerificationOrError {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, recipient, primaryLine, secondaryLine, lastLine, country, coverage, deliverability, status, components, _object, message, statusCode, code);
+    return Objects.hash(id, recipient, primaryLine, secondaryLine, lastLine, country, coverage, deliverability, status, components, _object, error);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -825,9 +737,7 @@ public class IntlVerificationOrError {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    components: ").append(toIndentedString(components)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }

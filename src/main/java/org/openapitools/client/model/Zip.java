@@ -39,7 +39,6 @@ public class Zip {
   
 
   private String zipCode;
-
   /**
   * A 5-digit ZIP code.
   * @return zipCode
@@ -65,7 +64,6 @@ public class Zip {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `us_zip_`.
   * @return id
@@ -96,7 +94,6 @@ public class Zip {
   
 
   private ZipCodeType zipCodeType;
-
   /**
   * Get zipCodeType
   * @return zipCodeType
@@ -163,7 +160,6 @@ public class Zip {
   
 
   private ObjectEnum _object = ObjectEnum.US_ZIP_LOOKUP;
-
   /**
   * Get _object
   * @return _object

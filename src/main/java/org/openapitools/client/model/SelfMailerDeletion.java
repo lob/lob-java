@@ -36,7 +36,6 @@ public class SelfMailerDeletion {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `sfm_`.
   * @return id
@@ -62,7 +61,6 @@ public class SelfMailerDeletion {
   
 
   private Boolean deleted;
-
   /**
   * Only returned if the resource has been successfully deleted.
   * @return deleted
@@ -129,7 +127,6 @@ public class SelfMailerDeletion {
   
 
   private ObjectEnum _object = ObjectEnum.SELF_MAILER_DELETED;
-
   /**
   * Value is type of resource.
   * @return _object

@@ -32,7 +32,7 @@ public class IntlVerificationsTest {
         if (prop == "addresses") {
             List<IntlVerificationOrError> castedVal = (ArrayList<IntlVerificationOrError>)val;
             rec.setAddresses(castedVal);
-            // Assert.assertEquals(rec.getAddresses(), castedVal); // TODO: DXP-920
+            Assert.assertEquals(rec.getAddresses(), castedVal);
         } else {
             Boolean castedVal = (Boolean)val;
             rec.setErrors(castedVal);

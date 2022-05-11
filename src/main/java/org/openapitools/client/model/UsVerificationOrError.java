@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.client.model.BulkError;
 import org.openapitools.client.model.DeliverabilityAnalysis;
 import org.openapitools.client.model.LobConfidenceScore;
 import org.openapitools.client.model.UsComponents;
@@ -40,7 +41,6 @@ public class UsVerificationOrError {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `us_ver_`.
   * @return id
@@ -66,7 +66,6 @@ public class UsVerificationOrError {
   
 
   private String recipient;
-
   /**
   * The intended recipient, typically a person's or firm's name.
   * @return recipient
@@ -88,7 +87,6 @@ public class UsVerificationOrError {
   
 
   private String primaryLine;
-
   /**
   * The primary delivery line (usually the street address) of the address. Combination of the following applicable `components`: * `primary_number` * `street_predirection` * `street_name` * `street_suffix` * `street_postdirection` * `secondary_designator` * `secondary_number` * `pmb_designator` * `pmb_number` 
   * @return primaryLine
@@ -110,7 +108,6 @@ public class UsVerificationOrError {
   
 
   private String secondaryLine;
-
   /**
   * The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long. 
   * @return secondaryLine
@@ -132,7 +129,6 @@ public class UsVerificationOrError {
   
 
   private String urbanization;
-
   /**
   * Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text=I51.,-4%20Urbanizations&text=In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification. 
   * @return urbanization
@@ -154,7 +150,6 @@ public class UsVerificationOrError {
   
 
   private String lastLine;
-
   /**
   * Get lastLine
   * @return lastLine
@@ -229,7 +224,6 @@ public class UsVerificationOrError {
   
 
   private DeliverabilityEnum deliverability;
-
   /**
   * Get deliverability
   * @return deliverability
@@ -251,7 +245,6 @@ public class UsVerificationOrError {
   
 
   private UsComponents components;
-
   /**
   * Get components
   * @return components
@@ -273,7 +266,6 @@ public class UsVerificationOrError {
   
 
   private DeliverabilityAnalysis deliverabilityAnalysis;
-
   /**
   * Get deliverabilityAnalysis
   * @return deliverabilityAnalysis
@@ -295,7 +287,6 @@ public class UsVerificationOrError {
   
 
   private LobConfidenceScore lobConfidenceScore;
-
   /**
   * Get lobConfidenceScore
   * @return lobConfidenceScore
@@ -362,7 +353,6 @@ public class UsVerificationOrError {
   
 
   private ObjectEnum _object = ObjectEnum.US_VERIFICATION;
-
   /**
   * Get _object
   * @return _object
@@ -378,68 +368,23 @@ public class UsVerificationOrError {
   
   
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  public static final String SERIALIZED_NAME_ERROR = "error";
 
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @SerializedName(SERIALIZED_NAME_ERROR)
   
 
-  private String message;
-
+  private BulkError error;
   /**
-  * A human-readable message with more details about the error
-  * @return message
+  * Get error
+  * @return error
   **/
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(value = "A human-readable message with more details about the error")
+  @ApiModelProperty(value = "")
   
-  public String getMessage() {
-      return message;
-  }
-  
-  
-
-  public static final String SERIALIZED_NAME_STATUS_CODE = "status_code";
-
-  @SerializedName(SERIALIZED_NAME_STATUS_CODE)
-  
-
-  private Integer statusCode;
-
-  /**
-  * A conventional HTTP status code.
-  * @return statusCode
-  **/
-  
-  @javax.annotation.Nullable
-  
-  @ApiModelProperty(value = "A conventional HTTP status code.")
-  
-  public Integer getStatusCode() {
-      return statusCode;
-  }
-  
-  
-
-  public static final String SERIALIZED_NAME_CODE = "code";
-
-  @SerializedName(SERIALIZED_NAME_CODE)
-  
-
-  private String code;
-
-  /**
-  * A pre-defined string identifying an error.
-  * @return code
-  **/
-  
-  @javax.annotation.Nullable
-  
-  @ApiModelProperty(value = "A pre-defined string identifying an error.")
-  
-  public String getCode() {
-      return code;
+  public BulkError getError() {
+      return error;
   }
   
   
@@ -608,46 +553,16 @@ public class UsVerificationOrError {
 
 
   /*
-  public UsVerificationOrError message(String message) {
+  public UsVerificationOrError error(BulkError error) {
     
-    this.message = message;
+    this.error = error;
     return this;
   }
   */
 
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-
-
-  /*
-  public UsVerificationOrError statusCode(Integer statusCode) {
-    
-    this.statusCode = statusCode;
-    return this;
-  }
-  */
-
-
-  public void setStatusCode(Integer statusCode) {
-    this.statusCode = statusCode;
-  }
-
-
-
-  /*
-  public UsVerificationOrError code(String code) {
-    
-    this.code = code;
-    return this;
-  }
-  */
-
-
-  public void setCode(String code) {
-    this.code = code;
+  public void setError(BulkError error) {
+    this.error = error;
   }
 
 
@@ -672,9 +587,7 @@ public class UsVerificationOrError {
         Objects.equals(this.deliverabilityAnalysis, usVerificationOrError.deliverabilityAnalysis) &&
         Objects.equals(this.lobConfidenceScore, usVerificationOrError.lobConfidenceScore) &&
         Objects.equals(this._object, usVerificationOrError._object) &&
-        Objects.equals(this.message, usVerificationOrError.message) &&
-        Objects.equals(this.statusCode, usVerificationOrError.statusCode) &&
-        Objects.equals(this.code, usVerificationOrError.code);
+        Objects.equals(this.error, usVerificationOrError.error);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -683,7 +596,7 @@ public class UsVerificationOrError {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, recipient, primaryLine, secondaryLine, urbanization, lastLine, deliverability, components, deliverabilityAnalysis, lobConfidenceScore, _object, message, statusCode, code);
+    return Objects.hash(id, recipient, primaryLine, secondaryLine, urbanization, lastLine, deliverability, components, deliverabilityAnalysis, lobConfidenceScore, _object, error);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -708,9 +621,7 @@ public class UsVerificationOrError {
     sb.append("    deliverabilityAnalysis: ").append(toIndentedString(deliverabilityAnalysis)).append("\n");
     sb.append("    lobConfidenceScore: ").append(toIndentedString(lobConfidenceScore)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }

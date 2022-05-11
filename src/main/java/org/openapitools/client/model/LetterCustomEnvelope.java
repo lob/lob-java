@@ -36,7 +36,6 @@ public class LetterCustomEnvelope {
   
 
   private String id;
-
   /**
   * The unique identifier of the custom envelope used.
   * @return id
@@ -58,7 +57,6 @@ public class LetterCustomEnvelope {
   
 
   private String url;
-
   /**
   * The url of the envelope asset used.
   * @return url
@@ -125,7 +123,6 @@ public class LetterCustomEnvelope {
   
 
   private ObjectEnum _object = ObjectEnum.ENVELOPE;
-
   /**
   * Get _object
   * @return _object

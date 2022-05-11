@@ -36,7 +36,6 @@ public class CardEditable {
   
 
   private String front;
-
   /**
   * A PDF template for the front of the card
   * @return front
@@ -58,7 +57,6 @@ public class CardEditable {
   
 
   private String back = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/card_blank_horizontal.pdf";
-
   /**
   * A PDF template for the back of the card
   * @return back
@@ -127,7 +125,6 @@ public class CardEditable {
   
 
   private SizeEnum size = SizeEnum._2_125X3_375;
-
   /**
   * The size of the card
   * @return size
@@ -149,7 +146,6 @@ public class CardEditable {
   
 
   private String description;
-
   /**
   * Description of the card.
   * @return description

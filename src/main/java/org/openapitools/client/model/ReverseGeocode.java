@@ -38,7 +38,6 @@ public class ReverseGeocode {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `us_reverse_geocode_`.
   * @return id
@@ -114,7 +113,6 @@ public class ReverseGeocode {
   
 
   private ObjectEnum _object = ObjectEnum.US_REVERSE_GEOCODE_LOOKUP;
-
   /**
   * Value is resource type.
   * @return _object

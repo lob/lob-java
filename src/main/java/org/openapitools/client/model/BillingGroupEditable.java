@@ -35,7 +35,6 @@ public class BillingGroupEditable {
   
 
   private String description;
-
   /**
   * Description of the billing group.
   * @return description
@@ -57,7 +56,6 @@ public class BillingGroupEditable {
   
 
   private String name;
-
   /**
   * Name of the billing group.
   * @return name

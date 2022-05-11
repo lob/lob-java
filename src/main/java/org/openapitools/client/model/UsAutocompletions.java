@@ -38,7 +38,6 @@ public class UsAutocompletions {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `us_auto_`.
   * @return id
@@ -114,7 +113,6 @@ public class UsAutocompletions {
   
 
   private ObjectEnum _object = ObjectEnum.US_AUTOCOMPLETION;
-
   /**
   * Value is resource type.
   * @return _object

@@ -2,15 +2,20 @@ package Model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.openapitools.client.model.Address;
 import org.openapitools.client.model.BankAccount;
 import org.openapitools.client.model.Check;
+import org.openapitools.client.model.Thumbnail;
+import org.openapitools.client.model.TrackingEventNormal;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
+
 
 import Helper.*;
 
@@ -34,9 +39,9 @@ public class CheckTest {
             {"to", to},
             {"from", from},
             {"description", "fake description"},
-            // {"metadata", new HashMap()}, // TODO: DXP-920
+            {"metadata", new HashMap()}, 
             {"merge_variables", new HashMap()},
-            // {"send_date", sendDate}, // TODO: DXP-920
+            // {"send_date", sendDate}, // TODO: DXP-978
             {"mail_type", Check.MailTypeEnum.USPS_FIRST_CLASS},
             {"memo", "fake memo"},
             {"check_number", 123456},
@@ -49,9 +54,9 @@ public class CheckTest {
             {"attachment_template_version_id", "vrsn_fakeId"},
             {"url", new TestFixtures().get_URL_VALID()},
             {"carrier", Check.CarrierEnum.USPS},
-            // {"thumbnails", new ArrayList<Thumbnail>()}, // TODO: DXP-920
+            {"thumbnails", new ArrayList<Thumbnail>()},
             {"expected_delivery_date", LocalDate.now()},
-            // {"tracking_events", new ArrayList<TrackingEventNormal>()}, // TODO: DXP-920
+            {"tracking_events", new ArrayList<TrackingEventNormal>()},
             {"object", Check.ObjectEnum.CHECK},
             {"date_created", OffsetDateTime.now()},
             {"date_modified", OffsetDateTime.now()},
@@ -89,19 +94,19 @@ public class CheckTest {
                 Assert.assertEquals(rec.getDescription(), castedVal);
                 break;
             }
-            // case "metadata": { // TODO: DXP-920
-            //     Map<String, String> castedVal = (HashMap<String, String>)val;
-            //     rec.setMetadata(castedVal);
-            //     Assert.assertEquals(rec.getMetadata(), castedVal);
-            //     break;
-            // }
+            case "metadata": {
+                Map<String, String> castedVal = (HashMap<String, String>)val;
+                rec.setMetadata(castedVal);
+                Assert.assertEquals(rec.getMetadata(), castedVal);
+                break;
+            }
             case "merge_variables": {
                 Map<String, String> castedVal = (HashMap<String, String>)val;
                 rec.setMergeVariables(castedVal);
                 Assert.assertEquals(rec.getMergeVariables(), castedVal);
                 break;
             }
-            // case "send_date": { // TODO: DXP-920
+            // case "send_date": { // TODO: DXP-978
             //     SendDate castedVal = (SendDate)val;
             //     rec.setSendDate(castedVal);
             //     Assert.assertEquals(rec.getSendDate(), castedVal);
@@ -179,24 +184,24 @@ public class CheckTest {
                 Assert.assertEquals(rec.getCarrier(), castedVal);
                 break;
             }
-            // case "thumbnails": { // TODO: DXP-920
-            //     List<Thumbnail> castedVal = (ArrayList<Thumbnail>)val;
-            //     rec.setThumbnails(castedVal);
-            //     Assert.assertEquals(rec.getThumbnails(), castedVal);
-            //     break;
-            // }
+            case "thumbnails": {
+                List<Thumbnail> castedVal = (ArrayList<Thumbnail>)val;
+                rec.setThumbnails(castedVal);
+                Assert.assertEquals(rec.getThumbnails(), castedVal);
+                break;
+            }
             case "expected_delivery_date": {
                 LocalDate castedVal = (LocalDate)val;
                 rec.setExpectedDeliveryDate(castedVal);
                 Assert.assertEquals(rec.getExpectedDeliveryDate(), castedVal);
                 break;
             }
-            // case "tracking_events": { // TODO: DXP-920
-            //     List<TrackingEventNormal> castedVal = (ArrayList<TrackingEventNormal>)val;
-            //     rec.setTrackingEvents(castedVal);
-            //     Assert.assertEquals(rec.getTrackingEvents(), castedVal);
-            //     break;
-            // }
+            case "tracking_events": {
+                List<TrackingEventNormal> castedVal = (ArrayList<TrackingEventNormal>)val;
+                rec.setTrackingEvents(castedVal);
+                Assert.assertEquals(rec.getTrackingEvents(), castedVal);
+                break;
+            }
             case "object": {
                 Check.ObjectEnum castedVal = (Check.ObjectEnum)val;
                 rec.setObject(castedVal);

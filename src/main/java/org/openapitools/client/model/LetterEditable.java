@@ -387,6 +387,27 @@ public class LetterEditable {
   
   
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  
+
+  private String description;
+  /**
+  * An internal description that identifies this resource. Must be no longer than 255 characters. 
+  * @return description
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "An internal description that identifies this resource. Must be no longer than 255 characters. ")
+  
+  public String getDescription() {
+      return description;
+  }
+  
+  
+
 
   /*
   public LetterEditable mailType(MailType mailType) {
@@ -582,6 +603,21 @@ public class LetterEditable {
 
 
 
+  /*
+  public LetterEditable description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+  */
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -603,7 +639,8 @@ public class LetterEditable {
         Objects.equals(this.file, letterEditable.file) &&
         Objects.equals(this.extraService, letterEditable.extraService) &&
         Objects.equals(this.cards, letterEditable.cards) &&
-        Objects.equals(this.billingGroupId, letterEditable.billingGroupId);
+        Objects.equals(this.billingGroupId, letterEditable.billingGroupId) &&
+        Objects.equals(this.description, letterEditable.description);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -612,7 +649,7 @@ public class LetterEditable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(mailType, color, doubleSided, addressPlacement, returnEnvelope, perforatedPage, customEnvelope, to, from, file, extraService, cards, billingGroupId);
+    return Objects.hash(mailType, color, doubleSided, addressPlacement, returnEnvelope, perforatedPage, customEnvelope, to, from, file, extraService, cards, billingGroupId, description);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -639,6 +676,7 @@ public class LetterEditable {
     sb.append("    extraService: ").append(toIndentedString(extraService)).append("\n");
     sb.append("    cards: ").append(toIndentedString(cards)).append("\n");
     sb.append("    billingGroupId: ").append(toIndentedString(billingGroupId)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

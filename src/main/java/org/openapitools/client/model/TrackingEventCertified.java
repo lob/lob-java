@@ -83,7 +83,6 @@ public class TrackingEventCertified {
   
 
   private TypeEnum type;
-
   /**
   * a Certified letter tracking event
   * @return type
@@ -166,7 +165,6 @@ public class TrackingEventCertified {
   
 
   private NameEnum name;
-
   /**
   * Name of tracking event for Certified letters. Letters sent with USPS Certified Mail are fully tracked by USPS, therefore their tracking events have an additional details object with more detailed information about the tracking event. Some certified tracking event names have multiple meanings, noted in the list here. See the description of the details object for the full set of combined certified tracking event name meanings.    * `Mailed` - Package has been accepted into the carrier network for delivery.    * `In Transit` - Maps to four distinct stages of transit.    * `In Local Area` - Package is at a location near the end destination.    * `Processed for Delivery` - Maps to two distinct stages of delivery.    * `Pickup Available` - Package is available for pickup at carrier location.    * `Delivered` - Package has been delivered.    * `Re-Routed` - Package has been forwarded.    * `Returned to Sender` - Package is to be returned to sender.    * `Issue` - Maps to (at least) 15 possible issues, some of which are actionable. 
   * @return name
@@ -188,7 +186,6 @@ public class TrackingEventCertified {
   
 
   private TrackingEventDetails details;
-
   /**
   * Get details
   * @return details
@@ -210,7 +207,6 @@ public class TrackingEventCertified {
   
 
   private String location;
-
   /**
   * The zip code in which the event occurred if it exists, otherwise will be the name of a Regional Distribution Center if it exists, otherwise will be null. 
   * @return location
@@ -232,7 +228,6 @@ public class TrackingEventCertified {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `evnt_`.
   * @return id
@@ -258,7 +253,6 @@ public class TrackingEventCertified {
   
 
   private OffsetDateTime time;
-
   /**
   * A timestamp in ISO 8601 format of the date USPS registered the event.
   * @return time
@@ -280,7 +274,6 @@ public class TrackingEventCertified {
   
 
   private OffsetDateTime dateCreated;
-
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -302,7 +295,6 @@ public class TrackingEventCertified {
   
 
   private OffsetDateTime dateModified;
-
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -369,7 +361,6 @@ public class TrackingEventCertified {
   
 
   private ObjectEnum _object = ObjectEnum.TRACKING_EVENT;
-
   /**
   * Get _object
   * @return _object

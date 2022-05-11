@@ -36,7 +36,6 @@ public class GeocodeComponents {
   
 
   private String zipCode;
-
   /**
   * The 5-digit ZIP code
   * @return zipCode
@@ -62,7 +61,6 @@ public class GeocodeComponents {
   
 
   private String zipCodePlus4;
-
   /**
   * Get zipCodePlus4
   * @return zipCodePlus4

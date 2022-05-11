@@ -132,9 +132,8 @@ public class AddressDomesticExpandedTest {
 
             model.setMetadata(map);
 
-            //Assert.assertNotNull(model.getMetadata());
-            //Assert.assertEquals(model.getMetadata(), map);
-            // TODO: test metadata, create get MetaData method(DXP-920)
+            Assert.assertNotNull(model.getMetadata());
+            Assert.assertEquals(model.getMetadata(), map);
         }
 
 }

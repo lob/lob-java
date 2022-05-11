@@ -13,22 +13,29 @@
 
 package com.lob.api.client;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.google.gson.reflect.TypeToken;
 import com.lob.api.ApiCallback;
 import com.lob.api.ApiClient;
 import com.lob.api.ApiException;
 import com.lob.api.ApiResponse;
 import com.lob.api.Configuration;
 import com.lob.api.Pair;
+import com.lob.api.ProgressRequestBody;
+import com.lob.api.ProgressResponseBody;
+
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
 
 import org.openapitools.client.model.IntlAutocompletions;
 import org.openapitools.client.model.IntlAutocompletionsWritable;
+import org.openapitools.client.model.LobError;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class IntlAutocompletionsApi {
     private ApiClient localVarApiClient;

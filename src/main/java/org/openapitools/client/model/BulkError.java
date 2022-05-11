@@ -23,46 +23,47 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.openapitools.client.model.MultipleComponents;
+import org.openapitools.client.model.BulkErrorProperties;
 
 /**
- * MultipleComponentsList
+ * Lob uses RESTful HTTP response codes to indicate success or failure of an API request.
  */
+@ApiModel(description = "Lob uses RESTful HTTP response codes to indicate success or failure of an API request.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class MultipleComponentsList {
-  public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
+public class BulkError {
+  public static final String SERIALIZED_NAME_ERROR = "error";
 
-  @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<MultipleComponents> addresses = null;
-  public List<MultipleComponents> getAddresses() {     
-    if (this.addresses == null) {
-      this.addresses = new ArrayList<MultipleComponents>();
-    }
-    return this.addresses; 
+  @SerializedName(SERIALIZED_NAME_ERROR)
+  
+
+  private BulkErrorProperties error;
+  /**
+  * Get error
+  * @return error
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "")
+  
+  public BulkErrorProperties getError() {
+      return error;
   }
+  
+  
 
 
   /*
-  public MultipleComponentsList addresses(List<MultipleComponents> addresses) {
+  public BulkError error(BulkErrorProperties error) {
     
-    this.addresses = addresses;
+    this.error = error;
     return this;
   }
   */
 
-  public MultipleComponentsList addAddressesItem(MultipleComponents addressesItem) {
-    if (this.addresses == null) {
-      this.addresses = new ArrayList<MultipleComponents>();
-    }
-    this.addresses.add(addressesItem);
-    return this;
-  }
 
-
-  public void setAddresses(List<MultipleComponents> addresses) {
-    this.addresses = addresses;
+  public void setError(BulkErrorProperties error) {
+    this.error = error;
   }
 
 
@@ -75,20 +76,20 @@ public class MultipleComponentsList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MultipleComponentsList multipleComponentsList = (MultipleComponentsList) o;
-    return Objects.equals(this.addresses, multipleComponentsList.addresses);
+    BulkError bulkError = (BulkError) o;
+    return Objects.equals(this.error, bulkError.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addresses);
+    return Objects.hash(error);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
-    sb.append("    addresses: ").append(toIndentedString(addresses)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }
