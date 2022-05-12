@@ -37,7 +37,6 @@ public class CardOrder {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `co_`.
   * @return id
@@ -63,7 +62,6 @@ public class CardOrder {
   
 
   private String cardId;
-
   /**
   * Unique identifier prefixed with `card_`.
   * @return cardId
@@ -142,7 +140,6 @@ public class CardOrder {
   
 
   private StatusEnum status;
-
   /**
   * The status of the card order.
   * @return status
@@ -164,7 +161,6 @@ public class CardOrder {
   
 
   private BigDecimal inventory = new BigDecimal("0");
-
   /**
   * The inventory of the card order.
   * @return inventory
@@ -186,7 +182,6 @@ public class CardOrder {
   
 
   private BigDecimal quantityOrdered = new BigDecimal("0");
-
   /**
   * The quantity of cards ordered
   * @return quantityOrdered
@@ -208,7 +203,6 @@ public class CardOrder {
   
 
   private BigDecimal unitPrice = new BigDecimal("0");
-
   /**
   * The unit price for the card order.
   * @return unitPrice
@@ -230,7 +224,6 @@ public class CardOrder {
   
 
   private String cancelledReason;
-
   /**
   * The reason for cancellation.
   * @return cancelledReason
@@ -252,7 +245,6 @@ public class CardOrder {
   
 
   private OffsetDateTime availabilityDate;
-
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return availabilityDate
@@ -274,7 +266,6 @@ public class CardOrder {
   
 
   private OffsetDateTime expectedAvailabilityDate;
-
   /**
   * The fixed deadline for the cards to be printed.
   * @return expectedAvailabilityDate
@@ -296,7 +287,6 @@ public class CardOrder {
   
 
   private OffsetDateTime dateCreated;
-
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -318,7 +308,6 @@ public class CardOrder {
   
 
   private OffsetDateTime dateModified;
-
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -340,7 +329,6 @@ public class CardOrder {
   
 
   private Boolean deleted;
-
   /**
   * Only returned if the resource has been successfully deleted.
   * @return deleted
@@ -362,7 +350,6 @@ public class CardOrder {
   
 
   private String _object;
-
   /**
   * Value is type of resource.
   * @return _object

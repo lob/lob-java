@@ -3,6 +3,7 @@ package Model;
 import org.openapitools.client.model.IntlVerificationOrError;
 
 import org.openapitools.client.model.LobError;
+import org.openapitools.client.model.BulkError;
 import org.openapitools.client.model.IntlComponents;
 
 import org.testng.annotations.*;
@@ -40,9 +41,6 @@ public class IntlVerificationOrErrorTest {
             {"status", IntlVerificationOrError.StatusEnum.LU1},
             {"components", new IntlComponents()},
             {"object", IntlVerificationOrError.ObjectEnum.INTL_VERIFICATION},
-            {"message", "fake message"},
-            {"status_code", 500},
-            {"code", LobError.CodeEnum.ADDRESS_LENGTH_EXCEEDS_LIMIT},
         };
     }
 
@@ -115,24 +113,6 @@ public class IntlVerificationOrErrorTest {
                 IntlVerificationOrError.ObjectEnum castedVal = (IntlVerificationOrError.ObjectEnum)val;
                 rec.setObject(castedVal);
                 Assert.assertEquals(rec.getObject(), castedVal);
-                break;
-            }
-            case "message": {
-                String castedVal = (String)val;
-                rec.setMessage(castedVal);
-                Assert.assertEquals(rec.getMessage(), castedVal);
-                break;
-            }
-            case "status_code": {
-                Integer castedVal = (Integer)val;
-                rec.setStatusCode(castedVal);
-                Assert.assertEquals(rec.getStatusCode(), castedVal);
-                break;
-            }
-            case "code": {
-                LobError.CodeEnum castedVal = (LobError.CodeEnum)val;
-                rec.setCode(castedVal);
-                Assert.assertEquals(rec.getCode(), castedVal);
                 break;
             }
             default:

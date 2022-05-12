@@ -36,7 +36,6 @@ public class IntlComponents {
   
 
   private String primaryNumber;
-
   /**
   * The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number.
   * @return primaryNumber
@@ -58,7 +57,6 @@ public class IntlComponents {
   
 
   private String streetName;
-
   /**
   * The name of the street.
   * @return streetName
@@ -80,7 +78,6 @@ public class IntlComponents {
   
 
   private String city;
-
   /**
   * Get city
   * @return city
@@ -102,7 +99,6 @@ public class IntlComponents {
   
 
   private String state;
-
   /**
   * The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
   * @return state
@@ -124,7 +120,6 @@ public class IntlComponents {
   
 
   private String postalCode;
-
   /**
   * The postal code.
   * @return postalCode

@@ -1,6 +1,6 @@
 /*
  * Lob
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -13,13 +13,19 @@
 
 package org.openapitools.client.model;
 
+import java.util.Objects;
+import java.util.Arrays;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import com.google.gson.annotations.SerializedName;
-
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.client.model.UsVerificationOrError;
 
 /**
  * UsVerifications
@@ -30,33 +36,38 @@ public class UsVerifications {
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
   private List<UsVerificationOrError> addresses = null;
+  public List<UsVerificationOrError> getAddresses() {     
+    if (this.addresses == null) {
+      this.addresses = new ArrayList<UsVerificationOrError>();
+    }
+    return this.addresses; 
+  }
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
 
   @SerializedName(SERIALIZED_NAME_ERRORS)
-
+  
 
   private Boolean errors;
-
   /**
   * Indicates whether any errors occurred during the verification process.
   * @return errors
   **/
-
+  
   @javax.annotation.Nullable
-
+  
   @ApiModelProperty(value = "Indicates whether any errors occurred during the verification process.")
-
+  
   public Boolean getErrors() {
       return errors;
   }
-
-
+  
+  
 
 
   /*
   public UsVerifications addresses(List<UsVerificationOrError> addresses) {
-
+    
     this.addresses = addresses;
     return this;
   }
@@ -79,7 +90,7 @@ public class UsVerifications {
 
   /*
   public UsVerifications errors(Boolean errors) {
-
+    
     this.errors = errors;
     return this;
   }

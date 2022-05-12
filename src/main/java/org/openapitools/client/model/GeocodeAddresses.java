@@ -37,7 +37,6 @@ public class GeocodeAddresses {
   
 
   private GeocodeComponents components;
-
   /**
   * Get components
   * @return components
@@ -59,7 +58,6 @@ public class GeocodeAddresses {
   
 
   private LocationAnalysis locationAnalysis;
-
   /**
   * Get locationAnalysis
   * @return locationAnalysis

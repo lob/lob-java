@@ -36,7 +36,7 @@ public class CheckListTest {
             case "data": {
                 List<Check> castedVal = (ArrayList<Check>)val;
                 rec.setData(castedVal);
-                // Assert.assertEquals(rec.getData(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getData(), castedVal);
                 break;
             }
             case "next_url": {

@@ -37,7 +37,6 @@ public class IntlVerification {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `intl_ver_`.
   * @return id
@@ -63,7 +62,6 @@ public class IntlVerification {
   
 
   private String recipient;
-
   /**
   * The intended recipient, typically a person's or firm's name.
   * @return recipient
@@ -85,7 +83,6 @@ public class IntlVerification {
   
 
   private String primaryLine;
-
   /**
   * The primary delivery line (usually the street address) of the address. 
   * @return primaryLine
@@ -107,7 +104,6 @@ public class IntlVerification {
   
 
   private String secondaryLine;
-
   /**
   * The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long. 
   * @return secondaryLine
@@ -129,7 +125,6 @@ public class IntlVerification {
   
 
   private String lastLine;
-
   /**
   * Combination of the following applicable `components`: * `city` * `state` * `zip_code` * `zip_code_plus_4` 
   * @return lastLine
@@ -151,7 +146,6 @@ public class IntlVerification {
   
 
   private String country;
-
   /**
   * The country of the address. Will be returned as a 2 letter country short-name code (ISO 3166).
   * @return country
@@ -226,7 +220,6 @@ public class IntlVerification {
   
 
   private CoverageEnum coverage;
-
   /**
   * The coverage level for the country. This represents the maximum level of accuracy an input address can be verified to.  * `SUBBUILDING` - Coverage down to unit numbers. For example, in an apartment or a large building * `HOUSENUMBER/BUILDING` - Coverage down to house number. For example, the address where a house or building may be located * `STREET` - Coverage down to street. This means that we can verify that an street exists in a city, state, country * `LOCALITY` - Coverage down to city, state, or village or province. This means that we can verify that a city, village, province, or state exists in a country. Countries differ in how they define what is a province, state, city, village, etc. This attempts to group eveyrthing together. * `SPARSE` - Some addresses for this country exist in our databases 
   * @return coverage
@@ -299,7 +292,6 @@ public class IntlVerification {
   
 
   private DeliverabilityEnum deliverability;
-
   /**
   * Summarizes the deliverability of the `intl_verification` object. Possible values are: * `deliverable` — The address is deliverable. * `deliverable_missing_info` — The address is missing some information, but is most likely deliverable. * `undeliverable` — The address is most likely not deliverable. Some components of the address (such as city or postal code) may have been found. * `no_match` — This address is not deliverable. No matching street could be found within the city or postal code. 
   * @return deliverability
@@ -388,7 +380,6 @@ public class IntlVerification {
   
 
   private StatusEnum status;
-
   /**
   * The status level for the country. This represents the maximum level of accuracy an input address can be verified to.  * `LV4` - Verified. The input data is correct. All input data was able to match in databases. * `LV3` - Verified. The input data is correct. All input data was able to match in databases <em>after</em> some or all elements were standarized. The input data may also be using outdated city, state, or country names. * `LV2` - Verified. The input data is correct although some input data is unverifiable due to incomplete data. * `LV1` - Verified. The input data is acceptable but in an attempt to standarize user input, errors were introduced. * `LF4` - Fixed. The input data is matched and fixed. (Example: Brighon, UK -> Brighton, UK) * `LF3` - Fixed. The input data is matched and fixed but some elements such as Subbuilding number and house number cannot be checked. * `LF2` - Fixed. The input data is matched but some elements such as Street cannot be checked. * `LF1` - Fixed. The input data is acceptable but in an attempt to standarize user input, errors were introduced. * `LM4` - Missing Info. The input data cannot be corrected completely. * `LM3` - Missing Info. The input data cannot be corrected completely and there were multiple matches found in databases. * `LM2` - Missing Info. The input data cannot be corrected completely and only some elements were found. * `LU1` - Unverified. The input data cannot be corrected or matched. 
   * @return status
@@ -410,7 +401,6 @@ public class IntlVerification {
   
 
   private IntlComponents components;
-
   /**
   * Get components
   * @return components
@@ -477,7 +467,6 @@ public class IntlVerification {
   
 
   private ObjectEnum _object = ObjectEnum.INTL_VERIFICATION;
-
   /**
   * Value is resource type.
   * @return _object

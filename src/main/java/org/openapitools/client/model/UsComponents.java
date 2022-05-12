@@ -38,7 +38,6 @@ public class UsComponents {
   
 
   private String primaryNumber;
-
   /**
   * The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number.
   * @return primaryNumber
@@ -121,7 +120,6 @@ public class UsComponents {
   
 
   private StreetPredirectionEnum streetPredirection;
-
   /**
   * Geographic direction preceding a street name (`N`, `S`, `E`, `W`, `NE`, `SW`, `SE`, `NW`). 
   * @return streetPredirection
@@ -143,7 +141,6 @@ public class UsComponents {
   
 
   private String streetName;
-
   /**
   * The name of the street.
   * @return streetName
@@ -165,7 +162,6 @@ public class UsComponents {
   
 
   private String streetSuffix;
-
   /**
   * The standard USPS abbreviation for the street suffix (`ST`, `AVE`, `BLVD`, etc). 
   * @return streetSuffix
@@ -248,7 +244,6 @@ public class UsComponents {
   
 
   private StreetPostdirectionEnum streetPostdirection;
-
   /**
   * Geographic direction following a street name (`N`, `S`, `E`, `W`, `NE`, `SW`, `SE`, `NW`). 
   * @return streetPostdirection
@@ -270,7 +265,6 @@ public class UsComponents {
   
 
   private String secondaryDesignator;
-
   /**
   * The standard USPS abbreviation describing the `components[secondary_number]` (`STE`, `APT`, `BLDG`, etc). 
   * @return secondaryDesignator
@@ -292,7 +286,6 @@ public class UsComponents {
   
 
   private String secondaryNumber;
-
   /**
   * Number of the apartment/unit/etc. 
   * @return secondaryNumber
@@ -314,7 +307,6 @@ public class UsComponents {
   
 
   private String pmbDesignator;
-
   /**
   * Designator of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. 
   * @return pmbDesignator
@@ -336,7 +328,6 @@ public class UsComponents {
   
 
   private String pmbNumber;
-
   /**
   * Number of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. 
   * @return pmbNumber
@@ -358,7 +349,6 @@ public class UsComponents {
   
 
   private String extraSecondaryDesignator;
-
   /**
   * An extra (often unnecessary) secondary designator provided with the input address. 
   * @return extraSecondaryDesignator
@@ -380,7 +370,6 @@ public class UsComponents {
   
 
   private String extraSecondaryNumber;
-
   /**
   * An extra (often unnecessary) secondary number provided with the input address. 
   * @return extraSecondaryNumber
@@ -402,7 +391,6 @@ public class UsComponents {
   
 
   private String city;
-
   /**
   * Get city
   * @return city
@@ -424,7 +412,6 @@ public class UsComponents {
   
 
   private String state;
-
   /**
   * The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
   * @return state
@@ -446,7 +433,6 @@ public class UsComponents {
   
 
   private String zipCode;
-
   /**
   * The 5-digit ZIP code
   * @return zipCode
@@ -472,7 +458,6 @@ public class UsComponents {
   
 
   private String zipCodePlus4;
-
   /**
   * Get zipCodePlus4
   * @return zipCodePlus4
@@ -498,7 +483,6 @@ public class UsComponents {
   
 
   private ZipCodeType zipCodeType;
-
   /**
   * Get zipCodeType
   * @return zipCodeType
@@ -520,7 +504,6 @@ public class UsComponents {
   
 
   private String deliveryPointBarcode;
-
   /**
   * A 12-digit identifier that uniquely identifies a delivery point (location where mail can be sent and received). It consists of the 5-digit ZIP code (`zip_code`), 4-digit ZIP+4 add-on (`zip_code_plus_4`), 2-digit delivery point, and 1-digit delivery point check digit. 
   * @return deliveryPointBarcode
@@ -591,7 +574,6 @@ public class UsComponents {
   
 
   private AddressTypeEnum addressType;
-
   /**
   * Uses USPS's [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * `residential` –– The address is residential or a PO Box. * `commercial` –– The address is commercial. * `''` –– Not enough information provided to be determined. 
   * @return addressType
@@ -670,7 +652,6 @@ public class UsComponents {
   
 
   private RecordTypeEnum recordType;
-
   /**
   * A description of the type of address. Populated if a DPV match is made (`deliverability_analysis[dpv_confirmation]` is `Y`, `S`, or `D`). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types). 
   * @return recordType
@@ -692,7 +673,6 @@ public class UsComponents {
   
 
   private Boolean defaultBuildingAddress;
-
   /**
   * Designates whether or not the address is the default address for a building containing multiple delivery points. 
   * @return defaultBuildingAddress
@@ -714,7 +694,6 @@ public class UsComponents {
   
 
   private String county;
-
   /**
   * County name of the address city.
   * @return county
@@ -736,7 +715,6 @@ public class UsComponents {
   
 
   private String countyFips;
-
   /**
   * A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies `components[county]`. It consists of a 2-digit state code and a 3-digit county code. 
   * @return countyFips
@@ -762,7 +740,6 @@ public class UsComponents {
   
 
   private String carrierRoute;
-
   /**
   * A 4-character code assigned to a mail delivery route within a ZIP code. 
   * @return carrierRoute
@@ -837,7 +814,6 @@ public class UsComponents {
   
 
   private CarrierRouteTypeEnum carrierRouteType;
-
   /**
   * The type of `components[carrier_route]`. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). 
   * @return carrierRouteType
@@ -859,7 +835,6 @@ public class UsComponents {
   
 
   private Float latitude;
-
   /**
   * A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be used with `longitude` to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is `AA`, `AE`, or `AP`). 
   * @return latitude
@@ -881,7 +856,6 @@ public class UsComponents {
   
 
   private Float longitude;
-
   /**
   * A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be used with `latitude` to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is `AA`, `AE`, or `AP`). 
   * @return longitude

@@ -17,6 +17,6 @@ public class IntlVerificationsPayloadTest {
         addresses.add(new MultipleComponentsIntl());
         rec.setAddresses(addresses);
 
-        // Assert.assertEquals(rec.getAddresses(), addresses); // TODO: DXP-920
+        Assert.assertEquals(rec.getAddresses(), addresses);
     }
 }

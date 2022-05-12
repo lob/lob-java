@@ -14,10 +14,16 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-
+import java.util.Arrays;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import org.openapitools.client.model.CountryExtended;
 
 /**
  * IntlAutocompletionsWritable
@@ -30,7 +36,6 @@ public class IntlAutocompletionsWritable {
   
 
   private String addressPrefix;
-
   /**
   * Only accepts numbers and street names in an alphanumeric format. 
   * @return addressPrefix
@@ -52,7 +57,6 @@ public class IntlAutocompletionsWritable {
   
 
   private String city;
-
   /**
   * An optional city input used to filter suggestions. Case insensitive and does not match partial abbreviations. 
   * @return city
@@ -74,7 +78,6 @@ public class IntlAutocompletionsWritable {
   
 
   private String state;
-
   /**
   * An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations. 
   * @return state
@@ -96,7 +99,6 @@ public class IntlAutocompletionsWritable {
   
 
   private String zipCode;
-
   /**
   * An optional Zip Code input used to filter suggestions. Matches partial entries. 
   * @return zipCode
@@ -118,7 +120,6 @@ public class IntlAutocompletionsWritable {
   
 
   private CountryExtended country;
-
   /**
   * Get country
   * @return country

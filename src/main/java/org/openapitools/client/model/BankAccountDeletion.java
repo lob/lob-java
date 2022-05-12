@@ -36,7 +36,6 @@ public class BankAccountDeletion {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `bank_`.
   * @return id
@@ -62,7 +61,6 @@ public class BankAccountDeletion {
   
 
   private Boolean deleted;
-
   /**
   * Only returned if the resource has been successfully deleted.
   * @return deleted
@@ -129,7 +127,6 @@ public class BankAccountDeletion {
   
 
   private ObjectEnum _object = ObjectEnum.BANK_ACCOUNT_DELETED;
-
   /**
   * Value is type of resource.
   * @return _object

@@ -79,7 +79,7 @@ public class BankAccountTest {
             case "metadata": {
                 Map<String, String> castedVal = (HashMap<String, String>)val;
                 rec.setMetadata(castedVal);
-                // Assert.assertEquals(rec.getMetadata(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getMetadata(), castedVal);
                 break;
             }
             case "signature_url": {

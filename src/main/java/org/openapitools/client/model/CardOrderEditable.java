@@ -35,7 +35,6 @@ public class CardOrderEditable {
   
 
   private Integer quantity;
-
   /**
   * Get quantity
   * minimum: 0

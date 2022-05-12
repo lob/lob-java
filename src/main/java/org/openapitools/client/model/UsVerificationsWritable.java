@@ -36,7 +36,6 @@ public class UsVerificationsWritable {
   
 
   private String address;
-
   /**
   * The entire address in one string (e.g., \"210 King Street 94107\"). _Does not support a recipient and will error when other payload parameters are provided._ 
   * @return address
@@ -58,7 +57,6 @@ public class UsVerificationsWritable {
   
 
   private String recipient;
-
   /**
   * The intended recipient, typically a person's or firm's name.
   * @return recipient
@@ -80,7 +78,6 @@ public class UsVerificationsWritable {
   
 
   private String primaryLine;
-
   /**
   * The primary delivery line (usually the street address) of the address. Combination of the following applicable `components`: * `primary_number` * `street_predirection` * `street_name` * `street_suffix` * `street_postdirection` * `secondary_designator` * `secondary_number` * `pmb_designator` * `pmb_number` 
   * @return primaryLine
@@ -102,7 +99,6 @@ public class UsVerificationsWritable {
   
 
   private String secondaryLine;
-
   /**
   * The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long. 
   * @return secondaryLine
@@ -124,7 +120,6 @@ public class UsVerificationsWritable {
   
 
   private String urbanization;
-
   /**
   * Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text=I51.,-4%20Urbanizations&text=In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification. 
   * @return urbanization
@@ -146,7 +141,6 @@ public class UsVerificationsWritable {
   
 
   private String city;
-
   /**
   * Get city
   * @return city
@@ -168,7 +162,6 @@ public class UsVerificationsWritable {
   
 
   private String state;
-
   /**
   * The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2:US) two letter code or subdivision name for the state. `city` and `state` are required if no `zip_code` is passed.
   * @return state
@@ -190,7 +183,6 @@ public class UsVerificationsWritable {
   
 
   private String zipCode;
-
   /**
   * Required if `city` and `state` are not passed in. If included, must be formatted as a US ZIP or ZIP+4 (e.g. `94107`, `941072282`, `94107-2282`).
   * @return zipCode

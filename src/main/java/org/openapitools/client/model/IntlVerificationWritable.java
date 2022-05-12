@@ -37,7 +37,6 @@ public class IntlVerificationWritable {
   
 
   private String recipient;
-
   /**
   * The intended recipient, typically a person's or firm's name.
   * @return recipient
@@ -59,7 +58,6 @@ public class IntlVerificationWritable {
   
 
   private String primaryLine;
-
   /**
   * The primary delivery line (usually the street address) of the address. 
   * @return primaryLine
@@ -81,7 +79,6 @@ public class IntlVerificationWritable {
   
 
   private String secondaryLine;
-
   /**
   * The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long. 
   * @return secondaryLine
@@ -103,7 +100,6 @@ public class IntlVerificationWritable {
   
 
   private String city;
-
   /**
   * Get city
   * @return city
@@ -125,7 +121,6 @@ public class IntlVerificationWritable {
   
 
   private String state;
-
   /**
   * The name of the state.
   * @return state
@@ -147,7 +142,6 @@ public class IntlVerificationWritable {
   
 
   private String postalCode;
-
   /**
   * The postal code.
   * @return postalCode
@@ -169,7 +163,6 @@ public class IntlVerificationWritable {
   
 
   private CountryExtended country;
-
   /**
   * Get country
   * @return country
@@ -191,7 +184,6 @@ public class IntlVerificationWritable {
   
 
   private String address;
-
   /**
   * The entire address in one string (e.g., \"370 Water St C1N 1C4\"). 
   * @return address

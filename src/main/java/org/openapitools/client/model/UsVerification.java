@@ -39,7 +39,6 @@ public class UsVerification {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `us_ver_`.
   * @return id
@@ -65,7 +64,6 @@ public class UsVerification {
   
 
   private String recipient;
-
   /**
   * The intended recipient, typically a person's or firm's name.
   * @return recipient
@@ -87,7 +85,6 @@ public class UsVerification {
   
 
   private String primaryLine;
-
   /**
   * The primary delivery line (usually the street address) of the address. Combination of the following applicable `components`: * `primary_number` * `street_predirection` * `street_name` * `street_suffix` * `street_postdirection` * `secondary_designator` * `secondary_number` * `pmb_designator` * `pmb_number` 
   * @return primaryLine
@@ -109,7 +106,6 @@ public class UsVerification {
   
 
   private String secondaryLine;
-
   /**
   * The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long. 
   * @return secondaryLine
@@ -131,7 +127,6 @@ public class UsVerification {
   
 
   private String urbanization;
-
   /**
   * Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text=I51.,-4%20Urbanizations&text=In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification. 
   * @return urbanization
@@ -153,7 +148,6 @@ public class UsVerification {
   
 
   private String lastLine;
-
   /**
   * Combination of the following applicable `components`: * City (`city`) * State (`state`) * ZIP code (`zip_code`) * ZIP+4 (`zip_code_plus_4`) 
   * @return lastLine
@@ -228,7 +222,6 @@ public class UsVerification {
   
 
   private DeliverabilityEnum deliverability;
-
   /**
   * Summarizes the deliverability of the `us_verification` object. For full details, see the `deliverability_analysis` field. Possible values are: * `deliverable` – The address is deliverable by the USPS. * `deliverable_unnecessary_unit` – The address is deliverable, but the secondary unit information is unnecessary. * `deliverable_incorrect_unit` – The address is deliverable to the building's default address but the secondary unit provided may not exist. There is a chance the mail will not reach the intended recipient. * `deliverable_missing_unit` – The address is deliverable to the building's default address but is missing secondary unit information. There is a chance the mail will not reach the intended recipient. * `undeliverable` – The address is not deliverable according to the USPS. 
   * @return deliverability
@@ -250,7 +243,6 @@ public class UsVerification {
   
 
   private UsComponents components;
-
   /**
   * Get components
   * @return components
@@ -272,7 +264,6 @@ public class UsVerification {
   
 
   private DeliverabilityAnalysis deliverabilityAnalysis;
-
   /**
   * Get deliverabilityAnalysis
   * @return deliverabilityAnalysis
@@ -294,7 +285,6 @@ public class UsVerification {
   
 
   private LobConfidenceScore lobConfidenceScore;
-
   /**
   * Get lobConfidenceScore
   * @return lobConfidenceScore
@@ -361,7 +351,6 @@ public class UsVerification {
   
 
   private ObjectEnum _object = ObjectEnum.US_VERIFICATION;
-
   /**
   * Get _object
   * @return _object

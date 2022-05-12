@@ -36,7 +36,6 @@ public class TemplateDeletion {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `tmpl_`. ID of a saved [HTML template](#section/HTML-Templates).
   * @return id
@@ -62,7 +61,6 @@ public class TemplateDeletion {
   
 
   private Boolean deleted;
-
   /**
   * Only returned if the resource has been successfully deleted.
   * @return deleted
@@ -129,7 +127,6 @@ public class TemplateDeletion {
   
 
   private ObjectEnum _object = ObjectEnum.TEMPLATE_DELETED;
-
   /**
   * Value is type of resource.
   * @return _object

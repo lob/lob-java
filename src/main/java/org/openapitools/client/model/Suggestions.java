@@ -13,16 +13,16 @@
 
 package org.openapitools.client.model;
 
-import java.io.IOException;
 import java.util.Objects;
-
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Suggestions
@@ -35,7 +35,6 @@ public class Suggestions {
   
 
   private String primaryLine;
-
   /**
   * The primary delivery line (usually the street address) of the address. Combination of the following applicable `components` (primary number & secondary information may be missing or inaccurate): * `primary_number` * `street_predirection` * `street_name` * `street_suffix` * `street_postdirection` * `secondary_designator` * `secondary_number` * `pmb_designator` * `pmb_number` 
   * @return primaryLine
@@ -57,7 +56,6 @@ public class Suggestions {
   
 
   private String city;
-
   /**
   * Get city
   * @return city
@@ -79,7 +77,6 @@ public class Suggestions {
   
 
   private String state;
-
   /**
   * The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
   * @return state
@@ -101,7 +98,6 @@ public class Suggestions {
   
 
   private String zipCode;
-
   /**
   * A 5-digit zip code. Left empty if a test key is used.
   * @return zipCode
@@ -168,7 +164,6 @@ public class Suggestions {
   
 
   private ObjectEnum _object = ObjectEnum.US_AUTOCOMPLETION;
-
   /**
   * Value is resource type.
   * @return _object

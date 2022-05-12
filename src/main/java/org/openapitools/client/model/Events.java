@@ -37,7 +37,6 @@ public class Events {
   
 
   private String id;
-
   /**
   * Unique identifier prefixed with `evt_`.
   * @return id
@@ -63,7 +62,6 @@ public class Events {
   
 
   private Object body;
-
   /**
   * The body of the associated resource as they were at the time of the event, i.e. the [postcard object](#operation/postcard_retrieve), [the letter object](#operation/letter_retrieve), [the check object](#operation/check_retrieve), [the address object](#operation/address_retrieve), or [the bank account object](#operation/bank_account_retrieve). For `.deleted` events, the body matches the response for the corresponding delete endpoint for that resource (e.g. the [postcard delete response](#operation/postcard_delete)).
   * @return body
@@ -85,7 +83,6 @@ public class Events {
   
 
   private String referenceId;
-
   /**
   * Unique identifier of the related resource for the event.
   * @return referenceId
@@ -107,7 +104,6 @@ public class Events {
   
 
   private EventType eventType;
-
   /**
   * Get eventType
   * @return eventType
@@ -129,7 +125,6 @@ public class Events {
   
 
   private OffsetDateTime dateCreated;
-
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -196,7 +191,6 @@ public class Events {
   
 
   private ObjectEnum _object = ObjectEnum.EVENT;
-
   /**
   * Value is resource type.
   * @return _object

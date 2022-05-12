@@ -23,7 +23,7 @@ public class CheckEditableTest {
             {"description", "fake description"},
             {"metadata", new HashMap<String, String>()},
             {"merge_variables", new Object()},
-            // {"send_date", new SendDate()}, // TODO: DXP-920
+            // {"send_date", new SendDate()}, // TODO: DXP-978
             {"mail_type", CheckEditable.MailTypeEnum.USPS_FIRST_CLASS},
             {"memo", "fake memo"},
             {"check_number", 123456},
@@ -88,7 +88,7 @@ public class CheckEditableTest {
             case "metadata": {
                 Map<String, String> castedVal = (HashMap<String, String>)val;
                 rec.setMetadata(castedVal);
-                // Assert.assertEquals(rec.getMetadata(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getMetadata(), castedVal);
                 break;
             }
             case "merge_variables": {

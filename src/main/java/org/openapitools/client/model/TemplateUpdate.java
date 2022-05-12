@@ -36,7 +36,6 @@ public class TemplateUpdate {
   
 
   private String description;
-
   /**
   * An internal description that identifies this resource. Must be no longer than 255 characters. 
   * @return description
@@ -58,7 +57,6 @@ public class TemplateUpdate {
   
 
   private String publishedVersion;
-
   /**
   * Unique identifier prefixed with `vrsn_`.
   * @return publishedVersion

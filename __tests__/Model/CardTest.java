@@ -102,7 +102,7 @@ public class CardTest {
             case "thumbnails": {
                 List<Thumbnail> castedVal = (ArrayList<Thumbnail>)val;
                 rec.setThumbnails(castedVal);
-                // Assert.assertEquals(rec.getThumbnails(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getThumbnails(), castedVal);
                 break;
             }
             case "available_quantity": {

@@ -37,7 +37,6 @@ public class TemplateVersionUpdatable {
   
 
   private String description;
-
   /**
   * An internal description that identifies this resource. Must be no longer than 255 characters. 
   * @return description
@@ -59,7 +58,6 @@ public class TemplateVersionUpdatable {
   
 
   private EngineHtml engine = EngineHtml.LEGACY;
-
   /**
   * Get engine
   * @return engine

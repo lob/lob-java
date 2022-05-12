@@ -3,6 +3,7 @@ package Model;
 import org.openapitools.client.model.UsVerificationOrError;
 import org.openapitools.client.model.LobError;
 import org.openapitools.client.model.UsComponents;
+import org.openapitools.client.model.BulkError;
 import org.openapitools.client.model.DeliverabilityAnalysis;
 import org.openapitools.client.model.LobConfidenceScore;
 
@@ -115,26 +116,6 @@ public class UsVerificationOrErrorTest {
                 UsVerificationOrError.ObjectEnum castedVal = (UsVerificationOrError.ObjectEnum)val;
                 rec.setObject(castedVal);
                 Assert.assertEquals(rec.getObject(), castedVal);
-                break;
-            }
-            case "message": {
-                String castedVal = (String)val;
-                rec.setMessage(castedVal);
-                Assert.assertEquals(rec.getMessage(), castedVal);
-                break;
-            }
-            case "status_code": {
-                LobError.StatusCodeEnum tmp = (LobError.StatusCodeEnum)val;
-                Integer castedVal = (Integer)(tmp.getValue());
-                rec.setStatusCode(castedVal);
-                Assert.assertEquals(rec.getStatusCode(), castedVal);
-                break;
-            }
-            case "code": {
-                LobError.CodeEnum tmp = (LobError.CodeEnum)val;
-                String castedVal = (String)(tmp.getValue());
-                rec.setCode(castedVal);
-                Assert.assertEquals(rec.getCode(), castedVal);
                 break;
             }
             default:

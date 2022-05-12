@@ -82,7 +82,6 @@ public class SortBy2 {
   
 
   private DateCreatedEnum dateCreated;
-
   /**
   * Get dateCreated
   * @return dateCreated
@@ -151,7 +150,6 @@ public class SortBy2 {
   
 
   private SendDateEnum sendDate;
-
   /**
   * Get sendDate
   * @return sendDate

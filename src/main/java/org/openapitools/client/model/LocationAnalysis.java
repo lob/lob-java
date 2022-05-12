@@ -37,7 +37,6 @@ public class LocationAnalysis {
   
 
   private Float latitude;
-
   /**
   * A positive or negative decimal indicating the geographic latitude of the address.
   * minimum: -90
@@ -61,7 +60,6 @@ public class LocationAnalysis {
   
 
   private Float longitude;
-
   /**
   * A positive or negative decimal indicating the geographic longitude of the address.
   * minimum: -180
@@ -85,7 +83,6 @@ public class LocationAnalysis {
   
 
   private Float distance;
-
   /**
   * The distance from the input location to this exact zip code in miles.
   * @return distance

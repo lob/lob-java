@@ -35,7 +35,6 @@ public class UsAutocompletionsWritable {
   
 
   private String addressPrefix;
-
   /**
   * Only accepts numbers and street names in an alphanumeric format. 
   * @return addressPrefix
@@ -57,7 +56,6 @@ public class UsAutocompletionsWritable {
   
 
   private String city;
-
   /**
   * An optional city input used to filter suggestions. Case insensitive and does not match partial abbreviations. 
   * @return city
@@ -79,7 +77,6 @@ public class UsAutocompletionsWritable {
   
 
   private String state;
-
   /**
   * An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations. 
   * @return state
@@ -101,7 +98,6 @@ public class UsAutocompletionsWritable {
   
 
   private String zipCode;
-
   /**
   * An optional ZIP Code input used to filter suggestions. Matches partial entries. 
   * @return zipCode
@@ -123,7 +119,6 @@ public class UsAutocompletionsWritable {
   
 
   private Boolean geoIpSort;
-
   /**
   * If `true`, sort suggestions by proximity to the IP set in the `X-Forwarded-For` header. 
   * @return geoIpSort

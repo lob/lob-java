@@ -37,7 +37,6 @@ public class CardUpdatable {
   
 
   private String description;
-
   /**
   * Description of the card.
   * @return description
@@ -59,7 +58,6 @@ public class CardUpdatable {
   
 
   private Boolean autoReorder;
-
   /**
   * Allows for auto reordering
   * @return autoReorder
@@ -81,7 +79,6 @@ public class CardUpdatable {
   
 
   private BigDecimal reorderQuantity;
-
   /**
   * The quantity of items to be reordered (only required when auto_reorder is true).
   * minimum: 10000

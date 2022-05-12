@@ -17,6 +17,6 @@ public class MultipleComponentsListTest {
         addresses.add(new MultipleComponents());
         rec.setAddresses(addresses);
 
-        // Assert.assertEquals(rec.getAddresses(), addresses); // TODO: DXP-920
+        Assert.assertEquals(rec.getAddresses(), addresses);
     }
 }

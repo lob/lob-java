@@ -35,7 +35,6 @@ public class Location {
   
 
   private Float latitude;
-
   /**
   * A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be input with `longitude` to pinpoint locations on a map. 
   * minimum: -90
@@ -59,7 +58,6 @@ public class Location {
   
 
   private Float longitude;
-
   /**
   * A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be input with `latitude` to pinpoint locations on a map. 
   * minimum: -180

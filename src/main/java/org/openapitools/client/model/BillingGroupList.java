@@ -37,6 +37,12 @@ public class BillingGroupList {
 
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<BillingGroup> data = null;
+  public List<BillingGroup> getData() {     
+    if (this.data == null) {
+      this.data = new ArrayList<BillingGroup>();
+    }
+    return this.data; 
+  }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
 
@@ -44,7 +50,6 @@ public class BillingGroupList {
   
 
   private String _object;
-
   /**
   * Value is type of resource.
   * @return _object
@@ -66,7 +71,6 @@ public class BillingGroupList {
   
 
   private String nextUrl;
-
   /**
   * url of next page of items in list.
   * @return nextUrl
@@ -110,7 +114,6 @@ public class BillingGroupList {
   
 
   private String previousUrl;
-
   /**
   * url of previous page of items in list.
   * @return previousUrl
@@ -154,7 +157,6 @@ public class BillingGroupList {
   
 
   private Integer count;
-
   /**
   * number of resources in a set
   * @return count

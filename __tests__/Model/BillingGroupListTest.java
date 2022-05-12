@@ -35,7 +35,7 @@ public class BillingGroupListTest {
             case "data": {
                 List<BillingGroup> castedVal = (ArrayList<BillingGroup>)val;
                 rec.setData(castedVal);
-                // Assert.assertEquals(rec.getData(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getData(), castedVal);
                 break;
             }
             case "next_url": {

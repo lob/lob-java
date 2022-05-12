@@ -35,7 +35,6 @@ public class Thumbnail {
   
 
   private String small;
-
   /**
   * A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
   * @return small
@@ -61,7 +60,6 @@ public class Thumbnail {
   
 
   private String medium;
-
   /**
   * A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
   * @return medium
@@ -87,7 +85,6 @@ public class Thumbnail {
   
 
   private String large;
-
   /**
   * A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
   * @return large

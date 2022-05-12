@@ -35,7 +35,6 @@ public class EventType {
   
 
   private String id;
-
   /**
   * Get id
   * @return id
@@ -57,7 +56,6 @@ public class EventType {
   
 
   private Boolean enabledForTest;
-
   /**
   * Value is `true` if the event type is enabled in both the test and live environments.
   * @return enabledForTest
@@ -134,7 +132,6 @@ public class EventType {
   
 
   private ResourceEnum resource;
-
   /**
   * Get resource
   * @return resource
@@ -201,7 +198,6 @@ public class EventType {
   
 
   private ObjectEnum _object = ObjectEnum.EVENT_TYPE;
-
   /**
   * Value is resource type.
   * @return _object
