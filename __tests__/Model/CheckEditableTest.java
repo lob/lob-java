@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.testng.annotations.*;
+import org.threeten.bp.OffsetDateTime;
 import org.testng.Assert;
 
 public class CheckEditableTest {
@@ -23,7 +24,7 @@ public class CheckEditableTest {
             {"description", "fake description"},
             {"metadata", new HashMap<String, String>()},
             {"merge_variables", new Object()},
-            // {"send_date", new SendDate()}, // TODO: DXP-978
+            {"send_date",OffsetDateTime.now()},
             {"mail_type", CheckEditable.MailTypeEnum.USPS_FIRST_CLASS},
             {"memo", "fake memo"},
             {"check_number", 123456},
@@ -125,6 +126,12 @@ public class CheckEditableTest {
                 String castedVal = (String)val;
                 rec.setBillingGroupId(castedVal);
                 Assert.assertEquals(rec.getBillingGroupId(), castedVal);
+                break;
+            }
+            case "send_date": {
+                OffsetDateTime castedVal = (OffsetDateTime) val;
+                rec.setSendDate(castedVal);
+                Assert.assertEquals(rec.getSendDate(), castedVal);
                 break;
             }
             default:

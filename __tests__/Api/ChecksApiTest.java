@@ -15,7 +15,7 @@ import org.openapitools.client.model.CheckDeletion;
 import org.openapitools.client.model.CheckEditable;
 import org.openapitools.client.model.CheckList;
 import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.SendDate;
+import org.threeten.bp.OffsetDateTime;
 import org.openapitools.client.model.SortBy5;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -137,7 +137,7 @@ public class ChecksApiTest {
         Map<String, String> dateCreated = null;
         Map<String, String> metadata = null;
         Boolean scheduled = null;
-        SendDate sendDate = null;
+        OffsetDateTime sendDate = null;
         MailType mailType = null;
         SortBy5 sortBy = null;
 

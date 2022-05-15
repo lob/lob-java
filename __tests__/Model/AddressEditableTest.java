@@ -126,9 +126,7 @@ public class AddressEditableTest {
         Map<String, String> map = Collections.emptyMap();
 
         model.setMetadata(map);
-        // Assert.assertNotNull(model.getMetadata());
-        // Assert.assertEquals(model.getMetadata(), map);
-        // TODO: test metadata create getMetaData method DXP-924
+        Assert.assertEquals(model.getMetadata(), map);
     }
 
 }

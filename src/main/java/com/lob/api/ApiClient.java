@@ -1073,6 +1073,7 @@ public class ApiClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         final String url = buildUrl(path, queryParams, collectionQueryParams);
         final Request.Builder reqBuilder = new Request.Builder().url(url);
         processHeaderParams(headerParams, reqBuilder);

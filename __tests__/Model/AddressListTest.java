@@ -24,11 +24,7 @@ public class AddressListTest {
         List<Address> data = new ArrayList<Address>();
 
         model.setData(data);
-
-        // Assert.assertNotNull(model.getData());
-        // Assert.assertEquals(model.getData(), data);
-    
-        // TODO: test data, Create getData method DXP-924
+        Assert.assertEquals(model.getData(), data);
     }
 
     @Test

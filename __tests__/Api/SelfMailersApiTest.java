@@ -16,7 +16,7 @@ import org.openapitools.client.model.SelfMailerDeletion;
 import org.openapitools.client.model.SelfMailerEditable;
 import org.openapitools.client.model.SelfMailerList;
 import org.openapitools.client.model.SelfMailerSize;
-import org.openapitools.client.model.SendDate;
+import org.threeten.bp.OffsetDateTime;
 import org.openapitools.client.model.SortBy5;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -139,7 +139,7 @@ public class SelfMailersApiTest {
         Map<String, String> metadata = null;
         SelfMailerSize size = null;
         Boolean scheduled = null;
-        SendDate sendDate = null;
+        OffsetDateTime sendDate = null;
         MailType mailType = null;
         SortBy5 sortBy = null;
         SelfMailersApi selfMailersApiMock = mock(SelfMailersApi.class);

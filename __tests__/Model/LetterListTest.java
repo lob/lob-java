@@ -36,7 +36,7 @@ public class LetterListTest {
             case "data": {
                 List<Letter> castedVal = (ArrayList<Letter>)val;
                 rec.setData(castedVal);
-                // Assert.assertEquals(rec.getData(), castedVal); // TODO: come back
+                Assert.assertEquals(rec.getData(), castedVal);
                 break;
             }
             case "next_url": {

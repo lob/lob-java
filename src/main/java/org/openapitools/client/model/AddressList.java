@@ -37,6 +37,12 @@ public class AddressList {
 
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<Address> data = null;
+  public List<Address> getData() {     
+    if (this.data == null) {
+      this.data = new ArrayList<Address>();
+    }
+    return this.data; 
+  }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
 
