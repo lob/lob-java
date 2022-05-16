@@ -205,11 +205,8 @@ SelfMailer selfMailer = response.getResponseBody();
 
 ### List
 ```bash
-try {
-  const selfMailers = await new selfMailersApi(config).list(2);
-} catch (err: any) {
-  console.error(err);
-}
+curl -X GET "https://api.lob.com/v1/self_mailers?limit=2" \
+  -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
 ```
 
 ```java
@@ -663,19 +660,6 @@ curl https://api.lob.com/v1/us_reverse_geocode_lookups \
   -u <YOUR_LIVE_API_KEY>: \
   -d "latitude=37.7749" \
   -d "longitude=122.4194" \
-```
-
-```typescript
-const ReverseGeocodeLookup = new ReverseGeocodeLookupsApi(av_config);
-const coordinates: Location = {
-  Latitude: 37.777456,
-  longitude: -122.393039
-};
-try {
-  const geocode = await ReverseGeocodeLookup.lookup(coordinates);
-} catch (err: any) {
-  console.error(err);
-}
 ```
 
 ```java
