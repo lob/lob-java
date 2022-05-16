@@ -28,8 +28,8 @@ public class TemplateVersionsApiTest {
 
         fakeTemplateVersion.setId("vrsn_fakeId");
         
-        when(templateVersionApiMock.createTemplateVersion("tmpl_fakeId", templateVersionWritable)).thenReturn(fakeTemplateVersion);
-        TemplateVersion response = templateVersionApiMock.createTemplateVersion("tmpl_fakeId", templateVersionWritable);
+        when(templateVersionApiMock.create("tmpl_fakeId", templateVersionWritable)).thenReturn(fakeTemplateVersion);
+        TemplateVersion response = templateVersionApiMock.create("tmpl_fakeId", templateVersionWritable);
 
         Assert.assertEquals(fakeTemplateVersion.getId(), response.getId());
     }
@@ -39,8 +39,8 @@ public class TemplateVersionsApiTest {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(templateVersionApiMock.createTemplateVersion(null, null)).thenThrow(error);
-        templateVersionApiMock.createTemplateVersion(null, null);
+        when(templateVersionApiMock.create(null, null)).thenThrow(error);
+        templateVersionApiMock.create(null, null);
 
         Assert.fail("This should not happen");
     }
@@ -49,9 +49,9 @@ public class TemplateVersionsApiTest {
     public void createTemplateVersionTestCatchesExceptionWithResponseBody () throws ApiException {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(templateVersionApiMock.createTemplateVersion(null, null)).thenThrow(error);
+        when(templateVersionApiMock.create(null, null)).thenThrow(error);
 
-        templateVersionApiMock.createTemplateVersion(null, null);
+        templateVersionApiMock.create(null, null);
 
         Assert.fail("This should not happen");   
     }   
@@ -64,8 +64,8 @@ public class TemplateVersionsApiTest {
 
         fakeTemplateVersion.setId("vrsn_fakeId");
         
-        when(templateVersionApiMock.templateVersionDelete("tmpl_fakeId", "vrsn_fakeId")).thenReturn(fakeTemplateVersion);
-        TemplateVersionDeletion response = templateVersionApiMock.templateVersionDelete("tmpl_fakeId", "vrsn_fakeId");
+        when(templateVersionApiMock.delete("tmpl_fakeId", "vrsn_fakeId")).thenReturn(fakeTemplateVersion);
+        TemplateVersionDeletion response = templateVersionApiMock.delete("tmpl_fakeId", "vrsn_fakeId");
 
         Assert.assertEquals(fakeTemplateVersion.getId(), response.getId());
     }
@@ -75,8 +75,8 @@ public class TemplateVersionsApiTest {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(templateVersionApiMock.templateVersionDelete(null, null)).thenThrow(error);
-        templateVersionApiMock.templateVersionDelete(null, null);
+        when(templateVersionApiMock.delete(null, null)).thenThrow(error);
+        templateVersionApiMock.delete(null, null);
 
         Assert.fail("This should not happen");
     }
@@ -85,45 +85,45 @@ public class TemplateVersionsApiTest {
     public void templateVersionDeleteTestCatchesExceptionWithResponseBody () throws ApiException {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(templateVersionApiMock.templateVersionDelete(null, null)).thenThrow(error);
+        when(templateVersionApiMock.delete(null, null)).thenThrow(error);
 
-        templateVersionApiMock.templateVersionDelete(null, null);
+        templateVersionApiMock.delete(null, null);
 
         Assert.fail("This should not happen");   
     }   
     
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Template Version", "Valid"})
-    public void templateVersionRetrieveTest() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Template Version", "Valid"})
+    public void templateVersionGetTest() throws ApiException {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         TemplateVersion fakeTemplateVersion = new TemplateVersion();
         
 
         fakeTemplateVersion.setId("vrsn_fakeId");
         
-        when(templateVersionApiMock.templateVersionRetrieve("tmpl_fakeId", "vrsn_fakeId")).thenReturn(fakeTemplateVersion);
-        TemplateVersion response = templateVersionApiMock.templateVersionRetrieve("tmpl_fakeId", "vrsn_fakeId");
+        when(templateVersionApiMock.get("tmpl_fakeId", "vrsn_fakeId")).thenReturn(fakeTemplateVersion);
+        TemplateVersion response = templateVersionApiMock.get("tmpl_fakeId", "vrsn_fakeId");
 
         Assert.assertEquals(fakeTemplateVersion.getId(), response.getId());
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Template Version", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
-    public void templateVersionRetrieveTestCatchesException() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Template Version", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
+    public void templateVersionGetTestCatchesException() throws ApiException {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(templateVersionApiMock.createTemplateVersion(null, null)).thenThrow(error);
-        templateVersionApiMock.createTemplateVersion(null, null);
+        when(templateVersionApiMock.get(null, null)).thenThrow(error);
+        templateVersionApiMock.get(null, null);
 
         Assert.fail("This should not happen");
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Template Version", "Invalid"}, expectedExceptions = {ApiException.class})
-    public void templateVersionRetrieveTestCatchesExceptionWithResponseBody () throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Template Version", "Invalid"}, expectedExceptions = {ApiException.class})
+    public void templateVersionGetTestCatchesExceptionWithResponseBody () throws ApiException {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(templateVersionApiMock.templateVersionRetrieve(null, null)).thenThrow(error);
+        when(templateVersionApiMock.get(null, null)).thenThrow(error);
 
-        templateVersionApiMock.templateVersionRetrieve(null, null);
+        templateVersionApiMock.get(null, null);
 
         Assert.fail("This should not happen");   
     }   
@@ -137,8 +137,8 @@ public class TemplateVersionsApiTest {
 
         fakeTemplateVersion.setId("vrsn_fakeId");
         
-        when(templateVersionApiMock.templateVersionUpdate("tmpl_fakeId", "vrsn_fakeId", templateVersionUpdatable)).thenReturn(fakeTemplateVersion);
-        TemplateVersion response = templateVersionApiMock.templateVersionUpdate("tmpl_fakeId", "vrsn_fakeId", templateVersionUpdatable);
+        when(templateVersionApiMock.update("tmpl_fakeId", "vrsn_fakeId", templateVersionUpdatable)).thenReturn(fakeTemplateVersion);
+        TemplateVersion response = templateVersionApiMock.update("tmpl_fakeId", "vrsn_fakeId", templateVersionUpdatable);
 
         Assert.assertEquals(fakeTemplateVersion.getId(), response.getId());
     }
@@ -148,8 +148,8 @@ public class TemplateVersionsApiTest {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(templateVersionApiMock.templateVersionUpdate(null, null, null)).thenThrow(error);
-        templateVersionApiMock.templateVersionUpdate(null, null, null);
+        when(templateVersionApiMock.update(null, null, null)).thenThrow(error);
+        templateVersionApiMock.update(null, null, null);
 
         Assert.fail("This should not happen");
     }
@@ -158,9 +158,9 @@ public class TemplateVersionsApiTest {
     public void templateVersionUpdateTestCatchesExceptionWithResponseBody () throws ApiException {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(templateVersionApiMock.templateVersionUpdate(null, null, null)).thenThrow(error);
+        when(templateVersionApiMock.update(null, null, null)).thenThrow(error);
 
-        templateVersionApiMock.templateVersionUpdate(null, null, null);
+        templateVersionApiMock.update(null, null, null);
 
         Assert.fail("This should not happen");   
     }   
@@ -187,8 +187,8 @@ public class TemplateVersionsApiTest {
         fakeTemplateVersionList.setObject("list");
         fakeTemplateVersionList.setCount(data.size());
 
-        when(templateVersionApiMock.templateVersionsList(tmplId, limit, before, after, include, dateCreated)).thenReturn(fakeTemplateVersionList);
-        TemplateVersionList response =templateVersionApiMock.templateVersionsList(tmplId, limit, before, after, include, dateCreated);
+        when(templateVersionApiMock.list(tmplId, limit, before, after, include, dateCreated)).thenReturn(fakeTemplateVersionList);
+        TemplateVersionList response =templateVersionApiMock.list(tmplId, limit, before, after, include, dateCreated);
         
         Assert.assertEquals(fakeTemplateVersionList.getCount(), response.getCount());
     }
@@ -198,8 +198,8 @@ public class TemplateVersionsApiTest {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(templateVersionApiMock.templateVersionsList(null, null, null, null, null, null)).thenThrow(error);
-        templateVersionApiMock.templateVersionsList(null, null, null, null, null, null);
+        when(templateVersionApiMock.list(null, null, null, null, null, null)).thenThrow(error);
+        templateVersionApiMock.list(null, null, null, null, null, null);
 
         Assert.fail("This should not happen");
     }
@@ -208,9 +208,9 @@ public class TemplateVersionsApiTest {
     public void templateVersionsListTestCatchesExceptionWithResponseBody () throws ApiException {
         TemplateVersionsApi templateVersionApiMock = mock(TemplateVersionsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(templateVersionApiMock.templateVersionsList(null, null, null, null, null, null)).thenThrow(error);
+        when(templateVersionApiMock.list(null, null, null, null, null, null)).thenThrow(error);
 
-        templateVersionApiMock.templateVersionsList(null, null, null, null, null, null);
+        templateVersionApiMock.list(null, null, null, null, null, null);
 
         Assert.fail("This should not happen");   
     }   

@@ -57,7 +57,7 @@ public class UsAutocompletionsApi {
     }
 
     /**
-     * Build call for usAutocompletion
+     * Build call for autocomplete
      * @param usAutocompletionsWritable  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -69,7 +69,7 @@ public class UsAutocompletionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call usAutocompletionCall(UsAutocompletionsWritable usAutocompletionsWritable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call autocompleteCall(UsAutocompletionsWritable usAutocompletionsWritable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = usAutocompletionsWritable;
 
         // create path and map variables
@@ -100,15 +100,15 @@ public class UsAutocompletionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call usAutocompletionValidateBeforeCall(UsAutocompletionsWritable usAutocompletionsWritable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call autocompleteValidateBeforeCall(UsAutocompletionsWritable usAutocompletionsWritable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'usAutocompletionsWritable' is set
         if (usAutocompletionsWritable == null) {
-            throw new ApiException("Missing the required parameter 'usAutocompletionsWritable' when calling usAutocompletion(Async)");
+            throw new ApiException("Missing the required parameter 'usAutocompletionsWritable' when calling autocomplete(Async)");
         }
         
 
-        okhttp3.Call localVarCall = usAutocompletionCall(usAutocompletionsWritable, _callback);
+        okhttp3.Call localVarCall = autocompleteCall(usAutocompletionsWritable, _callback);
         return localVarCall;
 
     }
@@ -126,9 +126,9 @@ public class UsAutocompletionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public UsAutocompletions usAutocompletion(UsAutocompletionsWritable usAutocompletionsWritable) throws ApiException {
+    public UsAutocompletions autocomplete(UsAutocompletionsWritable usAutocompletionsWritable) throws ApiException {
         try {
-            ApiResponse<UsAutocompletions> localVarResp = usAutocompletionWithHttpInfo(usAutocompletionsWritable);
+            ApiResponse<UsAutocompletions> localVarResp = autocompleteWithHttpInfo(usAutocompletionsWritable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -148,9 +148,9 @@ public class UsAutocompletionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsAutocompletions> usAutocompletionWithHttpInfo(UsAutocompletionsWritable usAutocompletionsWritable) throws ApiException {
+    public ApiResponse<UsAutocompletions> autocompleteWithHttpInfo(UsAutocompletionsWritable usAutocompletionsWritable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = usAutocompletionValidateBeforeCall(usAutocompletionsWritable, null);
+            okhttp3.Call localVarCall = autocompleteValidateBeforeCall(usAutocompletionsWritable, null);
             Type localVarReturnType = new TypeToken<UsAutocompletions>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -172,9 +172,9 @@ public class UsAutocompletionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call usAutocompletionAsync(UsAutocompletionsWritable usAutocompletionsWritable, final ApiCallback<UsAutocompletions> _callback) throws ApiException {
+    public okhttp3.Call autocompleteAsync(UsAutocompletionsWritable usAutocompletionsWritable, final ApiCallback<UsAutocompletions> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = usAutocompletionValidateBeforeCall(usAutocompletionsWritable, _callback);
+        okhttp3.Call localVarCall = autocompleteValidateBeforeCall(usAutocompletionsWritable, _callback);
         Type localVarReturnType = new TypeToken<UsAutocompletions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

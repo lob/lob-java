@@ -54,7 +54,7 @@ public class CardOrderApiSpecTest {
         editableCard.setSize(SizeEnum._2_125X3_375);
 
         try {
-            dummyCard = validCardsApi.cardCreate(editableCard);
+            dummyCard = validCardsApi.create(editableCard);
         } catch (ApiException e) {
             e.printStackTrace();
         }
@@ -65,7 +65,7 @@ public class CardOrderApiSpecTest {
         groups={"Integration", "Create", "Card Order", "Valid"}
     )
     public void cardOrderCreateTest() throws ApiException {
-       CardOrder response = validApi.cardOrderCreate(dummyCard.getId(), createdCardOrderEditables.get(0));
+       CardOrder response = validApi.create(dummyCard.getId(), createdCardOrderEditables.get(0));
 
         Assert.assertNotNull(response.getId());
     }
@@ -77,7 +77,7 @@ public class CardOrderApiSpecTest {
         groups={"Integration", "Create", "Card Order", "Invalid"}
     )
     public void cardOrderCreateTestBadParameter() throws ApiException {
-        validApi.cardOrderCreate(dummyCard.getId(), null);
+        validApi.create(dummyCard.getId(), null);
     }
 
     @Test(
@@ -88,7 +88,7 @@ public class CardOrderApiSpecTest {
     )
     public void cardOrderCreateTestInvalidCredentials() throws ApiException {
         try {
-            invalidApi.cardOrderCreate(dummyCard.getId(), createdCardOrderEditables.get(1));
+            invalidApi.create(dummyCard.getId(), createdCardOrderEditables.get(1));
         }
         catch(ApiException e) {
             throw e;
@@ -97,10 +97,10 @@ public class CardOrderApiSpecTest {
 
     @Test(
         enabled=true,
-        groups={"Integration", "Retrieve", "Card Order", "Valid"}
+        groups={"Integration", "Get", "Card Order", "Valid"}
     )
     public void cardOrderRetrieveTest() throws ApiException {
-        CardOrderList response = validApi.cardOrdersRetrieve(dummyCard.getId());
+        CardOrderList response = validApi.get(dummyCard.getId());
  
          Assert.assertTrue(response.getCount() > 0);
      }

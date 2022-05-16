@@ -28,8 +28,8 @@ public class BillingGroupsApiTest {
         
         fakeBillingGroup.setId("bg_fakeId");
         
-        when(billingGroupApiMock.billingGroupCreate(billingGroupEditable)).thenReturn(fakeBillingGroup);
-        BillingGroup response = billingGroupApiMock .billingGroupCreate(billingGroupEditable);
+        when(billingGroupApiMock.create(billingGroupEditable)).thenReturn(fakeBillingGroup);
+        BillingGroup response = billingGroupApiMock .create(billingGroupEditable);
 
         Assert.assertEquals(fakeBillingGroup.getId(), response.getId());
     }
@@ -39,8 +39,8 @@ public class BillingGroupsApiTest {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(billingGroupApiMock.billingGroupCreate(null)).thenThrow(error);
-        billingGroupApiMock.billingGroupCreate(null);
+        when(billingGroupApiMock.create(null)).thenThrow(error);
+        billingGroupApiMock.create(null);
 
         Assert.fail("This should not happen");
     }
@@ -49,44 +49,44 @@ public class BillingGroupsApiTest {
     public void billingGroupCreateTestCatchesExceptionWithResponseBody () throws ApiException {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(billingGroupApiMock.billingGroupCreate(null)).thenThrow(error);
+        when(billingGroupApiMock.create(null)).thenThrow(error);
 
-        billingGroupApiMock.billingGroupCreate(null);
+        billingGroupApiMock.create(null);
 
         Assert.fail("This should not happen");   
     }   
-    
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Billing Group", "Valid"})
-    public void billingGroupRetrieveTest() throws ApiException {
+
+    @Test(enabled=true, groups={"Unit", "Get", "Billing Group", "Valid"})
+    public void billingGroupGetTest() throws ApiException {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         BillingGroup fakeBillingGroup = new BillingGroup();
         
         fakeBillingGroup.setId("bg_fakeId");
         
-        when(billingGroupApiMock.billingGroupRetrieve("bg_fakeId")).thenReturn(fakeBillingGroup);
-        BillingGroup response = billingGroupApiMock.billingGroupRetrieve("bg_fakeId");
+        when(billingGroupApiMock.get("bg_fakeId")).thenReturn(fakeBillingGroup);
+        BillingGroup response = billingGroupApiMock.get("bg_fakeId");
 
         Assert.assertEquals(fakeBillingGroup.getId(), response.getId());
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Billing Group", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
-    public void billingGroupRetrieveTestCatchesException() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Billing Group", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
+    public void billingGroupGetTestCatchesException() throws ApiException {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(billingGroupApiMock.billingGroupRetrieve(null)).thenThrow(error);
-        billingGroupApiMock.billingGroupRetrieve(null);
+        when(billingGroupApiMock.get(null)).thenThrow(error);
+        billingGroupApiMock.get(null);
 
         Assert.fail("This should not happen");
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Billing Group", "Invalid"}, expectedExceptions = {ApiException.class})
-    public void billingGroupRetrieveTestCatchesExceptionWithResponseBody () throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Billing Group", "Invalid"}, expectedExceptions = {ApiException.class})
+    public void billingGroupGetTestCatchesExceptionWithResponseBody () throws ApiException {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(billingGroupApiMock.billingGroupRetrieve(null)).thenThrow(error);
+        when(billingGroupApiMock.get(null)).thenThrow(error);
 
-        billingGroupApiMock.billingGroupRetrieve(null);
+        billingGroupApiMock.get(null);
     }
   
     @Test(enabled=true, groups={"Unit", "Update", "Billing Group", "Valid"})
@@ -98,8 +98,8 @@ public class BillingGroupsApiTest {
         
         fakeBillingGroup.setId("bg_fakeId");
         
-        when(billingGroupApiMock.billingGroupUpdate("bg_fakeId", billingGroupEditable)).thenReturn(fakeBillingGroup);
-        BillingGroup response = billingGroupApiMock.billingGroupUpdate("bg_fakeId", billingGroupEditable);
+        when(billingGroupApiMock.update("bg_fakeId", billingGroupEditable)).thenReturn(fakeBillingGroup);
+        BillingGroup response = billingGroupApiMock.update("bg_fakeId", billingGroupEditable);
 
         Assert.assertEquals(fakeBillingGroup.getId(), response.getId());
     }
@@ -109,8 +109,8 @@ public class BillingGroupsApiTest {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(billingGroupApiMock.billingGroupUpdate(null, null)).thenThrow(error);
-        billingGroupApiMock.billingGroupUpdate(null, null);
+        when(billingGroupApiMock.update(null, null)).thenThrow(error);
+        billingGroupApiMock.update(null, null);
 
         Assert.fail("This should not happen");
     }
@@ -119,9 +119,9 @@ public class BillingGroupsApiTest {
     public void billingGroupUpdateTestCatchesExceptionWithResponseBody () throws ApiException {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(billingGroupApiMock.billingGroupUpdate(null, null)).thenThrow(error);
+        when(billingGroupApiMock.update(null, null)).thenThrow(error);
 
-        billingGroupApiMock.billingGroupUpdate(null, null);
+        billingGroupApiMock.update(null, null);
     }
     
     @Test(enabled=false, groups={"Unit", "List", "Billing Group", "Valid"})
@@ -146,8 +146,8 @@ public class BillingGroupsApiTest {
         fakeBillingGroup.setObject("list");
         fakeBillingGroup.setCount(data.size());
 
-        when(billingGroupApiMock.billingGroupsList(limit, offset, include, dateCreated, dateModified, sortBy)).thenReturn(fakeBillingGroup);
-        BillingGroupList response = billingGroupApiMock.billingGroupsList(limit, offset, include, dateCreated, dateModified, sortBy);
+        when(billingGroupApiMock.list(limit, offset, include, dateCreated, dateModified, sortBy)).thenReturn(fakeBillingGroup);
+        BillingGroupList response = billingGroupApiMock.list(limit, offset, include, dateCreated, dateModified, sortBy);
        
        Assert.assertEquals(fakeBillingGroup.getCount(), response.getCount()); 
     }
@@ -157,8 +157,8 @@ public class BillingGroupsApiTest {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(billingGroupApiMock.billingGroupsList(null, null, null, null, null, null)).thenThrow(error);
-        billingGroupApiMock.billingGroupsList(null, null, null, null, null, null);
+        when(billingGroupApiMock.list(null, null, null, null, null, null)).thenThrow(error);
+        billingGroupApiMock.list(null, null, null, null, null, null);
 
         Assert.fail("This should not happen");
     }
@@ -167,8 +167,8 @@ public class BillingGroupsApiTest {
     public void billingGroupListTestCatchesExceptionWithResponseBody () throws ApiException {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(billingGroupApiMock.billingGroupsList(null,null, null, null, null, null)).thenThrow(error);
+        when(billingGroupApiMock.list(null,null, null, null, null, null)).thenThrow(error);
 
-        billingGroupApiMock.billingGroupsList(null, null, null, null, null, null);
+        billingGroupApiMock.list(null, null, null, null, null, null);
     }
 }

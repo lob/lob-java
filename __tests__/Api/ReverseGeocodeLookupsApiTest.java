@@ -21,8 +21,8 @@ public class ReverseGeocodeLookupsApiTest {
 
         reverseGeocode.setId("us_reverse_geocode_reverse_geocode_fakeId");
 
-        when(reverseGeocodeLookupApiMock.reverseGeocodeLookup(location, 2)).thenReturn(reverseGeocode);
-        ReverseGeocode response = reverseGeocodeLookupApiMock.reverseGeocodeLookup(location, 2);
+        when(reverseGeocodeLookupApiMock.lookup(location, 2)).thenReturn(reverseGeocode);
+        ReverseGeocode response = reverseGeocodeLookupApiMock.lookup(location, 2);
 
         Assert.assertEquals(reverseGeocode.getId(), response.getId());
     }
@@ -32,8 +32,8 @@ public class ReverseGeocodeLookupsApiTest {
         ReverseGeocodeLookupsApi reverseGeocodeLookupApiMock = mock(ReverseGeocodeLookupsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(reverseGeocodeLookupApiMock.reverseGeocodeLookup(null, null)).thenThrow(error);
-        reverseGeocodeLookupApiMock.reverseGeocodeLookup(null, null);
+        when(reverseGeocodeLookupApiMock.lookup(null, null)).thenThrow(error);
+        reverseGeocodeLookupApiMock.lookup(null, null);
 
         Assert.fail("This should not happen");
     }
@@ -42,9 +42,9 @@ public class ReverseGeocodeLookupsApiTest {
     public void reverseGeocodeLookupTestCatchesExceptionWithResponseBody () throws ApiException {
         ReverseGeocodeLookupsApi reverseGeocodeLookupApiMock = mock(ReverseGeocodeLookupsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(reverseGeocodeLookupApiMock.reverseGeocodeLookup(null, null)).thenThrow(error);
+        when(reverseGeocodeLookupApiMock.lookup(null, null)).thenThrow(error);
 
-        reverseGeocodeLookupApiMock.reverseGeocodeLookup(null, null);
+        reverseGeocodeLookupApiMock.lookup(null, null);
 
         Assert.fail("This should not happen");   
     }   

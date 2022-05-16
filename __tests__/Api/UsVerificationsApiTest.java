@@ -37,8 +37,8 @@ public class UsVerificationsApiTest {
         data.add(data2);
         multipleComponentsList.setAddresses(data);
 
-        when(usVerificationApiMock.bulkUsVerifications(multipleComponentsList, "proper")).thenReturn(fakeUsVerifications);
-        UsVerifications response = usVerificationApiMock.bulkUsVerifications(multipleComponentsList, "proper");
+        when(usVerificationApiMock.verifyBulk(multipleComponentsList, "proper")).thenReturn(fakeUsVerifications);
+        UsVerifications response = usVerificationApiMock.verifyBulk(multipleComponentsList, "proper");
 
         Assert.assertEquals(fakeUsVerifications.getClass(), response.getClass());
     }
@@ -48,8 +48,8 @@ public class UsVerificationsApiTest {
         UsVerificationsApi usVerificationApiMock = mock (UsVerificationsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when( usVerificationApiMock.bulkUsVerifications(null, null)).thenThrow(error);
-        usVerificationApiMock.bulkUsVerifications(null, null);
+        when( usVerificationApiMock.verifyBulk(null, null)).thenThrow(error);
+        usVerificationApiMock.verifyBulk(null, null);
 
         Assert.fail("This should not happen");
     }
@@ -59,8 +59,8 @@ public class UsVerificationsApiTest {
         UsVerificationsApi usVerificationApiMock = mock (UsVerificationsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
 
-        when( usVerificationApiMock.bulkUsVerifications(null, null)).thenThrow(error);
-        usVerificationApiMock.bulkUsVerifications(null, null);
+        when( usVerificationApiMock.verifyBulk(null, null)).thenThrow(error);
+        usVerificationApiMock.verifyBulk(null, null);
 
         Assert.fail("This should not happen");   
     }   
@@ -75,8 +75,8 @@ public class UsVerificationsApiTest {
 
         fakeUsVerification.setDeliverability(deliverable);
         
-        when(usVerificationApiMock.usVerification(usVerificationsWritable, "proper")).thenReturn(fakeUsVerification);
-        UsVerification response = usVerificationApiMock.usVerification(usVerificationsWritable, "proper");
+        when(usVerificationApiMock.verifySingle(usVerificationsWritable, "proper")).thenReturn(fakeUsVerification);
+        UsVerification response = usVerificationApiMock.verifySingle(usVerificationsWritable, "proper");
 
         Assert.assertEquals(fakeUsVerification.getDeliverability(), response.getDeliverability());
     }
@@ -86,8 +86,8 @@ public class UsVerificationsApiTest {
         UsVerificationsApi usVerificationApiMock = mock (UsVerificationsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when( usVerificationApiMock.usVerification(null, null)).thenThrow(error);
-        usVerificationApiMock.usVerification(null, null);
+        when( usVerificationApiMock.verifySingle(null, null)).thenThrow(error);
+        usVerificationApiMock.verifySingle(null, null);
 
         Assert.fail("This should not happen");
     }
@@ -97,8 +97,8 @@ public class UsVerificationsApiTest {
         UsVerificationsApi usVerificationApiMock = mock (UsVerificationsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
 
-        when( usVerificationApiMock.usVerification(null, null)).thenThrow(error);
-        usVerificationApiMock.usVerification(null, null);
+        when( usVerificationApiMock.verifySingle(null, null)).thenThrow(error);
+        usVerificationApiMock.verifySingle(null, null);
 
         Assert.fail("This should not happen");   
     }   

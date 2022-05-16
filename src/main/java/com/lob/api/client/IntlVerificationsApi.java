@@ -59,7 +59,7 @@ public class IntlVerificationsApi {
     }
 
     /**
-     * Build call for bulkIntlVerifications
+     * Build call for verifyBulk
      * @param intlVerificationsPayload  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -71,7 +71,7 @@ public class IntlVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkIntlVerificationsCall(IntlVerificationsPayload intlVerificationsPayload, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call verifyBulkCall(IntlVerificationsPayload intlVerificationsPayload, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = intlVerificationsPayload;
 
         // create path and map variables
@@ -102,15 +102,15 @@ public class IntlVerificationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkIntlVerificationsValidateBeforeCall(IntlVerificationsPayload intlVerificationsPayload, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call verifyBulkValidateBeforeCall(IntlVerificationsPayload intlVerificationsPayload, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'intlVerificationsPayload' is set
         if (intlVerificationsPayload == null) {
-            throw new ApiException("Missing the required parameter 'intlVerificationsPayload' when calling bulkIntlVerifications(Async)");
+            throw new ApiException("Missing the required parameter 'intlVerificationsPayload' when calling verifyBulk(Async)");
         }
         
 
-        okhttp3.Call localVarCall = bulkIntlVerificationsCall(intlVerificationsPayload, _callback);
+        okhttp3.Call localVarCall = verifyBulkCall(intlVerificationsPayload, _callback);
         return localVarCall;
 
     }
@@ -128,9 +128,9 @@ public class IntlVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public IntlVerifications bulkIntlVerifications(IntlVerificationsPayload intlVerificationsPayload) throws ApiException {
+    public IntlVerifications verifyBulk(IntlVerificationsPayload intlVerificationsPayload) throws ApiException {
         try {
-            ApiResponse<IntlVerifications> localVarResp = bulkIntlVerificationsWithHttpInfo(intlVerificationsPayload);
+            ApiResponse<IntlVerifications> localVarResp = verifyBulkWithHttpInfo(intlVerificationsPayload);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -150,9 +150,9 @@ public class IntlVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IntlVerifications> bulkIntlVerificationsWithHttpInfo(IntlVerificationsPayload intlVerificationsPayload) throws ApiException {
+    public ApiResponse<IntlVerifications> verifyBulkWithHttpInfo(IntlVerificationsPayload intlVerificationsPayload) throws ApiException {
         try {
-            okhttp3.Call localVarCall = bulkIntlVerificationsValidateBeforeCall(intlVerificationsPayload, null);
+            okhttp3.Call localVarCall = verifyBulkValidateBeforeCall(intlVerificationsPayload, null);
             Type localVarReturnType = new TypeToken<IntlVerifications>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -174,15 +174,15 @@ public class IntlVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkIntlVerificationsAsync(IntlVerificationsPayload intlVerificationsPayload, final ApiCallback<IntlVerifications> _callback) throws ApiException {
+    public okhttp3.Call verifyBulkAsync(IntlVerificationsPayload intlVerificationsPayload, final ApiCallback<IntlVerifications> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bulkIntlVerificationsValidateBeforeCall(intlVerificationsPayload, _callback);
+        okhttp3.Call localVarCall = verifyBulkValidateBeforeCall(intlVerificationsPayload, _callback);
         Type localVarReturnType = new TypeToken<IntlVerifications>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for intlVerification
+     * Build call for verifySingle
      * @param intlVerificationWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @param _callback Callback for upload/download progress
@@ -195,7 +195,7 @@ public class IntlVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call intlVerificationCall(IntlVerificationWritable intlVerificationWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call verifySingleCall(IntlVerificationWritable intlVerificationWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = intlVerificationWritable;
 
         // create path and map variables
@@ -230,15 +230,15 @@ public class IntlVerificationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call intlVerificationValidateBeforeCall(IntlVerificationWritable intlVerificationWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call verifySingleValidateBeforeCall(IntlVerificationWritable intlVerificationWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'intlVerificationWritable' is set
         if (intlVerificationWritable == null) {
-            throw new ApiException("Missing the required parameter 'intlVerificationWritable' when calling intlVerification(Async)");
+            throw new ApiException("Missing the required parameter 'intlVerificationWritable' when calling verifySingle(Async)");
         }
         
 
-        okhttp3.Call localVarCall = intlVerificationCall(intlVerificationWritable, xLangOutput, _callback);
+        okhttp3.Call localVarCall = verifySingleCall(intlVerificationWritable, xLangOutput, _callback);
         return localVarCall;
 
     }
@@ -257,9 +257,9 @@ public class IntlVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public IntlVerification intlVerification(IntlVerificationWritable intlVerificationWritable, String xLangOutput) throws ApiException {
+    public IntlVerification verifySingle(IntlVerificationWritable intlVerificationWritable, String xLangOutput) throws ApiException {
         try {
-            ApiResponse<IntlVerification> localVarResp = intlVerificationWithHttpInfo(intlVerificationWritable, xLangOutput);
+            ApiResponse<IntlVerification> localVarResp = verifySingleWithHttpInfo(intlVerificationWritable, xLangOutput);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -280,9 +280,9 @@ public class IntlVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IntlVerification> intlVerificationWithHttpInfo(IntlVerificationWritable intlVerificationWritable, String xLangOutput) throws ApiException {
+    public ApiResponse<IntlVerification> verifySingleWithHttpInfo(IntlVerificationWritable intlVerificationWritable, String xLangOutput) throws ApiException {
         try {
-            okhttp3.Call localVarCall = intlVerificationValidateBeforeCall(intlVerificationWritable, xLangOutput, null);
+            okhttp3.Call localVarCall = verifySingleValidateBeforeCall(intlVerificationWritable, xLangOutput, null);
             Type localVarReturnType = new TypeToken<IntlVerification>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -305,9 +305,9 @@ public class IntlVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call intlVerificationAsync(IntlVerificationWritable intlVerificationWritable, String xLangOutput, final ApiCallback<IntlVerification> _callback) throws ApiException {
+    public okhttp3.Call verifySingleAsync(IntlVerificationWritable intlVerificationWritable, String xLangOutput, final ApiCallback<IntlVerification> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = intlVerificationValidateBeforeCall(intlVerificationWritable, xLangOutput, _callback);
+        okhttp3.Call localVarCall = verifySingleValidateBeforeCall(intlVerificationWritable, xLangOutput, _callback);
         Type localVarReturnType = new TypeToken<IntlVerification>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
