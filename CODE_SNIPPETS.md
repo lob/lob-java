@@ -50,7 +50,7 @@ Address address = response.getResponseBody();
 
 ### List
 ```bash
-curl -X GET "https://api.lob.com/v1/addresses/?limit=2" \
+curl -X GET "https://api.lob.com/v1/addresses?limit=2" \
   -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
 ```
 
@@ -69,7 +69,8 @@ curl -X DELETE https://api.lob.com/v1/addresses/adr_43769b47aed248c2 \
 ```
 
 ```java
-$lob->addresses()->delete('adr_43769b47aed248c2');
+LobResponse<Address> response = Address.delete("adr_43769b47aed248c2");
+Address address = response.getResponseBody();
 ```
 
 ## Postcards Api
@@ -133,7 +134,7 @@ curl -X GET "https://api.lob.com/v1/postcards?limit=2" \
 ```
 
 ```java
-Map<String, Object> params = new HashMap<>>();
+Map<String, Object> params = new HashMap<>();
 params.put("limit", 2);
 
 LobResponse<PostcardCollection> response = Postcard.list(params);
@@ -212,7 +213,7 @@ try {
 ```
 
 ```java
-Map<String, Object> params = new HashMap<>>();
+Map<String, Object> params = new HashMap<>();
 params.put('limit', 2);
 
 LobResponse<SelfMailerCollection> response = SelfMailer.list(params);
@@ -292,7 +293,7 @@ curl -X GET "https://api.lob.com/v1/letters?limit=2" \
 ```
 
 ```java
-Map<String, Object> params = new HashMap<>>();
+Map<String, Object> params = new HashMap<>();
 params.put("limit", 2);
 
 LobResponse<LetterCollection> response = Letter.list(params);
