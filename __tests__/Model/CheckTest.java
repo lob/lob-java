@@ -19,6 +19,7 @@ import org.threeten.bp.OffsetDateTime;
 
 import Helper.*;
 
+@SuppressWarnings("unchecked")
 public class CheckTest {
     @DataProvider (name = "check-data-provider")
     public Object[][] checkDpMethod(){
