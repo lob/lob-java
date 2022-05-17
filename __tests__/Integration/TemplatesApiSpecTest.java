@@ -2,6 +2,7 @@ package Integration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 import com.lob.api.ApiException;
 import com.lob.api.Configuration;
@@ -9,9 +10,10 @@ import com.lob.api.client.TemplatesApi;
 
 import org.openapitools.client.model.Template;
 import org.openapitools.client.model.TemplateDeletion;
+import org.openapitools.client.model.TemplateWritable;
 import org.openapitools.client.model.TemplateList;
 import org.openapitools.client.model.TemplateUpdate;
-import org.openapitools.client.model.TemplateWritable;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

@@ -20,7 +20,7 @@ import Helper.TestFixtures;
 
 public class LettersApiSpecTest {
     private LettersApi validApi;
-
+    private LettersApi invalidApi;
     private TestFixtures testFixtures = new TestFixtures();
     @BeforeClass
     public void before_class()
