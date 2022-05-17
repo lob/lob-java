@@ -30,9 +30,6 @@ public class LetterTest {
         trackingEvent.setId("evnt_fakeId");
         trackingEvents.add(trackingEvent);
 
-        // SendDate sendDate = new SendDate();
-        // sendDate.setSendDate(OffsetDateTime.now().toString());
-
         return new Object[][] {
             {"id", "ltr_fakeId"},
             {"to", new Address()},
@@ -50,7 +47,7 @@ public class LetterTest {
             {"description", "fake description"},
             {"metadata", new HashMap<String, String>()},
             {"merge_variables", new HashMap<String, String>()},
-            // {"send_date", sendDate}, // TODO: DXP-978
+            {"send_date", OffsetDateTime.now()},
             {"extra_service", "fake extra service"},
             {"tracking_number", "fake tracking"},
             {"tracking_events", trackingEvents},
@@ -167,12 +164,12 @@ public class LetterTest {
                 Assert.assertEquals(rec.getMergeVariables(), castedVal);
                 break;
             }
-            // case "send_date": { // TODO: DXP-978
-            //     SendDate castedVal = (SendDate)val;
-            //     rec.setSendDate(castedVal);
-            //     Assert.assertEquals(rec.getSendDate(), castedVal);
-            //     break;
-            // }
+            case "send_date": {
+                OffsetDateTime castedVal = (OffsetDateTime)val;
+                rec.setSendDate(castedVal);
+                Assert.assertEquals(rec.getSendDate(), castedVal);
+                break;
+            }
             case "extra_service": {
                 String castedVal = (String)val;
                 rec.setExtraService(castedVal);

@@ -15,7 +15,7 @@ import org.openapitools.client.model.LetterDeletion;
 import org.openapitools.client.model.LetterEditable;
 import org.openapitools.client.model.LetterList;
 import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.SendDate;
+import org.threeten.bp.OffsetDateTime;
 import org.openapitools.client.model.SortBy5;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -140,7 +140,7 @@ public class LettersApiTest {
         Map<String, String> metadata = null;
         Boolean color = null;
         Boolean scheduled = null;
-        SendDate sendDate = null;
+        Map<String, String> sendDate = null;
         MailType mailType = null;
         SortBy5 sortBy = null;
 

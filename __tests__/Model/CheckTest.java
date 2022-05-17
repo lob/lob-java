@@ -22,8 +22,6 @@ import Helper.*;
 public class CheckTest {
     @DataProvider (name = "check-data-provider")
     public Object[][] checkDpMethod(){
-        // SendDate sendDate = new SendDate();
-        // sendDate.setSendDate(OffsetDateTime.now().toString());
 
         BankAccount bankAcc = new BankAccount();
         bankAcc.setAccountNumber("123456");
@@ -41,7 +39,7 @@ public class CheckTest {
             {"description", "fake description"},
             {"metadata", new HashMap()}, 
             {"merge_variables", new HashMap()},
-            // {"send_date", sendDate}, // TODO: DXP-978
+            {"send_date", OffsetDateTime.now()},
             {"mail_type", Check.MailTypeEnum.USPS_FIRST_CLASS},
             {"memo", "fake memo"},
             {"check_number", 123456},
@@ -106,12 +104,12 @@ public class CheckTest {
                 Assert.assertEquals(rec.getMergeVariables(), castedVal);
                 break;
             }
-            // case "send_date": { // TODO: DXP-978
-            //     SendDate castedVal = (SendDate)val;
-            //     rec.setSendDate(castedVal);
-            //     Assert.assertEquals(rec.getSendDate(), castedVal);
-            //     break;
-            // }
+            case "send_date": { 
+                OffsetDateTime castedVal = (OffsetDateTime)val;
+                rec.setSendDate(castedVal);
+                Assert.assertEquals(rec.getSendDate(), castedVal);
+                break;
+            }
             case "mail_type": {
                 Check.MailTypeEnum castedVal = (Check.MailTypeEnum)val;
                 rec.setMailType(castedVal);

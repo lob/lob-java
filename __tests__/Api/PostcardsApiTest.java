@@ -16,7 +16,7 @@ import org.openapitools.client.model.PostcardDeletion;
 import org.openapitools.client.model.PostcardEditable;
 import org.openapitools.client.model.PostcardList;
 import org.openapitools.client.model.PostcardSize;
-import org.openapitools.client.model.SendDate;
+import org.threeten.bp.OffsetDateTime;
 import org.openapitools.client.model.SortBy5;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -140,7 +140,7 @@ public class PostcardsApiTest {
         Map<String, String> metadata = null;
         PostcardSize size = null;
         Boolean scheduled = null;
-        SendDate sendDate = null;
+        Map<String, String> sendDate = null;
         MailType mailType = null;
         SortBy5 sortBy = null;
 

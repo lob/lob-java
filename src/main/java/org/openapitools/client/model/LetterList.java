@@ -37,6 +37,12 @@ public class LetterList {
 
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<Letter> data = null;
+  public List<Letter> getData() {     
+    if (this.data == null) {
+      this.data = new ArrayList<Letter>();
+    }
+    return this.data; 
+  }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
 

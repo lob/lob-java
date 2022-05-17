@@ -86,10 +86,7 @@ public class AddressTest {
 
         model.setMetadata(map);
 
-        // Assert.assertNotNull(model.setMetadata());
-        // Assert.assertEquals(model.setMetadata(), map);
-        //To do create getMetadata method DXP- 920
-
+        Assert.assertEquals(model.getMetadata(), map);
     }
 
     @Test
