@@ -62,7 +62,7 @@ public class SelfMailersApi {
     }
 
     /**
-     * Build call for selfMailerCreate
+     * Build call for create
      * @param selfMailerEditable  (required)
      * @param idempotencyKey A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)
      * @param _callback Callback for upload/download progress
@@ -75,7 +75,7 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call selfMailerCreateCall(SelfMailerEditable selfMailerEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(SelfMailerEditable selfMailerEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = selfMailerEditable;
 
         // create path and map variables
@@ -110,15 +110,15 @@ public class SelfMailersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call selfMailerCreateValidateBeforeCall(SelfMailerEditable selfMailerEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(SelfMailerEditable selfMailerEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'selfMailerEditable' is set
         if (selfMailerEditable == null) {
-            throw new ApiException("Missing the required parameter 'selfMailerEditable' when calling selfMailerCreate(Async)");
+            throw new ApiException("Missing the required parameter 'selfMailerEditable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = selfMailerCreateCall(selfMailerEditable, idempotencyKey, _callback);
+        okhttp3.Call localVarCall = createCall(selfMailerEditable, idempotencyKey, _callback);
         return localVarCall;
 
     }
@@ -137,9 +137,9 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public SelfMailer selfMailerCreate(SelfMailerEditable selfMailerEditable, String idempotencyKey) throws ApiException {
+    public SelfMailer create(SelfMailerEditable selfMailerEditable, String idempotencyKey) throws ApiException {
         try {
-            ApiResponse<SelfMailer> localVarResp = selfMailerCreateWithHttpInfo(selfMailerEditable, idempotencyKey);
+            ApiResponse<SelfMailer> localVarResp = createWithHttpInfo(selfMailerEditable, idempotencyKey);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -160,9 +160,9 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SelfMailer> selfMailerCreateWithHttpInfo(SelfMailerEditable selfMailerEditable, String idempotencyKey) throws ApiException {
+    public ApiResponse<SelfMailer> createWithHttpInfo(SelfMailerEditable selfMailerEditable, String idempotencyKey) throws ApiException {
         try {
-            okhttp3.Call localVarCall = selfMailerCreateValidateBeforeCall(selfMailerEditable, idempotencyKey, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(selfMailerEditable, idempotencyKey, null);
             Type localVarReturnType = new TypeToken<SelfMailer>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -185,15 +185,15 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call selfMailerCreateAsync(SelfMailerEditable selfMailerEditable, String idempotencyKey, final ApiCallback<SelfMailer> _callback) throws ApiException {
+    public okhttp3.Call createAsync(SelfMailerEditable selfMailerEditable, String idempotencyKey, final ApiCallback<SelfMailer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = selfMailerCreateValidateBeforeCall(selfMailerEditable, idempotencyKey, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(selfMailerEditable, idempotencyKey, _callback);
         Type localVarReturnType = new TypeToken<SelfMailer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for selfMailerDelete
+     * Build call for delete
      * @param sfmId id of the self_mailer (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -205,7 +205,7 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call selfMailerDeleteCall(String sfmId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCall(String sfmId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -237,15 +237,15 @@ public class SelfMailersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call selfMailerDeleteValidateBeforeCall(String sfmId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteValidateBeforeCall(String sfmId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'sfmId' is set
         if (sfmId == null) {
-            throw new ApiException("Missing the required parameter 'sfmId' when calling selfMailerDelete(Async)");
+            throw new ApiException("Missing the required parameter 'sfmId' when calling delete(Async)");
         }
         
 
-        okhttp3.Call localVarCall = selfMailerDeleteCall(sfmId, _callback);
+        okhttp3.Call localVarCall = deleteCall(sfmId, _callback);
         return localVarCall;
 
     }
@@ -263,9 +263,9 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public SelfMailerDeletion selfMailerDelete(String sfmId) throws ApiException {
+    public SelfMailerDeletion delete(String sfmId) throws ApiException {
         try {
-            ApiResponse<SelfMailerDeletion> localVarResp = selfMailerDeleteWithHttpInfo(sfmId);
+            ApiResponse<SelfMailerDeletion> localVarResp = deleteWithHttpInfo(sfmId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -285,9 +285,9 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SelfMailerDeletion> selfMailerDeleteWithHttpInfo(String sfmId) throws ApiException {
+    public ApiResponse<SelfMailerDeletion> deleteWithHttpInfo(String sfmId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = selfMailerDeleteValidateBeforeCall(sfmId, null);
+            okhttp3.Call localVarCall = deleteValidateBeforeCall(sfmId, null);
             Type localVarReturnType = new TypeToken<SelfMailerDeletion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -309,15 +309,15 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call selfMailerDeleteAsync(String sfmId, final ApiCallback<SelfMailerDeletion> _callback) throws ApiException {
+    public okhttp3.Call deleteAsync(String sfmId, final ApiCallback<SelfMailerDeletion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = selfMailerDeleteValidateBeforeCall(sfmId, _callback);
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(sfmId, _callback);
         Type localVarReturnType = new TypeToken<SelfMailerDeletion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for selfMailerRetrieve
+     * Build call for get
      * @param sfmId id of the self_mailer (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -329,7 +329,7 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call selfMailerRetrieveCall(String sfmId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String sfmId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -361,15 +361,15 @@ public class SelfMailersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call selfMailerRetrieveValidateBeforeCall(String sfmId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String sfmId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'sfmId' is set
         if (sfmId == null) {
-            throw new ApiException("Missing the required parameter 'sfmId' when calling selfMailerRetrieve(Async)");
+            throw new ApiException("Missing the required parameter 'sfmId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = selfMailerRetrieveCall(sfmId, _callback);
+        okhttp3.Call localVarCall = getCall(sfmId, _callback);
         return localVarCall;
 
     }
@@ -387,9 +387,9 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public SelfMailer selfMailerRetrieve(String sfmId) throws ApiException {
+    public SelfMailer get(String sfmId) throws ApiException {
         try {
-            ApiResponse<SelfMailer> localVarResp = selfMailerRetrieveWithHttpInfo(sfmId);
+            ApiResponse<SelfMailer> localVarResp = getWithHttpInfo(sfmId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -409,9 +409,9 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SelfMailer> selfMailerRetrieveWithHttpInfo(String sfmId) throws ApiException {
+    public ApiResponse<SelfMailer> getWithHttpInfo(String sfmId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = selfMailerRetrieveValidateBeforeCall(sfmId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(sfmId, null);
             Type localVarReturnType = new TypeToken<SelfMailer>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -433,15 +433,15 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call selfMailerRetrieveAsync(String sfmId, final ApiCallback<SelfMailer> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String sfmId, final ApiCallback<SelfMailer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = selfMailerRetrieveValidateBeforeCall(sfmId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(sfmId, _callback);
         Type localVarReturnType = new TypeToken<SelfMailer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for selfMailersList
+     * Build call for list
      * @param limit How many results to return. (optional, default to 10)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
@@ -463,7 +463,7 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call selfMailersListCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, SelfMailerSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, SelfMailerSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -538,10 +538,10 @@ public class SelfMailersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call selfMailersListValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, SelfMailerSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, SelfMailerSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = selfMailersListCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
+        okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
         return localVarCall;
 
     }
@@ -569,9 +569,9 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public SelfMailerList selfMailersList(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, SelfMailerSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
+    public SelfMailerList list(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, SelfMailerSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
         try {
-            ApiResponse<SelfMailerList> localVarResp = selfMailersListWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+            ApiResponse<SelfMailerList> localVarResp = listWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -601,9 +601,9 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SelfMailerList> selfMailersListWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, SelfMailerSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
+    public ApiResponse<SelfMailerList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, SelfMailerSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
         try {
-            okhttp3.Call localVarCall = selfMailersListValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, null);
+            okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, null);
             Type localVarReturnType = new TypeToken<SelfMailerList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -635,9 +635,9 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call selfMailersListAsync(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, SelfMailerSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback<SelfMailerList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, SelfMailerSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback<SelfMailerList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = selfMailersListValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
+        okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
         Type localVarReturnType = new TypeToken<SelfMailerList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

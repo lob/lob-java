@@ -59,7 +59,7 @@ public class CardsApiSpecTest {
         groups={"Integration", "Create", "Card", "Valid"}
     )
     public void cardCreateTest() throws ApiException {
-       dummyCard = validApi.cardCreate(createdCardEditables.get(0));
+       dummyCard = validApi.create(createdCardEditables.get(0));
 
         Assert.assertNotNull(dummyCard.getId());
     }
@@ -71,7 +71,7 @@ public class CardsApiSpecTest {
         groups={"Integration", "Create", "Card", "Invalid"}
     )
     public void cardCreateTestBadParameter() throws ApiException {
-        validApi.cardCreate( null);
+        validApi.create( null);
     }
 
     @Test(
@@ -82,7 +82,7 @@ public class CardsApiSpecTest {
     )
     public void cardCreateTestInvalidCredentials() throws ApiException {
         try {
-            invalidApi.cardCreate(createdCardEditables.get(1));
+            invalidApi.create(createdCardEditables.get(1));
         }
         catch(ApiException e) {
             throw e;
@@ -91,10 +91,10 @@ public class CardsApiSpecTest {
 
     @Test(
         enabled=true,
-        groups={"Integration", "Retrieve", "Card", "Valid"}
+        groups={"Integration", "Get", "Card", "Valid"}
     )
-    public void cardRetrieveTest() throws ApiException {
-        Card response = validApi.cardRetrieve(dummyCard.getId());
+    public void cardGetTest() throws ApiException {
+        Card response = validApi.get(dummyCard.getId());
  
          Assert.assertEquals(response.getId(), dummyCard.getId());
      }
@@ -105,7 +105,7 @@ public class CardsApiSpecTest {
         groups={"Integration", "Delete", "Card", "Valid"}
     )
     public void cardDeleteTest() throws ApiException {
-        CardDeletion response = validApi.cardDelete(dummyCard.getId());
+        CardDeletion response = validApi.delete(dummyCard.getId());
  
          Assert.assertEquals(response.getId(), dummyCard.getId());
      }

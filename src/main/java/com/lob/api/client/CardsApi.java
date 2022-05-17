@@ -61,7 +61,7 @@ public class CardsApi {
     }
 
     /**
-     * Build call for cardCreate
+     * Build call for create
      * @param cardEditable  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -73,7 +73,7 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardCreateCall(CardEditable cardEditable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(CardEditable cardEditable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = cardEditable;
 
         // create path and map variables
@@ -104,15 +104,15 @@ public class CardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cardCreateValidateBeforeCall(CardEditable cardEditable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(CardEditable cardEditable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'cardEditable' is set
         if (cardEditable == null) {
-            throw new ApiException("Missing the required parameter 'cardEditable' when calling cardCreate(Async)");
+            throw new ApiException("Missing the required parameter 'cardEditable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = cardCreateCall(cardEditable, _callback);
+        okhttp3.Call localVarCall = createCall(cardEditable, _callback);
         return localVarCall;
 
     }
@@ -130,9 +130,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Card cardCreate(CardEditable cardEditable) throws ApiException {
+    public Card create(CardEditable cardEditable) throws ApiException {
         try {
-            ApiResponse<Card> localVarResp = cardCreateWithHttpInfo(cardEditable);
+            ApiResponse<Card> localVarResp = createWithHttpInfo(cardEditable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -152,9 +152,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Card> cardCreateWithHttpInfo(CardEditable cardEditable) throws ApiException {
+    public ApiResponse<Card> createWithHttpInfo(CardEditable cardEditable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = cardCreateValidateBeforeCall(cardEditable, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(cardEditable, null);
             Type localVarReturnType = new TypeToken<Card>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -176,15 +176,15 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardCreateAsync(CardEditable cardEditable, final ApiCallback<Card> _callback) throws ApiException {
+    public okhttp3.Call createAsync(CardEditable cardEditable, final ApiCallback<Card> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cardCreateValidateBeforeCall(cardEditable, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(cardEditable, _callback);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for cardDelete
+     * Build call for delete
      * @param cardId id of the card (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -196,7 +196,7 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardDeleteCall(String cardId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCall(String cardId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -228,15 +228,15 @@ public class CardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cardDeleteValidateBeforeCall(String cardId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteValidateBeforeCall(String cardId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'cardId' is set
         if (cardId == null) {
-            throw new ApiException("Missing the required parameter 'cardId' when calling cardDelete(Async)");
+            throw new ApiException("Missing the required parameter 'cardId' when calling delete(Async)");
         }
         
 
-        okhttp3.Call localVarCall = cardDeleteCall(cardId, _callback);
+        okhttp3.Call localVarCall = deleteCall(cardId, _callback);
         return localVarCall;
 
     }
@@ -254,9 +254,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public CardDeletion cardDelete(String cardId) throws ApiException {
+    public CardDeletion delete(String cardId) throws ApiException {
         try {
-            ApiResponse<CardDeletion> localVarResp = cardDeleteWithHttpInfo(cardId);
+            ApiResponse<CardDeletion> localVarResp = deleteWithHttpInfo(cardId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -276,9 +276,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CardDeletion> cardDeleteWithHttpInfo(String cardId) throws ApiException {
+    public ApiResponse<CardDeletion> deleteWithHttpInfo(String cardId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = cardDeleteValidateBeforeCall(cardId, null);
+            okhttp3.Call localVarCall = deleteValidateBeforeCall(cardId, null);
             Type localVarReturnType = new TypeToken<CardDeletion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -300,15 +300,15 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardDeleteAsync(String cardId, final ApiCallback<CardDeletion> _callback) throws ApiException {
+    public okhttp3.Call deleteAsync(String cardId, final ApiCallback<CardDeletion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cardDeleteValidateBeforeCall(cardId, _callback);
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(cardId, _callback);
         Type localVarReturnType = new TypeToken<CardDeletion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for cardRetrieve
+     * Build call for get
      * @param cardId id of the card (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -320,7 +320,7 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardRetrieveCall(String cardId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String cardId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -352,15 +352,15 @@ public class CardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cardRetrieveValidateBeforeCall(String cardId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String cardId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'cardId' is set
         if (cardId == null) {
-            throw new ApiException("Missing the required parameter 'cardId' when calling cardRetrieve(Async)");
+            throw new ApiException("Missing the required parameter 'cardId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = cardRetrieveCall(cardId, _callback);
+        okhttp3.Call localVarCall = getCall(cardId, _callback);
         return localVarCall;
 
     }
@@ -378,9 +378,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Card cardRetrieve(String cardId) throws ApiException {
+    public Card get(String cardId) throws ApiException {
         try {
-            ApiResponse<Card> localVarResp = cardRetrieveWithHttpInfo(cardId);
+            ApiResponse<Card> localVarResp = getWithHttpInfo(cardId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -400,9 +400,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Card> cardRetrieveWithHttpInfo(String cardId) throws ApiException {
+    public ApiResponse<Card> getWithHttpInfo(String cardId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = cardRetrieveValidateBeforeCall(cardId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(cardId, null);
             Type localVarReturnType = new TypeToken<Card>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -424,15 +424,15 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardRetrieveAsync(String cardId, final ApiCallback<Card> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String cardId, final ApiCallback<Card> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cardRetrieveValidateBeforeCall(cardId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(cardId, _callback);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for cardUpdate
+     * Build call for update
      * @param cardId id of the card (required)
      * @param cardUpdatable  (required)
      * @param _callback Callback for upload/download progress
@@ -445,7 +445,7 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardUpdateCall(String cardId, CardUpdatable cardUpdatable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCall(String cardId, CardUpdatable cardUpdatable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = cardUpdatable;
 
         // create path and map variables
@@ -477,20 +477,20 @@ public class CardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cardUpdateValidateBeforeCall(String cardId, CardUpdatable cardUpdatable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateValidateBeforeCall(String cardId, CardUpdatable cardUpdatable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'cardId' is set
         if (cardId == null) {
-            throw new ApiException("Missing the required parameter 'cardId' when calling cardUpdate(Async)");
+            throw new ApiException("Missing the required parameter 'cardId' when calling update(Async)");
         }
         
         // verify the required parameter 'cardUpdatable' is set
         if (cardUpdatable == null) {
-            throw new ApiException("Missing the required parameter 'cardUpdatable' when calling cardUpdate(Async)");
+            throw new ApiException("Missing the required parameter 'cardUpdatable' when calling update(Async)");
         }
         
 
-        okhttp3.Call localVarCall = cardUpdateCall(cardId, cardUpdatable, _callback);
+        okhttp3.Call localVarCall = updateCall(cardId, cardUpdatable, _callback);
         return localVarCall;
 
     }
@@ -509,9 +509,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Card cardUpdate(String cardId, CardUpdatable cardUpdatable) throws ApiException {
+    public Card update(String cardId, CardUpdatable cardUpdatable) throws ApiException {
         try {
-            ApiResponse<Card> localVarResp = cardUpdateWithHttpInfo(cardId, cardUpdatable);
+            ApiResponse<Card> localVarResp = updateWithHttpInfo(cardId, cardUpdatable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -532,9 +532,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Card> cardUpdateWithHttpInfo(String cardId, CardUpdatable cardUpdatable) throws ApiException {
+    public ApiResponse<Card> updateWithHttpInfo(String cardId, CardUpdatable cardUpdatable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = cardUpdateValidateBeforeCall(cardId, cardUpdatable, null);
+            okhttp3.Call localVarCall = updateValidateBeforeCall(cardId, cardUpdatable, null);
             Type localVarReturnType = new TypeToken<Card>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -557,15 +557,15 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardUpdateAsync(String cardId, CardUpdatable cardUpdatable, final ApiCallback<Card> _callback) throws ApiException {
+    public okhttp3.Call updateAsync(String cardId, CardUpdatable cardUpdatable, final ApiCallback<Card> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cardUpdateValidateBeforeCall(cardId, cardUpdatable, _callback);
+        okhttp3.Call localVarCall = updateValidateBeforeCall(cardId, cardUpdatable, _callback);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for cardsList
+     * Build call for list
      * @param limit How many results to return. (optional, default to 10)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
@@ -580,7 +580,7 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardsListCall(Integer limit, String before, String after, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -627,10 +627,10 @@ public class CardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cardsListValidateBeforeCall(Integer limit, String before, String after, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = cardsListCall(limit, before, after, sortBy, _callback);
+        okhttp3.Call localVarCall = listCall(limit, before, after, sortBy, _callback);
         return localVarCall;
 
     }
@@ -651,9 +651,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public CardList cardsList(Integer limit, String before, String after, SortBy5 sortBy) throws ApiException {
+    public CardList list(Integer limit, String before, String after, SortBy5 sortBy) throws ApiException {
         try {
-            ApiResponse<CardList> localVarResp = cardsListWithHttpInfo(limit, before, after, sortBy);
+            ApiResponse<CardList> localVarResp = listWithHttpInfo(limit, before, after, sortBy);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -676,9 +676,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CardList> cardsListWithHttpInfo(Integer limit, String before, String after, SortBy5 sortBy) throws ApiException {
+    public ApiResponse<CardList> listWithHttpInfo(Integer limit, String before, String after, SortBy5 sortBy) throws ApiException {
         try {
-            okhttp3.Call localVarCall = cardsListValidateBeforeCall(limit, before, after, sortBy, null);
+            okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, sortBy, null);
             Type localVarReturnType = new TypeToken<CardList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -703,9 +703,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardsListAsync(Integer limit, String before, String after, SortBy5 sortBy, final ApiCallback<CardList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, SortBy5 sortBy, final ApiCallback<CardList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cardsListValidateBeforeCall(limit, before, after, sortBy, _callback);
+        okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, sortBy, _callback);
         Type localVarReturnType = new TypeToken<CardList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

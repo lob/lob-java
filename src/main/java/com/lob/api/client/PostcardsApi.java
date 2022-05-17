@@ -62,7 +62,7 @@ public class PostcardsApi {
     }
 
     /**
-     * Build call for postcardCreate
+     * Build call for create
      * @param postcardEditable  (required)
      * @param idempotencyKey A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)
      * @param _callback Callback for upload/download progress
@@ -75,7 +75,7 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postcardCreateCall(PostcardEditable postcardEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(PostcardEditable postcardEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = postcardEditable;
 
         // create path and map variables
@@ -110,15 +110,15 @@ public class PostcardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postcardCreateValidateBeforeCall(PostcardEditable postcardEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(PostcardEditable postcardEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'postcardEditable' is set
         if (postcardEditable == null) {
-            throw new ApiException("Missing the required parameter 'postcardEditable' when calling postcardCreate(Async)");
+            throw new ApiException("Missing the required parameter 'postcardEditable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = postcardCreateCall(postcardEditable, idempotencyKey, _callback);
+        okhttp3.Call localVarCall = createCall(postcardEditable, idempotencyKey, _callback);
         return localVarCall;
 
     }
@@ -137,9 +137,9 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Postcard postcardCreate(PostcardEditable postcardEditable, String idempotencyKey) throws ApiException {
+    public Postcard create(PostcardEditable postcardEditable, String idempotencyKey) throws ApiException {
         try {
-            ApiResponse<Postcard> localVarResp = postcardCreateWithHttpInfo(postcardEditable, idempotencyKey);
+            ApiResponse<Postcard> localVarResp = createWithHttpInfo(postcardEditable, idempotencyKey);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -160,9 +160,9 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Postcard> postcardCreateWithHttpInfo(PostcardEditable postcardEditable, String idempotencyKey) throws ApiException {
+    public ApiResponse<Postcard> createWithHttpInfo(PostcardEditable postcardEditable, String idempotencyKey) throws ApiException {
         try {
-            okhttp3.Call localVarCall = postcardCreateValidateBeforeCall(postcardEditable, idempotencyKey, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(postcardEditable, idempotencyKey, null);
             Type localVarReturnType = new TypeToken<Postcard>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -185,15 +185,15 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postcardCreateAsync(PostcardEditable postcardEditable, String idempotencyKey, final ApiCallback<Postcard> _callback) throws ApiException {
+    public okhttp3.Call createAsync(PostcardEditable postcardEditable, String idempotencyKey, final ApiCallback<Postcard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postcardCreateValidateBeforeCall(postcardEditable, idempotencyKey, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(postcardEditable, idempotencyKey, _callback);
         Type localVarReturnType = new TypeToken<Postcard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postcardDelete
+     * Build call for cancel
      * @param pscId id of the postcard (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -205,7 +205,7 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postcardDeleteCall(String pscId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cancelCall(String pscId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -237,15 +237,15 @@ public class PostcardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postcardDeleteValidateBeforeCall(String pscId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelValidateBeforeCall(String pscId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'pscId' is set
         if (pscId == null) {
-            throw new ApiException("Missing the required parameter 'pscId' when calling postcardDelete(Async)");
+            throw new ApiException("Missing the required parameter 'pscId' when calling cancel(Async)");
         }
         
 
-        okhttp3.Call localVarCall = postcardDeleteCall(pscId, _callback);
+        okhttp3.Call localVarCall = cancelCall(pscId, _callback);
         return localVarCall;
 
     }
@@ -263,9 +263,9 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public PostcardDeletion postcardDelete(String pscId) throws ApiException {
+    public PostcardDeletion cancel(String pscId) throws ApiException {
         try {
-            ApiResponse<PostcardDeletion> localVarResp = postcardDeleteWithHttpInfo(pscId);
+            ApiResponse<PostcardDeletion> localVarResp = cancelWithHttpInfo(pscId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -285,9 +285,9 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PostcardDeletion> postcardDeleteWithHttpInfo(String pscId) throws ApiException {
+    public ApiResponse<PostcardDeletion> cancelWithHttpInfo(String pscId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = postcardDeleteValidateBeforeCall(pscId, null);
+            okhttp3.Call localVarCall = cancelValidateBeforeCall(pscId, null);
             Type localVarReturnType = new TypeToken<PostcardDeletion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -309,15 +309,15 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postcardDeleteAsync(String pscId, final ApiCallback<PostcardDeletion> _callback) throws ApiException {
+    public okhttp3.Call cancelAsync(String pscId, final ApiCallback<PostcardDeletion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postcardDeleteValidateBeforeCall(pscId, _callback);
+        okhttp3.Call localVarCall = cancelValidateBeforeCall(pscId, _callback);
         Type localVarReturnType = new TypeToken<PostcardDeletion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postcardRetrieve
+     * Build call for get
      * @param pscId id of the postcard (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -329,7 +329,7 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postcardRetrieveCall(String pscId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String pscId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -361,15 +361,15 @@ public class PostcardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postcardRetrieveValidateBeforeCall(String pscId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String pscId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'pscId' is set
         if (pscId == null) {
-            throw new ApiException("Missing the required parameter 'pscId' when calling postcardRetrieve(Async)");
+            throw new ApiException("Missing the required parameter 'pscId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = postcardRetrieveCall(pscId, _callback);
+        okhttp3.Call localVarCall = getCall(pscId, _callback);
         return localVarCall;
 
     }
@@ -387,9 +387,9 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Postcard postcardRetrieve(String pscId) throws ApiException {
+    public Postcard get(String pscId) throws ApiException {
         try {
-            ApiResponse<Postcard> localVarResp = postcardRetrieveWithHttpInfo(pscId);
+            ApiResponse<Postcard> localVarResp = getWithHttpInfo(pscId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -409,9 +409,9 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Postcard> postcardRetrieveWithHttpInfo(String pscId) throws ApiException {
+    public ApiResponse<Postcard> getWithHttpInfo(String pscId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = postcardRetrieveValidateBeforeCall(pscId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(pscId, null);
             Type localVarReturnType = new TypeToken<Postcard>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -433,15 +433,15 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postcardRetrieveAsync(String pscId, final ApiCallback<Postcard> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String pscId, final ApiCallback<Postcard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postcardRetrieveValidateBeforeCall(pscId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(pscId, _callback);
         Type localVarReturnType = new TypeToken<Postcard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postcardsList
+     * Build call for list
      * @param limit How many results to return. (optional, default to 10)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
@@ -463,7 +463,7 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postcardsListCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, PostcardSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, PostcardSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -538,10 +538,10 @@ public class PostcardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postcardsListValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, PostcardSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, PostcardSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = postcardsListCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
+        okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
         return localVarCall;
 
     }
@@ -569,9 +569,9 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public PostcardList postcardsList(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, PostcardSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
+    public PostcardList list(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, PostcardSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
         try {
-            ApiResponse<PostcardList> localVarResp = postcardsListWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+            ApiResponse<PostcardList> localVarResp = listWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -601,9 +601,9 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PostcardList> postcardsListWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, PostcardSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
+    public ApiResponse<PostcardList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, PostcardSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
         try {
-            okhttp3.Call localVarCall = postcardsListValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, null);
+            okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, null);
             Type localVarReturnType = new TypeToken<PostcardList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -635,9 +635,9 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postcardsListAsync(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, PostcardSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback<PostcardList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, PostcardSize size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback<PostcardList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postcardsListValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
+        okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
         Type localVarReturnType = new TypeToken<PostcardList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

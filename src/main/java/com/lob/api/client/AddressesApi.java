@@ -59,7 +59,7 @@ public class AddressesApi {
     }
 
     /**
-     * Build call for addressCreate
+     * Build call for create
      * @param addressEditable  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -71,7 +71,7 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addressCreateCall(AddressEditable addressEditable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(AddressEditable addressEditable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = addressEditable;
 
         // create path and map variables
@@ -102,15 +102,15 @@ public class AddressesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addressCreateValidateBeforeCall(AddressEditable addressEditable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(AddressEditable addressEditable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'addressEditable' is set
         if (addressEditable == null) {
-            throw new ApiException("Missing the required parameter 'addressEditable' when calling addressCreate(Async)");
+            throw new ApiException("Missing the required parameter 'addressEditable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = addressCreateCall(addressEditable, _callback);
+        okhttp3.Call localVarCall = createCall(addressEditable, _callback);
         return localVarCall;
 
     }
@@ -128,9 +128,9 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Address addressCreate(AddressEditable addressEditable) throws ApiException {
+    public Address create(AddressEditable addressEditable) throws ApiException {
         try {
-            ApiResponse<Address> localVarResp = addressCreateWithHttpInfo(addressEditable);
+            ApiResponse<Address> localVarResp = createWithHttpInfo(addressEditable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -150,9 +150,9 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Address> addressCreateWithHttpInfo(AddressEditable addressEditable) throws ApiException {
+    public ApiResponse<Address> createWithHttpInfo(AddressEditable addressEditable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = addressCreateValidateBeforeCall(addressEditable, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(addressEditable, null);
             Type localVarReturnType = new TypeToken<Address>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -174,15 +174,15 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addressCreateAsync(AddressEditable addressEditable, final ApiCallback<Address> _callback) throws ApiException {
+    public okhttp3.Call createAsync(AddressEditable addressEditable, final ApiCallback<Address> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addressCreateValidateBeforeCall(addressEditable, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(addressEditable, _callback);
         Type localVarReturnType = new TypeToken<Address>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for addressDelete
+     * Build call for delete
      * @param adrId id of the address (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -194,7 +194,7 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addressDeleteCall(String adrId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCall(String adrId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -226,15 +226,15 @@ public class AddressesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addressDeleteValidateBeforeCall(String adrId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteValidateBeforeCall(String adrId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'adrId' is set
         if (adrId == null) {
-            throw new ApiException("Missing the required parameter 'adrId' when calling addressDelete(Async)");
+            throw new ApiException("Missing the required parameter 'adrId' when calling delete(Async)");
         }
         
 
-        okhttp3.Call localVarCall = addressDeleteCall(adrId, _callback);
+        okhttp3.Call localVarCall = deleteCall(adrId, _callback);
         return localVarCall;
 
     }
@@ -252,9 +252,9 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public AddressDeletion addressDelete(String adrId) throws ApiException {
+    public AddressDeletion delete(String adrId) throws ApiException {
         try {
-            ApiResponse<AddressDeletion> localVarResp = addressDeleteWithHttpInfo(adrId);
+            ApiResponse<AddressDeletion> localVarResp = deleteWithHttpInfo(adrId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -274,9 +274,9 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddressDeletion> addressDeleteWithHttpInfo(String adrId) throws ApiException {
+    public ApiResponse<AddressDeletion> deleteWithHttpInfo(String adrId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = addressDeleteValidateBeforeCall(adrId, null);
+            okhttp3.Call localVarCall = deleteValidateBeforeCall(adrId, null);
             Type localVarReturnType = new TypeToken<AddressDeletion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -298,15 +298,15 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addressDeleteAsync(String adrId, final ApiCallback<AddressDeletion> _callback) throws ApiException {
+    public okhttp3.Call deleteAsync(String adrId, final ApiCallback<AddressDeletion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addressDeleteValidateBeforeCall(adrId, _callback);
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(adrId, _callback);
         Type localVarReturnType = new TypeToken<AddressDeletion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for addressRetrieve
+     * Build call for get
      * @param adrId id of the address (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -318,7 +318,7 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addressRetrieveCall(String adrId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String adrId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -350,15 +350,15 @@ public class AddressesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addressRetrieveValidateBeforeCall(String adrId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String adrId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'adrId' is set
         if (adrId == null) {
-            throw new ApiException("Missing the required parameter 'adrId' when calling addressRetrieve(Async)");
+            throw new ApiException("Missing the required parameter 'adrId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = addressRetrieveCall(adrId, _callback);
+        okhttp3.Call localVarCall = getCall(adrId, _callback);
         return localVarCall;
 
     }
@@ -376,9 +376,9 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Address addressRetrieve(String adrId) throws ApiException {
+    public Address get(String adrId) throws ApiException {
         try {
-            ApiResponse<Address> localVarResp = addressRetrieveWithHttpInfo(adrId);
+            ApiResponse<Address> localVarResp = getWithHttpInfo(adrId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -398,9 +398,9 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Address> addressRetrieveWithHttpInfo(String adrId) throws ApiException {
+    public ApiResponse<Address> getWithHttpInfo(String adrId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = addressRetrieveValidateBeforeCall(adrId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(adrId, null);
             Type localVarReturnType = new TypeToken<Address>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -422,15 +422,15 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addressRetrieveAsync(String adrId, final ApiCallback<Address> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String adrId, final ApiCallback<Address> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addressRetrieveValidateBeforeCall(adrId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(adrId, _callback);
         Type localVarReturnType = new TypeToken<Address>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for addressesList
+     * Build call for list
      * @param limit How many results to return. (optional, default to 10)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
@@ -447,7 +447,7 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addressesListCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -502,10 +502,10 @@ public class AddressesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addressesListValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = addressesListCall(limit, before, after, include, dateCreated, metadata, _callback);
+        okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, _callback);
         return localVarCall;
 
     }
@@ -528,9 +528,9 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public AddressList addressesList(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata) throws ApiException {
+    public AddressList list(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata) throws ApiException {
         try {
-            ApiResponse<AddressList> localVarResp = addressesListWithHttpInfo(limit, before, after, include, dateCreated, metadata);
+            ApiResponse<AddressList> localVarResp = listWithHttpInfo(limit, before, after, include, dateCreated, metadata);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -555,9 +555,9 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddressList> addressesListWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata) throws ApiException {
+    public ApiResponse<AddressList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata) throws ApiException {
         try {
-            okhttp3.Call localVarCall = addressesListValidateBeforeCall(limit, before, after, include, dateCreated, metadata, null);
+            okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, null);
             Type localVarReturnType = new TypeToken<AddressList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -584,9 +584,9 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addressesListAsync(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback<AddressList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback<AddressList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addressesListValidateBeforeCall(limit, before, after, include, dateCreated, metadata, _callback);
+        okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, _callback);
         Type localVarReturnType = new TypeToken<AddressList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

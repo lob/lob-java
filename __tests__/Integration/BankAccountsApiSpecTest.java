@@ -36,19 +36,19 @@ public class BankAccountsApiSpecTest {
 
         for (BankAccountWritable bw: BankAccountWritableList) {
             try {
-                createdBankAccounts.add(validApi.bankAccountCreate(bw));
+                createdBankAccounts.add(validApi.create(bw));
             } catch (Exception e) {
                 Assert.fail("Creating Bank Accounts before has failed");
             }
         }
 
         try {
-            BankAccountList response = validApi.bankAccountsList(null, null, null, null, null, null);
+            BankAccountList response = validApi.list(null, null, null, null, null, null);
             Assert.assertNotNull(response);
             Assert.assertNotNull(response.getNextUrl());
             nextUrl = response.getNextUrl().substring(response.getNextUrl().indexOf("after=") + 6);
             Assert.assertNotNull(nextUrl);
-            BankAccountList responseAfter = validApi.bankAccountsList(10, null, nextUrl, null, null, null);
+            BankAccountList responseAfter = validApi.list(10, null, nextUrl, null, null, null);
             Assert.assertNotNull(responseAfter);
             Assert.assertNotNull(responseAfter.getPreviousUrl());
             previousUrl = responseAfter.getPreviousUrl().substring(responseAfter.getPreviousUrl().indexOf("before=") + 7);
@@ -64,7 +64,7 @@ public class BankAccountsApiSpecTest {
     {
         for (BankAccount bankAccount: createdBankAccounts) {
             try {
-                validApi.bankAccountDelete(bankAccount.getId());
+                validApi.delete(bankAccount.getId());
             } catch (Exception e) {
                 Assert.fail("Deleting bankAccountes after has failed");
             }
@@ -76,7 +76,7 @@ public class BankAccountsApiSpecTest {
         groups={"Integration", "Create", "Bank Account", "Valid"}
     )
     public void bankAccountCreateTest() throws ApiException {
-        BankAccount response = validApi.bankAccountCreate(BankAccountWritableList.get(0));
+        BankAccount response = validApi.create(BankAccountWritableList.get(0));
 
         Assert.assertNotNull(response.getId());
         Assert.assertEquals(response.getAccountNumber(),BankAccountWritableList.get(0).getAccountNumber());
@@ -90,7 +90,7 @@ public class BankAccountsApiSpecTest {
         groups={"Integration", "Create", "BankAccount", "Invalid"}
     )
     public void bankAccountCreateTestBadParameter() throws ApiException {
-        validApi.bankAccountCreate(null);
+        validApi.create(null);
     }
 
     @Test(
@@ -101,7 +101,7 @@ public class BankAccountsApiSpecTest {
     )
     public void bankAccountCreateTestBadUsername() throws ApiException {
         try {
-            invalidApi.bankAccountCreate(BankAccountWritableList.get(0));
+            invalidApi.create(BankAccountWritableList.get(0));
         }
         catch(ApiException e) {
             throw e;
@@ -120,7 +120,7 @@ public class BankAccountsApiSpecTest {
         amounts.add(35);
         bv.setAmounts(amounts);
 
-        BankAccount response = validApi.bankAccountVerify(createdBankAccounts.get(0).getId(), bv);
+        BankAccount response = validApi.verify(createdBankAccounts.get(0).getId(), bv);
 
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.getVerified());
@@ -135,7 +135,7 @@ public class BankAccountsApiSpecTest {
         groups={"Integration", "Verify", "BankAccount", "Invalid"}
     )
     public void bankAccountVerifyTestBadParameter() throws ApiException {
-        validApi.bankAccountVerify(null, null);
+        validApi.verify(null, null);
     }
 
     @Test(
@@ -153,7 +153,7 @@ public class BankAccountsApiSpecTest {
         bv.setAmounts(amounts);
 
         try {
-            invalidApi.bankAccountVerify(createdBankAccounts.get(0).getId(), bv);
+            invalidApi.verify(createdBankAccounts.get(0).getId(), bv);
         }
         catch(ApiException e) {
             throw e;
@@ -166,7 +166,7 @@ public class BankAccountsApiSpecTest {
     )
     public void bankAccountGetTest() throws ApiException {
 
-        BankAccount response = validApi.bankAccountRetrieve(createdBankAccounts.get(0).getId());
+        BankAccount response = validApi.get(createdBankAccounts.get(0).getId());
 
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.getId());
@@ -181,7 +181,7 @@ public class BankAccountsApiSpecTest {
         groups={"Integration", "Verify", "BankAccount", "Invalid"}
     )
     public void bankAccountGetTestBadParameter() throws ApiException {
-        validApi.bankAccountRetrieve(null);
+        validApi.get(null);
     }
 
     @Test(
@@ -192,7 +192,7 @@ public class BankAccountsApiSpecTest {
     )
     public void bankAccountGetTestBadUsername() throws ApiException {
         try {
-            invalidApi.bankAccountRetrieve(createdBankAccounts.get(0).getId());
+            invalidApi.get(createdBankAccounts.get(0).getId());
         }
         catch(ApiException e) {
             throw e;
@@ -205,7 +205,7 @@ public class BankAccountsApiSpecTest {
     )
     public void bankAccountDeleteTest() throws ApiException {
 
-        BankAccountDeletion response = validApi.bankAccountDelete(createdBankAccounts.get(0).getId());
+        BankAccountDeletion response = validApi.delete(createdBankAccounts.get(0).getId());
 
         Assert.assertNotNull(response);
         Assert.assertTrue(response.getDeleted());
@@ -219,7 +219,7 @@ public class BankAccountsApiSpecTest {
         groups={"Integration", "Delete", "BankAccount", "Invalid"}
     )
     public void bankAccountDeleteTestBadParameter() throws ApiException {
-        validApi.bankAccountDelete(null);
+        validApi.delete(null);
     }
 
     @Test(
@@ -230,7 +230,7 @@ public class BankAccountsApiSpecTest {
     )
     public void bankAccountDeleteTestBadUsername() throws ApiException {
         try {
-            invalidApi.bankAccountDelete(createdBankAccounts.get(0).getId());
+            invalidApi.delete(createdBankAccounts.get(0).getId());
         }
         catch(ApiException e) {
             throw e;
@@ -242,7 +242,7 @@ public class BankAccountsApiSpecTest {
         groups={"Integration", "List", "Bank Account", "Valid"}
     )
     public void bankAccountListTest() throws ApiException {
-        BankAccountList response = validApi.bankAccountsList(null, null, null, null, null, null);
+        BankAccountList response = validApi.list(null, null, null, null, null, null);
 
         Assert.assertNotNull(response);
         Assert.assertTrue(response.getCount() > 0);
@@ -252,7 +252,7 @@ public class BankAccountsApiSpecTest {
         groups={"Integration", "List", "Bank Account", "Valid"}
     )
     public void bankAccountListTesWithAfterParam() throws ApiException {
-        BankAccountList response = validApi.bankAccountsList(10, null, nextUrl, null, null, null);
+        BankAccountList response = validApi.list(10, null, nextUrl, null, null, null);
 
         Assert.assertNotNull(response);
         Assert.assertTrue(response.getCount() > 0);
@@ -263,7 +263,7 @@ public class BankAccountsApiSpecTest {
         groups={"Integration", "List", "Bank Account", "Valid"}
     )
     public void bankAccountListTesWithbeforeParam() throws ApiException {
-        BankAccountList response = validApi.bankAccountsList(10,  previousUrl, null, null, null, null);
+        BankAccountList response = validApi.list(10,  previousUrl, null, null, null, null);
 
         Assert.assertNotNull(response);
         Assert.assertTrue(response.getCount() > 0);
@@ -277,7 +277,7 @@ public class BankAccountsApiSpecTest {
     )
     public void bankAccountListTestBadUsername() throws ApiException {
         try {
-            invalidApi.bankAccountsList(10, null, null, null, null, null);
+            invalidApi.list(10, null, null, null, null, null);
         }
         catch(ApiException e) {
             throw e;

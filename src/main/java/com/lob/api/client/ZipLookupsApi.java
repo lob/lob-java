@@ -57,7 +57,7 @@ public class ZipLookupsApi {
     }
 
     /**
-     * Build call for zipLookup
+     * Build call for lookup
      * @param zipEditable  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -69,7 +69,7 @@ public class ZipLookupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call zipLookupCall(ZipEditable zipEditable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call lookupCall(ZipEditable zipEditable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = zipEditable;
 
         // create path and map variables
@@ -100,15 +100,15 @@ public class ZipLookupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call zipLookupValidateBeforeCall(ZipEditable zipEditable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call lookupValidateBeforeCall(ZipEditable zipEditable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'zipEditable' is set
         if (zipEditable == null) {
-            throw new ApiException("Missing the required parameter 'zipEditable' when calling zipLookup(Async)");
+            throw new ApiException("Missing the required parameter 'zipEditable' when calling lookup(Async)");
         }
         
 
-        okhttp3.Call localVarCall = zipLookupCall(zipEditable, _callback);
+        okhttp3.Call localVarCall = lookupCall(zipEditable, _callback);
         return localVarCall;
 
     }
@@ -126,9 +126,9 @@ public class ZipLookupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Zip zipLookup(ZipEditable zipEditable) throws ApiException {
+    public Zip lookup(ZipEditable zipEditable) throws ApiException {
         try {
-            ApiResponse<Zip> localVarResp = zipLookupWithHttpInfo(zipEditable);
+            ApiResponse<Zip> localVarResp = lookupWithHttpInfo(zipEditable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -148,9 +148,9 @@ public class ZipLookupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Zip> zipLookupWithHttpInfo(ZipEditable zipEditable) throws ApiException {
+    public ApiResponse<Zip> lookupWithHttpInfo(ZipEditable zipEditable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = zipLookupValidateBeforeCall(zipEditable, null);
+            okhttp3.Call localVarCall = lookupValidateBeforeCall(zipEditable, null);
             Type localVarReturnType = new TypeToken<Zip>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -172,9 +172,9 @@ public class ZipLookupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call zipLookupAsync(ZipEditable zipEditable, final ApiCallback<Zip> _callback) throws ApiException {
+    public okhttp3.Call lookupAsync(ZipEditable zipEditable, final ApiCallback<Zip> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = zipLookupValidateBeforeCall(zipEditable, _callback);
+        okhttp3.Call localVarCall = lookupValidateBeforeCall(zipEditable, _callback);
         Type localVarReturnType = new TypeToken<Zip>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

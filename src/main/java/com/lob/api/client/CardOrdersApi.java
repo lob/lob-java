@@ -58,7 +58,7 @@ public class CardOrdersApi {
     }
 
     /**
-     * Build call for cardOrderCreate
+     * Build call for create
      * @param cardId The ID of the card to which the card orders belong. (required)
      * @param cardOrderEditable  (required)
      * @param _callback Callback for upload/download progress
@@ -71,7 +71,7 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardOrderCreateCall(String cardId, CardOrderEditable cardOrderEditable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(String cardId, CardOrderEditable cardOrderEditable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = cardOrderEditable;
 
         // create path and map variables
@@ -103,20 +103,20 @@ public class CardOrdersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cardOrderCreateValidateBeforeCall(String cardId, CardOrderEditable cardOrderEditable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(String cardId, CardOrderEditable cardOrderEditable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'cardId' is set
         if (cardId == null) {
-            throw new ApiException("Missing the required parameter 'cardId' when calling cardOrderCreate(Async)");
+            throw new ApiException("Missing the required parameter 'cardId' when calling create(Async)");
         }
         
         // verify the required parameter 'cardOrderEditable' is set
         if (cardOrderEditable == null) {
-            throw new ApiException("Missing the required parameter 'cardOrderEditable' when calling cardOrderCreate(Async)");
+            throw new ApiException("Missing the required parameter 'cardOrderEditable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = cardOrderCreateCall(cardId, cardOrderEditable, _callback);
+        okhttp3.Call localVarCall = createCall(cardId, cardOrderEditable, _callback);
         return localVarCall;
 
     }
@@ -135,9 +135,9 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public CardOrder cardOrderCreate(String cardId, CardOrderEditable cardOrderEditable) throws ApiException {
+    public CardOrder create(String cardId, CardOrderEditable cardOrderEditable) throws ApiException {
         try {
-            ApiResponse<CardOrder> localVarResp = cardOrderCreateWithHttpInfo(cardId, cardOrderEditable);
+            ApiResponse<CardOrder> localVarResp = createWithHttpInfo(cardId, cardOrderEditable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -158,9 +158,9 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CardOrder> cardOrderCreateWithHttpInfo(String cardId, CardOrderEditable cardOrderEditable) throws ApiException {
+    public ApiResponse<CardOrder> createWithHttpInfo(String cardId, CardOrderEditable cardOrderEditable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = cardOrderCreateValidateBeforeCall(cardId, cardOrderEditable, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(cardId, cardOrderEditable, null);
             Type localVarReturnType = new TypeToken<CardOrder>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -183,15 +183,15 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardOrderCreateAsync(String cardId, CardOrderEditable cardOrderEditable, final ApiCallback<CardOrder> _callback) throws ApiException {
+    public okhttp3.Call createAsync(String cardId, CardOrderEditable cardOrderEditable, final ApiCallback<CardOrder> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cardOrderCreateValidateBeforeCall(cardId, cardOrderEditable, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(cardId, cardOrderEditable, _callback);
         Type localVarReturnType = new TypeToken<CardOrder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for cardOrdersRetrieve
+     * Build call for get
      * @param cardId The ID of the card to which the card orders belong. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -203,7 +203,7 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardOrdersRetrieveCall(String cardId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String cardId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -235,15 +235,15 @@ public class CardOrdersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cardOrdersRetrieveValidateBeforeCall(String cardId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String cardId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'cardId' is set
         if (cardId == null) {
-            throw new ApiException("Missing the required parameter 'cardId' when calling cardOrdersRetrieve(Async)");
+            throw new ApiException("Missing the required parameter 'cardId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = cardOrdersRetrieveCall(cardId, _callback);
+        okhttp3.Call localVarCall = getCall(cardId, _callback);
         return localVarCall;
 
     }
@@ -261,9 +261,9 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public CardOrderList cardOrdersRetrieve(String cardId) throws ApiException {
+    public CardOrderList get(String cardId) throws ApiException {
         try {
-            ApiResponse<CardOrderList> localVarResp = cardOrdersRetrieveWithHttpInfo(cardId);
+            ApiResponse<CardOrderList> localVarResp = getWithHttpInfo(cardId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -283,9 +283,9 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CardOrderList> cardOrdersRetrieveWithHttpInfo(String cardId) throws ApiException {
+    public ApiResponse<CardOrderList> getWithHttpInfo(String cardId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = cardOrdersRetrieveValidateBeforeCall(cardId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(cardId, null);
             Type localVarReturnType = new TypeToken<CardOrderList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -307,9 +307,9 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cardOrdersRetrieveAsync(String cardId, final ApiCallback<CardOrderList> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String cardId, final ApiCallback<CardOrderList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cardOrdersRetrieveValidateBeforeCall(cardId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(cardId, _callback);
         Type localVarReturnType = new TypeToken<CardOrderList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

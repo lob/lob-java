@@ -42,8 +42,8 @@ public class IntlVerificationsApiTest {
         data.add(data2);
         intlVerificationsPayload.setAddresses(data);
 
-        when(intlVerificationsApiMock.bulkIntlVerifications(intlVerificationsPayload)).thenReturn(fakeIntlVerifications);
-        IntlVerifications response = intlVerificationsApiMock.bulkIntlVerifications(intlVerificationsPayload);
+        when(intlVerificationsApiMock.verifyBulk(intlVerificationsPayload)).thenReturn(fakeIntlVerifications);
+        IntlVerifications response = intlVerificationsApiMock.verifyBulk(intlVerificationsPayload);
 
         Assert.assertEquals(fakeIntlVerifications.getClass(), response.getClass());
     }
@@ -53,8 +53,8 @@ public class IntlVerificationsApiTest {
         IntlVerificationsApi intlVerificationsApiMock = mock(IntlVerificationsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(intlVerificationsApiMock.bulkIntlVerifications(null)).thenThrow(error);
-        intlVerificationsApiMock.bulkIntlVerifications(null);
+        when(intlVerificationsApiMock.verifyBulk(null)).thenThrow(error);
+        intlVerificationsApiMock.verifyBulk(null);
 
         Assert.fail("This should not happen");
     }
@@ -63,9 +63,9 @@ public class IntlVerificationsApiTest {
     public void bulkIntlVerificationsTestCatchesExceptionWithResponseBody() throws ApiException {
         IntlVerificationsApi intlVerificationsApiMock= mock(IntlVerificationsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(intlVerificationsApiMock.bulkIntlVerifications(null)).thenThrow(error);
+        when(intlVerificationsApiMock.verifyBulk(null)).thenThrow(error);
 
-        intlVerificationsApiMock.bulkIntlVerifications(null);
+        intlVerificationsApiMock.verifyBulk(null);
 
         Assert.fail("This should not happen");   
     } 
@@ -79,8 +79,8 @@ public class IntlVerificationsApiTest {
 
         fakeIntlVerification.setId("intl_ver_Id");
             
-        when(intlVerificationsApiMock.intlVerification(intlVerificationWritable, xLangOutput)).thenReturn(fakeIntlVerification);
-        IntlVerification response = intlVerificationsApiMock.intlVerification(intlVerificationWritable, xLangOutput);
+        when(intlVerificationsApiMock.verifySingle(intlVerificationWritable, xLangOutput)).thenReturn(fakeIntlVerification);
+        IntlVerification response = intlVerificationsApiMock.verifySingle(intlVerificationWritable, xLangOutput);
 
         Assert.assertEquals(fakeIntlVerification.getId(), response.getId());
     }
@@ -90,8 +90,8 @@ public class IntlVerificationsApiTest {
         IntlVerificationsApi intlVerificationsApiMock = mock(IntlVerificationsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(intlVerificationsApiMock.intlVerification(null, null)).thenThrow(error);
-        intlVerificationsApiMock.intlVerification(null,null);
+        when(intlVerificationsApiMock.verifySingle(null, null)).thenThrow(error);
+        intlVerificationsApiMock.verifySingle(null,null);
 
         Assert.fail("This should not happen");
     }
@@ -101,8 +101,8 @@ public class IntlVerificationsApiTest {
         IntlVerificationsApi intlVerificationsApiMock = mock(IntlVerificationsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
         
-        when(intlVerificationsApiMock.intlVerification(null, null)).thenThrow(error);
-        intlVerificationsApiMock.intlVerification(null, null);
+        when(intlVerificationsApiMock.verifySingle(null, null)).thenThrow(error);
+        intlVerificationsApiMock.verifySingle(null, null);
 
         Assert.fail("This should not happen");   
     }

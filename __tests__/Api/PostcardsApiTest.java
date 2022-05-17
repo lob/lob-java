@@ -32,8 +32,8 @@ public class PostcardsApiTest {
         
         fakePostcard.setId("psc_fakeId");
         
-        when(postcardsApiMock.postcardCreate(postcardEditable, "fake_key")).thenReturn(fakePostcard);
-        Postcard response = postcardsApiMock.postcardCreate(postcardEditable, "fake_key");
+        when(postcardsApiMock.create(postcardEditable, "fake_key")).thenReturn(fakePostcard);
+        Postcard response = postcardsApiMock.create(postcardEditable, "fake_key");
 
         Assert.assertEquals(fakePostcard.getId(), response.getId());
     }
@@ -43,8 +43,8 @@ public class PostcardsApiTest {
         PostcardsApi postcardApiMock = mock(PostcardsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(postcardApiMock.postcardCreate(null, null)).thenThrow(error);
-        postcardApiMock.postcardCreate(null, null);
+        when(postcardApiMock.create(null, null)).thenThrow(error);
+        postcardApiMock.create(null, null);
 
         Assert.fail("This should not happen");
     }
@@ -53,79 +53,79 @@ public class PostcardsApiTest {
     public void postcardCreateTestCatchesExceptionWithResponseBody () throws ApiException {
         PostcardsApi postcardApiMock = mock(PostcardsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(postcardApiMock.postcardCreate(null, null)).thenThrow(error);
+        when(postcardApiMock.create(null, null)).thenThrow(error);
 
-        postcardApiMock.postcardCreate(null, null);
+        postcardApiMock.create(null, null);
 
         Assert.fail("This should not happen");   
     }   
     
-    @Test(enabled=true, groups={"Unit", "Delete", "Postcard", "Valid"})
-    public void postcardDeleteTest() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Cancel", "Postcard", "Valid"})
+    public void postcardCancelTest() throws ApiException {
         PostcardsApi postcardsApiMock = mock(PostcardsApi.class);
         PostcardDeletion fakePostcard = new PostcardDeletion();
 
         fakePostcard.setId("psc_fakeId");
         
-        when(postcardsApiMock.postcardDelete("psc_fakeId")).thenReturn(fakePostcard);
-        PostcardDeletion response = postcardsApiMock.postcardDelete("psc_fakeId");
+        when(postcardsApiMock.cancel("psc_fakeId")).thenReturn(fakePostcard);
+        PostcardDeletion response = postcardsApiMock.cancel("psc_fakeId");
 
         Assert.assertEquals(fakePostcard.getId(), response.getId());
     }
 
-    @Test(enabled=true, groups={"Unit", "Delete", "Postcard", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
-    public void postcardDeleteTestCatchesException() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Cancel", "Postcard", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
+    public void postcardCancelTestCatchesException() throws ApiException {
         PostcardsApi postcardApiMock = mock(PostcardsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(postcardApiMock.postcardDelete(null)).thenThrow(error);
-        postcardApiMock.postcardDelete(null);
+        when(postcardApiMock.cancel(null)).thenThrow(error);
+        postcardApiMock.cancel(null);
 
         Assert.fail("This should not happen");
     }
 
-    @Test(enabled=true, groups={"Unit", "Delete", "Postcard", "Invalid"}, expectedExceptions = {ApiException.class})
-    public void postcardDeleteTestCatchesExceptionWithResponseBody () throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Cancel", "Postcard", "Invalid"}, expectedExceptions = {ApiException.class})
+    public void postcardCancelTestCatchesExceptionWithResponseBody () throws ApiException {
         PostcardsApi postcardApiMock = mock(PostcardsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(postcardApiMock.postcardDelete(null)).thenThrow(error);
+        when(postcardApiMock.cancel(null)).thenThrow(error);
 
-        postcardApiMock.postcardDelete(null);
+        postcardApiMock.cancel(null);
 
         Assert.fail("This should not happen");   
     }   
     
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Postcard", "Valid"})
-    public void postcardRetrieveTest() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Postcard", "Valid"})
+    public void postcardGetTest() throws ApiException {
         PostcardsApi postcardsApiMock = mock(PostcardsApi.class);
         Postcard fakePostcard = new Postcard();
 
         fakePostcard.setId("psc_fakeId");
         
-        when(postcardsApiMock.postcardRetrieve("psc_fakeId")).thenReturn(fakePostcard);
-        Postcard response = postcardsApiMock.postcardRetrieve("psc_fakeId");
+        when(postcardsApiMock.get("psc_fakeId")).thenReturn(fakePostcard);
+        Postcard response = postcardsApiMock.get("psc_fakeId");
 
         Assert.assertEquals(fakePostcard.getId(), response.getId());
     }
     
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Postcard", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
-    public void postcardRetrieveTestCatchesException() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Postcard", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
+    public void postcardGetTestCatchesException() throws ApiException {
         PostcardsApi postcardApiMock = mock(PostcardsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(postcardApiMock.postcardRetrieve(null)).thenThrow(error);
-        postcardApiMock.postcardRetrieve(null);
+        when(postcardApiMock.get(null)).thenThrow(error);
+        postcardApiMock.get(null);
 
         Assert.fail("This should not happen");
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Postcard", "Invalid"}, expectedExceptions = {ApiException.class})
+    @Test(enabled=true, groups={"Unit", "Get", "Postcard", "Invalid"}, expectedExceptions = {ApiException.class})
     public void postcardRetrieveTestCatchesExceptionWithResponseBody () throws ApiException {
         PostcardsApi postcardApiMock = mock(PostcardsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(postcardApiMock.postcardCreate(null, null)).thenThrow(error);
+        when(postcardApiMock.get(null)).thenThrow(error);
 
-        postcardApiMock.postcardCreate(null, null);
+        postcardApiMock.get(null);
 
         Assert.fail("This should not happen");   
     }   
@@ -158,8 +158,8 @@ public class PostcardsApiTest {
         fakePostcardList.setObject("list");
         fakePostcardList.setCount(data.size());
 
-        when(postcardApiMock.postcardsList(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy)).thenReturn(fakePostcardList);
-        PostcardList response = postcardApiMock.postcardsList(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+        when(postcardApiMock.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy)).thenReturn(fakePostcardList);
+        PostcardList response = postcardApiMock.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
 
         Assert.assertEquals(fakePostcardList.getCount(), response.getCount());  
     }

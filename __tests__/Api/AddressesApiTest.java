@@ -27,8 +27,8 @@ public class AddressesApiTest {
         
         fakeAddress.setId("adr_fakeId");
         
-        when(addressApiMock.addressCreate(addressEditable)).thenReturn(fakeAddress);
-        Address response = addressApiMock.addressCreate(addressEditable);
+        when(addressApiMock.create(addressEditable)).thenReturn(fakeAddress);
+        Address response = addressApiMock.create(addressEditable);
 
         Assert.assertEquals(fakeAddress.getId(), response.getId());
     }
@@ -38,8 +38,8 @@ public class AddressesApiTest {
         AddressesApi addressApiMock = mock(AddressesApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(addressApiMock.addressCreate(null)).thenThrow(error);
-        addressApiMock.addressCreate(null);
+        when(addressApiMock.create(null)).thenThrow(error);
+        addressApiMock.create(null);
 
         Assert.fail("This should not happen");
     }
@@ -48,9 +48,9 @@ public class AddressesApiTest {
     public void addressCreateTestCatchesExceptionWithResponseBody () throws ApiException {
         AddressesApi addressApiMock = mock(AddressesApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(addressApiMock.addressCreate(null)).thenThrow(error);
+        when(addressApiMock.create(null)).thenThrow(error);
 
-        addressApiMock.addressCreate(null);
+        addressApiMock.create(null);
 
         Assert.fail("This should not happen");   
     }   
@@ -63,8 +63,8 @@ public class AddressesApiTest {
         fakeAddress.setId("adr_fakeId");
         fakeAddress.setDeleted(true);
 
-        when(addressApiMock.addressDelete("adr_fakeId")).thenReturn(fakeAddress);
-        AddressDeletion response = addressApiMock.addressDelete("adr_fakeId");
+        when(addressApiMock.delete("adr_fakeId")).thenReturn(fakeAddress);
+        AddressDeletion response = addressApiMock.delete("adr_fakeId");
 
         Assert.assertEquals(fakeAddress.getId(), response.getId());
         Assert.assertEquals(fakeAddress.getDeleted(), response.getDeleted());
@@ -75,8 +75,8 @@ public class AddressesApiTest {
         AddressesApi addressApiMock = mock(AddressesApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(addressApiMock.addressDelete(null)).thenThrow(error);
-        addressApiMock.addressDelete(null);
+        when(addressApiMock.delete(null)).thenThrow(error);
+        addressApiMock.delete(null);
 
         Assert.fail("This should not happen");
     }
@@ -86,43 +86,43 @@ public class AddressesApiTest {
         AddressesApi addressApiMock = mock(AddressesApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
         
-        when(addressApiMock.addressDelete(null)).thenThrow(error);
-        addressApiMock.addressDelete(null);
+        when(addressApiMock.delete(null)).thenThrow(error);
+        addressApiMock.delete(null);
 
         Assert.fail("This should not happen");   
     }
     
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Address", "Valid"})
-    public void addressRetrieveTest() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Address", "Valid"})
+    public void addressGetTest() throws ApiException {
         AddressesApi addressApiMock = mock(AddressesApi.class);
         Address fakeAddress = new Address();
 
         fakeAddress.setId("adr_Id");
 
-        when(addressApiMock.addressRetrieve("adr_Id")).thenReturn(fakeAddress);
-        Address response = addressApiMock.addressRetrieve("adr_Id");
+        when(addressApiMock.get("adr_Id")).thenReturn(fakeAddress);
+        Address response = addressApiMock.get("adr_Id");
 
         Assert.assertEquals(fakeAddress.getId(), response.getId());
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Address", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
-    public void addressRetrieveTestCatchesException() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Address", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
+    public void addressGetTestCatchesException() throws ApiException {
         AddressesApi addressApiMock = mock(AddressesApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(addressApiMock.addressRetrieve(null)).thenThrow(error);
-        addressApiMock.addressRetrieve(null);
+        when(addressApiMock.get(null)).thenThrow(error);
+        addressApiMock.get(null);
 
         Assert.fail("This should not happen");
     }
 
-    @Test(enabled=true,  groups={"Unit", "Retrieve", "Address", "Invalid"}, expectedExceptions = {ApiException.class})
-    public void addressRetrieveTestCatchesExceptionWithResponseBody() throws ApiException {
+    @Test(enabled=true,  groups={"Unit", "Get", "Address", "Invalid"}, expectedExceptions = {ApiException.class})
+    public void addressGetTestCatchesExceptionWithResponseBody() throws ApiException {
         AddressesApi addressApiMock = mock(AddressesApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
 
-        when(addressApiMock.addressRetrieve(null)).thenThrow(error);
-        addressApiMock.addressRetrieve(null);
+        when(addressApiMock.get(null)).thenThrow(error);
+        addressApiMock.get(null);
 
         Assert.fail("This should not happen");   
     }
@@ -149,8 +149,8 @@ public class AddressesApiTest {
         fakeAddress.setObject("list");
         fakeAddress.setCount(data.size());
 
-        when(addressApiMock.addressesList(limit, before, after, include, dateCreated, metadata)).thenReturn(fakeAddress);
-        AddressList response = addressApiMock.addressesList(limit, before, after, include, dateCreated, metadata);
+        when(addressApiMock.list(limit, before, after, include, dateCreated, metadata)).thenReturn(fakeAddress);
+        AddressList response = addressApiMock.list(limit, before, after, include, dateCreated, metadata);
 
         Assert.assertEquals(fakeAddress.getCount(), response.getCount());
     }
@@ -160,8 +160,8 @@ public class AddressesApiTest {
         AddressesApi addressApiMock = mock(AddressesApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(addressApiMock.addressesList(null, null, null, null, null, null)).thenThrow(error);
-        addressApiMock.addressesList(null, null, null, null, null, null);  
+        when(addressApiMock.list(null, null, null, null, null, null)).thenThrow(error);
+        addressApiMock.list(null, null, null, null, null, null);  
 
         Assert.fail("This should not happen");   
     }
@@ -171,8 +171,8 @@ public class AddressesApiTest {
         AddressesApi addressApiMock = mock(AddressesApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
 
-        when(addressApiMock.addressesList(null, null, null, null, null, null)).thenThrow(error);
-        addressApiMock.addressesList(null, null, null, null, null, null);
+        when(addressApiMock.list(null, null, null, null, null, null)).thenThrow(error);
+        addressApiMock.list(null, null, null, null, null, null);
 
         Assert.fail("This should not happen");   
     }

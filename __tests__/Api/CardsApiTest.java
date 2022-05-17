@@ -28,8 +28,8 @@ public class CardsApiTest {
         CardEditable CardEditable = new CardEditable();
         
         fakeCard.setId("card_fakeId");
-        when(cardApiMock.cardCreate(CardEditable)).thenReturn(fakeCard);
-        Card response = cardApiMock.cardCreate(CardEditable);
+        when(cardApiMock.create(CardEditable)).thenReturn(fakeCard);
+        Card response = cardApiMock.create(CardEditable);
         
         Assert.assertEquals(fakeCard.getId(), response.getId());
     }
@@ -39,8 +39,8 @@ public class CardsApiTest {
         CardsApi cardApiMock = mock(CardsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(cardApiMock.cardCreate(null)).thenThrow(error);
-        cardApiMock.cardCreate(null);
+        when(cardApiMock.create(null)).thenThrow(error);
+        cardApiMock.create(null);
 
         Assert.fail("This should not happen");
     }
@@ -49,9 +49,9 @@ public class CardsApiTest {
     public void cardsCreateTestCatchesExceptionWithResponseBody () throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(cardApiMock.cardCreate(null)).thenThrow(error);
+        when(cardApiMock.create(null)).thenThrow(error);
 
-        cardApiMock.cardCreate(null);
+        cardApiMock.create(null);
 
         Assert.fail("This should not happen");   
     }   
@@ -62,8 +62,8 @@ public class CardsApiTest {
         CardDeletion fakeCard = new CardDeletion();
         fakeCard.setId("card_fakeId");
         fakeCard.setDeleted(true);
-        when(cardApiMock.cardDelete("card_fakeId")).thenReturn(fakeCard);
-        CardDeletion response = cardApiMock.cardDelete("card_fakeId");
+        when(cardApiMock.delete("card_fakeId")).thenReturn(fakeCard);
+        CardDeletion response = cardApiMock.delete("card_fakeId");
         Assert.assertEquals(fakeCard.getId(), response.getId());
         Assert.assertEquals(fakeCard.getDeleted(), response.getDeleted());
     }
@@ -73,8 +73,8 @@ public class CardsApiTest {
         CardsApi cardApiMock = mock(CardsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(cardApiMock.cardDelete(null)).thenThrow(error);
-        cardApiMock.cardDelete(null);
+        when(cardApiMock.delete(null)).thenThrow(error);
+        cardApiMock.delete(null);
 
         Assert.fail("This should not happen");
     }
@@ -83,42 +83,42 @@ public class CardsApiTest {
     public void cardsDeleteTestCatchesExceptionWithResponseBody() throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(cardApiMock.cardDelete(null)).thenThrow(error);
+        when(cardApiMock.delete(null)).thenThrow(error);
 
-        cardApiMock.cardDelete(null);
+        cardApiMock.delete(null);
 
         Assert.fail("This should not happen");   
     }   
     
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Card", "Valid"})
-    public void cardRetrieveTest() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Card", "Valid"})
+    public void cardGetTest() throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
         Card fakeCard = new Card();
         fakeCard.setId("card_fakeId");
         fakeCard.setDeleted(true);
-        when(cardApiMock.cardRetrieve("card_fakeId")).thenReturn(fakeCard);
-        Card response = cardApiMock.cardRetrieve("card_fakeId");
+        when(cardApiMock.get("card_fakeId")).thenReturn(fakeCard);
+        Card response = cardApiMock.get("card_fakeId");
         Assert.assertEquals(fakeCard.getId(), response.getId());
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Card", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
-    public void cardsRetrieveTestCatchesException() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Card", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
+    public void cardsGetTestCatchesException() throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(cardApiMock.cardRetrieve(null)).thenThrow(error);
-        cardApiMock.cardRetrieve(null);
+        when(cardApiMock.get(null)).thenThrow(error);
+        cardApiMock.get(null);
 
         Assert.fail("This should not happen");
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Card", "Invalid"}, expectedExceptions = {ApiException.class})
-    public void cardsRetrieveTestCatchesExceptionWithResponseBody() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Card", "Invalid"}, expectedExceptions = {ApiException.class})
+    public void cardsGetTestCatchesExceptionWithResponseBody() throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(cardApiMock.cardRetrieve(null)).thenThrow(error);
+        when(cardApiMock.get(null)).thenThrow(error);
 
-        cardApiMock.cardRetrieve(null);
+        cardApiMock.get(null);
 
         Assert.fail("This should not happen");   
     }   
@@ -131,8 +131,8 @@ public class CardsApiTest {
         
         fakeCard.setId("card_fakeId");
 
-        when(cardApiMock.cardUpdate("card_fakeId", CardUpdatable)).thenReturn(fakeCard);
-        Card response = cardApiMock.cardUpdate("card_fakeId", CardUpdatable);
+        when(cardApiMock.update("card_fakeId", CardUpdatable)).thenReturn(fakeCard);
+        Card response = cardApiMock.update("card_fakeId", CardUpdatable);
         
         Assert.assertEquals(fakeCard.getId(), response.getId());
     }
@@ -142,8 +142,8 @@ public class CardsApiTest {
         CardsApi cardApiMock = mock(CardsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(cardApiMock.cardUpdate("null",null)).thenThrow(error);
-        cardApiMock.cardUpdate("null", null);
+        when(cardApiMock.update("null",null)).thenThrow(error);
+        cardApiMock.update("null", null);
 
         Assert.fail("This should not happen");
     }
@@ -152,9 +152,9 @@ public class CardsApiTest {
     public void cardsUpdateTestCatchesExceptionWithResponseBody() throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(cardApiMock.cardUpdate("null", null)).thenThrow(error);
+        when(cardApiMock.update("null", null)).thenThrow(error);
 
-        cardApiMock.cardUpdate("null", null);
+        cardApiMock.update("null", null);
 
         Assert.fail("This should not happen");   
     }   
@@ -179,8 +179,8 @@ public class CardsApiTest {
         fakeCard.setObject("list");
         fakeCard.setCount(data.size());
 
-        when(cardApiMock.cardsList(limit, before, after, sortBy)).thenReturn(fakeCard);
-        CardList response = cardApiMock.cardsList(limit, before, after, sortBy);
+        when(cardApiMock.list(limit, before, after, sortBy)).thenReturn(fakeCard);
+        CardList response = cardApiMock.list(limit, before, after, sortBy);
     
         Assert.assertEquals(fakeCard.getCount(), response.getCount());
     }
@@ -190,8 +190,8 @@ public class CardsApiTest {
         CardsApi cardApiMock = mock(CardsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(cardApiMock.cardsList(null, null, null, null)).thenThrow(error);
-        cardApiMock.cardsList(null, null, null, null);
+        when(cardApiMock.list(null, null, null, null)).thenThrow(error);
+        cardApiMock.list(null, null, null, null);
 
         Assert.fail("This should not happen");
     }
@@ -200,9 +200,9 @@ public class CardsApiTest {
     public void cardsListTestCatchesExceptionWithResponseBody() throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(cardApiMock.cardsList(null, null, null, null)).thenThrow(error);
+        when(cardApiMock.list(null, null, null, null)).thenThrow(error);
 
-        cardApiMock.cardsList(null, null, null, null);
+        cardApiMock.list(null, null, null, null);
 
         Assert.fail("This should not happen");   
     }   
