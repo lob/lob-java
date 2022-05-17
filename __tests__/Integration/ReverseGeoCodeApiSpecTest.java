@@ -1,13 +1,11 @@
 package Integration;
 
-import org.openapitools.client.model.Location;
-
 import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.client.ReverseGeocodeLookupsApi;
 
+import org.openapitools.client.model.Location;
 import org.testng.Assert;
-
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -47,24 +45,4 @@ public void before_class()
 
         Assert.assertNotNull(validApi.lookup(location,1));
     }
-
-    @Test(
-        enabled=true,
-        groups={"Integration", "Lookup", "Reverse Geocode"}
-    )
-
-        public void  ReverseGeoCodeLookupInputTest() throws ApiException {
-            validApi = new ReverseGeocodeLookupsApi(Configuration.getConfigForIntegration());
-            Location location = new Location();
-            Float latitude=37.777456f;
-            Float longitude=-122.393039f;
-           
-            location.setLatitude(latitude);
-            location.setLongitude(longitude);
-
-            //Assert.assertNotNull(response.getAddresses);
-            // Need Get Addresses method
-    }
-
-
 }

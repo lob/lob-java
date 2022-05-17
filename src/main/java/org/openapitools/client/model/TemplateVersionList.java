@@ -37,6 +37,12 @@ public class TemplateVersionList {
 
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<TemplateVersion> data = null;
+  public List<TemplateVersion> getData() {     
+    if (this.data == null) {
+      this.data = new ArrayList<TemplateVersion>();
+    }
+    return this.data; 
+  }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
 

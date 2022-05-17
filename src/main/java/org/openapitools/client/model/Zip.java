@@ -87,6 +87,12 @@ public class Zip {
 
   @SerializedName(SERIALIZED_NAME_CITIES)
   private List<ZipLookupCity> cities = null;
+  public List<ZipLookupCity> getCities() {     
+    if (this.cities == null) {
+      this.cities = new ArrayList<ZipLookupCity>();
+    }
+    return this.cities; 
+  }
 
   public static final String SERIALIZED_NAME_ZIP_CODE_TYPE = "zip_code_type";
 
