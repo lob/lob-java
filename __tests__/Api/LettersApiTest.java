@@ -140,7 +140,7 @@ public class LettersApiTest {
         Map<String, String> metadata = null;
         Boolean color = null;
         Boolean scheduled = null;
-        OffsetDateTime sendDate = null;
+        Map<String, String> sendDate = null;
         MailType mailType = null;
         SortBy5 sortBy = null;
 
