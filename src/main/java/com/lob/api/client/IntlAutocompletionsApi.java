@@ -119,7 +119,7 @@ public class IntlAutocompletionsApi {
     }
 
     /**
-     * Autocomplete
+     * autocomplete
      * Given an address prefix consisting of a partial primary line and country, as well as optional input of city, state, and zip code, this functionality returns up to 10 full International address suggestions. Not all of them will turn out to be valid addresses; they&#39;ll need to be [verified](#operation/intl_verification).
      * @param intlAutocompletionsWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
@@ -142,7 +142,7 @@ public class IntlAutocompletionsApi {
     }
 
     /**
-     * Autocomplete
+     * autocomplete
      * Given an address prefix consisting of a partial primary line and country, as well as optional input of city, state, and zip code, this functionality returns up to 10 full International address suggestions. Not all of them will turn out to be valid addresses; they&#39;ll need to be [verified](#operation/intl_verification).
      * @param intlAutocompletionsWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
@@ -166,7 +166,7 @@ public class IntlAutocompletionsApi {
     }
 
     /**
-     * Autocomplete (asynchronously)
+     * autocomplete (asynchronously)
      * Given an address prefix consisting of a partial primary line and country, as well as optional input of city, state, and zip code, this functionality returns up to 10 full International address suggestions. Not all of them will turn out to be valid addresses; they&#39;ll need to be [verified](#operation/intl_verification).
      * @param intlAutocompletionsWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
