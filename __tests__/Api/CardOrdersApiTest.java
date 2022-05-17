@@ -26,8 +26,8 @@ public class CardOrdersApiTest {
 
         fakeCardOrder.setId("co_fakeId");
         
-        when(CardOrderApiMock.cardOrderCreate("co_fakeId", CardOrderEditable)).thenReturn(fakeCardOrder);
-        CardOrder response = CardOrderApiMock.cardOrderCreate("co_fakeId", CardOrderEditable);
+        when(CardOrderApiMock.create("co_fakeId", CardOrderEditable)).thenReturn(fakeCardOrder);
+        CardOrder response = CardOrderApiMock.create("co_fakeId", CardOrderEditable);
         
         Assert.assertEquals(fakeCardOrder.getId(), response.getId());
     }
@@ -37,8 +37,8 @@ public class CardOrdersApiTest {
         CardOrdersApi cardOrderApiMock = mock(CardOrdersApi.class);
         ApiException error = new ApiException("error reported by API");
         
-        when(cardOrderApiMock.cardOrderCreate("null", null)).thenThrow(error);
-        cardOrderApiMock.cardOrderCreate("null", null);
+        when(cardOrderApiMock.create("null", null)).thenThrow(error);
+        cardOrderApiMock.create("null", null);
         
         Assert.fail("This should not happen");
     }
@@ -48,14 +48,14 @@ public class CardOrdersApiTest {
         CardOrdersApi cardOrderApiMock = mock(CardOrdersApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
         
-        when(cardOrderApiMock.cardOrderCreate("null", null)).thenThrow(error);
-        cardOrderApiMock.cardOrderCreate("null", null);
+        when(cardOrderApiMock.create("null", null)).thenThrow(error);
+        cardOrderApiMock.create("null", null);
         
         Assert.fail("This should not happen");   
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Card Order", "Valid"})
-    public void cardOrderRetrieveTest() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Card Order", "Valid"})
+    public void cardOrderGetTest() throws ApiException {
         CardOrdersApi CardOrderApiMock = mock(CardOrdersApi.class);
         CardOrderList fakeCardOrders = new CardOrderList();
         List<CardOrder> data = new ArrayList<CardOrder>();
@@ -66,30 +66,30 @@ public class CardOrdersApiTest {
         fakeCardOrders.setObject("list");
         fakeCardOrders.setCount(data.size());
         
-        when(CardOrderApiMock.cardOrdersRetrieve("co_fakeId")).thenReturn(fakeCardOrders);
-        CardOrderList response = CardOrderApiMock.cardOrdersRetrieve("co_fakeId");
+        when(CardOrderApiMock.get("co_fakeId")).thenReturn(fakeCardOrders);
+        CardOrderList response = CardOrderApiMock.get("co_fakeId");
 
         Assert.assertEquals(fakeCardOrders.getCount(), response.getCount()); 
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Card Order", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
-    public void cardOrderRetrieveTestCatchesException() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Card Order", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
+    public void cardOrderGetTestCatchesException() throws ApiException {
         CardOrdersApi cardOrderApiMock = mock(CardOrdersApi.class);
         ApiException error = new ApiException("error reported by API");
         
-        when(cardOrderApiMock.cardOrdersRetrieve(null)).thenThrow(error);
-        cardOrderApiMock.cardOrdersRetrieve(null);
+        when(cardOrderApiMock.get(null)).thenThrow(error);
+        cardOrderApiMock.get(null);
         
         Assert.fail("This should not happen");
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Card Order", "Invalid"}, expectedExceptions = {ApiException.class})
-    public void cardOrderRetrieveTestCatchesExceptionWithResponseBody() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Card Order", "Invalid"}, expectedExceptions = {ApiException.class})
+    public void cardOrderGetTestCatchesExceptionWithResponseBody() throws ApiException {
         CardOrdersApi cardOrderApiMock = mock(CardOrdersApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
         
-        when(cardOrderApiMock.cardOrdersRetrieve(null)).thenThrow(error);
-        cardOrderApiMock.cardOrdersRetrieve(null);
+        when(cardOrderApiMock.get(null)).thenThrow(error);
+        cardOrderApiMock.get(null);
         
         Assert.fail("This should not happen");   
     }

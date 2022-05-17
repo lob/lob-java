@@ -28,8 +28,8 @@ public class BankAccountsApiTest {
         BankAccountWritable bankAccountWritable = new BankAccountWritable();
         
         fakeAccount.setId("bank_fakeId");
-        when(bankAccountsApiMock.bankAccountCreate(bankAccountWritable)).thenReturn(fakeAccount);
-        BankAccount response = bankAccountsApiMock.bankAccountCreate(bankAccountWritable);
+        when(bankAccountsApiMock.create(bankAccountWritable)).thenReturn(fakeAccount);
+        BankAccount response = bankAccountsApiMock.create(bankAccountWritable);
         
         Assert.assertEquals(fakeAccount.getId(), response.getId());
     }
@@ -39,8 +39,8 @@ public class BankAccountsApiTest {
         BankAccountsApi bankAccountsApiMock = mock(BankAccountsApi.class);
         ApiException error = new ApiException("error reported by API");
         
-        when(bankAccountsApiMock.bankAccountCreate(null)).thenThrow(error);
-        bankAccountsApiMock.bankAccountCreate(null);
+        when(bankAccountsApiMock.create(null)).thenThrow(error);
+        bankAccountsApiMock.create(null);
         
         Assert.fail("This should not happen");
     }
@@ -50,8 +50,8 @@ public class BankAccountsApiTest {
         BankAccountsApi bankAccountsApiMock = mock(BankAccountsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
         
-        when(bankAccountsApiMock.bankAccountCreate(null)).thenThrow(error);
-        bankAccountsApiMock.bankAccountCreate(null);
+        when(bankAccountsApiMock.create(null)).thenThrow(error);
+        bankAccountsApiMock.create(null);
 
         Assert.fail("This should not happen");   
     }
@@ -62,8 +62,8 @@ public class BankAccountsApiTest {
         BankAccountDeletion fakeAccount = new BankAccountDeletion();
         
         fakeAccount.setId("bank_fakeId");
-        when(bankAccountsApiMock.bankAccountDelete("bank_fakeId")).thenReturn(fakeAccount);
-        BankAccountDeletion response = bankAccountsApiMock.bankAccountDelete("bank_fakeId");
+        when(bankAccountsApiMock.delete("bank_fakeId")).thenReturn(fakeAccount);
+        BankAccountDeletion response = bankAccountsApiMock.delete("bank_fakeId");
         
         Assert.assertEquals(fakeAccount.getId(), response.getId());
     }
@@ -73,8 +73,8 @@ public class BankAccountsApiTest {
         BankAccountsApi bankAccountsApiMock = mock(BankAccountsApi.class);
         ApiException error = new ApiException("error reported by API");
         
-        when(bankAccountsApiMock.bankAccountDelete(null)).thenThrow(error);
-        bankAccountsApiMock.bankAccountDelete(null);
+        when(bankAccountsApiMock.delete(null)).thenThrow(error);
+        bankAccountsApiMock.delete(null);
         
         Assert.fail("This should not happen");
     }
@@ -84,42 +84,42 @@ public class BankAccountsApiTest {
         BankAccountsApi bankAccountsApiMock = mock(BankAccountsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
         
-        when(bankAccountsApiMock.bankAccountDelete(null)).thenThrow(error);
-        bankAccountsApiMock.bankAccountDelete(null);
+        when(bankAccountsApiMock.delete(null)).thenThrow(error);
+        bankAccountsApiMock.delete(null);
         
         Assert.fail("This should not happen");   
     }
     
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Bank Account", "Valid"})
-    public void BankAccountRetrieveTest() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Bank Account", "Valid"})
+    public void BankAccountGetTest() throws ApiException {
         BankAccountsApi BankAccountApiMock = mock(BankAccountsApi.class);
         BankAccount fakeBankAccount = new BankAccount();
         fakeBankAccount.setId("bank_Id");
         
-        when(BankAccountApiMock.bankAccountRetrieve("bank_Id")).thenReturn(fakeBankAccount);
-        BankAccount response = BankAccountApiMock.bankAccountRetrieve("bank_Id");
+        when(BankAccountApiMock.get("bank_Id")).thenReturn(fakeBankAccount);
+        BankAccount response = BankAccountApiMock.get("bank_Id");
         
         Assert.assertEquals(fakeBankAccount.getId(), response.getId());
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Bank Account", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
-    public void bankAccountRetrieveTestCatchesException() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Bank Account", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
+    public void bankAccountGetTestCatchesException() throws ApiException {
         BankAccountsApi BankAccountApiMock = mock(BankAccountsApi.class);
         ApiException error = new ApiException("error reported by API");
         
-        when(BankAccountApiMock.bankAccountRetrieve(null)).thenThrow(error);
-        BankAccountApiMock.bankAccountRetrieve(null);
+        when(BankAccountApiMock.get(null)).thenThrow(error);
+        BankAccountApiMock.get(null);
        
         Assert.fail("This should not happen");
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Bank Account", "Invalid"}, expectedExceptions = {ApiException.class})
-    public void bankAccountRetrieveTestCatchesExceptionWithResponseBody() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Bank Account", "Invalid"}, expectedExceptions = {ApiException.class})
+    public void bankAccountGetTestCatchesExceptionWithResponseBody() throws ApiException {
         BankAccountsApi BankAccountApiMock = mock(BankAccountsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
         
-        when(BankAccountApiMock.bankAccountRetrieve(null)).thenThrow(error);
-        BankAccountApiMock.bankAccountRetrieve(null);
+        when(BankAccountApiMock.get(null)).thenThrow(error);
+        BankAccountApiMock.get(null);
         
         Assert.fail("This should not happen");   
     }
@@ -136,8 +136,8 @@ public class BankAccountsApiTest {
         amounts.add(2);
         bankAccountVerify.setAmounts(amounts);
 
-        when(bankAccountsApiMock.bankAccountVerify("bank_fakeId", bankAccountVerify)).thenReturn(FakeBankAccount);
-        BankAccount response = bankAccountsApiMock.bankAccountVerify("bank_fakeId", bankAccountVerify);
+        when(bankAccountsApiMock.verify("bank_fakeId", bankAccountVerify)).thenReturn(FakeBankAccount);
+        BankAccount response = bankAccountsApiMock.verify("bank_fakeId", bankAccountVerify);
         
         Assert.assertEquals(FakeBankAccount.getId(), response.getId());
     }
@@ -165,8 +165,8 @@ public class BankAccountsApiTest {
         fakeBankAccount.setObject("list");
         fakeBankAccount.setCount(data.size());
         
-        when(bankAccountsApiMock.bankAccountsList(limit, before, after, include, dateCreated, metadata)).thenReturn(fakeBankAccount);
-        BankAccountList response = bankAccountsApiMock.bankAccountsList(limit, before, after, include, dateCreated, metadata);
+        when(bankAccountsApiMock.list(limit, before, after, include, dateCreated, metadata)).thenReturn(fakeBankAccount);
+        BankAccountList response = bankAccountsApiMock.list(limit, before, after, include, dateCreated, metadata);
         
         Assert.assertEquals(fakeBankAccount.getCount(), response.getCount());
     }
@@ -176,8 +176,8 @@ public class BankAccountsApiTest {
         BankAccountsApi bankAccountsApiMock = mock(BankAccountsApi.class);
         ApiException error = new ApiException("error reported by API");
         
-        when(bankAccountsApiMock.bankAccountsList(null, null, null, null, null, null)).thenThrow(error);
-        bankAccountsApiMock.bankAccountsList(null, null, null, null, null, null);  
+        when(bankAccountsApiMock.list(null, null, null, null, null, null)).thenThrow(error);
+        bankAccountsApiMock.list(null, null, null, null, null, null);  
         
         Assert.fail("This should not happen");   
     }
@@ -187,8 +187,8 @@ public class BankAccountsApiTest {
         BankAccountsApi bankAccountsApiMock = mock(BankAccountsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
        
-        when(bankAccountsApiMock.bankAccountsList(null, null, null, null, null, null)).thenThrow(error);
-        bankAccountsApiMock.bankAccountsList(null, null, null, null, null, null);
+        when(bankAccountsApiMock.list(null, null, null, null, null, null)).thenThrow(error);
+        bankAccountsApiMock.list(null, null, null, null, null, null);
        
         Assert.fail("This should not happen");   
     }

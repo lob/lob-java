@@ -57,7 +57,7 @@ public class ReverseGeocodeLookupsApi {
     }
 
     /**
-     * Build call for reverseGeocodeLookup
+     * Build call for lookup
      * @param location  (required)
      * @param size Determines the number of locations returned. Possible values are between 1 and 50 and any number higher will be rounded down to 50. Default size is a list of 5 reverse geocoded locations. (optional, default to 5)
      * @param _callback Callback for upload/download progress
@@ -70,7 +70,7 @@ public class ReverseGeocodeLookupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reverseGeocodeLookupCall(Location location, Integer size, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call lookupCall(Location location, Integer size, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = location;
 
         // create path and map variables
@@ -105,15 +105,15 @@ public class ReverseGeocodeLookupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reverseGeocodeLookupValidateBeforeCall(Location location, Integer size, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call lookupValidateBeforeCall(Location location, Integer size, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'location' is set
         if (location == null) {
-            throw new ApiException("Missing the required parameter 'location' when calling reverseGeocodeLookup(Async)");
+            throw new ApiException("Missing the required parameter 'location' when calling lookup(Async)");
         }
         
 
-        okhttp3.Call localVarCall = reverseGeocodeLookupCall(location, size, _callback);
+        okhttp3.Call localVarCall = lookupCall(location, size, _callback);
         return localVarCall;
 
     }
@@ -132,9 +132,9 @@ public class ReverseGeocodeLookupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ReverseGeocode reverseGeocodeLookup(Location location, Integer size) throws ApiException {
+    public ReverseGeocode lookup(Location location, Integer size) throws ApiException {
         try {
-            ApiResponse<ReverseGeocode> localVarResp = reverseGeocodeLookupWithHttpInfo(location, size);
+            ApiResponse<ReverseGeocode> localVarResp = lookupWithHttpInfo(location, size);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -155,9 +155,9 @@ public class ReverseGeocodeLookupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReverseGeocode> reverseGeocodeLookupWithHttpInfo(Location location, Integer size) throws ApiException {
+    public ApiResponse<ReverseGeocode> lookupWithHttpInfo(Location location, Integer size) throws ApiException {
         try {
-            okhttp3.Call localVarCall = reverseGeocodeLookupValidateBeforeCall(location, size, null);
+            okhttp3.Call localVarCall = lookupValidateBeforeCall(location, size, null);
             Type localVarReturnType = new TypeToken<ReverseGeocode>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -180,9 +180,9 @@ public class ReverseGeocodeLookupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reverseGeocodeLookupAsync(Location location, Integer size, final ApiCallback<ReverseGeocode> _callback) throws ApiException {
+    public okhttp3.Call lookupAsync(Location location, Integer size, final ApiCallback<ReverseGeocode> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reverseGeocodeLookupValidateBeforeCall(location, size, _callback);
+        okhttp3.Call localVarCall = lookupValidateBeforeCall(location, size, _callback);
         Type localVarReturnType = new TypeToken<ReverseGeocode>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

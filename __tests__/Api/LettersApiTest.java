@@ -30,8 +30,8 @@ public class LettersApiTest {
 
         fakeLetter.setId("ltr_fakeId");
 
-        when(lettersApiMock.letterCancel("ltr_fakeId")).thenReturn(fakeLetter);
-        LetterDeletion response = lettersApiMock.letterCancel("ltr_fakeId");
+        when(lettersApiMock.cancel("ltr_fakeId")).thenReturn(fakeLetter);
+        LetterDeletion response = lettersApiMock.cancel("ltr_fakeId");
 
         Assert.assertEquals(fakeLetter.getId(), response.getId());
     }
@@ -41,8 +41,8 @@ public class LettersApiTest {
         LettersApi letterApiMock = mock(LettersApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(letterApiMock.letterCancel(null)).thenThrow(error);
-        letterApiMock.letterCancel(null);
+        when(letterApiMock.cancel(null)).thenThrow(error);
+        letterApiMock.cancel(null);
 
         Assert.fail("This should not happen");
     }
@@ -51,9 +51,9 @@ public class LettersApiTest {
     public void letterCancelTestCatchesExceptionWithResponseBody() throws ApiException {
         LettersApi letterApiMock = mock(LettersApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(letterApiMock.letterCancel(null)).thenThrow(error);
+        when(letterApiMock.cancel(null)).thenThrow(error);
 
-        letterApiMock.letterCancel(null);
+        letterApiMock.cancel(null);
 
         Assert.fail("This should not happen");   
     }   
@@ -66,8 +66,8 @@ public class LettersApiTest {
 
         fakeLetter.setId("ltr_fakeId");
 
-        when(lettersApiMock.letterCreate(letterEditable, "fake_key")).thenReturn(fakeLetter);
-        Letter response = lettersApiMock.letterCreate(letterEditable, "fake_key");
+        when(lettersApiMock.create(letterEditable, "fake_key")).thenReturn(fakeLetter);
+        Letter response = lettersApiMock.create(letterEditable, "fake_key");
 
         Assert.assertEquals(fakeLetter.getId(), response.getId());
     }
@@ -77,8 +77,8 @@ public class LettersApiTest {
         LettersApi letterApiMock = mock(LettersApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(letterApiMock.letterCreate(null, null)).thenThrow(error);
-        letterApiMock.letterCreate(null, null);
+        when(letterApiMock.create(null, null)).thenThrow(error);
+        letterApiMock.create(null, null);
 
         Assert.fail("This should not happen");
     }
@@ -87,45 +87,45 @@ public class LettersApiTest {
     public void letterCreateTestCatchesExceptionWithResponseBody() throws ApiException {
         LettersApi letterApiMock = mock(LettersApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(letterApiMock.letterCreate(null, null)).thenThrow(error);
+        when(letterApiMock.create(null, null)).thenThrow(error);
 
-        letterApiMock.letterCreate(null, null);
+        letterApiMock.create(null, null);
 
         Assert.fail("This should not happen");   
     }   
     
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Letter", "Valid"})
-    public void letterRetrieveTest() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Letter", "Valid"})
+    public void letterGetTest() throws ApiException {
         LettersApi lettersApiMock = mock(LettersApi.class);
         Letter fakeLetter = new  Letter();
        
 
         fakeLetter.setId("ltr_fakeId");
 
-        when(lettersApiMock.letterRetrieve("ltr_Id")).thenReturn(fakeLetter);
-        Letter response = lettersApiMock.letterRetrieve("ltr_Id");
+        when(lettersApiMock.get("ltr_Id")).thenReturn(fakeLetter);
+        Letter response = lettersApiMock.get("ltr_Id");
 
         Assert.assertEquals(fakeLetter.getId(), response.getId());
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Letter", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
-    public void letterRetrieveTestCatchesException() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Letter", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
+    public void letterGetTestCatchesException() throws ApiException {
         LettersApi letterApiMock = mock(LettersApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(letterApiMock.letterRetrieve(null)).thenThrow(error);
-        letterApiMock.letterRetrieve(null);
+        when(letterApiMock.get(null)).thenThrow(error);
+        letterApiMock.get(null);
 
         Assert.fail("This should not happen");
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Letter", "Invalid"}, expectedExceptions = {ApiException.class})
-    public void letterRetrieveTestCatchesExceptionWithResponseBody() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Letter", "Invalid"}, expectedExceptions = {ApiException.class})
+    public void letterGetTestCatchesExceptionWithResponseBody() throws ApiException {
         LettersApi letterApiMock = mock(LettersApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(letterApiMock.letterRetrieve(null)).thenThrow(error);
+        when(letterApiMock.get(null)).thenThrow(error);
 
-        letterApiMock.letterRetrieve(null);
+        letterApiMock.get(null);
 
         Assert.fail("This should not happen");   
     }   
@@ -158,8 +158,8 @@ public class LettersApiTest {
         fakeLetterList.setObject("list");
         fakeLetterList.setCount(data.size());
 
-        when(lettersApiMock.lettersList(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy)).thenReturn(fakeLetterList);
-        LetterList response = lettersApiMock.lettersList(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
+        when(lettersApiMock.list(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy)).thenReturn(fakeLetterList);
+        LetterList response = lettersApiMock.list(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
 
         Assert.assertEquals(fakeLetterList.getCount(), response.getCount());
     }
@@ -169,8 +169,8 @@ public class LettersApiTest {
         LettersApi letterApiMock = mock(LettersApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(letterApiMock.lettersList(null, null, null, null, null, null, null, null, null, null, null)).thenThrow(error);
-        letterApiMock.lettersList(null, null, null, null, null, null, null, null, null, null, null);
+        when(letterApiMock.list(null, null, null, null, null, null, null, null, null, null, null)).thenThrow(error);
+        letterApiMock.list(null, null, null, null, null, null, null, null, null, null, null);
 
         Assert.fail("This should not happen");
     }
@@ -179,9 +179,9 @@ public class LettersApiTest {
     public void letterListTestCatchesExceptionWithResponseBody() throws ApiException {
         LettersApi letterApiMock = mock(LettersApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(letterApiMock.lettersList(null, null, null, null, null, null, null, null, null, null, null)).thenThrow(error);
+        when(letterApiMock.list(null, null, null, null, null, null, null, null, null, null, null)).thenThrow(error);
 
-        letterApiMock.lettersList(null, null, null, null, null, null, null, null, null, null, null);
+        letterApiMock.list(null, null, null, null, null, null, null, null, null, null, null);
 
         Assert.fail("This should not happen");   
     }   

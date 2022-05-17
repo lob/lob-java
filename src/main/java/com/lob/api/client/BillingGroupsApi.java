@@ -59,7 +59,7 @@ public class BillingGroupsApi {
     }
 
     /**
-     * Build call for billingGroupCreate
+     * Build call for create
      * @param billingGroupEditable  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -71,7 +71,7 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call billingGroupCreateCall(BillingGroupEditable billingGroupEditable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(BillingGroupEditable billingGroupEditable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = billingGroupEditable;
 
         // create path and map variables
@@ -102,15 +102,15 @@ public class BillingGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call billingGroupCreateValidateBeforeCall(BillingGroupEditable billingGroupEditable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(BillingGroupEditable billingGroupEditable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'billingGroupEditable' is set
         if (billingGroupEditable == null) {
-            throw new ApiException("Missing the required parameter 'billingGroupEditable' when calling billingGroupCreate(Async)");
+            throw new ApiException("Missing the required parameter 'billingGroupEditable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = billingGroupCreateCall(billingGroupEditable, _callback);
+        okhttp3.Call localVarCall = createCall(billingGroupEditable, _callback);
         return localVarCall;
 
     }
@@ -128,9 +128,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BillingGroup billingGroupCreate(BillingGroupEditable billingGroupEditable) throws ApiException {
+    public BillingGroup create(BillingGroupEditable billingGroupEditable) throws ApiException {
         try {
-            ApiResponse<BillingGroup> localVarResp = billingGroupCreateWithHttpInfo(billingGroupEditable);
+            ApiResponse<BillingGroup> localVarResp = createWithHttpInfo(billingGroupEditable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -150,9 +150,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BillingGroup> billingGroupCreateWithHttpInfo(BillingGroupEditable billingGroupEditable) throws ApiException {
+    public ApiResponse<BillingGroup> createWithHttpInfo(BillingGroupEditable billingGroupEditable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = billingGroupCreateValidateBeforeCall(billingGroupEditable, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(billingGroupEditable, null);
             Type localVarReturnType = new TypeToken<BillingGroup>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -174,15 +174,15 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call billingGroupCreateAsync(BillingGroupEditable billingGroupEditable, final ApiCallback<BillingGroup> _callback) throws ApiException {
+    public okhttp3.Call createAsync(BillingGroupEditable billingGroupEditable, final ApiCallback<BillingGroup> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = billingGroupCreateValidateBeforeCall(billingGroupEditable, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(billingGroupEditable, _callback);
         Type localVarReturnType = new TypeToken<BillingGroup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for billingGroupRetrieve
+     * Build call for get
      * @param bgId id of the billing_group (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -194,7 +194,7 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call billingGroupRetrieveCall(String bgId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String bgId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -226,15 +226,15 @@ public class BillingGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call billingGroupRetrieveValidateBeforeCall(String bgId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String bgId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'bgId' is set
         if (bgId == null) {
-            throw new ApiException("Missing the required parameter 'bgId' when calling billingGroupRetrieve(Async)");
+            throw new ApiException("Missing the required parameter 'bgId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = billingGroupRetrieveCall(bgId, _callback);
+        okhttp3.Call localVarCall = getCall(bgId, _callback);
         return localVarCall;
 
     }
@@ -252,9 +252,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BillingGroup billingGroupRetrieve(String bgId) throws ApiException {
+    public BillingGroup get(String bgId) throws ApiException {
         try {
-            ApiResponse<BillingGroup> localVarResp = billingGroupRetrieveWithHttpInfo(bgId);
+            ApiResponse<BillingGroup> localVarResp = getWithHttpInfo(bgId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -274,9 +274,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BillingGroup> billingGroupRetrieveWithHttpInfo(String bgId) throws ApiException {
+    public ApiResponse<BillingGroup> getWithHttpInfo(String bgId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = billingGroupRetrieveValidateBeforeCall(bgId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(bgId, null);
             Type localVarReturnType = new TypeToken<BillingGroup>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -298,15 +298,15 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call billingGroupRetrieveAsync(String bgId, final ApiCallback<BillingGroup> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String bgId, final ApiCallback<BillingGroup> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = billingGroupRetrieveValidateBeforeCall(bgId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(bgId, _callback);
         Type localVarReturnType = new TypeToken<BillingGroup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for billingGroupUpdate
+     * Build call for update
      * @param bgId id of the billing_group (required)
      * @param billingGroupEditable  (required)
      * @param _callback Callback for upload/download progress
@@ -319,7 +319,7 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call billingGroupUpdateCall(String bgId, BillingGroupEditable billingGroupEditable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCall(String bgId, BillingGroupEditable billingGroupEditable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = billingGroupEditable;
 
         // create path and map variables
@@ -351,20 +351,20 @@ public class BillingGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call billingGroupUpdateValidateBeforeCall(String bgId, BillingGroupEditable billingGroupEditable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateValidateBeforeCall(String bgId, BillingGroupEditable billingGroupEditable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'bgId' is set
         if (bgId == null) {
-            throw new ApiException("Missing the required parameter 'bgId' when calling billingGroupUpdate(Async)");
+            throw new ApiException("Missing the required parameter 'bgId' when calling update(Async)");
         }
         
         // verify the required parameter 'billingGroupEditable' is set
         if (billingGroupEditable == null) {
-            throw new ApiException("Missing the required parameter 'billingGroupEditable' when calling billingGroupUpdate(Async)");
+            throw new ApiException("Missing the required parameter 'billingGroupEditable' when calling update(Async)");
         }
         
 
-        okhttp3.Call localVarCall = billingGroupUpdateCall(bgId, billingGroupEditable, _callback);
+        okhttp3.Call localVarCall = updateCall(bgId, billingGroupEditable, _callback);
         return localVarCall;
 
     }
@@ -383,9 +383,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BillingGroup billingGroupUpdate(String bgId, BillingGroupEditable billingGroupEditable) throws ApiException {
+    public BillingGroup update(String bgId, BillingGroupEditable billingGroupEditable) throws ApiException {
         try {
-            ApiResponse<BillingGroup> localVarResp = billingGroupUpdateWithHttpInfo(bgId, billingGroupEditable);
+            ApiResponse<BillingGroup> localVarResp = updateWithHttpInfo(bgId, billingGroupEditable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -406,9 +406,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BillingGroup> billingGroupUpdateWithHttpInfo(String bgId, BillingGroupEditable billingGroupEditable) throws ApiException {
+    public ApiResponse<BillingGroup> updateWithHttpInfo(String bgId, BillingGroupEditable billingGroupEditable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = billingGroupUpdateValidateBeforeCall(bgId, billingGroupEditable, null);
+            okhttp3.Call localVarCall = updateValidateBeforeCall(bgId, billingGroupEditable, null);
             Type localVarReturnType = new TypeToken<BillingGroup>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -431,15 +431,15 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call billingGroupUpdateAsync(String bgId, BillingGroupEditable billingGroupEditable, final ApiCallback<BillingGroup> _callback) throws ApiException {
+    public okhttp3.Call updateAsync(String bgId, BillingGroupEditable billingGroupEditable, final ApiCallback<BillingGroup> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = billingGroupUpdateValidateBeforeCall(bgId, billingGroupEditable, _callback);
+        okhttp3.Call localVarCall = updateValidateBeforeCall(bgId, billingGroupEditable, _callback);
         Type localVarReturnType = new TypeToken<BillingGroup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for billingGroupsList
+     * Build call for list
      * @param limit How many results to return. (optional, default to 10)
      * @param offset An integer that designates the offset at which to begin returning results. Defaults to 0. (optional, default to 0)
      * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
@@ -456,7 +456,7 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call billingGroupsListCall(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -511,10 +511,10 @@ public class BillingGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call billingGroupsListValidateBeforeCall(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = billingGroupsListCall(limit, offset, include, dateCreated, dateModified, sortBy, _callback);
+        okhttp3.Call localVarCall = listCall(limit, offset, include, dateCreated, dateModified, sortBy, _callback);
         return localVarCall;
 
     }
@@ -537,9 +537,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BillingGroupList billingGroupsList(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy) throws ApiException {
+    public BillingGroupList list(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy) throws ApiException {
         try {
-            ApiResponse<BillingGroupList> localVarResp = billingGroupsListWithHttpInfo(limit, offset, include, dateCreated, dateModified, sortBy);
+            ApiResponse<BillingGroupList> localVarResp = listWithHttpInfo(limit, offset, include, dateCreated, dateModified, sortBy);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -564,9 +564,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BillingGroupList> billingGroupsListWithHttpInfo(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy) throws ApiException {
+    public ApiResponse<BillingGroupList> listWithHttpInfo(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy) throws ApiException {
         try {
-            okhttp3.Call localVarCall = billingGroupsListValidateBeforeCall(limit, offset, include, dateCreated, dateModified, sortBy, null);
+            okhttp3.Call localVarCall = listValidateBeforeCall(limit, offset, include, dateCreated, dateModified, sortBy, null);
             Type localVarReturnType = new TypeToken<BillingGroupList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -593,9 +593,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call billingGroupsListAsync(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback<BillingGroupList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback<BillingGroupList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = billingGroupsListValidateBeforeCall(limit, offset, include, dateCreated, dateModified, sortBy, _callback);
+        okhttp3.Call localVarCall = listValidateBeforeCall(limit, offset, include, dateCreated, dateModified, sortBy, _callback);
         Type localVarReturnType = new TypeToken<BillingGroupList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

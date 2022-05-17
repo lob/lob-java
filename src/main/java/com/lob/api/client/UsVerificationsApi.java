@@ -59,7 +59,7 @@ public class UsVerificationsApi {
     }
 
     /**
-     * Build call for bulkUsVerifications
+     * Build call for verifyBulk
      * @param multipleComponentsList  (required)
      * @param _case Casing of the verified address. Possible values are &#x60;upper&#x60; and &#x60;proper&#x60; for uppercased (e.g. \&quot;PO BOX\&quot;) and proper-cased (e.g. \&quot;PO Box\&quot;), respectively. (optional, default to upper)
      * @param _callback Callback for upload/download progress
@@ -72,7 +72,7 @@ public class UsVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkUsVerificationsCall(MultipleComponentsList multipleComponentsList, String _case, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call verifyBulkCall(MultipleComponentsList multipleComponentsList, String _case, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = multipleComponentsList;
 
         // create path and map variables
@@ -107,15 +107,15 @@ public class UsVerificationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkUsVerificationsValidateBeforeCall(MultipleComponentsList multipleComponentsList, String _case, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call verifyBulkValidateBeforeCall(MultipleComponentsList multipleComponentsList, String _case, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'multipleComponentsList' is set
         if (multipleComponentsList == null) {
-            throw new ApiException("Missing the required parameter 'multipleComponentsList' when calling bulkUsVerifications(Async)");
+            throw new ApiException("Missing the required parameter 'multipleComponentsList' when calling verifyBulk(Async)");
         }
         
 
-        okhttp3.Call localVarCall = bulkUsVerificationsCall(multipleComponentsList, _case, _callback);
+        okhttp3.Call localVarCall = verifyBulkCall(multipleComponentsList, _case, _callback);
         return localVarCall;
 
     }
@@ -134,9 +134,9 @@ public class UsVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public UsVerifications bulkUsVerifications(MultipleComponentsList multipleComponentsList, String _case) throws ApiException {
+    public UsVerifications verifyBulk(MultipleComponentsList multipleComponentsList, String _case) throws ApiException {
         try {
-            ApiResponse<UsVerifications> localVarResp = bulkUsVerificationsWithHttpInfo(multipleComponentsList, _case);
+            ApiResponse<UsVerifications> localVarResp = verifyBulkWithHttpInfo(multipleComponentsList, _case);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -157,9 +157,9 @@ public class UsVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsVerifications> bulkUsVerificationsWithHttpInfo(MultipleComponentsList multipleComponentsList, String _case) throws ApiException {
+    public ApiResponse<UsVerifications> verifyBulkWithHttpInfo(MultipleComponentsList multipleComponentsList, String _case) throws ApiException {
         try {
-            okhttp3.Call localVarCall = bulkUsVerificationsValidateBeforeCall(multipleComponentsList, _case, null);
+            okhttp3.Call localVarCall = verifyBulkValidateBeforeCall(multipleComponentsList, _case, null);
             Type localVarReturnType = new TypeToken<UsVerifications>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -182,15 +182,15 @@ public class UsVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkUsVerificationsAsync(MultipleComponentsList multipleComponentsList, String _case, final ApiCallback<UsVerifications> _callback) throws ApiException {
+    public okhttp3.Call verifyBulkAsync(MultipleComponentsList multipleComponentsList, String _case, final ApiCallback<UsVerifications> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bulkUsVerificationsValidateBeforeCall(multipleComponentsList, _case, _callback);
+        okhttp3.Call localVarCall = verifyBulkValidateBeforeCall(multipleComponentsList, _case, _callback);
         Type localVarReturnType = new TypeToken<UsVerifications>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for usVerification
+     * Build call for verifySingle
      * @param usVerificationsWritable  (required)
      * @param _case Casing of the verified address. Possible values are &#x60;upper&#x60; and &#x60;proper&#x60; for uppercased (e.g. \&quot;PO BOX\&quot;) and proper-cased (e.g. \&quot;PO Box\&quot;), respectively. (optional, default to upper)
      * @param _callback Callback for upload/download progress
@@ -203,7 +203,7 @@ public class UsVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call usVerificationCall(UsVerificationsWritable usVerificationsWritable, String _case, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call verifySingleCall(UsVerificationsWritable usVerificationsWritable, String _case, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = usVerificationsWritable;
 
         // create path and map variables
@@ -238,15 +238,15 @@ public class UsVerificationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call usVerificationValidateBeforeCall(UsVerificationsWritable usVerificationsWritable, String _case, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call verifySingleValidateBeforeCall(UsVerificationsWritable usVerificationsWritable, String _case, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'usVerificationsWritable' is set
         if (usVerificationsWritable == null) {
-            throw new ApiException("Missing the required parameter 'usVerificationsWritable' when calling usVerification(Async)");
+            throw new ApiException("Missing the required parameter 'usVerificationsWritable' when calling verifySingle(Async)");
         }
         
 
-        okhttp3.Call localVarCall = usVerificationCall(usVerificationsWritable, _case, _callback);
+        okhttp3.Call localVarCall = verifySingleCall(usVerificationsWritable, _case, _callback);
         return localVarCall;
 
     }
@@ -265,9 +265,9 @@ public class UsVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public UsVerification usVerification(UsVerificationsWritable usVerificationsWritable, String _case) throws ApiException {
+    public UsVerification verifySingle(UsVerificationsWritable usVerificationsWritable, String _case) throws ApiException {
         try {
-            ApiResponse<UsVerification> localVarResp = usVerificationWithHttpInfo(usVerificationsWritable, _case);
+            ApiResponse<UsVerification> localVarResp = verifySingleWithHttpInfo(usVerificationsWritable, _case);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -288,9 +288,9 @@ public class UsVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsVerification> usVerificationWithHttpInfo(UsVerificationsWritable usVerificationsWritable, String _case) throws ApiException {
+    public ApiResponse<UsVerification> verifySingleWithHttpInfo(UsVerificationsWritable usVerificationsWritable, String _case) throws ApiException {
         try {
-            okhttp3.Call localVarCall = usVerificationValidateBeforeCall(usVerificationsWritable, _case, null);
+            okhttp3.Call localVarCall = verifySingleValidateBeforeCall(usVerificationsWritable, _case, null);
             Type localVarReturnType = new TypeToken<UsVerification>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -313,9 +313,9 @@ public class UsVerificationsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call usVerificationAsync(UsVerificationsWritable usVerificationsWritable, String _case, final ApiCallback<UsVerification> _callback) throws ApiException {
+    public okhttp3.Call verifySingleAsync(UsVerificationsWritable usVerificationsWritable, String _case, final ApiCallback<UsVerification> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = usVerificationValidateBeforeCall(usVerificationsWritable, _case, _callback);
+        okhttp3.Call localVarCall = verifySingleValidateBeforeCall(usVerificationsWritable, _case, _callback);
         Type localVarReturnType = new TypeToken<UsVerification>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

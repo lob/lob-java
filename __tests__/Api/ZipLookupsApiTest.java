@@ -22,8 +22,8 @@ public class ZipLookupsApiTest {
         ZipLookupsApi zipLookupsApiMock = mock(ZipLookupsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(zipLookupsApiMock.zipLookup(zipEditable)).thenThrow(error);
-        zipLookupsApiMock.zipLookup(zipEditable);
+        when(zipLookupsApiMock.lookup(zipEditable)).thenThrow(error);
+        zipLookupsApiMock.lookup(zipEditable);
 
         Assert.fail("This should not happen");
     }
@@ -33,8 +33,8 @@ public class ZipLookupsApiTest {
         ZipLookupsApi zipLookupsApiMock = mock(ZipLookupsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
 
-        when(zipLookupsApiMock.zipLookup(zipEditable)).thenThrow(error);
-        zipLookupsApiMock.zipLookup(zipEditable);
+        when(zipLookupsApiMock.lookup(zipEditable)).thenThrow(error);
+        zipLookupsApiMock.lookup(zipEditable);
 
         Assert.fail("This should not happen");
     }
@@ -46,8 +46,8 @@ public class ZipLookupsApiTest {
 
         fakeZip.setId("us_zip_fakeId");
 
-        when(zipLookupsApiMock.zipLookup(zipEditable)).thenReturn(fakeZip);
-        Zip response = zipLookupsApiMock.zipLookup(zipEditable);
+        when(zipLookupsApiMock.lookup(zipEditable)).thenReturn(fakeZip);
+        Zip response = zipLookupsApiMock.lookup(zipEditable);
 
         Assert.assertEquals(fakeZip.getId(), response.getId());
     }

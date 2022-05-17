@@ -27,8 +27,8 @@ public class TemplatesApiTest {
         fakeTemplate.setId("tmpl_fakeId");
         TemplateWritable templateWritable = new TemplateWritable();
 
-        when(templateApiMock.createTemplate(templateWritable)).thenReturn(fakeTemplate);
-        Template response = templateApiMock.createTemplate(templateWritable);
+        when(templateApiMock.create(templateWritable)).thenReturn(fakeTemplate);
+        Template response = templateApiMock.create(templateWritable);
 
         Assert.assertEquals(fakeTemplate.getId(), response.getId());
     }
@@ -38,8 +38,8 @@ public class TemplatesApiTest {
         TemplatesApi templateApiMock = mock(TemplatesApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(templateApiMock.createTemplate(null)).thenThrow(error);
-        templateApiMock.createTemplate(null);
+        when(templateApiMock.create(null)).thenThrow(error);
+        templateApiMock.create(null);
 
         Assert.fail("This should not happen");
     }
@@ -48,9 +48,9 @@ public class TemplatesApiTest {
     public void createTemplateTestCatchesExceptionWithResponseBody () throws ApiException {
         TemplatesApi templateApiMock = mock(TemplatesApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(templateApiMock.createTemplate(null)).thenThrow(error);
+        when(templateApiMock.create(null)).thenThrow(error);
 
-        templateApiMock.createTemplate(null);
+        templateApiMock.create(null);
 
         Assert.fail("This should not happen");   
     }   
@@ -62,8 +62,8 @@ public class TemplatesApiTest {
         fakeTemplate.setId("tmpl_fakeId");
        
 
-        when(templateApiMock.templateDelete("tmpl_fakeId")).thenReturn(fakeTemplate);
-        TemplateDeletion response = templateApiMock.templateDelete("tmpl_fakeId");
+        when(templateApiMock.delete("tmpl_fakeId")).thenReturn(fakeTemplate);
+        TemplateDeletion response = templateApiMock.delete("tmpl_fakeId");
 
         Assert.assertEquals(fakeTemplate.getId(), response.getId());
     }
@@ -73,8 +73,8 @@ public class TemplatesApiTest {
         TemplatesApi templateApiMock = mock(TemplatesApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(templateApiMock.templateDelete(null)).thenThrow(error);
-        templateApiMock.templateDelete(null);
+        when(templateApiMock.delete(null)).thenThrow(error);
+        templateApiMock.delete(null);
 
         Assert.fail("This should not happen");
     }
@@ -83,44 +83,44 @@ public class TemplatesApiTest {
     public void templateDeleteTestCatchesExceptionWithResponseBody () throws ApiException {
         TemplatesApi templateApiMock = mock(TemplatesApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(templateApiMock.templateDelete(null)).thenThrow(error);
+        when(templateApiMock.delete(null)).thenThrow(error);
 
-        templateApiMock.templateDelete(null);
+        templateApiMock.delete(null);
 
         Assert.fail("This should not happen");   
     }   
     
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Template", "Valid"})
-    public void templateRetrieveTest() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Template", "Valid"})
+    public void templateGetTest() throws ApiException {
         TemplatesApi templateApiMock=  mock(TemplatesApi.class);
         Template fakeTemplate = new Template();
         fakeTemplate.setId("tmpl_fakeId");
        
 
-        when(templateApiMock.templateRetrieve("tmpl_fakeId")).thenReturn(fakeTemplate);
-        Template response = templateApiMock.templateRetrieve("tmpl_fakeId");
+        when(templateApiMock.get("tmpl_fakeId")).thenReturn(fakeTemplate);
+        Template response = templateApiMock.get("tmpl_fakeId");
 
         Assert.assertEquals(fakeTemplate.getId(), response.getId());
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Template", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
-    public void templateRetrieveTestCatchesException() throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Template", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
+    public void templateGetTestCatchesException() throws ApiException {
         TemplatesApi templateApiMock = mock(TemplatesApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(templateApiMock.templateRetrieve(null)).thenThrow(error);
-        templateApiMock.templateRetrieve(null);
+        when(templateApiMock.get(null)).thenThrow(error);
+        templateApiMock.get(null);
 
         Assert.fail("This should not happen");
     }
 
-    @Test(enabled=true, groups={"Unit", "Retrieve", "Template", "Invalid"}, expectedExceptions = {ApiException.class})
-    public void templateRetrieveTestCatchesExceptionWithResponseBody () throws ApiException {
+    @Test(enabled=true, groups={"Unit", "Get", "Template", "Invalid"}, expectedExceptions = {ApiException.class})
+    public void templateGetTestCatchesExceptionWithResponseBody () throws ApiException {
         TemplatesApi templateApiMock = mock(TemplatesApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(templateApiMock.templateRetrieve(null)).thenThrow(error);
+        when(templateApiMock.get(null)).thenThrow(error);
 
-        templateApiMock.templateRetrieve(null);
+        templateApiMock.get(null);
 
         Assert.fail("This should not happen");   
     }   
@@ -133,8 +133,8 @@ public class TemplatesApiTest {
 
         fakeTemplate.setId("tmpl_fakeId");
       
-        when(templateApiMock.templateUpdate("tmpl_fakeId", templateUpdate)).thenReturn(fakeTemplate);
-        Template response = templateApiMock.templateUpdate("tmpl_fakeId", templateUpdate);
+        when(templateApiMock.update("tmpl_fakeId", templateUpdate)).thenReturn(fakeTemplate);
+        Template response = templateApiMock.update("tmpl_fakeId", templateUpdate);
 
         Assert.assertEquals(fakeTemplate.getId(), response.getId());
     }
@@ -144,8 +144,8 @@ public class TemplatesApiTest {
         TemplatesApi templateApiMock = mock(TemplatesApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(templateApiMock.templateUpdate(null, null)).thenThrow(error);
-        templateApiMock.templateUpdate(null, null);
+        when(templateApiMock.update(null, null)).thenThrow(error);
+        templateApiMock.update(null, null);
 
         Assert.fail("This should not happen");
     }
@@ -154,9 +154,9 @@ public class TemplatesApiTest {
     public void templateUpdateTestCatchesExceptionWithResponseBody () throws ApiException {
         TemplatesApi templateApiMock = mock(TemplatesApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(templateApiMock.templateUpdate(null, null)).thenThrow(error);
+        when(templateApiMock.update(null, null)).thenThrow(error);
 
-        templateApiMock.templateUpdate(null, null);
+        templateApiMock.update(null, null);
 
         Assert.fail("This should not happen");   
     }   
@@ -183,8 +183,8 @@ public class TemplatesApiTest {
         fakeTemplateList.setObject("list");
         fakeTemplateList.setCount(data.size());
 
-        when(templateApiMock.templatesList(limit, before, after, include, dateCreated, metadata)).thenReturn(fakeTemplateList);
-        TemplateList response = templateApiMock.templatesList(limit, before, after, include, dateCreated, metadata);
+        when(templateApiMock.list(limit, before, after, include, dateCreated, metadata)).thenReturn(fakeTemplateList);
+        TemplateList response = templateApiMock.list(limit, before, after, include, dateCreated, metadata);
 
         Assert.assertEquals(fakeTemplateList.getCount(), response.getCount());
     }
@@ -194,8 +194,8 @@ public class TemplatesApiTest {
         TemplatesApi templateApiMock = mock(TemplatesApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(templateApiMock.templatesList(null, null, null, null, null, null)).thenThrow(error);
-        templateApiMock.templatesList(null, null, null, null, null, null);
+        when(templateApiMock.list(null, null, null, null, null, null)).thenThrow(error);
+        templateApiMock.list(null, null, null, null, null, null);
 
         Assert.fail("This should not happen");
     }
@@ -204,9 +204,9 @@ public class TemplatesApiTest {
     public void templateListTestCatchesExceptionWithResponseBody () throws ApiException {
         TemplatesApi templateApiMock = mock(TemplatesApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(templateApiMock.templatesList(null, null, null, null, null, null)).thenThrow(error);
+        when(templateApiMock.list(null, null, null, null, null, null)).thenThrow(error);
 
-        templateApiMock.templatesList(null, null, null, null, null, null);
+        templateApiMock.list(null, null, null, null, null, null);
 
         Assert.fail("This should not happen");   
     }   

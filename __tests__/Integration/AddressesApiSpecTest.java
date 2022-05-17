@@ -37,19 +37,19 @@ public class AddressesApiSpecTest {
         addressEditableList = new TestFixtures().get_ADDRESSES_EDITABLE();
         for (AddressEditable ae : addressEditableList) {
             try {
-                createdAddresses.add(validApi.addressCreate(ae));
+                createdAddresses.add(validApi.create(ae));
             } catch (Exception e) {
                 Assert.fail("Creating addresses before has failed");
             }
         }
 
         try {
-            AddressList response = validApi.addressesList(null, null, null, null, null, null);
+            AddressList response = validApi.list(null, null, null, null, null, null);
             Assert.assertNotNull(response);
             Assert.assertNotNull(response.getNextUrl());
             nextUrl = response.getNextUrl().substring(response.getNextUrl().indexOf("after=") + 6);
             Assert.assertNotNull(nextUrl);
-            AddressList responseAfter = validApi.addressesList(10, null, nextUrl, null, null, null);
+            AddressList responseAfter = validApi.list(10, null, nextUrl, null, null, null);
             Assert.assertNotNull(responseAfter);
             Assert.assertNotNull(responseAfter.getPreviousUrl());
             previousUrl = responseAfter.getPreviousUrl().substring(responseAfter.getPreviousUrl().indexOf("before=") + 7);
@@ -64,7 +64,7 @@ public class AddressesApiSpecTest {
     {
         for (Address address: createdAddresses) {
             try {
-                validApi.addressDelete(address.getId());
+                validApi.delete(address.getId());
             } catch (Exception e) {
                 Assert.fail("Deleting addresses after has failed");
             }
@@ -76,7 +76,7 @@ public class AddressesApiSpecTest {
         groups={"Integration", "Create", "Address", "Valid"}
     )
     public void addressCreateTest() throws ApiException {
-        Address response = validApi.addressCreate(addressEditableList.get(0));
+        Address response = validApi.create(addressEditableList.get(0));
 
         Assert.assertNotNull(response.getId());
         Assert.assertEquals(response.getAddressLine1(), addressEditableList.get(0).getAddressLine1());
@@ -90,7 +90,7 @@ public class AddressesApiSpecTest {
         groups={"Integration", "Create", "Address", "Invalid"}
     )
     public void addressCreateTestBadParameter() throws ApiException {
-        validApi.addressCreate(null);
+        validApi.create(null);
     }
 
     @Test(
@@ -101,7 +101,7 @@ public class AddressesApiSpecTest {
     )
     public void addressCreateTestBadUsername() throws ApiException {
         try {
-            invalidApi.addressCreate(addressEditableList.get(0));
+            invalidApi.create(addressEditableList.get(0));
         }
         catch(ApiException e) {
             throw e;
@@ -110,10 +110,10 @@ public class AddressesApiSpecTest {
 
     @Test(
         enabled=true,
-        groups={"Integration", "Retrieve", "Address", "Valid"}
+        groups={"Integration", "Get", "Address", "Valid"}
     )
     public void addressRetrieveTest() throws ApiException {
-        Address response = validApi.addressRetrieve(createdAddresses.get(0).getId());
+        Address response = validApi.get(createdAddresses.get(0).getId());
 
         Assert.assertNotNull(response.getId());
         Assert.assertEquals(response.getId(), createdAddresses.get(0).getId());
@@ -123,21 +123,21 @@ public class AddressesApiSpecTest {
         enabled=true,
         expectedExceptions={ApiException.class},
         expectedExceptionsMessageRegExp=".*Missing the required parameter 'adrId'.*",
-        groups={"Integration", "Retrieve", "Address", "Invalid"}
+        groups={"Integration", "Get", "Address", "Invalid"}
     )
     public void addressRetrieveTestBadParameter() throws ApiException {
-        validApi.addressRetrieve(null);
+        validApi.get(null);
     }
 
     @Test(
         enabled=true,
         expectedExceptions={ApiException.class},
         expectedExceptionsMessageRegExp=".*Your API key is not valid. Please sign up on lob.com to get a valid api key..*",
-        groups={"Integration", "Retrieve", "Address", "Invalid"}
+        groups={"Integration", "Get", "Address", "Invalid"}
     )
     public void addressRetrieveTestBadUsername() throws ApiException {
         try {
-            invalidApi.addressRetrieve(createdAddresses.get(0).getId());
+            invalidApi.get(createdAddresses.get(0).getId());
         }
         catch(ApiException e) {
             throw e;
@@ -149,7 +149,7 @@ public class AddressesApiSpecTest {
         groups={"Integration", "List", "Address", "Valid"}
     )
     public void addressListTest() throws ApiException {
-        AddressList response = validApi.addressesList(null, null, null, null, null, null);
+        AddressList response = validApi.list(null, null, null, null, null, null);
 
         Assert.assertNotNull(response);
         Assert.assertTrue(response.getCount() > 0);
@@ -160,7 +160,7 @@ public class AddressesApiSpecTest {
         groups={"Integration", "List", "Address", "Valid"}
     )
     public void addressListTestWithBeforeParam() throws ApiException {
-        AddressList response = validApi.addressesList(10, previousUrl, null, null, null, null);
+        AddressList response = validApi.list(10, previousUrl, null, null, null, null);
 
         Assert.assertNotNull(response);
         Assert.assertTrue(response.getCount() > 0);
@@ -174,7 +174,7 @@ public class AddressesApiSpecTest {
     public void addressListTestWithIncludesParam() throws ApiException {
         List<String> includeList = new ArrayList<String>();
         includeList.add("total_es");
-        AddressList response = validApi.addressesList(10, null, null, includeList, null, null);
+        AddressList response = validApi.list(10, null, null, includeList, null, null);
 
         Assert.assertNotNull(response);
         Assert.assertTrue(response.getCount() > 0);
@@ -185,8 +185,8 @@ public class AddressesApiSpecTest {
         groups={"Integration", "List", "Address", "Valid"}
     )
     public void addressListTestWithNextPageToken() throws ApiException {
-        AddressList response = validApi.addressesList(10, null, null, null, null, null);
-        AddressList responseAfter = validApi.addressesList(10, null, response.getNextPageToken(), null, null, null);
+        AddressList response = validApi.list(10, null, null, null, null, null);
+        AddressList responseAfter = validApi.list(10, null, response.getNextPageToken(), null, null, null);
 
 
         Assert.assertNotNull(responseAfter);
@@ -198,8 +198,8 @@ public class AddressesApiSpecTest {
         groups={"Integration", "List", "Address", "Valid"}
     )
     public void addressListTestWithPreviousPageToken() throws ApiException {
-        AddressList response = validApi.addressesList(10, null, null, null, null, null);
-        AddressList responseAfter = validApi.addressesList(10, null, response.getPreviousPageToken(), null, null, null);
+        AddressList response = validApi.list(10, null, null, null, null, null);
+        AddressList responseAfter = validApi.list(10, null, response.getPreviousPageToken(), null, null, null);
 
         Assert.assertNotNull(responseAfter);
         Assert.assertTrue(responseAfter.getCount() > 0);
@@ -213,7 +213,7 @@ public class AddressesApiSpecTest {
     )
     public void addressListTestBadUsername() throws ApiException {
         try {
-            invalidApi.addressesList(10, null, null, null, null, null);
+            invalidApi.list(10, null, null, null, null, null);
         }
         catch(ApiException e) {
             throw e;
@@ -225,7 +225,7 @@ public class AddressesApiSpecTest {
         groups={"Integration", "Delete", "Address", "Valid"}
     )
     public void addressDeleteTest() throws ApiException {
-        AddressDeletion response = validApi.addressDelete(createdAddresses.get(0).getId());
+        AddressDeletion response = validApi.delete(createdAddresses.get(0).getId());
 
         Assert.assertNotNull(response.getId());
     }

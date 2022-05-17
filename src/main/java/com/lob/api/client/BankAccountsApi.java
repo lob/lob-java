@@ -60,7 +60,7 @@ public class BankAccountsApi {
     }
 
     /**
-     * Build call for bankAccountCreate
+     * Build call for create
      * @param bankAccountWritable  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -72,7 +72,7 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bankAccountCreateCall(BankAccountWritable bankAccountWritable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(BankAccountWritable bankAccountWritable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = bankAccountWritable;
 
         // create path and map variables
@@ -103,15 +103,15 @@ public class BankAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bankAccountCreateValidateBeforeCall(BankAccountWritable bankAccountWritable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(BankAccountWritable bankAccountWritable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'bankAccountWritable' is set
         if (bankAccountWritable == null) {
-            throw new ApiException("Missing the required parameter 'bankAccountWritable' when calling bankAccountCreate(Async)");
+            throw new ApiException("Missing the required parameter 'bankAccountWritable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = bankAccountCreateCall(bankAccountWritable, _callback);
+        okhttp3.Call localVarCall = createCall(bankAccountWritable, _callback);
         return localVarCall;
 
     }
@@ -129,9 +129,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BankAccount bankAccountCreate(BankAccountWritable bankAccountWritable) throws ApiException {
+    public BankAccount create(BankAccountWritable bankAccountWritable) throws ApiException {
         try {
-            ApiResponse<BankAccount> localVarResp = bankAccountCreateWithHttpInfo(bankAccountWritable);
+            ApiResponse<BankAccount> localVarResp = createWithHttpInfo(bankAccountWritable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -151,9 +151,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BankAccount> bankAccountCreateWithHttpInfo(BankAccountWritable bankAccountWritable) throws ApiException {
+    public ApiResponse<BankAccount> createWithHttpInfo(BankAccountWritable bankAccountWritable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = bankAccountCreateValidateBeforeCall(bankAccountWritable, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(bankAccountWritable, null);
             Type localVarReturnType = new TypeToken<BankAccount>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -175,15 +175,15 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bankAccountCreateAsync(BankAccountWritable bankAccountWritable, final ApiCallback<BankAccount> _callback) throws ApiException {
+    public okhttp3.Call createAsync(BankAccountWritable bankAccountWritable, final ApiCallback<BankAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bankAccountCreateValidateBeforeCall(bankAccountWritable, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(bankAccountWritable, _callback);
         Type localVarReturnType = new TypeToken<BankAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for bankAccountDelete
+     * Build call for delete
      * @param bankId id of the bank account (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -195,7 +195,7 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bankAccountDeleteCall(String bankId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCall(String bankId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -227,15 +227,15 @@ public class BankAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bankAccountDeleteValidateBeforeCall(String bankId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteValidateBeforeCall(String bankId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'bankId' is set
         if (bankId == null) {
-            throw new ApiException("Missing the required parameter 'bankId' when calling bankAccountDelete(Async)");
+            throw new ApiException("Missing the required parameter 'bankId' when calling delete(Async)");
         }
         
 
-        okhttp3.Call localVarCall = bankAccountDeleteCall(bankId, _callback);
+        okhttp3.Call localVarCall = deleteCall(bankId, _callback);
         return localVarCall;
 
     }
@@ -253,9 +253,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BankAccountDeletion bankAccountDelete(String bankId) throws ApiException {
+    public BankAccountDeletion delete(String bankId) throws ApiException {
         try {
-            ApiResponse<BankAccountDeletion> localVarResp = bankAccountDeleteWithHttpInfo(bankId);
+            ApiResponse<BankAccountDeletion> localVarResp = deleteWithHttpInfo(bankId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -275,9 +275,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BankAccountDeletion> bankAccountDeleteWithHttpInfo(String bankId) throws ApiException {
+    public ApiResponse<BankAccountDeletion> deleteWithHttpInfo(String bankId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = bankAccountDeleteValidateBeforeCall(bankId, null);
+            okhttp3.Call localVarCall = deleteValidateBeforeCall(bankId, null);
             Type localVarReturnType = new TypeToken<BankAccountDeletion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -299,15 +299,15 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bankAccountDeleteAsync(String bankId, final ApiCallback<BankAccountDeletion> _callback) throws ApiException {
+    public okhttp3.Call deleteAsync(String bankId, final ApiCallback<BankAccountDeletion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bankAccountDeleteValidateBeforeCall(bankId, _callback);
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(bankId, _callback);
         Type localVarReturnType = new TypeToken<BankAccountDeletion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for bankAccountRetrieve
+     * Build call for get
      * @param bankId id of the bank account (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -319,7 +319,7 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bankAccountRetrieveCall(String bankId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String bankId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -351,15 +351,15 @@ public class BankAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bankAccountRetrieveValidateBeforeCall(String bankId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String bankId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'bankId' is set
         if (bankId == null) {
-            throw new ApiException("Missing the required parameter 'bankId' when calling bankAccountRetrieve(Async)");
+            throw new ApiException("Missing the required parameter 'bankId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = bankAccountRetrieveCall(bankId, _callback);
+        okhttp3.Call localVarCall = getCall(bankId, _callback);
         return localVarCall;
 
     }
@@ -377,9 +377,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BankAccount bankAccountRetrieve(String bankId) throws ApiException {
+    public BankAccount get(String bankId) throws ApiException {
         try {
-            ApiResponse<BankAccount> localVarResp = bankAccountRetrieveWithHttpInfo(bankId);
+            ApiResponse<BankAccount> localVarResp = getWithHttpInfo(bankId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -399,9 +399,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BankAccount> bankAccountRetrieveWithHttpInfo(String bankId) throws ApiException {
+    public ApiResponse<BankAccount> getWithHttpInfo(String bankId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = bankAccountRetrieveValidateBeforeCall(bankId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(bankId, null);
             Type localVarReturnType = new TypeToken<BankAccount>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -423,15 +423,15 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bankAccountRetrieveAsync(String bankId, final ApiCallback<BankAccount> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String bankId, final ApiCallback<BankAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bankAccountRetrieveValidateBeforeCall(bankId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(bankId, _callback);
         Type localVarReturnType = new TypeToken<BankAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for bankAccountVerify
+     * Build call for verify
      * @param bankId id of the bank account to be verified (required)
      * @param bankAccountVerify  (required)
      * @param _callback Callback for upload/download progress
@@ -444,7 +444,7 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bankAccountVerifyCall(String bankId, BankAccountVerify bankAccountVerify, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call verifyCall(String bankId, BankAccountVerify bankAccountVerify, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = bankAccountVerify;
 
         // create path and map variables
@@ -476,20 +476,20 @@ public class BankAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bankAccountVerifyValidateBeforeCall(String bankId, BankAccountVerify bankAccountVerify, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call verifyValidateBeforeCall(String bankId, BankAccountVerify bankAccountVerify, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'bankId' is set
         if (bankId == null) {
-            throw new ApiException("Missing the required parameter 'bankId' when calling bankAccountVerify(Async)");
+            throw new ApiException("Missing the required parameter 'bankId' when calling verify(Async)");
         }
         
         // verify the required parameter 'bankAccountVerify' is set
         if (bankAccountVerify == null) {
-            throw new ApiException("Missing the required parameter 'bankAccountVerify' when calling bankAccountVerify(Async)");
+            throw new ApiException("Missing the required parameter 'bankAccountVerify' when calling verify(Async)");
         }
         
 
-        okhttp3.Call localVarCall = bankAccountVerifyCall(bankId, bankAccountVerify, _callback);
+        okhttp3.Call localVarCall = verifyCall(bankId, bankAccountVerify, _callback);
         return localVarCall;
 
     }
@@ -508,9 +508,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BankAccount bankAccountVerify(String bankId, BankAccountVerify bankAccountVerify) throws ApiException {
+    public BankAccount verify(String bankId, BankAccountVerify bankAccountVerify) throws ApiException {
         try {
-            ApiResponse<BankAccount> localVarResp = bankAccountVerifyWithHttpInfo(bankId, bankAccountVerify);
+            ApiResponse<BankAccount> localVarResp = verifyWithHttpInfo(bankId, bankAccountVerify);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -531,9 +531,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BankAccount> bankAccountVerifyWithHttpInfo(String bankId, BankAccountVerify bankAccountVerify) throws ApiException {
+    public ApiResponse<BankAccount> verifyWithHttpInfo(String bankId, BankAccountVerify bankAccountVerify) throws ApiException {
         try {
-            okhttp3.Call localVarCall = bankAccountVerifyValidateBeforeCall(bankId, bankAccountVerify, null);
+            okhttp3.Call localVarCall = verifyValidateBeforeCall(bankId, bankAccountVerify, null);
             Type localVarReturnType = new TypeToken<BankAccount>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -556,15 +556,15 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bankAccountVerifyAsync(String bankId, BankAccountVerify bankAccountVerify, final ApiCallback<BankAccount> _callback) throws ApiException {
+    public okhttp3.Call verifyAsync(String bankId, BankAccountVerify bankAccountVerify, final ApiCallback<BankAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bankAccountVerifyValidateBeforeCall(bankId, bankAccountVerify, _callback);
+        okhttp3.Call localVarCall = verifyValidateBeforeCall(bankId, bankAccountVerify, _callback);
         Type localVarReturnType = new TypeToken<BankAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for bankAccountsList
+     * Build call for list
      * @param limit How many results to return. (optional, default to 10)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
@@ -581,7 +581,7 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bankAccountsListCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -636,10 +636,10 @@ public class BankAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bankAccountsListValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = bankAccountsListCall(limit, before, after, include, dateCreated, metadata, _callback);
+        okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, _callback);
         return localVarCall;
 
     }
@@ -662,9 +662,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BankAccountList bankAccountsList(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata) throws ApiException {
+    public BankAccountList list(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata) throws ApiException {
         try {
-            ApiResponse<BankAccountList> localVarResp = bankAccountsListWithHttpInfo(limit, before, after, include, dateCreated, metadata);
+            ApiResponse<BankAccountList> localVarResp = listWithHttpInfo(limit, before, after, include, dateCreated, metadata);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -689,9 +689,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BankAccountList> bankAccountsListWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata) throws ApiException {
+    public ApiResponse<BankAccountList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata) throws ApiException {
         try {
-            okhttp3.Call localVarCall = bankAccountsListValidateBeforeCall(limit, before, after, include, dateCreated, metadata, null);
+            okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, null);
             Type localVarReturnType = new TypeToken<BankAccountList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -718,9 +718,9 @@ public class BankAccountsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bankAccountsListAsync(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback<BankAccountList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, final ApiCallback<BankAccountList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bankAccountsListValidateBeforeCall(limit, before, after, include, dateCreated, metadata, _callback);
+        okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, _callback);
         Type localVarReturnType = new TypeToken<BankAccountList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

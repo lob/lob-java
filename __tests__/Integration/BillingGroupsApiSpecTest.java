@@ -34,7 +34,7 @@ public class BillingGroupsApiSpecTest {
         groups={"Integration", "Create", "Billing Group", "Valid"}
     )
     public void billingGroupCreateTest() throws ApiException {
-        BillingGroup response = validApi.billingGroupCreate(createdBillingGroups.get(0));
+        BillingGroup response = validApi.create(createdBillingGroups.get(0));
 
         Assert.assertNotNull(response.getId());
         Assert.assertEquals(response.getName(),createdBillingGroups.get(0).getName());
@@ -47,7 +47,7 @@ public class BillingGroupsApiSpecTest {
         groups={"Integration", "Create", "Billing Group", "Invalid"}
     )
     public void billingGroupCreateTestBadParameter() throws ApiException {
-        validApi.billingGroupCreate(null);
+        validApi.create(null);
     }
 
     @Test(
@@ -58,7 +58,7 @@ public class BillingGroupsApiSpecTest {
     )
     public void billingGroupCreateTestInvalidCredentials() throws ApiException {
         try {
-            invalidApi.billingGroupCreate(createdBillingGroups.get(0));
+            invalidApi.create(createdBillingGroups.get(0));
         }
         catch(ApiException e) {
             throw e;
@@ -70,10 +70,10 @@ public class BillingGroupsApiSpecTest {
         groups={"Integration", "List", "Billing Group", "Valid"}
     )
     public void billingGroupListTest() throws ApiException {
-        validApi.billingGroupCreate(createdBillingGroups.get(1));
-        validApi.billingGroupCreate(createdBillingGroups.get(2));
+        validApi.create(createdBillingGroups.get(1));
+        validApi.create(createdBillingGroups.get(2));
         
-        BillingGroupList response = validApi.billingGroupsList(10, null, null, null, null, null);
+        BillingGroupList response = validApi.list(10, null, null, null, null, null);
         Assert.assertTrue(response.getCount() > 0);
     }
 }

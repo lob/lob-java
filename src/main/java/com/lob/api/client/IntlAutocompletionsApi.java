@@ -57,7 +57,7 @@ public class IntlAutocompletionsApi {
     }
 
     /**
-     * Build call for intlAutocompletion
+     * Build call for Autocomplete
      * @param intlAutocompletionsWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @param _callback Callback for upload/download progress
@@ -70,7 +70,7 @@ public class IntlAutocompletionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call intlAutocompletionCall(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call AutocompleteCall(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = intlAutocompletionsWritable;
 
         // create path and map variables
@@ -105,15 +105,15 @@ public class IntlAutocompletionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call intlAutocompletionValidateBeforeCall(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call AutocompleteValidateBeforeCall(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'intlAutocompletionsWritable' is set
         if (intlAutocompletionsWritable == null) {
-            throw new ApiException("Missing the required parameter 'intlAutocompletionsWritable' when calling intlAutocompletion(Async)");
+            throw new ApiException("Missing the required parameter 'intlAutocompletionsWritable' when calling Autocomplete(Async)");
         }
         
 
-        okhttp3.Call localVarCall = intlAutocompletionCall(intlAutocompletionsWritable, xLangOutput, _callback);
+        okhttp3.Call localVarCall = AutocompleteCall(intlAutocompletionsWritable, xLangOutput, _callback);
         return localVarCall;
 
     }
@@ -132,9 +132,9 @@ public class IntlAutocompletionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public IntlAutocompletions intlAutocompletion(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput) throws ApiException {
+    public IntlAutocompletions Autocomplete(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput) throws ApiException {
         try {
-            ApiResponse<IntlAutocompletions> localVarResp = intlAutocompletionWithHttpInfo(intlAutocompletionsWritable, xLangOutput);
+            ApiResponse<IntlAutocompletions> localVarResp = AutocompleteWithHttpInfo(intlAutocompletionsWritable, xLangOutput);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -155,9 +155,9 @@ public class IntlAutocompletionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IntlAutocompletions> intlAutocompletionWithHttpInfo(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput) throws ApiException {
+    public ApiResponse<IntlAutocompletions> AutocompleteWithHttpInfo(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput) throws ApiException {
         try {
-            okhttp3.Call localVarCall = intlAutocompletionValidateBeforeCall(intlAutocompletionsWritable, xLangOutput, null);
+            okhttp3.Call localVarCall = AutocompleteValidateBeforeCall(intlAutocompletionsWritable, xLangOutput, null);
             Type localVarReturnType = new TypeToken<IntlAutocompletions>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -180,9 +180,9 @@ public class IntlAutocompletionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call intlAutocompletionAsync(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput, final ApiCallback<IntlAutocompletions> _callback) throws ApiException {
+    public okhttp3.Call AutocompleteAsync(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput, final ApiCallback<IntlAutocompletions> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = intlAutocompletionValidateBeforeCall(intlAutocompletionsWritable, xLangOutput, _callback);
+        okhttp3.Call localVarCall = AutocompleteValidateBeforeCall(intlAutocompletionsWritable, xLangOutput, _callback);
         Type localVarReturnType = new TypeToken<IntlAutocompletions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -22,8 +22,8 @@ public class UsAutocompletionsApiTest {
         
         fakeUsAutocompletions.setId("us_auto_fakeId");
         
-        when(usAutocompletionApiMock.usAutocompletion(usAutocompletionsWritable)).thenReturn(fakeUsAutocompletions);
-        UsAutocompletions response = usAutocompletionApiMock.usAutocompletion(usAutocompletionsWritable);
+        when(usAutocompletionApiMock.autocomplete(usAutocompletionsWritable)).thenReturn(fakeUsAutocompletions);
+        UsAutocompletions response = usAutocompletionApiMock.autocomplete(usAutocompletionsWritable);
 
         Assert.assertEquals(fakeUsAutocompletions.getId(), response.getId());
     }
@@ -33,8 +33,8 @@ public class UsAutocompletionsApiTest {
         UsAutocompletionsApi usAutocompletionApiMock = mock(UsAutocompletionsApi.class);
         ApiException error = new ApiException("error reported by API");
 
-        when(usAutocompletionApiMock.usAutocompletion(null)).thenThrow(error);
-        usAutocompletionApiMock.usAutocompletion(null);
+        when(usAutocompletionApiMock.autocomplete(null)).thenThrow(error);
+        usAutocompletionApiMock.autocomplete(null);
 
         Assert.fail("This should not happen");
     }
@@ -43,9 +43,9 @@ public class UsAutocompletionsApiTest {
     public void autoCompletionTestCatchesExceptionWithResponseBody () throws ApiException {
         UsAutocompletionsApi usAutocompletionApiMock = mock(UsAutocompletionsApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
-        when(usAutocompletionApiMock.usAutocompletion(null)).thenThrow(error);
+        when(usAutocompletionApiMock.autocomplete(null)).thenThrow(error);
 
-        usAutocompletionApiMock.usAutocompletion(null);
+        usAutocompletionApiMock.autocomplete(null);
 
         Assert.fail("This should not happen");   
     }   

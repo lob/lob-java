@@ -60,7 +60,7 @@ public class TemplateVersionsApi {
     }
 
     /**
-     * Build call for createTemplateVersion
+     * Build call for create
      * @param tmplId The ID of the template the new version will be attached to (required)
      * @param templateVersionWritable  (required)
      * @param _callback Callback for upload/download progress
@@ -73,7 +73,7 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createTemplateVersionCall(String tmplId, TemplateVersionWritable templateVersionWritable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(String tmplId, TemplateVersionWritable templateVersionWritable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = templateVersionWritable;
 
         // create path and map variables
@@ -105,20 +105,20 @@ public class TemplateVersionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createTemplateVersionValidateBeforeCall(String tmplId, TemplateVersionWritable templateVersionWritable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(String tmplId, TemplateVersionWritable templateVersionWritable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'tmplId' is set
         if (tmplId == null) {
-            throw new ApiException("Missing the required parameter 'tmplId' when calling createTemplateVersion(Async)");
+            throw new ApiException("Missing the required parameter 'tmplId' when calling create(Async)");
         }
         
         // verify the required parameter 'templateVersionWritable' is set
         if (templateVersionWritable == null) {
-            throw new ApiException("Missing the required parameter 'templateVersionWritable' when calling createTemplateVersion(Async)");
+            throw new ApiException("Missing the required parameter 'templateVersionWritable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createTemplateVersionCall(tmplId, templateVersionWritable, _callback);
+        okhttp3.Call localVarCall = createCall(tmplId, templateVersionWritable, _callback);
         return localVarCall;
 
     }
@@ -137,9 +137,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateVersion createTemplateVersion(String tmplId, TemplateVersionWritable templateVersionWritable) throws ApiException {
+    public TemplateVersion create(String tmplId, TemplateVersionWritable templateVersionWritable) throws ApiException {
         try {
-            ApiResponse<TemplateVersion> localVarResp = createTemplateVersionWithHttpInfo(tmplId, templateVersionWritable);
+            ApiResponse<TemplateVersion> localVarResp = createWithHttpInfo(tmplId, templateVersionWritable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -160,9 +160,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateVersion> createTemplateVersionWithHttpInfo(String tmplId, TemplateVersionWritable templateVersionWritable) throws ApiException {
+    public ApiResponse<TemplateVersion> createWithHttpInfo(String tmplId, TemplateVersionWritable templateVersionWritable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = createTemplateVersionValidateBeforeCall(tmplId, templateVersionWritable, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(tmplId, templateVersionWritable, null);
             Type localVarReturnType = new TypeToken<TemplateVersion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -185,15 +185,15 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createTemplateVersionAsync(String tmplId, TemplateVersionWritable templateVersionWritable, final ApiCallback<TemplateVersion> _callback) throws ApiException {
+    public okhttp3.Call createAsync(String tmplId, TemplateVersionWritable templateVersionWritable, final ApiCallback<TemplateVersion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createTemplateVersionValidateBeforeCall(tmplId, templateVersionWritable, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(tmplId, templateVersionWritable, _callback);
         Type localVarReturnType = new TypeToken<TemplateVersion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for templateVersionDelete
+     * Build call for delete
      * @param tmplId The ID of the template to which the version belongs. (required)
      * @param vrsnId id of the template_version (required)
      * @param _callback Callback for upload/download progress
@@ -206,7 +206,7 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call templateVersionDeleteCall(String tmplId, String vrsnId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCall(String tmplId, String vrsnId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -239,20 +239,20 @@ public class TemplateVersionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call templateVersionDeleteValidateBeforeCall(String tmplId, String vrsnId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteValidateBeforeCall(String tmplId, String vrsnId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'tmplId' is set
         if (tmplId == null) {
-            throw new ApiException("Missing the required parameter 'tmplId' when calling templateVersionDelete(Async)");
+            throw new ApiException("Missing the required parameter 'tmplId' when calling delete(Async)");
         }
         
         // verify the required parameter 'vrsnId' is set
         if (vrsnId == null) {
-            throw new ApiException("Missing the required parameter 'vrsnId' when calling templateVersionDelete(Async)");
+            throw new ApiException("Missing the required parameter 'vrsnId' when calling delete(Async)");
         }
         
 
-        okhttp3.Call localVarCall = templateVersionDeleteCall(tmplId, vrsnId, _callback);
+        okhttp3.Call localVarCall = deleteCall(tmplId, vrsnId, _callback);
         return localVarCall;
 
     }
@@ -271,9 +271,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateVersionDeletion templateVersionDelete(String tmplId, String vrsnId) throws ApiException {
+    public TemplateVersionDeletion delete(String tmplId, String vrsnId) throws ApiException {
         try {
-            ApiResponse<TemplateVersionDeletion> localVarResp = templateVersionDeleteWithHttpInfo(tmplId, vrsnId);
+            ApiResponse<TemplateVersionDeletion> localVarResp = deleteWithHttpInfo(tmplId, vrsnId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -294,9 +294,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateVersionDeletion> templateVersionDeleteWithHttpInfo(String tmplId, String vrsnId) throws ApiException {
+    public ApiResponse<TemplateVersionDeletion> deleteWithHttpInfo(String tmplId, String vrsnId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = templateVersionDeleteValidateBeforeCall(tmplId, vrsnId, null);
+            okhttp3.Call localVarCall = deleteValidateBeforeCall(tmplId, vrsnId, null);
             Type localVarReturnType = new TypeToken<TemplateVersionDeletion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -319,15 +319,15 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call templateVersionDeleteAsync(String tmplId, String vrsnId, final ApiCallback<TemplateVersionDeletion> _callback) throws ApiException {
+    public okhttp3.Call deleteAsync(String tmplId, String vrsnId, final ApiCallback<TemplateVersionDeletion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = templateVersionDeleteValidateBeforeCall(tmplId, vrsnId, _callback);
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(tmplId, vrsnId, _callback);
         Type localVarReturnType = new TypeToken<TemplateVersionDeletion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for templateVersionRetrieve
+     * Build call for get
      * @param tmplId The ID of the template to which the version belongs. (required)
      * @param vrsnId id of the template_version (required)
      * @param _callback Callback for upload/download progress
@@ -340,7 +340,7 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call templateVersionRetrieveCall(String tmplId, String vrsnId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String tmplId, String vrsnId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -373,20 +373,20 @@ public class TemplateVersionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call templateVersionRetrieveValidateBeforeCall(String tmplId, String vrsnId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String tmplId, String vrsnId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'tmplId' is set
         if (tmplId == null) {
-            throw new ApiException("Missing the required parameter 'tmplId' when calling templateVersionRetrieve(Async)");
+            throw new ApiException("Missing the required parameter 'tmplId' when calling get(Async)");
         }
         
         // verify the required parameter 'vrsnId' is set
         if (vrsnId == null) {
-            throw new ApiException("Missing the required parameter 'vrsnId' when calling templateVersionRetrieve(Async)");
+            throw new ApiException("Missing the required parameter 'vrsnId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = templateVersionRetrieveCall(tmplId, vrsnId, _callback);
+        okhttp3.Call localVarCall = getCall(tmplId, vrsnId, _callback);
         return localVarCall;
 
     }
@@ -405,9 +405,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateVersion templateVersionRetrieve(String tmplId, String vrsnId) throws ApiException {
+    public TemplateVersion get(String tmplId, String vrsnId) throws ApiException {
         try {
-            ApiResponse<TemplateVersion> localVarResp = templateVersionRetrieveWithHttpInfo(tmplId, vrsnId);
+            ApiResponse<TemplateVersion> localVarResp = getWithHttpInfo(tmplId, vrsnId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -428,9 +428,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateVersion> templateVersionRetrieveWithHttpInfo(String tmplId, String vrsnId) throws ApiException {
+    public ApiResponse<TemplateVersion> getWithHttpInfo(String tmplId, String vrsnId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = templateVersionRetrieveValidateBeforeCall(tmplId, vrsnId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(tmplId, vrsnId, null);
             Type localVarReturnType = new TypeToken<TemplateVersion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -453,15 +453,15 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call templateVersionRetrieveAsync(String tmplId, String vrsnId, final ApiCallback<TemplateVersion> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String tmplId, String vrsnId, final ApiCallback<TemplateVersion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = templateVersionRetrieveValidateBeforeCall(tmplId, vrsnId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(tmplId, vrsnId, _callback);
         Type localVarReturnType = new TypeToken<TemplateVersion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for templateVersionUpdate
+     * Build call for update
      * @param tmplId The ID of the template to which the version belongs. (required)
      * @param vrsnId id of the template_version (required)
      * @param templateVersionUpdatable  (required)
@@ -475,7 +475,7 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call templateVersionUpdateCall(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCall(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = templateVersionUpdatable;
 
         // create path and map variables
@@ -508,25 +508,25 @@ public class TemplateVersionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call templateVersionUpdateValidateBeforeCall(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateValidateBeforeCall(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'tmplId' is set
         if (tmplId == null) {
-            throw new ApiException("Missing the required parameter 'tmplId' when calling templateVersionUpdate(Async)");
+            throw new ApiException("Missing the required parameter 'tmplId' when calling update(Async)");
         }
         
         // verify the required parameter 'vrsnId' is set
         if (vrsnId == null) {
-            throw new ApiException("Missing the required parameter 'vrsnId' when calling templateVersionUpdate(Async)");
+            throw new ApiException("Missing the required parameter 'vrsnId' when calling update(Async)");
         }
         
         // verify the required parameter 'templateVersionUpdatable' is set
         if (templateVersionUpdatable == null) {
-            throw new ApiException("Missing the required parameter 'templateVersionUpdatable' when calling templateVersionUpdate(Async)");
+            throw new ApiException("Missing the required parameter 'templateVersionUpdatable' when calling update(Async)");
         }
         
 
-        okhttp3.Call localVarCall = templateVersionUpdateCall(tmplId, vrsnId, templateVersionUpdatable, _callback);
+        okhttp3.Call localVarCall = updateCall(tmplId, vrsnId, templateVersionUpdatable, _callback);
         return localVarCall;
 
     }
@@ -546,9 +546,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateVersion templateVersionUpdate(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable) throws ApiException {
+    public TemplateVersion update(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable) throws ApiException {
         try {
-            ApiResponse<TemplateVersion> localVarResp = templateVersionUpdateWithHttpInfo(tmplId, vrsnId, templateVersionUpdatable);
+            ApiResponse<TemplateVersion> localVarResp = updateWithHttpInfo(tmplId, vrsnId, templateVersionUpdatable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -570,9 +570,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateVersion> templateVersionUpdateWithHttpInfo(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable) throws ApiException {
+    public ApiResponse<TemplateVersion> updateWithHttpInfo(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = templateVersionUpdateValidateBeforeCall(tmplId, vrsnId, templateVersionUpdatable, null);
+            okhttp3.Call localVarCall = updateValidateBeforeCall(tmplId, vrsnId, templateVersionUpdatable, null);
             Type localVarReturnType = new TypeToken<TemplateVersion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -596,15 +596,15 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call templateVersionUpdateAsync(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable, final ApiCallback<TemplateVersion> _callback) throws ApiException {
+    public okhttp3.Call updateAsync(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable, final ApiCallback<TemplateVersion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = templateVersionUpdateValidateBeforeCall(tmplId, vrsnId, templateVersionUpdatable, _callback);
+        okhttp3.Call localVarCall = updateValidateBeforeCall(tmplId, vrsnId, templateVersionUpdatable, _callback);
         Type localVarReturnType = new TypeToken<TemplateVersion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for templateVersionsList
+     * Build call for list
      * @param tmplId The ID of the template associated with the retrieved versions (required)
      * @param limit How many results to return. (optional, default to 10)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
@@ -621,7 +621,7 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call templateVersionsListCall(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -673,15 +673,15 @@ public class TemplateVersionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call templateVersionsListValidateBeforeCall(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'tmplId' is set
         if (tmplId == null) {
-            throw new ApiException("Missing the required parameter 'tmplId' when calling templateVersionsList(Async)");
+            throw new ApiException("Missing the required parameter 'tmplId' when calling list(Async)");
         }
         
 
-        okhttp3.Call localVarCall = templateVersionsListCall(tmplId, limit, before, after, include, dateCreated, _callback);
+        okhttp3.Call localVarCall = listCall(tmplId, limit, before, after, include, dateCreated, _callback);
         return localVarCall;
 
     }
@@ -704,9 +704,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateVersionList templateVersionsList(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated) throws ApiException {
+    public TemplateVersionList list(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated) throws ApiException {
         try {
-            ApiResponse<TemplateVersionList> localVarResp = templateVersionsListWithHttpInfo(tmplId, limit, before, after, include, dateCreated);
+            ApiResponse<TemplateVersionList> localVarResp = listWithHttpInfo(tmplId, limit, before, after, include, dateCreated);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -731,9 +731,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateVersionList> templateVersionsListWithHttpInfo(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated) throws ApiException {
+    public ApiResponse<TemplateVersionList> listWithHttpInfo(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated) throws ApiException {
         try {
-            okhttp3.Call localVarCall = templateVersionsListValidateBeforeCall(tmplId, limit, before, after, include, dateCreated, null);
+            okhttp3.Call localVarCall = listValidateBeforeCall(tmplId, limit, before, after, include, dateCreated, null);
             Type localVarReturnType = new TypeToken<TemplateVersionList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -760,9 +760,9 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call templateVersionsListAsync(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, final ApiCallback<TemplateVersionList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, final ApiCallback<TemplateVersionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = templateVersionsListValidateBeforeCall(tmplId, limit, before, after, include, dateCreated, _callback);
+        okhttp3.Call localVarCall = listValidateBeforeCall(tmplId, limit, before, after, include, dateCreated, _callback);
         Type localVarReturnType = new TypeToken<TemplateVersionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
