@@ -87,6 +87,7 @@ public class CheckEditableTest {
                 break;
             }
             case "metadata": {
+                @SuppressWarnings("unchecked")
                 Map<String, String> castedVal = (HashMap<String, String>)val;
                 rec.setMetadata(castedVal);
                 Assert.assertEquals(rec.getMetadata(), castedVal);

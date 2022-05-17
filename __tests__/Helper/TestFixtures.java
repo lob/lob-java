@@ -8,10 +8,19 @@ import org.openapitools.client.model.BankAccountWritable;
 import org.openapitools.client.model.BankTypeEnum;
 import org.openapitools.client.model.BillingGroupEditable;
 import org.openapitools.client.model.CountryExtended;
+import org.openapitools.client.model.TemplateWritable;
 
 public class TestFixtures {
     public String get_URL_VALID() {
         return "https://lob-assets.com/bank-accounts/asd_asdfghjkqwertyui.pdf?version=123&expires=1234567890&signature=aksdf";
+    }
+
+    public String get_FILE_LOCATION_8X11() {
+        return "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf";
+    }
+
+    public String get_FILE_LOCATION_4X6() {
+        return "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf";
     }
 
     public String get_FILE_LOCATION() {
@@ -20,6 +29,7 @@ public class TestFixtures {
     private final List<AddressEditable> ADDRESSES_EDITABLE = new ArrayList<AddressEditable>();
     private final List<BankAccountWritable> BANK_ACCOUNTS_WRITABLE = new ArrayList<BankAccountWritable>();
     private final List<BillingGroupEditable> BILLING_GROUP_EDITABLE = new ArrayList<BillingGroupEditable>();
+    private final List<TemplateWritable> TEMPLATES_WRITABLE = new ArrayList<TemplateWritable>();
 
     public List<AddressEditable> get_ADDRESSES_EDITABLE() {
         return ADDRESSES_EDITABLE;
@@ -34,10 +44,15 @@ public class TestFixtures {
         return BILLING_GROUP_EDITABLE ;
     }
 
+    public List<TemplateWritable> get_TEMPLATES_WRITABLE() {
+        return TEMPLATES_WRITABLE ;
+    }
+
     public TestFixtures() {
         createBankAccountsList();
         createAddressesList();
         createBillingGroupsList();
+        createTemplatesList();
     }
 
     private AddressEditable populateAddressEditable(
@@ -139,5 +154,22 @@ public class TestFixtures {
         BILLING_GROUP_EDITABLE.add(billingGroupEditable0);
         BILLING_GROUP_EDITABLE.add(billingGroupEditable1);
         BILLING_GROUP_EDITABLE.add(billingGroupEditable2);
+    }
+
+    private void createTemplatesList () {
+        TemplateWritable  templateWritable0 = new TemplateWritable();
+        TemplateWritable  templateWritable1 = new TemplateWritable();
+        TemplateWritable  templateWritable2 = new TemplateWritable();
+
+        templateWritable0.setDescription("Newer Template");
+        templateWritable0.setHtml( "<html>Updated HTML for Template 1/html>");
+        templateWritable1.setDescription("Newer Template");
+        templateWritable1.setHtml( "<html>Updated HTML for Template 2/html>");
+        templateWritable2.setDescription("Newer Template");
+        templateWritable2.setHtml( "<html>Updated HTML for Template 2/html>");
+
+        TEMPLATES_WRITABLE.add(templateWritable0);
+        TEMPLATES_WRITABLE.add(templateWritable1);
+        TEMPLATES_WRITABLE.add(templateWritable2);
     }
 }

@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.BillingGroupList;
-import org.openapitools.client.model.BillingGroup;
+import org.openapitools.client.model.TemplateVersionList;
+import org.openapitools.client.model.TemplateVersion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,22 +9,22 @@ import java.util.List;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
-public class BillingGroupListTest {
-    @DataProvider (name = "billing-group-list-data-provider")
-    public Object[][] billingGroupListDpMethod() {
+public class TemplateVersionListTest {
+    @DataProvider (name = "template-version-data-provider")
+    public Object[][] templateVersionDpMethod(){
         return new Object[][] {
             {"object", "Address"},
-            {"data", new ArrayList()},
+            {"data", new ArrayList<TemplateVersion>()},
             {"next_url", "some url"},
             {"previous_url", "some url"},
             {"count", 1},
+            {"total_count", 100},
         };
     }
 
-    @Test(enabled=true, dataProvider = "billing-group-list-data-provider")
-    public void billingGroupListTestWithProvidedValue(String prop, Object val) throws Exception {
-        BillingGroupList rec = new BillingGroupList();
-
+    @Test(enabled=true, dataProvider = "template-version-data-provider")
+    public void templateVersionTestWithProvidedValue(String prop, Object val) throws Exception {
+        TemplateVersionList rec = new TemplateVersionList();
         switch (prop) {
             case "object": {
                 String castedVal = (String)val;
@@ -33,10 +33,9 @@ public class BillingGroupListTest {
                 break;
             }
             case "data": {
-                @SuppressWarnings("unchecked")
-                List<BillingGroup> castedVal = (ArrayList<BillingGroup>)val;
+                List<TemplateVersion> castedVal = (ArrayList<TemplateVersion>)val;
                 rec.setData(castedVal);
-                Assert.assertEquals(rec.getData(), castedVal);
+                // Assert.assertEquals(rec.getData(), castedVal); // TODO: DXP-920
                 break;
             }
             case "next_url": {
@@ -57,34 +56,40 @@ public class BillingGroupListTest {
                 Assert.assertEquals(rec.getCount(), castedVal);
                 break;
             }
+            case "total_count": {
+                Integer castedVal = (Integer)val;
+                rec.setTotalCount(castedVal);
+                Assert.assertEquals(rec.getTotalCount(), castedVal);
+                break;
+            }
             default:
                 throw new Exception("Wrong prop name: " + prop);
         }
     }
 
     @Test(enabled=true)
-    public void billingGroupListNextPageTokenGetterTest() {
-        BillingGroupList rec = new BillingGroupList();
+    public void templateVersionListNextPageTokenGetterTest() {
+        TemplateVersionList rec = new TemplateVersionList();
         rec.setNextUrl("https://fake.com?param1=example&after=token");
         Assert.assertEquals(rec.getNextPageToken(), "token");
     }
 
     @Test(enabled=true)
-    public void billingGroupListNextPageTokenGetterTestMisingVal() {
-        BillingGroupList rec = new BillingGroupList();
+    public void templateVersionListNextPageTokenGetterTestMisingVal() {
+        TemplateVersionList rec = new TemplateVersionList();
         Assert.assertNull(rec.getNextPageToken());
     }
 
     @Test(enabled=true)
-    public void billingGroupListPrevPageTokenGetterTest() {
-        BillingGroupList rec = new BillingGroupList();
+    public void templateVersionListPrevPageTokenGetterTest() {
+        TemplateVersionList rec = new TemplateVersionList();
         rec.setPreviousUrl("https://fake.com?param1=example&before=token");
         Assert.assertEquals(rec.getPreviousPageToken(), "token");
     }
 
     @Test(enabled=true)
-    public void billingGroupListPrevPageTokenGetterTestMisingVal() {
-        BillingGroupList rec = new BillingGroupList();
+    public void templateVersionListPrevPageTokenGetterTestMisingVal() {
+        TemplateVersionList rec = new TemplateVersionList();
         Assert.assertNull(rec.getPreviousPageToken());
     }
 }
