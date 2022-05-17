@@ -37,6 +37,12 @@ public class SelfMailerList {
 
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<SelfMailer> data = null;
+  public List<SelfMailer> getData() {     
+    if (this.data == null) {
+      this.data = new ArrayList<SelfMailer>();
+    }
+    return this.data; 
+  }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
 

@@ -2,7 +2,6 @@ package Integration;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.UnaryOperator;
 
 import com.lob.api.ApiException;
 import com.lob.api.Configuration;
@@ -10,16 +9,15 @@ import com.lob.api.client.TemplatesApi;
 
 import org.openapitools.client.model.Template;
 import org.openapitools.client.model.TemplateDeletion;
-import org.openapitools.client.model.TemplateWritable;
 import org.openapitools.client.model.TemplateList;
 import org.openapitools.client.model.TemplateUpdate;
-
+import org.openapitools.client.model.TemplateWritable;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import Helper.*;
+import Helper.TestFixtures;
 
 public class TemplatesApiSpecTest {
 
@@ -95,22 +93,20 @@ public void before_class()
         
     }
 
-    // @Test(
-    //     enabled=true,
-    //     groups={"Integration", "Update", "Template", "Valid"}
-    // )
-    // public void templateUpdateTest() throws ApiException {
-    //     TemplateUpdate update = new TemplateUpdate();
+    @Test(
+        enabled=true,
+        groups={"Integration", "Update", "Template", "Valid"}
+    )
+    public void templateUpdateTest() throws ApiException {
+        TemplateUpdate update = new TemplateUpdate();
 
-    //     update.setDescription("update template");
-    //     update.setPublishedVersion(createdTemplates.get(0).getPublishedVersion().getId());
+        update.setDescription("update template");
+        update.setPublishedVersion(createdTemplates.get(0).getPublishedVersion().getId());
 
-    //     System.out.println(createdTemplates.get(0).getPublishedVersion().getId());
-    //     Template response = validApi.templateUpdate(createdTemplates.get(0).getId(), update);
-    //     //Failure template not found
-    //     Assert.assertNotNull(response);
-    //     createdTemplates.add(response);
-    // }
+        Template response = validApi.update(createdTemplates.get(0).getId(), update);
+        Assert.assertNotNull(response);
+        createdTemplates.add(response);
+    }
 
     @Test(
         enabled=true,

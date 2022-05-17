@@ -47,24 +47,4 @@ public void before_class()
 
         Assert.assertNotNull(validApi.lookup(location,1));
     }
-
-    @Test(
-        enabled=true,
-        groups={"Integration", "Lookup", "Reverse Geocode"}
-    )
-
-        public void  ReverseGeoCodeLookupInputTest() throws ApiException {
-            validApi = new ReverseGeocodeLookupsApi(Configuration.getConfigForIntegration());
-            Location location = new Location();
-            Float latitude=37.777456f;
-            Float longitude=-122.393039f;
-           
-            location.setLatitude(latitude);
-            location.setLongitude(longitude);
-
-            //Assert.assertNotNull(response.getAddresses);
-            // Need Get Addresses method
-    }
-
-
 }

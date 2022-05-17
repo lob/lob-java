@@ -61,6 +61,12 @@ public class ReverseGeocode {
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
   private List<GeocodeAddresses> addresses = null;
+  public List<GeocodeAddresses> getAddresses() {     
+    if (this.addresses == null) {
+      this.addresses = new ArrayList<GeocodeAddresses>();
+    }
+    return this.addresses; 
+  }
 
   /**
    * Value is resource type.

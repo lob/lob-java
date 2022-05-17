@@ -86,6 +86,12 @@ public class Template {
 
   @SerializedName(SERIALIZED_NAME_VERSIONS)
   private List<TemplateVersion> versions = null;
+  public List<TemplateVersion> getVersions() {     
+    if (this.versions == null) {
+      this.versions = new ArrayList<TemplateVersion>();
+    }
+    return this.versions; 
+  }
 
   public static final String SERIALIZED_NAME_PUBLISHED_VERSION = "published_version";
 

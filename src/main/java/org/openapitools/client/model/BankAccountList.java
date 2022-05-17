@@ -37,6 +37,12 @@ public class BankAccountList {
 
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<BankAccount> data = null;
+  public List<BankAccount> getData() {     
+    if (this.data == null) {
+      this.data = new ArrayList<BankAccount>();
+    }
+    return this.data; 
+  }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
 

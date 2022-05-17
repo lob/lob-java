@@ -61,6 +61,12 @@ public class IntlAutocompletions {
 
   @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
   private List<IntlSuggestions> suggestions = null;
+  public List<IntlSuggestions> getSuggestions() {     
+    if (this.suggestions == null) {
+      this.suggestions = new ArrayList<IntlSuggestions>();
+    }
+    return this.suggestions; 
+  }
 
 
   /*

@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.Postcard;
 import org.openapitools.jackson.nullable.JsonNullable;
-@SuppressWarnings("unchecked")
 
 /**
  * PostcardList
@@ -38,6 +37,12 @@ public class PostcardList {
 
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<Postcard> data = null;
+  public List<Postcard> getData() {     
+    if (this.data == null) {
+      this.data = new ArrayList<Postcard>();
+    }
+    return this.data; 
+  }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
 
