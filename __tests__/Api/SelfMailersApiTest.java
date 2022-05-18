@@ -16,7 +16,6 @@ import org.openapitools.client.model.SelfMailerDeletion;
 import org.openapitools.client.model.SelfMailerEditable;
 import org.openapitools.client.model.SelfMailerList;
 import org.openapitools.client.model.SelfMailerSize;
-import org.threeten.bp.OffsetDateTime;
 import org.openapitools.client.model.SortBy5;
 import org.testng.Assert;
 import org.testng.annotations.Test;

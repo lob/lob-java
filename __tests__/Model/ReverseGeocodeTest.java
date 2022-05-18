@@ -9,6 +9,7 @@ import java.util.List;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class ReverseGeocodeTest {
     @DataProvider (name = "reverse-geocode-data-provider")
     public Object[][] reverseGeocodeDpMethod(){
@@ -36,7 +37,7 @@ public class ReverseGeocodeTest {
             case "addresses": {
                 List<GeocodeAddresses> castedVal = (ArrayList<GeocodeAddresses>)val;
                 rec.setAddresses(castedVal);
-                // Assert.assertEquals(rec.getAddresses(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getAddresses(), castedVal);
                 break;
             }
             case "object": {

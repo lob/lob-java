@@ -48,13 +48,6 @@ public class PostcardsApiSpecTest {
     private MailType mailType = null;
     private SortBy5 sortBy = null;
 
-  // TODO:
-  // all postcardCreate calls fail with JSON fails to deserialize the to attribute, failing with
-  // `to address not found`
-  // all postcardList calls fail because JSON fails to deserialize the send_date attribute, failing with
-  // `Expected BEGIN_OBJECT but was STRING at line 70 column 27 path $.data[0].send_date`
-  // suspect it's because SendDate is a bogus class
-
     @BeforeClass
     public void before_class() {
       Gson gson = new Gson();

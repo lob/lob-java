@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.Postcard;
 import org.openapitools.jackson.nullable.JsonNullable;
-@SuppressWarnings("unchecked")
 
 /**
  * PostcardList

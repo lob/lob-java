@@ -1,17 +1,18 @@
 package Model;
 
-import org.openapitools.client.model.SelfMailerEditable;
-import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.SendDate;
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.SelfMailerSize;
-
 import java.util.HashMap;
 import java.util.Map;
 
-import org.testng.annotations.*;
+import org.openapitools.client.model.AddressEditable;
+import org.openapitools.client.model.MailType;
+import org.openapitools.client.model.SelfMailerEditable;
+import org.openapitools.client.model.SelfMailerSize;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import org.threeten.bp.OffsetDateTime;
 
+@SuppressWarnings("unchecked")
 public class SelfMailerEditableTest {
     @DataProvider (name = "self-mailer-editable-data-provider")
     public Object[][] selfMailerEditableDpMethod(){
@@ -26,7 +27,7 @@ public class SelfMailerEditableTest {
             {"mail_type", MailType.STANDARD},
             {"mail_type", MailType.FIRST_CLASS},
             {"merge_variables", new Object()},
-            // {"send_date", new SendDate()}, // TODO: DXP-920
+            {"send_date", OffsetDateTime.now()},
             {"inside", "fake inside"},
             {"outside", "fake outside"},
             {"billing_group_id", "fake billing_group_id"},
@@ -65,7 +66,7 @@ public class SelfMailerEditableTest {
             case "metadata": {
                 Map<String, String> castedVal = (HashMap<String, String>)val;
                 rec.setMetadata(castedVal);
-                // Assert.assertEquals(rec.getMetadata(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getMetadata(), castedVal);
                 break;
             }
             case "mail_type": {
@@ -80,12 +81,12 @@ public class SelfMailerEditableTest {
                 Assert.assertEquals(rec.getMergeVariables(), castedVal);
                 break;
             }
-            // case "send_date": { // TODO: DXP-920
-            //     SendDate castedVal = (SendDate)val;
-            //     rec.setSendDate(castedVal);
-            //     Assert.assertEquals(rec.getSendDate(), castedVal);
-            //     break;
-            // }
+            case "send_date": {
+                OffsetDateTime castedVal = (OffsetDateTime) val;
+                rec.setSendDate(castedVal);
+                Assert.assertEquals(rec.getSendDate(), castedVal);
+                break;
+            }
             case "inside": {
                 String castedVal = (String)val;
                 rec.setInside(castedVal);

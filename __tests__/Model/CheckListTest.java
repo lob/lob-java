@@ -9,6 +9,7 @@ import java.util.List;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class CheckListTest {
     @DataProvider (name = "check-list-data-provider")
     public Object[][] checkListAnalysisDpMethod(){

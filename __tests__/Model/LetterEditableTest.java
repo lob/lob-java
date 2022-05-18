@@ -11,6 +11,7 @@ import java.util.List;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class LetterEditableTest {
     @DataProvider (name = "letter-editable-data-provider")
     public Object[][] letterEditableDpMethod(){

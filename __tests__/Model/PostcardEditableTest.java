@@ -2,16 +2,17 @@ package Model;
 
 import org.openapitools.client.model.PostcardEditable;
 import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.AddressDomesticExpanded;
 import org.openapitools.client.model.PostcardSize;
 import org.openapitools.client.model.MailType;
 
+import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class PostcardEditableTest {
     @DataProvider (name = "postcard-editable-data-provider")
     public Object[][] postcardEditableDpMethod(){
@@ -26,7 +27,6 @@ public class PostcardEditableTest {
             {"mail_type", MailType.STANDARD},
             {"mail_type", MailType.FIRST_CLASS},
             {"merge_variables", new Object()},
-            // {"send_date", new SendDate()}, // TODO: DXP-920
             {"front", "fake front"},
             {"back", "fake back"},
             {"billing_group_id", "fake billing group"},
@@ -65,7 +65,7 @@ public class PostcardEditableTest {
             case "metadata": {
                 Map<String, String> castedVal = (HashMap<String, String>)val;
                 rec.setMetadata(castedVal);
-                // Assert.assertEquals(rec.getMetadata(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getMetadata(), castedVal);
                 break;
             }
             case "mail_type": {

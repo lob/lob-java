@@ -9,6 +9,7 @@ import java.util.List;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class CardListTest {
     @DataProvider (name = "card-list-data-provider")
     public Object[][] cardListDpMethod() {

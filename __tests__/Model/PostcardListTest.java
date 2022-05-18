@@ -37,7 +37,7 @@ public class PostcardListTest {
             case "data": {
                 List<Postcard> castedVal = (ArrayList<Postcard>)val;
                 rec.setData(castedVal);
-                // Assert.assertEquals(rec.getData(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getData(), castedVal);
                 break;
             }
             case "next_url": {

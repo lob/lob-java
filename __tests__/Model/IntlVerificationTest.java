@@ -6,6 +6,7 @@ import org.openapitools.client.model.IntlComponents;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+
 public class IntlVerificationTest {
     @DataProvider (name = "intl-verification-data-provider")
     public Object[][] intlVerificationDpMethod(){

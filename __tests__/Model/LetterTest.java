@@ -6,7 +6,6 @@ import org.openapitools.client.model.Thumbnail;
 import org.openapitools.client.model.MailType;
 import org.openapitools.client.model.LetterCustomEnvelope;
 import org.openapitools.client.model.TrackingEventNormal;
-import org.openapitools.client.model.SendDate;
 import org.openapitools.client.model.AddressEditable;
 
 import java.util.Map;
@@ -19,6 +18,7 @@ import java.util.List;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class LetterTest {
     @DataProvider (name = "letter-create-data-provider")
     public Object[][] letterCreateDpMethod(){

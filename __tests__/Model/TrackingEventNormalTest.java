@@ -19,7 +19,6 @@ public class TrackingEventNormalTest {
             {"name", TrackingEventNormal.NameEnum.PROCESSED_FOR_DELIVERY},
             {"name", TrackingEventNormal.NameEnum.IN_LOCAL_AREA},
             {"name", TrackingEventNormal.NameEnum.RETURNED_TO_SENDER},
-            // {"details", TrackingEventNormal.DetailsEnum.NULL}, // TODO: DXP-920
             {"location", "fake location"},
             {"location", null},
             {"time", OffsetDateTime.now()},
@@ -52,12 +51,6 @@ public class TrackingEventNormalTest {
                 Assert.assertEquals(rec.getName(), castedVal);
                 break;
             }
-            // case "details": { // TODO: DXP-920
-            //     TrackingEventDetails castedVal = (TrackingEventDetails)val;
-            //     rec.setDetails(castedVal);
-            //     Assert.assertEquals(rec.getDetails(), castedVal);
-            //     break;
-            // }
             case "location": {
                 String castedVal = (String)val;
                 rec.setLocation(castedVal);

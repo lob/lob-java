@@ -9,6 +9,7 @@ import java.util.List;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class TemplateVersionListTest {
     @DataProvider (name = "template-version-data-provider")
     public Object[][] templateVersionDpMethod(){
@@ -35,7 +36,7 @@ public class TemplateVersionListTest {
             case "data": {
                 List<TemplateVersion> castedVal = (ArrayList<TemplateVersion>)val;
                 rec.setData(castedVal);
-                // Assert.assertEquals(rec.getData(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getData(), castedVal);
                 break;
             }
             case "next_url": {

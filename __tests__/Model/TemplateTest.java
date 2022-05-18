@@ -13,6 +13,7 @@ import org.threeten.bp.OffsetDateTime;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class TemplateTest {
     @DataProvider (name = "template-data-provider")
     public Object[][] templateDpMethod(){
@@ -53,7 +54,7 @@ public class TemplateTest {
             case "versions": {
                 List<TemplateVersion> castedVal = (ArrayList<TemplateVersion>)val;
                 rec.setVersions(castedVal);
-                // Assert.assertEquals(rec.getVersions(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getVersions(), castedVal);
                 break;
             }
             case "published_version": {
@@ -71,7 +72,7 @@ public class TemplateTest {
             case "metadata": {
                 Map<String, String> castedVal = (HashMap<String, String>)val;
                 rec.setMetadata(castedVal);
-                // Assert.assertEquals(rec.getMetadata(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getMetadata(), castedVal);
                 break;
             }
             case "date_created": {

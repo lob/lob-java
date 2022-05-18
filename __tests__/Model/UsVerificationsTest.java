@@ -7,11 +7,10 @@ import org.testng.Assert;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import org.openapitools.client.model.LobError;
 import org.openapitools.client.model.UsVerificationOrError;
 
+@SuppressWarnings("unchecked")
 public class UsVerificationsTest {
     @DataProvider (name = "us-verifications-data-provider")
     public Object[][] usVerificationsDpMethod(){

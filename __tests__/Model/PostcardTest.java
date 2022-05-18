@@ -21,6 +21,7 @@ import Helper.TestFixtures;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class PostcardTest {
     @DataProvider (name = "postcard-data-provider")
     public Object[][] postcardDpMethod() {
@@ -56,7 +57,6 @@ public class PostcardTest {
             {"mail_type", MailType.STANDARD},
             {"mail_type", MailType.FIRST_CLASS},
             {"merge_variables", new Object()},
-            // {"send_date", new SendDate()}, // TODO: DXP-920
         };
     }
 
@@ -92,7 +92,7 @@ public class PostcardTest {
             case "thumbnails": {
                 List<Thumbnail> castedVal = (ArrayList<Thumbnail>)val;
                 rec.setThumbnails(castedVal);
-                // Assert.assertEquals(rec.getThumbnails(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getThumbnails(), castedVal);
                 break;
             }
             case "size": {
@@ -152,7 +152,7 @@ public class PostcardTest {
             case "tracking_events": {
                 List<TrackingEventNormal> castedVal = (ArrayList<TrackingEventNormal>)val;
                 rec.setTrackingEvents(castedVal);
-                // Assert.assertEquals(rec.getTrackingEvents(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getTrackingEvents(), castedVal);
                 break;
             }
             case "object": {
@@ -176,7 +176,7 @@ public class PostcardTest {
             case "metadata": {
                 Map<String, String> castedVal = (HashMap<String, String>)val;
                 rec.setMetadata(castedVal);
-                // Assert.assertEquals(rec.getMetadata(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getMetadata(), castedVal);
                 break;
             }
             case "mail_type": {

@@ -17,6 +17,6 @@ public class BankAccountVerifyTest {
         amounts.add(1);
         amounts.add(2);
         rec.setAmounts(amounts);
-        // Assert.assertEquals(rec.getAmounts(), amounts); // TODO: DXP-920
+        Assert.assertEquals(rec.getAmounts(), amounts);
     }
 }

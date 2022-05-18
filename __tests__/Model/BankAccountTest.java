@@ -11,6 +11,7 @@ import java.util.Map;
 
 import Helper.*;
 
+@SuppressWarnings("unchecked")
 public class BankAccountTest {
     @DataProvider (name = "bank-account-data-provider")
     public Object[][] bankAccountDpMethod() {

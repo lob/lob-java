@@ -10,6 +10,7 @@ import java.util.List;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class IntlVerificationsTest {
     @DataProvider (name = "intl-verifications-data-provider")
     public Object[][] intlVerificationsDpMethod(){

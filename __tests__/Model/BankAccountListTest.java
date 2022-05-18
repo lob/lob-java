@@ -9,6 +9,7 @@ import java.util.List;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class BankAccountListTest {
     @DataProvider (name = "bank-account-list-data-provider")
     public Object[][] bankAccountListDpMethod() {
@@ -36,7 +37,7 @@ public class BankAccountListTest {
             case "data": {
                 List<BankAccount> castedVal = (List<BankAccount>)val;
                 rec.setData(castedVal);
-                // Assert.assertEquals(rec.getData(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getData(), castedVal);
                 break;
             }
             case "next_url": {

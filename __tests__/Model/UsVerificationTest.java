@@ -8,6 +8,7 @@ import org.openapitools.client.model.UsComponents;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class UsVerificationTest {
     @DataProvider (name = "us-verification-data-provider")
     public Object[][] usVerificationDpMethod(){

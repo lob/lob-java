@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.net.URLEncoder;
 import Helper.*;
 
+@SuppressWarnings("unchecked")
 public class CardTest {
     @DataProvider (name = "card-data-provider")
     public Object[][] cardDpMethod() throws Exception {

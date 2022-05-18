@@ -9,6 +9,7 @@ import java.util.List;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
+@SuppressWarnings("unchecked")
 public class UsAutocompletionsTest {
     @DataProvider (name = "us-autocompletions-data-provider")
     public Object[][] usAutocompletionsDpMethod(){
@@ -36,7 +37,7 @@ public class UsAutocompletionsTest {
             case "suggestions": {
                 List<Suggestions> castedVal = (ArrayList<Suggestions>)val;
                 rec.setSuggestions(castedVal);
-                // Assert.assertEquals(rec.getSuggestions(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getSuggestions(), castedVal);
                 break;
             }
             case "object": {

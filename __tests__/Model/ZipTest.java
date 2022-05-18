@@ -46,9 +46,8 @@ public class ZipTest {
 
          model.setCities(fakeCity);
 
-        // Assert.assertNotNull(model.getCities());
-        // Assert.assertEquals(model.getCities(), fakeCity);
-        // TODO: test cities. Needs getCities method
+        Assert.assertNotNull(model.getCities());
+        Assert.assertEquals(model.getCities(), fakeCity);
     }
 
     @Test

@@ -1,22 +1,23 @@
 package Model;
 
-import org.openapitools.client.model.SelfMailer;
-import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.SelfMailerSize;
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.SendDate;
-import org.openapitools.client.model.TrackingEventCertified;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.testng.annotations.*;
+import org.threeten.bp.OffsetDateTime;
+import org.openapitools.client.model.AddressEditable;
+import org.openapitools.client.model.MailType;
+import org.openapitools.client.model.SelfMailer;
+import org.openapitools.client.model.SelfMailerSize;
+import org.openapitools.client.model.TrackingEventCertified;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-import Helper.*;
+import Helper.TestFixtures;
 
+@SuppressWarnings("unchecked")
 public class SelfMailerTest {
     @DataProvider (name = "self-mailer-data-provider")
     public Object[][] selfMailerDpMethod(){
@@ -32,7 +33,7 @@ public class SelfMailerTest {
             {"mail_type", MailType.STANDARD},
             {"mail_type", MailType.FIRST_CLASS},
             {"merge_variables", new Object()},
-            // {"send_date", new SendDate()}, // TODO: DXP-920
+            {"send_date", OffsetDateTime.now()},
             {"outside_template_id", "tmpl_outsideFakeId"},
             {"inside_template_id", "tmpl_insideFakeId"},
             {"outside_template_version_id", "vrsn_outsideFakeId"},
@@ -81,7 +82,7 @@ public class SelfMailerTest {
             case "metadata": {
                 Map<String, String> castedVal = (HashMap<String, String>)val;
                 rec.setMetadata(castedVal);
-                // Assert.assertEquals(rec.getMetadata(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getMetadata(), castedVal);
                 break;
             }
             case "mail_type": {
@@ -96,12 +97,12 @@ public class SelfMailerTest {
                 Assert.assertEquals(rec.getMergeVariables(), castedVal);
                 break;
             }
-            // case "send_date": { // TODO: DXP-920
-            //     SendDate castedVal = (SendDate)val;
-            //     rec.setSendDate(castedVal);
-            //     Assert.assertEquals(rec.getSendDate(), castedVal);
-            //     break;
-            // }
+            case "send_date": {
+                OffsetDateTime castedVal = (OffsetDateTime)val;
+                rec.setSendDate(castedVal);
+                Assert.assertEquals(rec.getSendDate(), castedVal);
+                break;
+            }
             case "outside_template_id": {
                 String castedVal = (String)val;
                 rec.setOutsideTemplateId(castedVal);
@@ -135,7 +136,7 @@ public class SelfMailerTest {
             case "tracking_events": {
                 List<TrackingEventCertified> castedVal = (ArrayList<TrackingEventCertified>)val;
                 rec.setTrackingEvents(castedVal);
-                // Assert.assertEquals(rec.getTrackingEvents(), castedVal); // TODO: DXP-920
+                Assert.assertEquals(rec.getTrackingEvents(), castedVal);
                 break;
             }
             case "url": {
