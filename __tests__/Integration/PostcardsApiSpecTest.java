@@ -3,6 +3,7 @@ package Integration;
 import java.util.Map;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.client.PostcardsApi;
@@ -43,7 +44,7 @@ public class PostcardsApiSpecTest {
     private Map<String, String> metadata = null;
     private PostcardSize size = null;
     private Boolean scheduled = null;
-    private SendDate sendDate = null;
+    private Map<String, String> sendDate = null;
     private MailType mailType = null;
     private SortBy5 sortBy = null;
 
@@ -54,112 +55,85 @@ public class PostcardsApiSpecTest {
   // `Expected BEGIN_OBJECT but was STRING at line 70 column 27 path $.data[0].send_date`
   // suspect it's because SendDate is a bogus class
 
-    // @BeforeClass
-    // public void before_class() {
-    //     dummyPostcard.setTo(addressEditableList.get(2));
-    //     dummyPostcard.setFrom(addressEditableList.get(1));
-    //     dummyPostcard.setFront(testFixtures.get_FILE_LOCATION_4X6());
-    //     dummyPostcard.setBack(testFixtures.get_FILE_LOCATION_4X6());
-    // }
+    @BeforeClass
+    public void before_class() {
+      Gson gson = new Gson();
+        dummyPostcard.setTo(gson.toJson(addressEditableList.get(2)));
+        dummyPostcard.setFrom(gson.toJson(addressEditableList.get(1)));
+        dummyPostcard.setFront(testFixtures.get_FILE_LOCATION_4X6());
+        dummyPostcard.setBack(testFixtures.get_FILE_LOCATION_4X6());
+    }
 
-    // @Test(
-    //     enabled=true,
-    //     groups={"Integration", "Create", "Postcard", "Valid"}
-    // )
-    // public void postcardCreateRetrieveDeleteTest() throws ApiException {
-    //     Postcard postcard = validApi.postcardCreate(dummyPostcard, null);
+    @Test(
+        enabled=true,
+        groups={"Integration", "Create", "Postcard", "Valid"}
+    )
+    public void postcardCreateRetrieveDeleteTest() throws ApiException {
+        Postcard postcard = validApi.create(dummyPostcard, null);
 
-    //     Assert.assertNotNull(postcard.getId());
-    //     Assert.assertNotNull(postcard.getUrl());
+        Assert.assertNotNull(postcard.getId());
+        Assert.assertNotNull(postcard.getUrl());
 
-    //     Postcard retrievedPostcard = validApi.postcardRetrieve(postcard.getId());
-    //     Assert.assertNotNull(retrievedPostcard);
-    //     PostcardDeletion deletedPostcard = validApi.postcardDelete(postcard.getId());
-    //     Assert.assertTrue(deletedPostcard.getDeleted());
-    // }
+        Postcard retrievedPostcard = validApi.get(postcard.getId());
+        Assert.assertNotNull(retrievedPostcard);
+        PostcardDeletion deletedPostcard = validApi.cancel(postcard.getId());
+        Assert.assertTrue(deletedPostcard.getDeleted());
+    }
 
-    // @Test(
-    //     enabled=true,
-    //     groups={"Integration", "Create", "Postcard", "Valid"}
-    // )
-    // public void postcardCreateTestWithTemplateId() throws ApiException {
-    //     TemplateWritable templateWrite = new TemplateWritable();
-    //     templateWrite.setDescription("Newer Template");
-    //     templateWrite.setHtml("<html>Updated HTML for {{name}}</html>");
+    @Test(
+        enabled=true,
+        groups={"Integration", "Create", "Postcard", "Valid"}
+    )
+    public void postcardCreateTestWithTemplateId() throws ApiException {
+        Gson gson = new Gson();
+        TemplateWritable templateWrite = new TemplateWritable();
+        templateWrite.setDescription("Newer Template");
+        templateWrite.setHtml("<html>Updated HTML</html>");
 
-    //     TemplatesApi templatesApi = new TemplatesApi(Configuration.getConfigForIntegration());
-    //     Template createdTemplate = templatesApi.createTemplate(templateWrite);
-    //     Assert.assertNotNull(createdTemplate.getId());
+        TemplatesApi templatesApi = new TemplatesApi(Configuration.getConfigForIntegration());
+        Template createdTemplate = templatesApi.create(templateWrite);
+        Assert.assertNotNull(createdTemplate.getId());
 
-    //     PostcardEditable postcardWithTemplateIds = new PostcardEditable();
-    //     postcardWithTemplateIds.setTo(addressEditableList.get(2));
-    //     postcardWithTemplateIds.setFrom(addressEditableList.get(1));
-    //     postcardWithTemplateIds.setFront(createdTemplate.getId());
-    //     postcardWithTemplateIds.setBack(createdTemplate.getId());
+        PostcardEditable postcardWithTemplateIds = new PostcardEditable();
+        postcardWithTemplateIds.setTo(gson.toJson(addressEditableList.get(2)));
+        postcardWithTemplateIds.setFrom(gson.toJson(addressEditableList.get(1)));
+        postcardWithTemplateIds.setFront(createdTemplate.getId());
+        postcardWithTemplateIds.setBack(createdTemplate.getId());
 
-    //     Postcard postcard = validApi.postcardCreate(postcardWithTemplateIds, null);
-    //     Assert.assertNotNull(postcard.getId());
-    //     Assert.assertEquals(postcard.getFrontTemplateId(), createdTemplate.getId());
-    //     Assert.assertEquals(postcard.getBackTemplateId(), createdTemplate.getId());
-    //     Assert.assertNotNull(postcard.getUrl());
+        Postcard postcard = validApi.create(postcardWithTemplateIds, null);
+        Assert.assertNotNull(postcard.getId());
+        Assert.assertEquals(postcard.getFrontTemplateId(), createdTemplate.getId());
+        Assert.assertEquals(postcard.getBackTemplateId(), createdTemplate.getId());
+        Assert.assertNotNull(postcard.getUrl());
 
-    //     // Clean up
-    //     PostcardDeletion deletedPostcard = validApi.postcardDelete(postcard.getId());
-    //     Assert.assertTrue(deletedPostcard.getDeleted());
+        // Clean up
+        PostcardDeletion deletedPostcard = validApi.cancel(postcard.getId());
+        Assert.assertTrue(deletedPostcard.getDeleted());
 
-    //     templatesApi.templateDelete(createdTemplate.getId());
-    // }
+        templatesApi.delete(createdTemplate.getId());
+    }
 
-  //   @BeforeGroups("List")
-  //   public void beforeListTests() throws ApiException {
-  //       PostcardList response = validApi.postcardsList(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
-  //       System.out.println("PRINT LIST RESPONSE");
-  //       System.out.println(response);
-  //       nextUrl = response.getNextUrl().substring(response.getNextUrl().lastIndexOf("after=") + 6);
+    @BeforeGroups("List")
+    public void beforeListTests() throws ApiException {
+        PostcardList response = validApi.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+        nextUrl = response.getNextUrl().substring(response.getNextUrl().lastIndexOf("after=") + 6);
 
-  //       PostcardList responseAfter = validApi.postcardsList(10, before, nextUrl, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
-  //       previousUrl = responseAfter.getPreviousUrl().substring(
-  //           responseAfter.getPreviousUrl().lastIndexOf("before=") + 7
-  //       );
-  //   }
+        PostcardList responseAfter = validApi.list(10, before, nextUrl, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+        previousUrl = responseAfter.getPreviousUrl().substring(
+            responseAfter.getPreviousUrl().lastIndexOf("before=") + 7
+        );
+    }
 
-  //   @Test(
-  //       enabled=true,
-  //       groups={"Integration", "List", "Postcard", "Valid"}
-  //   )
-  //   public void postcardListTest() throws ApiException {
-  //       PostcardList response = validApi.postcardsList(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+    @Test(
+        enabled=true,
+        groups={"Integration", "List", "Postcard", "Valid"}
+    )
+    public void postcardListTest() throws ApiException {
+        PostcardList response = validApi.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
 
-  //       // TODO: DXP-920
-  //       // Assert.assertNotNull(response.getData());
+        Assert.assertNotNull(response.getData());
 
-  //       // PostcardList postcardList = response.getData() || [];
-  //       // Assert.assertTrue(postcardList.size() > 0);
-  //   }
-
-  // @Test(
-  //   enabled=true,
-  //   groups={"Integration", "List", "Postcard", "Valid"}
-  // )
-  // public void postcardListTestWithAfterParam() throws ApiException {
-  //   PostcardList responseAfter = validApi.postcardsList(10, before, nextUrl, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
-
-  //   // TODO: DXP-920
-  //   // Assert.assertNotNull(responseAfter.getData());
-  //   // PostcardList postcardList2 = responseAfter.getData() || [];
-  //   // Assert.assertNotNull(postcardList2.size() > 0);
-  // }
-
-  // @Test(
-  //   enabled=true,
-  //   groups={"Integration", "List", "Postcard", "Valid"}
-  // )
-  // public void postcardListTestWithBeforeParam() throws ApiException {
-  //   PostcardList responseBefore = validApi.postcardsList(10, previousUrl, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
-
-  //   // TODO: DXP-920
-  //   // Assert.assertNotNull(responseBefore.getData());
-  //   // PostcardList postcardList3 = responseBefore.getData() || [];
-  //   // Assert.assertNotNull(postcardList3.size() > 0);
-  // }
+        List<Postcard> postcardList = response.getData();
+        Assert.assertTrue(postcardList.size() > 0);
+    }
 }
