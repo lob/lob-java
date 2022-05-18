@@ -105,17 +105,4 @@ public class PostcardsApiSpecTest {
 
         templatesApi.delete(createdTemplate.getId());
     }
-
-    @Test(
-        enabled=true,
-        groups={"Integration", "List", "Postcard", "Valid"}
-    )
-    public void postcardListTest() throws ApiException {
-        PostcardList response = validApi.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
-
-        Assert.assertNotNull(response.getData());
-
-        List<Postcard> postcardList = response.getData();
-        Assert.assertTrue(postcardList.size() > 0);
-    }
 }
