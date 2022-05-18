@@ -1,18 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.lob</groupId>
     <artifactId>lob-java</artifactId>
     <packaging>jar</packaging>
     <name>lob-java</name>
-    <version>13.0.0-rc-SNAPSHOT</version>
+    <version>13.0.0-rc</version>
     <url>https://github.com/lob/lob-java</url>
     <description>Java SDK for Lob API</description>
     <scm>
         <connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
         <developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>
         <url>https://github.com/openapitools/openapi-generator</url>
-    </scm>
+      <tag>lob-java-13.0.0-rc</tag>
+  </scm>
 
     <licenses>
         <license>
