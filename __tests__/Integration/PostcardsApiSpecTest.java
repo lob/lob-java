@@ -106,17 +106,6 @@ public class PostcardsApiSpecTest {
         templatesApi.delete(createdTemplate.getId());
     }
 
-    @BeforeGroups("List")
-    public void beforeListTests() throws ApiException {
-        PostcardList response = validApi.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
-        nextUrl = response.getNextUrl().substring(response.getNextUrl().lastIndexOf("after=") + 6);
-
-        PostcardList responseAfter = validApi.list(2, before, nextUrl, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
-        previousUrl = responseAfter.getPreviousUrl().substring(
-            responseAfter.getPreviousUrl().lastIndexOf("before=") + 7
-        );
-    }
-
     @Test(
         enabled=true,
         groups={"Integration", "List", "Postcard", "Valid"}
