@@ -4,7 +4,7 @@
     <artifactId>lob-java</artifactId>
     <packaging>jar</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
-    <version>13.0.1-rc-SNAPSHOT</version>
+    <version>13.0.1-rc</version>
     <url>https://github.com/lob/lob-java</url>
     <description>Java SDK for Lob API</description>
     
@@ -12,7 +12,7 @@
         <connection>scm:git:git@github.com:lob/lob-java.git</connection>
         <developerConnection>scm:git:git@github.com:lob/lob-java.git</developerConnection>
         <url>https://github.com/lob/lob-java</url>
-        <tag>HEAD</tag>
+        <tag>lob-java-13.0.1-rc</tag>
     </scm>
 
     <licenses>
