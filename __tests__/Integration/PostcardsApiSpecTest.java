@@ -1,7 +1,7 @@
 package Integration;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.lob.api.ApiException;
@@ -9,22 +9,22 @@ import com.lob.api.Configuration;
 import com.lob.api.client.PostcardsApi;
 import com.lob.api.client.TemplatesApi;
 
+import org.openapitools.client.model.AddressEditable;
+import org.openapitools.client.model.MailType;
 import org.openapitools.client.model.Postcard;
-import org.openapitools.client.model.PostcardList;
 import org.openapitools.client.model.PostcardDeletion;
 import org.openapitools.client.model.PostcardEditable;
+import org.openapitools.client.model.PostcardList;
+import org.openapitools.client.model.PostcardSize;
+import org.openapitools.client.model.SortBy5;
 import org.openapitools.client.model.Template;
 import org.openapitools.client.model.TemplateWritable;
-import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.PostcardSize;
-import org.openapitools.client.model.SendDate;
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.SortBy5;
-
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeGroups;
+import org.testng.annotations.Test;
 
-import Helper.*;
+import Helper.TestFixtures;
 
 public class PostcardsApiSpecTest {
     private PostcardsApi validApi = new PostcardsApi(Configuration.getConfigForIntegration());
@@ -111,7 +111,7 @@ public class PostcardsApiSpecTest {
         PostcardList response = validApi.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
         nextUrl = response.getNextUrl().substring(response.getNextUrl().lastIndexOf("after=") + 6);
 
-        PostcardList responseAfter = validApi.list(10, before, nextUrl, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+        PostcardList responseAfter = validApi.list(2, before, nextUrl, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
         previousUrl = responseAfter.getPreviousUrl().substring(
             responseAfter.getPreviousUrl().lastIndexOf("before=") + 7
         );
