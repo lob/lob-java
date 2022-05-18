@@ -12,7 +12,7 @@
         <connection>scm:git:git@github.com:lob/lob-java.git</connection>
         <developerConnection>scm:git:git@github.com:lob/lob-java.git</developerConnection>
         <url>https://github.com/lob/lob-java</url>
-        <tag>lob-java-13.0.0-rc</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <licenses>
