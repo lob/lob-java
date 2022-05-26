@@ -6,6 +6,8 @@ import org.openapitools.client.model.AddressEditable;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gson.Gson;
+
 import org.testng.annotations.*;
 import org.threeten.bp.OffsetDateTime;
 import org.testng.Assert;
@@ -36,18 +38,19 @@ public class CheckEditableTest {
     @Test(enabled=true, dataProvider = "check-editable-data-provider")
     public void checkEditableTestWithProvidedValue(String prop, Object val) throws Exception {
         CheckEditable rec = new CheckEditable();
-
+        Gson gson = new Gson();
+        
         switch (prop) {
             case "from": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setFrom(castedVal);
-                Assert.assertEquals(rec.getFrom(), castedVal.toString());
+                Assert.assertEquals(rec.getFrom(), gson.toJson(castedVal));
                 break;
             }
             case "to": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setTo(castedVal);
-                Assert.assertEquals(rec.getTo(), castedVal.toString());
+                Assert.assertEquals(rec.getTo(), gson.toJson(castedVal));
                 break;
             }
             case "bank_account": {

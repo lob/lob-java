@@ -9,6 +9,9 @@ import org.openapitools.client.model.TrackingEventNormal;
 import org.openapitools.client.model.AddressEditable;
 
 import java.util.Map;
+
+import com.google.gson.Gson;
+
 import java.util.HashMap;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.LocalDate;
@@ -72,7 +75,8 @@ public class LetterTest {
     @Test(enabled=true, dataProvider="letter-create-data-provider")
     public void letterCreateTestWithProvidedValue(String prop, Object val) throws Exception {
         Letter rec = new Letter();
-
+        Gson gson = new Gson();
+        
         switch (prop) {
             case "id": {
                 String castedVal = (String)val;
@@ -191,7 +195,7 @@ public class LetterTest {
             case "return_address": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setReturnAddress(castedVal);
-                Assert.assertEquals(rec.getReturnAddress(), castedVal.toString());
+                Assert.assertEquals(rec.getReturnAddress(), gson.toJson(castedVal));
                 break;
             }
             case "mail_type": {

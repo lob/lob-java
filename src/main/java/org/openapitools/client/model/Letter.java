@@ -36,6 +36,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 
+import com.google.gson.Gson;
 /**
  * Letter
  */
@@ -522,12 +523,14 @@ public class Letter {
   }
 
   public void setReturnAddress(String returnAddress) {
+    
     this.returnAddress = returnAddress;
   }
   
   
   public void setReturnAddress(AddressEditable returnAddress) {
-    this.returnAddress = returnAddress.toString();
+    Gson gson = new Gson();
+    this.returnAddress = gson.toJson(returnAddress);
   }
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
 
@@ -674,12 +677,14 @@ public class Letter {
   }
 
   public void setReturnEnvelope(String returnEnvelope) {
+    
     this.returnEnvelope = returnEnvelope;
   }
   
   
   public void setReturnEnvelope(Boolean returnEnvelope) {
-    this.returnEnvelope = returnEnvelope.toString();
+    Gson gson = new Gson();
+    this.returnEnvelope = gson.toJson(returnEnvelope);
   }
   public static final String SERIALIZED_NAME_PERFORATED_PAGE = "perforated_page";
 

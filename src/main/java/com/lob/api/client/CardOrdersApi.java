@@ -193,6 +193,8 @@ public class CardOrdersApi {
     /**
      * Build call for get
      * @param cardId The ID of the card to which the card orders belong. (required)
+     * @param limit How many results to return. (optional, default to 10)
+     * @param offset An integer that designates the offset at which to begin returning results. Defaults to 0. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -203,7 +205,7 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCall(String cardId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String cardId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -215,6 +217,14 @@ public class CardOrdersApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -235,7 +245,7 @@ public class CardOrdersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValidateBeforeCall(String cardId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String cardId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'cardId' is set
         if (cardId == null) {
@@ -243,7 +253,7 @@ public class CardOrdersApi {
         }
         
 
-        okhttp3.Call localVarCall = getCall(cardId, _callback);
+        okhttp3.Call localVarCall = getCall(cardId, limit, offset, _callback);
         return localVarCall;
 
     }
@@ -252,6 +262,8 @@ public class CardOrdersApi {
      * get
      * Retrieves the card orders associated with the given card id.
      * @param cardId The ID of the card to which the card orders belong. (required)
+     * @param limit How many results to return. (optional, default to 10)
+     * @param offset An integer that designates the offset at which to begin returning results. Defaults to 0. (optional, default to 0)
      * @return CardOrderList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -261,9 +273,9 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public CardOrderList get(String cardId) throws ApiException {
+    public CardOrderList get(String cardId, Integer limit, Integer offset) throws ApiException {
         try {
-            ApiResponse<CardOrderList> localVarResp = getWithHttpInfo(cardId);
+            ApiResponse<CardOrderList> localVarResp = getWithHttpInfo(cardId, limit, offset);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -274,6 +286,8 @@ public class CardOrdersApi {
      * get
      * Retrieves the card orders associated with the given card id.
      * @param cardId The ID of the card to which the card orders belong. (required)
+     * @param limit How many results to return. (optional, default to 10)
+     * @param offset An integer that designates the offset at which to begin returning results. Defaults to 0. (optional, default to 0)
      * @return ApiResponse&lt;CardOrderList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -283,9 +297,9 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CardOrderList> getWithHttpInfo(String cardId) throws ApiException {
+    public ApiResponse<CardOrderList> getWithHttpInfo(String cardId, Integer limit, Integer offset) throws ApiException {
         try {
-            okhttp3.Call localVarCall = getValidateBeforeCall(cardId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(cardId, limit, offset, null);
             Type localVarReturnType = new TypeToken<CardOrderList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -297,6 +311,8 @@ public class CardOrdersApi {
      * get (asynchronously)
      * Retrieves the card orders associated with the given card id.
      * @param cardId The ID of the card to which the card orders belong. (required)
+     * @param limit How many results to return. (optional, default to 10)
+     * @param offset An integer that designates the offset at which to begin returning results. Defaults to 0. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -307,9 +323,9 @@ public class CardOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAsync(String cardId, final ApiCallback<CardOrderList> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String cardId, Integer limit, Integer offset, final ApiCallback<CardOrderList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValidateBeforeCall(cardId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(cardId, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<CardOrderList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

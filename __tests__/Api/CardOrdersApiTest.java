@@ -66,8 +66,8 @@ public class CardOrdersApiTest {
         fakeCardOrders.setObject("list");
         fakeCardOrders.setCount(data.size());
         
-        when(CardOrderApiMock.get("co_fakeId")).thenReturn(fakeCardOrders);
-        CardOrderList response = CardOrderApiMock.get("co_fakeId");
+        when(CardOrderApiMock.get("co_fakeId", null, null)).thenReturn(fakeCardOrders);
+        CardOrderList response = CardOrderApiMock.get("co_fakeId", null, null);
 
         Assert.assertEquals(fakeCardOrders.getCount(), response.getCount()); 
     }
@@ -77,8 +77,8 @@ public class CardOrdersApiTest {
         CardOrdersApi cardOrderApiMock = mock(CardOrdersApi.class);
         ApiException error = new ApiException("error reported by API");
         
-        when(cardOrderApiMock.get(null)).thenThrow(error);
-        cardOrderApiMock.get(null);
+        when(cardOrderApiMock.get(null, null, null)).thenThrow(error);
+        cardOrderApiMock.get(null, null, null);
         
         Assert.fail("This should not happen");
     }
@@ -88,8 +88,8 @@ public class CardOrdersApiTest {
         CardOrdersApi cardOrderApiMock = mock(CardOrdersApi.class);
         ApiException error = new ApiException("error", null, 500, null, "error reported by API");
         
-        when(cardOrderApiMock.get(null)).thenThrow(error);
-        cardOrderApiMock.get(null);
+        when(cardOrderApiMock.get(null, null, null)).thenThrow(error);
+        cardOrderApiMock.get(null, null, null);
         
         Assert.fail("This should not happen");   
     }

@@ -3,6 +3,8 @@ package Model;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gson.Gson;
+
 import org.openapitools.client.model.AddressEditable;
 import org.openapitools.client.model.MailType;
 import org.openapitools.client.model.SelfMailerEditable;
@@ -37,18 +39,19 @@ public class SelfMailerEditableTest {
     @Test(enabled=true, dataProvider = "self-mailer-editable-data-provider")
     public void selfMailerEditableTestWithProvidedValue(String prop, Object val) throws Exception {
         SelfMailerEditable rec = new SelfMailerEditable();
+        Gson gson = new Gson();
 
         switch (prop) {
             case "to": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setTo(castedVal);
-                Assert.assertEquals(rec.getTo(), castedVal.toString());
+                Assert.assertEquals(rec.getTo(), gson.toJson(castedVal));
                 break;
             }
             case "from": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setFrom(castedVal);
-                Assert.assertEquals(rec.getFrom(), castedVal.toString());
+                Assert.assertEquals(rec.getFrom(), gson.toJson(castedVal));
                 break;
             }
             case "size": {

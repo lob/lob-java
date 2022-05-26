@@ -8,6 +8,8 @@ import org.openapitools.client.model.AddressEditable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import org.testng.annotations.*;
 import org.testng.Assert;
 
@@ -45,7 +47,8 @@ public class LetterEditableTest {
     @Test(enabled=true, dataProvider="letter-editable-data-provider")
     public void letterEditableTestWithProvidedValue(String prop, Object val) throws Exception {
         LetterEditable rec = new LetterEditable();
-
+        Gson gson = new Gson();
+        
         switch (prop) {
             case "mail_type": {
                 MailType castedVal = (MailType)val;
@@ -92,13 +95,13 @@ public class LetterEditableTest {
             case "to": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setTo(castedVal);
-                Assert.assertEquals(rec.getTo(), castedVal.toString());
+                Assert.assertEquals(rec.getTo(), gson.toJson(castedVal));
                 break;
             }
             case "from": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setFrom(castedVal);
-                Assert.assertEquals(rec.getFrom(), castedVal.toString());
+                Assert.assertEquals(rec.getFrom(), gson.toJson(castedVal));
                 break;
             }
             case "file": {

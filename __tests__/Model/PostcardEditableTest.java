@@ -9,6 +9,8 @@ import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gson.Gson;
+
 import org.testng.annotations.*;
 import org.testng.Assert;
 
@@ -36,18 +38,18 @@ public class PostcardEditableTest {
     @Test(enabled=true, dataProvider = "postcard-editable-data-provider")
     public void postcardEditableTestWithProvidedValue(String prop, Object val) throws Exception {
         PostcardEditable rec = new PostcardEditable();
-
+        Gson gson = new Gson();
         switch (prop) {
             case "to": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setTo(castedVal);
-                Assert.assertEquals(rec.getTo(), castedVal.toString());
+                Assert.assertEquals(rec.getTo(), gson.toJson(castedVal));
                 break;
             }
             case "from": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setFrom(castedVal);
-                Assert.assertEquals(rec.getFrom(), castedVal.toString());
+                Assert.assertEquals(rec.getFrom(), gson.toJson(castedVal));
                 break;
             }
             case "size": {

@@ -100,7 +100,7 @@ public class CardOrderApiSpecTest {
         groups={"Integration", "Get", "Card Order", "Valid"}
     )
     public void cardOrderRetrieveTest() throws ApiException {
-        CardOrderList response = validApi.get(dummyCard.getId());
+        CardOrderList response = validApi.get(dummyCard.getId(), 10, null);
  
          Assert.assertTrue(response.getCount() > 0);
      }

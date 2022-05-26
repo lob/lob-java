@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+
 import org.threeten.bp.OffsetDateTime;
 import org.openapitools.client.model.AddressEditable;
 import org.openapitools.client.model.MailType;
@@ -47,7 +49,7 @@ public class SelfMailerTest {
     @Test(enabled=true, dataProvider = "self-mailer-data-provider")
     public void selfMailerTestWithProvidedValue(String prop, Object val) throws Exception {
         SelfMailer rec = new SelfMailer();
-
+        Gson gson = new Gson();
         switch (prop) {
             case "id": {
                 String castedVal = (String)val;
@@ -58,13 +60,13 @@ public class SelfMailerTest {
             case "to": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setTo(castedVal);
-                Assert.assertEquals(rec.getTo(), castedVal.toString());
+                Assert.assertEquals(rec.getTo(), gson.toJson(castedVal));
                 break;
             }
             case "from": {
                 AddressEditable castedVal = (AddressEditable)val;
                 rec.setFrom(castedVal);
-                Assert.assertEquals(rec.getFrom(), castedVal.toString());
+                Assert.assertEquals(rec.getFrom(), gson.toJson(castedVal));
                 break;
             }
             case "size": {
