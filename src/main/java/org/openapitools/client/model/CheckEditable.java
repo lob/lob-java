@@ -29,6 +29,7 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 
+import com.google.gson.Gson;
 /**
  * CheckEditable
  */
@@ -44,12 +45,14 @@ public class CheckEditable {
   }
 
   public void setFrom(String from) {
+    
     this.from = from;
   }
   
   
   public void setFrom(AddressEditable from) {
-    this.from = from.toString();
+    Gson gson = new Gson();
+    this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_TO = "to";
 
@@ -61,12 +64,14 @@ public class CheckEditable {
   }
 
   public void setTo(String to) {
+    
     this.to = to;
   }
   
   
   public void setTo(AddressEditable to) {
-    this.to = to.toString();
+    Gson gson = new Gson();
+    this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_BANK_ACCOUNT = "bank_account";
 

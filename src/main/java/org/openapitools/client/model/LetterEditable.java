@@ -24,16 +24,52 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.client.model.LetterCustomEnvelope;
 import org.openapitools.client.model.MailType;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.threeten.bp.OffsetDateTime;
 
+import com.google.gson.Gson;
 /**
  * LetterEditable
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LetterEditable {
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  
+
+  private String description;
+  /**
+  * An internal description that identifies this resource. Must be no longer than 255 characters. 
+  * @return description
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "An internal description that identifies this resource. Must be no longer than 255 characters. ")
+  
+  public String getDescription() {
+      return description;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Map<String, String> metadata = null;
+  public Map<String, String> getMetadata() {     
+    if (this.metadata == null) {
+      this.metadata = new HashMap<String,String>();
+    }
+    return this.metadata; 
+  }
+
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
 
   @SerializedName(SERIALIZED_NAME_MAIL_TYPE)
@@ -51,6 +87,48 @@ public class LetterEditable {
   
   public MailType getMailType() {
       return mailType;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_MERGE_VARIABLES = "merge_variables";
+
+  @SerializedName(SERIALIZED_NAME_MERGE_VARIABLES)
+  
+
+  private Object mergeVariables;
+  /**
+  * You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: `{{variable_name}}`, pass in `{\"variable_name\": \"Harry\"}` to render `Harry`. `merge_variables` must be an object. Any type of value is accepted as long as the object is valid JSON; you can use `strings`, `numbers`, `booleans`, `arrays`, `objects`, or `null`. The max length of the object is 25,000 characters. If you call `JSON.stringify` on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: `!`, `\"`, `#`, `%`, `&`, `'`, `(`, `)`, `*`, `+`, `,`, `/`, `;`, `<`, `=`, `>`, `@`, `[`, `\\`, `]`, `^`, `` ` ``, `{`, `|`, `}`, `~`. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.
+  * @return mergeVariables
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: `{{variable_name}}`, pass in `{\"variable_name\": \"Harry\"}` to render `Harry`. `merge_variables` must be an object. Any type of value is accepted as long as the object is valid JSON; you can use `strings`, `numbers`, `booleans`, `arrays`, `objects`, or `null`. The max length of the object is 25,000 characters. If you call `JSON.stringify` on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: `!`, `\"`, `#`, `%`, `&`, `'`, `(`, `)`, `*`, `+`, `,`, `/`, `;`, `<`, `=`, `>`, `@`, `[`, `\\`, `]`, `^`, `` ` ``, `{`, `|`, `}`, `~`. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.")
+  
+  public Object getMergeVariables() {
+      return mergeVariables;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_SEND_DATE = "send_date";
+
+  @SerializedName(SERIALIZED_NAME_SEND_DATE)
+  
+
+  private OffsetDateTime sendDate;
+  /**
+  * A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the `send_date` has passed, the mailpiece can be canceled. If a date in the format `2017-11-01` is passed, it will evaluate to midnight UTC of that date (`2017-11-01T00:00:00.000Z`). If a datetime is passed, that exact time will be used. A `send_date` passed with no time zone will default to UTC, while a `send_date` passed with a time zone will be converted to UTC.
+  * @return sendDate
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the `send_date` has passed, the mailpiece can be canceled. If a date in the format `2017-11-01` is passed, it will evaluate to midnight UTC of that date (`2017-11-01T00:00:00.000Z`). If a datetime is passed, that exact time will be used. A `send_date` passed with no time zone will default to UTC, while a `send_date` passed with a time zone will be converted to UTC.")
+  
+  public OffsetDateTime getSendDate() {
+      return sendDate;
   }
   
   
@@ -179,12 +257,14 @@ public class LetterEditable {
   }
 
   public void setReturnEnvelope(String returnEnvelope) {
+    
     this.returnEnvelope = returnEnvelope;
   }
   
   
   public void setReturnEnvelope(Boolean returnEnvelope) {
-    this.returnEnvelope = returnEnvelope.toString();
+    Gson gson = new Gson();
+    this.returnEnvelope = gson.toJson(returnEnvelope);
   }
   public static final String SERIALIZED_NAME_PERFORATED_PAGE = "perforated_page";
 
@@ -238,12 +318,14 @@ public class LetterEditable {
   }
 
   public void setTo(String to) {
+    
     this.to = to;
   }
   
   
   public void setTo(AddressEditable to) {
-    this.to = to.toString();
+    Gson gson = new Gson();
+    this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_FROM = "from";
 
@@ -255,12 +337,14 @@ public class LetterEditable {
   }
 
   public void setFrom(String from) {
+    
     this.from = from;
   }
   
   
   public void setFrom(AddressEditable from) {
-    this.from = from.toString();
+    Gson gson = new Gson();
+    this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_FILE = "file";
 
@@ -387,26 +471,43 @@ public class LetterEditable {
   
   
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
 
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  
-
-  private String description;
-  /**
-  * An internal description that identifies this resource. Must be no longer than 255 characters. 
-  * @return description
-  **/
-  
-  @javax.annotation.Nullable
-  
-  @ApiModelProperty(value = "An internal description that identifies this resource. Must be no longer than 255 characters. ")
-  
-  public String getDescription() {
-      return description;
+  /*
+  public LetterEditable description(String description) {
+    
+    this.description = description;
+    return this;
   }
-  
-  
+  */
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+
+  /*
+  public LetterEditable metadata(Map<String, String> metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+  */
+
+  public LetterEditable putMetadataItem(String key, String metadataItem) {
+    if (this.metadata == null) {
+      this.metadata = new HashMap<String, String>();
+    }
+    this.metadata.put(key, metadataItem);
+    return this;
+  }
+
+
+  public void setMetadata(Map<String, String> metadata) {
+    this.metadata = metadata;
+  }
+
 
 
   /*
@@ -420,6 +521,36 @@ public class LetterEditable {
 
   public void setMailType(MailType mailType) {
     this.mailType = mailType;
+  }
+
+
+
+  /*
+  public LetterEditable mergeVariables(Object mergeVariables) {
+    
+    this.mergeVariables = mergeVariables;
+    return this;
+  }
+  */
+
+
+  public void setMergeVariables(Object mergeVariables) {
+    this.mergeVariables = mergeVariables;
+  }
+
+
+
+  /*
+  public LetterEditable sendDate(OffsetDateTime sendDate) {
+    
+    this.sendDate = sendDate;
+    return this;
+  }
+  */
+
+
+  public void setSendDate(OffsetDateTime sendDate) {
+    this.sendDate = sendDate;
   }
 
 
@@ -603,21 +734,6 @@ public class LetterEditable {
 
 
 
-  /*
-  public LetterEditable description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-  */
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -627,7 +743,11 @@ public class LetterEditable {
       return false;
     }
     LetterEditable letterEditable = (LetterEditable) o;
-    return Objects.equals(this.mailType, letterEditable.mailType) &&
+    return Objects.equals(this.description, letterEditable.description) &&
+        Objects.equals(this.metadata, letterEditable.metadata) &&
+        Objects.equals(this.mailType, letterEditable.mailType) &&
+        Objects.equals(this.mergeVariables, letterEditable.mergeVariables) &&
+        Objects.equals(this.sendDate, letterEditable.sendDate) &&
         Objects.equals(this.color, letterEditable.color) &&
         Objects.equals(this.doubleSided, letterEditable.doubleSided) &&
         Objects.equals(this.addressPlacement, letterEditable.addressPlacement) &&
@@ -639,8 +759,7 @@ public class LetterEditable {
         Objects.equals(this.file, letterEditable.file) &&
         Objects.equals(this.extraService, letterEditable.extraService) &&
         Objects.equals(this.cards, letterEditable.cards) &&
-        Objects.equals(this.billingGroupId, letterEditable.billingGroupId) &&
-        Objects.equals(this.description, letterEditable.description);
+        Objects.equals(this.billingGroupId, letterEditable.billingGroupId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -649,7 +768,7 @@ public class LetterEditable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(mailType, color, doubleSided, addressPlacement, returnEnvelope, perforatedPage, customEnvelope, to, from, file, extraService, cards, billingGroupId, description);
+    return Objects.hash(description, metadata, mailType, mergeVariables, sendDate, color, doubleSided, addressPlacement, returnEnvelope, perforatedPage, customEnvelope, to, from, file, extraService, cards, billingGroupId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -663,7 +782,11 @@ public class LetterEditable {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    mailType: ").append(toIndentedString(mailType)).append("\n");
+    sb.append("    mergeVariables: ").append(toIndentedString(mergeVariables)).append("\n");
+    sb.append("    sendDate: ").append(toIndentedString(sendDate)).append("\n");
     sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    doubleSided: ").append(toIndentedString(doubleSided)).append("\n");
     sb.append("    addressPlacement: ").append(toIndentedString(addressPlacement)).append("\n");
@@ -676,7 +799,6 @@ public class LetterEditable {
     sb.append("    extraService: ").append(toIndentedString(extraService)).append("\n");
     sb.append("    cards: ").append(toIndentedString(cards)).append("\n");
     sb.append("    billingGroupId: ").append(toIndentedString(billingGroupId)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
