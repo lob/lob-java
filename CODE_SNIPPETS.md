@@ -21,22 +21,22 @@ curl https://api.lob.com/v1/addresses \
 
 ```java
 try {
-    AddressEditable address = new AddressEditable();
-    address.setName("Harry Zhang");
-    address.setCompany("Lob");
-    address.setEmail("harry@lob.com");
-    address.setPhone("5555555555");
-    address.setAddressLine1("210 King St");
-    address.setAddressLine2("# 6100");
-    address.setAddressCity("San Francisco");
-    address.setAddressState("CA");
-    address.setAddressZip("94107");
-    address.setAddressCountry(CountryExtended.US);
+        AddressEditable address = new AddressEditable();
+        address.setName("Harry Zhang");
+        address.setCompany("Lob");
+        address.setEmail("harry@lob.com");
+        address.setPhone("5555555555");
+        address.setAddressLine1("210 King St");
+        address.setAddressLine2("# 6100");
+        address.setAddressCity("San Francisco");
+        address.setAddressState("CA");
+        address.setAddressZip("94107");
+        address.setAddressCountry(CountryExtended.US);
 
-    apiInstance.addressCreate(address);
-} catch (ApiException e) {
-    e.printStackTrace();
-}
+        apiInstance.addressCreate(address);
+        } catch (ApiException e) {
+        e.printStackTrace();
+        }
 ```
 
 ### Retrieve
@@ -47,7 +47,7 @@ curl https://api.lob.com/v1/addresses/adr_fa85158b26c3eb7c \
 
 ```java
 try {
-    Address address = apiInstance.addressRetrieve("adr_fa85158b26c3eb7c");
+    Address address = apiInstance.get("adr_fa85158b26c3eb7c");
 } catch (ApiException e) {
     e.printStackTrace();
 }
@@ -55,13 +55,13 @@ try {
 
 ### List
 ```bash
-curl -X GET "https://api.lob.com/v1/addresses?limit=2" \
+curl -X GET "https://api.lob.com/v1/addresses/?limit=2" \
   -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
 ```
 
 ```java
 try {
-    AddressList addresses = apiInstance.addressesList(2, null, null, null, null, null);
+    AddressList addresses = apiInstance.list(2, null, null, null, null, null);
 } catch (ApiException e) {
     e.printStackTrace();
 }
@@ -75,7 +75,7 @@ curl -X DELETE https://api.lob.com/v1/addresses/adr_43769b47aed248c2 \
 
 ```java
 try {
-    AddressDeletion address = apiInstance.addressDelete("adr_fa85158b26c3eb7c");
+    AddressDeletion address = apiInstance.delete("adr_fa85158b26c3eb7c");
 } catch (ApiException e) {
     e.printStackTrace();
 }
@@ -101,7 +101,46 @@ curl https://api.lob.com/v1/postcards \
 ```
 
 ```java
+try {
+    AddressEditable toAddress = new AddressEditable();
+    toAddress.setDescription("Harry - Office");
+    toAddress.setName("Harry Zhang");
+    toAddress.setCompany("Lob");
+    toAddress.setEmail("harry@lob.com");
+    toAddress.setPhone("5555555555");
+    toAddress.setAddressLine1("210 King St");
+    toAddress.setAddressLine2("# 6100");
+    toAddress.setAddressCity("San Francisco");
+    toAddress.setAddressState("CA");
+    toAddress.setAddressZip("94107");
+    toAddress.setAddressCountry(CountryExtended.US);
 
+    AddressEditable fromAddress = new AddressEditable();
+    fromAddress.setDescription("Harry - Office");
+    fromAddress.setName("Harry Zhang");
+    fromAddress.setCompany("Lob");
+    fromAddress.setEmail("harry@lob.com");
+    fromAddress.setPhone("5555555555");
+    fromAddress.setAddressLine1("210 King St");
+    fromAddress.setAddressLine2("# 6100");
+    fromAddress.setAddressCity("San Francisco");
+    fromAddress.setAddressState("CA");
+    fromAddress.setAddressZip("94107");
+    fromAddress.setAddressCountry(CountryExtended.US);
+
+    PostcardEditable postcardRaw = new PostcardEditable();
+    postcardRaw.setDescription("demo");
+    postcardRaw.setTo(toAddress);
+    postcardRaw.setFrom(fromAddress);
+    postcardRaw.setFront("tmpl_a1234dddg");
+    postcardRaw.setBack("tmpl_a1234dddg");
+    postcardRaw.setSize(PostcardSize._6X9);
+    postcardRaw.setMailType(MailType.FIRST_CLASS);
+
+    Postcard postcard = apiInstance.create(postcardRaw, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Retrieve
@@ -111,7 +150,11 @@ curl https://api.lob.com/v1/postcards/psc_5c002b86ce47537a \
 ```
 
 ```java
-
+try {
+    Postcard postcard = apiInstance.get("psc_208e45e48d271294");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### List
@@ -121,7 +164,11 @@ curl -X GET "https://api.lob.com/v1/postcards?limit=2" \
 ```
 
 ```java
-
+try {
+    PostcardList postcards = apiInstance.list(2, null, null, null, null, null, null, null, null, null, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Cancel
@@ -131,7 +178,11 @@ curl -X DELETE https://api.lob.com/v1/postcards/psc_5c002b86ce47537a \
 ```
 
 ```java
-
+try {
+    PostcardDeletion address = apiInstance.cancel("psc_208e45e48d271294");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## SelfMailers Api
@@ -153,7 +204,41 @@ curl https://api.lob.com/v1/self_mailers \
 ```
 
 ```java
+try {
+    AddressEditable toAddress = new AddressEditable();
+    toAddress.setDescription("Harry - Office");
+    toAddress.setName("Harry Zhang");
+    toAddress.setCompany("Lob");
+    toAddress.setEmail("harry@lob.com");
+    toAddress.setPhone("5555555555");
+    toAddress.setAddressLine1("210 King St");
+    toAddress.setAddressLine2("# 6100");
+    toAddress.setAddressCity("San Francisco");
+    toAddress.setAddressState("CA");
+    toAddress.setAddressZip("94107");
+    toAddress.setAddressCountry(CountryExtended.US);
 
+    AddressEditable fromAddress = new AddressEditable();
+    fromAddress.setDescription("Harry - Office");
+    fromAddress.setName("Harry Zhang");
+    fromAddress.setCompany("Lob");
+    fromAddress.setEmail("harry@lob.com");
+    fromAddress.setPhone("5555555555");
+    fromAddress.setAddressLine1("210 King St");
+    fromAddress.setAddressLine2("# 6100");
+    fromAddress.setAddressCity("San Francisco");
+    fromAddress.setAddressState("CA");
+    fromAddress.setAddressZip("94107");
+    fromAddress.setAddressCountry(CountryExtended.US);
+
+    SelfMailerEditable mailerRaw = new SelfMailerEditable();
+    mailerRaw.setTo(toAddress);
+    mailerRaw.setFrom(objectMapper.writeValueAsString(fromAddress));
+
+    SelfMailer selfMailer = apiInstance.create(mailerRaw, null);
+} catch (ApiException | JsonProcessingException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Retrieve
@@ -163,7 +248,11 @@ curl -X GET "https://api.lob.com/v1/self_mailers/sfm_8ffbe811dea49dcf" \
 ```
 
 ```java
-
+try {
+    SelfMailer selfMailer = apiInstance.get("sfm_8ffbe811dea49dcf");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### List
@@ -173,7 +262,11 @@ curl -X GET "https://api.lob.com/v1/self_mailers?limit=2" \
 ```
 
 ```java
-
+try {
+    SelfMailerList selfMailer = apiInstance.list(2, null, null, null, null, null, null, null, null, null, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Delete
@@ -183,7 +276,11 @@ curl -X DELETE https://api.lob.com/v1/self_mailers/sfm_8ffbe811dea49dcf \
 ```
 
 ```java
-
+try {
+    SelfMailerDeletion selfMailer = apiInstance.delete("sfm_8ffbe811dea49dcf");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## Letters Api
@@ -208,7 +305,43 @@ curl https://api.lob.com/v1/letters \
 ```
 
 ```java
+try {
+    AddressEditable addressTo = new AddressEditable();
+    addressTo.setName("Harry Zhang");
+    addressTo.setCompany("Lob");
+    addressTo.setEmail("harry@lob.com");
+    addressTo.setPhone("5555555555");
+    addressTo.setAddressLine1("210 King St");
+    addressTo.setAddressLine2("# 6100");
+    addressTo.setAddressCity("San Francisco");
+    addressTo.setAddressState("CA");
+    addressTo.setAddressZip("94107");
+    addressTo.setAddressCountry(CountryExtended.US);
 
+    AddressEditable addressFrom = new AddressEditable();
+    addressFrom.setName("Harry Zhang");
+    addressFrom.setCompany("Lob");
+    addressFrom.setEmail("harry@lob.com");
+    addressFrom.setPhone("5555555555");
+    addressFrom.setAddressLine1("210 King St");
+    addressFrom.setAddressLine2("# 6100");
+    addressFrom.setAddressCity("San Francisco");
+    addressFrom.setAddressState("CA");
+    addressFrom.setAddressZip("94107");
+    addressFrom.setAddressCountry(CountryExtended.US);
+
+    LetterEditable letterRaw = new LetterEditable();
+    letterRaw.setDescription("demo");
+    letterRaw.setTo(addressTo);
+    letterRaw.setFrom(addressFrom);
+    letterRaw.setFile("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf");
+    letterRaw.setColor(true);
+    letterRaw.setExtraService(LetterEditable.ExtraServiceEnum.CERTIFIED);
+
+    Letter letter = apiInstance.create(letterRaw, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Retrieve
@@ -218,7 +351,11 @@ curl https://api.lob.com/v1/letters/ltr_4868c3b754655f90 \
 ```
 
 ```java
-
+try {
+    Letter letter = apiInstance.get("ltr_4868c3b754655f90");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### List
@@ -228,7 +365,11 @@ curl -X GET "https://api.lob.com/v1/letters?limit=2" \
 ```
 
 ```java
-
+try {
+    LetterList letters = apiInstance.list(2, null, null, null, null, null, null, null, null, null, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Cancel
@@ -238,7 +379,11 @@ curl -X DELETE https://api.lob.com/v1/letters/ltr_4868c3b754655f90 \
 ```
 
 ```java
-
+try {
+    LetterDeletion letter = apiInstance.cancel("ltr_4868c3b754655f90");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## Checks Api
@@ -264,7 +409,41 @@ curl https://api.lob.com/v1/checks \
 ```
 
 ```java
+try {
+    AddressEditable addressTo = new AddressEditable();
+    addressTo.setName("Harry Zhang");
+    addressTo.setCompany("Lob");
+    addressTo.setEmail("harry@lob.com");
+    addressTo.setPhone("5555555555");
+    addressTo.setAddressLine1("210 King St");
+    addressTo.setAddressLine2("# 6100");
+    addressTo.setAddressCity("San Francisco");
+    addressTo.setAddressState("CA");
+    addressTo.setAddressZip("94107");
+    addressTo.setAddressCountry(CountryExtended.US);
 
+    AddressEditable addressFrom = new AddressEditable();
+    addressFrom.setName("Harry Zhang");
+    addressFrom.setCompany("Lob");
+    addressFrom.setEmail("harry@lob.com");
+    addressFrom.setPhone("5555555555");
+    addressFrom.setAddressLine1("210 King St");
+    addressFrom.setAddressLine2("# 6100");
+    addressFrom.setAddressCity("San Francisco");
+    addressFrom.setAddressState("CA");
+    addressFrom.setAddressZip("94107");
+    addressFrom.setAddressCountry(CountryExtended.US);
+
+    CheckEditable checkRaw = new CheckEditable();
+    checkRaw.setFrom(addressFrom);
+    checkRaw.setTo(addressTo);
+    checkRaw.setAmount(100f);
+    checkRaw.setBankAccount("bank_8cad8df5354d33f");
+
+    Check check = apiInstance.create(checkRaw, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Retrieve
@@ -274,7 +453,11 @@ curl https://api.lob.com/v1/checks/chk_534f10783683daa0 \
 ```
 
 ```java
-
+try {
+    Check check = apiInstance.get("chk_534f10783683daa0");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### List
@@ -284,7 +467,11 @@ curl -X GET "https://api.lob.com/v1/checks?limit=2" \
 ```
 
 ```java
-
+try {
+    CheckList checks = apiInstance.list(2, null, null, null, null, null, null, null, null, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Cancel
@@ -294,7 +481,11 @@ curl -X DELETE https://api.lob.com/v1/checks/chk_534f10783683daa0 \
 ```
 
 ```java
-
+try {
+    CheckDeletion check = apiInstance.cancel("chk_534f10783683daa0");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## BankAccounts Api
@@ -311,7 +502,18 @@ curl https://api.lob.com/v1/bank_accounts \
 ```
 
 ```java
+try {
+    BankAccountWritable accountRaw = new BankAccountWritable();
+    accountRaw.setDescription("Test Bank Account");
+    accountRaw.setRoutingNumber("322271627");
+    accountRaw.setAccountNumber("123456789");
+    accountRaw.setSignatory("Jane Doe");
+    accountRaw.setAccountType(BankTypeEnum.INDIVIDUAL);
 
+    BankAccount account = apiInstance.create(accountRaw);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Retrieve
@@ -321,7 +523,11 @@ curl https://api.lob.com/v1/bank_accounts/bank_8cad8df5354d33f \
 ```
 
 ```java
-
+try {
+    BankAccount account = apiInstance.get("bank_8cad8df5354d33f");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Verify
@@ -333,7 +539,14 @@ curl https://api.lob.com/v1/bank_accounts/bank_dfceb4a2a05b57e/verify \
 ```
 
 ```java
-
+try {
+    BankAccountVerify verification = new BankAccountVerify();
+    verification.addAmountsItem(11);
+    verification.addAmountsItem(35);
+    BankAccount account = apiInstance.verify("bank_8cad8df5354d33f", verification);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### List
@@ -343,7 +556,11 @@ curl -X GET "https://api.lob.com/v1/bank_accounts?limit=2" \
 ```
 
 ```java
-
+try {
+    BankAccountList accounts = apiInstance.list(2, null, null, null, null, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Delete
@@ -353,7 +570,11 @@ curl -X DELETE https://api.lob.com/v1/bank_accounts/bank_3e64d9904356b20 \
 ```
 
 ```java
-
+try {
+    BankAccountDeletion account = apiInstance.delete("bank_8cad8df5354d33f");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## Templates Api
@@ -367,7 +588,7 @@ curl https://api.lob.com/v1/templates \
 ```
 
 ```java
-
+This feature is not currently supported by this library.
 ```
 
 ### Retrieve
@@ -377,7 +598,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 ```
 
 ```java
-
+This feature is not currently supported by this library.
 ```
 
 ### List
@@ -387,7 +608,7 @@ curl -X GET "https://api.lob.com/v1/templates?limit=2" \
 ```
 
 ```java
-
+This feature is not currently supported by this library.
 ```
 
 ### Update
@@ -399,7 +620,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 ```
 
 ```java
-
+This feature is not currently supported by this library.
 ```
 
 ### Delete
@@ -409,7 +630,7 @@ curl -X DELETE https://api.lob.com/v1/templates/tmpl_df934eeda694203 \
 ```
 
 ```java
-
+This feature is not currently supported by this library.
 ```
 
 ## TemplateVersions Api
@@ -423,7 +644,7 @@ curl https://api.lob.com/v1/templates/tmpl_4aa14648113e45b/versions \
 ```
 
 ```java
-
+This feature is not currently supported by this library.
 ```
 
 ### Retrieve
@@ -433,7 +654,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121/versions/vrsn_534e339
 ```
 
 ```java
-
+This feature is not currently supported by this library.
 ```
 
 ### List
@@ -443,7 +664,7 @@ curl -X GET "https://api.lob.com/v1/templates/tmpl_ea6e6a1abf01703/versions?limi
 ```
 
 ```java
-
+This feature is not currently supported by this library.
 ```
 
 ### Update
@@ -454,7 +675,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121/versions/vrsn_534e339
 ```
 
 ```java
-
+This feature is not currently supported by this library.
 ```
 
 ### Delete
@@ -464,7 +685,7 @@ curl -X DELETE https://api.lob.com/v1/templates/tmpl_4aa14648113e45b/versions/vr
 ```
 
 ```java
-
+This feature is not currently supported by this library.
 ```
 
 ## UsVerifications Api
@@ -481,7 +702,19 @@ curl https://api.lob.com/v1/bulk/us_verifications \
 ```
 
 ```java
+try {
+    MultipleComponentsList bulkVerify = new MultipleComponentsList();
+    MultipleComponents address = new MultipleComponents();
+    address.setPrimaryLine("210 King Street");
+    address.setCity("San Francisco");
+    address.setState("CA");
+    address.setZipCode("94107");
 
+    bulkVerify.addAddressesItem(address);
+    apiInstance.verifyBulk(bulkVerify, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Single Verify
@@ -495,7 +728,17 @@ curl https://api.lob.com/v1/us_verifications \
 ```
 
 ```java
+try {
+    UsVerificationsWritable singleVerify = new UsVerificationsWritable();
+    singleVerify.setPrimaryLine("210 King Street");
+    singleVerify.setCity("San Francisco");
+    singleVerify.setState("CA");
+    singleVerify.setZipCode("94107");
 
+    UsVerification verified = apiInstance.verifySingle(singleVerify, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## USAutoCompletions Api
@@ -511,7 +754,17 @@ curl https://api.lob.com/v1/us_autocompletions \
 ```
 
 ```java
+try {
+    UsAutocompletionsWritable autoCompletionWritable = new UsAutocompletionsWritable();
+    autoCompletionWritable.setAddressPrefix("185 B");
+    autoCompletionWritable.setCity("San Francisco");
+    autoCompletionWritable.setState("CA");
+    autoCompletionWritable.setZipCode("94107");
 
+    apiInstance.autocomplete(autoCompletionWritable);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## Reverse Geocode Lookups Api
@@ -525,7 +778,15 @@ curl https://api.lob.com/v1/us_reverse_geocode_lookups \
 ```
 
 ```java
+try {
+    Location location = new Location();
+    location.setLatitude(37.7749f);
+    location.setLongitude(122.4194f);
 
+    apiInstance.lookup(location, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## ZipLookups Api
@@ -538,7 +799,14 @@ curl https://api.lob.com/v1/us_zip_lookups \
 ```
 
 ```java
+try {
+    ZipEditable zipEditable = new ZipEditable();
+    zipEditable.setZipCode("94107");
 
+    apiInstance.lookup(zipEditable);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## IntlAutocompletion Api
@@ -555,5 +823,15 @@ curl https://api.lob.com/v1/intl_autocompletions \
 ```
 
 ```java
+        try {
+            IntlAutocompletionsWritable autoCompletionWritable = new IntlAutocompletionsWritable();
+            autoCompletionWritable.setAddressPrefix("185 B");
+            autoCompletionWritable.setCity("San Francisco");
+            autoCompletionWritable.setState("CA");
+            autoCompletionWritable.setZipCode("94107");
 
+            apiInstance.autocomplete(autoCompletionWritable, null);
+        } catch (ApiException e) {
+            e.printStackTrace();
+        }
 ```
