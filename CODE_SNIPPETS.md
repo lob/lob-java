@@ -588,7 +588,15 @@ curl https://api.lob.com/v1/templates \
 ```
 
 ```java
-This feature is not currently supported by this library.
+try {
+    TemplateWritable templateWritable = new TemplateWritable();
+    templateWritable.setDescription("demo");
+    templateWritable.setHtml("<html>HTML for {{name}}</html>");
+
+    Template template = apiInstance.create(templateWritable);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Retrieve
@@ -598,7 +606,11 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 ```
 
 ```java
-This feature is not currently supported by this library.
+try {
+    Template template = apiInstance.get("tmpl_c94e83ca2cd5121");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### List
@@ -608,7 +620,11 @@ curl -X GET "https://api.lob.com/v1/templates?limit=2" \
 ```
 
 ```java
-This feature is not currently supported by this library.
+try {
+    TemplateList templates = apiInstance.list(2, null, null, null, null, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Update
@@ -620,7 +636,15 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 ```
 
 ```java
-This feature is not currently supported by this library.
+try {
+    TemplateUpdate templateUpdate = new TemplateUpdate();
+    templateUpdate.setDescription("Updated Example");
+    templateUpdate.setPublishedVersion("vrsn_a");
+
+    Template template = apiInstance.update("tmpl_c94e83ca2cd5121", templateUpdate);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Delete
@@ -630,7 +654,11 @@ curl -X DELETE https://api.lob.com/v1/templates/tmpl_df934eeda694203 \
 ```
 
 ```java
-This feature is not currently supported by this library.
+try {
+    AddressDeletion address = apiInstance.delete("adr_fa85158b26c3eb7c");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## TemplateVersions Api
@@ -644,7 +672,15 @@ curl https://api.lob.com/v1/templates/tmpl_4aa14648113e45b/versions \
 ```
 
 ```java
-This feature is not currently supported by this library.
+try {
+    TemplateVersionWritable templateVersionWritable = new TemplateVersionWritable();
+    templateVersionWritable.setDescription("Some Description");
+    templateVersionWritable.setHtml("<html>HTML for {{name}}</html>");
+
+    TemplateVersion templateVersion = apiInstance.create("tmpl_c94e83ca2cd5121", templateVersionWritable);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Retrieve
@@ -654,7 +690,11 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121/versions/vrsn_534e339
 ```
 
 ```java
-This feature is not currently supported by this library.
+try {
+    TemplateVersion templateVersion = apiInstance.get("tmpl_c94e83ca2cd5121", "vrsn_534e339882d2282");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### List
@@ -664,7 +704,11 @@ curl -X GET "https://api.lob.com/v1/templates/tmpl_ea6e6a1abf01703/versions?limi
 ```
 
 ```java
-This feature is not currently supported by this library.
+try {
+    TemplateVersionList templateVersions = apiInstance.list("tmpl_c94e83ca2cd5121", 2, null, null, null, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Update
@@ -675,7 +719,14 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121/versions/vrsn_534e339
 ```
 
 ```java
-This feature is not currently supported by this library.
+try {
+    TemplateVersionUpdatable templateUpdate = new TemplateVersionUpdatable();
+    templateUpdate.setDescription("updated template");
+
+    TemplateVersion templateVersion = apiInstance.update("tmpl_c94e83ca2cd5121", "vrsn_534e339882d2282", templateUpdate);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ### Delete
@@ -685,7 +736,11 @@ curl -X DELETE https://api.lob.com/v1/templates/tmpl_4aa14648113e45b/versions/vr
 ```
 
 ```java
-This feature is not currently supported by this library.
+try {
+    TemplateVersionDeletion templateVersion = apiInstance.delete("tmpl_c94e83ca2cd5121", "vrsn_534e339882d2282");
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
 
 ## UsVerifications Api
@@ -823,15 +878,15 @@ curl https://api.lob.com/v1/intl_autocompletions \
 ```
 
 ```java
-        try {
-            IntlAutocompletionsWritable autoCompletionWritable = new IntlAutocompletionsWritable();
-            autoCompletionWritable.setAddressPrefix("185 B");
-            autoCompletionWritable.setCity("San Francisco");
-            autoCompletionWritable.setState("CA");
-            autoCompletionWritable.setZipCode("94107");
+try {
+    IntlAutocompletionsWritable autoCompletionWritable = new IntlAutocompletionsWritable();
+    autoCompletionWritable.setAddressPrefix("185 B");
+    autoCompletionWritable.setCity("San Francisco");
+    autoCompletionWritable.setState("CA");
+    autoCompletionWritable.setZipCode("94107");
 
-            apiInstance.autocomplete(autoCompletionWritable, null);
-        } catch (ApiException e) {
-            e.printStackTrace();
-        }
+    apiInstance.autocomplete(autoCompletionWritable, null);
+} catch (ApiException e) {
+    e.printStackTrace();
+}
 ```
