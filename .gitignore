@@ -20,3 +20,10 @@ target
 .gradle
 build
 .env
+
+# IDE Files
+.idea
+.vscode
+
+# Filesystem
+.DS_Store

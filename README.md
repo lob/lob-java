@@ -39,10 +39,33 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.github.lob</groupId>
+  <groupId>com.lob</groupId>
   <artifactId>lob-java</artifactId>
   <version>13.0.0</version>
-  <scope>compile</scope>
+</dependency>
+```
+
+#### Projects using the Spring framework
+
+Some versions of the Spring framework introduce a dependency collision that prevents the Lob SDK from functioning correctly. In order to correct this, please add the following two blocks to your project's POM along with the dependency mentioned above.
+
+```xml
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.1</version>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+```
+and
+```xml
+<dependency>
+    <groupId>com.squareup.okhttp3</groupId>
+    <artifactId>okhttp</artifactId>
+    <version>4.9.1</version>
 </dependency>
 ```
 
@@ -83,16 +106,14 @@ import com.lob.api.client.AddressesApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.lob.com/v1");
+    ApiClient lobClient = Configuration.getDefaultApiClient();
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("YOUR LOB_API_KEY");
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
-    AddressEditable addressEditable = new AddressEditable(); // AddressEditable | 
+    AddressEditable addressEditable = new AddressEditable();
     try {
       Address result = apiInstance.addressCreate(addressEditable);
       System.out.println(result);
@@ -105,7 +126,6 @@ public class Example {
     }
   }
 }
-
 ```
 
 ## Documentation for API Endpoints

@@ -28,5 +28,4 @@
 git_push.sh
 
 README.md
-.npmignore
 pom.xml
