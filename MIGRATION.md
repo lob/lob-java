@@ -19,7 +19,7 @@ Similar to the legacy version, simply update your POM file dependency as follows
 <dependency>
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
-    <version>13.0.0</version>
+    <version>{{ CURRENT_VERSION_OF_JAVA }}</version>
 </dependency>
 ```
 
