@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.UsAutocompletionsWritable;
+import com.lob.model.UsAutocompletionsWritable;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.TemplateVersionDeletion;
+import com.lob.model.TemplateVersionDeletion;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

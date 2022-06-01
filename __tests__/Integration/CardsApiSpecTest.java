@@ -7,10 +7,10 @@ import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.client.CardsApi;
 
-import org.openapitools.client.model.Card;
-import org.openapitools.client.model.CardDeletion;
-import org.openapitools.client.model.CardEditable;
-import org.openapitools.client.model.CardEditable.SizeEnum;
+import com.lob.model.Card;
+import com.lob.model.CardDeletion;
+import com.lob.model.CardEditable;
+import com.lob.model.CardEditable.SizeEnum;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

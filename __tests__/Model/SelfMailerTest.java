@@ -8,11 +8,11 @@ import java.util.Map;
 import com.google.gson.Gson;
 
 import org.threeten.bp.OffsetDateTime;
-import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.SelfMailer;
-import org.openapitools.client.model.SelfMailerSize;
-import org.openapitools.client.model.TrackingEventCertified;
+import com.lob.model.AddressEditable;
+import com.lob.model.MailType;
+import com.lob.model.SelfMailer;
+import com.lob.model.SelfMailerSize;
+import com.lob.model.TrackingEventCertified;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

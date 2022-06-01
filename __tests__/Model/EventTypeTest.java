@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.EventType;
+import com.lob.model.EventType;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

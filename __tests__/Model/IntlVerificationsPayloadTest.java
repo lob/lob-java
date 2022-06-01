@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.IntlVerificationsPayload;
-import org.openapitools.client.model.MultipleComponentsIntl;
+import com.lob.model.IntlVerificationsPayload;
+import com.lob.model.MultipleComponentsIntl;
 
 import java.util.List;
 import java.util.ArrayList;

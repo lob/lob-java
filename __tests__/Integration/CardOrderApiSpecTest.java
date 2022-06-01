@@ -8,12 +8,12 @@ import com.lob.api.Configuration;
 import com.lob.api.client.CardOrdersApi;
 import com.lob.api.client.CardsApi;
 
-import org.openapitools.client.model.Card;
-import org.openapitools.client.model.CardEditable;
-import org.openapitools.client.model.CardEditable.SizeEnum;
-import org.openapitools.client.model.CardOrder;
-import org.openapitools.client.model.CardOrderEditable;
-import org.openapitools.client.model.CardOrderList;
+import com.lob.model.Card;
+import com.lob.model.CardEditable;
+import com.lob.model.CardEditable.SizeEnum;
+import com.lob.model.CardOrder;
+import com.lob.model.CardOrderEditable;
+import com.lob.model.CardOrderList;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

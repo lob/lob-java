@@ -10,10 +10,10 @@ import java.util.Map;
 import com.lob.api.ApiException;
 import com.lob.api.client.BillingGroupsApi;
 
-import org.openapitools.client.model.BillingGroup;
-import org.openapitools.client.model.BillingGroupEditable;
-import org.openapitools.client.model.BillingGroupList;
-import org.openapitools.client.model.SortBy5;
+import com.lob.model.BillingGroup;
+import com.lob.model.BillingGroupEditable;
+import com.lob.model.BillingGroupList;
+import com.lob.model.SortBy5;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

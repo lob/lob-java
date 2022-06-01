@@ -27,13 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.Letter;
-import org.openapitools.client.model.LetterDeletion;
-import org.openapitools.client.model.LetterEditable;
-import org.openapitools.client.model.LetterList;
-import org.openapitools.client.model.LobError;
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.SortBy5;
+import com.lob.model.Letter;
+import com.lob.model.LetterDeletion;
+import com.lob.model.LetterEditable;
+import com.lob.model.LetterList;
+import com.lob.model.LobError;
+import com.lob.model.MailType;
+import com.lob.model.SortBy5;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

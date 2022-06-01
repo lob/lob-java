@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.TemplateList;
-import org.openapitools.client.model.Template;
+import com.lob.model.TemplateList;
+import com.lob.model.Template;
 
 import java.util.ArrayList;
 import java.util.List;

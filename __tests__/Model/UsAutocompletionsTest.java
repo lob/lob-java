@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.UsAutocompletions;
-import org.openapitools.client.model.Suggestions;
+import com.lob.model.UsAutocompletions;
+import com.lob.model.Suggestions;
 
 import java.util.ArrayList;
 import java.util.List;

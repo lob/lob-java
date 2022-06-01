@@ -9,9 +9,9 @@ import java.util.List;
 import com.lob.api.ApiException;
 import com.lob.api.client.CardOrdersApi;
 
-import org.openapitools.client.model.CardOrder;
-import org.openapitools.client.model.CardOrderEditable;
-import org.openapitools.client.model.CardOrderList;
+import com.lob.model.CardOrder;
+import com.lob.model.CardOrderEditable;
+import com.lob.model.CardOrderList;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

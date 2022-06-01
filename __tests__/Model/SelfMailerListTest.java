@@ -13,7 +13,7 @@
 
 package Model;
 
-import org.openapitools.client.model.SelfMailerList;
+import com.lob.model.SelfMailerList;
 import org.testng.annotations.Test;
 
 

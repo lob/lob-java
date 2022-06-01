@@ -4,8 +4,8 @@ import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.client.UsAutocompletionsApi;
 
-import org.openapitools.client.model.UsAutocompletions;
-import org.openapitools.client.model.UsAutocompletionsWritable;
+import com.lob.model.UsAutocompletions;
+import com.lob.model.UsAutocompletionsWritable;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

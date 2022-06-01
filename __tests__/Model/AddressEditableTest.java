@@ -4,8 +4,8 @@ import java.util.Collections;
 import java.util.Map;
 
 
-import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.CountryExtended;
+import com.lob.model.AddressEditable;
+import com.lob.model.CountryExtended;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

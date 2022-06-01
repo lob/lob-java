@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.AddressDeletion;
+import com.lob.model.AddressDeletion;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

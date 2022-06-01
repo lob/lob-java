@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.GeocodeComponents;
+import com.lob.model.GeocodeComponents;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

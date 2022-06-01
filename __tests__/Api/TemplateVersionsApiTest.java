@@ -10,11 +10,11 @@ import java.util.Map;
 import com.lob.api.ApiException;
 import com.lob.api.client.TemplateVersionsApi;
 
-import org.openapitools.client.model.TemplateVersion;
-import org.openapitools.client.model.TemplateVersionDeletion;
-import org.openapitools.client.model.TemplateVersionList;
-import org.openapitools.client.model.TemplateVersionUpdatable;
-import org.openapitools.client.model.TemplateVersionWritable;
+import com.lob.model.TemplateVersion;
+import com.lob.model.TemplateVersionDeletion;
+import com.lob.model.TemplateVersionList;
+import com.lob.model.TemplateVersionUpdatable;
+import com.lob.model.TemplateVersionWritable;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

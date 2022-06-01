@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.SelfMailerDeletion;
+import com.lob.model.SelfMailerDeletion;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

@@ -1,8 +1,8 @@
 package Model;
 
-import org.openapitools.client.model.TemplateVersionWritable;
+import com.lob.model.TemplateVersionWritable;
 
-import org.openapitools.client.model.EngineHtml;
+import com.lob.model.EngineHtml;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

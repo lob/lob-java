@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.SortBy5;
+import com.lob.model.SortBy5;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

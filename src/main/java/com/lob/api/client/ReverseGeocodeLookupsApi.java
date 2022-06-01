@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.LobError;
-import org.openapitools.client.model.Location;
-import org.openapitools.client.model.ReverseGeocode;
+import com.lob.model.LobError;
+import com.lob.model.Location;
+import com.lob.model.ReverseGeocode;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.TemplateVersion;
-import org.openapitools.client.model.EngineHtml;
+import com.lob.model.TemplateVersion;
+import com.lob.model.EngineHtml;
 
 import org.threeten.bp.OffsetDateTime;
 

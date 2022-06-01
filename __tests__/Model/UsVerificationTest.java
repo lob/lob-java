@@ -1,9 +1,9 @@
 package Model;
 
-import org.openapitools.client.model.UsVerification;
-import org.openapitools.client.model.DeliverabilityAnalysis;
-import org.openapitools.client.model.LobConfidenceScore;
-import org.openapitools.client.model.UsComponents;
+import com.lob.model.UsVerification;
+import com.lob.model.DeliverabilityAnalysis;
+import com.lob.model.LobConfidenceScore;
+import com.lob.model.UsComponents;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

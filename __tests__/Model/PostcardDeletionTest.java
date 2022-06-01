@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.PostcardDeletion;
+import com.lob.model.PostcardDeletion;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

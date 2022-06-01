@@ -7,10 +7,10 @@ import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.client.LettersApi;
 
-import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.Letter;
-import org.openapitools.client.model.LetterDeletion;
-import org.openapitools.client.model.LetterEditable;
+import com.lob.model.AddressEditable;
+import com.lob.model.Letter;
+import com.lob.model.LetterDeletion;
+import com.lob.model.LetterEditable;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;

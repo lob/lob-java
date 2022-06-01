@@ -3,8 +3,8 @@ package Model;
 import java.util.Collections;
 import java.util.Map;
 
-import org.openapitools.client.model.Address;
-import org.openapitools.client.model.CountryExtendedExpanded;
+import com.lob.model.Address;
+import com.lob.model.CountryExtendedExpanded;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

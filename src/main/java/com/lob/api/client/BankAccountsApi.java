@@ -27,12 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.BankAccount;
-import org.openapitools.client.model.BankAccountDeletion;
-import org.openapitools.client.model.BankAccountList;
-import org.openapitools.client.model.BankAccountVerify;
-import org.openapitools.client.model.BankAccountWritable;
-import org.openapitools.client.model.LobError;
+import com.lob.model.BankAccount;
+import com.lob.model.BankAccountDeletion;
+import com.lob.model.BankAccountList;
+import com.lob.model.BankAccountVerify;
+import com.lob.model.BankAccountWritable;
+import com.lob.model.LobError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

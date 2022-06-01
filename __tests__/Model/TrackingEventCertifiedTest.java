@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.TrackingEventCertified;
-import org.openapitools.client.model.TrackingEventDetails;
+import com.lob.model.TrackingEventCertified;
+import com.lob.model.TrackingEventDetails;
 
 import org.threeten.bp.OffsetDateTime;
 

@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.PostcardList;
-import org.openapitools.client.model.Postcard;
+import com.lob.model.PostcardList;
+import com.lob.model.Postcard;
 
 import java.util.ArrayList;
 import java.util.List;

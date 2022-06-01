@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.CardOrder;
+import com.lob.model.CardOrder;
 
 import org.threeten.bp.OffsetDateTime;
 import java.math.BigDecimal;

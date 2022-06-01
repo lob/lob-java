@@ -7,9 +7,9 @@ import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.client.BillingGroupsApi;
 
-import org.openapitools.client.model.BillingGroup;
-import org.openapitools.client.model.BillingGroupEditable;
-import org.openapitools.client.model.BillingGroupList;
+import com.lob.model.BillingGroup;
+import com.lob.model.BillingGroupEditable;
+import com.lob.model.BillingGroupList;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

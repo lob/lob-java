@@ -5,10 +5,10 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 
-import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.SelfMailerEditable;
-import org.openapitools.client.model.SelfMailerSize;
+import com.lob.model.AddressEditable;
+import com.lob.model.MailType;
+import com.lob.model.SelfMailerEditable;
+import com.lob.model.SelfMailerSize;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

@@ -10,14 +10,14 @@ import java.util.Map;
 import com.lob.api.ApiException;
 import com.lob.api.client.PostcardsApi;
 
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.Postcard;
-import org.openapitools.client.model.PostcardDeletion;
-import org.openapitools.client.model.PostcardEditable;
-import org.openapitools.client.model.PostcardList;
-import org.openapitools.client.model.PostcardSize;
+import com.lob.model.MailType;
+import com.lob.model.Postcard;
+import com.lob.model.PostcardDeletion;
+import com.lob.model.PostcardEditable;
+import com.lob.model.PostcardList;
+import com.lob.model.PostcardSize;
 import org.threeten.bp.OffsetDateTime;
-import org.openapitools.client.model.SortBy5;
+import com.lob.model.SortBy5;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

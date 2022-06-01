@@ -3,8 +3,8 @@ package Api;
 import com.lob.api.ApiException;
 import com.lob.api.client.ZipLookupsApi;
 
-import org.openapitools.client.model.Zip;
-import org.openapitools.client.model.ZipEditable;
+import com.lob.model.Zip;
+import com.lob.model.ZipEditable;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

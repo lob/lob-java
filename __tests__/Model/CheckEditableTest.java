@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.CheckEditable;
-import org.openapitools.client.model.AddressEditable;
+import com.lob.model.CheckEditable;
+import com.lob.model.AddressEditable;
 
 import java.util.HashMap;
 import java.util.Map;

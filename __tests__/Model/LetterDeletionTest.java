@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.LetterDeletion;
+import com.lob.model.LetterDeletion;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

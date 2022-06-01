@@ -10,10 +10,10 @@ import java.util.Map;
 import com.lob.api.ApiException;
 import com.lob.api.client.AddressesApi;
 
-import org.openapitools.client.model.Address;
-import org.openapitools.client.model.AddressDeletion;
-import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.AddressList;
+import com.lob.model.Address;
+import com.lob.model.AddressDeletion;
+import com.lob.model.AddressEditable;
+import com.lob.model.AddressList;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

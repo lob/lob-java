@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.TemplateVersionUpdatable;
-import org.openapitools.client.model.EngineHtml;
+import com.lob.model.TemplateVersionUpdatable;
+import com.lob.model.EngineHtml;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

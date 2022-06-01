@@ -4,7 +4,7 @@ import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.client.ReverseGeocodeLookupsApi;
 
-import org.openapitools.client.model.Location;
+import com.lob.model.Location;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

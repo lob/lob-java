@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.LetterCustomEnvelope;
+import com.lob.model.LetterCustomEnvelope;
 import org.testng.annotations.Test;
 
 import org.testng.annotations.*;

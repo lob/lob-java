@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.BankAccountDeletion;
+import com.lob.model.BankAccountDeletion;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

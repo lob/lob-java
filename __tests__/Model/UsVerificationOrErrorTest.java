@@ -1,11 +1,11 @@
 package Model;
 
-import org.openapitools.client.model.UsVerificationOrError;
-import org.openapitools.client.model.LobError;
-import org.openapitools.client.model.UsComponents;
-import org.openapitools.client.model.BulkError;
-import org.openapitools.client.model.DeliverabilityAnalysis;
-import org.openapitools.client.model.LobConfidenceScore;
+import com.lob.model.UsVerificationOrError;
+import com.lob.model.LobError;
+import com.lob.model.UsComponents;
+import com.lob.model.BulkError;
+import com.lob.model.DeliverabilityAnalysis;
+import com.lob.model.LobConfidenceScore;
 
 import java.util.List;
 import java.util.ArrayList;

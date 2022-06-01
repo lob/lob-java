@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.BankAccountVerify;
+import com.lob.model.BankAccountVerify;
 
 import java.util.ArrayList;
 import java.util.List;

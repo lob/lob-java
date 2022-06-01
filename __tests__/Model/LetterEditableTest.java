@@ -1,9 +1,9 @@
 package Model;
 
-import org.openapitools.client.model.LetterEditable;
-import org.openapitools.client.model.LetterCustomEnvelope;
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.AddressEditable;
+import com.lob.model.LetterEditable;
+import com.lob.model.LetterCustomEnvelope;
+import com.lob.model.MailType;
+import com.lob.model.AddressEditable;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -27,13 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.Check;
-import org.openapitools.client.model.CheckDeletion;
-import org.openapitools.client.model.CheckEditable;
-import org.openapitools.client.model.CheckList;
-import org.openapitools.client.model.LobError;
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.SortBy5;
+import com.lob.model.Check;
+import com.lob.model.CheckDeletion;
+import com.lob.model.CheckEditable;
+import com.lob.model.CheckList;
+import com.lob.model.LobError;
+import com.lob.model.MailType;
+import com.lob.model.SortBy5;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

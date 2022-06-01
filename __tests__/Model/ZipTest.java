@@ -3,9 +3,9 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openapitools.client.model.Zip;
-import org.openapitools.client.model.ZipCodeType;
-import org.openapitools.client.model.ZipLookupCity;
+import com.lob.model.Zip;
+import com.lob.model.ZipCodeType;
+import com.lob.model.ZipLookupCity;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

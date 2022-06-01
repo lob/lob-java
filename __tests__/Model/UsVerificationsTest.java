@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.UsVerifications;
+import com.lob.model.UsVerifications;
 
 import org.testng.annotations.*;
 import org.testng.Assert;
@@ -8,7 +8,7 @@ import org.testng.Assert;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.openapitools.client.model.UsVerificationOrError;
+import com.lob.model.UsVerificationOrError;
 
 @SuppressWarnings("unchecked")
 public class UsVerificationsTest {

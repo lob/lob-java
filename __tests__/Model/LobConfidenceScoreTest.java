@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.LobConfidenceScore;
+import com.lob.model.LobConfidenceScore;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

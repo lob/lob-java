@@ -2,7 +2,7 @@ package Model;
 import java.util.Collections;
 import java.util.Map;
 
-import org.openapitools.client.model.AddressDomesticExpanded;
+import com.lob.model.AddressDomesticExpanded;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.CardEditable;
-import org.openapitools.client.model.Card;
+import com.lob.model.CardEditable;
+import com.lob.model.Card;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.UsVerificationsWritable;
+import com.lob.model.UsVerificationsWritable;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

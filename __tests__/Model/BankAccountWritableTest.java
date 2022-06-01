@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.BankAccountWritable;
-import org.openapitools.client.model.BankTypeEnum;
+import com.lob.model.BankAccountWritable;
+import com.lob.model.BankTypeEnum;
 
 import java.util.HashMap;
 import java.util.Map;

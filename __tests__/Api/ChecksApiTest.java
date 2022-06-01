@@ -10,13 +10,13 @@ import java.util.Map;
 import com.lob.api.ApiException;
 import com.lob.api.client.ChecksApi;
 
-import org.openapitools.client.model.Check;
-import org.openapitools.client.model.CheckDeletion;
-import org.openapitools.client.model.CheckEditable;
-import org.openapitools.client.model.CheckList;
-import org.openapitools.client.model.MailType;
+import com.lob.model.Check;
+import com.lob.model.CheckDeletion;
+import com.lob.model.CheckEditable;
+import com.lob.model.CheckList;
+import com.lob.model.MailType;
 import org.threeten.bp.OffsetDateTime;
-import org.openapitools.client.model.SortBy5;
+import com.lob.model.SortBy5;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

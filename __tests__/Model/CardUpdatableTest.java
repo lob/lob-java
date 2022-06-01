@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.CardUpdatable;
+import com.lob.model.CardUpdatable;
 import java.math.BigDecimal;
 
 import org.testng.annotations.*;

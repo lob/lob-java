@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.CardOrderEditable;
+import com.lob.model.CardOrderEditable;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

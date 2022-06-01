@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.ZipEditable;
+import com.lob.model.ZipEditable;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

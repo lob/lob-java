@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.Card;
-import org.openapitools.client.model.Thumbnail;
+import com.lob.model.Card;
+import com.lob.model.Thumbnail;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

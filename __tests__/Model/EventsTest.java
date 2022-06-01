@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.Events;
-import org.openapitools.client.model.EventType;
+import com.lob.model.Events;
+import com.lob.model.EventType;
 
 import org.threeten.bp.OffsetDateTime;
 
