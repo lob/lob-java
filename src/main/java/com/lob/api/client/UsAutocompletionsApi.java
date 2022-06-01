@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.LobError;
-import org.openapitools.client.model.UsAutocompletions;
-import org.openapitools.client.model.UsAutocompletionsWritable;
+import com.lob.model.LobError;
+import com.lob.model.UsAutocompletions;
+import com.lob.model.UsAutocompletionsWritable;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

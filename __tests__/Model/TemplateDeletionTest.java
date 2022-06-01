@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.TemplateDeletion;
+import com.lob.model.TemplateDeletion;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

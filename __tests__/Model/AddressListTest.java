@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import org.openapitools.client.model.AddressList;
-import org.openapitools.client.model.Address;
+import com.lob.model.AddressList;
+import com.lob.model.Address;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

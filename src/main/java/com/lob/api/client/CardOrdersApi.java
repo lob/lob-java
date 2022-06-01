@@ -27,10 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.CardOrder;
-import org.openapitools.client.model.CardOrderEditable;
-import org.openapitools.client.model.CardOrderList;
-import org.openapitools.client.model.LobError;
+import com.lob.model.CardOrder;
+import com.lob.model.CardOrderEditable;
+import com.lob.model.CardOrderList;
+import com.lob.model.LobError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

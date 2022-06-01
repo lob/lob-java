@@ -10,11 +10,11 @@ import java.util.Map;
 import com.lob.api.ApiException;
 import com.lob.api.client.BankAccountsApi;
 
-import org.openapitools.client.model.BankAccount;
-import org.openapitools.client.model.BankAccountDeletion;
-import org.openapitools.client.model.BankAccountList;
-import org.openapitools.client.model.BankAccountVerify;
-import org.openapitools.client.model.BankAccountWritable;
+import com.lob.model.BankAccount;
+import com.lob.model.BankAccountDeletion;
+import com.lob.model.BankAccountList;
+import com.lob.model.BankAccountVerify;
+import com.lob.model.BankAccountWritable;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

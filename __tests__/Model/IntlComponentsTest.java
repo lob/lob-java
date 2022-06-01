@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.IntlComponents;
+import com.lob.model.IntlComponents;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

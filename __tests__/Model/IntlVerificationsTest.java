@@ -1,8 +1,8 @@
 package Model;
 
-import org.openapitools.client.model.IntlVerifications;
+import com.lob.model.IntlVerifications;
 
-import org.openapitools.client.model.IntlVerificationOrError;
+import com.lob.model.IntlVerificationOrError;
 
 import java.util.ArrayList;
 import java.util.List;

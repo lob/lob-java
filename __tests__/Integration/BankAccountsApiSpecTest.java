@@ -7,11 +7,11 @@ import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.client.BankAccountsApi;
 
-import org.openapitools.client.model.BankAccount;
-import org.openapitools.client.model.BankAccountDeletion;
-import org.openapitools.client.model.BankAccountWritable;
-import org.openapitools.client.model.BankAccountList;
-import org.openapitools.client.model.BankAccountVerify;
+import com.lob.model.BankAccount;
+import com.lob.model.BankAccountDeletion;
+import com.lob.model.BankAccountWritable;
+import com.lob.model.BankAccountList;
+import com.lob.model.BankAccountVerify;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

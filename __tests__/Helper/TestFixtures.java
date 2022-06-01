@@ -3,12 +3,12 @@ package Helper;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.BankAccountWritable;
-import org.openapitools.client.model.BankTypeEnum;
-import org.openapitools.client.model.BillingGroupEditable;
-import org.openapitools.client.model.CountryExtended;
-import org.openapitools.client.model.TemplateWritable;
+import com.lob.model.AddressEditable;
+import com.lob.model.BankAccountWritable;
+import com.lob.model.BankTypeEnum;
+import com.lob.model.BillingGroupEditable;
+import com.lob.model.CountryExtended;
+import com.lob.model.TemplateWritable;
 
 public class TestFixtures {
     public String get_URL_VALID() {

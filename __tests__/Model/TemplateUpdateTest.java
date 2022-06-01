@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.TemplateUpdate;
+import com.lob.model.TemplateUpdate;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

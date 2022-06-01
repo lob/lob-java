@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.LobError;
+import com.lob.model.LobError;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

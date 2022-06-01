@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.ZipLookupCity;
+import com.lob.model.ZipLookupCity;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

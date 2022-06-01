@@ -27,7 +27,7 @@ import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 
-import org.openapitools.client.model.*;
+import com.lob.model.*;
 import okio.ByteString;
 
 import java.io.IOException;

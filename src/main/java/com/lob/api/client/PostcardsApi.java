@@ -27,14 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.LobError;
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.Postcard;
-import org.openapitools.client.model.PostcardDeletion;
-import org.openapitools.client.model.PostcardEditable;
-import org.openapitools.client.model.PostcardList;
-import org.openapitools.client.model.PostcardSize;
-import org.openapitools.client.model.SortBy5;
+import com.lob.model.LobError;
+import com.lob.model.MailType;
+import com.lob.model.Postcard;
+import com.lob.model.PostcardDeletion;
+import com.lob.model.PostcardEditable;
+import com.lob.model.PostcardList;
+import com.lob.model.PostcardSize;
+import com.lob.model.SortBy5;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

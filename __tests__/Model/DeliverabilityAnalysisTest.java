@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.DeliverabilityAnalysis;
-import org.openapitools.client.model.DpvFootnote;
+import com.lob.model.DeliverabilityAnalysis;
+import com.lob.model.DpvFootnote;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

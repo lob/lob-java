@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.BillingGroup;
+import com.lob.model.BillingGroup;
 
 import org.threeten.bp.OffsetDateTime;
 

@@ -27,12 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.LobError;
-import org.openapitools.client.model.TemplateVersion;
-import org.openapitools.client.model.TemplateVersionDeletion;
-import org.openapitools.client.model.TemplateVersionList;
-import org.openapitools.client.model.TemplateVersionUpdatable;
-import org.openapitools.client.model.TemplateVersionWritable;
+import com.lob.model.LobError;
+import com.lob.model.TemplateVersion;
+import com.lob.model.TemplateVersionDeletion;
+import com.lob.model.TemplateVersionList;
+import com.lob.model.TemplateVersionUpdatable;
+import com.lob.model.TemplateVersionWritable;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

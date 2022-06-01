@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.TemplateWritable;
-import org.openapitools.client.model.EngineHtml;
+import com.lob.model.TemplateWritable;
+import com.lob.model.EngineHtml;
 
 import java.util.HashMap;
 import java.util.Map;

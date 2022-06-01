@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.ReverseGeocode;
-import org.openapitools.client.model.GeocodeAddresses;
+import com.lob.model.ReverseGeocode;
+import com.lob.model.GeocodeAddresses;
 
 import java.util.ArrayList;
 import java.util.List;

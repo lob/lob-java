@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openapitools.client.model.Address;
-import org.openapitools.client.model.BankAccount;
-import org.openapitools.client.model.Check;
-import org.openapitools.client.model.Thumbnail;
-import org.openapitools.client.model.TrackingEventNormal;
+import com.lob.model.Address;
+import com.lob.model.BankAccount;
+import com.lob.model.Check;
+import com.lob.model.Thumbnail;
+import com.lob.model.TrackingEventNormal;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

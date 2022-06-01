@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.LobError;
-import org.openapitools.client.model.Zip;
-import org.openapitools.client.model.ZipEditable;
+import com.lob.model.LobError;
+import com.lob.model.Zip;
+import com.lob.model.ZipEditable;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

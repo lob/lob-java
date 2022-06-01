@@ -1,12 +1,12 @@
 package Model;
 
-import org.openapitools.client.model.Postcard;
-import org.openapitools.client.model.PostcardSize;
-import org.openapitools.client.model.AddressDomesticExpanded;
-import org.openapitools.client.model.Address;
-import org.openapitools.client.model.Thumbnail;
-import org.openapitools.client.model.TrackingEventNormal;
-import org.openapitools.client.model.MailType;
+import com.lob.model.Postcard;
+import com.lob.model.PostcardSize;
+import com.lob.model.AddressDomesticExpanded;
+import com.lob.model.Address;
+import com.lob.model.Thumbnail;
+import com.lob.model.TrackingEventNormal;
+import com.lob.model.MailType;
 
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.LocalDate;

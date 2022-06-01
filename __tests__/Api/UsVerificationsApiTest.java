@@ -9,11 +9,11 @@ import java.util.List;
 import com.lob.api.ApiException;
 import com.lob.api.client.UsVerificationsApi;
 
-import org.openapitools.client.model.MultipleComponents;
-import org.openapitools.client.model.MultipleComponentsList;
-import org.openapitools.client.model.UsVerification;
-import org.openapitools.client.model.UsVerifications;
-import org.openapitools.client.model.UsVerificationsWritable;
+import com.lob.model.MultipleComponents;
+import com.lob.model.MultipleComponentsList;
+import com.lob.model.UsVerification;
+import com.lob.model.UsVerifications;
+import com.lob.model.UsVerificationsWritable;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

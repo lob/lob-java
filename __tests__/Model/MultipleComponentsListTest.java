@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.MultipleComponentsList;
-import org.openapitools.client.model.MultipleComponents;
+import com.lob.model.MultipleComponentsList;
+import com.lob.model.MultipleComponents;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.UsComponents;
-import org.openapitools.client.model.ZipCodeType;
+import com.lob.model.UsComponents;
+import com.lob.model.ZipCodeType;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

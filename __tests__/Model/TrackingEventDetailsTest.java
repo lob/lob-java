@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.TrackingEventDetails;
+import com.lob.model.TrackingEventDetails;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

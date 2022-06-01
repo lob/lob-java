@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.CheckList;
-import org.openapitools.client.model.Check;
+import com.lob.model.CheckList;
+import com.lob.model.Check;
 
 import java.util.ArrayList;
 import java.util.List;

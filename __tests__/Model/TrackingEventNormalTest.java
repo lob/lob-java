@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.TrackingEventNormal;
+import com.lob.model.TrackingEventNormal;
 
 import org.threeten.bp.OffsetDateTime;
 

@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.Suggestions;
+import com.lob.model.Suggestions;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

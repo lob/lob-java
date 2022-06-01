@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.LetterList;
-import org.openapitools.client.model.Letter;
+import com.lob.model.LetterList;
+import com.lob.model.Letter;
 
 import java.util.ArrayList;
 import java.util.List;

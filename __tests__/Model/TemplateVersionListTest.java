@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.TemplateVersionList;
-import org.openapitools.client.model.TemplateVersion;
+import com.lob.model.TemplateVersionList;
+import com.lob.model.TemplateVersion;
 
 import java.util.ArrayList;
 import java.util.List;

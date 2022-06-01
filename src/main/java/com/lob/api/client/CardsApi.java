@@ -27,13 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.Card;
-import org.openapitools.client.model.CardDeletion;
-import org.openapitools.client.model.CardEditable;
-import org.openapitools.client.model.CardList;
-import org.openapitools.client.model.CardUpdatable;
-import org.openapitools.client.model.LobError;
-import org.openapitools.client.model.SortBy5;
+import com.lob.model.Card;
+import com.lob.model.CardDeletion;
+import com.lob.model.CardEditable;
+import com.lob.model.CardList;
+import com.lob.model.CardUpdatable;
+import com.lob.model.LobError;
+import com.lob.model.SortBy5;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

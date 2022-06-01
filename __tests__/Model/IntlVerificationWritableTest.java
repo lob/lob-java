@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.IntlVerificationWritable;
-import org.openapitools.client.model.CountryExtended;
+import com.lob.model.IntlVerificationWritable;
+import com.lob.model.CountryExtended;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

@@ -1,12 +1,12 @@
 package Model;
 
-import org.openapitools.client.model.Letter;
-import org.openapitools.client.model.Address;
-import org.openapitools.client.model.Thumbnail;
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.LetterCustomEnvelope;
-import org.openapitools.client.model.TrackingEventNormal;
-import org.openapitools.client.model.AddressEditable;
+import com.lob.model.Letter;
+import com.lob.model.Address;
+import com.lob.model.Thumbnail;
+import com.lob.model.MailType;
+import com.lob.model.LetterCustomEnvelope;
+import com.lob.model.TrackingEventNormal;
+import com.lob.model.AddressEditable;
 
 import java.util.Map;
 

@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.BillingGroupList;
-import org.openapitools.client.model.BillingGroup;
+import com.lob.model.BillingGroupList;
+import com.lob.model.BillingGroup;
 
 import java.util.ArrayList;
 import java.util.List;

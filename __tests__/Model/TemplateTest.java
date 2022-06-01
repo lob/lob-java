@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.Template;
-import org.openapitools.client.model.TemplateVersion;
+import com.lob.model.Template;
+import com.lob.model.TemplateVersion;
 
 import java.util.HashMap;
 import java.util.Map;

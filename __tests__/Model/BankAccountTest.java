@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.BankAccount;
+import com.lob.model.BankAccount;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

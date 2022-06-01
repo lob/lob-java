@@ -10,13 +10,13 @@ import java.util.Map;
 import com.lob.api.ApiException;
 import com.lob.api.client.SelfMailersApi;
 
-import org.openapitools.client.model.MailType;
-import org.openapitools.client.model.SelfMailer;
-import org.openapitools.client.model.SelfMailerDeletion;
-import org.openapitools.client.model.SelfMailerEditable;
-import org.openapitools.client.model.SelfMailerList;
-import org.openapitools.client.model.SelfMailerSize;
-import org.openapitools.client.model.SortBy5;
+import com.lob.model.MailType;
+import com.lob.model.SelfMailer;
+import com.lob.model.SelfMailerDeletion;
+import com.lob.model.SelfMailerEditable;
+import com.lob.model.SelfMailerList;
+import com.lob.model.SelfMailerSize;
+import com.lob.model.SortBy5;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

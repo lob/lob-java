@@ -1,9 +1,9 @@
 package Model;
 
-import org.openapitools.client.model.PostcardEditable;
-import org.openapitools.client.model.AddressEditable;
-import org.openapitools.client.model.PostcardSize;
-import org.openapitools.client.model.MailType;
+import com.lob.model.PostcardEditable;
+import com.lob.model.AddressEditable;
+import com.lob.model.PostcardSize;
+import com.lob.model.MailType;
 
 import java.time.OffsetDateTime;
 import java.util.HashMap;

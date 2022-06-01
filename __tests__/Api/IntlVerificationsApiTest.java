@@ -9,12 +9,12 @@ import java.util.List;
 import com.lob.api.ApiException;
 import com.lob.api.client.IntlVerificationsApi;
 
-import org.openapitools.client.model.IntlVerification;
-import org.openapitools.client.model.IntlVerificationOrError;
-import org.openapitools.client.model.IntlVerificationWritable;
-import org.openapitools.client.model.IntlVerifications;
-import org.openapitools.client.model.IntlVerificationsPayload;
-import org.openapitools.client.model.MultipleComponentsIntl;
+import com.lob.model.IntlVerification;
+import com.lob.model.IntlVerificationOrError;
+import com.lob.model.IntlVerificationWritable;
+import com.lob.model.IntlVerifications;
+import com.lob.model.IntlVerificationsPayload;
+import com.lob.model.MultipleComponentsIntl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

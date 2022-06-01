@@ -27,11 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.BillingGroup;
-import org.openapitools.client.model.BillingGroupEditable;
-import org.openapitools.client.model.BillingGroupList;
-import org.openapitools.client.model.LobError;
-import org.openapitools.client.model.SortBy5;
+import com.lob.model.BillingGroup;
+import com.lob.model.BillingGroupEditable;
+import com.lob.model.BillingGroupList;
+import com.lob.model.LobError;
+import com.lob.model.SortBy5;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

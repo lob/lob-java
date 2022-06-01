@@ -10,11 +10,11 @@ import java.util.Map;
 import com.lob.api.ApiException;
 import com.lob.api.client.TemplatesApi;
 
-import org.openapitools.client.model.Template;
-import org.openapitools.client.model.TemplateDeletion;
-import org.openapitools.client.model.TemplateList;
-import org.openapitools.client.model.TemplateUpdate;
-import org.openapitools.client.model.TemplateWritable;
+import com.lob.model.Template;
+import com.lob.model.TemplateDeletion;
+import com.lob.model.TemplateList;
+import com.lob.model.TemplateUpdate;
+import com.lob.model.TemplateWritable;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

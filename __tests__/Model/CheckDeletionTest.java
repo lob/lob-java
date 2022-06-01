@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.CheckDeletion;
+import com.lob.model.CheckDeletion;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

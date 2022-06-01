@@ -1,8 +1,8 @@
 package Model;
 
-import org.openapitools.client.model.GeocodeAddresses;
-import org.openapitools.client.model.GeocodeComponents;
-import org.openapitools.client.model.LocationAnalysis;
+import com.lob.model.GeocodeAddresses;
+import com.lob.model.GeocodeComponents;
+import com.lob.model.LocationAnalysis;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

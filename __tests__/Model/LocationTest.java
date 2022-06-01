@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.Location;
+import com.lob.model.Location;
 
 import org.testng.annotations.*;
 import org.testng.Assert;

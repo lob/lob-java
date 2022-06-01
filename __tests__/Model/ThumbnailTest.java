@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.Thumbnail;
+import com.lob.model.Thumbnail;
 
 import Helper.*;
 

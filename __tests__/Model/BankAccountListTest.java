@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.BankAccountList;
-import org.openapitools.client.model.BankAccount;
+import com.lob.model.BankAccountList;
+import com.lob.model.BankAccount;
 
 import java.util.ArrayList;
 import java.util.List;

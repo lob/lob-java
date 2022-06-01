@@ -27,11 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.IntlVerification;
-import org.openapitools.client.model.IntlVerificationWritable;
-import org.openapitools.client.model.IntlVerifications;
-import org.openapitools.client.model.IntlVerificationsPayload;
-import org.openapitools.client.model.LobError;
+import com.lob.model.IntlVerification;
+import com.lob.model.IntlVerificationWritable;
+import com.lob.model.IntlVerifications;
+import com.lob.model.IntlVerificationsPayload;
+import com.lob.model.LobError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

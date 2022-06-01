@@ -1,7 +1,7 @@
 package Model;
 
-import org.openapitools.client.model.CardList;
-import org.openapitools.client.model.Card;
+import com.lob.model.CardList;
+import com.lob.model.Card;
 
 import java.util.ArrayList;
 import java.util.List;

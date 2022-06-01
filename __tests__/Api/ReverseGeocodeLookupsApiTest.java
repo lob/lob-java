@@ -6,8 +6,8 @@ import static org.mockito.Mockito.when;
 import com.lob.api.ApiException;
 import com.lob.api.client.ReverseGeocodeLookupsApi;
 
-import org.openapitools.client.model.Location;
-import org.openapitools.client.model.ReverseGeocode;
+import com.lob.model.Location;
+import com.lob.model.ReverseGeocode;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

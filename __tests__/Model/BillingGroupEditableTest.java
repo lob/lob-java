@@ -1,6 +1,6 @@
 package Model;
 
-import org.openapitools.client.model.BillingGroupEditable;
+import com.lob.model.BillingGroupEditable;
 
 import org.testng.annotations.*;
 import org.testng.Assert;
