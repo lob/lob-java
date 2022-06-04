@@ -24,12 +24,12 @@ import com.lob.model.TemplateVersion;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.threeten.bp.OffsetDateTime;
 
 import com.google.gson.Gson;
 /**
@@ -346,7 +346,7 @@ public class Template {
 
   public Template putMetadataItem(String key, String metadataItem) {
     if (this.metadata == null) {
-      this.metadata = new HashMap<String, String>();
+      this.metadata = new HashMap<String,String>();
     }
     this.metadata.put(key, metadataItem);
     return this;

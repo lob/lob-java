@@ -7,9 +7,8 @@ import com.lob.model.Address;
 import com.lob.model.Thumbnail;
 import com.lob.model.TrackingEventNormal;
 import com.lob.model.MailType;
-
-import org.threeten.bp.OffsetDateTime;
-import org.threeten.bp.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.LocalDate;
 
 import java.util.ArrayList;
 import java.util.List;

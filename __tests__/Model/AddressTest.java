@@ -1,5 +1,6 @@
 package Model;
 
+import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.Map;
 
@@ -163,7 +164,7 @@ public class AddressTest {
 
     @Test
     public void dateCreatedTest() {
-        org.threeten.bp.OffsetDateTime date = org.threeten.bp.OffsetDateTime.now();
+        OffsetDateTime date = OffsetDateTime.now();
          
 
         model.setDateCreated(date);
@@ -175,7 +176,7 @@ public class AddressTest {
 
     @Test
     public void dateModifiedTest() {
-        org.threeten.bp.OffsetDateTime date = org.threeten.bp.OffsetDateTime.now();
+        OffsetDateTime date = OffsetDateTime.now();
 
 
         model.setDateModified(date);

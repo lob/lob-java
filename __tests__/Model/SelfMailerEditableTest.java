@@ -12,7 +12,7 @@ import com.lob.model.SelfMailerSize;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.threeten.bp.OffsetDateTime;
+import java.time.OffsetDateTime;
 
 @SuppressWarnings("unchecked")
 public class SelfMailerEditableTest {
