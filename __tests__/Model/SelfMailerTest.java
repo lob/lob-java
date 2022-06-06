@@ -1,5 +1,6 @@
 package Model;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +8,6 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 
-import org.threeten.bp.OffsetDateTime;
 import com.lob.model.AddressEditable;
 import com.lob.model.MailType;
 import com.lob.model.SelfMailer;

@@ -150,7 +150,7 @@ public class TemplateWritable {
 
   public TemplateWritable putMetadataItem(String key, String metadataItem) {
     if (this.metadata == null) {
-      this.metadata = new HashMap<String, String>();
+      this.metadata = new HashMap<String,String>();
     }
     this.metadata.put(key, metadataItem);
     return this;

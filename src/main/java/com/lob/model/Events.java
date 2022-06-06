@@ -24,7 +24,7 @@ import com.lob.model.EventType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
+import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
 /**
