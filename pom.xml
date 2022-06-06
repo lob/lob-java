@@ -3,7 +3,7 @@
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
     <packaging>jar</packaging>
-    <version>13.1.1-SNAPSHOT</version>
+    <version>13.2.0-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Parent pom for the Lob API Java Wrapper</description>
@@ -38,7 +38,7 @@
         <connection>scm:git:git@github.com:lob/lob-java.git</connection>
         <developerConnection>scm:git:git@github.com:lob/lob-java.git</developerConnection>
         <url>https://github.com/lob/lob-java</url>
-        <tag>v13.1.0</tag>
+        <tag>v13.2.0</tag>
     </scm>
 
     <build>
@@ -450,7 +450,6 @@
         <gson-version>2.9.0</gson-version>
         <commons-lang3-version>3.11</commons-lang3-version>
         <jackson-databind-nullable-version>0.2.1</jackson-databind-nullable-version>
-        <threetenbp-version>1.5.0</threetenbp-version>
         <jakarta-annotation-version>1.3.5</jakarta-annotation-version>
         <junit-version>4.13.1</junit-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
