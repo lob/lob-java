@@ -95,37 +95,51 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-
-// Import classes:
+package com.company.app;
+ 
 import com.lob.api.ApiClient;
 import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.auth.*;
-import com.lob.api.models.*;
+import org.openapitools.client.model.*;
 import com.lob.api.client.AddressesApi;
+ 
+public class App
+{
+    public static void main( String[] args )
+    {
+       
+        ApiClient lobClient = Configuration.getDefaultApiClient();
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient lobClient = Configuration.getDefaultApiClient();
-    
-    // Configure HTTP basic authorization: basicAuth
-    HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR LOB_API_KEY");
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) lobClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("<YOUR_LOB_API_KEY>");
 
-    AddressesApi apiInstance = new AddressesApi(defaultClient);
-    AddressEditable addressEditable = new AddressEditable();
-    try {
-      Address result = apiInstance.addressCreate(addressEditable);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AddressesApi#addressCreate");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        AddressesApi apiInstance = new AddressesApi(lobClient);
+        AddressEditable addressEditable = new AddressEditable();
+        addressEditable.setDescription("Harry - Office");
+        addressEditable.setName("Harry Zhang");
+        addressEditable.setCompany("Lob");
+        addressEditable.setAddressLine1("210 King St");
+        addressEditable.setAddressCity("San Francisco");
+        addressEditable.setAddressState("CA");
+        addressEditable.setAddressZip("94107");
+        addressEditable.setAddressCountry(CountryExtended.US);
+        addressEditable.setPhone("555-555-5555");
+        addressEditable.setEmail("harry@lob.com");
+
+        try {
+            Address result = apiInstance.create(addressEditable);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AddressesApi#addressCreate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
-}
+ } 
 ```
 
 ## Documentation for API Endpoints
