@@ -50,7 +50,7 @@ public class CheckEditable {
   }
   
   
-  public void setFrom(AddressEditable from) {
+  public void setFrom(AddressDomestic from) {
     Gson gson = new Gson();
     this.from = gson.toJson(from);
   }
@@ -69,7 +69,7 @@ public class CheckEditable {
   }
   
   
-  public void setTo(AddressEditable to) {
+  public void setTo(AddressDomestic to) {
     Gson gson = new Gson();
     this.to = gson.toJson(to);
   }

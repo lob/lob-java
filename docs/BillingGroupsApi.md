@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**billingGroupCreate**](BillingGroupsApi.md#billingGroupCreate) | **POST** /billing_groups | create
-[**billingGroupRetrieve**](BillingGroupsApi.md#billingGroupRetrieve) | **GET** /billing_groups/{bg_id} | get
-[**billingGroupUpdate**](BillingGroupsApi.md#billingGroupUpdate) | **POST** /billing_groups/{bg_id} | update
-[**billingGroupsList**](BillingGroupsApi.md#billingGroupsList) | **GET** /billing_groups | list
+[**create**](BillingGroupsApi.md#create) | **POST** /billing_groups | create
+[**get**](BillingGroupsApi.md#get) | **GET** /billing_groups/{bg_id} | get
+[**update**](BillingGroupsApi.md#update) | **POST** /billing_groups/{bg_id} | update
+[**list**](BillingGroupsApi.md#list) | **GET** /billing_groups | list
 
 
-<a name="billingGroupCreate"></a>
-# **billingGroupCreate**
-> BillingGroup billingGroupCreate(billingGroupEditable)
+<a name="create"></a>
+# **create**
+> BillingGroup create(billingGroupEditable)
 
 create
 
@@ -35,16 +35,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     BillingGroupsApi apiInstance = new BillingGroupsApi(defaultClient);
     BillingGroupEditable billingGroupEditable = new BillingGroupEditable(); // BillingGroupEditable | 
     try {
-      BillingGroup result = apiInstance.billingGroupCreate(billingGroupEditable);
+      BillingGroup result = apiInstance.create(billingGroupEditable);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BillingGroupsApi#billingGroupCreate");
+      System.err.println("Exception when calling BillingGroupsApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -79,9 +78,9 @@ Name | Type | Description  | Notes
 **200** | Returns a billing group object |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="billingGroupRetrieve"></a>
-# **billingGroupRetrieve**
-> BillingGroup billingGroupRetrieve(bgId)
+<a name="get"></a>
+# **get**
+> BillingGroup get(bgId)
 
 get
 
@@ -104,16 +103,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     BillingGroupsApi apiInstance = new BillingGroupsApi(defaultClient);
     String bgId = "bgId_example"; // String | id of the billing_group
     try {
-      BillingGroup result = apiInstance.billingGroupRetrieve(bgId);
+      BillingGroup result = apiInstance.get(bgId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BillingGroupsApi#billingGroupRetrieve");
+      System.err.println("Exception when calling BillingGroupsApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -148,9 +146,9 @@ Name | Type | Description  | Notes
 **200** | Returns a billing_group object. |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="billingGroupUpdate"></a>
-# **billingGroupUpdate**
-> BillingGroup billingGroupUpdate(bgId, billingGroupEditable)
+<a name="update"></a>
+# **update**
+> BillingGroup update(bgId, billingGroupEditable)
 
 update
 
@@ -173,17 +171,16 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     BillingGroupsApi apiInstance = new BillingGroupsApi(defaultClient);
     String bgId = "bgId_example"; // String | id of the billing_group
     BillingGroupEditable billingGroupEditable = new BillingGroupEditable(); // BillingGroupEditable | 
     try {
-      BillingGroup result = apiInstance.billingGroupUpdate(bgId, billingGroupEditable);
+      BillingGroup result = apiInstance.update(bgId, billingGroupEditable);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BillingGroupsApi#billingGroupUpdate");
+      System.err.println("Exception when calling BillingGroupsApi#update");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -219,9 +216,9 @@ Name | Type | Description  | Notes
 **200** | Returns a billing group object |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="billingGroupsList"></a>
-# **billingGroupsList**
-> BillingGroupList billingGroupsList(limit, offset, include, dateCreated, dateModified, sortBy)
+<a name="list"></a>
+# **list**
+> BillingGroupList list(limit, offset, include, dateCreated, dateModified, sortBy)
 
 list
 
@@ -244,8 +241,7 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     BillingGroupsApi apiInstance = new BillingGroupsApi(defaultClient);
     Integer limit = 10; // Integer | How many results to return.
@@ -253,12 +249,12 @@ public class Example {
     List<String> include = Arrays.asList(); // List<String> | Request that the response include the total count by specifying `include[]=total_count`. 
     Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
     Map<String, String> dateModified = new HashMap(); // Map<String, String> | Filter by date modified.
-    SortBy5 sortBy = new SortBy5(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
+    SortBy5 sortBy = new HashMap(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
     try {
-      BillingGroupList result = apiInstance.billingGroupsList(limit, offset, include, dateCreated, dateModified, sortBy);
+      BillingGroupList result = apiInstance.list(limit, offset, include, dateCreated, dateModified, sortBy);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BillingGroupsApi#billingGroupsList");
+      System.err.println("Exception when calling BillingGroupsApi#list");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
