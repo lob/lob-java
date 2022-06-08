@@ -56,6 +56,31 @@ public class AddressDeletion {
   
   
 
+  public static final String SERIALIZED_NAME_COOL_ID = "cool_id";
+
+  @SerializedName(SERIALIZED_NAME_COOL_ID)
+  
+
+  private String coolId;
+  /**
+  * Unique identifier prefixed with `adr_`.
+  * @return coolId
+  **/
+  
+  @javax.annotation.Nullable
+  
+  public String getCoolId() { return coolId; }
+
+  public void setCoolId (String coolId) throws IllegalArgumentException {
+    if(!coolId.matches("^adr_[a-zA-Z0-9]+$")) {
+      throw new IllegalArgumentException("Invalid cool_id provided");
+    }
+
+    this.coolId = coolId;
+  }
+  
+  
+
   public static final String SERIALIZED_NAME_DELETED = "deleted";
 
   @SerializedName(SERIALIZED_NAME_DELETED)
@@ -157,6 +182,18 @@ public class AddressDeletion {
 
 
   /*
+  public AddressDeletion coolId(String coolId) {
+    
+    this.coolId = coolId;
+    return this;
+  }
+  */
+
+
+
+
+
+  /*
   public AddressDeletion deleted(Boolean deleted) {
     
     this.deleted = deleted;
@@ -196,13 +233,14 @@ public class AddressDeletion {
     }
     AddressDeletion addressDeletion = (AddressDeletion) o;
     return Objects.equals(this.id, addressDeletion.id) &&
+        Objects.equals(this.coolId, addressDeletion.coolId) &&
         Objects.equals(this.deleted, addressDeletion.deleted) &&
         Objects.equals(this._object, addressDeletion._object);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, deleted, _object);
+    return Objects.hash(id, coolId, deleted, _object);
   }
 
   @Override
@@ -210,6 +248,7 @@ public class AddressDeletion {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    coolId: ").append(toIndentedString(coolId)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("}");

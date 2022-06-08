@@ -723,14 +723,10 @@ public class UsComponents {
   
   @javax.annotation.Nullable
   
-  public String getCountyFips() { return countyFips; }
-
-  public void setCountyFips (String countyFips) throws IllegalArgumentException {
-    if(!countyFips.matches("\\d{5}")) {
-      throw new IllegalArgumentException("Invalid county_fips provided");
-    }
-
-    this.countyFips = countyFips;
+  @ApiModelProperty(value = "A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies `components[county]`. It consists of a 2-digit state code and a 3-digit county code. ")
+  
+  public String getCountyFips() {
+      return countyFips;
   }
   
   
@@ -1191,6 +1187,9 @@ public class UsComponents {
   */
 
 
+  public void setCountyFips(String countyFips) {
+    this.countyFips = countyFips;
+  }
 
 
 
