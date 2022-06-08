@@ -4,13 +4,13 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**bulkIntlVerifications**](IntlVerificationsApi.md#bulkIntlVerifications) | **POST** /bulk/intl_verifications | verifyBulk
-[**intlVerification**](IntlVerificationsApi.md#intlVerification) | **POST** /intl_verifications | verifySingle
+[**verifyBulk**](IntlVerificationsApi.md#verifyBulk) | **POST** /bulk/intl_verifications | verifyBulk
+[**verifySingle**](IntlVerificationsApi.md#verifySingle) | **POST** /intl_verifications | verifySingle
 
 
-<a name="bulkIntlVerifications"></a>
-# **bulkIntlVerifications**
-> IntlVerifications bulkIntlVerifications(intlVerificationsPayload)
+<a name="verifyBulk"></a>
+# **verifyBulk**
+> IntlVerifications verifyBulk(intlVerificationsPayload)
 
 verifyBulk
 
@@ -33,16 +33,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     IntlVerificationsApi apiInstance = new IntlVerificationsApi(defaultClient);
     IntlVerificationsPayload intlVerificationsPayload = new IntlVerificationsPayload(); // IntlVerificationsPayload | 
     try {
-      IntlVerifications result = apiInstance.bulkIntlVerifications(intlVerificationsPayload);
+      IntlVerifications result = apiInstance.verifyBulk(intlVerificationsPayload);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling IntlVerificationsApi#bulkIntlVerifications");
+      System.err.println("Exception when calling IntlVerificationsApi#verifyBulk");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -77,9 +76,9 @@ Name | Type | Description  | Notes
 **200** | Returns an array of international verification objects. |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="intlVerification"></a>
-# **intlVerification**
-> IntlVerification intlVerification(intlVerificationWritable, xLangOutput)
+<a name="verifySingle"></a>
+# **verifySingle**
+> IntlVerification verifySingle(intlVerificationWritable, xLangOutput)
 
 verifySingle
 
@@ -102,17 +101,16 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     IntlVerificationsApi apiInstance = new IntlVerificationsApi(defaultClient);
     IntlVerificationWritable intlVerificationWritable = new IntlVerificationWritable(); // IntlVerificationWritable | 
-    String xLangOutput = "xLangOutput_example"; // String | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English. 
+    String xLangOutput = "native"; // String | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English. 
     try {
-      IntlVerification result = apiInstance.intlVerification(intlVerificationWritable, xLangOutput);
+      IntlVerification result = apiInstance.verifySingle(intlVerificationWritable, xLangOutput);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling IntlVerificationsApi#intlVerification");
+      System.err.println("Exception when calling IntlVerificationsApi#verifySingle");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

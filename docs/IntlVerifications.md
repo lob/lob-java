@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**addresses** | [**List&lt;OneOfintlVerificationlobError&gt;**](OneOfintlVerificationlobError.md) |  |  [optional]
+**addresses** | [**List&lt;IntlVerificationOrError&gt;**](IntlVerificationOrError.md) |  |  [optional]
 **errors** | **Boolean** | Indicates whether any errors occurred during the verification process. |  [optional]
 
 
