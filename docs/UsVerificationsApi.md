@@ -4,13 +4,13 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**bulkUsVerifications**](UsVerificationsApi.md#bulkUsVerifications) | **POST** /bulk/us_verifications | verifyBulk
-[**usVerification**](UsVerificationsApi.md#usVerification) | **POST** /us_verifications | verifySingle
+[**verifyBulk**](UsVerificationsApi.md#verifyBulk) | **POST** /bulk/us_verifications | verifyBulk
+[**verifySingle**](UsVerificationsApi.md#verifySingle) | **POST** /us_verifications | verifySingle
 
 
-<a name="bulkUsVerifications"></a>
-# **bulkUsVerifications**
-> UsVerifications bulkUsVerifications(multipleComponentsList, _case)
+<a name="verifyBulk"></a>
+# **verifyBulk**
+> UsVerifications verifyBulk(multipleComponentsList, _case)
 
 verifyBulk
 
@@ -33,17 +33,16 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     UsVerificationsApi apiInstance = new UsVerificationsApi(defaultClient);
     MultipleComponentsList multipleComponentsList = new MultipleComponentsList(); // MultipleComponentsList | 
     String _case = "upper"; // String | Casing of the verified address. Possible values are `upper` and `proper` for uppercased (e.g. \"PO BOX\") and proper-cased (e.g. \"PO Box\"), respectively.
     try {
-      UsVerifications result = apiInstance.bulkUsVerifications(multipleComponentsList, _case);
+      UsVerifications result = apiInstance.verifyBulk(multipleComponentsList, _case);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling UsVerificationsApi#bulkUsVerifications");
+      System.err.println("Exception when calling UsVerificationsApi#verifyBulk");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -79,9 +78,9 @@ Name | Type | Description  | Notes
 **200** | Returns a list of US verification objects. |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="usVerification"></a>
-# **usVerification**
-> UsVerification usVerification(usVerificationsWritable, _case)
+<a name="verifySingle"></a>
+# **verifySingle**
+> UsVerification verifySingle(usVerificationsWritable, _case)
 
 verifySingle
 
@@ -104,17 +103,16 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     UsVerificationsApi apiInstance = new UsVerificationsApi(defaultClient);
     UsVerificationsWritable usVerificationsWritable = new UsVerificationsWritable(); // UsVerificationsWritable | 
     String _case = "upper"; // String | Casing of the verified address. Possible values are `upper` and `proper` for uppercased (e.g. \"PO BOX\") and proper-cased (e.g. \"PO Box\"), respectively.
     try {
-      UsVerification result = apiInstance.usVerification(usVerificationsWritable, _case);
+      UsVerification result = apiInstance.verifySingle(usVerificationsWritable, _case);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling UsVerificationsApi#usVerification");
+      System.err.println("Exception when calling UsVerificationsApi#verifySingle");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
