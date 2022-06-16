@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**bankAccountCreate**](BankAccountsApi.md#bankAccountCreate) | **POST** /bank_accounts | create
-[**bankAccountDelete**](BankAccountsApi.md#bankAccountDelete) | **DELETE** /bank_accounts/{bank_id} | delete
-[**bankAccountRetrieve**](BankAccountsApi.md#bankAccountRetrieve) | **GET** /bank_accounts/{bank_id} | get
-[**bankAccountVerify**](BankAccountsApi.md#bankAccountVerify) | **POST** /bank_accounts/{bank_id}/verify | verify
-[**bankAccountsList**](BankAccountsApi.md#bankAccountsList) | **GET** /bank_accounts | list
+[**create**](BankAccountsApi.md#create) | **POST** /bank_accounts | create
+[**delete**](BankAccountsApi.md#delete) | **DELETE** /bank_accounts/{bank_id} | delete
+[**get**](BankAccountsApi.md#get) | **GET** /bank_accounts/{bank_id} | get
+[**verify**](BankAccountsApi.md#verify) | **POST** /bank_accounts/{bank_id}/verify | verify
+[**list**](BankAccountsApi.md#list) | **GET** /bank_accounts | list
 
 
-<a name="bankAccountCreate"></a>
-# **bankAccountCreate**
-> BankAccount bankAccountCreate(bankAccountWritable)
+<a name="create"></a>
+# **create**
+> BankAccount create(bankAccountWritable)
 
 create
 
@@ -36,16 +36,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     BankAccountsApi apiInstance = new BankAccountsApi(defaultClient);
     BankAccountWritable bankAccountWritable = new BankAccountWritable(); // BankAccountWritable | 
     try {
-      BankAccount result = apiInstance.bankAccountCreate(bankAccountWritable);
+      BankAccount result = apiInstance.create(bankAccountWritable);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BankAccountsApi#bankAccountCreate");
+      System.err.println("Exception when calling BankAccountsApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -80,9 +79,9 @@ Name | Type | Description  | Notes
 **200** | Returns a bank_account object |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="bankAccountDelete"></a>
-# **bankAccountDelete**
-> BankAccountDeletion bankAccountDelete(bankId)
+<a name="delete"></a>
+# **delete**
+> BankAccountDeletion delete(bankId)
 
 delete
 
@@ -105,16 +104,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     BankAccountsApi apiInstance = new BankAccountsApi(defaultClient);
     String bankId = "bankId_example"; // String | id of the bank account
     try {
-      BankAccountDeletion result = apiInstance.bankAccountDelete(bankId);
+      BankAccountDeletion result = apiInstance.delete(bankId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BankAccountsApi#bankAccountDelete");
+      System.err.println("Exception when calling BankAccountsApi#delete");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -149,9 +147,9 @@ Name | Type | Description  | Notes
 **200** | Deleted |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="bankAccountRetrieve"></a>
-# **bankAccountRetrieve**
-> BankAccount bankAccountRetrieve(bankId)
+<a name="get"></a>
+# **get**
+> BankAccount get(bankId)
 
 get
 
@@ -174,16 +172,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     BankAccountsApi apiInstance = new BankAccountsApi(defaultClient);
     String bankId = "bankId_example"; // String | id of the bank account
     try {
-      BankAccount result = apiInstance.bankAccountRetrieve(bankId);
+      BankAccount result = apiInstance.get(bankId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BankAccountsApi#bankAccountRetrieve");
+      System.err.println("Exception when calling BankAccountsApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -218,9 +215,9 @@ Name | Type | Description  | Notes
 **200** | Returns a bank account object |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="bankAccountVerify"></a>
-# **bankAccountVerify**
-> BankAccount bankAccountVerify(bankId, bankAccountVerify)
+<a name="verify"></a>
+# **verify**
+> BankAccount verify(bankId, bankAccountVerify)
 
 verify
 
@@ -243,17 +240,16 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     BankAccountsApi apiInstance = new BankAccountsApi(defaultClient);
     String bankId = "bankId_example"; // String | id of the bank account to be verified
     BankAccountVerify bankAccountVerify = new BankAccountVerify(); // BankAccountVerify | 
     try {
-      BankAccount result = apiInstance.bankAccountVerify(bankId, bankAccountVerify);
+      BankAccount result = apiInstance.verify(bankId, bankAccountVerify);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BankAccountsApi#bankAccountVerify");
+      System.err.println("Exception when calling BankAccountsApi#verify");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -289,9 +285,9 @@ Name | Type | Description  | Notes
 **200** | Returns a bank_account object |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="bankAccountsList"></a>
-# **bankAccountsList**
-> BankAccountList bankAccountsList(limit, before, after, include, dateCreated, metadata)
+<a name="list"></a>
+# **list**
+> BankAccountList list(limit, before, after, include, dateCreated, metadata)
 
 list
 
@@ -314,8 +310,7 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     BankAccountsApi apiInstance = new BankAccountsApi(defaultClient);
     Integer limit = 10; // Integer | How many results to return.
@@ -325,10 +320,10 @@ public class Example {
     Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
     Map<String, String> metadata = new HashMap(); // Map<String, String> | Filter by metadata key-value pair`.
     try {
-      BankAccountList result = apiInstance.bankAccountsList(limit, before, after, include, dateCreated, metadata);
+      BankAccountList result = apiInstance.list(limit, before, after, include, dateCreated, metadata);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BankAccountsApi#bankAccountsList");
+      System.err.println("Exception when calling BankAccountsApi#list");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

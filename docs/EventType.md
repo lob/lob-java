@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**OneOfpostcardTypesselfMailerTypesletterTypescheckTypesaddressTypesbankAccountTypes**](OneOfpostcardTypesselfMailerTypesletterTypescheckTypesaddressTypesbankAccountTypes.md) |  |  [optional]
+**id** | **String** |  |  [optional]
 **enabledForTest** | **Boolean** | Value is &#x60;true&#x60; if the event type is enabled in both the test and live environments. |  [optional]
 **resource** | [**ResourceEnum**](#ResourceEnum) |  |  [optional]
 **_object** | [**ObjectEnum**](#ObjectEnum) | Value is resource type. |  [optional]
