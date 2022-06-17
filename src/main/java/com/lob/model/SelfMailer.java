@@ -50,7 +50,7 @@ public class SelfMailer {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -406,7 +406,7 @@ public class SelfMailer {
   * @return url
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getUrl() { return url; }
 
