@@ -42,7 +42,7 @@ public class GeocodeComponents {
   * @return zipCode
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getZipCode() { return zipCode; }
 
@@ -67,7 +67,7 @@ public class GeocodeComponents {
   * @return zipCodePlus4
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getZipCodePlus4() { return zipCodePlus4; }
 

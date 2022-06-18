@@ -41,9 +41,9 @@ public class EventType {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public String getId() {
       return id;
@@ -62,9 +62,9 @@ public class EventType {
   * @return enabledForTest
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Value is `true` if the event type is enabled in both the test and live environments.")
+  @ApiModelProperty(required = true, value = "Value is `true` if the event type is enabled in both the test and live environments.")
   
   public Boolean getEnabledForTest() {
       return enabledForTest;
@@ -138,9 +138,9 @@ public class EventType {
   * @return resource
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public ResourceEnum getResource() {
       return resource;
@@ -204,9 +204,9 @@ public class EventType {
   * @return _object
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Value is resource type.")
+  @ApiModelProperty(required = true, value = "Value is resource type.")
   
   public ObjectEnum getObject() {
       return _object;

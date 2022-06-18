@@ -36,7 +36,7 @@ public class IntlVerificationsPayload {
   public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<MultipleComponentsIntl> addresses = null;
+  private List<MultipleComponentsIntl> addresses = new ArrayList<>();
   public List<MultipleComponentsIntl> getAddresses() {     
     if (this.addresses == null) {
       this.addresses = new ArrayList<MultipleComponentsIntl>();
@@ -54,9 +54,6 @@ public class IntlVerificationsPayload {
   */
 
   public IntlVerificationsPayload addAddressesItem(MultipleComponentsIntl addressesItem) {
-    if (this.addresses == null) {
-      this.addresses = new ArrayList<MultipleComponentsIntl>();
-    }
     this.addresses.add(addressesItem);
     return this;
   }
