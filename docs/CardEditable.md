@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**front** | [**OneOfstringstring**](OneOfstringstring.md) | A PDF template for the front of the card |  [optional]
-**back** | [**OneOfstringstring**](OneOfstringstring.md) | A PDF template for the back of the card |  [optional]
+**front** | **String** | A PDF template for the front of the card | 
+**back** | **String** | A PDF template for the back of the card |  [optional]
 **size** | [**SizeEnum**](#SizeEnum) | The size of the card |  [optional]
 **description** | **String** | Description of the card. |  [optional]
 

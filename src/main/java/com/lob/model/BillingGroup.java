@@ -63,9 +63,9 @@ public class BillingGroup {
   * @return name
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Name of the billing group.")
+  @ApiModelProperty(required = true, value = "Name of the billing group.")
   
   public String getName() {
       return name;
@@ -84,7 +84,7 @@ public class BillingGroup {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -109,9 +109,9 @@ public class BillingGroup {
   * @return dateCreated
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
   public OffsetDateTime getDateCreated() {
       return dateCreated;
@@ -130,9 +130,9 @@ public class BillingGroup {
   * @return dateModified
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
   public OffsetDateTime getDateModified() {
       return dateModified;
@@ -196,9 +196,9 @@ public class BillingGroup {
   * @return _object
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Value is resource type.")
+  @ApiModelProperty(required = true, value = "Value is resource type.")
   
   public ObjectEnum getObject() {
       return _object;
