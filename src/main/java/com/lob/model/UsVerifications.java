@@ -36,7 +36,7 @@ public class UsVerifications {
   public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<UsVerificationOrError> addresses = null;
+  private List<UsVerificationOrError> addresses = new ArrayList<>();
   public List<UsVerificationOrError> getAddresses() {     
     if (this.addresses == null) {
       this.addresses = new ArrayList<UsVerificationOrError>();
@@ -55,9 +55,9 @@ public class UsVerifications {
   * @return errors
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Indicates whether any errors occurred during the verification process.")
+  @ApiModelProperty(required = true, value = "Indicates whether any errors occurred during the verification process.")
   
   public Boolean getErrors() {
       return errors;
@@ -75,9 +75,6 @@ public class UsVerifications {
   */
 
   public UsVerifications addAddressesItem(UsVerificationOrError addressesItem) {
-    if (this.addresses == null) {
-      this.addresses = new ArrayList<UsVerificationOrError>();
-    }
     this.addresses.add(addressesItem);
     return this;
   }

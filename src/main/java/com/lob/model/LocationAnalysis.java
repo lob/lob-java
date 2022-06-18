@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 /**
@@ -47,7 +46,7 @@ public class LocationAnalysis {
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(value = "A positive or negative decimal indicating the geographic latitude of the address.")
+  @ApiModelProperty(required = true, value = "A positive or negative decimal indicating the geographic latitude of the address.")
   
   public Float getLatitude() {
       return latitude;
@@ -70,7 +69,7 @@ public class LocationAnalysis {
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(value = "A positive or negative decimal indicating the geographic longitude of the address.")
+  @ApiModelProperty(required = true, value = "A positive or negative decimal indicating the geographic longitude of the address.")
   
   public Float getLongitude() {
       return longitude;
@@ -89,9 +88,9 @@ public class LocationAnalysis {
   * @return distance
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The distance from the input location to this exact zip code in miles.")
+  @ApiModelProperty(required = true, value = "The distance from the input location to this exact zip code in miles.")
   
   public Float getDistance() {
       return distance;
@@ -159,20 +158,9 @@ public class LocationAnalysis {
         Objects.equals(this.distance, locationAnalysis.distance);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(latitude, longitude, distance);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
