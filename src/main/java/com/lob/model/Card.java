@@ -47,7 +47,7 @@ public class Card {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -72,9 +72,9 @@ public class Card {
   * @return url
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The signed link for the card.")
+  @ApiModelProperty(required = true, value = "The signed link for the card.")
   
   public URI getUrl() {
       return url;
@@ -93,9 +93,9 @@ public class Card {
   * @return autoReorder
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "True if the cards should be auto-reordered.")
+  @ApiModelProperty(required = true, value = "True if the cards should be auto-reordered.")
   
   public Boolean getAutoReorder() {
       return autoReorder;
@@ -116,7 +116,7 @@ public class Card {
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(value = "The number of cards to be reordered.")
+  @ApiModelProperty(required = true, value = "The number of cards to be reordered.")
   
   public Integer getReorderQuantity() {
       return reorderQuantity;
@@ -135,9 +135,9 @@ public class Card {
   * @return rawUrl
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The raw URL of the card.")
+  @ApiModelProperty(required = true, value = "The raw URL of the card.")
   
   public URI getRawUrl() {
       return rawUrl;
@@ -156,9 +156,9 @@ public class Card {
   * @return frontOriginalUrl
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The original URL of the front template.")
+  @ApiModelProperty(required = true, value = "The original URL of the front template.")
   
   public URI getFrontOriginalUrl() {
       return frontOriginalUrl;
@@ -177,9 +177,9 @@ public class Card {
   * @return backOriginalUrl
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The original URL of the back template.")
+  @ApiModelProperty(required = true, value = "The original URL of the back template.")
   
   public URI getBackOriginalUrl() {
       return backOriginalUrl;
@@ -190,7 +190,7 @@ public class Card {
   public static final String SERIALIZED_NAME_THUMBNAILS = "thumbnails";
 
   @SerializedName(SERIALIZED_NAME_THUMBNAILS)
-  private List<Thumbnail> thumbnails = null;
+  private List<Thumbnail> thumbnails = new ArrayList<>();
   public List<Thumbnail> getThumbnails() {     
     if (this.thumbnails == null) {
       this.thumbnails = new ArrayList<Thumbnail>();
@@ -209,9 +209,9 @@ public class Card {
   * @return availableQuantity
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The available quantity of cards.")
+  @ApiModelProperty(required = true, value = "The available quantity of cards.")
   
   public Integer getAvailableQuantity() {
       return availableQuantity;
@@ -230,9 +230,9 @@ public class Card {
   * @return pendingQuantity
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The pending quantity of cards.")
+  @ApiModelProperty(required = true, value = "The pending quantity of cards.")
   
   public Integer getPendingQuantity() {
       return pendingQuantity;
@@ -298,9 +298,9 @@ public class Card {
   * @return status
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public StatusEnum getStatus() {
       return status;
@@ -366,9 +366,9 @@ public class Card {
   * @return orientation
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The orientation of the card.")
+  @ApiModelProperty(required = true, value = "The orientation of the card.")
   
   public OrientationEnum getOrientation() {
       return orientation;
@@ -387,9 +387,9 @@ public class Card {
   * @return thresholdAmount
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The threshold amount of the card")
+  @ApiModelProperty(required = true, value = "The threshold amount of the card")
   
   public Integer getThresholdAmount() {
       return thresholdAmount;
@@ -408,9 +408,9 @@ public class Card {
   * @return dateCreated
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
   public OffsetDateTime getDateCreated() {
       return dateCreated;
@@ -429,9 +429,9 @@ public class Card {
   * @return dateModified
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
   public OffsetDateTime getDateModified() {
       return dateModified;
@@ -516,9 +516,9 @@ public class Card {
   * @return _object
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "object")
+  @ApiModelProperty(required = true, value = "object")
   
   public ObjectEnum getObject() {
       return _object;
@@ -727,9 +727,6 @@ public class Card {
   */
 
   public Card addThumbnailsItem(Thumbnail thumbnailsItem) {
-    if (this.thumbnails == null) {
-      this.thumbnails = new ArrayList<Thumbnail>();
-    }
     this.thumbnails.add(thumbnailsItem);
     return this;
   }

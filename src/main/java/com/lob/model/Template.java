@@ -69,7 +69,7 @@ public class Template {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -86,7 +86,7 @@ public class Template {
   public static final String SERIALIZED_NAME_VERSIONS = "versions";
 
   @SerializedName(SERIALIZED_NAME_VERSIONS)
-  private List<TemplateVersion> versions = null;
+  private List<TemplateVersion> versions = new ArrayList<>();
   public List<TemplateVersion> getVersions() {     
     if (this.versions == null) {
       this.versions = new ArrayList<TemplateVersion>();
@@ -105,9 +105,9 @@ public class Template {
   * @return publishedVersion
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public TemplateVersion getPublishedVersion() {
       return publishedVersion;
@@ -292,9 +292,6 @@ public class Template {
   */
 
   public Template addVersionsItem(TemplateVersion versionsItem) {
-    if (this.versions == null) {
-      this.versions = new ArrayList<TemplateVersion>();
-    }
     this.versions.add(versionsItem);
     return this;
   }
