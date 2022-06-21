@@ -62,9 +62,9 @@ public class BillingGroupEditable {
   * @return name
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Name of the billing group.")
+  @ApiModelProperty(required = true, value = "Name of the billing group.")
   
   public String getName() {
       return name;

@@ -36,7 +36,7 @@ public class IntlVerifications {
   public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<IntlVerificationOrError> addresses = null;
+  private List<IntlVerificationOrError> addresses = new ArrayList<>();
   public List<IntlVerificationOrError> getAddresses() {     
     if (this.addresses == null) {
       this.addresses = new ArrayList<IntlVerificationOrError>();
@@ -55,9 +55,9 @@ public class IntlVerifications {
   * @return errors
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Indicates whether any errors occurred during the verification process.")
+  @ApiModelProperty(required = true, value = "Indicates whether any errors occurred during the verification process.")
   
   public Boolean getErrors() {
       return errors;
@@ -75,9 +75,6 @@ public class IntlVerifications {
   */
 
   public IntlVerifications addAddressesItem(IntlVerificationOrError addressesItem) {
-    if (this.addresses == null) {
-      this.addresses = new ArrayList<IntlVerificationOrError>();
-    }
     this.addresses.add(addressesItem);
     return this;
   }
