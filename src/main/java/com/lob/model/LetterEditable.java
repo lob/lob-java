@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.LetterCustomEnvelope;
+import com.lob.model.LetterEditableCustomEnvelope;
 import com.lob.model.MailType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -144,9 +144,9 @@ public class LetterEditable {
   * @return color
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Set this key to `true` if you would like to print in color. Set to `false` if you would like to print in black and white.")
+  @ApiModelProperty(required = true, value = "Set this key to `true` if you would like to print in color. Set to `false` if you would like to print in black and white.")
   
   public Boolean getColor() {
       return color;
@@ -292,7 +292,7 @@ public class LetterEditable {
   @SerializedName(SERIALIZED_NAME_CUSTOM_ENVELOPE)
   
 
-  private LetterCustomEnvelope customEnvelope;
+  private LetterEditableCustomEnvelope customEnvelope;
   /**
   * Get customEnvelope
   * @return customEnvelope
@@ -302,7 +302,7 @@ public class LetterEditable {
   
   @ApiModelProperty(value = "")
   
-  public LetterCustomEnvelope getCustomEnvelope() {
+  public LetterEditableCustomEnvelope getCustomEnvelope() {
       return customEnvelope;
   }
   
@@ -357,9 +357,9 @@ public class LetterEditable {
   * @return file
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "PDF file containing the letter's formatting.")
+  @ApiModelProperty(required = true, value = "PDF file containing the letter's formatting.")
   
   public String getFile() {
       return file;
@@ -628,7 +628,7 @@ public class LetterEditable {
 
 
   /*
-  public LetterEditable customEnvelope(LetterCustomEnvelope customEnvelope) {
+  public LetterEditable customEnvelope(LetterEditableCustomEnvelope customEnvelope) {
     
     this.customEnvelope = customEnvelope;
     return this;
@@ -636,7 +636,7 @@ public class LetterEditable {
   */
 
 
-  public void setCustomEnvelope(LetterCustomEnvelope customEnvelope) {
+  public void setCustomEnvelope(LetterEditableCustomEnvelope customEnvelope) {
     this.customEnvelope = customEnvelope;
   }
 
