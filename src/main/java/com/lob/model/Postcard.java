@@ -54,7 +54,7 @@ public class Postcard {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -480,7 +480,7 @@ public class Postcard {
   * @return url
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getUrl() { return url; }
 
