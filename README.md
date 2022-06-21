@@ -74,7 +74,7 @@ and
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.github.lob:lob-java:13.0.0"
+implementation "com.github.lob:lob-java:13.0.0"
 ```
 
 ### Others
@@ -101,7 +101,7 @@ import com.lob.api.ApiClient;
 import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.auth.*;
-import org.openapitools.client.model.*;
+import com.lob.model.*;
 import com.lob.api.client.AddressesApi;
  
 public class App
