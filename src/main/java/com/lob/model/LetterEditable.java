@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.LetterCustomEnvelope;
+import com.lob.model.LetterEditableCustomEnvelope;
 import com.lob.model.MailType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -144,9 +144,9 @@ public class LetterEditable {
   * @return color
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Set this key to `true` if you would like to print in color. Set to `false` if you would like to print in black and white.")
+  @ApiModelProperty(required = true, value = "Set this key to `true` if you would like to print in color. Set to `false` if you would like to print in black and white.")
   
   public Boolean getColor() {
       return color;
@@ -251,18 +251,15 @@ public class LetterEditable {
 
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
-  private String returnEnvelope;
-  public  String getReturnEnvelope() {
-    return returnEnvelope;
-  }
-
-  public void setReturnEnvelope(String returnEnvelope) {
-    ;
-    this.returnEnvelope = returnEnvelope;
+  
+  
+  public void setReturnEnvelope( returnEnvelope) {
+    Gson gson = new Gson();
+    this.returnEnvelope = gson.toJson(returnEnvelope);
   }
   
   
-  public void setReturnEnvelope(Boolean returnEnvelope) {
+  public void setReturnEnvelope( returnEnvelope) {
     Gson gson = new Gson();
     this.returnEnvelope = gson.toJson(returnEnvelope);
   }
@@ -292,7 +289,7 @@ public class LetterEditable {
   @SerializedName(SERIALIZED_NAME_CUSTOM_ENVELOPE)
   
 
-  private LetterCustomEnvelope customEnvelope;
+  private LetterEditableCustomEnvelope customEnvelope;
   /**
   * Get customEnvelope
   * @return customEnvelope
@@ -302,7 +299,7 @@ public class LetterEditable {
   
   @ApiModelProperty(value = "")
   
-  public LetterCustomEnvelope getCustomEnvelope() {
+  public LetterEditableCustomEnvelope getCustomEnvelope() {
       return customEnvelope;
   }
   
@@ -312,18 +309,15 @@ public class LetterEditable {
 
   @SerializedName(SERIALIZED_NAME_TO)
   
-  private String to;
-  public  String getTo() {
-    return to;
-  }
-
-  public void setTo(String to) {
-    ;
-    this.to = to;
+  
+  
+  public void setTo( to) {
+    Gson gson = new Gson();
+    this.to = gson.toJson(to);
   }
   
   
-  public void setTo(AddressEditable to) {
+  public void setTo( to) {
     Gson gson = new Gson();
     this.to = gson.toJson(to);
   }
@@ -331,18 +325,15 @@ public class LetterEditable {
 
   @SerializedName(SERIALIZED_NAME_FROM)
   
-  private String from;
-  public  String getFrom() {
-    return from;
-  }
-
-  public void setFrom(String from) {
-    ;
-    this.from = from;
+  
+  
+  public void setFrom( from) {
+    Gson gson = new Gson();
+    this.from = gson.toJson(from);
   }
   
   
-  public void setFrom(AddressEditable from) {
+  public void setFrom( from) {
     Gson gson = new Gson();
     this.from = gson.toJson(from);
   }
@@ -357,9 +348,9 @@ public class LetterEditable {
   * @return file
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "PDF file containing the letter's formatting.")
+  @ApiModelProperty(required = true, value = "PDF file containing the letter's formatting.")
   
   public String getFile() {
       return file;
@@ -628,7 +619,7 @@ public class LetterEditable {
 
 
   /*
-  public LetterEditable customEnvelope(LetterCustomEnvelope customEnvelope) {
+  public LetterEditable customEnvelope(LetterEditableCustomEnvelope customEnvelope) {
     
     this.customEnvelope = customEnvelope;
     return this;
@@ -636,7 +627,7 @@ public class LetterEditable {
   */
 
 
-  public void setCustomEnvelope(LetterCustomEnvelope customEnvelope) {
+  public void setCustomEnvelope(LetterEditableCustomEnvelope customEnvelope) {
     this.customEnvelope = customEnvelope;
   }
 

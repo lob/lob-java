@@ -42,9 +42,9 @@ public class IntlSuggestions {
   * @return primaryNumberRange
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The primary number range of the address that identifies a building at street level. ")
+  @ApiModelProperty(required = true, value = "The primary number range of the address that identifies a building at street level. ")
   
   public String getPrimaryNumberRange() {
       return primaryNumberRange;
@@ -63,9 +63,9 @@ public class IntlSuggestions {
   * @return primaryLine
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The primary delivery line (usually the street address) of the address. Combination of the following applicable `components` (primary number & secondary information may be missing or inaccurate): * `primary_number` * `street_predirection` * `street_name` * `street_suffix` * `street_postdirection` * `secondary_designator` * `secondary_number` * `pmb_designator` * `pmb_number` ")
+  @ApiModelProperty(required = true, value = "The primary delivery line (usually the street address) of the address. Combination of the following applicable `components` (primary number & secondary information may be missing or inaccurate): * `primary_number` * `street_predirection` * `street_name` * `street_suffix` * `street_postdirection` * `secondary_designator` * `secondary_number` * `pmb_designator` * `pmb_number` ")
   
   public String getPrimaryLine() {
       return primaryLine;
@@ -84,9 +84,9 @@ public class IntlSuggestions {
   * @return city
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public String getCity() {
       return city;
@@ -105,9 +105,9 @@ public class IntlSuggestions {
   * @return state
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. ")
+  @ApiModelProperty(required = true, value = "The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. ")
   
   public String getState() {
       return state;
@@ -126,9 +126,9 @@ public class IntlSuggestions {
   * @return country
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public CountryExtended getCountry() {
       return country;
@@ -147,9 +147,9 @@ public class IntlSuggestions {
   * @return zipCode
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A 5-digit zip code. Left empty if a test key is used.")
+  @ApiModelProperty(required = true, value = "A 5-digit zip code. Left empty if a test key is used.")
   
   public String getZipCode() {
       return zipCode;
