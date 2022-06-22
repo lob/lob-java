@@ -42,9 +42,9 @@ public class CardEditable {
   * @return front
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A PDF template for the front of the card")
+  @ApiModelProperty(required = true, value = "A PDF template for the front of the card")
   
   public String getFront() {
       return front;
