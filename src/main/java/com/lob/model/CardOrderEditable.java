@@ -43,9 +43,9 @@ public class CardOrderEditable {
   * @return quantity
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public Integer getQuantity() {
       return quantity;

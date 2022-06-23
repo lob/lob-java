@@ -67,9 +67,9 @@ public class BankAccountWritable {
   * @return routingNumber
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Must be a [valid US routing number](https://www.frbservices.org/index.html).")
+  @ApiModelProperty(required = true, value = "Must be a [valid US routing number](https://www.frbservices.org/index.html).")
   
   public String getRoutingNumber() {
       return routingNumber;
@@ -88,9 +88,9 @@ public class BankAccountWritable {
   * @return accountNumber
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public String getAccountNumber() {
       return accountNumber;
@@ -109,9 +109,9 @@ public class BankAccountWritable {
   * @return accountType
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public BankTypeEnum getAccountType() {
       return accountType;
@@ -130,9 +130,9 @@ public class BankAccountWritable {
   * @return signatory
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).")
+  @ApiModelProperty(required = true, value = "The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).")
   
   public String getSignatory() {
       return signatory;

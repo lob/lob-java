@@ -70,7 +70,7 @@ public class Zip {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -87,7 +87,7 @@ public class Zip {
   public static final String SERIALIZED_NAME_CITIES = "cities";
 
   @SerializedName(SERIALIZED_NAME_CITIES)
-  private List<ZipLookupCity> cities = null;
+  private List<ZipLookupCity> cities = new ArrayList<>();
   public List<ZipLookupCity> getCities() {     
     if (this.cities == null) {
       this.cities = new ArrayList<ZipLookupCity>();
@@ -106,9 +106,9 @@ public class Zip {
   * @return zipCodeType
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public ZipCodeType getZipCodeType() {
       return zipCodeType;
@@ -172,9 +172,9 @@ public class Zip {
   * @return _object
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public ObjectEnum getObject() {
       return _object;
@@ -216,9 +216,6 @@ public class Zip {
   */
 
   public Zip addCitiesItem(ZipLookupCity citiesItem) {
-    if (this.cities == null) {
-      this.cities = new ArrayList<ZipLookupCity>();
-    }
     this.cities.add(citiesItem);
     return this;
   }

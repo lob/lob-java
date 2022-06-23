@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 /**
@@ -47,7 +46,7 @@ public class LobConfidenceScore {
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(value = "A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be `null` if no tracking data exists for this address. ")
+  @ApiModelProperty(required = true, value = "A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be `null` if no tracking data exists for this address. ")
   
   public Float getScore() {
       return score;
@@ -117,9 +116,9 @@ public class LobConfidenceScore {
   * @return level
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "indicates the likelihood that the address is a valid, mail-receiving address. Possible values are:   - `high` — Over 70% of mailpieces Lob has sent to this address were delivered successfully and recent mailings were also successful.   - `medium` — Between 40% and 70% of mailpieces Lob has sent to this address were delivered successfully.   - `low` — Less than 40% of mailpieces Lob has sent to this address were delivered successfully and recent mailings weren't successful.   - `\"\"` — No tracking data exists for this address or lob deliverability was unable to find a corresponding level of mail success. ")
+  @ApiModelProperty(required = true, value = "indicates the likelihood that the address is a valid, mail-receiving address. Possible values are:   - `high` — Over 70% of mailpieces Lob has sent to this address were delivered successfully and recent mailings were also successful.   - `medium` — Between 40% and 70% of mailpieces Lob has sent to this address were delivered successfully.   - `low` — Less than 40% of mailpieces Lob has sent to this address were delivered successfully and recent mailings weren't successful.   - `\"\"` — No tracking data exists for this address or lob deliverability was unable to find a corresponding level of mail success. ")
   
   public LevelEnum getLevel() {
       return level;
@@ -171,20 +170,9 @@ public class LobConfidenceScore {
         Objects.equals(this.level, lobConfidenceScore.level);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(score, level);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
