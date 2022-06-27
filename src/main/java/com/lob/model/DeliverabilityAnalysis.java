@@ -98,9 +98,9 @@ public class DeliverabilityAnalysis {
   * @return dpvConfirmation
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Result of Delivery Point Validation (DPV), which determines whether or not the address is deliverable by the USPS. Possible values are: * `Y` –– The address is deliverable by the USPS. * `S` –– The address is deliverable by removing the provided secondary unit designator. This information may be incorrect or unnecessary. * `D` –– The address is deliverable to the building's default address but is missing a secondary unit designator and/or number.   There is a chance the mail will not reach the intended recipient. * `N` –– The address is not deliverable according to the USPS, but parts of the address are valid (such as the street and ZIP code). * `''` –– This address is not deliverable. No matching street could be found within the city or ZIP code. ")
+  @ApiModelProperty(required = true, value = "Result of Delivery Point Validation (DPV), which determines whether or not the address is deliverable by the USPS. Possible values are: * `Y` –– The address is deliverable by the USPS. * `S` –– The address is deliverable by removing the provided secondary unit designator. This information may be incorrect or unnecessary. * `D` –– The address is deliverable to the building's default address but is missing a secondary unit designator and/or number.   There is a chance the mail will not reach the intended recipient. * `N` –– The address is not deliverable according to the USPS, but parts of the address are valid (such as the street and ZIP code). * `''` –– This address is not deliverable. No matching street could be found within the city or ZIP code. ")
   
   public DpvConfirmationEnum getDpvConfirmation() {
       return dpvConfirmation;
@@ -168,9 +168,9 @@ public class DeliverabilityAnalysis {
   * @return dpvCmra
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * `Y` –– Address is CMRA-authorized. * `N` –– Address is not CMRA-authorized. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). ")
+  @ApiModelProperty(required = true, value = "indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * `Y` –– Address is CMRA-authorized. * `N` –– Address is not CMRA-authorized. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). ")
   
   public DpvCmraEnum getDpvCmra() {
       return dpvCmra;
@@ -238,9 +238,9 @@ public class DeliverabilityAnalysis {
   * @return dpvVacant
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * `Y` –– Address is vacant. * `N` –– Address is not vacant. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). ")
+  @ApiModelProperty(required = true, value = "indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * `Y` –– Address is vacant. * `N` –– Address is not vacant. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). ")
   
   public DpvVacantEnum getDpvVacant() {
       return dpvVacant;
@@ -308,9 +308,9 @@ public class DeliverabilityAnalysis {
   * @return dpvActive
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Corresponds to the USPS field `dpv_no_stat`. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it's been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * `Y` –– Address is active. * `N` –– Address is not active. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). ")
+  @ApiModelProperty(required = true, value = "Corresponds to the USPS field `dpv_no_stat`. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it's been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * `Y` –– Address is active. * `N` –– Address is not active. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). ")
   
   public DpvActiveEnum getDpvActive() {
       return dpvActive;
@@ -321,7 +321,7 @@ public class DeliverabilityAnalysis {
   public static final String SERIALIZED_NAME_DPV_FOOTNOTES = "dpv_footnotes";
 
   @SerializedName(SERIALIZED_NAME_DPV_FOOTNOTES)
-  private List<DpvFootnote> dpvFootnotes = null;
+  private List<DpvFootnote> dpvFootnotes = new ArrayList<>();
   public List<DpvFootnote> getDpvFootnotes() {     
     if (this.dpvFootnotes == null) {
       this.dpvFootnotes = new ArrayList<DpvFootnote>();
@@ -340,9 +340,9 @@ public class DeliverabilityAnalysis {
   * @return ewsMatch
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. ")
+  @ApiModelProperty(required = true, value = "indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. ")
   
   public Boolean getEwsMatch() {
       return ewsMatch;
@@ -410,9 +410,9 @@ public class DeliverabilityAnalysis {
   * @return lacsIndicator
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "indicates whether this address has been converted by [LACS<sup>Link</sup>](https://postalpro.usps.com/address-quality/lacslink). LACS<sup>Link</sup> corrects outdated addresses into their modern counterparts. Possible values are: * `Y` –– New address produced with a matching record in LACS<sup>Link</sup>. * `N` –– New address could not be produced with a matching record in LACS<sup>Link</sup>. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). ")
+  @ApiModelProperty(required = true, value = "indicates whether this address has been converted by [LACS<sup>Link</sup>](https://postalpro.usps.com/address-quality/lacslink). LACS<sup>Link</sup> corrects outdated addresses into their modern counterparts. Possible values are: * `Y` –– New address produced with a matching record in LACS<sup>Link</sup>. * `N` –– New address could not be produced with a matching record in LACS<sup>Link</sup>. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). ")
   
   public LacsIndicatorEnum getLacsIndicator() {
       return lacsIndicator;
@@ -431,9 +431,9 @@ public class DeliverabilityAnalysis {
   * @return lacsReturnCode
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A code indicating how `deliverability_analysis[lacs_indicator]` was determined. Possible values are: * `A` — A new address was produced because a match was found in LACS<sup>Link</sup>. * `92` — A LACS<sup>Link</sup> record was matched after dropping secondary information. * `14` — A match was found in LACS<sup>Link</sup>, but could not be converted to a deliverable address. * `00` — A match was not found in LACS<sup>Link</sup>, and no new address was produced. * `''` — LACS<sup>Link</sup> was not attempted. ")
+  @ApiModelProperty(required = true, value = "A code indicating how `deliverability_analysis[lacs_indicator]` was determined. Possible values are: * `A` — A new address was produced because a match was found in LACS<sup>Link</sup>. * `92` — A LACS<sup>Link</sup> record was matched after dropping secondary information. * `14` — A match was found in LACS<sup>Link</sup>, but could not be converted to a deliverable address. * `00` — A match was not found in LACS<sup>Link</sup>, and no new address was produced. * `''` — LACS<sup>Link</sup> was not attempted. ")
   
   public String getLacsReturnCode() {
       return lacsReturnCode;
@@ -501,9 +501,9 @@ public class DeliverabilityAnalysis {
   * @return suiteReturnCode
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A return code that indicates whether the address was matched and corrected by [Suite<sup>Link</sup>](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite<sup>Link</sup> attempts to provide secondary information to business addresses. Possible values are: * `A` –– A Suite<sup>Link</sup> match was found and secondary information was added. * `00` –– A Suite<sup>Link</sup> match could not be found and no secondary information was added. * `''` –– Suite<sup>Link</sup> lookup was not attempted. ")
+  @ApiModelProperty(required = true, value = "A return code that indicates whether the address was matched and corrected by [Suite<sup>Link</sup>](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite<sup>Link</sup> attempts to provide secondary information to business addresses. Possible values are: * `A` –– A Suite<sup>Link</sup> match was found and secondary information was added. * `00` –– A Suite<sup>Link</sup> match could not be found and no secondary information was added. * `''` –– Suite<sup>Link</sup> lookup was not attempted. ")
   
   public SuiteReturnCodeEnum getSuiteReturnCode() {
       return suiteReturnCode;
@@ -581,9 +581,6 @@ public class DeliverabilityAnalysis {
   */
 
   public DeliverabilityAnalysis addDpvFootnotesItem(DpvFootnote dpvFootnotesItem) {
-    if (this.dpvFootnotes == null) {
-      this.dpvFootnotes = new ArrayList<DpvFootnote>();
-    }
     this.dpvFootnotes.add(dpvFootnotesItem);
     return this;
   }

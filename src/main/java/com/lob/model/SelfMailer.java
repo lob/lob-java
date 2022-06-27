@@ -50,7 +50,7 @@ public class SelfMailer {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -68,18 +68,15 @@ public class SelfMailer {
 
   @SerializedName(SERIALIZED_NAME_TO)
   
-  private String to;
-  public  String getTo() {
-    return to;
-  }
-
-  public void setTo(String to) {
-    ;
-    this.to = to;
+  
+  
+  public void setTo( to) {
+    Gson gson = new Gson();
+    this.to = gson.toJson(to);
   }
   
   
-  public void setTo(AddressEditable to) {
+  public void setTo( to) {
     Gson gson = new Gson();
     this.to = gson.toJson(to);
   }
@@ -87,18 +84,15 @@ public class SelfMailer {
 
   @SerializedName(SERIALIZED_NAME_FROM)
   
-  private String from;
-  public  String getFrom() {
-    return from;
-  }
-
-  public void setFrom(String from) {
-    ;
-    this.from = from;
+  
+  
+  public void setFrom( from) {
+    Gson gson = new Gson();
+    this.from = gson.toJson(from);
   }
   
   
-  public void setFrom(AddressEditable from) {
+  public void setFrom( from) {
     Gson gson = new Gson();
     this.from = gson.toJson(from);
   }
@@ -406,7 +400,7 @@ public class SelfMailer {
   * @return url
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getUrl() { return url; }
 

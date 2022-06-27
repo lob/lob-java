@@ -4,12 +4,12 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**zipLookup**](ZipLookupsApi.md#zipLookup) | **POST** /us_zip_lookups | lookup
+[**lookup**](ZipLookupsApi.md#lookup) | **POST** /us_zip_lookups | lookup
 
 
-<a name="zipLookup"></a>
-# **zipLookup**
-> Zip zipLookup(zipEditable)
+<a name="lookup"></a>
+# **lookup**
+> Zip lookup(zipEditable)
 
 lookup
 
@@ -32,16 +32,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     ZipLookupsApi apiInstance = new ZipLookupsApi(defaultClient);
     ZipEditable zipEditable = new ZipEditable(); // ZipEditable | 
     try {
-      Zip result = apiInstance.zipLookup(zipEditable);
+      Zip result = apiInstance.lookup(zipEditable);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling ZipLookupsApi#zipLookup");
+      System.err.println("Exception when calling ZipLookupsApi#lookup");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

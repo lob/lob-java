@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cardCreate**](CardsApi.md#cardCreate) | **POST** /cards | create
-[**cardDelete**](CardsApi.md#cardDelete) | **DELETE** /cards/{card_id} | delete
-[**cardRetrieve**](CardsApi.md#cardRetrieve) | **GET** /cards/{card_id} | get
-[**cardUpdate**](CardsApi.md#cardUpdate) | **POST** /cards/{card_id} | update
-[**cardsList**](CardsApi.md#cardsList) | **GET** /cards | list
+[**create**](CardsApi.md#create) | **POST** /cards | create
+[**delete**](CardsApi.md#delete) | **DELETE** /cards/{card_id} | delete
+[**get**](CardsApi.md#get) | **GET** /cards/{card_id} | get
+[**update**](CardsApi.md#update) | **POST** /cards/{card_id} | update
+[**list**](CardsApi.md#list) | **GET** /cards | list
 
 
-<a name="cardCreate"></a>
-# **cardCreate**
-> Card cardCreate(cardEditable)
+<a name="create"></a>
+# **create**
+> Card create(cardEditable)
 
 create
 
@@ -36,16 +36,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     CardsApi apiInstance = new CardsApi(defaultClient);
     CardEditable cardEditable = new CardEditable(); // CardEditable | 
     try {
-      Card result = apiInstance.cardCreate(cardEditable);
+      Card result = apiInstance.create(cardEditable);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CardsApi#cardCreate");
+      System.err.println("Exception when calling CardsApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -80,9 +79,9 @@ Name | Type | Description  | Notes
 **200** | Card created successfully |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="cardDelete"></a>
-# **cardDelete**
-> CardDeletion cardDelete(cardId)
+<a name="delete"></a>
+# **delete**
+> CardDeletion delete(cardId)
 
 delete
 
@@ -105,16 +104,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     CardsApi apiInstance = new CardsApi(defaultClient);
     String cardId = "cardId_example"; // String | id of the card
     try {
-      CardDeletion result = apiInstance.cardDelete(cardId);
+      CardDeletion result = apiInstance.delete(cardId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CardsApi#cardDelete");
+      System.err.println("Exception when calling CardsApi#delete");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -149,9 +147,9 @@ Name | Type | Description  | Notes
 **200** | Deleted the card |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="cardRetrieve"></a>
-# **cardRetrieve**
-> Card cardRetrieve(cardId)
+<a name="get"></a>
+# **get**
+> Card get(cardId)
 
 get
 
@@ -174,16 +172,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     CardsApi apiInstance = new CardsApi(defaultClient);
     String cardId = "cardId_example"; // String | id of the card
     try {
-      Card result = apiInstance.cardRetrieve(cardId);
+      Card result = apiInstance.get(cardId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CardsApi#cardRetrieve");
+      System.err.println("Exception when calling CardsApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -218,9 +215,9 @@ Name | Type | Description  | Notes
 **200** | Returns a card object |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="cardUpdate"></a>
-# **cardUpdate**
-> Card cardUpdate(cardId, cardUpdatable)
+<a name="update"></a>
+# **update**
+> Card update(cardId, cardUpdatable)
 
 update
 
@@ -243,17 +240,16 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     CardsApi apiInstance = new CardsApi(defaultClient);
     String cardId = "cardId_example"; // String | id of the card
     CardUpdatable cardUpdatable = new CardUpdatable(); // CardUpdatable | 
     try {
-      Card result = apiInstance.cardUpdate(cardId, cardUpdatable);
+      Card result = apiInstance.update(cardId, cardUpdatable);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CardsApi#cardUpdate");
+      System.err.println("Exception when calling CardsApi#update");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -289,9 +285,9 @@ Name | Type | Description  | Notes
 **200** | Returns a card object |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="cardsList"></a>
-# **cardsList**
-> CardList cardsList(limit, before, after, sortBy)
+<a name="list"></a>
+# **list**
+> CardList list(limit, before, after, sortBy)
 
 list
 
@@ -314,19 +310,18 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     CardsApi apiInstance = new CardsApi(defaultClient);
     Integer limit = 10; // Integer | How many results to return.
     String before = "before_example"; // String | A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response. 
     String after = "after_example"; // String | A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response. 
-    SortBy5 sortBy = new SortBy5(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
+    SortBy5 sortBy = new HashMap(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
     try {
-      CardList result = apiInstance.cardsList(limit, before, after, sortBy);
+      CardList result = apiInstance.list(limit, before, after, sortBy);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CardsApi#cardsList");
+      System.err.println("Exception when calling CardsApi#list");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

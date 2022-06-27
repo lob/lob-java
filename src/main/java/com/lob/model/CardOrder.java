@@ -293,9 +293,9 @@ public class CardOrder {
   * @return dateCreated
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
   public OffsetDateTime getDateCreated() {
       return dateCreated;
@@ -314,9 +314,9 @@ public class CardOrder {
   * @return dateModified
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
   public OffsetDateTime getDateModified() {
       return dateModified;
@@ -356,9 +356,9 @@ public class CardOrder {
   * @return _object
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Value is type of resource.")
+  @ApiModelProperty(required = true, value = "Value is type of resource.")
   
   public String getObject() {
       return _object;
