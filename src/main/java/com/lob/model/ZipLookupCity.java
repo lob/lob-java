@@ -41,9 +41,9 @@ public class ZipLookupCity {
   * @return city
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public String getCity() {
       return city;
@@ -62,9 +62,9 @@ public class ZipLookupCity {
   * @return state
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. ")
+  @ApiModelProperty(required = true, value = "The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. ")
   
   public String getState() {
       return state;
@@ -83,9 +83,9 @@ public class ZipLookupCity {
   * @return county
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "County name of the address city.")
+  @ApiModelProperty(required = true, value = "County name of the address city.")
   
   public String getCounty() {
       return county;
@@ -104,16 +104,12 @@ public class ZipLookupCity {
   * @return countyFips
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  public String getCountyFips() { return countyFips; }
-
-  public void setCountyFips (String countyFips) throws IllegalArgumentException {
-    if(!countyFips.matches("\\d{5}")) {
-      throw new IllegalArgumentException("Invalid county_fips provided");
-    }
-
-    this.countyFips = countyFips;
+  @ApiModelProperty(required = true, value = "A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies `components[county]`. It consists of a 2-digit state code and a 3-digit county code. ")
+  
+  public String getCountyFips() {
+      return countyFips;
   }
   
   
@@ -129,9 +125,9 @@ public class ZipLookupCity {
   * @return preferred
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities. ")
+  @ApiModelProperty(required = true, value = "Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities. ")
   
   public Boolean getPreferred() {
       return preferred;
@@ -194,6 +190,9 @@ public class ZipLookupCity {
   */
 
 
+  public void setCountyFips(String countyFips) {
+    this.countyFips = countyFips;
+  }
 
 
 

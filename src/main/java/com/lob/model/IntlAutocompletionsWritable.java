@@ -42,9 +42,9 @@ public class IntlAutocompletionsWritable {
   * @return addressPrefix
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Only accepts numbers and street names in an alphanumeric format. ")
+  @ApiModelProperty(required = true, value = "Only accepts numbers and street names in an alphanumeric format. ")
   
   public String getAddressPrefix() {
       return addressPrefix;
@@ -126,9 +126,9 @@ public class IntlAutocompletionsWritable {
   * @return country
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public CountryExtended getCountry() {
       return country;
