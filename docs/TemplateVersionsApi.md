@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createTemplateVersion**](TemplateVersionsApi.md#createTemplateVersion) | **POST** /templates/{tmpl_id}/versions | create
-[**templateVersionDelete**](TemplateVersionsApi.md#templateVersionDelete) | **DELETE** /templates/{tmpl_id}/versions/{vrsn_id} | delete
-[**templateVersionRetrieve**](TemplateVersionsApi.md#templateVersionRetrieve) | **GET** /templates/{tmpl_id}/versions/{vrsn_id} | get
-[**templateVersionUpdate**](TemplateVersionsApi.md#templateVersionUpdate) | **POST** /templates/{tmpl_id}/versions/{vrsn_id} | update
-[**templateVersionsList**](TemplateVersionsApi.md#templateVersionsList) | **GET** /templates/{tmpl_id}/versions | list
+[**create**](TemplateVersionsApi.md#create) | **POST** /templates/{tmpl_id}/versions | create
+[**delete**](TemplateVersionsApi.md#delete) | **DELETE** /templates/{tmpl_id}/versions/{vrsn_id} | delete
+[**get**](TemplateVersionsApi.md#get) | **GET** /templates/{tmpl_id}/versions/{vrsn_id} | get
+[**update**](TemplateVersionsApi.md#update) | **POST** /templates/{tmpl_id}/versions/{vrsn_id} | update
+[**list**](TemplateVersionsApi.md#list) | **GET** /templates/{tmpl_id}/versions | list
 
 
-<a name="createTemplateVersion"></a>
-# **createTemplateVersion**
-> TemplateVersion createTemplateVersion(tmplId, templateVersionWritable)
+<a name="create"></a>
+# **create**
+> TemplateVersion create(tmplId, templateVersionWritable)
 
 create
 
@@ -36,17 +36,16 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     TemplateVersionsApi apiInstance = new TemplateVersionsApi(defaultClient);
     String tmplId = "tmplId_example"; // String | The ID of the template the new version will be attached to
     TemplateVersionWritable templateVersionWritable = new TemplateVersionWritable(); // TemplateVersionWritable | 
     try {
-      TemplateVersion result = apiInstance.createTemplateVersion(tmplId, templateVersionWritable);
+      TemplateVersion result = apiInstance.create(tmplId, templateVersionWritable);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TemplateVersionsApi#createTemplateVersion");
+      System.err.println("Exception when calling TemplateVersionsApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -82,9 +81,9 @@ Name | Type | Description  | Notes
 **200** | Returns the template version with the given template and version ids. |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="templateVersionDelete"></a>
-# **templateVersionDelete**
-> TemplateVersionDeletion templateVersionDelete(tmplId, vrsnId)
+<a name="delete"></a>
+# **delete**
+> TemplateVersionDeletion delete(tmplId, vrsnId)
 
 delete
 
@@ -107,17 +106,16 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     TemplateVersionsApi apiInstance = new TemplateVersionsApi(defaultClient);
     String tmplId = "tmplId_example"; // String | The ID of the template to which the version belongs.
     String vrsnId = "vrsnId_example"; // String | id of the template_version
     try {
-      TemplateVersionDeletion result = apiInstance.templateVersionDelete(tmplId, vrsnId);
+      TemplateVersionDeletion result = apiInstance.delete(tmplId, vrsnId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TemplateVersionsApi#templateVersionDelete");
+      System.err.println("Exception when calling TemplateVersionsApi#delete");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -153,9 +151,9 @@ Name | Type | Description  | Notes
 **200** | Deleted |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="templateVersionRetrieve"></a>
-# **templateVersionRetrieve**
-> TemplateVersion templateVersionRetrieve(tmplId, vrsnId)
+<a name="get"></a>
+# **get**
+> TemplateVersion get(tmplId, vrsnId)
 
 get
 
@@ -178,17 +176,16 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     TemplateVersionsApi apiInstance = new TemplateVersionsApi(defaultClient);
     String tmplId = "tmplId_example"; // String | The ID of the template to which the version belongs.
     String vrsnId = "vrsnId_example"; // String | id of the template_version
     try {
-      TemplateVersion result = apiInstance.templateVersionRetrieve(tmplId, vrsnId);
+      TemplateVersion result = apiInstance.get(tmplId, vrsnId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TemplateVersionsApi#templateVersionRetrieve");
+      System.err.println("Exception when calling TemplateVersionsApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -224,9 +221,9 @@ Name | Type | Description  | Notes
 **200** | Returns the template version with the given template and version ids. |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="templateVersionUpdate"></a>
-# **templateVersionUpdate**
-> TemplateVersion templateVersionUpdate(tmplId, vrsnId, templateVersionUpdatable)
+<a name="update"></a>
+# **update**
+> TemplateVersion update(tmplId, vrsnId, templateVersionUpdatable)
 
 update
 
@@ -249,18 +246,17 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     TemplateVersionsApi apiInstance = new TemplateVersionsApi(defaultClient);
     String tmplId = "tmplId_example"; // String | The ID of the template to which the version belongs.
     String vrsnId = "vrsnId_example"; // String | id of the template_version
     TemplateVersionUpdatable templateVersionUpdatable = new TemplateVersionUpdatable(); // TemplateVersionUpdatable | 
     try {
-      TemplateVersion result = apiInstance.templateVersionUpdate(tmplId, vrsnId, templateVersionUpdatable);
+      TemplateVersion result = apiInstance.update(tmplId, vrsnId, templateVersionUpdatable);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TemplateVersionsApi#templateVersionUpdate");
+      System.err.println("Exception when calling TemplateVersionsApi#update");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -297,9 +293,9 @@ Name | Type | Description  | Notes
 **200** | Returns the template version with the given template and version ids. |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="templateVersionsList"></a>
-# **templateVersionsList**
-> TemplateVersionList templateVersionsList(tmplId, limit, before, after, include, dateCreated)
+<a name="list"></a>
+# **list**
+> TemplateVersionList list(tmplId, limit, before, after, include, dateCreated)
 
 list
 
@@ -322,8 +318,7 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     TemplateVersionsApi apiInstance = new TemplateVersionsApi(defaultClient);
     String tmplId = "tmplId_example"; // String | The ID of the template associated with the retrieved versions
@@ -333,10 +328,10 @@ public class Example {
     List<String> include = Arrays.asList(); // List<String> | Request that the response include the total count by specifying `include[]=total_count`. 
     Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
     try {
-      TemplateVersionList result = apiInstance.templateVersionsList(tmplId, limit, before, after, include, dateCreated);
+      TemplateVersionList result = apiInstance.list(tmplId, limit, before, after, include, dateCreated);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TemplateVersionsApi#templateVersionsList");
+      System.err.println("Exception when calling TemplateVersionsApi#list");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
