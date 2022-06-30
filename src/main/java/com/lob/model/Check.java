@@ -52,7 +52,7 @@ public class Check {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -77,9 +77,9 @@ public class Check {
   * @return to
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public Address getTo() {
       return to;
@@ -325,9 +325,9 @@ public class Check {
   * @return amount
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The payment amount to be sent in US dollars.")
+  @ApiModelProperty(required = true, value = "The payment amount to be sent in US dollars.")
   
   public Float getAmount() {
       return amount;
@@ -346,9 +346,9 @@ public class Check {
   * @return bankAccount
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public BankAccount getBankAccount() {
       return bankAccount;
@@ -467,7 +467,7 @@ public class Check {
   * @return url
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getUrl() { return url; }
 
@@ -537,9 +537,9 @@ public class Check {
   * @return carrier
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public CarrierEnum getCarrier() {
       return carrier;
@@ -646,9 +646,9 @@ public class Check {
   * @return _object
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public ObjectEnum getObject() {
       return _object;
@@ -667,9 +667,9 @@ public class Check {
   * @return dateCreated
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
   public OffsetDateTime getDateCreated() {
       return dateCreated;
@@ -688,9 +688,9 @@ public class Check {
   * @return dateModified
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
   public OffsetDateTime getDateModified() {
       return dateModified;

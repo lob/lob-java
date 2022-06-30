@@ -4,13 +4,13 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cardOrderCreate**](CardOrdersApi.md#cardOrderCreate) | **POST** /cards/{card_id}/orders | create
-[**cardOrdersRetrieve**](CardOrdersApi.md#cardOrdersRetrieve) | **GET** /cards/{card_id}/orders | get
+[**create**](CardOrdersApi.md#create) | **POST** /cards/{card_id}/orders | create
+[**get**](CardOrdersApi.md#get) | **GET** /cards/{card_id}/orders | get
 
 
-<a name="cardOrderCreate"></a>
-# **cardOrderCreate**
-> CardOrder cardOrderCreate(cardId, cardOrderEditable)
+<a name="create"></a>
+# **create**
+> CardOrder create(cardId, cardOrderEditable)
 
 create
 
@@ -33,17 +33,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     CardOrdersApi apiInstance = new CardOrdersApi(defaultClient);
     String cardId = "cardId_example"; // String | The ID of the card to which the card orders belong.
     CardOrderEditable cardOrderEditable = new CardOrderEditable(); // CardOrderEditable | 
     try {
-      CardOrder result = apiInstance.cardOrderCreate(cardId, cardOrderEditable);
-      System.out.println(result);
+      CardOrder result = apiInstance.create(cardId, cardOrderEditable);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CardOrdersApi#cardOrderCreate");
+      System.err.println("Exception when calling CardOrdersApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -79,9 +77,9 @@ Name | Type | Description  | Notes
 **200** | Card order created successfully |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="cardOrdersRetrieve"></a>
-# **cardOrdersRetrieve**
-> InlineResponse200 cardOrdersRetrieve(cardId)
+<a name="get"></a>
+# **get**
+> CardOrderList get(cardId, limit, offset)
 
 get
 
@@ -104,16 +102,16 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     CardOrdersApi apiInstance = new CardOrdersApi(defaultClient);
     String cardId = "cardId_example"; // String | The ID of the card to which the card orders belong.
+    Integer limit = 10; // Integer | How many results to return.
+    Integer offset = 0; // Integer | An integer that designates the offset at which to begin returning results. Defaults to 0.
     try {
-      InlineResponse200 result = apiInstance.cardOrdersRetrieve(cardId);
-      System.out.println(result);
+      CardOrderList result = apiInstance.get(cardId, limit, offset);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CardOrdersApi#cardOrdersRetrieve");
+      System.err.println("Exception when calling CardOrdersApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -128,10 +126,12 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cardId** | **String**| The ID of the card to which the card orders belong. |
+ **limit** | **Integer**| How many results to return. | [optional] [default to 10]
+ **offset** | **Integer**| An integer that designates the offset at which to begin returning results. Defaults to 0. | [optional] [default to 0]
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**CardOrderList**](CardOrderList.md)
 
 ### Authorization
 

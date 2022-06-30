@@ -103,7 +103,7 @@
 
 * `COSTA_RICA` (value: `"COSTA RICA"`)
 
-* `C_TE_D_IVOIRE` (value: `"CÔTE D'IVOIRE"`)
+* `C_TE_D_IVOIRE` (value: `"CÔTE D`IVOIRE"`)
 
 * `CROATIA` (value: `"CROATIA"`)
 

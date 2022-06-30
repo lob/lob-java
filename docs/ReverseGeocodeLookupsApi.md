@@ -4,12 +4,12 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**reverseGeocodeLookup**](ReverseGeocodeLookupsApi.md#reverseGeocodeLookup) | **POST** /us_reverse_geocode_lookups | lookup
+[**lookup**](ReverseGeocodeLookupsApi.md#lookup) | **POST** /us_reverse_geocode_lookups | lookup
 
 
-<a name="reverseGeocodeLookup"></a>
-# **reverseGeocodeLookup**
-> ReverseGeocode reverseGeocodeLookup(location, size)
+<a name="lookup"></a>
+# **lookup**
+> ReverseGeocode lookup(location, size)
 
 lookup
 
@@ -32,17 +32,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     ReverseGeocodeLookupsApi apiInstance = new ReverseGeocodeLookupsApi(defaultClient);
     Location location = new Location(); // Location | 
     Integer size = 5; // Integer | Determines the number of locations returned. Possible values are between 1 and 50 and any number higher will be rounded down to 50. Default size is a list of 5 reverse geocoded locations.
     try {
-      ReverseGeocode result = apiInstance.reverseGeocodeLookup(location, size);
-      System.out.println(result);
+      ReverseGeocode result = apiInstance.lookup(location, size);
     } catch (ApiException e) {
-      System.err.println("Exception when calling ReverseGeocodeLookupsApi#reverseGeocodeLookup");
+      System.err.println("Exception when calling ReverseGeocodeLookupsApi#lookup");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
