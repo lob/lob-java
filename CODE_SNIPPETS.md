@@ -34,7 +34,7 @@ curl -X DELETE "https://api.lob.com/v1/addresses/adr_43769b47aed248c2" \
 AddressesApi apiInstance = new AddressesApi(lobClient);
 
 try {
-    AddressDeletion response = apiInstance.delete("adr_43769b47aed248c2");
+    AddressDeletion address = apiInstance.delete("adr_43769b47aed248c2");
 } catch (ApiException e) {
     e.printStackTrace();
 }
@@ -76,6 +76,7 @@ try {
   addressEditable.setAddressCountry(CountryExtended.US);
 
   Address result = apiInstance.create(addressEditable);
+  System.out.println(result);
 } catch (ApiException e) {
   e.printStackTrace();
 }
@@ -92,46 +93,12 @@ curl -X GET "https://api.lob.com/v1/addresses?limit=2" \
 ```
 
 ```java
-AddressesApi apiInstance = new AddressesApi(lobClient);
+Map<String, Object> params = new HashMap<>();
+params.put("limit", 2);
 
-try {
-  AddressList response = apiInstance.list(
-    2, // limit
-    null, // before
-    null, // after
-    null, // include
-    null, // dateCreated
-    null // metadata
-  );
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+LobResponse<AddressCollection> response = Address.list(params);
+AddressCollection addresses = response.getResponseBody();
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -178,7 +145,7 @@ curl -X DELETE "https://api.lob.com/v1/postcards/psc_5c002b86ce47537a" \
 PostcardsApi apiInstance = new PostcardsApi(lobClient);
 
 try {
-    PostcardDeletion response = apiInstance.cancel("psc_5c002b86ce47537a");
+    PostcardDeletion address = apiInstance.cancel("psc_5c002b86ce47537a");
 } catch (ApiException e) {
     e.printStackTrace();
 }
@@ -203,7 +170,7 @@ curl https://api.lob.com/v1/postcards \
 ```
 
 ```java
-Map<String, String> merge_variables = new HashMap<String, String>();
+Map<String, String> merge_variables = new HashMap<>();
 merge_variables.put("name", "Harry");
 
 PostcardsApi apiInstance = new PostcardsApi(lobClient);
@@ -226,6 +193,7 @@ try {
   postcardEditable.setMergeVariables(merge_variables);
 
   Postcard result = apiInstance.create(postcardEditable, null);
+  System.out.println(result);
 } catch (ApiException e) {
   e.printStackTrace();
 }
@@ -242,25 +210,11 @@ curl -X GET "https://api.lob.com/v1/postcards?limit=2" \
 ```
 
 ```java
-PostcardsApi apiInstance = new PostcardsApi(lobClient);
+Map<String, Object> params = new HashMap<>();
+params.put("limit", 2);
 
-try {
-  PostcardList response = apiInstance.list(
-    2, // limit
-    null, // before
-    null, // after
-    null, // include
-    null, // dateCreated
-    null, // metadata
-    null, // size
-    null, // scheduled
-    null, // sendDate
-    null, // mailType
-    null // sortBy
-  );
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+LobResponse<PostcardCollection> response = Postcard.list(params);
+PostcardCollection postcards = response.getResponseBody();
 ```
 
 
@@ -298,7 +252,7 @@ curl -X DELETE "https://api.lob.com/v1/self_mailers/sfm_8ffbe811dea49dcf" \
 SelfMailersApi apiInstance = new SelfMailersApi(lobClient);
 
 try {
-    SelfMailerDeletion response = apiInstance.delete("sfm_8ffbe811dea49dcf");
+    SelfMailerDeletion address = apiInstance.delete("sfm_8ffbe811dea49dcf");
 } catch (ApiException e) {
     e.printStackTrace();
 }
@@ -323,7 +277,7 @@ curl https://api.lob.com/v1/self_mailers \
 ```
 
 ```java
-Map<String, String> merge_variables = new HashMap<String, String>();
+Map<String, String> merge_variables = new HashMap<>();
 merge_variables.put("name", "Harry");
 
 SelfMailersApi apiInstance = new SelfMailersApi(lobClient);
@@ -346,6 +300,7 @@ try {
   selfMailerEditable.setMergeVariables(merge_variables);
 
   SelfMailer result = apiInstance.create(selfMailerEditable, null);
+  System.out.println(result);
 } catch (ApiException e) {
   e.printStackTrace();
 }
@@ -362,25 +317,11 @@ curl -X GET "https://api.lob.com/v1/self_mailers?limit=2" \
 ```
 
 ```java
-SelfMailersApi apiInstance = new SelfMailersApi(lobClient);
+Map<String, Object> params = new HashMap<>();
+params.put("limit", 2);
 
-try {
-  SelfMailerList response = apiInstance.list(
-    2, // limit
-    null, // before
-    null, // after
-    null, // include
-    null, // dateCreated
-    null, // metadata
-    null, // size
-    null, // scheduled
-    null, // sendDate
-    null, // mailType
-    null // sortBy
-  );
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+LobResponse<SelfMailerCollection> response = SelfMailer.list(params);
+SelfMailerCollection selfMailers = response.getResponseBody();
 ```
 
 
@@ -418,7 +359,7 @@ curl -X DELETE "https://api.lob.com/v1/letters/ltr_4868c3b754655f90" \
 LettersApi apiInstance = new LettersApi(lobClient);
 
 try {
-    LetterDeletion response = apiInstance.cancel("ltr_4868c3b754655f90");
+    LetterDeletion address = apiInstance.cancel("ltr_4868c3b754655f90");
 } catch (ApiException e) {
     e.printStackTrace();
 }
@@ -441,11 +382,10 @@ curl https://api.lob.com/v1/letters \
   -d "to[address_zip]=94107" \
   -d "merge_variables[name]=Harry" \
   -d "cards[]=card_c51ae96f5cebf3e"
-  -d "cards[]=card_thingy"
 ```
 
 ```java
-Map<String, String> merge_variables = new HashMap<String, String>();
+Map<String, String> merge_variables = new HashMap<>();
 merge_variables.put("name", "Harry");
 
 LettersApi apiInstance = new LettersApi(lobClient);
@@ -460,7 +400,6 @@ to.setAddressZip("94107");
 
 List<String> cards = new ArrayList<String>();
 cards.add("card_c51ae96f5cebf3e");
-cards.add("card_thingy");
 
 try {
   LetterEditable letterEditable = new LetterEditable(); 
@@ -473,6 +412,7 @@ try {
   letterEditable.setCards(cards);
 
   Letter result = apiInstance.create(letterEditable, null);
+  System.out.println(result);
 } catch (ApiException e) {
   e.printStackTrace();
 }
@@ -489,25 +429,11 @@ curl -X GET "https://api.lob.com/v1/letters?limit=2" \
 ```
 
 ```java
-LettersApi apiInstance = new LettersApi(lobClient);
+Map<String, Object> params = new HashMap<>();
+params.put("limit", 2);
 
-try {
-  LetterList response = apiInstance.list(
-    2, // limit
-    null, // before
-    null, // after
-    null, // include
-    null, // dateCreated
-    null, // metadata
-    null, // color
-    null, // scheduled
-    null, // sendDate
-    null, // mailType
-    null // sortBy
-  );
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+LobResponse<LetterCollection> response = Letter.list(params);
+LetterCollection letters = response.getResponseBody();
 ```
 
 
@@ -545,7 +471,7 @@ curl -X DELETE "https://api.lob.com/v1/checks/chk_534f10783683daa0" \
 ChecksApi apiInstance = new ChecksApi(lobClient);
 
 try {
-    CheckDeletion response = apiInstance.cancel("chk_534f10783683daa0");
+    CheckDeletion address = apiInstance.cancel("chk_534f10783683daa0");
 } catch (ApiException e) {
     e.printStackTrace();
 }
@@ -573,7 +499,7 @@ curl https://api.lob.com/v1/checks \
 ```
 
 ```java
-Map<String, String> merge_variables = new HashMap<String, String>();
+Map<String, String> merge_variables = new HashMap<>();
 merge_variables.put("name", "Harry");
 
 ChecksApi apiInstance = new ChecksApi(lobClient);
@@ -599,6 +525,7 @@ try {
   checkEditable.setMergeVariables(merge_variables);
 
   Check result = apiInstance.create(checkEditable, null);
+  System.out.println(result);
 } catch (ApiException e) {
   e.printStackTrace();
 }
@@ -615,24 +542,11 @@ curl -X GET "https://api.lob.com/v1/checks?limit=2" \
 ```
 
 ```java
-ChecksApi apiInstance = new ChecksApi(lobClient);
+Map<String, Object> params = new HashMap<>();
+params.put("limit", 2);
 
-try {
-  CheckList response = apiInstance.list(
-    2, // limit
-    null, // before
-    null, // after
-    null, // include
-    null, // dateCreated
-    null, // metadata
-    null, // scheduled
-    null, // sendDate
-    null, // mailType
-    null // sortBy
-  );
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+LobResponse<CheckCollection> response = Check.list(params);
+CheckCollection checks = response.getResponseBody();
 ```
 
 
@@ -670,7 +584,7 @@ curl -X DELETE "https://api.lob.com/v1/bank_accounts/bank_3e64d9904356b20" \
 BankAccountsApi apiInstance = new BankAccountsApi(lobClient);
 
 try {
-    BankAccountDeletion response = apiInstance.delete("bank_3e64d9904356b20");
+    BankAccountDeletion address = apiInstance.delete("bank_3e64d9904356b20");
 } catch (ApiException e) {
     e.printStackTrace();
 }
@@ -685,20 +599,11 @@ curl -X GET "https://api.lob.com/v1/bank_accounts?limit=2" \
 ```
 
 ```java
-BankAccountsApi apiInstance = new BankAccountsApi(lobClient);
+Map<String, Object> params = new HashMap<>();
+params.put("limit", 2);
 
-try {
-  BankAccountList response = apiInstance.list(
-    2, // limit
-    null, // before
-    null, // after
-    null, // include
-    null, // dateCreated
-    null // metadata
-  );
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+LobResponse<BankAccountCollection> response = BankAccount.list(params);
+BankAccountCollection bankAccounts = response.getResponseBody();
 ```
 
 
@@ -752,6 +657,7 @@ try {
   bankAccountWritable.setAccountType(BankTypeEnum.COMPANY);
 
   BankAccount result = apiInstance.create(bankAccountWritable);
+  System.out.println(result);
 } catch (ApiException e) {
   e.printStackTrace();
 }
@@ -768,13 +674,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 ```
 
 ```java
-TemplatesApi apiInstance = new TemplatesApi(lobClient);
-
-try {
-  Template response = apiInstance.get("tmpl_c94e83ca2cd5121");
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+This feature is not currently supported by this library.
 ```
 
 
@@ -790,13 +690,7 @@ curl -X DELETE "https://api.lob.com/v1/templates/tmpl_df934eeda694203" \
 ```
 
 ```java
-TemplatesApi apiInstance = new TemplatesApi(lobClient);
-
-try {
-    TemplateDeletion response = apiInstance.delete("tmpl_df934eeda694203");
-} catch (ApiException e) {
-    e.printStackTrace();
-}
+This feature is not currently supported by this library.
 ```
 
 
@@ -808,21 +702,7 @@ curl -X GET "https://api.lob.com/v1/templates?limit=2" \
 ```
 
 ```java
-TemplatesApi apiInstance = new TemplatesApi(lobClient);
-
-try {
-  List response = apiInstance.list(
-    2, // limit
-    null, // before
-    null, // after
-    null, // include
-    null, // dateCreated
-    null, // metadata
-    null // size
-  );
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+This feature is not currently supported by this library.
 ```
 
 
@@ -838,17 +718,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 ```
 
 ```java
-  TemplatesApi apiInstance = new TemplatesApi(lobClient); 
-  TemplateUpdate update = new TemplateUpdate();
-
-  update.setDescription("update template");
-  update.setPublishedVersion("vrsn_362184d96d9b0c9";
-
-  try {
-    apiInstance.update("tmpl_c94e83ca2cd5121", update);
-  } catch (ApiException e) {
-    e.printStackTrace();
-  }
+  This feature is not currently supported by this library.
 ```
 
 
@@ -862,17 +732,7 @@ curl https://api.lob.com/v1/templates \
 ```
 
 ```java
-TemplatesApi apiInstance = new TemplatesApi(lobClient);
-
-try {
-  TemplateWritable  = new TemplateWritable(); 
-  .set("Test Template");
-  .set("<html>HTML for {{name}}</html>");
-
-  Template result = apiInstance.create();
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+This feature is not currently supported by this library.
 ```
 
 
@@ -886,13 +746,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121/versions/vrsn_534e339
 ```
 
 ```java
-TemplateVersionsApi apiInstance = new TemplateVersionsApi(lobClient);
-
-try {
-  TemplateVersion response = apiInstance.get("vrsn_534e339882d2282");
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+This feature is not currently supported by this library.
 ```
 
 
@@ -905,25 +759,12 @@ try {
 
 ### List
 ```bash
-curl -X GET "https://api.lob.com/v1/templates/tmpl_dadaaf7b76c9f25/versions?limit=2" \
+curl -X GET "https://api.lob.com/v1/templates/tmpl_ea6e6a1abf01703/versions?limit=2" \
   -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
 ```
 
 ```java
-TemplateVersionsApi apiInstance = new TemplateVersionsApi(lobClient);
-
-try {
-  List response = apiInstance.list(
-    &#39;tmpl_dadaaf7b76c9f25&#39;, // tmplId
-    2, // limit
-    null, // before
-    null, // after
-    null, // include
-    null // dateCreated
-  );
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+This feature is not currently supported by this library.
 ```
 
 
@@ -940,36 +781,9 @@ curl https://api.lob.com/v1/templates/tmpl_4aa14648113e45b/versions \
 ```
 
 ```java
-TemplateVersionsApi apiInstance = new TemplateVersionsApi(lobClient);
-
-try {
-  TemplateVersionWritable  = new TemplateVersionWritable(); 
-  .set("Second Version");
-  .set("<html>Second HTML for {{name}}</html>");
-
-  TemplateVersion result = apiInstance.create();
-} catch (ApiException e) {
-  e.printStackTrace();
-}
-```
-
-
-## IntlAutocompletion Api
-
-### IntlAutocompletion
-```bash
-curl https://api.lob.com/v1/intl_autocompletions \
-  -u <YOUR_LIVE_API_KEY>: \
-  -d "address_prefix=340 Wat" \
-  -d "city=Summerside" \
-  -d "state=Prince Edward Island" \
-  -d "zip_code=C1N 1C4" \
-  -d "country=CA" \
-```
-
-```java
 This feature is not currently supported by this library.
 ```
+
 
 ## ZipLookups Api
 
@@ -1085,28 +899,4 @@ try {
 }
 ```
 
-### Single Verify
-```bash
-curl https://api.lob.com/v1/us_verifications \
-  -u <YOUR_LIVE_API_KEY>: \
-  -d "primary_line=210 King Street" \
-  -d "city=San Francisco" \
-  -d "state=CA" \
-  -d "zip_code=94017" \
-```
-
-```java
-UsVerificationsWritable singleVerify = new UsVerificationsWritable(); 
-singleVerify.setPrimaryLine("210 King Street");
-singleVerify.setCity("San Francisco");
-singleVerify.setState("CA");
-singleVerify.setZipCode("94017");
-
-UsVerificationsApi apiInstance = new UsVerificationsApi(lobClient);
-try {
-  apiInstance.verifySingle(singleVerify, null);
-} catch (ApiException e) {
-  e.printStackTrace();
-}
-```
 
