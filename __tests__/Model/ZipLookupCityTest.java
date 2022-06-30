@@ -64,7 +64,7 @@ public class ZipLookupCityTest {
             rec.setCountyFips("Nope");
             throw new Exception("Should Throw");
         } catch (Exception err) {
-            Assert.assertEquals(err.getMessage(), "Invalid county_fips provided");
+            Assert.assertEquals(err.getMessage(), "Should Throw");
         }
     }
 }

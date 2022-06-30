@@ -517,15 +517,18 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_RETURN_ADDRESS)
   
-  
-  
-  public void setReturnAddress( returnAddress) {
-    Gson gson = new Gson();
-    this.returnAddress = gson.toJson(returnAddress);
+  private String returnAddress;
+  public  String getReturnAddress() {
+    return returnAddress;
+  }
+
+  public void setReturnAddress(String returnAddress) {
+    
+    this.returnAddress = returnAddress;
   }
   
   
-  public void setReturnAddress( returnAddress) {
+  public void setReturnAddress(AddressEditable returnAddress) {
     Gson gson = new Gson();
     this.returnAddress = gson.toJson(returnAddress);
   }
@@ -668,15 +671,18 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
-  
-  
-  public void setReturnEnvelope( returnEnvelope) {
-    Gson gson = new Gson();
-    this.returnEnvelope = gson.toJson(returnEnvelope);
+  private String returnEnvelope;
+  public  String getReturnEnvelope() {
+    return returnEnvelope;
+  }
+
+  public void setReturnEnvelope(String returnEnvelope) {
+    
+    this.returnEnvelope = returnEnvelope;
   }
   
   
-  public void setReturnEnvelope( returnEnvelope) {
+  public void setReturnEnvelope(Boolean returnEnvelope) {
     Gson gson = new Gson();
     this.returnEnvelope = gson.toJson(returnEnvelope);
   }

@@ -41,15 +41,18 @@ public class PostcardEditable {
 
   @SerializedName(SERIALIZED_NAME_TO)
   
-  
-  
-  public void setTo( to) {
-    Gson gson = new Gson();
-    this.to = gson.toJson(to);
+  private String to;
+  public  String getTo() {
+    return to;
+  }
+
+  public void setTo(String to) {
+    
+    this.to = to;
   }
   
   
-  public void setTo( to) {
+  public void setTo(AddressEditable to) {
     Gson gson = new Gson();
     this.to = gson.toJson(to);
   }
@@ -57,15 +60,18 @@ public class PostcardEditable {
 
   @SerializedName(SERIALIZED_NAME_FROM)
   
-  
-  
-  public void setFrom( from) {
-    Gson gson = new Gson();
-    this.from = gson.toJson(from);
+  private String from;
+  public  String getFrom() {
+    return from;
+  }
+
+  public void setFrom(String from) {
+    
+    this.from = from;
   }
   
   
-  public void setFrom( from) {
+  public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
     this.from = gson.toJson(from);
   }
