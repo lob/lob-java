@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**checkCancel**](ChecksApi.md#checkCancel) | **DELETE** /checks/{chk_id} | cancel
-[**checkCreate**](ChecksApi.md#checkCreate) | **POST** /checks | create
-[**checkRetrieve**](ChecksApi.md#checkRetrieve) | **GET** /checks/{chk_id} | get
-[**checksList**](ChecksApi.md#checksList) | **GET** /checks | list
+[**cancel**](ChecksApi.md#cancel) | **DELETE** /checks/{chk_id} | cancel
+[**create**](ChecksApi.md#create) | **POST** /checks | create
+[**get**](ChecksApi.md#get) | **GET** /checks/{chk_id} | get
+[**list**](ChecksApi.md#list) | **GET** /checks | list
 
 
-<a name="checkCancel"></a>
-# **checkCancel**
-> CheckDeletion checkCancel(chkId)
+<a name="cancel"></a>
+# **cancel**
+> CheckDeletion cancel(chkId)
 
 cancel
 
@@ -35,16 +35,14 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     ChecksApi apiInstance = new ChecksApi(defaultClient);
     String chkId = "chkId_example"; // String | id of the check
     try {
-      CheckDeletion result = apiInstance.checkCancel(chkId);
-      System.out.println(result);
+      CheckDeletion result = apiInstance.cancel(chkId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling ChecksApi#checkCancel");
+      System.err.println("Exception when calling ChecksApi#cancel");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -79,9 +77,9 @@ Name | Type | Description  | Notes
 **200** | Deleted |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="checkCreate"></a>
-# **checkCreate**
-> Check checkCreate(checkEditable, idempotencyKey)
+<a name="create"></a>
+# **create**
+> Check create(checkEditable, idempotencyKey)
 
 create
 
@@ -104,17 +102,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     ChecksApi apiInstance = new ChecksApi(defaultClient);
     CheckEditable checkEditable = new CheckEditable(); // CheckEditable | 
     String idempotencyKey = "idempotencyKey_example"; // String | A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request). 
     try {
-      Check result = apiInstance.checkCreate(checkEditable, idempotencyKey);
-      System.out.println(result);
+      Check result = apiInstance.create(checkEditable, idempotencyKey);
     } catch (ApiException e) {
-      System.err.println("Exception when calling ChecksApi#checkCreate");
+      System.err.println("Exception when calling ChecksApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -150,9 +146,9 @@ Name | Type | Description  | Notes
 **200** | Returns a check object |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="checkRetrieve"></a>
-# **checkRetrieve**
-> Check checkRetrieve(chkId)
+<a name="get"></a>
+# **get**
+> Check get(chkId)
 
 get
 
@@ -175,16 +171,14 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     ChecksApi apiInstance = new ChecksApi(defaultClient);
     String chkId = "chkId_example"; // String | id of the check
     try {
-      Check result = apiInstance.checkRetrieve(chkId);
-      System.out.println(result);
+      Check result = apiInstance.get(chkId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling ChecksApi#checkRetrieve");
+      System.err.println("Exception when calling ChecksApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -219,9 +213,9 @@ Name | Type | Description  | Notes
 **200** | Returns a check object |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="checksList"></a>
-# **checksList**
-> CheckList checksList(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy)
+<a name="list"></a>
+# **list**
+> CheckList list(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy)
 
 list
 
@@ -244,8 +238,7 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     ChecksApi apiInstance = new ChecksApi(defaultClient);
     Integer limit = 10; // Integer | How many results to return.
@@ -255,14 +248,13 @@ public class Example {
     Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
     Map<String, String> metadata = new HashMap(); // Map<String, String> | Filter by metadata key-value pair`.
     Boolean scheduled = true; // Boolean | * `true` - only return orders (past or future) where `send_date` is greater than `date_created` * `false` - only return orders where `send_date` is equal to `date_created` 
-    SendDate sendDate = new SendDate(); // SendDate | Filter by ISO-8601 date or datetime, e.g. `{ gt: '2012-01-01', lt: '2012-01-31T12:34:56Z' }` where `gt` is >, `lt` is <, `gte` is ≥, and `lte` is ≤. 
+    Map<String, String> sendDate = new HashMap(); // Map<String, String> | Filter by date sent.
     MailType mailType = MailType.fromValue("usps_first_class"); // MailType | A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States. 
-    SortBy5 sortBy = new SortBy5(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
+    SortBy5 sortBy = new HashMap(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
     try {
-      CheckList result = apiInstance.checksList(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
-      System.out.println(result);
+      CheckList result = apiInstance.list(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
     } catch (ApiException e) {
-      System.err.println("Exception when calling ChecksApi#checksList");
+      System.err.println("Exception when calling ChecksApi#list");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -283,8 +275,8 @@ Name | Type | Description  | Notes
  **dateCreated** | [**Map&lt;String, String&gt;**](String.md)| Filter by date created. | [optional]
  **metadata** | [**Map&lt;String, String&gt;**](String.md)| Filter by metadata key-value pair&#x60;. | [optional]
  **scheduled** | **Boolean**| * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  | [optional]
- **sendDate** | [**SendDate**](.md)| Filter by ISO-8601 date or datetime, e.g. &#x60;{ gt: &#39;2012-01-01&#39;, lt: &#39;2012-01-31T12:34:56Z&#39; }&#x60; where &#x60;gt&#x60; is &gt;, &#x60;lt&#x60; is &lt;, &#x60;gte&#x60; is ≥, and &#x60;lte&#x60; is ≤.  | [optional]
- **mailType** | [**MailType**](.md)| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional] [enum: usps_first_class, usps_standard]
+ **sendDate** | [**Map&lt;String, String&gt;**](String.md)| Filter by date sent. | [optional]
+ **mailType** | [**MailType**](.md)| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional] [default to usps_first_class] [enum: usps_first_class, usps_standard]
  **sortBy** | [**SortBy5**](.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
 
 ### Return type

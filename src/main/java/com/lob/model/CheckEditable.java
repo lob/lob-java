@@ -39,18 +39,15 @@ public class CheckEditable {
 
   @SerializedName(SERIALIZED_NAME_FROM)
   
-  private String from;
-  public  String getFrom() {
-    return from;
-  }
-
-  public void setFrom(String from) {
-    ;
-    this.from = from;
+  
+  
+  public void setFrom( from) {
+    Gson gson = new Gson();
+    this.from = gson.toJson(from);
   }
   
   
-  public void setFrom(AddressEditable from) {
+  public void setFrom( from) {
     Gson gson = new Gson();
     this.from = gson.toJson(from);
   }
@@ -58,18 +55,15 @@ public class CheckEditable {
 
   @SerializedName(SERIALIZED_NAME_TO)
   
-  private String to;
-  public  String getTo() {
-    return to;
-  }
-
-  public void setTo(String to) {
-    ;
-    this.to = to;
+  
+  
+  public void setTo( to) {
+    Gson gson = new Gson();
+    this.to = gson.toJson(to);
   }
   
   
-  public void setTo(AddressEditable to) {
+  public void setTo( to) {
     Gson gson = new Gson();
     this.to = gson.toJson(to);
   }
@@ -86,7 +80,7 @@ public class CheckEditable {
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public String getBankAccount() {
       return bankAccount;
@@ -106,9 +100,9 @@ public class CheckEditable {
   * @return amount
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The payment amount to be sent in US dollars.")
+  @ApiModelProperty(required = true, value = "The payment amount to be sent in US dollars.")
   
   public Float getAmount() {
       return amount;

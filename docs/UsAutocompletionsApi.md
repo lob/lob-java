@@ -4,12 +4,12 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**autocompletion**](UsAutocompletionsApi.md#autocompletion) | **POST** /us_autocompletions | autocomplete
+[**autocomplete**](UsAutocompletionsApi.md#autocomplete) | **POST** /us_autocompletions | autocomplete
 
 
-<a name="autocompletion"></a>
-# **autocompletion**
-> UsAutocompletions autocompletion(usAutocompletionsWritable)
+<a name="autocomplete"></a>
+# **autocomplete**
+> UsAutocompletions autocomplete(usAutocompletionsWritable)
 
 autocomplete
 
@@ -32,16 +32,14 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     UsAutocompletionsApi apiInstance = new UsAutocompletionsApi(defaultClient);
     UsAutocompletionsWritable usAutocompletionsWritable = new UsAutocompletionsWritable(); // UsAutocompletionsWritable | 
     try {
-      UsAutocompletions result = apiInstance.autocompletion(usAutocompletionsWritable);
-      System.out.println(result);
+      UsAutocompletions result = apiInstance.autocomplete(usAutocompletionsWritable);
     } catch (ApiException e) {
-      System.err.println("Exception when calling UsAutocompletionsApi#autocompletion");
+      System.err.println("Exception when calling UsAutocompletionsApi#autocomplete");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
