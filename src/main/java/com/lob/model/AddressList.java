@@ -109,6 +109,49 @@ public class AddressList {
       
   }
 
+  public static final String SERIALIZED_NAME_COOL_URL = "cool_url";
+
+  @SerializedName(SERIALIZED_NAME_COOL_URL)
+  
+
+  private String coolUrl;
+  /**
+  * url of next page of items in list.
+  * @return coolUrl
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "url of next page of items in list.")
+  
+  public String getCoolUrl() {
+      return coolUrl;
+  }
+  
+  public String getNextPageToken(){
+    if (this.nextUrl == null) {
+        return null;
+    }
+    
+    String[] queryPartitionArray = this.nextUrl.split("\\?");
+    if (queryPartitionArray.length < 2) {
+        return null;
+    }
+    
+    String[] paramPartitionArray = queryPartitionArray[1].split("\\&");
+    String beforeParamString = Arrays
+      .stream(paramPartitionArray)
+      .filter(x -> x.contains("after="))
+      .findFirst()
+      .orElse(null);
+      
+    if (beforeParamString == null) {
+        return null;
+    }
+    return beforeParamString.split("after=")[1];
+      
+  }
+
   public static final String SERIALIZED_NAME_PREVIOUS_URL = "previous_url";
 
   @SerializedName(SERIALIZED_NAME_PREVIOUS_URL)
@@ -249,6 +292,21 @@ public class AddressList {
 
 
   /*
+  public AddressList coolUrl(String coolUrl) {
+    
+    this.coolUrl = coolUrl;
+    return this;
+  }
+  */
+
+
+  public void setCoolUrl(String coolUrl) {
+    this.coolUrl = coolUrl;
+  }
+
+
+
+  /*
   public AddressList previousUrl(String previousUrl) {
     
     this.previousUrl = previousUrl;
@@ -305,6 +363,7 @@ public class AddressList {
     return Objects.equals(this.data, addressList.data) &&
         Objects.equals(this._object, addressList._object) &&
         Objects.equals(this.nextUrl, addressList.nextUrl) &&
+        Objects.equals(this.coolUrl, addressList.coolUrl) &&
         Objects.equals(this.previousUrl, addressList.previousUrl) &&
         Objects.equals(this.count, addressList.count) &&
         Objects.equals(this.totalCount, addressList.totalCount);
@@ -316,7 +375,7 @@ public class AddressList {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, _object, nextUrl, previousUrl, count, totalCount);
+    return Objects.hash(data, _object, nextUrl, coolUrl, previousUrl, count, totalCount);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -333,6 +392,7 @@ public class AddressList {
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    nextUrl: ").append(toIndentedString(nextUrl)).append("\n");
+    sb.append("    coolUrl: ").append(toIndentedString(coolUrl)).append("\n");
     sb.append("    previousUrl: ").append(toIndentedString(previousUrl)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    totalCount: ").append(toIndentedString(totalCount)).append("\n");

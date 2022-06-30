@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addressCreate**](AddressesApi.md#addressCreate) | **POST** /addresses | create
-[**addressDelete**](AddressesApi.md#addressDelete) | **DELETE** /addresses/{adr_id} | delete
-[**addressRetrieve**](AddressesApi.md#addressRetrieve) | **GET** /addresses/{adr_id} | get
-[**addressesList**](AddressesApi.md#addressesList) | **GET** /addresses | list
+[**create**](AddressesApi.md#create) | **POST** /addresses | create
+[**delete**](AddressesApi.md#delete) | **DELETE** /addresses/{adr_id} | delete
+[**get**](AddressesApi.md#get) | **GET** /addresses/{adr_id} | get
+[**list**](AddressesApi.md#list) | **GET** /addresses | list
 
 
-<a name="addressCreate"></a>
-# **addressCreate**
-> Address addressCreate(addressEditable)
+<a name="create"></a>
+# **create**
+> Address create(addressEditable)
 
 create
 
@@ -35,16 +35,14 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
     AddressEditable addressEditable = new AddressEditable(); // AddressEditable | 
     try {
-      Address result = apiInstance.addressCreate(addressEditable);
-      System.out.println(result);
+      Address result = apiInstance.create(addressEditable);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AddressesApi#addressCreate");
+      System.err.println("Exception when calling AddressesApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -79,9 +77,9 @@ Name | Type | Description  | Notes
 **200** | Echos the writable fields of a newly created address object. |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="addressDelete"></a>
-# **addressDelete**
-> AddressDeletion addressDelete(adrId)
+<a name="delete"></a>
+# **delete**
+> AddressDeletion delete(adrId)
 
 delete
 
@@ -104,16 +102,14 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
     String adrId = "adrId_example"; // String | id of the address
     try {
-      AddressDeletion result = apiInstance.addressDelete(adrId);
-      System.out.println(result);
+      AddressDeletion result = apiInstance.delete(adrId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AddressesApi#addressDelete");
+      System.err.println("Exception when calling AddressesApi#delete");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -148,9 +144,9 @@ Name | Type | Description  | Notes
 **200** | Deleted |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="addressRetrieve"></a>
-# **addressRetrieve**
-> Address addressRetrieve(adrId)
+<a name="get"></a>
+# **get**
+> Address get(adrId)
 
 get
 
@@ -173,16 +169,14 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
     String adrId = "adrId_example"; // String | id of the address
     try {
-      Address result = apiInstance.addressRetrieve(adrId);
-      System.out.println(result);
+      Address result = apiInstance.get(adrId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AddressesApi#addressRetrieve");
+      System.err.println("Exception when calling AddressesApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -217,9 +211,9 @@ Name | Type | Description  | Notes
 **200** | Returns an address object if a valid identifier was provided. |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="addressesList"></a>
-# **addressesList**
-> AddressList addressesList(limit, before, after, include, dateCreated, metadata)
+<a name="list"></a>
+# **list**
+> AddressList list(limit, before, after, include, dateCreated, metadata)
 
 list
 
@@ -242,8 +236,7 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
     Integer limit = 10; // Integer | How many results to return.
@@ -253,10 +246,9 @@ public class Example {
     Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
     Map<String, String> metadata = new HashMap(); // Map<String, String> | Filter by metadata key-value pair`.
     try {
-      AddressList result = apiInstance.addressesList(limit, before, after, include, dateCreated, metadata);
-      System.out.println(result);
+      AddressList result = apiInstance.list(limit, before, after, include, dateCreated, metadata);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AddressesApi#addressesList");
+      System.err.println("Exception when calling AddressesApi#list");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

@@ -44,9 +44,9 @@ public class UsComponents {
   * @return primaryNumber
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number.")
+  @ApiModelProperty(required = true, value = "The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number.")
   
   public String getPrimaryNumber() {
       return primaryNumber;
@@ -126,9 +126,9 @@ public class UsComponents {
   * @return streetPredirection
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Geographic direction preceding a street name (`N`, `S`, `E`, `W`, `NE`, `SW`, `SE`, `NW`). ")
+  @ApiModelProperty(required = true, value = "Geographic direction preceding a street name (`N`, `S`, `E`, `W`, `NE`, `SW`, `SE`, `NW`). ")
   
   public StreetPredirectionEnum getStreetPredirection() {
       return streetPredirection;
@@ -147,9 +147,9 @@ public class UsComponents {
   * @return streetName
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The name of the street.")
+  @ApiModelProperty(required = true, value = "The name of the street.")
   
   public String getStreetName() {
       return streetName;
@@ -168,9 +168,9 @@ public class UsComponents {
   * @return streetSuffix
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The standard USPS abbreviation for the street suffix (`ST`, `AVE`, `BLVD`, etc). ")
+  @ApiModelProperty(required = true, value = "The standard USPS abbreviation for the street suffix (`ST`, `AVE`, `BLVD`, etc). ")
   
   public String getStreetSuffix() {
       return streetSuffix;
@@ -250,9 +250,9 @@ public class UsComponents {
   * @return streetPostdirection
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Geographic direction following a street name (`N`, `S`, `E`, `W`, `NE`, `SW`, `SE`, `NW`). ")
+  @ApiModelProperty(required = true, value = "Geographic direction following a street name (`N`, `S`, `E`, `W`, `NE`, `SW`, `SE`, `NW`). ")
   
   public StreetPostdirectionEnum getStreetPostdirection() {
       return streetPostdirection;
@@ -271,9 +271,9 @@ public class UsComponents {
   * @return secondaryDesignator
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The standard USPS abbreviation describing the `components[secondary_number]` (`STE`, `APT`, `BLDG`, etc). ")
+  @ApiModelProperty(required = true, value = "The standard USPS abbreviation describing the `components[secondary_number]` (`STE`, `APT`, `BLDG`, etc). ")
   
   public String getSecondaryDesignator() {
       return secondaryDesignator;
@@ -292,9 +292,9 @@ public class UsComponents {
   * @return secondaryNumber
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Number of the apartment/unit/etc. ")
+  @ApiModelProperty(required = true, value = "Number of the apartment/unit/etc. ")
   
   public String getSecondaryNumber() {
       return secondaryNumber;
@@ -313,9 +313,9 @@ public class UsComponents {
   * @return pmbDesignator
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Designator of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. ")
+  @ApiModelProperty(required = true, value = "Designator of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. ")
   
   public String getPmbDesignator() {
       return pmbDesignator;
@@ -334,9 +334,9 @@ public class UsComponents {
   * @return pmbNumber
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Number of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. ")
+  @ApiModelProperty(required = true, value = "Number of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. ")
   
   public String getPmbNumber() {
       return pmbNumber;
@@ -355,9 +355,9 @@ public class UsComponents {
   * @return extraSecondaryDesignator
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "An extra (often unnecessary) secondary designator provided with the input address. ")
+  @ApiModelProperty(required = true, value = "An extra (often unnecessary) secondary designator provided with the input address. ")
   
   public String getExtraSecondaryDesignator() {
       return extraSecondaryDesignator;
@@ -376,9 +376,9 @@ public class UsComponents {
   * @return extraSecondaryNumber
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "An extra (often unnecessary) secondary number provided with the input address. ")
+  @ApiModelProperty(required = true, value = "An extra (often unnecessary) secondary number provided with the input address. ")
   
   public String getExtraSecondaryNumber() {
       return extraSecondaryNumber;
@@ -397,9 +397,9 @@ public class UsComponents {
   * @return city
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public String getCity() {
       return city;
@@ -418,9 +418,9 @@ public class UsComponents {
   * @return state
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. ")
+  @ApiModelProperty(required = true, value = "The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. ")
   
   public String getState() {
       return state;
@@ -439,7 +439,7 @@ public class UsComponents {
   * @return zipCode
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getZipCode() { return zipCode; }
 
@@ -464,7 +464,7 @@ public class UsComponents {
   * @return zipCodePlus4
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getZipCodePlus4() { return zipCodePlus4; }
 
@@ -489,9 +489,9 @@ public class UsComponents {
   * @return zipCodeType
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public ZipCodeType getZipCodeType() {
       return zipCodeType;
@@ -510,9 +510,9 @@ public class UsComponents {
   * @return deliveryPointBarcode
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A 12-digit identifier that uniquely identifies a delivery point (location where mail can be sent and received). It consists of the 5-digit ZIP code (`zip_code`), 4-digit ZIP+4 add-on (`zip_code_plus_4`), 2-digit delivery point, and 1-digit delivery point check digit. ")
+  @ApiModelProperty(required = true, value = "A 12-digit identifier that uniquely identifies a delivery point (location where mail can be sent and received). It consists of the 5-digit ZIP code (`zip_code`), 4-digit ZIP+4 add-on (`zip_code_plus_4`), 2-digit delivery point, and 1-digit delivery point check digit. ")
   
   public String getDeliveryPointBarcode() {
       return deliveryPointBarcode;
@@ -580,9 +580,9 @@ public class UsComponents {
   * @return addressType
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Uses USPS's [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * `residential` –– The address is residential or a PO Box. * `commercial` –– The address is commercial. * `''` –– Not enough information provided to be determined. ")
+  @ApiModelProperty(required = true, value = "Uses USPS's [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * `residential` –– The address is residential or a PO Box. * `commercial` –– The address is commercial. * `''` –– Not enough information provided to be determined. ")
   
   public AddressTypeEnum getAddressType() {
       return addressType;
@@ -658,9 +658,9 @@ public class UsComponents {
   * @return recordType
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A description of the type of address. Populated if a DPV match is made (`deliverability_analysis[dpv_confirmation]` is `Y`, `S`, or `D`). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types). ")
+  @ApiModelProperty(required = true, value = "A description of the type of address. Populated if a DPV match is made (`deliverability_analysis[dpv_confirmation]` is `Y`, `S`, or `D`). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types). ")
   
   public RecordTypeEnum getRecordType() {
       return recordType;
@@ -679,9 +679,9 @@ public class UsComponents {
   * @return defaultBuildingAddress
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Designates whether or not the address is the default address for a building containing multiple delivery points. ")
+  @ApiModelProperty(required = true, value = "Designates whether or not the address is the default address for a building containing multiple delivery points. ")
   
   public Boolean getDefaultBuildingAddress() {
       return defaultBuildingAddress;
@@ -700,9 +700,9 @@ public class UsComponents {
   * @return county
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "County name of the address city.")
+  @ApiModelProperty(required = true, value = "County name of the address city.")
   
   public String getCounty() {
       return county;
@@ -721,16 +721,12 @@ public class UsComponents {
   * @return countyFips
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  public String getCountyFips() { return countyFips; }
-
-  public void setCountyFips (String countyFips) throws IllegalArgumentException {
-    if(!countyFips.matches("\\d{5}")) {
-      throw new IllegalArgumentException("Invalid county_fips provided");
-    }
-
-    this.countyFips = countyFips;
+  @ApiModelProperty(required = true, value = "A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies `components[county]`. It consists of a 2-digit state code and a 3-digit county code. ")
+  
+  public String getCountyFips() {
+      return countyFips;
   }
   
   
@@ -746,9 +742,9 @@ public class UsComponents {
   * @return carrierRoute
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A 4-character code assigned to a mail delivery route within a ZIP code. ")
+  @ApiModelProperty(required = true, value = "A 4-character code assigned to a mail delivery route within a ZIP code. ")
   
   public String getCarrierRoute() {
       return carrierRoute;
@@ -820,9 +816,9 @@ public class UsComponents {
   * @return carrierRouteType
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The type of `components[carrier_route]`. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). ")
+  @ApiModelProperty(required = true, value = "The type of `components[carrier_route]`. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). ")
   
   public CarrierRouteTypeEnum getCarrierRouteType() {
       return carrierRouteType;
@@ -1191,6 +1187,9 @@ public class UsComponents {
   */
 
 
+  public void setCountyFips(String countyFips) {
+    this.countyFips = countyFips;
+  }
 
 
 

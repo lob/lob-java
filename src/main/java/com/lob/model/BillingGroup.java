@@ -63,9 +63,9 @@ public class BillingGroup {
   * @return name
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Name of the billing group.")
+  @ApiModelProperty(required = true, value = "Name of the billing group.")
   
   public String getName() {
       return name;
@@ -84,7 +84,7 @@ public class BillingGroup {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -94,6 +94,31 @@ public class BillingGroup {
     }
 
     this.id = id;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_COOL_ID = "cool-id";
+
+  @SerializedName(SERIALIZED_NAME_COOL_ID)
+  
+
+  private String coolId;
+  /**
+  * Unique identifier prefixed with `bg_`.
+  * @return coolId
+  **/
+  
+  @javax.annotation.Nullable
+  
+  public String getCoolId() { return coolId; }
+
+  public void setCoolId (String coolId) throws IllegalArgumentException {
+    if(!coolId.matches("^bg_[a-zA-Z0-9]+$")) {
+      throw new IllegalArgumentException("Invalid cool-id provided");
+    }
+
+    this.coolId = coolId;
   }
   
   
@@ -109,9 +134,9 @@ public class BillingGroup {
   * @return dateCreated
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
   public OffsetDateTime getDateCreated() {
       return dateCreated;
@@ -130,9 +155,9 @@ public class BillingGroup {
   * @return dateModified
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
   public OffsetDateTime getDateModified() {
       return dateModified;
@@ -196,9 +221,9 @@ public class BillingGroup {
   * @return _object
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Value is resource type.")
+  @ApiModelProperty(required = true, value = "Value is resource type.")
   
   public ObjectEnum getObject() {
       return _object;
@@ -241,6 +266,18 @@ public class BillingGroup {
   public BillingGroup id(String id) {
     
     this.id = id;
+    return this;
+  }
+  */
+
+
+
+
+
+  /*
+  public BillingGroup coolId(String coolId) {
+    
+    this.coolId = coolId;
     return this;
   }
   */
@@ -306,6 +343,7 @@ public class BillingGroup {
     return Objects.equals(this.description, billingGroup.description) &&
         Objects.equals(this.name, billingGroup.name) &&
         Objects.equals(this.id, billingGroup.id) &&
+        Objects.equals(this.coolId, billingGroup.coolId) &&
         Objects.equals(this.dateCreated, billingGroup.dateCreated) &&
         Objects.equals(this.dateModified, billingGroup.dateModified) &&
         Objects.equals(this._object, billingGroup._object);
@@ -313,7 +351,7 @@ public class BillingGroup {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, name, id, dateCreated, dateModified, _object);
+    return Objects.hash(description, name, id, coolId, dateCreated, dateModified, _object);
   }
 
   @Override
@@ -323,6 +361,7 @@ public class BillingGroup {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    coolId: ").append(toIndentedString(coolId)).append("\n");
     sb.append("    dateCreated: ").append(toIndentedString(dateCreated)).append("\n");
     sb.append("    dateModified: ").append(toIndentedString(dateModified)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
