@@ -47,7 +47,7 @@ public class SelfMailerEditable {
   }
 
   public void setTo(String to) {
-    ;
+    
     this.to = to;
   }
   
@@ -66,7 +66,7 @@ public class SelfMailerEditable {
   }
 
   public void setFrom(String from) {
-    ;
+    
     this.from = from;
   }
   
@@ -202,9 +202,9 @@ public class SelfMailerEditable {
   * @return inside
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The artwork to use as the inside of your self mailer. ")
+  @ApiModelProperty(required = true, value = "The artwork to use as the inside of your self mailer. ")
   
   public String getInside() {
       return inside;
@@ -223,9 +223,9 @@ public class SelfMailerEditable {
   * @return outside
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The artwork to use as the outside of your self mailer. ")
+  @ApiModelProperty(required = true, value = "The artwork to use as the outside of your self mailer. ")
   
   public String getOutside() {
       return outside;

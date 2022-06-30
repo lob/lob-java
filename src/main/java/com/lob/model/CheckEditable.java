@@ -45,7 +45,7 @@ public class CheckEditable {
   }
 
   public void setFrom(String from) {
-    ;
+    
     this.from = from;
   }
   
@@ -64,7 +64,7 @@ public class CheckEditable {
   }
 
   public void setTo(String to) {
-    ;
+    
     this.to = to;
   }
   
@@ -86,7 +86,7 @@ public class CheckEditable {
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public String getBankAccount() {
       return bankAccount;
@@ -106,9 +106,9 @@ public class CheckEditable {
   * @return amount
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The payment amount to be sent in US dollars.")
+  @ApiModelProperty(required = true, value = "The payment amount to be sent in US dollars.")
   
   public Float getAmount() {
       return amount;

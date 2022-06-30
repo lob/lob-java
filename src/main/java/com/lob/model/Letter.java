@@ -53,9 +53,9 @@ public class Letter {
   * @return to
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public Address getTo() {
       return to;
@@ -74,9 +74,9 @@ public class Letter {
   * @return from
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public Address getFrom() {
       return from;
@@ -193,9 +193,9 @@ public class Letter {
   * @return dateCreated
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
   public OffsetDateTime getDateCreated() {
       return dateCreated;
@@ -214,9 +214,9 @@ public class Letter {
   * @return dateModified
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
   public OffsetDateTime getDateModified() {
       return dateModified;
@@ -256,7 +256,7 @@ public class Letter {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -376,9 +376,9 @@ public class Letter {
   * @return _object
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public ObjectEnum getObject() {
       return _object;
@@ -523,7 +523,7 @@ public class Letter {
   }
 
   public void setReturnAddress(String returnAddress) {
-    ;
+    
     this.returnAddress = returnAddress;
   }
   
@@ -677,7 +677,7 @@ public class Letter {
   }
 
   public void setReturnEnvelope(String returnEnvelope) {
-    ;
+    
     this.returnEnvelope = returnEnvelope;
   }
   

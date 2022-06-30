@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createTemplate**](TemplatesApi.md#createTemplate) | **POST** /templates | create
-[**templateDelete**](TemplatesApi.md#templateDelete) | **DELETE** /templates/{tmpl_id} | delete
-[**templateRetrieve**](TemplatesApi.md#templateRetrieve) | **GET** /templates/{tmpl_id} | get
-[**templateUpdate**](TemplatesApi.md#templateUpdate) | **POST** /templates/{tmpl_id} | update
-[**templatesList**](TemplatesApi.md#templatesList) | **GET** /templates | list
+[**create**](TemplatesApi.md#create) | **POST** /templates | create
+[**delete**](TemplatesApi.md#delete) | **DELETE** /templates/{tmpl_id} | delete
+[**get**](TemplatesApi.md#get) | **GET** /templates/{tmpl_id} | get
+[**update**](TemplatesApi.md#update) | **POST** /templates/{tmpl_id} | update
+[**list**](TemplatesApi.md#list) | **GET** /templates | list
 
 
-<a name="createTemplate"></a>
-# **createTemplate**
-> Template createTemplate(templateWritable)
+<a name="create"></a>
+# **create**
+> Template create(templateWritable)
 
 create
 
@@ -36,16 +36,14 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     TemplatesApi apiInstance = new TemplatesApi(defaultClient);
     TemplateWritable templateWritable = new TemplateWritable(); // TemplateWritable | 
     try {
-      Template result = apiInstance.createTemplate(templateWritable);
-      System.out.println(result);
+      Template result = apiInstance.create(templateWritable);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TemplatesApi#createTemplate");
+      System.err.println("Exception when calling TemplatesApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -80,9 +78,9 @@ Name | Type | Description  | Notes
 **200** | Returns a template object |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="templateDelete"></a>
-# **templateDelete**
-> TemplateDeletion templateDelete(tmplId)
+<a name="delete"></a>
+# **delete**
+> TemplateDeletion delete(tmplId)
 
 delete
 
@@ -105,16 +103,14 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     TemplatesApi apiInstance = new TemplatesApi(defaultClient);
     String tmplId = "tmplId_example"; // String | id of the template
     try {
-      TemplateDeletion result = apiInstance.templateDelete(tmplId);
-      System.out.println(result);
+      TemplateDeletion result = apiInstance.delete(tmplId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TemplatesApi#templateDelete");
+      System.err.println("Exception when calling TemplatesApi#delete");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -149,9 +145,9 @@ Name | Type | Description  | Notes
 **200** | Deleted |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="templateRetrieve"></a>
-# **templateRetrieve**
-> Template templateRetrieve(tmplId)
+<a name="get"></a>
+# **get**
+> Template get(tmplId)
 
 get
 
@@ -174,16 +170,14 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     TemplatesApi apiInstance = new TemplatesApi(defaultClient);
     String tmplId = "tmplId_example"; // String | id of the template
     try {
-      Template result = apiInstance.templateRetrieve(tmplId);
-      System.out.println(result);
+      Template result = apiInstance.get(tmplId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TemplatesApi#templateRetrieve");
+      System.err.println("Exception when calling TemplatesApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -218,9 +212,9 @@ Name | Type | Description  | Notes
 **200** | Returns a template object |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="templateUpdate"></a>
-# **templateUpdate**
-> Template templateUpdate(tmplId, templateUpdate)
+<a name="update"></a>
+# **update**
+> Template update(tmplId, templateUpdate)
 
 update
 
@@ -243,17 +237,15 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     TemplatesApi apiInstance = new TemplatesApi(defaultClient);
     String tmplId = "tmplId_example"; // String | id of the template
     TemplateUpdate templateUpdate = new TemplateUpdate(); // TemplateUpdate | 
     try {
-      Template result = apiInstance.templateUpdate(tmplId, templateUpdate);
-      System.out.println(result);
+      Template result = apiInstance.update(tmplId, templateUpdate);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TemplatesApi#templateUpdate");
+      System.err.println("Exception when calling TemplatesApi#update");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -289,9 +281,9 @@ Name | Type | Description  | Notes
 **200** | Returns the updated template object |  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="templatesList"></a>
-# **templatesList**
-> TemplateList templatesList(limit, before, after, include, dateCreated, metadata)
+<a name="list"></a>
+# **list**
+> TemplateList list(limit, before, after, include, dateCreated, metadata)
 
 list
 
@@ -314,8 +306,7 @@ public class Example {
     
     // Configure HTTP basic authorization: basicAuth
     HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("YOUR USERNAME");
-    basicAuth.setPassword("YOUR PASSWORD");
+    basicAuth.setUsername("LOB_API_KEY");
 
     TemplatesApi apiInstance = new TemplatesApi(defaultClient);
     Integer limit = 10; // Integer | How many results to return.
@@ -325,10 +316,9 @@ public class Example {
     Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
     Map<String, String> metadata = new HashMap(); // Map<String, String> | Filter by metadata key-value pair`.
     try {
-      TemplateList result = apiInstance.templatesList(limit, before, after, include, dateCreated, metadata);
-      System.out.println(result);
+      TemplateList result = apiInstance.list(limit, before, after, include, dateCreated, metadata);
     } catch (ApiException e) {
-      System.err.println("Exception when calling TemplatesApi#templatesList");
+      System.err.println("Exception when calling TemplatesApi#list");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

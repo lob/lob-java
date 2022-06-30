@@ -1,7 +1,7 @@
 package Model;
 
 import com.lob.model.LetterEditable;
-import com.lob.model.LetterCustomEnvelope;
+import com.lob.model.LetterEditableCustomEnvelope;
 import com.lob.model.MailType;
 import com.lob.model.AddressEditable;
 
@@ -34,7 +34,7 @@ public class LetterEditableTest {
             {"return_envelope", "true"},
             {"return_envelope", "false"},
             {"perforated_page", 11},
-            {"custom_envelope", new LetterCustomEnvelope()},
+            {"custom_envelope", new LetterEditableCustomEnvelope()},
             {"to", new AddressEditable()},
             {"from", new AddressEditable()},
             {"file", "fake file"},
@@ -87,7 +87,7 @@ public class LetterEditableTest {
                 break;
             }
             case "custom_envelope": {
-                LetterCustomEnvelope castedVal = (LetterCustomEnvelope)val;
+                LetterEditableCustomEnvelope castedVal = (LetterEditableCustomEnvelope)val;
                 rec.setCustomEnvelope(castedVal);
                 Assert.assertEquals(rec.getCustomEnvelope(), castedVal);
                 break;

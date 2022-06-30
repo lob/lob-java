@@ -47,7 +47,7 @@ public class PostcardEditable {
   }
 
   public void setTo(String to) {
-    ;
+    
     this.to = to;
   }
   
@@ -66,7 +66,7 @@ public class PostcardEditable {
   }
 
   public void setFrom(String from) {
-    ;
+    
     this.from = from;
   }
   
@@ -202,9 +202,9 @@ public class PostcardEditable {
   * @return front
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The artwork to use as the front of your postcard. ")
+  @ApiModelProperty(required = true, value = "The artwork to use as the front of your postcard. ")
   
   public String getFront() {
       return front;
@@ -223,9 +223,9 @@ public class PostcardEditable {
   * @return back
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The artwork to use as the back of your postcard. ")
+  @ApiModelProperty(required = true, value = "The artwork to use as the back of your postcard. ")
   
   public String getBack() {
       return back;
