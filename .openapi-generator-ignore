@@ -26,6 +26,8 @@
 
 .gitignore
 git_push.sh
-
 README.md
 pom.xml
+.travis.yml
+src/test/**
+build.gradle
