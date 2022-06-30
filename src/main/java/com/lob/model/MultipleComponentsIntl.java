@@ -64,9 +64,9 @@ public class MultipleComponentsIntl {
   * @return primaryLine
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The primary delivery line (usually the street address) of the address. ")
+  @ApiModelProperty(required = true, value = "The primary delivery line (usually the street address) of the address. ")
   
   public String getPrimaryLine() {
       return primaryLine;
@@ -169,9 +169,9 @@ public class MultipleComponentsIntl {
   * @return country
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public CountryExtended getCountry() {
       return country;

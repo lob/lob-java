@@ -78,6 +78,7 @@ PUBLISHABLE_KEY_NOT_ALLOWED | &quot;publishable_key_not_allowed&quot;
 RATE_LIMIT_EXCEEDED | &quot;rate_limit_exceeded&quot;
 UNAUTHORIZED | &quot;unauthorized&quot;
 UNAUTHORIZED_TOKEN | &quot;unauthorized_token&quot;
+CARD_QUANTITY_BELOW_MIN | &quot;card_quantity_below_min&quot;
 
 
 

@@ -67,9 +67,9 @@ public class BankAccount {
   * @return routingNumber
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Must be a [valid US routing number](https://www.frbservices.org/index.html).")
+  @ApiModelProperty(required = true, value = "Must be a [valid US routing number](https://www.frbservices.org/index.html).")
   
   public String getRoutingNumber() {
       return routingNumber;
@@ -88,9 +88,9 @@ public class BankAccount {
   * @return accountNumber
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public String getAccountNumber() {
       return accountNumber;
@@ -156,9 +156,9 @@ public class BankAccount {
   * @return accountType
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The type of entity that holds the account.")
+  @ApiModelProperty(required = true, value = "The type of entity that holds the account.")
   
   public AccountTypeEnum getAccountType() {
       return accountType;
@@ -177,9 +177,9 @@ public class BankAccount {
   * @return signatory
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).")
+  @ApiModelProperty(required = true, value = "The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).")
   
   public String getSignatory() {
       return signatory;
@@ -209,7 +209,7 @@ public class BankAccount {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -301,9 +301,9 @@ public class BankAccount {
   * @return dateCreated
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
   public OffsetDateTime getDateCreated() {
       return dateCreated;
@@ -322,9 +322,9 @@ public class BankAccount {
   * @return dateModified
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
   public OffsetDateTime getDateModified() {
       return dateModified;
@@ -409,9 +409,9 @@ public class BankAccount {
   * @return _object
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public ObjectEnum getObject() {
       return _object;

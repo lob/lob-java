@@ -89,9 +89,9 @@ public class TrackingEventCertified {
   * @return type
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "a Certified letter tracking event")
+  @ApiModelProperty(required = true, value = "a Certified letter tracking event")
   
   public TypeEnum getType() {
       return type;
@@ -171,9 +171,9 @@ public class TrackingEventCertified {
   * @return name
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "Name of tracking event for Certified letters. Letters sent with USPS Certified Mail are fully tracked by USPS, therefore their tracking events have an additional details object with more detailed information about the tracking event. Some certified tracking event names have multiple meanings, noted in the list here. See the description of the details object for the full set of combined certified tracking event name meanings.    * `Mailed` - Package has been accepted into the carrier network for delivery.    * `In Transit` - Maps to four distinct stages of transit.    * `In Local Area` - Package is at a location near the end destination.    * `Processed for Delivery` - Maps to two distinct stages of delivery.    * `Pickup Available` - Package is available for pickup at carrier location.    * `Delivered` - Package has been delivered.    * `Re-Routed` - Package has been forwarded.    * `Returned to Sender` - Package is to be returned to sender.    * `Issue` - Maps to (at least) 15 possible issues, some of which are actionable. ")
+  @ApiModelProperty(required = true, value = "Name of tracking event for Certified letters. Letters sent with USPS Certified Mail are fully tracked by USPS, therefore their tracking events have an additional details object with more detailed information about the tracking event. Some certified tracking event names have multiple meanings, noted in the list here. See the description of the details object for the full set of combined certified tracking event name meanings.    * `Mailed` - Package has been accepted into the carrier network for delivery.    * `In Transit` - Maps to four distinct stages of transit.    * `In Local Area` - Package is at a location near the end destination.    * `Processed for Delivery` - Maps to two distinct stages of delivery.    * `Pickup Available` - Package is available for pickup at carrier location.    * `Delivered` - Package has been delivered.    * `Re-Routed` - Package has been forwarded.    * `Returned to Sender` - Package is to be returned to sender.    * `Issue` - Maps to (at least) 15 possible issues, some of which are actionable. ")
   
   public NameEnum getName() {
       return name;
@@ -234,7 +234,7 @@ public class TrackingEventCertified {
   * @return id
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
   public String getId() { return id; }
 
@@ -280,9 +280,9 @@ public class TrackingEventCertified {
   * @return dateCreated
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
   public OffsetDateTime getDateCreated() {
       return dateCreated;
@@ -301,9 +301,9 @@ public class TrackingEventCertified {
   * @return dateModified
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
+  @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
   public OffsetDateTime getDateModified() {
       return dateModified;
@@ -367,9 +367,9 @@ public class TrackingEventCertified {
   * @return _object
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public ObjectEnum getObject() {
       return _object;
