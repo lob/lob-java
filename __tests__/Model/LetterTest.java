@@ -4,6 +4,7 @@ import com.lob.model.Letter;
 import com.lob.model.Address;
 import com.lob.model.Thumbnail;
 import com.lob.model.MailType;
+import com.lob.model.ReturnEnvelope;
 import com.lob.model.LetterCustomEnvelope;
 import com.lob.model.TrackingEventNormal;
 import com.lob.model.AddressEditable;
@@ -65,8 +66,8 @@ public class LetterTest {
             {"address_placement", Letter.AddressPlacementEnum.INSERT_BLANK_PAGE},
             {"address_placement", Letter.AddressPlacementEnum.BOTTOM_FIRST_PAGE},
             {"address_placement", Letter.AddressPlacementEnum.TOP_FIRST_PAGE},
-            {"return_envelope", "true"},
-            {"return_envelope", "false"},
+            {"return_envelope", new ReturnEnvelope()},
+            {"return_envelope", new ReturnEnvelope()},
             {"perforated_page", 11},
             {"custom_envelope", new LetterCustomEnvelope()},
         };
@@ -223,7 +224,7 @@ public class LetterTest {
                 break;
             }
             case "return_envelope": {
-                String castedVal = (String)val;
+                ReturnEnvelope castedVal = (ReturnEnvelope)val;
                 rec.setReturnEnvelope(castedVal);
                 Assert.assertEquals(rec.getReturnEnvelope(), castedVal);
                 break;

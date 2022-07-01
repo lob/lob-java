@@ -136,7 +136,7 @@ public class SelfMailersApiTest {
         List<String> include = null;
         Map<String, String> dateCreated = null;
         Map<String, String> metadata = null;
-        SelfMailerSize size = null;
+        List<SelfMailerSize> size = null;
         Boolean scheduled = null;
         Map<String, String>  sendDate = null;
         MailType mailType = null;
