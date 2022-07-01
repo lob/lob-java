@@ -76,6 +76,7 @@ docs/PostcardEditable.md
 docs/PostcardList.md
 docs/PostcardSize.md
 docs/PostcardsApi.md
+docs/ReturnEnvelope.md
 docs/ReverseGeocode.md
 docs/ReverseGeocodeLookupsApi.md
 docs/SelfMailer.md
@@ -227,6 +228,7 @@ src/main/java/com/lob/model/PostcardDeletion.java
 src/main/java/com/lob/model/PostcardEditable.java
 src/main/java/com/lob/model/PostcardList.java
 src/main/java/com/lob/model/PostcardSize.java
+src/main/java/com/lob/model/ReturnEnvelope.java
 src/main/java/com/lob/model/ReverseGeocode.java
 src/main/java/com/lob/model/SelfMailer.java
 src/main/java/com/lob/model/SelfMailerDeletion.java
