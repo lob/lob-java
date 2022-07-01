@@ -1946,7 +1946,9 @@ paths:
         name: size
         required: false
         schema:
-          $ref: '#/components/schemas/postcard_size'
+          items:
+            $ref: '#/components/schemas/postcard_size'
+          type: array
         style: form
       - description: |
           * `true` - only return orders (past or future) where `send_date` is
@@ -2222,7 +2224,9 @@ paths:
         name: size
         required: false
         schema:
-          $ref: '#/components/schemas/self_mailer_size'
+          items:
+            $ref: '#/components/schemas/self_mailer_size'
+          type: array
         style: form
       - description: |
           * `true` - only return orders (past or future) where `send_date` is
@@ -7963,6 +7967,25 @@ components:
             python: AddressEditable
             python_path: lob_python.model.address_editable
             hasPath: true
+    return_envelope:
+      example:
+        alias: alias
+        id: id
+        url: url
+        object: object
+      properties:
+        id:
+          description: The unique ID of the Return Envelope
+          type: string
+        alias:
+          description: A quick reference name for the Return Envelope
+          type: string
+        url:
+          description: The url of the  return envelope
+          type: string
+        object:
+          type: string
+      type: object
     letter:
       example:
         metadata:
@@ -7971,7 +7994,11 @@ components:
         expected_delivery_date: 2000-01-23
         description: description
         extra_service: extra_service
-        return_envelope: ""
+        return_envelope:
+          alias: alias
+          id: id
+          url: url
+          object: object
         perforated_page: 0
         send_date: 2000-01-23T04:56:07.000+00:00
         tracking_events: []
@@ -8216,24 +8243,7 @@ components:
           - bottom_first_page
           type: string
         return_envelope:
-          description: |-
-            indicates if a return envelope is requested for the letter. The value corresponding to this field is by default a boolean. But if the account is signed up for custom return envelopes, the value is of type string and is `no_9_single_window` for a standard return envelope and a custom `return_envelope_id` for non-standard return envelopes.
-
-            To include a return envelope with your letter, set to `true` and specify the `perforated_page`. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.
-          x-template-config:
-            isOneOf: true
-            type-composite:
-            - base-type1:
-                java: String
-                typescript: string
-                python: str
-                default: true
-                isRef: true
-            - base-type2:
-                java: Boolean
-                typescript: boolean
-                python: bool
-                hasPath: false
+          $ref: '#/components/schemas/return_envelope'
         perforated_page:
           description: Required if `return_envelope` is `true`. The number of the
             page that should be perforated for use with the return envelope. Must
@@ -8303,7 +8313,11 @@ components:
           expected_delivery_date: 2000-01-23
           description: description
           extra_service: extra_service
-          return_envelope: ""
+          return_envelope:
+            alias: alias
+            id: id
+            url: url
+            object: object
           perforated_page: 0
           send_date: 2000-01-23T04:56:07.000+00:00
           tracking_events: []
@@ -8375,7 +8389,11 @@ components:
           expected_delivery_date: 2000-01-23
           description: description
           extra_service: extra_service
-          return_envelope: ""
+          return_envelope:
+            alias: alias
+            id: id
+            url: url
+            object: object
           perforated_page: 0
           send_date: 2000-01-23T04:56:07.000+00:00
           tracking_events: []

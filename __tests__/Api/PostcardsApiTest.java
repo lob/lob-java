@@ -137,7 +137,7 @@ public class PostcardsApiTest {
         List<String> include = null;
         Map<String, String> dateCreated = null;
         Map<String, String> metadata = null;
-        PostcardSize size = null;
+        List<PostcardSize> size = null;
         Boolean scheduled = null;
         Map<String, String> sendDate = null;
         MailType mailType = null;

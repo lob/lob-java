@@ -247,7 +247,7 @@ public class Example {
     List<String> include = Arrays.asList(); // List<String> | Request that the response include the total count by specifying `include[]=total_count`. 
     Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
     Map<String, String> metadata = new HashMap(); // Map<String, String> | Filter by metadata key-value pair`.
-    SelfMailerSize size = SelfMailerSize.fromValue("6x18_bifold"); // SelfMailerSize | The self mailer sizes to be returned.
+    List<SelfMailerSize> size = Arrays.asList(6x18_bifold); // List<SelfMailerSize> | The self mailer sizes to be returned.
     Boolean scheduled = true; // Boolean | * `true` - only return orders (past or future) where `send_date` is greater than `date_created` * `false` - only return orders where `send_date` is equal to `date_created` 
     Map<String, String> sendDate = new HashMap(); // Map<String, String> | Filter by date sent.
     MailType mailType = MailType.fromValue("usps_first_class"); // MailType | A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States. 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
  **include** | [**List&lt;String&gt;**](String.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional]
  **dateCreated** | [**Map&lt;String, String&gt;**](String.md)| Filter by date created. | [optional]
  **metadata** | [**Map&lt;String, String&gt;**](String.md)| Filter by metadata key-value pair&#x60;. | [optional]
- **size** | [**SelfMailerSize**](.md)| The self mailer sizes to be returned. | [optional] [default to 6x18_bifold] [enum: 6x18_bifold, 11x9_bifold, 12x9_bifold]
+ **size** | [**List&lt;SelfMailerSize&gt;**](SelfMailerSize.md)| The self mailer sizes to be returned. | [optional]
  **scheduled** | **Boolean**| * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  | [optional]
  **sendDate** | [**Map&lt;String, String&gt;**](String.md)| Filter by date sent. | [optional]
  **mailType** | [**MailType**](.md)| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional] [default to usps_first_class] [enum: usps_first_class, usps_standard]

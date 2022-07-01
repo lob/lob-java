@@ -247,7 +247,7 @@ public class Example {
     List<String> include = Arrays.asList(); // List<String> | Request that the response include the total count by specifying `include[]=total_count`. 
     Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
     Map<String, String> metadata = new HashMap(); // Map<String, String> | Filter by metadata key-value pair`.
-    PostcardSize size = PostcardSize.fromValue("4x6"); // PostcardSize | Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations.
+    List<PostcardSize> size = Arrays.asList(4x6); // List<PostcardSize> | Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations.
     Boolean scheduled = true; // Boolean | * `true` - only return orders (past or future) where `send_date` is greater than `date_created` * `false` - only return orders where `send_date` is equal to `date_created` 
     Map<String, String> sendDate = new HashMap(); // Map<String, String> | Filter by date sent.
     MailType mailType = MailType.fromValue("usps_first_class"); // MailType | A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States. 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
  **include** | [**List&lt;String&gt;**](String.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional]
  **dateCreated** | [**Map&lt;String, String&gt;**](String.md)| Filter by date created. | [optional]
  **metadata** | [**Map&lt;String, String&gt;**](String.md)| Filter by metadata key-value pair&#x60;. | [optional]
- **size** | [**PostcardSize**](.md)| Specifies the size of the postcard. Only &#x60;4x6&#x60; postcards can be sent to international destinations. | [optional] [default to 4x6] [enum: 4x6, 6x9, 6x11]
+ **size** | [**List&lt;PostcardSize&gt;**](PostcardSize.md)| Specifies the size of the postcard. Only &#x60;4x6&#x60; postcards can be sent to international destinations. | [optional]
  **scheduled** | **Boolean**| * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  | [optional]
  **sendDate** | [**Map&lt;String, String&gt;**](String.md)| Filter by date sent. | [optional]
  **mailType** | [**MailType**](.md)| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional] [default to usps_first_class] [enum: usps_first_class, usps_standard]
