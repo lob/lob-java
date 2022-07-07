@@ -9,7 +9,7 @@ curl https://api.lob.com/v1/addresses/adr_fa85158b26c3eb7c \
 ```
 
 ```java
-AddressesApi apiInstance = new AddressesApi(lobClient);
+AddressesApi apiInstance = new AddressesApi(config);
 
 try {
   Address response = apiInstance.get("adr_fa85158b26c3eb7c");
@@ -31,7 +31,7 @@ curl -X DELETE "https://api.lob.com/v1/addresses/adr_43769b47aed248c2" \
 ```
 
 ```java
-AddressesApi apiInstance = new AddressesApi(lobClient);
+AddressesApi apiInstance = new AddressesApi(config);
 
 try {
     AddressDeletion response = apiInstance.delete("adr_43769b47aed248c2");
@@ -59,7 +59,7 @@ curl https://api.lob.com/v1/addresses \
 ```
 
 ```java
-AddressesApi apiInstance = new AddressesApi(lobClient);
+AddressesApi apiInstance = new AddressesApi(config);
 
 try {
   AddressEditable addressEditable = new AddressEditable(); 
@@ -92,7 +92,7 @@ curl -X GET "https://api.lob.com/v1/addresses?limit=2" \
 ```
 
 ```java
-AddressesApi apiInstance = new AddressesApi(lobClient);
+AddressesApi apiInstance = new AddressesApi(config);
 
 try {
   AddressList response = apiInstance.list(
@@ -153,7 +153,7 @@ curl https://api.lob.com/v1/postcards/psc_5c002b86ce47537a \
 ```
 
 ```java
-PostcardsApi apiInstance = new PostcardsApi(lobClient);
+PostcardsApi apiInstance = new PostcardsApi(config);
 
 try {
   Postcard response = apiInstance.get("psc_5c002b86ce47537a");
@@ -175,7 +175,7 @@ curl -X DELETE "https://api.lob.com/v1/postcards/psc_5c002b86ce47537a" \
 ```
 
 ```java
-PostcardsApi apiInstance = new PostcardsApi(lobClient);
+PostcardsApi apiInstance = new PostcardsApi(config);
 
 try {
     PostcardDeletion response = apiInstance.cancel("psc_5c002b86ce47537a");
@@ -206,7 +206,7 @@ curl https://api.lob.com/v1/postcards \
 Map<String, String> merge_variables = new HashMap<String, String>();
 merge_variables.put("name", "Harry");
 
-PostcardsApi apiInstance = new PostcardsApi(lobClient);
+PostcardsApi apiInstance = new PostcardsApi(config);
 
 AddressEditable to = new AddressEditable();
 to.setName("Harry Zhang");
@@ -242,7 +242,7 @@ curl -X GET "https://api.lob.com/v1/postcards?limit=2" \
 ```
 
 ```java
-PostcardsApi apiInstance = new PostcardsApi(lobClient);
+PostcardsApi apiInstance = new PostcardsApi(config);
 
 try {
   PostcardList response = apiInstance.list(
@@ -273,7 +273,7 @@ curl https://api.lob.com/v1/self_mailers/sfm_8ffbe811dea49dcf \
 ```
 
 ```java
-SelfMailersApi apiInstance = new SelfMailersApi(lobClient);
+SelfMailersApi apiInstance = new SelfMailersApi(config);
 
 try {
   SelfMailer response = apiInstance.get("sfm_8ffbe811dea49dcf");
@@ -295,7 +295,7 @@ curl -X DELETE "https://api.lob.com/v1/self_mailers/sfm_8ffbe811dea49dcf" \
 ```
 
 ```java
-SelfMailersApi apiInstance = new SelfMailersApi(lobClient);
+SelfMailersApi apiInstance = new SelfMailersApi(config);
 
 try {
     SelfMailerDeletion response = apiInstance.delete("sfm_8ffbe811dea49dcf");
@@ -326,7 +326,7 @@ curl https://api.lob.com/v1/self_mailers \
 Map<String, String> merge_variables = new HashMap<String, String>();
 merge_variables.put("name", "Harry");
 
-SelfMailersApi apiInstance = new SelfMailersApi(lobClient);
+SelfMailersApi apiInstance = new SelfMailersApi(config);
 
 AddressEditable to = new AddressEditable();
 to.setName("Harry Zhang");
@@ -362,7 +362,7 @@ curl -X GET "https://api.lob.com/v1/self_mailers?limit=2" \
 ```
 
 ```java
-SelfMailersApi apiInstance = new SelfMailersApi(lobClient);
+SelfMailersApi apiInstance = new SelfMailersApi(config);
 
 try {
   SelfMailerList response = apiInstance.list(
@@ -393,7 +393,7 @@ curl https://api.lob.com/v1/letters/ltr_4868c3b754655f90 \
 ```
 
 ```java
-LettersApi apiInstance = new LettersApi(lobClient);
+LettersApi apiInstance = new LettersApi(config);
 
 try {
   Letter response = apiInstance.get("ltr_4868c3b754655f90");
@@ -415,7 +415,7 @@ curl -X DELETE "https://api.lob.com/v1/letters/ltr_4868c3b754655f90" \
 ```
 
 ```java
-LettersApi apiInstance = new LettersApi(lobClient);
+LettersApi apiInstance = new LettersApi(config);
 
 try {
     LetterDeletion response = apiInstance.cancel("ltr_4868c3b754655f90");
@@ -448,7 +448,7 @@ curl https://api.lob.com/v1/letters \
 Map<String, String> merge_variables = new HashMap<String, String>();
 merge_variables.put("name", "Harry");
 
-LettersApi apiInstance = new LettersApi(lobClient);
+LettersApi apiInstance = new LettersApi(config);
 
 AddressEditable to = new AddressEditable();
 to.setName("Harry Zhang");
@@ -489,7 +489,7 @@ curl -X GET "https://api.lob.com/v1/letters?limit=2" \
 ```
 
 ```java
-LettersApi apiInstance = new LettersApi(lobClient);
+LettersApi apiInstance = new LettersApi(config);
 
 try {
   LetterList response = apiInstance.list(
@@ -520,7 +520,7 @@ curl https://api.lob.com/v1/checks/chk_534f10783683daa0 \
 ```
 
 ```java
-ChecksApi apiInstance = new ChecksApi(lobClient);
+ChecksApi apiInstance = new ChecksApi(config);
 
 try {
   Check response = apiInstance.get("chk_534f10783683daa0");
@@ -542,7 +542,7 @@ curl -X DELETE "https://api.lob.com/v1/checks/chk_534f10783683daa0" \
 ```
 
 ```java
-ChecksApi apiInstance = new ChecksApi(lobClient);
+ChecksApi apiInstance = new ChecksApi(config);
 
 try {
     CheckDeletion response = apiInstance.cancel("chk_534f10783683daa0");
@@ -576,7 +576,7 @@ curl https://api.lob.com/v1/checks \
 Map<String, String> merge_variables = new HashMap<String, String>();
 merge_variables.put("name", "Harry");
 
-ChecksApi apiInstance = new ChecksApi(lobClient);
+ChecksApi apiInstance = new ChecksApi(config);
 
 AddressEditable to = new AddressEditable();
 to.setName("Harry Zhang");
@@ -615,7 +615,7 @@ curl -X GET "https://api.lob.com/v1/checks?limit=2" \
 ```
 
 ```java
-ChecksApi apiInstance = new ChecksApi(lobClient);
+ChecksApi apiInstance = new ChecksApi(config);
 
 try {
   CheckList response = apiInstance.list(
@@ -645,7 +645,7 @@ curl https://api.lob.com/v1/bank_accounts/bank_8cad8df5354d33f \
 ```
 
 ```java
-BankAccountsApi apiInstance = new BankAccountsApi(lobClient);
+BankAccountsApi apiInstance = new BankAccountsApi(config);
 
 try {
   BankAccount response = apiInstance.get("bank_8cad8df5354d33f");
@@ -667,7 +667,7 @@ curl -X DELETE "https://api.lob.com/v1/bank_accounts/bank_3e64d9904356b20" \
 ```
 
 ```java
-BankAccountsApi apiInstance = new BankAccountsApi(lobClient);
+BankAccountsApi apiInstance = new BankAccountsApi(config);
 
 try {
     BankAccountDeletion response = apiInstance.delete("bank_3e64d9904356b20");
@@ -685,7 +685,7 @@ curl -X GET "https://api.lob.com/v1/bank_accounts?limit=2" \
 ```
 
 ```java
-BankAccountsApi apiInstance = new BankAccountsApi(lobClient);
+BankAccountsApi apiInstance = new BankAccountsApi(config);
 
 try {
   BankAccountList response = apiInstance.list(
@@ -716,7 +716,7 @@ BankAccountVerify verification = new BankAccountVerify();
 verification.addAmountsItem(25); 
 verification.addAmountsItem(63); 
 
-BankAccountsApi apiInstance = new BankAccountsApi(lobClient);
+BankAccountsApi apiInstance = new BankAccountsApi(config);
 
 try {
   apiInstance.verify("bank_dfceb4a2a05b57e", verification);
@@ -741,7 +741,7 @@ curl https://api.lob.com/v1/bank_accounts \
 ```
 
 ```java
-BankAccountsApi apiInstance = new BankAccountsApi(lobClient);
+BankAccountsApi apiInstance = new BankAccountsApi(config);
 
 try {
   BankAccountWritable bankAccountWritable = new BankAccountWritable(); 
@@ -768,7 +768,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 ```
 
 ```java
-TemplatesApi apiInstance = new TemplatesApi(lobClient);
+TemplatesApi apiInstance = new TemplatesApi(config);
 
 try {
   Template response = apiInstance.get("tmpl_c94e83ca2cd5121");
@@ -790,7 +790,7 @@ curl -X DELETE "https://api.lob.com/v1/templates/tmpl_df934eeda694203" \
 ```
 
 ```java
-TemplatesApi apiInstance = new TemplatesApi(lobClient);
+TemplatesApi apiInstance = new TemplatesApi(config);
 
 try {
     TemplateDeletion response = apiInstance.delete("tmpl_df934eeda694203");
@@ -808,7 +808,7 @@ curl -X GET "https://api.lob.com/v1/templates?limit=2" \
 ```
 
 ```java
-TemplatesApi apiInstance = new TemplatesApi(lobClient);
+TemplatesApi apiInstance = new TemplatesApi(config);
 
 try {
   List response = apiInstance.list(
@@ -838,7 +838,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 ```
 
 ```java
-  TemplatesApi apiInstance = new TemplatesApi(lobClient); 
+  TemplatesApi apiInstance = new TemplatesApi(config); 
   TemplateUpdate update = new TemplateUpdate();
 
   update.setDescription("update template");
@@ -862,7 +862,7 @@ curl https://api.lob.com/v1/templates \
 ```
 
 ```java
-TemplatesApi apiInstance = new TemplatesApi(lobClient);
+TemplatesApi apiInstance = new TemplatesApi(config);
 
 try {
   TemplateWritable  = new TemplateWritable(); 
@@ -886,7 +886,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121/versions/vrsn_534e339
 ```
 
 ```java
-TemplateVersionsApi apiInstance = new TemplateVersionsApi(lobClient);
+TemplateVersionsApi apiInstance = new TemplateVersionsApi(config);
 
 try {
   TemplateVersion response = apiInstance.get("vrsn_534e339882d2282");
@@ -901,24 +901,6 @@ try {
 
 
 
-### Delete
-```bash
-curl -X DELETE "https://api.lob.com/v1/templates/tmpl_4aa14648113e45b/versions/vrsn_534e339882d2282" \
-  -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
-```
-
-```java
-TemplateVersionsApi apiInstance = new TemplateVersionsApi(lobClient);
-
-try {
-    TemplateVersionDeletion response = apiInstance.delete("vrsn_534e339882d2282");
-} catch (ApiException e) {
-    e.printStackTrace();
-}
-```
-
-
-
 ### List
 ```bash
 curl -X GET "https://api.lob.com/v1/templates/tmpl_dadaaf7b76c9f25/versions?limit=2" \
@@ -926,11 +908,11 @@ curl -X GET "https://api.lob.com/v1/templates/tmpl_dadaaf7b76c9f25/versions?limi
 ```
 
 ```java
-TemplateVersionsApi apiInstance = new TemplateVersionsApi(lobClient);
+TemplateVersionsApi apiInstance = new TemplateVersionsApi(config);
 
 try {
   List response = apiInstance.list(
-    &#39;tmpl_dadaaf7b76c9f25&#39;, // tmplId
+    "tmpl_dadaaf7b76c9f25", // tmplId
     2, // limit
     null, // before
     null, // after
@@ -946,19 +928,6 @@ try {
 
 
 
-
-### Update
-```bash
-curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121/versions/vrsn_534e339882d2282 \
-  -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc: \
-  -d "description=Updated description"
-```
-
-```java
-This feature is not currently supported by this library.
-```
-
-
 ### Create
 ```bash
 curl https://api.lob.com/v1/templates/tmpl_4aa14648113e45b/versions \
@@ -968,7 +937,7 @@ curl https://api.lob.com/v1/templates/tmpl_4aa14648113e45b/versions \
 ```
 
 ```java
-TemplateVersionsApi apiInstance = new TemplateVersionsApi(lobClient);
+TemplateVersionsApi apiInstance = new TemplateVersionsApi(config);
 
 try {
   TemplateVersionWritable  = new TemplateVersionWritable(); 
@@ -980,8 +949,6 @@ try {
   e.printStackTrace();
 }
 ```
-
-
 
 ## IntlAutocompletion Api
 
@@ -1013,7 +980,7 @@ curl https://api.lob.com/v1/us_zip_lookups \
 ZipEditable zipEditable = new ZipEditable();
 zipEditable.setZipCode("94107");
 
-ZipLookupsApi apiInstance = new ZipLookupsApi(lobClient);
+ZipLookupsApi apiInstance = new ZipLookupsApi(config);
 try {
   Zip response = apiInstance.lookup(zipEditable);
   } catch (ApiException e) {
@@ -1023,20 +990,20 @@ try {
 
 ## Reverse Geocode Lookups Api
 
+
+
 ### Reverse Geocode Lookup
 ```bash
 curl https://api.lob.com/v1/us_reverse_geocode_lookups \
   -u <YOUR_LIVE_API_KEY>: \
-  -d "latitude=37.7749" \
-  -d "longitude=122.4194" \
 ```
 
 ```java
-ReverseGeocodeLookupsApi apiInstance = new ReverseGeocodeLookupsApi(lobClient);
+ReverseGeocodeLookupsApi apiInstance = new ReverseGeocodeLookupsApi(config);
 
 Location location = new Location();
-location.setLatitude(37.7749f);
-location.setLongitude(122.4194f);
+location.setlatitude(37.777456f);
+location.setlongitude(-122.393039f);
 
 try {
   apiInstance.lookup(location, null);
@@ -1059,7 +1026,7 @@ curl https://api.lob.com/v1/us_autocompletions \
 ```
 
 ```java
-UsAutocompletionsApi apiInstance = new UsAutocompletionsApi(lobClient);
+UsAutocompletionsApi apiInstance = new UsAutocompletionsApi(config);
 UsAutocompletionsWritable autoCompletionWritable = new UsAutocompletionsWritable(); 
 autoCompletionWritable.setAddressPrefix("185 B");
 autoCompletionWritable.setCity("San Francisco");
@@ -1106,7 +1073,7 @@ bulkAddress1.setState("CA");
 bulkAddress1.setZipCode("94017");
 bulkVerify.addAddressesItem(bulkAddress1);
 
-UsVerificationsApi apiInstance = new UsVerificationsApi(lobClient);
+UsVerificationsApi apiInstance = new UsVerificationsApi(config);
 try {
   UsVerifications bulkVerifyResponse = apiInstance.verifyBulk(bulkVerify, null);
 } catch (ApiException e) {
@@ -1131,7 +1098,7 @@ singleVerify.setCity("San Francisco");
 singleVerify.setState("CA");
 singleVerify.setZipCode("94017");
 
-UsVerificationsApi apiInstance = new UsVerificationsApi(lobClient);
+UsVerificationsApi apiInstance = new UsVerificationsApi(config);
 try {
   apiInstance.verifySingle(singleVerify, null);
 } catch (ApiException e) {
