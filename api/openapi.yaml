@@ -9927,10 +9927,6 @@ components:
           type: string
       required:
       - id
-      - inside_template_id
-      - inside_template_version_id
-      - outside_template_id
-      - outside_template_version_id
       - url
       type: object
       x-code-snippet:
