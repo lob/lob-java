@@ -990,12 +990,12 @@ try {
 
 ## Reverse Geocode Lookups Api
 
-
-
 ### Reverse Geocode Lookup
 ```bash
 curl https://api.lob.com/v1/us_reverse_geocode_lookups \
   -u <YOUR_LIVE_API_KEY>: \
+  -d "latitude=37.777456" \
+  -d "longitude=-122.393039" \
 ```
 
 ```java

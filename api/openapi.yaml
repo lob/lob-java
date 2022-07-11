@@ -10513,7 +10513,7 @@ components:
         plural_object_type: TemplateVersions
         template_id: tmpl_dadaaf7b76c9f25
         args:
-        - arg: '''tmpl_dadaaf7b76c9f25'''
+        - arg: tmpl_dadaaf7b76c9f25
           notNull: true
           param: tmplId
         - arg: 2
@@ -11093,15 +11093,6 @@ components:
       - latitude
       - longitude
       type: object
-      x-code-snippet:
-        reverseGeocodeLookups: true
-        attributes:
-        - key: latitude
-          val: 37.7749
-          pascal_key: Latitude
-        - key: longitude
-          val: 122.4194
-          pascal_key: Longitude
     reverse_geocode_id:
       description: Unique identifier prefixed with `us_reverse_geocode_`.
       pattern: ^us_reverse_geocode_[a-zA-Z0-9_]+$
@@ -11214,6 +11205,16 @@ components:
           - us_reverse_geocode_lookup
           type: string
       type: object
+      x-code-snippet:
+        reverseGeocodeLookups: true
+        lookup:
+          attributes:
+          - key: latitude
+            val: 37.777456
+            pascal_key: latitude
+          - key: longitude
+            val: -122.393039
+            pascal_key: longitude
     us_verifications_writable:
       properties:
         address:
