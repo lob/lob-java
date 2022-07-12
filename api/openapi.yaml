@@ -5160,7 +5160,7 @@ components:
         addresses:
           items:
             $ref: '#/components/schemas/multiple_components'
-          maxItems: 10
+          maxItems: 20
           minItems: 1
           type: array
           x-template-config:
@@ -5952,7 +5952,7 @@ components:
         addresses:
           items:
             $ref: '#/components/schemas/multiple_components_intl'
-          maxItems: 10
+          maxItems: 20
           minItems: 1
           type: array
           x-template-config:
@@ -5962,6 +5962,44 @@ components:
       required:
       - addresses
       type: object
+      x-code-snippet:
+        intlVerifications: true
+        bulkVerify: true
+        addresses:
+          address:
+          - index: 0
+            attributes:
+              attribute:
+              - key: primary_line
+                val: 35 Tower Hill
+                pascal_key: PrimaryLine
+              - key: city
+                val: London
+                pascal_key: City
+              - key: zip_code
+                val: EC3N 4DR
+                pascal_key: ZipCode
+              - key: country
+                val: GB
+                pascal_key: Country
+          - index: 1
+            attributes:
+              attribute:
+              - key: primary_line
+                val: 370 Water St
+                pascal_key: PrimaryLine
+              - key: city
+                val: Summerside
+                pascal_key: City
+              - key: state
+                val: Prince Edward Island
+                pascal_key: State
+              - key: zip_code
+                val: C1N 1C4
+                pascal_key: ZipCode
+              - key: country
+                val: GB
+                pascal_key: Country
     intl_ver_id:
       description: Unique identifier prefixed with `intl_ver_`.
       pattern: ^intl_ver_[a-zA-Z0-9]+$
@@ -7822,6 +7860,26 @@ components:
           maxLength: 500
           type: string
       type: object
+      x-code-snippet:
+        intlVerification: true
+        singleVerify: true
+        address:
+          attributes:
+          - key: primary_line
+            val: 370 Water St
+            pascal_key: PrimaryLine
+          - key: city
+            val: Summerside
+            pascal_key: City
+          - key: state
+            val: Prince Edward Island
+            pascal_key: State
+          - key: postal_code
+            val: C1N 1C4
+            pascal_key: PostalCode
+          - key: country
+            val: GB
+            pascal_key: Country
     intl_verification:
       example:
         last_line: last_line
