@@ -7877,9 +7877,6 @@ components:
           - key: postal_code
             val: C1N 1C4
             pascal_key: PostalCode
-          - key: country
-            val: GB
-            pascal_key: Country
     intl_verification:
       example:
         last_line: last_line
