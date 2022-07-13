@@ -5160,7 +5160,7 @@ components:
         addresses:
           items:
             $ref: '#/components/schemas/multiple_components'
-          maxItems: 10
+          maxItems: 20
           minItems: 1
           type: array
           x-template-config:
@@ -5952,7 +5952,7 @@ components:
         addresses:
           items:
             $ref: '#/components/schemas/multiple_components_intl'
-          maxItems: 10
+          maxItems: 20
           minItems: 1
           type: array
           x-template-config:
@@ -7822,6 +7822,23 @@ components:
           maxLength: 500
           type: string
       type: object
+      x-code-snippet:
+        intlVerification: true
+        singleVerify: true
+        address:
+          attributes:
+          - key: primary_line
+            val: 370 Water St
+            pascal_key: PrimaryLine
+          - key: city
+            val: Summerside
+            pascal_key: City
+          - key: state
+            val: Prince Edward Island
+            pascal_key: State
+          - key: postal_code
+            val: C1N 1C4
+            pascal_key: PostalCode
     intl_verification:
       example:
         last_line: last_line
