@@ -5962,6 +5962,44 @@ components:
       required:
       - addresses
       type: object
+      x-code-snippet:
+        intlVerifications: true
+        bulkVerify: true
+        addresses:
+          address:
+          - index: 0
+            attributes:
+              attribute:
+              - key: primary_line
+                val: 35 Tower Hill
+                pascal_key: PrimaryLine
+              - key: city
+                val: London
+                pascal_key: City
+              - key: zip_code
+                val: EC3N 4DR
+                pascal_key: ZipCode
+              - key: country
+                val: GB
+                pascal_key: Country
+          - index: 1
+            attributes:
+              attribute:
+              - key: primary_line
+                val: 370 Water St
+                pascal_key: PrimaryLine
+              - key: city
+                val: Summerside
+                pascal_key: City
+              - key: state
+                val: Prince Edward Island
+                pascal_key: State
+              - key: zip_code
+                val: C1N 1C4
+                pascal_key: ZipCode
+              - key: country
+                val: GB
+                pascal_key: Country
     intl_ver_id:
       description: Unique identifier prefixed with `intl_ver_`.
       pattern: ^intl_ver_[a-zA-Z0-9]+$
