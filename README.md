@@ -6,15 +6,22 @@
 
 Java wrapper for the [Lob.com](https://lob.com) API. See the full Lob.com [API Documentation](https://lob.com/docs/java).  For best results, be sure that you're using [the latest version](https://lob.com/docs/java#version) of the Lob API and the latest version of the java wrapper.
 
+******
+Starting a new project, we recommend using the <a href="https://github.com/lob/lob-java"><strong>Version 13.0.0</strong></a>!
+    
+Move your existing project from version 12.0.0 to 13.0.0? <a href="https://github.com/lob/lob-java/blob/main/MIGRATION.md">Checkout this migration guide.</a>
+******
+
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
-- [Getting Started](#getting-started)
-  - [Registration](#registration)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Initialization and Configuration](#initialization-and-configuration)
-- [Testing](#testing)
+- [lob-java](#lob-java)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+    - [Registration](#registration)
+    - [Installation](#installation)
+    - [Usage](#usage)
+      - [Initialization and Configuration](#initialization-and-configuration)
+  - [Testing](#testing)
 
 ## Getting Started
 
