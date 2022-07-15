@@ -121,6 +121,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -128,13 +129,13 @@ paths:
           type: object
         style: form
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
+        style: deepObject
       responses:
         "200":
           content:
@@ -416,6 +417,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -423,13 +425,13 @@ paths:
           type: object
         style: form
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
+        style: deepObject
       responses:
         "200":
           content:
@@ -625,6 +627,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -1250,6 +1253,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -1257,13 +1261,13 @@ paths:
           type: object
         style: form
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
+        style: deepObject
       - description: |
           * `true` - only return orders (past or future) where `send_date` is
           greater than `date_created`
@@ -1641,6 +1645,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -1648,13 +1653,13 @@ paths:
           type: object
         style: form
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
+        style: deepObject
       - description: Set to `true` to return only color letters. Set to `false` to
           return only black & white letters.
         explode: true
@@ -1925,6 +1930,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -1932,13 +1938,13 @@ paths:
           type: object
         style: form
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
+        style: deepObject
       - description: Specifies the size of the postcard. Only `4x6` postcards can
           be sent to international destinations.
         explode: true
@@ -2204,6 +2210,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -2211,13 +2218,13 @@ paths:
           type: object
         style: form
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
+        style: deepObject
       - description: The self mailer sizes to be returned.
         explode: true
         in: query
@@ -2559,6 +2566,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -2803,6 +2811,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -2810,13 +2819,13 @@ paths:
           type: object
         style: form
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
+        style: deepObject
       responses:
         "200":
           content:
@@ -3157,6 +3166,7 @@ components:
       required: false
       schema:
         additionalProperties:
+          format: date-time
           type: string
         description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
           lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -3165,13 +3175,13 @@ components:
       style: form
     metadata:
       description: Filter by metadata key-value pair`.
-      explode: true
+      explode: false
       in: query
       name: metadata
       required: false
       schema:
         $ref: '#/components/schemas/metadata_model'
-      style: form
+      style: deepObject
     offset:
       description: An integer that designates the offset at which to begin returning
         results. Defaults to 0.
@@ -5963,7 +5973,7 @@ components:
       - addresses
       type: object
       x-code-snippet:
-        intlVerifications: true
+        intlVerification: true
         bulkVerify: true
         addresses:
           address:
@@ -5976,9 +5986,9 @@ components:
               - key: city
                 val: London
                 pascal_key: City
-              - key: zip_code
+              - key: postal_code
                 val: EC3N 4DR
-                pascal_key: ZipCode
+                pascal_key: PostalCode
               - key: country
                 val: GB
                 pascal_key: Country
@@ -5994,11 +6004,11 @@ components:
               - key: state
                 val: Prince Edward Island
                 pascal_key: State
-              - key: zip_code
+              - key: postal_code
                 val: C1N 1C4
-                pascal_key: ZipCode
+                pascal_key: PostalCode
               - key: country
-                val: GB
+                val: CA
                 pascal_key: Country
     intl_ver_id:
       description: Unique identifier prefixed with `intl_ver_`.
@@ -7877,6 +7887,9 @@ components:
           - key: postal_code
             val: C1N 1C4
             pascal_key: PostalCode
+          - key: country
+            val: CA
+            pascal_key: Country
     intl_verification:
       example:
         last_line: last_line
