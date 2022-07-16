@@ -313,7 +313,7 @@ public class Example {
     String before = "before_example"; // String | A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response. 
     String after = "after_example"; // String | A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response. 
     List<String> include = Arrays.asList(); // List<String> | Request that the response include the total count by specifying `include[]=total_count`. 
-    Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
+    Map<String, OffsetDateTime> dateCreated = new HashMap(); // Map<String, OffsetDateTime> | Filter by date created.
     Map<String, String> metadata = new HashMap(); // Map<String, String> | Filter by metadata key-value pair`.
     try {
       BankAccountList result = apiInstance.list(limit, before, after, include, dateCreated, metadata);
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
  **before** | **String**| A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  | [optional]
  **after** | **String**| A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  | [optional]
  **include** | [**List&lt;String&gt;**](String.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional]
- **dateCreated** | [**Map&lt;String, String&gt;**](String.md)| Filter by date created. | [optional]
+ **dateCreated** | [**Map&lt;String, OffsetDateTime&gt;**](OffsetDateTime.md)| Filter by date created. | [optional]
  **metadata** | [**Map&lt;String, String&gt;**](String.md)| Filter by metadata key-value pair&#x60;. | [optional]
 
 ### Return type
