@@ -33,6 +33,7 @@ import com.lob.model.LetterEditable;
 import com.lob.model.LetterList;
 import com.lob.model.LobError;
 import com.lob.model.MailType;
+import java.time.OffsetDateTime;
 import com.lob.model.SortBy5;
 
 import java.lang.reflect.Type;
@@ -462,7 +463,7 @@ public class LettersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -537,7 +538,7 @@ public class LettersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         
 
         okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy, _callback);
@@ -568,7 +569,7 @@ public class LettersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public LetterList list(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
+    public LetterList list(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
         try {
             ApiResponse<LetterList> localVarResp = listWithHttpInfo(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
             return localVarResp.getData();
@@ -600,7 +601,7 @@ public class LettersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LetterList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
+    public ApiResponse<LetterList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
         try {
             okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy, null);
             Type localVarReturnType = new TypeToken<LetterList>(){}.getType();
@@ -634,7 +635,7 @@ public class LettersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, String> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback<LetterList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback<LetterList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy, _callback);
         Type localVarReturnType = new TypeToken<LetterList>(){}.getType();

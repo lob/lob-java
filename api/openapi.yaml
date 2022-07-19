@@ -121,12 +121,16 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
         explode: true
         in: query
@@ -135,6 +139,9 @@ paths:
         schema:
           $ref: '#/components/schemas/metadata_model'
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       responses:
         "200":
           content:
@@ -416,12 +423,16 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
         explode: true
         in: query
@@ -430,6 +441,9 @@ paths:
         schema:
           $ref: '#/components/schemas/metadata_model'
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       responses:
         "200":
           content:
@@ -625,12 +639,16 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: Filter by date modified.
         explode: true
         in: query
@@ -644,6 +662,9 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - $ref: '#/components/parameters/sort_by_5'
         description: |
           Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
@@ -665,6 +686,12 @@ paths:
               type: string
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
+          additional-properties:
+            dotnet:
+              toJson: true
       responses:
         "200":
           content:
@@ -877,6 +904,12 @@ paths:
               type: string
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
+          additional-properties:
+            dotnet:
+              toJson: true
       responses:
         "200":
           content:
@@ -1250,12 +1283,16 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
         explode: true
         in: query
@@ -1264,6 +1301,9 @@ paths:
         schema:
           $ref: '#/components/schemas/metadata_model'
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: |
           * `true` - only return orders (past or future) where `send_date` is
           greater than `date_created`
@@ -1288,6 +1328,9 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: |
           A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.
         explode: true
@@ -1318,6 +1361,12 @@ paths:
               type: string
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
+          additional-properties:
+            dotnet:
+              toJson: true
       responses:
         "200":
           content:
@@ -1641,12 +1690,16 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
         explode: true
         in: query
@@ -1655,6 +1708,9 @@ paths:
         schema:
           $ref: '#/components/schemas/metadata_model'
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: Set to `true` to return only color letters. Set to `false` to
           return only black & white letters.
         explode: true
@@ -1688,6 +1744,9 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: |
           A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.
         explode: true
@@ -1718,6 +1777,12 @@ paths:
               type: string
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
+          additional-properties:
+            dotnet:
+              toJson: true
       responses:
         "200":
           content:
@@ -1925,12 +1990,16 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
         explode: true
         in: query
@@ -1939,6 +2008,9 @@ paths:
         schema:
           $ref: '#/components/schemas/metadata_model'
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: Specifies the size of the postcard. Only `4x6` postcards can
           be sent to international destinations.
         explode: true
@@ -1974,6 +2046,9 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: |
           A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.
         explode: true
@@ -2004,6 +2079,12 @@ paths:
               type: string
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
+          additional-properties:
+            dotnet:
+              toJson: true
       responses:
         "200":
           content:
@@ -2204,12 +2285,16 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
         explode: true
         in: query
@@ -2218,6 +2303,9 @@ paths:
         schema:
           $ref: '#/components/schemas/metadata_model'
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: The self mailer sizes to be returned.
         explode: true
         in: query
@@ -2252,6 +2340,9 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: |
           A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.
         explode: true
@@ -2282,6 +2373,12 @@ paths:
               type: string
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
+          additional-properties:
+            dotnet:
+              toJson: true
       responses:
         "200":
           content:
@@ -2559,12 +2656,16 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       responses:
         "200":
           content:
@@ -2803,12 +2904,16 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
             and `lte` is ≤.'
           type: object
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
         explode: true
         in: query
@@ -2817,6 +2922,9 @@ paths:
         schema:
           $ref: '#/components/schemas/metadata_model'
         style: form
+        x-template-config:
+          base-type:
+            dotnet: deepObject
       responses:
         "200":
           content:
@@ -3157,12 +3265,16 @@ components:
       required: false
       schema:
         additionalProperties:
+          format: date-time
           type: string
         description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
           lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
           and `lte` is ≤.'
         type: object
       style: form
+      x-template-config:
+        base-type:
+          dotnet: deepObject
     metadata:
       description: Filter by metadata key-value pair`.
       explode: true
@@ -3172,6 +3284,9 @@ components:
       schema:
         $ref: '#/components/schemas/metadata_model'
       style: form
+      x-template-config:
+        base-type:
+          dotnet: deepObject
     offset:
       description: An integer that designates the offset at which to begin returning
         results. Defaults to 0.
@@ -3197,6 +3312,9 @@ components:
           and `lte` is ≤.'
         type: object
       style: form
+      x-template-config:
+        base-type:
+          dotnet: deepObject
     sort_by:
       $ref: '#/components/parameters/sort_by_5'
       description: |
@@ -3219,6 +3337,12 @@ components:
             type: string
         type: object
       style: form
+      x-template-config:
+        base-type:
+          dotnet: deepObject
+        additional-properties:
+          dotnet:
+            toJson: true
     scheduled:
       description: |
         * `true` - only return orders (past or future) where `send_date` is
@@ -3245,6 +3369,9 @@ components:
           and `lte` is ≤.'
         type: object
       style: form
+      x-template-config:
+        base-type:
+          dotnet: deepObject
     mail_type:
       description: |
         A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.
@@ -5963,7 +6090,7 @@ components:
       - addresses
       type: object
       x-code-snippet:
-        intlVerifications: true
+        intlVerification: true
         bulkVerify: true
         addresses:
           address:
@@ -5976,9 +6103,9 @@ components:
               - key: city
                 val: London
                 pascal_key: City
-              - key: zip_code
+              - key: postal_code
                 val: EC3N 4DR
-                pascal_key: ZipCode
+                pascal_key: PostalCode
               - key: country
                 val: GB
                 pascal_key: Country
@@ -5994,11 +6121,11 @@ components:
               - key: state
                 val: Prince Edward Island
                 pascal_key: State
-              - key: zip_code
+              - key: postal_code
                 val: C1N 1C4
-                pascal_key: ZipCode
+                pascal_key: PostalCode
               - key: country
-                val: GB
+                val: CA
                 pascal_key: Country
     intl_ver_id:
       description: Unique identifier prefixed with `intl_ver_`.
@@ -7877,6 +8004,9 @@ components:
           - key: postal_code
             val: C1N 1C4
             pascal_key: PostalCode
+          - key: country
+            val: CA
+            pascal_key: Country
     intl_verification:
       example:
         last_line: last_line
