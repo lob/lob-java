@@ -244,7 +244,7 @@ public class Example {
     Integer limit = 10; // Integer | How many results to return.
     Integer offset = 0; // Integer | An integer that designates the offset at which to begin returning results. Defaults to 0.
     List<String> include = Arrays.asList(); // List<String> | Request that the response include the total count by specifying `include[]=total_count`. 
-    Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
+    Map<String, OffsetDateTime> dateCreated = new HashMap(); // Map<String, OffsetDateTime> | Filter by date created.
     Map<String, String> dateModified = new HashMap(); // Map<String, String> | Filter by date modified.
     SortBy5 sortBy = new HashMap(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
     try {
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
  **limit** | **Integer**| How many results to return. | [optional] [default to 10]
  **offset** | **Integer**| An integer that designates the offset at which to begin returning results. Defaults to 0. | [optional] [default to 0]
  **include** | [**List&lt;String&gt;**](String.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional]
- **dateCreated** | [**Map&lt;String, String&gt;**](String.md)| Filter by date created. | [optional]
+ **dateCreated** | [**Map&lt;String, OffsetDateTime&gt;**](OffsetDateTime.md)| Filter by date created. | [optional]
  **dateModified** | [**Map&lt;String, String&gt;**](String.md)| Filter by date modified. | [optional]
  **sortBy** | [**SortBy5**](.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
 

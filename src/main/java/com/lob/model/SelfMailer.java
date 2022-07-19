@@ -79,7 +79,7 @@ public class SelfMailer {
   }
   
   
-  public void setTo(AddressEditable to) {
+  public void setTo(Address to) {
     Gson gson = new Gson();
     this.to = gson.toJson(to);
   }
@@ -98,7 +98,7 @@ public class SelfMailer {
   }
   
   
-  public void setFrom(AddressEditable from) {
+  public void setFrom(Address from) {
     Gson gson = new Gson();
     this.from = gson.toJson(from);
   }
