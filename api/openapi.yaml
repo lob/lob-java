@@ -121,6 +121,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -416,6 +417,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -625,6 +627,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -644,26 +647,31 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
-        description: |
-          Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
+      - description: |
+          Sorts items by ascending or descending dates. Use either `date_created` or `date_modified`, not both.
         explode: true
         in: query
         name: sort_by
         required: false
         schema:
-          properties:
-            date_created:
-              enum:
-              - asc
-              - desc
-              type: string
-            send_date:
-              enum:
-              - asc
-              - desc
-              type: string
-          type: object
+          allOf:
+          - properties:
+              date_created:
+                enum:
+                - asc
+                - desc
+                type: string
+              date_modified:
+                enum:
+                - asc
+                - desc
+                type: string
+            type: object
+          - oneOf:
+            - required:
+              - date_created
+            - required:
+              - date_modified
         style: form
       responses:
         "200":
@@ -856,26 +864,14 @@ paths:
         schema:
           $ref: '#/components/schemas/after'
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
-        description: |
-          Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
+      - description: |
+          Request that the response include the total count by specifying `include[]=total_count`.
         explode: true
         in: query
-        name: sort_by
+        name: include
         required: false
         schema:
-          properties:
-            date_created:
-              enum:
-              - asc
-              - desc
-              type: string
-            send_date:
-              enum:
-              - asc
-              - desc
-              type: string
-          type: object
+          $ref: '#/components/schemas/include_model'
         style: form
       responses:
         "200":
@@ -1250,6 +1246,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -1297,7 +1294,7 @@ paths:
         schema:
           $ref: '#/components/schemas/mail_type'
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
+      - $ref: '#/components/parameters/sort_by_3'
         description: |
           Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
         explode: true
@@ -1641,6 +1638,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -1697,7 +1695,7 @@ paths:
         schema:
           $ref: '#/components/schemas/mail_type'
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
+      - $ref: '#/components/parameters/sort_by_3'
         description: |
           Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
         explode: true
@@ -1925,6 +1923,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -1983,7 +1982,7 @@ paths:
         schema:
           $ref: '#/components/schemas/mail_type'
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
+      - $ref: '#/components/parameters/sort_by_3'
         description: |
           Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
         explode: true
@@ -2204,6 +2203,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -2261,7 +2261,7 @@ paths:
         schema:
           $ref: '#/components/schemas/mail_type'
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
+      - $ref: '#/components/parameters/sort_by_3'
         description: |
           Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
         explode: true
@@ -2559,6 +2559,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -2803,6 +2804,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -3157,6 +3159,7 @@ components:
       required: false
       schema:
         additionalProperties:
+          format: date-time
           type: string
         description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
           lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -3197,28 +3200,6 @@ components:
           and `lte` is ≤.'
         type: object
       style: form
-    sort_by:
-      $ref: '#/components/parameters/sort_by_5'
-      description: |
-        Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
-      explode: true
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        properties:
-          date_created:
-            enum:
-            - asc
-            - desc
-            type: string
-          send_date:
-            enum:
-            - asc
-            - desc
-            type: string
-        type: object
-      style: form
     scheduled:
       description: |
         * `true` - only return orders (past or future) where `send_date` is
@@ -3254,6 +3235,28 @@ components:
       required: false
       schema:
         $ref: '#/components/schemas/mail_type'
+      style: form
+    sort_by:
+      $ref: '#/components/parameters/sort_by_3'
+      description: |
+        Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
+      explode: true
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        properties:
+          date_created:
+            enum:
+            - asc
+            - desc
+            type: string
+          send_date:
+            enum:
+            - asc
+            - desc
+            type: string
+        type: object
       style: form
     idem-header:
       description: |
@@ -5963,7 +5966,7 @@ components:
       - addresses
       type: object
       x-code-snippet:
-        intlVerifications: true
+        intlVerification: true
         bulkVerify: true
         addresses:
           address:
@@ -5976,9 +5979,9 @@ components:
               - key: city
                 val: London
                 pascal_key: City
-              - key: zip_code
+              - key: postal_code
                 val: EC3N 4DR
-                pascal_key: ZipCode
+                pascal_key: PostalCode
               - key: country
                 val: GB
                 pascal_key: Country
@@ -5994,11 +5997,11 @@ components:
               - key: state
                 val: Prince Edward Island
                 pascal_key: State
-              - key: zip_code
+              - key: postal_code
                 val: C1N 1C4
-                pascal_key: ZipCode
+                pascal_key: PostalCode
               - key: country
-                val: GB
+                val: CA
                 pascal_key: Country
     intl_ver_id:
       description: Unique identifier prefixed with `intl_ver_`.
@@ -6272,7 +6275,8 @@ components:
           description: True if the cards should be auto-reordered.
           type: boolean
         reorder_quantity:
-          description: The number of cards to be reordered.
+          description: The number of cards to be reordered. Only present when auto_reorder
+            is True.
           nullable: true
           type: integer
         raw_url:
@@ -6369,7 +6373,6 @@ components:
       - orientation
       - pending_quantity
       - raw_url
-      - reorder_quantity
       - status
       - threshold_amount
       - thumbnails
@@ -7877,6 +7880,9 @@ components:
           - key: postal_code
             val: C1N 1C4
             pascal_key: PostalCode
+          - key: country
+            val: CA
+            pascal_key: Country
     intl_verification:
       example:
         last_line: last_line
@@ -9852,10 +9858,10 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: AddressEditable
-                python: AddressEditable
-                typescript: Models.AddressEditable
-                python_path: lob_python.model.address_editable
+                java: Address
+                python: Address
+                typescript: Models.Address
+                python_path: lob_python.model.address
                 hasPath: true
         from:
           description: Must either be an address ID or an inline object with correct
@@ -9871,9 +9877,9 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: AddressEditable
-                python: AddressEditable
-                typescript: Models.AddressEditable
+                java: Address
+                python: Address
+                typescript: Models.Address
                 hasPath: false
         size:
           $ref: '#/components/schemas/self_mailer_size'
@@ -11666,32 +11672,6 @@ components:
           type: string
       type: object
     sort_by_3:
-      properties:
-        date_created:
-          enum:
-          - asc
-          - desc
-          type: string
-        send_date:
-          enum:
-          - asc
-          - desc
-          type: string
-      type: object
-    sort_by_4:
-      properties:
-        date_created:
-          enum:
-          - asc
-          - desc
-          type: string
-        send_date:
-          enum:
-          - asc
-          - desc
-          type: string
-      type: object
-    sort_by_5:
       properties:
         date_created:
           enum:

@@ -110,13 +110,13 @@ public class Card {
 
   private Integer reorderQuantity;
   /**
-  * The number of cards to be reordered.
+  * The number of cards to be reordered. Only present when auto_reorder is True.
   * @return reorderQuantity
   **/
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(required = true, value = "The number of cards to be reordered.")
+  @ApiModelProperty(value = "The number of cards to be reordered. Only present when auto_reorder is True.")
   
   public Integer getReorderQuantity() {
       return reorderQuantity;

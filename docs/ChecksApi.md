@@ -245,12 +245,12 @@ public class Example {
     String before = "before_example"; // String | A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response. 
     String after = "after_example"; // String | A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response. 
     List<String> include = Arrays.asList(); // List<String> | Request that the response include the total count by specifying `include[]=total_count`. 
-    Map<String, String> dateCreated = new HashMap(); // Map<String, String> | Filter by date created.
+    Map<String, OffsetDateTime> dateCreated = new HashMap(); // Map<String, OffsetDateTime> | Filter by date created.
     Map<String, String> metadata = new HashMap(); // Map<String, String> | Filter by metadata key-value pair`.
     Boolean scheduled = true; // Boolean | * `true` - only return orders (past or future) where `send_date` is greater than `date_created` * `false` - only return orders where `send_date` is equal to `date_created` 
     Map<String, String> sendDate = new HashMap(); // Map<String, String> | Filter by date sent.
     MailType mailType = MailType.fromValue("usps_first_class"); // MailType | A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States. 
-    SortBy5 sortBy = new HashMap(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
+    SortBy3 sortBy = new HashMap(); // SortBy3 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
     try {
       CheckList result = apiInstance.list(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
     } catch (ApiException e) {
@@ -272,12 +272,12 @@ Name | Type | Description  | Notes
  **before** | **String**| A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  | [optional]
  **after** | **String**| A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  | [optional]
  **include** | [**List&lt;String&gt;**](String.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional]
- **dateCreated** | [**Map&lt;String, String&gt;**](String.md)| Filter by date created. | [optional]
+ **dateCreated** | [**Map&lt;String, OffsetDateTime&gt;**](OffsetDateTime.md)| Filter by date created. | [optional]
  **metadata** | [**Map&lt;String, String&gt;**](String.md)| Filter by metadata key-value pair&#x60;. | [optional]
  **scheduled** | **Boolean**| * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  | [optional]
  **sendDate** | [**Map&lt;String, String&gt;**](String.md)| Filter by date sent. | [optional]
  **mailType** | [**MailType**](.md)| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional] [default to usps_first_class] [enum: usps_first_class, usps_standard]
- **sortBy** | [**SortBy5**](.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
+ **sortBy** | [**SortBy3**](.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
 
 ### Return type
 

@@ -89,8 +89,6 @@ docs/SortBy.md
 docs/SortBy1.md
 docs/SortBy2.md
 docs/SortBy3.md
-docs/SortBy4.md
-docs/SortBy5.md
 docs/Suggestions.md
 docs/Template.md
 docs/TemplateDeletion.md
@@ -239,8 +237,6 @@ src/main/java/com/lob/model/SortBy.java
 src/main/java/com/lob/model/SortBy1.java
 src/main/java/com/lob/model/SortBy2.java
 src/main/java/com/lob/model/SortBy3.java
-src/main/java/com/lob/model/SortBy4.java
-src/main/java/com/lob/model/SortBy5.java
 src/main/java/com/lob/model/Suggestions.java
 src/main/java/com/lob/model/Template.java
 src/main/java/com/lob/model/TemplateDeletion.java
