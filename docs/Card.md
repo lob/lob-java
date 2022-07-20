@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **id** | **String** | Unique identifier prefixed with &#x60;card_&#x60;. | 
 **url** | **URI** | The signed link for the card. | 
 **autoReorder** | **Boolean** | True if the cards should be auto-reordered. | 
-**reorderQuantity** | **Integer** | The number of cards to be reordered. | 
+**reorderQuantity** | **Integer** | The number of cards to be reordered. Only present when auto_reorder is True. |  [optional]
 **rawUrl** | **URI** | The raw URL of the card. | 
 **frontOriginalUrl** | **URI** | The original URL of the front template. | 
 **backOriginalUrl** | **URI** | The original URL of the back template. | 
