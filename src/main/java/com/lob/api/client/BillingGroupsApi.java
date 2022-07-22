@@ -31,6 +31,7 @@ import com.lob.model.BillingGroup;
 import com.lob.model.BillingGroupEditable;
 import com.lob.model.BillingGroupList;
 import com.lob.model.LobError;
+import java.time.OffsetDateTime;
 import com.lob.model.SortBy5;
 
 import java.lang.reflect.Type;
@@ -456,7 +457,7 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCall(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -511,7 +512,7 @@ public class BillingGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
         
 
         okhttp3.Call localVarCall = listCall(limit, offset, include, dateCreated, dateModified, sortBy, _callback);
@@ -537,7 +538,7 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BillingGroupList list(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy) throws ApiException {
+    public BillingGroupList list(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortBy5 sortBy) throws ApiException {
         try {
             ApiResponse<BillingGroupList> localVarResp = listWithHttpInfo(limit, offset, include, dateCreated, dateModified, sortBy);
             return localVarResp.getData();
@@ -564,7 +565,7 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BillingGroupList> listWithHttpInfo(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy) throws ApiException {
+    public ApiResponse<BillingGroupList> listWithHttpInfo(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortBy5 sortBy) throws ApiException {
         try {
             okhttp3.Call localVarCall = listValidateBeforeCall(limit, offset, include, dateCreated, dateModified, sortBy, null);
             Type localVarReturnType = new TypeToken<BillingGroupList>(){}.getType();
@@ -593,7 +594,7 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAsync(Integer limit, Integer offset, List<String> include, Map<String, String> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback<BillingGroupList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback<BillingGroupList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listValidateBeforeCall(limit, offset, include, dateCreated, dateModified, sortBy, _callback);
         Type localVarReturnType = new TypeToken<BillingGroupList>(){}.getType();

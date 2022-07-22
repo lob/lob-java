@@ -3,6 +3,7 @@ package Api;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -133,7 +134,7 @@ public class AddressesApiTest {
         String before = null;
         String after = null;
         List<String> include = null;
-        Map<String, String> dateCreated = null;
+        Map<String, OffsetDateTime> dateCreated = null;
         Map<String, String> metadata = null;
         AddressesApi addressApiMock = mock(AddressesApi.class);
         AddressList fakeAddress = new AddressList();

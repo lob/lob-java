@@ -25,8 +25,6 @@ public class SelfMailerTest {
     public Object[][] selfMailerDpMethod(){
         return new Object[][] {
             {"id", "sfm_fakeId"},
-            {"to", new AddressEditable()},
-            {"from", new AddressEditable()},
             {"size", SelfMailerSize._11X9_BIFOLD},
             {"size", SelfMailerSize._12X9_BIFOLD},
             {"size", SelfMailerSize._6X18_BIFOLD},
@@ -55,18 +53,6 @@ public class SelfMailerTest {
                 String castedVal = (String)val;
                 rec.setId(castedVal);
                 Assert.assertEquals(rec.getId(), castedVal);
-                break;
-            }
-            case "to": {
-                AddressEditable castedVal = (AddressEditable)val;
-                rec.setTo(castedVal);
-                Assert.assertEquals(rec.getTo(), gson.toJson(castedVal));
-                break;
-            }
-            case "from": {
-                AddressEditable castedVal = (AddressEditable)val;
-                rec.setFrom(castedVal);
-                Assert.assertEquals(rec.getFrom(), gson.toJson(castedVal));
                 break;
             }
             case "size": {
