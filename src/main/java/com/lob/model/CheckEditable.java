@@ -121,7 +121,7 @@ public class CheckEditable {
   @SerializedName(SERIALIZED_NAME_LOGO)
   
 
-  private Object logo = null;
+  private String logo;
   /**
   * Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check.
   * @return logo
@@ -131,7 +131,7 @@ public class CheckEditable {
   
   @ApiModelProperty(value = "Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check.")
   
-  public Object getLogo() {
+  public String getLogo() {
       return logo;
   }
   
@@ -461,7 +461,7 @@ public class CheckEditable {
 
 
   /*
-  public CheckEditable logo(Object logo) {
+  public CheckEditable logo(String logo) {
     
     this.logo = logo;
     return this;
@@ -469,7 +469,7 @@ public class CheckEditable {
   */
 
 
-  public void setLogo(Object logo) {
+  public void setLogo(String logo) {
     this.logo = logo;
   }
 

@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import com.lob.model.Address;
 import com.lob.model.LetterCustomEnvelope;
 import com.lob.model.MailType;
-import com.lob.model.ReturnEnvelope;
 import com.lob.model.Thumbnail;
 import com.lob.model.TrackingEventNormal;
 import io.swagger.annotations.ApiModel;
@@ -672,23 +671,18 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
-
-  private ReturnEnvelope returnEnvelope;
-  /**
-  * Get returnEnvelope
-  * @return returnEnvelope
-  **/
   
-  @javax.annotation.Nullable
   
-  @ApiModelProperty(value = "")
-  
-  public ReturnEnvelope getReturnEnvelope() {
-      return returnEnvelope;
+  public void setReturnEnvelope( returnEnvelope) {
+    Gson gson = new Gson();
+    this.returnEnvelope = gson.toJson(returnEnvelope);
   }
   
   
-
+  public void setReturnEnvelope(ReturnEnvelope returnEnvelope) {
+    Gson gson = new Gson();
+    this.returnEnvelope = gson.toJson(returnEnvelope);
+  }
   public static final String SERIALIZED_NAME_PERFORATED_PAGE = "perforated_page";
 
   @SerializedName(SERIALIZED_NAME_PERFORATED_PAGE)
@@ -1105,7 +1099,7 @@ public class Letter {
 
 
   /*
-  public Letter returnEnvelope(ReturnEnvelope returnEnvelope) {
+  public Letter returnEnvelope(Object returnEnvelope) {
     
     this.returnEnvelope = returnEnvelope;
     return this;
@@ -1113,9 +1107,6 @@ public class Letter {
   */
 
 
-  public void setReturnEnvelope(ReturnEnvelope returnEnvelope) {
-    this.returnEnvelope = returnEnvelope;
-  }
 
 
 

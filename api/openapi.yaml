@@ -121,6 +121,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -416,6 +417,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -625,6 +627,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -1250,6 +1253,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -1641,6 +1645,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -1925,6 +1930,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -2204,6 +2210,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -2559,6 +2566,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -2803,6 +2811,7 @@ paths:
         required: false
         schema:
           additionalProperties:
+            format: date-time
             type: string
           description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
             lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -3157,6 +3166,7 @@ components:
       required: false
       schema:
         additionalProperties:
+          format: date-time
           type: string
         description: 'Filter by ISO-8601 date or datetime, e.g. `{ gt: ''2012-01-01'',
           lt: ''2012-01-31T12:34:56Z'' }` where `gt` is >, `lt` is <, `gte` is ≥,
@@ -5963,7 +5973,7 @@ components:
       - addresses
       type: object
       x-code-snippet:
-        intlVerifications: true
+        intlVerification: true
         bulkVerify: true
         addresses:
           address:
@@ -5976,9 +5986,9 @@ components:
               - key: city
                 val: London
                 pascal_key: City
-              - key: zip_code
+              - key: postal_code
                 val: EC3N 4DR
-                pascal_key: ZipCode
+                pascal_key: PostalCode
               - key: country
                 val: GB
                 pascal_key: Country
@@ -5994,11 +6004,11 @@ components:
               - key: state
                 val: Prince Edward Island
                 pascal_key: State
-              - key: zip_code
+              - key: postal_code
                 val: C1N 1C4
-                pascal_key: ZipCode
+                pascal_key: PostalCode
               - key: country
-                val: GB
+                val: CA
                 pascal_key: Country
     intl_ver_id:
       description: Unique identifier prefixed with `intl_ver_`.
@@ -6272,7 +6282,8 @@ components:
           description: True if the cards should be auto-reordered.
           type: boolean
         reorder_quantity:
-          description: The number of cards to be reordered.
+          description: The number of cards to be reordered. Only present when auto_reorder
+            is True.
           nullable: true
           type: integer
         raw_url:
@@ -6360,17 +6371,13 @@ components:
       required:
       - auto_reorder
       - available_quantity
-      - back_original_url
+      - card_orders
       - date_created
       - date_modified
-      - front_original_url
       - id
       - object
-      - orientation
       - pending_quantity
-      - raw_url
-      - reorder_quantity
-      - status
+      - size
       - threshold_amount
       - thumbnails
       - url
@@ -7501,6 +7508,7 @@ components:
         logo:
           description: Accepts a remote URL or local file upload to an image to print
             (in grayscale) in the upper-left corner of your check.
+          type: string
         check_bottom:
           description: |-
             The artwork to use on the bottom of the check page.
@@ -7877,6 +7885,9 @@ components:
           - key: postal_code
             val: C1N 1C4
             pascal_key: PostalCode
+          - key: country
+            val: CA
+            pascal_key: Country
     intl_verification:
       example:
         last_line: last_line
@@ -8022,25 +8033,6 @@ components:
             python: AddressEditable
             python_path: lob_python.model.address_editable
             hasPath: true
-    return_envelope:
-      example:
-        alias: alias
-        id: id
-        url: url
-        object: object
-      properties:
-        id:
-          description: The unique ID of the Return Envelope
-          type: string
-        alias:
-          description: A quick reference name for the Return Envelope
-          type: string
-        url:
-          description: The url of the  return envelope
-          type: string
-        object:
-          type: string
-      type: object
     letter:
       example:
         metadata:
@@ -8049,11 +8041,7 @@ components:
         expected_delivery_date: 2000-01-23
         description: description
         extra_service: extra_service
-        return_envelope:
-          alias: alias
-          id: id
-          url: url
-          object: object
+        return_envelope: ""
         perforated_page: 0
         send_date: 2000-01-23T04:56:07.000+00:00
         tracking_events: []
@@ -8298,7 +8286,23 @@ components:
           - bottom_first_page
           type: string
         return_envelope:
-          $ref: '#/components/schemas/return_envelope'
+          x-template-config:
+            isOneOf: true
+            type-composite:
+            - base-type1:
+                java: Boolean
+                typescript: boolean
+                python: bool
+                hasPath: false
+                default: true
+            - base-type2:
+                java: ReturnEnvelope
+                typescript: Models.ReturnEnvelope
+                python: ReturnEnvelope
+                hasPath: true
+                python_path: lob_python.model.return_envelope
+                isRef: true
+            default: false
         perforated_page:
           description: Required if `return_envelope` is `true`. The number of the
             page that should be perforated for use with the return envelope. Must
@@ -8315,6 +8319,7 @@ components:
       - from
       - id
       - object
+      - return_envelope
       - to
       type: object
       x-code-snippet:
@@ -8368,11 +8373,7 @@ components:
           expected_delivery_date: 2000-01-23
           description: description
           extra_service: extra_service
-          return_envelope:
-            alias: alias
-            id: id
-            url: url
-            object: object
+          return_envelope: ""
           perforated_page: 0
           send_date: 2000-01-23T04:56:07.000+00:00
           tracking_events: []
@@ -8444,11 +8445,7 @@ components:
           expected_delivery_date: 2000-01-23
           description: description
           extra_service: extra_service
-          return_envelope:
-            alias: alias
-            id: id
-            url: url
-            object: object
+          return_envelope: ""
           perforated_page: 0
           send_date: 2000-01-23T04:56:07.000+00:00
           tracking_events: []
@@ -9852,10 +9849,10 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: AddressEditable
-                python: AddressEditable
-                typescript: Models.AddressEditable
-                python_path: lob_python.model.address_editable
+                java: Address
+                python: Address
+                typescript: Models.Address
+                python_path: lob_python.model.address
                 hasPath: true
         from:
           description: Must either be an address ID or an inline object with correct
@@ -9871,9 +9868,9 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: AddressEditable
-                python: AddressEditable
-                typescript: Models.AddressEditable
+                java: Address
+                python: Address
+                typescript: Models.Address
                 hasPath: false
         size:
           $ref: '#/components/schemas/self_mailer_size'
