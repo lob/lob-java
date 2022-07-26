@@ -10,22 +10,22 @@ Name | Type | Description | Notes
 **id** | **String** | Unique identifier prefixed with &#x60;card_&#x60;. | 
 **url** | **URI** | The signed link for the card. | 
 **autoReorder** | **Boolean** | True if the cards should be auto-reordered. | 
-**reorderQuantity** | **Integer** | The number of cards to be reordered. | 
-**rawUrl** | **URI** | The raw URL of the card. | 
-**frontOriginalUrl** | **URI** | The original URL of the front template. | 
-**backOriginalUrl** | **URI** | The original URL of the back template. | 
+**reorderQuantity** | **Integer** | The number of cards to be reordered. Only present when auto_reorder is True. |  [optional]
+**rawUrl** | **URI** | The raw URL of the card. |  [optional]
+**frontOriginalUrl** | **URI** | The original URL of the front template. |  [optional]
+**backOriginalUrl** | **URI** | The original URL of the back template. |  [optional]
 **thumbnails** | [**List&lt;Thumbnail&gt;**](Thumbnail.md) |  | 
 **availableQuantity** | **Integer** | The available quantity of cards. | 
 **pendingQuantity** | **Integer** | The pending quantity of cards. | 
-**status** | [**StatusEnum**](#StatusEnum) |  | 
-**orientation** | [**OrientationEnum**](#OrientationEnum) | The orientation of the card. | 
+**status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
+**orientation** | [**OrientationEnum**](#OrientationEnum) | The orientation of the card. |  [optional]
 **thresholdAmount** | **Integer** | The threshold amount of the card | 
 **dateCreated** | **OffsetDateTime** | A timestamp in ISO 8601 format of the date the resource was created. | 
 **dateModified** | **OffsetDateTime** | A timestamp in ISO 8601 format of the date the resource was last modified. | 
 **deleted** | **Boolean** | Only returned if the resource has been successfully deleted. |  [optional]
 **_object** | [**ObjectEnum**](#ObjectEnum) | object | 
 **description** | **String** | Description of the card. |  [optional]
-**size** | [**SizeEnum**](#SizeEnum) | The size of the card |  [optional]
+**size** | [**SizeEnum**](#SizeEnum) | The size of the card | 
 
 
 

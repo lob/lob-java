@@ -135,9 +135,9 @@ public class Card {
   * @return rawUrl
   **/
   
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   
-  @ApiModelProperty(required = true, value = "The raw URL of the card.")
+  @ApiModelProperty(value = "The raw URL of the card.")
   
   public URI getRawUrl() {
       return rawUrl;
@@ -156,9 +156,9 @@ public class Card {
   * @return frontOriginalUrl
   **/
   
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   
-  @ApiModelProperty(required = true, value = "The original URL of the front template.")
+  @ApiModelProperty(value = "The original URL of the front template.")
   
   public URI getFrontOriginalUrl() {
       return frontOriginalUrl;
@@ -177,9 +177,9 @@ public class Card {
   * @return backOriginalUrl
   **/
   
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   
-  @ApiModelProperty(required = true, value = "The original URL of the back template.")
+  @ApiModelProperty(value = "The original URL of the back template.")
   
   public URI getBackOriginalUrl() {
       return backOriginalUrl;
@@ -298,9 +298,9 @@ public class Card {
   * @return status
   **/
   
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   
   public StatusEnum getStatus() {
       return status;
@@ -366,9 +366,9 @@ public class Card {
   * @return orientation
   **/
   
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   
-  @ApiModelProperty(required = true, value = "The orientation of the card.")
+  @ApiModelProperty(value = "The orientation of the card.")
   
   public OrientationEnum getOrientation() {
       return orientation;
@@ -605,9 +605,9 @@ public class Card {
   * @return size
   **/
   
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   
-  @ApiModelProperty(value = "The size of the card")
+  @ApiModelProperty(required = true, value = "The size of the card")
   
   public SizeEnum getSize() {
       return size;
