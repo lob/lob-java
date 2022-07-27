@@ -136,7 +136,7 @@ public class LettersApiTest {
         String before = null;
         String after = null;
         List<String> include = null;
-        Map<String, String> dateCreated = null;
+        Map<String, OffsetDateTime> dateCreated = null;
         Map<String, String> metadata = null;
         Boolean color = null;
         Boolean scheduled = null;

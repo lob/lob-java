@@ -3,6 +3,7 @@ package Api;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -129,7 +130,7 @@ public class BillingGroupsApiTest {
         Integer limit = null;
         Integer offset = null;
         List<String> include = null;
-        Map<String, String> dateCreated = null;
+        Map<String, OffsetDateTime> dateCreated = null;
         Map<String, String> dateModified = null;
         SortBy5 sortBy = null;
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
