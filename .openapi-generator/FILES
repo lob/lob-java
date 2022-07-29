@@ -20,6 +20,11 @@ docs/BillingGroupList.md
 docs/BillingGroupsApi.md
 docs/BulkError.md
 docs/BulkErrorProperties.md
+docs/Campaign.md
+docs/CampaignUpdatable.md
+docs/CampaignWritable.md
+docs/CampaignsApi.md
+docs/CampaignsList.md
 docs/Card.md
 docs/CardDeletion.md
 docs/CardEditable.md
@@ -35,6 +40,8 @@ docs/CheckDeletion.md
 docs/CheckEditable.md
 docs/CheckList.md
 docs/ChecksApi.md
+docs/CmpScheduleType.md
+docs/CmpUseType.md
 docs/CountryExtended.md
 docs/CountryExtendedExpanded.md
 docs/DeliverabilityAnalysis.md
@@ -76,7 +83,6 @@ docs/PostcardEditable.md
 docs/PostcardList.md
 docs/PostcardSize.md
 docs/PostcardsApi.md
-docs/ReturnEnvelope.md
 docs/ReverseGeocode.md
 docs/ReverseGeocodeLookupsApi.md
 docs/SelfMailer.md
@@ -149,6 +155,7 @@ src/main/java/com/lob/api/auth/HttpBearerAuth.java
 src/main/java/com/lob/api/client/AddressesApi.java
 src/main/java/com/lob/api/client/BankAccountsApi.java
 src/main/java/com/lob/api/client/BillingGroupsApi.java
+src/main/java/com/lob/api/client/CampaignsApi.java
 src/main/java/com/lob/api/client/CardOrdersApi.java
 src/main/java/com/lob/api/client/CardsApi.java
 src/main/java/com/lob/api/client/ChecksApi.java
@@ -179,6 +186,10 @@ src/main/java/com/lob/model/BillingGroupEditable.java
 src/main/java/com/lob/model/BillingGroupList.java
 src/main/java/com/lob/model/BulkError.java
 src/main/java/com/lob/model/BulkErrorProperties.java
+src/main/java/com/lob/model/Campaign.java
+src/main/java/com/lob/model/CampaignUpdatable.java
+src/main/java/com/lob/model/CampaignWritable.java
+src/main/java/com/lob/model/CampaignsList.java
 src/main/java/com/lob/model/Card.java
 src/main/java/com/lob/model/CardDeletion.java
 src/main/java/com/lob/model/CardEditable.java
@@ -191,6 +202,8 @@ src/main/java/com/lob/model/Check.java
 src/main/java/com/lob/model/CheckDeletion.java
 src/main/java/com/lob/model/CheckEditable.java
 src/main/java/com/lob/model/CheckList.java
+src/main/java/com/lob/model/CmpScheduleType.java
+src/main/java/com/lob/model/CmpUseType.java
 src/main/java/com/lob/model/CountryExtended.java
 src/main/java/com/lob/model/CountryExtendedExpanded.java
 src/main/java/com/lob/model/DeliverabilityAnalysis.java
@@ -228,7 +241,6 @@ src/main/java/com/lob/model/PostcardDeletion.java
 src/main/java/com/lob/model/PostcardEditable.java
 src/main/java/com/lob/model/PostcardList.java
 src/main/java/com/lob/model/PostcardSize.java
-src/main/java/com/lob/model/ReturnEnvelope.java
 src/main/java/com/lob/model/ReverseGeocode.java
 src/main/java/com/lob/model/SelfMailer.java
 src/main/java/com/lob/model/SelfMailerDeletion.java

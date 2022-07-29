@@ -102,6 +102,7 @@ RURAL_ROUTE | &quot;rural_route&quot;
 HIGHWAY_CONTRACT | &quot;highway_contract&quot;
 PO_BOX | &quot;po_box&quot;
 GENERAL_DELIVERY | &quot;general_delivery&quot;
+EMPTY | &quot;&quot;
 
 
 
