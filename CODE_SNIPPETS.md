@@ -843,7 +843,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 ```
 
 ```java
-  TemplatesApi apiInstance = new TemplatesApi(config); 
+  TemplatesApi apiInstance = new TemplatesApi(config);
   TemplateUpdate update = new TemplateUpdate();
 
   update.setDescription("update template");
@@ -969,7 +969,19 @@ curl https://api.lob.com/v1/intl_autocompletions \
 ```
 
 ```java
-This feature is not currently supported by this library.
+IntlAutocompletionsWritable intlAutocompletionsWritable = new IntlAutocompletionsWritable();
+intlAutocompletionsWritable.setAddressPrefix("340 Wat");
+intlAutocompletionsWritable.setCity("Summerside");
+intlAutocompletionsWritable.setState("Prince Edward Island");
+intlAutocompletionsWritable.setZipCode("C1N 1C4");
+intlAutocompletionsWritable.setCountry(CountryExtended.CA);
+IntlAutocompletionsApi apiInstance = new IntlAutocompletionsApi(config);
+
+try {
+  apiInstance.autocomplete(intlAutocompletionsWritable, null);
+} catch (ApiException e) {
+  e.printStackTrace();
+}
 ```
 
 ## ZipLookups Api

@@ -20,6 +20,11 @@ docs/BillingGroupList.md
 docs/BillingGroupsApi.md
 docs/BulkError.md
 docs/BulkErrorProperties.md
+docs/Campaign.md
+docs/CampaignUpdatable.md
+docs/CampaignWritable.md
+docs/CampaignsApi.md
+docs/CampaignsList.md
 docs/Card.md
 docs/CardDeletion.md
 docs/CardEditable.md
@@ -35,6 +40,8 @@ docs/CheckDeletion.md
 docs/CheckEditable.md
 docs/CheckList.md
 docs/ChecksApi.md
+docs/CmpScheduleType.md
+docs/CmpUseType.md
 docs/CountryExtended.md
 docs/CountryExtendedExpanded.md
 docs/DeliverabilityAnalysis.md
@@ -42,8 +49,11 @@ docs/DpvFootnote.md
 docs/EngineHtml.md
 docs/EventType.md
 docs/Events.md
+docs/ExportModel.md
 docs/GeocodeAddresses.md
 docs/GeocodeComponents.md
+docs/InlineObject.md
+docs/InlineResponse200.md
 docs/IntlAutocompletions.md
 docs/IntlAutocompletionsApi.md
 docs/IntlAutocompletionsWritable.md
@@ -76,7 +86,6 @@ docs/PostcardEditable.md
 docs/PostcardList.md
 docs/PostcardSize.md
 docs/PostcardsApi.md
-docs/ReturnEnvelope.md
 docs/ReverseGeocode.md
 docs/ReverseGeocodeLookupsApi.md
 docs/SelfMailer.md
@@ -108,6 +117,15 @@ docs/Thumbnail.md
 docs/TrackingEventCertified.md
 docs/TrackingEventDetails.md
 docs/TrackingEventNormal.md
+docs/Upload.md
+docs/UploadAllOf.md
+docs/UploadCreateExport.md
+docs/UploadFile.md
+docs/UploadList.md
+docs/UploadState.md
+docs/UploadUpdatable.md
+docs/UploadWritable.md
+docs/UploadsApi.md
 docs/UsAutocompletions.md
 docs/UsAutocompletionsApi.md
 docs/UsAutocompletionsWritable.md
@@ -149,6 +167,7 @@ src/main/java/com/lob/api/auth/HttpBearerAuth.java
 src/main/java/com/lob/api/client/AddressesApi.java
 src/main/java/com/lob/api/client/BankAccountsApi.java
 src/main/java/com/lob/api/client/BillingGroupsApi.java
+src/main/java/com/lob/api/client/CampaignsApi.java
 src/main/java/com/lob/api/client/CardOrdersApi.java
 src/main/java/com/lob/api/client/CardsApi.java
 src/main/java/com/lob/api/client/ChecksApi.java
@@ -160,6 +179,7 @@ src/main/java/com/lob/api/client/ReverseGeocodeLookupsApi.java
 src/main/java/com/lob/api/client/SelfMailersApi.java
 src/main/java/com/lob/api/client/TemplateVersionsApi.java
 src/main/java/com/lob/api/client/TemplatesApi.java
+src/main/java/com/lob/api/client/UploadsApi.java
 src/main/java/com/lob/api/client/UsAutocompletionsApi.java
 src/main/java/com/lob/api/client/UsVerificationsApi.java
 src/main/java/com/lob/api/client/ZipLookupsApi.java
@@ -179,6 +199,10 @@ src/main/java/com/lob/model/BillingGroupEditable.java
 src/main/java/com/lob/model/BillingGroupList.java
 src/main/java/com/lob/model/BulkError.java
 src/main/java/com/lob/model/BulkErrorProperties.java
+src/main/java/com/lob/model/Campaign.java
+src/main/java/com/lob/model/CampaignUpdatable.java
+src/main/java/com/lob/model/CampaignWritable.java
+src/main/java/com/lob/model/CampaignsList.java
 src/main/java/com/lob/model/Card.java
 src/main/java/com/lob/model/CardDeletion.java
 src/main/java/com/lob/model/CardEditable.java
@@ -191,6 +215,8 @@ src/main/java/com/lob/model/Check.java
 src/main/java/com/lob/model/CheckDeletion.java
 src/main/java/com/lob/model/CheckEditable.java
 src/main/java/com/lob/model/CheckList.java
+src/main/java/com/lob/model/CmpScheduleType.java
+src/main/java/com/lob/model/CmpUseType.java
 src/main/java/com/lob/model/CountryExtended.java
 src/main/java/com/lob/model/CountryExtendedExpanded.java
 src/main/java/com/lob/model/DeliverabilityAnalysis.java
@@ -198,8 +224,11 @@ src/main/java/com/lob/model/DpvFootnote.java
 src/main/java/com/lob/model/EngineHtml.java
 src/main/java/com/lob/model/EventType.java
 src/main/java/com/lob/model/Events.java
+src/main/java/com/lob/model/ExportModel.java
 src/main/java/com/lob/model/GeocodeAddresses.java
 src/main/java/com/lob/model/GeocodeComponents.java
+src/main/java/com/lob/model/InlineObject.java
+src/main/java/com/lob/model/InlineResponse200.java
 src/main/java/com/lob/model/IntlAutocompletions.java
 src/main/java/com/lob/model/IntlAutocompletionsWritable.java
 src/main/java/com/lob/model/IntlComponents.java
@@ -228,7 +257,6 @@ src/main/java/com/lob/model/PostcardDeletion.java
 src/main/java/com/lob/model/PostcardEditable.java
 src/main/java/com/lob/model/PostcardList.java
 src/main/java/com/lob/model/PostcardSize.java
-src/main/java/com/lob/model/ReturnEnvelope.java
 src/main/java/com/lob/model/ReverseGeocode.java
 src/main/java/com/lob/model/SelfMailer.java
 src/main/java/com/lob/model/SelfMailerDeletion.java
@@ -256,6 +284,14 @@ src/main/java/com/lob/model/Thumbnail.java
 src/main/java/com/lob/model/TrackingEventCertified.java
 src/main/java/com/lob/model/TrackingEventDetails.java
 src/main/java/com/lob/model/TrackingEventNormal.java
+src/main/java/com/lob/model/Upload.java
+src/main/java/com/lob/model/UploadAllOf.java
+src/main/java/com/lob/model/UploadCreateExport.java
+src/main/java/com/lob/model/UploadFile.java
+src/main/java/com/lob/model/UploadList.java
+src/main/java/com/lob/model/UploadState.java
+src/main/java/com/lob/model/UploadUpdatable.java
+src/main/java/com/lob/model/UploadWritable.java
 src/main/java/com/lob/model/UsAutocompletions.java
 src/main/java/com/lob/model/UsAutocompletionsWritable.java
 src/main/java/com/lob/model/UsComponents.java
