@@ -765,7 +765,9 @@ public class UsComponents {
     
     PO_BOX("po_box"),
     
-    GENERAL_DELIVERY("general_delivery");
+    GENERAL_DELIVERY("general_delivery"),
+    
+    EMPTY("");
 
     private String value;
 
