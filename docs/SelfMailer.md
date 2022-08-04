@@ -8,7 +8,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Unique identifier prefixed with &#x60;sfm_&#x60;. | 
-**to** | [**Address**](Address.md) |  |  [optional]
+**to** | [**Address**](Address.md) |  | 
 **from** | [**AddressDomesticExpanded**](AddressDomesticExpanded.md) |  |  [optional]
 **size** | **SelfMailerSize** |  |  [optional]
 **description** | **String** | An internal description that identifies this resource. Must be no longer than 255 characters.  |  [optional]

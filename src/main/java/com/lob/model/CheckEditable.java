@@ -43,15 +43,18 @@ public class CheckEditable {
   public  String getFrom() {
     return from;
   }
+  
 
   public void setFrom(String from) {
+    
     
     this.from = from;
   }
   
   
-  public void setFrom(AddressEditable from) {
+  public void setFrom(AddressDomestic from) {
     Gson gson = new Gson();
+    
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_TO = "to";
@@ -62,15 +65,18 @@ public class CheckEditable {
   public  String getTo() {
     return to;
   }
+  
 
   public void setTo(String to) {
+    
     
     this.to = to;
   }
   
   
-  public void setTo(AddressEditable to) {
+  public void setTo(AddressDomestic to) {
     Gson gson = new Gson();
+    
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_BANK_ACCOUNT = "bank_account";

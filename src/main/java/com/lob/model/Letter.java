@@ -521,8 +521,10 @@ public class Letter {
   public  String getReturnAddress() {
     return returnAddress;
   }
+  
 
   public void setReturnAddress(String returnAddress) {
+    
     
     this.returnAddress = returnAddress;
   }
@@ -530,6 +532,7 @@ public class Letter {
   
   public void setReturnAddress(AddressEditable returnAddress) {
     Gson gson = new Gson();
+    
     this.returnAddress = gson.toJson(returnAddress);
   }
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
@@ -671,17 +674,30 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
+  private String returnEnvelope;
+  public  String getReturnEnvelope() {
+    return returnEnvelope;
+  }
   
-  
-  public void setReturnEnvelope( returnEnvelope) {
-    Gson gson = new Gson();
-    this.returnEnvelope = gson.toJson(returnEnvelope);
+
+  public void setReturnEnvelope(String returnEnvelope) {
+    
+    
+    this.returnEnvelope = returnEnvelope;
   }
   
   
   public void setReturnEnvelope(ReturnEnvelope returnEnvelope) {
     Gson gson = new Gson();
+    
     this.returnEnvelope = gson.toJson(returnEnvelope);
+  }
+  
+  
+  public void setReturnEnvelope(Boolean returnEnvelope) {
+    
+    
+    this.returnEnvelope = Boolean.toString(returnEnvelope);
   }
   public static final String SERIALIZED_NAME_PERFORATED_PAGE = "perforated_page";
 

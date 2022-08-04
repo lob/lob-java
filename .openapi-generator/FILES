@@ -3,6 +3,7 @@ api/openapi.yaml
 build.sbt
 docs/Address.md
 docs/AddressDeletion.md
+docs/AddressDomestic.md
 docs/AddressDomesticExpanded.md
 docs/AddressEditable.md
 docs/AddressList.md
@@ -44,6 +45,7 @@ docs/CmpScheduleType.md
 docs/CmpUseType.md
 docs/CountryExtended.md
 docs/CountryExtendedExpanded.md
+docs/DefaultApi.md
 docs/DeliverabilityAnalysis.md
 docs/DpvFootnote.md
 docs/EngineHtml.md
@@ -80,6 +82,7 @@ docs/MailType.md
 docs/MultipleComponents.md
 docs/MultipleComponentsIntl.md
 docs/MultipleComponentsList.md
+docs/PlaceholderModel.md
 docs/Postcard.md
 docs/PostcardDeletion.md
 docs/PostcardEditable.md
@@ -171,6 +174,7 @@ src/main/java/com/lob/api/client/CampaignsApi.java
 src/main/java/com/lob/api/client/CardOrdersApi.java
 src/main/java/com/lob/api/client/CardsApi.java
 src/main/java/com/lob/api/client/ChecksApi.java
+src/main/java/com/lob/api/client/DefaultApi.java
 src/main/java/com/lob/api/client/IntlAutocompletionsApi.java
 src/main/java/com/lob/api/client/IntlVerificationsApi.java
 src/main/java/com/lob/api/client/LettersApi.java
@@ -185,6 +189,7 @@ src/main/java/com/lob/api/client/UsVerificationsApi.java
 src/main/java/com/lob/api/client/ZipLookupsApi.java
 src/main/java/com/lob/model/Address.java
 src/main/java/com/lob/model/AddressDeletion.java
+src/main/java/com/lob/model/AddressDomestic.java
 src/main/java/com/lob/model/AddressDomesticExpanded.java
 src/main/java/com/lob/model/AddressEditable.java
 src/main/java/com/lob/model/AddressList.java
@@ -252,6 +257,7 @@ src/main/java/com/lob/model/MailType.java
 src/main/java/com/lob/model/MultipleComponents.java
 src/main/java/com/lob/model/MultipleComponentsIntl.java
 src/main/java/com/lob/model/MultipleComponentsList.java
+src/main/java/com/lob/model/PlaceholderModel.java
 src/main/java/com/lob/model/Postcard.java
 src/main/java/com/lob/model/PostcardDeletion.java
 src/main/java/com/lob/model/PostcardEditable.java

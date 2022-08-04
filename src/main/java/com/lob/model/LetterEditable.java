@@ -255,8 +255,10 @@ public class LetterEditable {
   public  String getReturnEnvelope() {
     return returnEnvelope;
   }
+  
 
   public void setReturnEnvelope(String returnEnvelope) {
+    
     
     this.returnEnvelope = returnEnvelope;
   }
@@ -264,6 +266,7 @@ public class LetterEditable {
   
   public void setReturnEnvelope(Boolean returnEnvelope) {
     Gson gson = new Gson();
+    
     this.returnEnvelope = gson.toJson(returnEnvelope);
   }
   public static final String SERIALIZED_NAME_PERFORATED_PAGE = "perforated_page";
@@ -316,8 +319,10 @@ public class LetterEditable {
   public  String getTo() {
     return to;
   }
+  
 
   public void setTo(String to) {
+    
     
     this.to = to;
   }
@@ -325,6 +330,7 @@ public class LetterEditable {
   
   public void setTo(AddressEditable to) {
     Gson gson = new Gson();
+    
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_FROM = "from";
@@ -335,8 +341,10 @@ public class LetterEditable {
   public  String getFrom() {
     return from;
   }
+  
 
   public void setFrom(String from) {
+    
     
     this.from = from;
   }
@@ -344,6 +352,7 @@ public class LetterEditable {
   
   public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
+    
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_FILE = "file";

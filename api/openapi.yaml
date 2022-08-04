@@ -913,6 +913,12 @@ paths:
       summary: list
       tags:
       - Campaigns
+      x-codeSamples:
+      - lang: Shell
+        source: |
+          curl https://api.lob.com/v1/campaigns \
+            -u <YOUR API KEY>:
+        label: CURL
       x-accepts: application/json
     post:
       description: Creates a new campaign with the provided properties. See how to
@@ -979,6 +985,14 @@ paths:
       summary: create
       tags:
       - Campaigns
+      x-codeSamples:
+      - lang: Shell
+        source: |
+          curl https://api.lob.com/v1/campaigns \
+            -u <YOUR API KEY>: \
+            -d "name=My First Campaign" \
+            -d "schedule_type=immediate"
+        label: CURL
       x-contentType: application/json
       x-accepts: application/json
   /campaigns/{cmp_id}:
@@ -1026,6 +1040,12 @@ paths:
       summary: delete
       tags:
       - Campaigns
+      x-codeSamples:
+      - lang: Shell
+        source: |
+          curl -X DELETE https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b \
+            -u <YOUR API KEY>:
+        label: CURL
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing campaign. You need only supply
@@ -1057,6 +1077,12 @@ paths:
       summary: get
       tags:
       - Campaigns
+      x-codeSamples:
+      - lang: Shell
+        source: |
+          curl https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b \
+            -u <YOUR API KEY>:
+        label: CURL
       x-accepts: application/json
     patch:
       description: Update the details of an existing campaign. You need only supply
@@ -3740,6 +3766,19 @@ paths:
       - Zip Lookups
       x-contentType: application/json
       x-accepts: application/json
+  /shared_dont_call:
+    get:
+      description: Don't call this. It's so that the right models can be generated.
+      operationId: placeholder
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/placeholder_model'
+          description: Uncallable, used for generating missing models
+      summary: placeholder_no_call
+      x-accepts: application/json
 components:
   headers:
     ratelimit-limit:
@@ -3956,13 +3995,6 @@ components:
         maxLength: 256
         type: string
       style: simple
-  requestBodies:
-    inline_object:
-      content:
-        multipart/form-data:
-          schema:
-            $ref: '#/components/schemas/inline_object'
-      required: true
   responses:
     error_response:
       content:
@@ -7251,6 +7283,351 @@ components:
             and not sent if the address is updated via NCOA.
           type: boolean
       type: object
+    cmp_schedule_type:
+      description: How the campaign should be scheduled. Only value available today
+        is `immediate`.
+      enum:
+      - immediate
+      type: string
+    cmp_use_type:
+      description: The usage type of this campaign. Can be one of `marketing` or `operational`.
+      enum:
+      - marketing
+      - operational
+      - null
+      nullable: true
+      type: string
+    cmp_id:
+      description: Unique identifier prefixed with `cmp_`.
+      pattern: ^cmp_[a-zA-Z0-9]+$
+      title: Campaign id
+      type: string
+    campaign:
+      example:
+        metadata:
+          key: metadata
+        date_created: 2000-01-23T04:56:07.000+00:00
+        creatives: ""
+        description: description
+        target_delivery_date: 2000-01-23T04:56:07.000+00:00
+        billing_group_id: billing_group_id
+        account_id: account_id
+        deleted: true
+        date_modified: 2000-01-23T04:56:07.000+00:00
+        send_date: 2000-01-23T04:56:07.000+00:00
+        is_draft: true
+        auto_cancel_if_ncoa: true
+        name: name
+        cancel_window_campaign_minutes: 0
+        id: id
+        object: campaign
+      properties:
+        billing_group_id:
+          description: Unique identifier prefixed with `bg_`.
+          nullable: true
+          pattern: ^bg_[a-zA-Z0-9]+$
+          type: string
+        name:
+          description: Name of the campaign.
+          type: string
+        description:
+          description: |
+            An internal description that identifies this resource. Must be no longer than 255 characters.
+          maxLength: 255
+          nullable: true
+          type: string
+        schedule_type:
+          $ref: '#/components/schemas/cmp_schedule_type'
+        target_delivery_date:
+          description: If `schedule_type` is `target_delivery_date`, provide a targeted
+            delivery date for mail pieces in this campaign.
+          format: date-time
+          nullable: true
+          type: string
+        send_date:
+          description: If `schedule_type` is `scheduled_send_date`, provide a date
+            to send this campaign.
+          format: date-time
+          nullable: true
+          type: string
+        cancel_window_campaign_minutes:
+          description: A window, in minutes, within which the campaign can be canceled.
+          nullable: true
+          type: integer
+        metadata:
+          additionalProperties:
+            type: string
+          description: 'Use metadata to store custom information for tagging and labeling
+            back to your internal systems. Must be an object with up to 20 key-value
+            pairs. Keys must be at most 40 characters and values must be at most 500
+            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
+            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
+            for more information.'
+          maxLength: 500
+          pattern: '[^"\\]{0,500}'
+          type: object
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: HashMap<String,String>
+        use_type:
+          $ref: '#/components/schemas/cmp_use_type'
+        auto_cancel_if_ncoa:
+          description: Whether or not a mail piece should be automatically canceled
+            and not sent if the address is updated via NCOA.
+          type: boolean
+        id:
+          description: Unique identifier prefixed with `cmp_`.
+          pattern: ^cmp_[a-zA-Z0-9]+$
+          title: Campaign id
+          type: string
+        account_id:
+          description: Account ID that this campaign is associated with.
+          type: string
+        is_draft:
+          default: true
+          description: Whether or not the campaign is still a draft.
+          type: boolean
+        creatives:
+          description: An array of creatives that have been associated with this campaign.
+          type: array
+        date_created:
+          description: A timestamp in ISO 8601 format of the date the resource was
+            created.
+          format: date-time
+          type: string
+        date_modified:
+          description: A timestamp in ISO 8601 format of the date the resource was
+            last modified.
+          format: date-time
+          type: string
+        deleted:
+          description: Only returned if the resource has been successfully deleted.
+          type: boolean
+        object:
+          default: campaign
+          description: Value is resource type.
+          enum:
+          - campaign
+          type: string
+      required:
+      - auto_cancel_if_ncoa
+      - creatives
+      - date_created
+      - date_modified
+      - id
+      - is_draft
+      - name
+      - object
+      - schedule_type
+      type: object
+    campaigns_list:
+      example:
+        data:
+        - metadata:
+            key: metadata
+          date_created: 2000-01-23T04:56:07.000+00:00
+          creatives: ""
+          description: description
+          target_delivery_date: 2000-01-23T04:56:07.000+00:00
+          billing_group_id: billing_group_id
+          account_id: account_id
+          deleted: true
+          date_modified: 2000-01-23T04:56:07.000+00:00
+          send_date: 2000-01-23T04:56:07.000+00:00
+          is_draft: true
+          auto_cancel_if_ncoa: true
+          name: name
+          cancel_window_campaign_minutes: 0
+          id: id
+          object: campaign
+        - metadata:
+            key: metadata
+          date_created: 2000-01-23T04:56:07.000+00:00
+          creatives: ""
+          description: description
+          target_delivery_date: 2000-01-23T04:56:07.000+00:00
+          billing_group_id: billing_group_id
+          account_id: account_id
+          deleted: true
+          date_modified: 2000-01-23T04:56:07.000+00:00
+          send_date: 2000-01-23T04:56:07.000+00:00
+          is_draft: true
+          auto_cancel_if_ncoa: true
+          name: name
+          cancel_window_campaign_minutes: 0
+          id: id
+          object: campaign
+        total_count: 1
+        next_url: next_url
+        count: 6
+        previous_url: previous_url
+        object: object
+      properties:
+        data:
+          description: list of campaigns
+          items:
+            $ref: '#/components/schemas/campaign'
+          type: array
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: ArrayList<Campaign>
+              python: Campaign[]
+        object:
+          description: Value is type of resource.
+          type: string
+        next_url:
+          description: url of next page of items in list.
+          nullable: true
+          type: string
+          x-pagination-next: true
+        previous_url:
+          description: url of previous page of items in list.
+          nullable: true
+          type: string
+          x-pagination-previous: true
+        count:
+          description: number of resources in a set
+          type: integer
+        total_count:
+          description: indicates the total number of records. Provided when the request
+            specifies an "include" query parameter
+          type: integer
+      type: object
+      x-code-snippet:
+        campaigns: true
+        list: true
+        object_type: Campaign
+        curl_form: campaigns
+        plural_response_var: campaigns
+        javaSupported: true
+        typescriptSupported: true
+        plural_object_type: Campaigns
+        args:
+        - arg: 2
+          notNull: true
+          param: limit
+        - arg: "null"
+          param: before
+        - arg: "null"
+          param: after
+        - arg: "null"
+          param: include
+          last: true
+    campaign_writable:
+      properties:
+        billing_group_id:
+          description: Unique identifier prefixed with `bg_`.
+          nullable: true
+          pattern: ^bg_[a-zA-Z0-9]+$
+          type: string
+        name:
+          description: Name of the campaign.
+          type: string
+        description:
+          description: |
+            An internal description that identifies this resource. Must be no longer than 255 characters.
+          maxLength: 255
+          nullable: true
+          type: string
+        schedule_type:
+          $ref: '#/components/schemas/cmp_schedule_type'
+        target_delivery_date:
+          description: If `schedule_type` is `target_delivery_date`, provide a targeted
+            delivery date for mail pieces in this campaign.
+          format: date-time
+          nullable: true
+          type: string
+        send_date:
+          description: If `schedule_type` is `scheduled_send_date`, provide a date
+            to send this campaign.
+          format: date-time
+          nullable: true
+          type: string
+        cancel_window_campaign_minutes:
+          description: A window, in minutes, within which the campaign can be canceled.
+          nullable: true
+          type: integer
+        metadata:
+          additionalProperties:
+            type: string
+          description: 'Use metadata to store custom information for tagging and labeling
+            back to your internal systems. Must be an object with up to 20 key-value
+            pairs. Keys must be at most 40 characters and values must be at most 500
+            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
+            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
+            for more information.'
+          maxLength: 500
+          pattern: '[^"\\]{0,500}'
+          type: object
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: HashMap<String,String>
+        use_type:
+          $ref: '#/components/schemas/cmp_use_type'
+        auto_cancel_if_ncoa:
+          description: Whether or not a mail piece should be automatically canceled
+            and not sent if the address is updated via NCOA.
+          type: boolean
+      required:
+      - name
+      - schedule_type
+      type: object
+    campaign_updatable:
+      properties:
+        name:
+          title: Name
+          type: string
+        description:
+          description: |
+            An internal description that identifies this resource. Must be no longer than 255 characters.
+          maxLength: 255
+          nullable: true
+          type: string
+        schedule_type:
+          $ref: '#/components/schemas/cmp_schedule_type'
+        target_delivery_date:
+          description: If `schedule_type` is `target_delivery_date`, provide a targeted
+            delivery date for mail pieces in this campaign.
+          format: date-time
+          type: string
+        send_date:
+          description: If `schedule_type` is `scheduled_send_date`, provide a date
+            to send this campaign.
+          format: date-time
+          type: string
+        cancel_window_campaign_minutes:
+          description: A window, in minutes, within which the campaign can be canceled.
+          type: integer
+        metadata:
+          additionalProperties:
+            type: string
+          description: 'Use metadata to store custom information for tagging and labeling
+            back to your internal systems. Must be an object with up to 20 key-value
+            pairs. Keys must be at most 40 characters and values must be at most 500
+            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
+            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
+            for more information.'
+          maxLength: 500
+          pattern: '[^"\\]{0,500}'
+          type: object
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: HashMap<String,String>
+        is_draft:
+          default: true
+          description: Whether or not the campaign is still a draft.
+          type: boolean
+        use_type:
+          $ref: '#/components/schemas/cmp_use_type'
+        auto_cancel_if_ncoa:
+          description: Whether or not a mail piece should be automatically canceled
+            and not sent if the address is updated via NCOA.
+          type: boolean
+      type: object
     card_id:
       description: Unique identifier prefixed with `card_`.
       pattern: ^card_[a-zA-Z0-9]+$
@@ -8526,10 +8903,10 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: AddressEditable
-                python: AddressEditable
-                typescript: Models.AddressEditable
-                python_path: lob_python.model.address_editable
+                java: AddressDomestic
+                python: AddressDomestic
+                typescript: Models.AddressDomestic
+                python_path: lob_python.model.address_domestic
                 hasPath: true
         to:
           description: Must either be an address ID or an inline object with correct
@@ -11262,7 +11639,9 @@ components:
           pattern: ^https://(lob-assets|lob-assets-staging)\.com/(letters|postcards|bank-accounts|checks|self-mailers|cards)/[a-z]{3,4}_[a-z0-9]{15,16}(\.pdf|_thumb_[a-z]+_[0-9]+\.png)\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$
           type: string
       required:
+      - carrier
       - id
+      - to
       - url
       type: object
       x-code-snippet:
@@ -13015,6 +13394,142 @@ components:
       - id
       - object
       - zip_code_type
+      type: object
+    return_envelope:
+      example:
+        alias: alias
+        id: id
+        url: url
+        object: object
+      properties:
+        id:
+          description: The unique ID of the Return Envelope
+          type: string
+        alias:
+          description: A quick reference name for the Return Envelope
+          type: string
+        url:
+          description: The url of the  return envelope
+          type: string
+        object:
+          type: string
+      type: object
+    address_domestic:
+      example:
+        metadata:
+          key: metadata
+        address_line2: address_line2
+        address_line1: address_line1
+        phone: phone
+        address_country: address_country
+        address_state: address_state
+        name: name
+        description: description
+        company: company
+        address_zip: address_zip
+        email: email
+        address_city: address_city
+      properties:
+        address_line1:
+          description: The building number, street name, street suffix, and any street
+            directionals. For US addresses, the max length is 64 characters.
+          maxLength: 200
+          type: string
+        address_line2:
+          description: The suite or apartment number of the recipient address, if
+            applicable. For US addresses, the max length is 64 characters.
+          maxLength: 200
+          nullable: true
+          type: string
+        address_city:
+          maxLength: 200
+          nullable: true
+          type: string
+        address_state:
+          maxLength: 200
+          nullable: true
+          type: string
+        address_zip:
+          description: Optional postal code. For US addresses, must be either 5 or
+            9 digits.
+          maxLength: 40
+          nullable: true
+          type: string
+        description:
+          description: |
+            An internal description that identifies this resource. Must be no longer than 255 characters.
+          maxLength: 255
+          nullable: true
+          type: string
+        name:
+          description: |
+            Either `name` or `company` is required, you may also add both. Must be no longer than 40 characters. If both `name` and `company` are provided, they will be printed on two separate lines above the rest of the address.
+          maxLength: 40
+          nullable: true
+          type: string
+        company:
+          description: Either `name` or `company` is required, you may also add both.
+          maxLength: 40
+          nullable: true
+          type: string
+        phone:
+          description: Must be no longer than 40 characters.
+          maxLength: 40
+          nullable: true
+          type: string
+        email:
+          description: Must be no longer than 100 characters.
+          maxLength: 100
+          nullable: true
+          type: string
+        address_country:
+          description: The country associated with this address.
+          nullable: true
+          pattern: US
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          description: 'Use metadata to store custom information for tagging and labeling
+            back to your internal systems. Must be an object with up to 20 key-value
+            pairs. Keys must be at most 40 characters and values must be at most 500
+            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
+            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
+            for more information.'
+          maxLength: 500
+          pattern: '[^"\\]{0,500}'
+          type: object
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: HashMap<String,String>
+      type: object
+    placeholder_model:
+      example:
+        address_domestic:
+          metadata:
+            key: metadata
+          address_line2: address_line2
+          address_line1: address_line1
+          phone: phone
+          address_country: address_country
+          address_state: address_state
+          name: name
+          description: description
+          company: company
+          address_zip: address_zip
+          email: email
+          address_city: address_city
+        return_envelope:
+          alias: alias
+          id: id
+          url: url
+          object: object
+      properties:
+        return_envelope:
+          $ref: '#/components/schemas/return_envelope'
+        address_domestic:
+          $ref: '#/components/schemas/address_domestic'
       type: object
     event_type:
       properties:
