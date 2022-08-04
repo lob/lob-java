@@ -43,15 +43,18 @@ public class CheckEditable {
   public  String getFrom() {
     return from;
   }
+  
 
   public void setFrom(String from) {
+    
     
     this.from = from;
   }
   
   
-  public void setFrom(AddressEditable from) {
+  public void setFrom(AddressDomestic from) {
     Gson gson = new Gson();
+    
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_TO = "to";
@@ -62,15 +65,18 @@ public class CheckEditable {
   public  String getTo() {
     return to;
   }
+  
 
   public void setTo(String to) {
+    
     
     this.to = to;
   }
   
   
-  public void setTo(AddressEditable to) {
+  public void setTo(AddressDomestic to) {
     Gson gson = new Gson();
+    
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_BANK_ACCOUNT = "bank_account";
@@ -121,7 +127,7 @@ public class CheckEditable {
   @SerializedName(SERIALIZED_NAME_LOGO)
   
 
-  private Object logo = null;
+  private String logo;
   /**
   * Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check.
   * @return logo
@@ -131,7 +137,7 @@ public class CheckEditable {
   
   @ApiModelProperty(value = "Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check.")
   
-  public Object getLogo() {
+  public String getLogo() {
       return logo;
   }
   
@@ -461,7 +467,7 @@ public class CheckEditable {
 
 
   /*
-  public CheckEditable logo(Object logo) {
+  public CheckEditable logo(String logo) {
     
     this.logo = logo;
     return this;
@@ -469,7 +475,7 @@ public class CheckEditable {
   */
 
 
-  public void setLogo(Object logo) {
+  public void setLogo(String logo) {
     this.logo = logo;
   }
 

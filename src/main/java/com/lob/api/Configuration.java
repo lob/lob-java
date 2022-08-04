@@ -51,10 +51,10 @@ public class Configuration {
         ApiClient apiClient = new ApiClient();
 
         HttpBasicAuth basicAuth = (HttpBasicAuth) apiClient.getAuthentication("basicAuth");
-        String LOB_API_TEST_KEY = getEnvVariable("LOB_API_TEST_KEY");
+        String LOB_API_KEY = getEnvVariable("LOB_API_TEST_KEY");
         
         apiClient.setBasePath(BASE_PATH);
-        basicAuth.setUsername(LOB_API_TEST_KEY);
+        basicAuth.setUsername(LOB_API_KEY);
         return apiClient;
     }
 
