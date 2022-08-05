@@ -8297,9 +8297,9 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: AddressEditable
-                python: AddressEditable
-                typescript: Models.AddressEditable
+                java: AddressDomestic
+                python: AddressDomestic
+                typescript: Models.AddressDomestic
                 hasPath: false
         bank_account:
           nullable: true
@@ -9071,6 +9071,34 @@ components:
             python: AddressEditable
             python_path: lob_python.model.address_editable
             hasPath: true
+    custom_envelope:
+      description: |-
+        A nested custom envelope object containing more information about the custom envelope used or `null` if a custom envelope was not used.
+
+        Accepts an envelope ID for any customized envelope with available inventory. If no inventory is available for the specified ID, the letter will not be sent, and an error will be returned. If the letter has more than 6 sheets, it will be sent in a blank flat envelope. Custom envelopes may be created and ordered from the dashboard. This feature is exclusive to certain customers. Upgrade to the appropriate [Print & Mail Edition](https://dashboard.lob.com/#/settings/editions) to gain access.
+      example:
+        id: id
+        url: url
+        object: envelope
+      nullable: true
+      properties:
+        id:
+          description: The unique identifier of the custom envelope used.
+          maxLength: 40
+          type: string
+        url:
+          description: The url of the envelope asset used.
+          type: string
+        object:
+          default: envelope
+          enum:
+          - envelope
+          type: string
+      required:
+      - id
+      - object
+      - url
+      type: object
     letter:
       example:
         metadata:
@@ -9350,7 +9378,7 @@ components:
           nullable: true
           type: integer
         custom_envelope:
-          $ref: '#/components/schemas/letter_custom_envelope'
+          $ref: '#/components/schemas/custom_envelope'
       required:
       - date_created
       - date_modified
@@ -9729,7 +9757,7 @@ components:
           nullable: true
           type: integer
         custom_envelope:
-          $ref: '#/components/schemas/letter_editable_custom_envelope'
+          $ref: '#/components/schemas/custom_envelope'
         to:
           description: Must either be an address ID or an inline object with correct
             address parameters.
@@ -12874,54 +12902,6 @@ components:
           - asc
           - desc
           type: string
-      type: object
-    letter_custom_envelope:
-      description: |-
-        A nested custom envelope object containing more information about the custom envelope used or `null` if a custom envelope was not used.
-
-        Accepts an envelope ID for any customized envelope with available inventory. If no inventory is available for the specified ID, the letter will not be sent, and an error will be returned. If the letter has more than 6 sheets, it will be sent in a blank flat envelope. Custom envelopes may be created and ordered from the dashboard. This feature is exclusive to certain customers. Upgrade to the appropriate [Print & Mail Edition](https://dashboard.lob.com/#/settings/editions) to gain access.
-      example:
-        id: id
-        url: url
-        object: envelope
-      nullable: true
-      properties:
-        id:
-          description: The unique identifier of the custom envelope used.
-          maxLength: 40
-          type: string
-        url:
-          description: The url of the envelope asset used.
-          type: string
-        object:
-          default: envelope
-          enum:
-          - envelope
-          type: string
-      type: object
-    letter_editable_custom_envelope:
-      description: |-
-        A nested custom envelope object containing more information about the custom envelope used or `null` if a custom envelope was not used.
-
-        Accepts an envelope ID for any customized envelope with available inventory. If no inventory is available for the specified ID, the letter will not be sent, and an error will be returned. If the letter has more than 6 sheets, it will be sent in a blank flat envelope. Custom envelopes may be created and ordered from the dashboard. This feature is exclusive to certain customers. Upgrade to the appropriate [Print & Mail Edition](https://dashboard.lob.com/#/settings/editions) to gain access.
-      nullable: true
-      properties:
-        id:
-          description: The unique identifier of the custom envelope used.
-          maxLength: 40
-          type: string
-        url:
-          description: The url of the envelope asset used.
-          type: string
-        object:
-          default: envelope
-          enum:
-          - envelope
-          type: string
-      required:
-      - id
-      - object
-      - url
       type: object
   securitySchemes:
     basicAuth:

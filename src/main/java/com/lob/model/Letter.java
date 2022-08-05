@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.lob.model.Address;
-import com.lob.model.LetterCustomEnvelope;
+import com.lob.model.CustomEnvelope;
 import com.lob.model.MailType;
 import com.lob.model.Thumbnail;
 import com.lob.model.TrackingEventNormal;
@@ -521,10 +521,8 @@ public class Letter {
   public  String getReturnAddress() {
     return returnAddress;
   }
-  
 
   public void setReturnAddress(String returnAddress) {
-    
     
     this.returnAddress = returnAddress;
   }
@@ -532,7 +530,6 @@ public class Letter {
   
   public void setReturnAddress(AddressEditable returnAddress) {
     Gson gson = new Gson();
-    
     this.returnAddress = gson.toJson(returnAddress);
   }
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
@@ -674,30 +671,17 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
-  private String returnEnvelope;
-  public  String getReturnEnvelope() {
-    return returnEnvelope;
-  }
   
-
-  public void setReturnEnvelope(String returnEnvelope) {
-    
-    
-    this.returnEnvelope = returnEnvelope;
+  
+  public void setReturnEnvelope( returnEnvelope) {
+    Gson gson = new Gson();
+    this.returnEnvelope = gson.toJson(returnEnvelope);
   }
   
   
   public void setReturnEnvelope(ReturnEnvelope returnEnvelope) {
     Gson gson = new Gson();
-    
     this.returnEnvelope = gson.toJson(returnEnvelope);
-  }
-  
-  
-  public void setReturnEnvelope(Boolean returnEnvelope) {
-    
-    
-    this.returnEnvelope = Boolean.toString(returnEnvelope);
   }
   public static final String SERIALIZED_NAME_PERFORATED_PAGE = "perforated_page";
 
@@ -725,7 +709,7 @@ public class Letter {
   @SerializedName(SERIALIZED_NAME_CUSTOM_ENVELOPE)
   
 
-  private LetterCustomEnvelope customEnvelope;
+  private CustomEnvelope customEnvelope;
   /**
   * Get customEnvelope
   * @return customEnvelope
@@ -735,7 +719,7 @@ public class Letter {
   
   @ApiModelProperty(value = "")
   
-  public LetterCustomEnvelope getCustomEnvelope() {
+  public CustomEnvelope getCustomEnvelope() {
       return customEnvelope;
   }
   
@@ -1142,7 +1126,7 @@ public class Letter {
 
 
   /*
-  public Letter customEnvelope(LetterCustomEnvelope customEnvelope) {
+  public Letter customEnvelope(CustomEnvelope customEnvelope) {
     
     this.customEnvelope = customEnvelope;
     return this;
@@ -1150,7 +1134,7 @@ public class Letter {
   */
 
 
-  public void setCustomEnvelope(LetterCustomEnvelope customEnvelope) {
+  public void setCustomEnvelope(CustomEnvelope customEnvelope) {
     this.customEnvelope = customEnvelope;
   }
 

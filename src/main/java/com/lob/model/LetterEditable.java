@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.LetterEditableCustomEnvelope;
+import com.lob.model.CustomEnvelope;
 import com.lob.model.MailType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -255,10 +255,8 @@ public class LetterEditable {
   public  String getReturnEnvelope() {
     return returnEnvelope;
   }
-  
 
   public void setReturnEnvelope(String returnEnvelope) {
-    
     
     this.returnEnvelope = returnEnvelope;
   }
@@ -266,7 +264,6 @@ public class LetterEditable {
   
   public void setReturnEnvelope(Boolean returnEnvelope) {
     Gson gson = new Gson();
-    
     this.returnEnvelope = gson.toJson(returnEnvelope);
   }
   public static final String SERIALIZED_NAME_PERFORATED_PAGE = "perforated_page";
@@ -295,7 +292,7 @@ public class LetterEditable {
   @SerializedName(SERIALIZED_NAME_CUSTOM_ENVELOPE)
   
 
-  private LetterEditableCustomEnvelope customEnvelope;
+  private CustomEnvelope customEnvelope;
   /**
   * Get customEnvelope
   * @return customEnvelope
@@ -305,7 +302,7 @@ public class LetterEditable {
   
   @ApiModelProperty(value = "")
   
-  public LetterEditableCustomEnvelope getCustomEnvelope() {
+  public CustomEnvelope getCustomEnvelope() {
       return customEnvelope;
   }
   
@@ -319,10 +316,8 @@ public class LetterEditable {
   public  String getTo() {
     return to;
   }
-  
 
   public void setTo(String to) {
-    
     
     this.to = to;
   }
@@ -330,7 +325,6 @@ public class LetterEditable {
   
   public void setTo(AddressEditable to) {
     Gson gson = new Gson();
-    
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_FROM = "from";
@@ -341,10 +335,8 @@ public class LetterEditable {
   public  String getFrom() {
     return from;
   }
-  
 
   public void setFrom(String from) {
-    
     
     this.from = from;
   }
@@ -352,7 +344,6 @@ public class LetterEditable {
   
   public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
-    
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_FILE = "file";
@@ -637,7 +628,7 @@ public class LetterEditable {
 
 
   /*
-  public LetterEditable customEnvelope(LetterEditableCustomEnvelope customEnvelope) {
+  public LetterEditable customEnvelope(CustomEnvelope customEnvelope) {
     
     this.customEnvelope = customEnvelope;
     return this;
@@ -645,7 +636,7 @@ public class LetterEditable {
   */
 
 
-  public void setCustomEnvelope(LetterEditableCustomEnvelope customEnvelope) {
+  public void setCustomEnvelope(CustomEnvelope customEnvelope) {
     this.customEnvelope = customEnvelope;
   }
 

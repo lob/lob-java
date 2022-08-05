@@ -45,10 +45,8 @@ public class SelfMailerEditable {
   public  String getTo() {
     return to;
   }
-  
 
   public void setTo(String to) {
-    
     
     this.to = to;
   }
@@ -56,7 +54,6 @@ public class SelfMailerEditable {
   
   public void setTo(AddressEditable to) {
     Gson gson = new Gson();
-    
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_FROM = "from";
@@ -67,10 +64,8 @@ public class SelfMailerEditable {
   public  String getFrom() {
     return from;
   }
-  
 
   public void setFrom(String from) {
-    
     
     this.from = from;
   }
@@ -78,7 +73,6 @@ public class SelfMailerEditable {
   
   public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
-    
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_SIZE = "size";

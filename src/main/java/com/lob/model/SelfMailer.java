@@ -74,10 +74,8 @@ public class SelfMailer {
   public  String getTo() {
     return to;
   }
-  
 
   public void setTo(String to) {
-    
     
     this.to = to;
   }
@@ -85,7 +83,6 @@ public class SelfMailer {
   
   public void setTo(Address to) {
     Gson gson = new Gson();
-    
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_FROM = "from";
@@ -96,10 +93,8 @@ public class SelfMailer {
   public  String getFrom() {
     return from;
   }
-  
 
   public void setFrom(String from) {
-    
     
     this.from = from;
   }
@@ -107,7 +102,6 @@ public class SelfMailer {
   
   public void setFrom(Address from) {
     Gson gson = new Gson();
-    
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_SIZE = "size";
