@@ -38,9 +38,13 @@ tags:
   name: Cards
 - description: Checks allow you to send payments via physical checks.
   name: Checks
+- description: The creatives endpoint allows you to create and view creatives.
+  name: Creatives
 - description: When various notable things happen within the Lob architecture, Events
     will be created.
   name: Events
+- description: Validates whether a given name is associated with an address.
+  name: Identity Validation
 - description: Given partial international address information, this endpoint returns
     up to 10 address suggestions.
   name: Intl Autocompletions
@@ -1872,6 +1876,48 @@ paths:
       summary: Update
       tags:
       - Creatives
+      x-contentType: application/json
+      x-accepts: application/json
+  /identity_validation:
+    post:
+      description: Validates whether a given name is associated with an address.
+      operationId: identity_validation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/multi_line_address'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/multi_line_address'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/multi_line_address'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identity_validation'
+          description: Returns the likelihood a given name is associated with an address.
+          headers:
+            ratelimit-limit:
+              $ref: '#/components/headers/ratelimit-limit'
+            ratelimit-remaining:
+              $ref: '#/components/headers/ratelimit-remaining'
+            ratelimit-reset:
+              $ref: '#/components/headers/ratelimit-reset'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: Identity Validation
+      tags:
+      - Identity Validation
       x-contentType: application/json
       x-accepts: application/json
   /intl_autocompletions:
@@ -4013,6 +4059,19 @@ components:
           schema:
             $ref: '#/components/schemas/check'
       description: Returns a check object
+      headers:
+        ratelimit-limit:
+          $ref: '#/components/headers/ratelimit-limit'
+        ratelimit-remaining:
+          $ref: '#/components/headers/ratelimit-remaining'
+        ratelimit-reset:
+          $ref: '#/components/headers/ratelimit-reset'
+    identity_validation:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/identity_validation'
+      description: Returns the likelihood a given name is associated with an address.
       headers:
         ratelimit-limit:
           $ref: '#/components/headers/ratelimit-limit'
@@ -8705,6 +8764,142 @@ components:
             isComplexObject: true
             base-type:
               java: HashMap<String,String>
+      type: object
+    multi_line_address:
+      properties:
+        recipient:
+          description: The intended recipient, typically a person's or firm's name.
+          maxLength: 500
+          nullable: true
+          type: string
+        primary_line:
+          description: |
+            The primary delivery line (usually the street address) of the address.
+            Combination of the following applicable `components`:
+            * `primary_number`
+            * `street_predirection`
+            * `street_name`
+            * `street_suffix`
+            * `street_postdirection`
+            * `secondary_designator`
+            * `secondary_number`
+            * `pmb_designator`
+            * `pmb_number`
+          maxLength: 500
+          type: string
+        secondary_line:
+          description: |
+            The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long.
+          maxLength: 500
+          type: string
+        urbanization:
+          description: |
+            Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text=I51.,-4%20Urbanizations&text=In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification.
+          maxLength: 500
+          type: string
+        city:
+          maxLength: 200
+          type: string
+        state:
+          description: The <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US" target="_blank">ISO
+            3166-2</a> two letter code or subdivision name for the state. `city` and
+            `state` are required if no `zip_code` is passed.
+          maxLength: 50
+          type: string
+        zip_code:
+          description: Required if `city` and `state` are not passed in. If included,
+            must be formatted as a US ZIP or ZIP+4 (e.g. `94107`, `941072282`, `94107-2282`).
+          pattern: ^\d{5}((-)?\d{4})?$
+          type: string
+      required:
+      - primary_line
+      - recipient
+      type: object
+    identity_validation_id:
+      description: Unique identifier prefixed with `id_validation_`.
+      pattern: ^id_validation_[a-zA-Z0-9_]+$
+      type: string
+    identity_validation:
+      example:
+        last_line: last_line
+        score: 8.008282
+        primary_line: primary_line
+        secondary_line: secondary_line
+        confidence: high
+        recipient: recipient
+        id: id
+        urbanization: urbanization
+        object: id_validation
+      properties:
+        id:
+          description: Unique identifier prefixed with `id_validation_`.
+          pattern: ^id_validation_[a-zA-Z0-9_]+$
+          type: string
+        recipient:
+          description: The intended recipient, typically a person's or firm's name.
+          maxLength: 500
+          nullable: true
+          type: string
+        primary_line:
+          description: |
+            The primary delivery line (usually the street address) of the address.
+            Combination of the following applicable `components`:
+            * `primary_number`
+            * `street_predirection`
+            * `street_name`
+            * `street_suffix`
+            * `street_postdirection`
+            * `secondary_designator`
+            * `secondary_number`
+            * `pmb_designator`
+            * `pmb_number`
+          maxLength: 500
+          type: string
+        secondary_line:
+          description: |
+            The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long.
+          maxLength: 500
+          type: string
+        urbanization:
+          description: |
+            Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text=I51.,-4%20Urbanizations&text=In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification.
+          maxLength: 500
+          type: string
+        last_line:
+          description: |
+            Combination of the following applicable `components`:
+            * City (`city`)
+            * State (`state`)
+            * ZIP code (`zip_code`)
+            * ZIP+4 (`zip_code_plus_4`)
+          type: string
+        score:
+          description: |
+            A numerical score between 0 and 100 that represents the likelihood the provided name is associated with a physical address.
+          format: float
+          maximum: 100
+          minimum: 0
+          nullable: true
+          type: number
+        confidence:
+          description: |
+            Indicates the likelihood the recipient name and address match based on our custom internal calculation. Possible values are:
+            - `high` — Has a Lob confidence score greater than 70.
+            - `medium` — Has a Lob confidence score between 40 and 70.
+            - `low` — Has a Lob confidence score less than 40.
+            - `""` — No tracking data exists for this address.
+          enum:
+          - high
+          - medium
+          - low
+          - ""
+          type: string
+        object:
+          default: id_validation
+          description: Value is resource type.
+          enum:
+          - id_validation
+          type: string
       type: object
     intl_autocompletions_writable:
       properties:
