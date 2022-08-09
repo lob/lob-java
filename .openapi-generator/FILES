@@ -45,6 +45,8 @@ docs/CmpScheduleType.md
 docs/CmpUseType.md
 docs/CountryExtended.md
 docs/CountryExtendedExpanded.md
+docs/CreativePatch.md
+docs/CreativesApi.md
 docs/DefaultApi.md
 docs/DeliverabilityAnalysis.md
 docs/DpvFootnote.md
@@ -163,6 +165,7 @@ src/main/java/com/lob/api/client/CampaignsApi.java
 src/main/java/com/lob/api/client/CardOrdersApi.java
 src/main/java/com/lob/api/client/CardsApi.java
 src/main/java/com/lob/api/client/ChecksApi.java
+src/main/java/com/lob/api/client/CreativesApi.java
 src/main/java/com/lob/api/client/DefaultApi.java
 src/main/java/com/lob/api/client/IntlAutocompletionsApi.java
 src/main/java/com/lob/api/client/IntlVerificationsApi.java
@@ -212,6 +215,7 @@ src/main/java/com/lob/model/CmpScheduleType.java
 src/main/java/com/lob/model/CmpUseType.java
 src/main/java/com/lob/model/CountryExtended.java
 src/main/java/com/lob/model/CountryExtendedExpanded.java
+src/main/java/com/lob/model/CreativePatch.java
 src/main/java/com/lob/model/DeliverabilityAnalysis.java
 src/main/java/com/lob/model/DpvFootnote.java
 src/main/java/com/lob/model/EngineHtml.java

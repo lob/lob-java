@@ -1741,6 +1741,139 @@ paths:
       - Checks
       x-contentType: application/json
       x-accepts: application/json
+  /creatives:
+    post:
+      description: Creates a new creative with the provided properties
+      operationId: creative_create
+      parameters:
+      - description: |
+          * `native` - Translate response to the native language of the country in the request
+          * `match` - match the response to the language in the request
+
+          Default response is in English.
+        explode: false
+        in: header
+        name: x-lang-output
+        required: false
+        schema:
+          enum:
+          - native
+          - match
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/creative_writable'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/creative_writable'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/creative_writable'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/creative_response'
+          description: Creative created successfully
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: Create
+      tags:
+      - Creatives
+      x-contentType: application/json
+      x-accepts: application/json
+  /creatives/{crv_id}:
+    get:
+      description: Retrieves the details of an existing creative. You need only supply
+        the unique creative identifier that was returned upon creative creation.
+      operationId: creative_retrieve
+      parameters:
+      - description: id of the creative
+        explode: false
+        in: path
+        name: crv_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/crv_id'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/creative_response'
+          description: Returns a creative object
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: Retrieve
+      tags:
+      - Creatives
+      x-codeSamples:
+      - lang: Shell
+        source: |
+          curl https://api.lob.com/v1/creatives/crv_2a3b096c409b32c \
+            -u <YOUR API KEY>:
+        label: CURL
+      x-accepts: application/json
+    patch:
+      description: Update the details of an existing creative. You need only supply
+        the unique identifier that was returned upon creative creation.
+      operationId: creative_update
+      parameters:
+      - description: id of the creative
+        explode: false
+        in: path
+        name: crv_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/crv_id'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/creative_patch'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/creative_patch'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/creative_patch'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/creative_response'
+          description: Returns a creative object
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: Update
+      tags:
+      - Creatives
+      x-contentType: application/json
+      x-accepts: application/json
   /intl_autocompletions:
     post:
       description: Given an address prefix consisting of a partial primary line and
@@ -8297,9 +8430,9 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: AddressEditable
-                python: AddressEditable
-                typescript: Models.AddressEditable
+                java: AddressDomestic
+                python: AddressDomestic
+                typescript: Models.AddressDomestic
                 hasPath: false
         bank_account:
           nullable: true
@@ -8483,6 +8616,96 @@ components:
         resource_var_name: checkEditable
         snake_case_resource_var_name: check_editable
         accepts_idempotency_key: true
+    creative_writable:
+      type: object
+      x-template-config:
+        isOneOf: true
+        type-composite:
+        - base-type1:
+            java: PostcardRequest
+            typescript: Models.PostcardRequest
+            python: PostcardRequest
+            php: PostcardRequest
+            python_path: lob_python.model.postcard_request
+            hasPath: true
+            isRef: true
+        - base-type2:
+            java: LetterRequest
+            typescript: Models.LetterRequest
+            php: LetterRequest
+            python: LetterRequest
+            python_path: lob_python.model.letter_request
+            hasPath: true
+            isRef: true
+    creative_response:
+      type: object
+      x-template-config:
+        isOneOf: true
+        type-composite:
+        - base-type1:
+            java: PostcardResponse
+            typescript: Models.PostcardResponse
+            python: PostcardResponse
+            php: PostcardResponse
+            python_path: lob_python.model.postcard_response
+            hasPath: true
+            isRef: true
+        - base-type2:
+            java: LetterResponse
+            typescript: Models.LetterResponse
+            php: LetterResponse
+            python: LetterResponse
+            python_path: lob_python.model.letter_response
+            hasPath: true
+            isRef: true
+    crv_id:
+      description: Unique identifier prefixed with `crv_`.
+      example: crv_2a3b096c409b32c
+      pattern: ^crv_[a-zA-Z0-9]+$
+      type: string
+    creative_patch:
+      properties:
+        from:
+          description: Must either be an address ID or an inline object with correct
+            address parameters.
+          x-template-config:
+            isOneOf: true
+            type-composite:
+            - base-type1:
+                java: String
+                typescript: string
+                python: str
+                default: true
+                isRef: true
+            - base-type2:
+                java: AddressEditable
+                python: AddressEditable
+                typescript: Models.AddressEditable
+                python_path: lob_python.model.address_editable
+                hasPath: true
+        description:
+          description: |
+            An internal description that identifies this resource. Must be no longer than 255 characters.
+          maxLength: 255
+          nullable: true
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          description: 'Use metadata to store custom information for tagging and labeling
+            back to your internal systems. Must be an object with up to 20 key-value
+            pairs. Keys must be at most 40 characters and values must be at most 500
+            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
+            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
+            for more information.'
+          maxLength: 500
+          pattern: '[^"\\]{0,500}'
+          type: object
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: HashMap<String,String>
+      type: object
     intl_autocompletions_writable:
       properties:
         address_prefix:
@@ -9255,11 +9478,8 @@ components:
           format: date-time
           type: string
         extra_service:
-          description: |
-            Add an extra service to your letter. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.
-              * registered - provides tracking and confirmation for international addresses
-              * `certified` - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.
-              * `certified_return_receipt` - request an electronic copy of the recipient's signature to prove delivery of your certified letter
+          description: Add an extra service to your letter. See [pricing](https://www.lob.com/pricing/print-mail#compare)
+            for extra costs incurred.
           type: string
         tracking_number:
           description: The tracking number, if applicable, will appear here when it
@@ -9312,11 +9532,7 @@ components:
         address_placement:
           default: top_first_page
           description: |
-            Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.
-              * `top_first_page` - (default) print address information at the top of your provided first page
-              * `insert_blank_page` - insert a blank address page at the beginning of your file (you will be charged for the extra page)
-              * `bottom_first_page_center` - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page
-              * `bottom_first_page` - print address information at the bottom of your provided first page
+            Specifies the location of the address information that will show through the double-window envelope.
           enum:
           - top_first_page
           - insert_blank_page
@@ -9328,17 +9544,21 @@ components:
             isOneOf: true
             type-composite:
             - base-type1:
-                java: Boolean
+                java: String
                 typescript: boolean
                 python: bool
                 hasPath: false
                 default: true
+                isRef: true
             - base-type2:
                 java: ReturnEnvelope
                 typescript: Models.ReturnEnvelope
                 python: ReturnEnvelope
                 hasPath: true
                 python_path: lob_python.model.return_envelope
+                isRef: true
+            - base-type3:
+                java: Boolean
                 isRef: true
             default: false
         perforated_page:
