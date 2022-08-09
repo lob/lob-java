@@ -610,7 +610,7 @@ public class LetterEditable {
 
 
   /*
-  public LetterEditable returnEnvelope(Object returnEnvelope) {
+  public LetterEditable returnEnvelope(Boolean returnEnvelope) {
     
     this.returnEnvelope = returnEnvelope;
     return this;
