@@ -1115,7 +1115,7 @@ public class Letter {
 
 
   /*
-  public Letter returnEnvelope(Boolean returnEnvelope) {
+  public Letter returnEnvelope(Object returnEnvelope) {
     
     this.returnEnvelope = returnEnvelope;
     return this;
