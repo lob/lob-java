@@ -27,9 +27,6 @@ tags:
     be attached to certain consumption-based usages of Letters, Checks, Postcards
     and Self-Mailers to customize your bill.
   name: Billing Groups
-- description: The campaigns endpoint allows you to create and view campaigns that
-    can be used to send multiple letters or postcards.
-  name: Campaigns
 - description: The card orders endpoint allows you to easily create card orders for
     existing cards.
   name: Card Orders
@@ -131,20 +128,14 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
+        style: deepObject
       responses:
         "200":
           content:
@@ -433,20 +424,14 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
+        style: deepObject
       responses:
         "200":
           content:
@@ -649,9 +634,6 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: Filter by date modified.
         explode: true
         in: query
@@ -665,9 +647,6 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - $ref: '#/components/parameters/sort_by_5'
         description: |
           Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
@@ -689,12 +668,6 @@ paths:
               type: string
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
-          additional-properties:
-            dotnet:
-              toJson: true
       responses:
         "200":
           content:
@@ -851,293 +824,6 @@ paths:
       - Intl Verifications
       x-contentType: application/json
       x-accepts: application/json
-  /campaigns:
-    get:
-      description: Returns a list of your campaigns. The campaigns are returned sorted
-        by creation date, with the most recently created campaigns appearing first.
-      operationId: campaigns_list
-      parameters:
-      - description: How many results to return.
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 10
-          maximum: 100
-          minimum: 1
-          type: integer
-        style: form
-      - description: |
-          Request that the response include the total count by specifying `include[]=total_count`.
-        explode: true
-        in: query
-        name: include
-        required: false
-        schema:
-          $ref: '#/components/schemas/include_model'
-        style: form
-      - description: |
-          A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response.
-        explode: true
-        in: query
-        name: before
-        required: false
-        schema:
-          $ref: '#/components/schemas/before'
-        style: form
-      - description: |
-          A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response.
-        explode: true
-        in: query
-        name: after
-        required: false
-        schema:
-          $ref: '#/components/schemas/after'
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/campaigns_list'
-          description: A dictionary with a data property that contains an array of
-            up to `limit` campaigns. Each entry in the array is a separate letter.
-            The previous and next page of campaigns can be retrieved by calling the
-            endpoint contained in the `previous_url` and `next_url` fields in the
-            API response respectively. If no more campaigns are available beyond the
-            current set of returned results, the `next_url` field will be empty.
-      summary: list
-      tags:
-      - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/campaigns \
-            -u <YOUR API KEY>:
-        label: CURL
-      x-accepts: application/json
-    post:
-      description: Creates a new campaign with the provided properties. See how to
-        launch your first campaign [here](https://help.lob.com/best-practices/launching-your-first-campaign).
-      operationId: campaign_create
-      parameters:
-      - description: |
-          * `native` - Translate response to the native language of the country in the request
-          * `match` - match the response to the language in the request
-
-          Default response is in English.
-        explode: false
-        in: header
-        name: x-lang-output
-        required: false
-        schema:
-          enum:
-          - native
-          - match
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            example:
-              name: My Demo Campaign
-              description: My Campaign's description
-              schedule_type: immediate
-            schema:
-              $ref: '#/components/schemas/campaign_writable'
-          application/x-www-form-urlencoded:
-            encoding:
-              example-prop:
-                explode: true
-                style: deepObject
-            example:
-              name: My Demo Campaign
-              description: My Campaign's description
-              schedule_type: immediate
-            schema:
-              $ref: '#/components/schemas/campaign_writable'
-          multipart/form-data:
-            example:
-              name: My Demo Campaign
-              description: My Campaign's description
-              schedule_type: immediate
-            schema:
-              $ref: '#/components/schemas/campaign_writable'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/campaign'
-          description: Campaign created successfully
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/lob_error'
-          description: Lob uses RESTful HTTP response codes to indicate success or
-            failure of an API request.
-      summary: create
-      tags:
-      - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/campaigns \
-            -u <YOUR API KEY>: \
-            -d "name=My First Campaign" \
-            -d "schedule_type=immediate"
-        label: CURL
-      x-contentType: application/json
-      x-accepts: application/json
-  /campaigns/{cmp_id}:
-    delete:
-      description: Delete an existing campaign. You need only supply the unique identifier
-        that was returned upon campaign creation. Deleting a campaign also deletes
-        any associated mail pieces that have been created but not sent. A campaign's
-        `send_date` matches its associated mail pieces' `send_date`s.
-      operationId: campaign_delete
-      parameters:
-      - description: id of the campaign
-        explode: false
-        in: path
-        name: cmp_id
-        required: true
-        schema:
-          $ref: '#/components/schemas/cmp_id'
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                id: cmp_e05ee61ff80764b
-                deleted: true
-              schema:
-                description: Lob uses RESTful HTTP response codes to indicate success
-                  or failure of an API request. In general, 2xx indicates success,
-                  4xx indicate an input error, and 5xx indicates an error on Lob's
-                  end.
-                properties:
-                  id:
-                    $ref: '#/components/schemas/cmp_id'
-                  deleted:
-                    description: True if the resource has been successfully deleted.
-                    type: boolean
-          description: Deleted the campaign.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/lob_error'
-          description: Lob uses RESTful HTTP response codes to indicate success or
-            failure of an API request.
-      summary: delete
-      tags:
-      - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl -X DELETE https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b \
-            -u <YOUR API KEY>:
-        label: CURL
-      x-accepts: application/json
-    get:
-      description: Retrieves the details of an existing campaign. You need only supply
-        the unique campaign identifier that was returned upon campaign creation.
-      operationId: campaign_retrieve
-      parameters:
-      - description: id of the campaign
-        explode: false
-        in: path
-        name: cmp_id
-        required: true
-        schema:
-          $ref: '#/components/schemas/cmp_id'
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/campaign'
-          description: Returns a campaign object
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/lob_error'
-          description: Lob uses RESTful HTTP response codes to indicate success or
-            failure of an API request.
-      summary: get
-      tags:
-      - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b \
-            -u <YOUR API KEY>:
-        label: CURL
-      x-accepts: application/json
-    patch:
-      description: Update the details of an existing campaign. You need only supply
-        the unique identifier that was returned upon campaign creation.
-      operationId: campaign_update
-      parameters:
-      - description: id of the campaign
-        explode: false
-        in: path
-        name: cmp_id
-        required: true
-        schema:
-          $ref: '#/components/schemas/cmp_id'
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            example:
-              description: Test campaign
-            schema:
-              $ref: '#/components/schemas/campaign_updatable'
-          application/x-www-form-urlencoded:
-            example:
-              description: Test campaign
-            schema:
-              $ref: '#/components/schemas/campaign_updatable'
-          multipart/form-data:
-            example:
-              description: Test campaign
-            schema:
-              $ref: '#/components/schemas/campaign_updatable'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/campaign'
-          description: Returns a campaign object
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/lob_error'
-          description: Lob uses RESTful HTTP response codes to indicate success or
-            failure of an API request.
-      summary: update
-      tags:
-      - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl -X PATCH https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b \
-            -u <YOUR API KEY>: \
-            -d "description=Awesome campaign"
-        label: CURL
-      x-contentType: application/json
-      x-accepts: application/json
   /cards:
     get:
       description: Returns a list of your cards. The cards are returned sorted by
@@ -1194,12 +880,6 @@ paths:
               type: string
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
-          additional-properties:
-            dotnet:
-              toJson: true
       responses:
         "200":
           content:
@@ -1580,20 +1260,14 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
+        style: deepObject
       - description: |
           * `true` - only return orders (past or future) where `send_date` is
           greater than `date_created`
@@ -1618,9 +1292,6 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: |
           A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.
         explode: true
@@ -1651,12 +1322,6 @@ paths:
               type: string
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
-          additional-properties:
-            dotnet:
-              toJson: true
       responses:
         "200":
           content:
@@ -2120,20 +1785,14 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
+        style: deepObject
       - description: Set to `true` to return only color letters. Set to `false` to
           return only black & white letters.
         explode: true
@@ -2167,9 +1826,6 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: |
           A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.
         explode: true
@@ -2200,12 +1856,6 @@ paths:
               type: string
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
-          additional-properties:
-            dotnet:
-              toJson: true
       responses:
         "200":
           content:
@@ -2420,20 +2070,14 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
+        style: deepObject
       - description: Specifies the size of the postcard. Only `4x6` postcards can
           be sent to international destinations.
         explode: true
@@ -2445,11 +2089,6 @@ paths:
             $ref: '#/components/schemas/postcard_size'
           type: array
         style: form
-        x-template-config:
-          base-type:
-            dotnet: multi
-          size: true
-          list_of: PostcardSize
       - description: |
           * `true` - only return orders (past or future) where `send_date` is
           greater than `date_created`
@@ -2474,9 +2113,6 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: |
           A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.
         explode: true
@@ -2507,12 +2143,6 @@ paths:
               type: string
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
-          additional-properties:
-            dotnet:
-              toJson: true
       responses:
         "200":
           content:
@@ -2720,20 +2350,14 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
+        style: deepObject
       - description: The self mailer sizes to be returned.
         explode: true
         in: query
@@ -2744,11 +2368,6 @@ paths:
             $ref: '#/components/schemas/self_mailer_size'
           type: array
         style: form
-        x-template-config:
-          base-type:
-            dotnet: multi
-          size: true
-          list_of: SelfMailerSize
       - description: |
           * `true` - only return orders (past or future) where `send_date` is
           greater than `date_created`
@@ -2773,9 +2392,6 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: |
           A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.
         explode: true
@@ -2806,12 +2422,6 @@ paths:
               type: string
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
-          additional-properties:
-            dotnet:
-              toJson: true
       responses:
         "200":
           content:
@@ -3096,9 +2706,6 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       responses:
         "200":
           content:
@@ -3344,20 +2951,14 @@ paths:
             and `lte` is ≤.'
           type: object
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
       - description: Filter by metadata key-value pair`.
-        explode: true
+        explode: false
         in: query
         name: metadata
         required: false
         schema:
           $ref: '#/components/schemas/metadata_model'
-        style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
+        style: deepObject
       responses:
         "200":
           content:
@@ -3626,19 +3227,6 @@ paths:
       - Zip Lookups
       x-contentType: application/json
       x-accepts: application/json
-  /shared_dont_call:
-    get:
-      description: Don't call this. It's so that the right models can be generated.
-      operationId: placeholder
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/placeholder_model'
-          description: Uncallable, used for generating missing models
-      summary: placeholder_no_call
-      x-accepts: application/json
 components:
   headers:
     ratelimit-limit:
@@ -3718,21 +3306,15 @@ components:
           and `lte` is ≤.'
         type: object
       style: form
-      x-template-config:
-        base-type:
-          dotnet: deepObject
     metadata:
       description: Filter by metadata key-value pair`.
-      explode: true
+      explode: false
       in: query
       name: metadata
       required: false
       schema:
         $ref: '#/components/schemas/metadata_model'
-      style: form
-      x-template-config:
-        base-type:
-          dotnet: deepObject
+      style: deepObject
     offset:
       description: An integer that designates the offset at which to begin returning
         results. Defaults to 0.
@@ -3758,9 +3340,6 @@ components:
           and `lte` is ≤.'
         type: object
       style: form
-      x-template-config:
-        base-type:
-          dotnet: deepObject
     sort_by:
       $ref: '#/components/parameters/sort_by_5'
       description: |
@@ -3783,28 +3362,6 @@ components:
             type: string
         type: object
       style: form
-      x-template-config:
-        base-type:
-          dotnet: deepObject
-        additional-properties:
-          dotnet:
-            toJson: true
-    lang_spec:
-      description: |
-        * `native` - Translate response to the native language of the country in the request
-        * `match` - match the response to the language in the request
-
-        Default response is in English.
-      explode: false
-      in: header
-      name: x-lang-output
-      required: false
-      schema:
-        enum:
-        - native
-        - match
-        type: string
-      style: simple
     scheduled:
       description: |
         * `true` - only return orders (past or future) where `send_date` is
@@ -3831,9 +3388,6 @@ components:
           and `lte` is ≤.'
         type: object
       style: form
-      x-template-config:
-        base-type:
-          dotnet: deepObject
     mail_type:
       description: |
         A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.
@@ -3853,6 +3407,22 @@ components:
       required: false
       schema:
         maxLength: 256
+        type: string
+      style: simple
+    lang_spec:
+      description: |
+        * `native` - Translate response to the native language of the country in the request
+        * `match` - match the response to the language in the request
+
+        Default response is in English.
+      explode: false
+      in: header
+      name: x-lang-output
+      required: false
+      schema:
+        enum:
+        - native
+        - match
         type: string
       style: simple
   responses:
@@ -3960,34 +3530,6 @@ components:
           $ref: '#/components/headers/ratelimit-remaining'
         ratelimit-reset:
           $ref: '#/components/headers/ratelimit-reset'
-    all_campaigns:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/campaigns_list'
-      description: A dictionary with a data property that contains an array of up
-        to `limit` campaigns. Each entry in the array is a separate letter. The previous
-        and next page of campaigns can be retrieved by calling the endpoint contained
-        in the `previous_url` and `next_url` fields in the API response respectively.
-        If no more campaigns are available beyond the current set of returned results,
-        the `next_url` field will be empty.
-    campaign_deleted:
-      content:
-        application/json:
-          example:
-            id: cmp_e05ee61ff80764b
-            deleted: true
-          schema:
-            description: Lob uses RESTful HTTP response codes to indicate success
-              or failure of an API request. In general, 2xx indicates success, 4xx
-              indicate an input error, and 5xx indicates an error on Lob's end.
-            properties:
-              id:
-                $ref: '#/components/schemas/cmp_id'
-              deleted:
-                description: True if the resource has been successfully deleted.
-                type: boolean
-      description: Deleted the campaign.
     card_deleted:
       content:
         application/json:
@@ -6010,7 +5552,6 @@ components:
           - highway_contract
           - po_box
           - general_delivery
-          - ""
           type: string
         latitude:
           description: |
@@ -6791,351 +6332,6 @@ components:
       - addresses
       - errors
       type: object
-    cmp_schedule_type:
-      description: How the campaign should be scheduled. Only value available today
-        is `immediate`.
-      enum:
-      - immediate
-      type: string
-    cmp_use_type:
-      description: The usage type of this campaign. Can be one of `marketing` or `operational`.
-      enum:
-      - marketing
-      - operational
-      - null
-      nullable: true
-      type: string
-    cmp_id:
-      description: Unique identifier prefixed with `cmp_`.
-      pattern: ^cmp_[a-zA-Z0-9]+$
-      title: Campaign id
-      type: string
-    campaign:
-      example:
-        metadata:
-          key: metadata
-        date_created: 2000-01-23T04:56:07.000+00:00
-        creatives: ""
-        description: description
-        target_delivery_date: 2000-01-23T04:56:07.000+00:00
-        billing_group_id: billing_group_id
-        account_id: account_id
-        deleted: true
-        date_modified: 2000-01-23T04:56:07.000+00:00
-        send_date: 2000-01-23T04:56:07.000+00:00
-        is_draft: true
-        auto_cancel_if_ncoa: true
-        name: name
-        cancel_window_campaign_minutes: 0
-        id: id
-        object: campaign
-      properties:
-        billing_group_id:
-          description: Unique identifier prefixed with `bg_`.
-          nullable: true
-          pattern: ^bg_[a-zA-Z0-9]+$
-          type: string
-        name:
-          description: Name of the campaign.
-          type: string
-        description:
-          description: |
-            An internal description that identifies this resource. Must be no longer than 255 characters.
-          maxLength: 255
-          nullable: true
-          type: string
-        schedule_type:
-          $ref: '#/components/schemas/cmp_schedule_type'
-        target_delivery_date:
-          description: If `schedule_type` is `target_delivery_date`, provide a targeted
-            delivery date for mail pieces in this campaign.
-          format: date-time
-          nullable: true
-          type: string
-        send_date:
-          description: If `schedule_type` is `scheduled_send_date`, provide a date
-            to send this campaign.
-          format: date-time
-          nullable: true
-          type: string
-        cancel_window_campaign_minutes:
-          description: A window, in minutes, within which the campaign can be canceled.
-          nullable: true
-          type: integer
-        metadata:
-          additionalProperties:
-            type: string
-          description: 'Use metadata to store custom information for tagging and labeling
-            back to your internal systems. Must be an object with up to 20 key-value
-            pairs. Keys must be at most 40 characters and values must be at most 500
-            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
-            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
-            for more information.'
-          maxLength: 500
-          pattern: '[^"\\]{0,500}'
-          type: object
-          x-template-config:
-            isComplexObject: true
-            base-type:
-              java: HashMap<String,String>
-        use_type:
-          $ref: '#/components/schemas/cmp_use_type'
-        auto_cancel_if_ncoa:
-          description: Whether or not a mail piece should be automatically canceled
-            and not sent if the address is updated via NCOA.
-          type: boolean
-        id:
-          description: Unique identifier prefixed with `cmp_`.
-          pattern: ^cmp_[a-zA-Z0-9]+$
-          title: Campaign id
-          type: string
-        account_id:
-          description: Account ID that this campaign is associated with.
-          type: string
-        is_draft:
-          default: true
-          description: Whether or not the campaign is still a draft.
-          type: boolean
-        creatives:
-          description: An array of creatives that have been associated with this campaign.
-          type: array
-        date_created:
-          description: A timestamp in ISO 8601 format of the date the resource was
-            created.
-          format: date-time
-          type: string
-        date_modified:
-          description: A timestamp in ISO 8601 format of the date the resource was
-            last modified.
-          format: date-time
-          type: string
-        deleted:
-          description: Only returned if the resource has been successfully deleted.
-          type: boolean
-        object:
-          default: campaign
-          description: Value is resource type.
-          enum:
-          - campaign
-          type: string
-      required:
-      - auto_cancel_if_ncoa
-      - creatives
-      - date_created
-      - date_modified
-      - id
-      - is_draft
-      - name
-      - object
-      - schedule_type
-      type: object
-    campaigns_list:
-      example:
-        data:
-        - metadata:
-            key: metadata
-          date_created: 2000-01-23T04:56:07.000+00:00
-          creatives: ""
-          description: description
-          target_delivery_date: 2000-01-23T04:56:07.000+00:00
-          billing_group_id: billing_group_id
-          account_id: account_id
-          deleted: true
-          date_modified: 2000-01-23T04:56:07.000+00:00
-          send_date: 2000-01-23T04:56:07.000+00:00
-          is_draft: true
-          auto_cancel_if_ncoa: true
-          name: name
-          cancel_window_campaign_minutes: 0
-          id: id
-          object: campaign
-        - metadata:
-            key: metadata
-          date_created: 2000-01-23T04:56:07.000+00:00
-          creatives: ""
-          description: description
-          target_delivery_date: 2000-01-23T04:56:07.000+00:00
-          billing_group_id: billing_group_id
-          account_id: account_id
-          deleted: true
-          date_modified: 2000-01-23T04:56:07.000+00:00
-          send_date: 2000-01-23T04:56:07.000+00:00
-          is_draft: true
-          auto_cancel_if_ncoa: true
-          name: name
-          cancel_window_campaign_minutes: 0
-          id: id
-          object: campaign
-        total_count: 1
-        next_url: next_url
-        count: 6
-        previous_url: previous_url
-        object: object
-      properties:
-        data:
-          description: list of campaigns
-          items:
-            $ref: '#/components/schemas/campaign'
-          type: array
-          x-template-config:
-            isComplexObject: true
-            base-type:
-              java: ArrayList<Campaign>
-              python: Campaign[]
-        object:
-          description: Value is type of resource.
-          type: string
-        next_url:
-          description: url of next page of items in list.
-          nullable: true
-          type: string
-          x-pagination-next: true
-        previous_url:
-          description: url of previous page of items in list.
-          nullable: true
-          type: string
-          x-pagination-previous: true
-        count:
-          description: number of resources in a set
-          type: integer
-        total_count:
-          description: indicates the total number of records. Provided when the request
-            specifies an "include" query parameter
-          type: integer
-      type: object
-      x-code-snippet:
-        campaigns: true
-        list: true
-        object_type: Campaign
-        curl_form: campaigns
-        plural_response_var: campaigns
-        javaSupported: true
-        typescriptSupported: true
-        plural_object_type: Campaigns
-        args:
-        - arg: 2
-          notNull: true
-          param: limit
-        - arg: "null"
-          param: before
-        - arg: "null"
-          param: after
-        - arg: "null"
-          param: include
-          last: true
-    campaign_writable:
-      properties:
-        billing_group_id:
-          description: Unique identifier prefixed with `bg_`.
-          nullable: true
-          pattern: ^bg_[a-zA-Z0-9]+$
-          type: string
-        name:
-          description: Name of the campaign.
-          type: string
-        description:
-          description: |
-            An internal description that identifies this resource. Must be no longer than 255 characters.
-          maxLength: 255
-          nullable: true
-          type: string
-        schedule_type:
-          $ref: '#/components/schemas/cmp_schedule_type'
-        target_delivery_date:
-          description: If `schedule_type` is `target_delivery_date`, provide a targeted
-            delivery date for mail pieces in this campaign.
-          format: date-time
-          nullable: true
-          type: string
-        send_date:
-          description: If `schedule_type` is `scheduled_send_date`, provide a date
-            to send this campaign.
-          format: date-time
-          nullable: true
-          type: string
-        cancel_window_campaign_minutes:
-          description: A window, in minutes, within which the campaign can be canceled.
-          nullable: true
-          type: integer
-        metadata:
-          additionalProperties:
-            type: string
-          description: 'Use metadata to store custom information for tagging and labeling
-            back to your internal systems. Must be an object with up to 20 key-value
-            pairs. Keys must be at most 40 characters and values must be at most 500
-            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
-            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
-            for more information.'
-          maxLength: 500
-          pattern: '[^"\\]{0,500}'
-          type: object
-          x-template-config:
-            isComplexObject: true
-            base-type:
-              java: HashMap<String,String>
-        use_type:
-          $ref: '#/components/schemas/cmp_use_type'
-        auto_cancel_if_ncoa:
-          description: Whether or not a mail piece should be automatically canceled
-            and not sent if the address is updated via NCOA.
-          type: boolean
-      required:
-      - name
-      - schedule_type
-      type: object
-    campaign_updatable:
-      properties:
-        name:
-          title: Name
-          type: string
-        description:
-          description: |
-            An internal description that identifies this resource. Must be no longer than 255 characters.
-          maxLength: 255
-          nullable: true
-          type: string
-        schedule_type:
-          $ref: '#/components/schemas/cmp_schedule_type'
-        target_delivery_date:
-          description: If `schedule_type` is `target_delivery_date`, provide a targeted
-            delivery date for mail pieces in this campaign.
-          format: date-time
-          type: string
-        send_date:
-          description: If `schedule_type` is `scheduled_send_date`, provide a date
-            to send this campaign.
-          format: date-time
-          type: string
-        cancel_window_campaign_minutes:
-          description: A window, in minutes, within which the campaign can be canceled.
-          type: integer
-        metadata:
-          additionalProperties:
-            type: string
-          description: 'Use metadata to store custom information for tagging and labeling
-            back to your internal systems. Must be an object with up to 20 key-value
-            pairs. Keys must be at most 40 characters and values must be at most 500
-            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
-            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
-            for more information.'
-          maxLength: 500
-          pattern: '[^"\\]{0,500}'
-          type: object
-          x-template-config:
-            isComplexObject: true
-            base-type:
-              java: HashMap<String,String>
-        is_draft:
-          default: true
-          description: Whether or not the campaign is still a draft.
-          type: boolean
-        use_type:
-          $ref: '#/components/schemas/cmp_use_type'
-        auto_cancel_if_ncoa:
-          description: Whether or not a mail piece should be automatically canceled
-            and not sent if the address is updated via NCOA.
-          type: boolean
-      type: object
     card_id:
       description: Unique identifier prefixed with `card_`.
       pattern: ^card_[a-zA-Z0-9]+$
@@ -7219,8 +6415,7 @@ components:
           description: True if the cards should be auto-reordered.
           type: boolean
         reorder_quantity:
-          description: The number of cards to be reordered. Only present when auto_reorder
-            is True.
+          description: The number of cards to be reordered.
           nullable: true
           type: integer
         raw_url:
@@ -7308,13 +6503,18 @@ components:
       required:
       - auto_reorder
       - available_quantity
-      - card_orders
+      - back_original_url
       - date_created
       - date_modified
+      - front_original_url
       - id
       - object
+      - orientation
       - pending_quantity
-      - size
+      - raw_url
+      - reorder_quantity
+      - status
+      - threshold_amount
       - thumbnails
       - url
       type: object
@@ -7733,7 +6933,6 @@ components:
           type: object
           x-template-config:
             structured-incompatible: true
-            null: true
         location:
           description: |
             The zip code in which the scan event occurred. Null for `Mailed` events.
@@ -8411,10 +7610,10 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: AddressDomestic
-                python: AddressDomestic
-                typescript: Models.AddressDomestic
-                python_path: lob_python.model.address_domestic
+                java: AddressEditable
+                python: AddressEditable
+                typescript: Models.AddressEditable
+                python_path: lob_python.model.address_editable
                 hasPath: true
         to:
           description: Must either be an address ID or an inline object with correct
@@ -8445,7 +7644,6 @@ components:
         logo:
           description: Accepts a remote URL or local file upload to an image to print
             (in grayscale) in the upper-left corner of your check.
-          type: string
         check_bottom:
           description: |-
             The artwork to use on the bottom of the check page.
@@ -8734,22 +7932,15 @@ components:
         intlAutocompletion: true
         address:
         - key: address_prefix
-          pascal_case_key: AddressPrefix
           val: 340 Wat
         - key: city
-          pascal_case_key: City
           val: Summerside
         - key: state
-          pascal_case_key: State
           val: Prince Edward Island
         - key: zip_code
-          pascal_case_key: ZipCode
           val: C1N 1C4
         - key: country
-          pascal_case_key: Country
           val: CA
-          java_val: CountryExtended.CA
-          javaNonString: true
     intl_auto_id:
       description: Unique identifier prefixed with `intl_auto_`.
       pattern: ^intl_auto_[a-zA-Z0-9]+$
@@ -8764,7 +7955,6 @@ components:
     intl_suggestions:
       example:
         primary_number_range: primary_number_range
-        country: AD
         primary_line: primary_line
         city: city
         state: state
@@ -8798,228 +7988,7 @@ components:
             The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state.
           type: string
         country:
-          description: Must be a 2 letter country short-name code (ISO 3166).
-          enum:
-          - AD
-          - AE
-          - AF
-          - AG
-          - AI
-          - AL
-          - AN
-          - AO
-          - AQ
-          - AR
-          - AT
-          - AU
-          - AW
-          - AZ
-          - BA
-          - BB
-          - BD
-          - BE
-          - BF
-          - BG
-          - BH
-          - BI
-          - BJ
-          - BM
-          - BN
-          - BO
-          - BQ
-          - BR
-          - BS
-          - BT
-          - BW
-          - BY
-          - BZ
-          - CA
-          - CD
-          - CG
-          - CH
-          - CI
-          - CK
-          - CL
-          - CM
-          - CN
-          - CO
-          - CR
-          - CS
-          - CU
-          - CV
-          - CW
-          - CY
-          - CZ
-          - DE
-          - DJ
-          - DK
-          - DM
-          - DO
-          - DZ
-          - EC
-          - EE
-          - EG
-          - EH
-          - ER
-          - ES
-          - ET
-          - FI
-          - FJ
-          - FK
-          - FO
-          - FR
-          - GA
-          - GB
-          - GD
-          - GE
-          - GH
-          - GI
-          - GL
-          - GM
-          - GN
-          - GQ
-          - GR
-          - GS
-          - GT
-          - GW
-          - GY
-          - HK
-          - HN
-          - HR
-          - HT
-          - HU
-          - ID
-          - IE
-          - IL
-          - IN
-          - IO
-          - IQ
-          - IR
-          - IS
-          - IT
-          - JM
-          - JO
-          - JP
-          - KE
-          - KG
-          - KH
-          - KI
-          - KM
-          - KN
-          - KP
-          - KR
-          - KW
-          - KY
-          - KZ
-          - LA
-          - LB
-          - LC
-          - LI
-          - LK
-          - LR
-          - LS
-          - LT
-          - LU
-          - LV
-          - LY
-          - MA
-          - MC
-          - MD
-          - ME
-          - MG
-          - MK
-          - ML
-          - MM
-          - MN
-          - MO
-          - MR
-          - MS
-          - MT
-          - MU
-          - MV
-          - MW
-          - MX
-          - MY
-          - MZ
-          - NA
-          - NE
-          - NF
-          - NG
-          - NI
-          - NL
-          - "NO"
-          - NP
-          - NR
-          - NU
-          - NZ
-          - OM
-          - PA
-          - PE
-          - PG
-          - PH
-          - PK
-          - PL
-          - PN
-          - PT
-          - PY
-          - QA
-          - RO
-          - RS
-          - RU
-          - RW
-          - SA
-          - SB
-          - SC
-          - SD
-          - SE
-          - SG
-          - SH
-          - SI
-          - SK
-          - SL
-          - SM
-          - SN
-          - SO
-          - SR
-          - SS
-          - ST
-          - SV
-          - SX
-          - SY
-          - SZ
-          - TC
-          - TD
-          - TG
-          - TH
-          - TJ
-          - TK
-          - TL
-          - TM
-          - TN
-          - TO
-          - TR
-          - TT
-          - TV
-          - TW
-          - TZ
-          - UA
-          - UG
-          - US
-          - UY
-          - UZ
-          - VA
-          - VC
-          - VE
-          - VG
-          - VN
-          - VU
-          - WS
-          - YE
-          - ZA
-          - ZM
-          - ZW
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/country_extended'
         zip_code:
           description: A 5-digit zip code. Left empty if a test key is used.
           type: string
@@ -9041,35 +8010,30 @@ components:
       example:
         suggestions:
         - primary_number_range: primary_number_range
-          country: AD
           primary_line: primary_line
           city: city
           state: state
           zip_code: zip_code
           object: intl_autocompletion
         - primary_number_range: primary_number_range
-          country: AD
           primary_line: primary_line
           city: city
           state: state
           zip_code: zip_code
           object: intl_autocompletion
         - primary_number_range: primary_number_range
-          country: AD
           primary_line: primary_line
           city: city
           state: state
           zip_code: zip_code
           object: intl_autocompletion
         - primary_number_range: primary_number_range
-          country: AD
           primary_line: primary_line
           city: city
           state: state
           zip_code: zip_code
           object: intl_autocompletion
         - primary_number_range: primary_number_range
-          country: AD
           primary_line: primary_line
           city: city
           state: state
@@ -9294,6 +8258,25 @@ components:
             python: AddressEditable
             python_path: lob_python.model.address_editable
             hasPath: true
+    return_envelope:
+      example:
+        alias: alias
+        id: id
+        url: url
+        object: object
+      properties:
+        id:
+          description: The unique ID of the Return Envelope
+          type: string
+        alias:
+          description: A quick reference name for the Return Envelope
+          type: string
+        url:
+          description: The url of the  return envelope
+          type: string
+        object:
+          type: string
+      type: object
     letter:
       example:
         metadata:
@@ -9302,7 +8285,11 @@ components:
         expected_delivery_date: 2000-01-23
         description: description
         extra_service: extra_service
-        return_envelope: ""
+        return_envelope:
+          alias: alias
+          id: id
+          url: url
+          object: object
         perforated_page: 0
         send_date: 2000-01-23T04:56:07.000+00:00
         tracking_events: []
@@ -9540,27 +8527,7 @@ components:
           - bottom_first_page
           type: string
         return_envelope:
-          x-template-config:
-            isOneOf: true
-            type-composite:
-            - base-type1:
-                java: String
-                typescript: boolean
-                python: bool
-                hasPath: false
-                default: true
-                isRef: true
-            - base-type2:
-                java: ReturnEnvelope
-                typescript: Models.ReturnEnvelope
-                python: ReturnEnvelope
-                hasPath: true
-                python_path: lob_python.model.return_envelope
-                isRef: true
-            - base-type3:
-                java: Boolean
-                isRef: true
-            default: false
+          $ref: '#/components/schemas/return_envelope'
         perforated_page:
           description: Required if `return_envelope` is `true`. The number of the
             page that should be perforated for use with the return envelope. Must
@@ -9577,7 +8544,6 @@ components:
       - from
       - id
       - object
-      - return_envelope
       - to
       type: object
       x-code-snippet:
@@ -9631,7 +8597,11 @@ components:
           expected_delivery_date: 2000-01-23
           description: description
           extra_service: extra_service
-          return_envelope: ""
+          return_envelope:
+            alias: alias
+            id: id
+            url: url
+            object: object
           perforated_page: 0
           send_date: 2000-01-23T04:56:07.000+00:00
           tracking_events: []
@@ -9703,7 +8673,11 @@ components:
           expected_delivery_date: 2000-01-23
           description: description
           extra_service: extra_service
-          return_envelope: ""
+          return_envelope:
+            alias: alias
+            id: id
+            url: url
+            object: object
           perforated_page: 0
           send_date: 2000-01-23T04:56:07.000+00:00
           tracking_events: []
@@ -9922,10 +8896,12 @@ components:
           - bottom_first_page
           type: string
         return_envelope:
+          default: false
           description: |-
             indicates if a return envelope is requested for the letter. The value corresponding to this field is by default a boolean. But if the account is signed up for custom return envelopes, the value is of type string and is `no_9_single_window` for a standard return envelope and a custom `return_envelope_id` for non-standard return envelopes.
 
             To include a return envelope with your letter, set to `true` and specify the `perforated_page`. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.
+          type: boolean
           x-template-config:
             isOneOf: true
             type-composite:
@@ -11084,9 +10060,9 @@ components:
           time: 2000-01-23T04:56:07.000+00:00
           type: certified
           object: tracking_event
-        from: ""
+        from: from
         id: id
-        to: ""
+        to: to
         object: self_mailer
       properties:
         id:
@@ -11094,8 +10070,9 @@ components:
           pattern: ^sfm_[a-zA-Z0-9]+$
           type: string
         to:
-          allOf:
-          - $ref: '#/components/schemas/address'
+          description: Must either be an address ID or an inline object with correct
+            address parameters.
+          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -11106,14 +10083,15 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: Address
-                python: Address
-                typescript: Models.Address
-                python_path: lob_python.model.address
+                java: AddressEditable
+                python: AddressEditable
+                typescript: Models.AddressEditable
+                python_path: lob_python.model.address_editable
                 hasPath: true
         from:
-          allOf:
-          - $ref: '#/components/schemas/address_domestic_expanded'
+          description: Must either be an address ID or an inline object with correct
+            address parameters.
+          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -11124,9 +10102,9 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: Address
-                python: Address
-                typescript: Models.Address
+                java: AddressEditable
+                python: AddressEditable
+                typescript: Models.AddressEditable
                 hasPath: false
         size:
           $ref: '#/components/schemas/self_mailer_size'
@@ -11234,9 +10212,7 @@ components:
           pattern: ^https://(lob-assets|lob-assets-staging)\.com/(letters|postcards|bank-accounts|checks|self-mailers|cards)/[a-z]{3,4}_[a-z0-9]{15,16}(\.pdf|_thumb_[a-z]+_[0-9]+\.png)\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$
           type: string
       required:
-      - carrier
       - id
-      - to
       - url
       type: object
       x-code-snippet:
@@ -11320,9 +10296,9 @@ components:
             time: 2000-01-23T04:56:07.000+00:00
             type: certified
             object: tracking_event
-          from: ""
+          from: from
           id: id
-          to: ""
+          to: to
           object: self_mailer
         - merge_variables: '{}'
           metadata:
@@ -11361,9 +10337,9 @@ components:
             time: 2000-01-23T04:56:07.000+00:00
             type: certified
             object: tracking_event
-          from: ""
+          from: from
           id: id
-          to: ""
+          to: to
           object: self_mailer
         total_count: 6
         next_url: next_url
@@ -12811,142 +11787,6 @@ components:
       - id
       - object
       - zip_code_type
-      type: object
-    return_envelope:
-      example:
-        alias: alias
-        id: id
-        url: url
-        object: object
-      properties:
-        id:
-          description: The unique ID of the Return Envelope
-          type: string
-        alias:
-          description: A quick reference name for the Return Envelope
-          type: string
-        url:
-          description: The url of the  return envelope
-          type: string
-        object:
-          type: string
-      type: object
-    address_domestic:
-      example:
-        metadata:
-          key: metadata
-        address_line2: address_line2
-        address_line1: address_line1
-        phone: phone
-        address_country: address_country
-        address_state: address_state
-        name: name
-        description: description
-        company: company
-        address_zip: address_zip
-        email: email
-        address_city: address_city
-      properties:
-        address_line1:
-          description: The building number, street name, street suffix, and any street
-            directionals. For US addresses, the max length is 64 characters.
-          maxLength: 200
-          type: string
-        address_line2:
-          description: The suite or apartment number of the recipient address, if
-            applicable. For US addresses, the max length is 64 characters.
-          maxLength: 200
-          nullable: true
-          type: string
-        address_city:
-          maxLength: 200
-          nullable: true
-          type: string
-        address_state:
-          maxLength: 200
-          nullable: true
-          type: string
-        address_zip:
-          description: Optional postal code. For US addresses, must be either 5 or
-            9 digits.
-          maxLength: 40
-          nullable: true
-          type: string
-        description:
-          description: |
-            An internal description that identifies this resource. Must be no longer than 255 characters.
-          maxLength: 255
-          nullable: true
-          type: string
-        name:
-          description: |
-            Either `name` or `company` is required, you may also add both. Must be no longer than 40 characters. If both `name` and `company` are provided, they will be printed on two separate lines above the rest of the address.
-          maxLength: 40
-          nullable: true
-          type: string
-        company:
-          description: Either `name` or `company` is required, you may also add both.
-          maxLength: 40
-          nullable: true
-          type: string
-        phone:
-          description: Must be no longer than 40 characters.
-          maxLength: 40
-          nullable: true
-          type: string
-        email:
-          description: Must be no longer than 100 characters.
-          maxLength: 100
-          nullable: true
-          type: string
-        address_country:
-          description: The country associated with this address.
-          nullable: true
-          pattern: US
-          type: string
-        metadata:
-          additionalProperties:
-            type: string
-          description: 'Use metadata to store custom information for tagging and labeling
-            back to your internal systems. Must be an object with up to 20 key-value
-            pairs. Keys must be at most 40 characters and values must be at most 500
-            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
-            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
-            for more information.'
-          maxLength: 500
-          pattern: '[^"\\]{0,500}'
-          type: object
-          x-template-config:
-            isComplexObject: true
-            base-type:
-              java: HashMap<String,String>
-      type: object
-    placeholder_model:
-      example:
-        address_domestic:
-          metadata:
-            key: metadata
-          address_line2: address_line2
-          address_line1: address_line1
-          phone: phone
-          address_country: address_country
-          address_state: address_state
-          name: name
-          description: description
-          company: company
-          address_zip: address_zip
-          email: email
-          address_city: address_city
-        return_envelope:
-          alias: alias
-          id: id
-          url: url
-          object: object
-      properties:
-        return_envelope:
-          $ref: '#/components/schemas/return_envelope'
-        address_domestic:
-          $ref: '#/components/schemas/address_domestic'
       type: object
     event_type:
       properties:
