@@ -14,7 +14,7 @@ jobs:
       - name: 'Create env file'
         run: |
           touch .env
-          echo LOB_LIVE_API_KEY=${{ secrets.LOB_LIVE_API_KEY }} >> .env
+          echo LOB_API_LIVE_KEY=${{ secrets.LOB_API_LIVE_KEY }} >> .env
           echo LOB_API_TEST_KEY=${{ secrets.LOB_API_TEST_KEY }} >> .env
           cat .env
       - name: Checkout the repository
@@ -33,4 +33,4 @@ jobs:
         run: mvn clean -B test
         env:
           LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
-          LOB_LIVE_API_KEY: ${{ secrets.LOB_LIVE_API_KEY }}
+          LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}

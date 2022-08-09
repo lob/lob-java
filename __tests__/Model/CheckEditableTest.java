@@ -1,6 +1,7 @@
 package Model;
 
 import com.lob.model.CheckEditable;
+import com.lob.model.AddressDomestic;
 import com.lob.model.AddressEditable;
 
 import java.util.HashMap;
@@ -16,8 +17,8 @@ public class CheckEditableTest {
     @DataProvider (name = "check-editable-data-provider")
     public Object[][] checkEditableDpMethod(){
         return new Object[][] {
-            {"from", new AddressEditable()},
-            {"to", new AddressEditable()},
+            {"from", new AddressDomestic()},
+            {"to", new AddressDomestic()},
             {"bank_account", "fake account"},
             {"amount", 111f},
             {"logo", "fake logo"},
@@ -42,13 +43,13 @@ public class CheckEditableTest {
         
         switch (prop) {
             case "from": {
-                AddressEditable castedVal = (AddressEditable)val;
+                AddressDomestic castedVal = (AddressDomestic)val;
                 rec.setFrom(castedVal);
                 Assert.assertEquals(rec.getFrom(), gson.toJson(castedVal));
                 break;
             }
             case "to": {
-                AddressEditable castedVal = (AddressEditable)val;
+                AddressDomestic castedVal = (AddressDomestic)val;
                 rec.setTo(castedVal);
                 Assert.assertEquals(rec.getTo(), gson.toJson(castedVal));
                 break;

@@ -226,7 +226,7 @@ public class LetterTest {
             case "return_envelope": {
                 ReturnEnvelope castedVal = (ReturnEnvelope)val;
                 rec.setReturnEnvelope(castedVal);
-                Assert.assertEquals(rec.getReturnEnvelope(), castedVal);
+                Assert.assertEquals(rec.getReturnEnvelope(), gson.toJson(castedVal));
                 break;
             }
             case "perforated_page": {
