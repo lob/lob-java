@@ -17,7 +17,15 @@ Building the API client library requires:
 1. Java 1.7+
 2. Maven/Gradle
 
-## Installation
+## Getting Started
+
+### Registration
+
+First, you will need to first create an account at [Lob.com](https://dashboard.lob.com/#/register) and obtain your Test and Live API Keys.
+
+Once you have created an account, you can access your API Keys from the [Settings Panel](https://dashboard.lob.com/#/settings).
+
+### Installation
 
 To install the API client library to your local Maven repository, simply execute:
 
@@ -33,7 +41,7 @@ mvn clean deploy
 
 Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) for more information.
 
-### Maven users
+#### Maven users
 
 Add this dependency to your project's POM:
 
@@ -45,7 +53,7 @@ Add this dependency to your project's POM:
 </dependency>
 ```
 
-#### Projects using the Spring framework
+##### Projects using the Spring framework
 
 Some versions of the Spring framework introduce a dependency collision that prevents the Lob SDK from functioning correctly. In order to correct this, please add the following two blocks to your project's POM along with the dependency mentioned above.
 
@@ -69,7 +77,7 @@ and
 </dependency>
 ```
 
-### Gradle users
+#### Gradle users
 
 Add this dependency to your project's build file:
 
@@ -77,7 +85,7 @@ Add this dependency to your project's build file:
 implementation "com.github.lob:lob-java:13.0.0"
 ```
 
-### Others
+#### Others
 
 At first generate the JAR by executing:
 
@@ -90,25 +98,24 @@ Then manually install the following JARs:
 * `target/lob-java-13.0.0.jar`
 * `target/lib/*.jar`
 
-## Getting Started
 
-Please follow the [installation](#installation) instruction and execute the following Java code:
+## First API Call
 
 ```java
 package com.company.app;
- 
+
 import com.lob.api.ApiClient;
 import com.lob.api.ApiException;
 import com.lob.api.Configuration;
 import com.lob.api.auth.*;
 import com.lob.model.*;
 import com.lob.api.client.AddressesApi;
- 
+
 public class App
 {
     public static void main( String[] args )
     {
-       
+
         ApiClient lobClient = Configuration.getDefaultApiClient();
 
         // Configure HTTP basic authorization: basicAuth
@@ -139,180 +146,44 @@ public class App
             e.printStackTrace();
         }
     }
- } 
+ }
 ```
 
-## Documentation for API Endpoints
+## API Documentation
 
-All URIs are relative to *https://api.lob.com/v1*
+The full and comprehensive documentation of Lob's APIs is available [here](https://docs.lob.com/).
 
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*AddressesApi* | [**addressCreate**](docs/AddressesApi.md#addressCreate) | **POST** /addresses | create
-*AddressesApi* | [**addressDelete**](docs/AddressesApi.md#addressDelete) | **DELETE** /addresses/{adr_id} | delete
-*AddressesApi* | [**addressRetrieve**](docs/AddressesApi.md#addressRetrieve) | **GET** /addresses/{adr_id} | get
-*AddressesApi* | [**addressesList**](docs/AddressesApi.md#addressesList) | **GET** /addresses | list
-*BankAccountsApi* | [**bankAccountCreate**](docs/BankAccountsApi.md#bankAccountCreate) | **POST** /bank_accounts | create
-*BankAccountsApi* | [**bankAccountDelete**](docs/BankAccountsApi.md#bankAccountDelete) | **DELETE** /bank_accounts/{bank_id} | delete
-*BankAccountsApi* | [**bankAccountRetrieve**](docs/BankAccountsApi.md#bankAccountRetrieve) | **GET** /bank_accounts/{bank_id} | get
-*BankAccountsApi* | [**bankAccountVerify**](docs/BankAccountsApi.md#bankAccountVerify) | **POST** /bank_accounts/{bank_id}/verify | verify
-*BankAccountsApi* | [**bankAccountsList**](docs/BankAccountsApi.md#bankAccountsList) | **GET** /bank_accounts | list
-*BillingGroupsApi* | [**billingGroupCreate**](docs/BillingGroupsApi.md#billingGroupCreate) | **POST** /billing_groups | create
-*BillingGroupsApi* | [**billingGroupRetrieve**](docs/BillingGroupsApi.md#billingGroupRetrieve) | **GET** /billing_groups/{bg_id} | get
-*BillingGroupsApi* | [**billingGroupUpdate**](docs/BillingGroupsApi.md#billingGroupUpdate) | **POST** /billing_groups/{bg_id} | update
-*BillingGroupsApi* | [**billingGroupsList**](docs/BillingGroupsApi.md#billingGroupsList) | **GET** /billing_groups | list
-*CardOrdersApi* | [**cardOrderCreate**](docs/CardOrdersApi.md#cardOrderCreate) | **POST** /cards/{card_id}/orders | create
-*CardOrdersApi* | [**cardOrdersRetrieve**](docs/CardOrdersApi.md#cardOrdersRetrieve) | **GET** /cards/{card_id}/orders | get
-*CardsApi* | [**cardCreate**](docs/CardsApi.md#cardCreate) | **POST** /cards | create
-*CardsApi* | [**cardDelete**](docs/CardsApi.md#cardDelete) | **DELETE** /cards/{card_id} | delete
-*CardsApi* | [**cardRetrieve**](docs/CardsApi.md#cardRetrieve) | **GET** /cards/{card_id} | get
-*CardsApi* | [**cardUpdate**](docs/CardsApi.md#cardUpdate) | **POST** /cards/{card_id} | update
-*CardsApi* | [**cardsList**](docs/CardsApi.md#cardsList) | **GET** /cards | list
-*ChecksApi* | [**checkCancel**](docs/ChecksApi.md#checkCancel) | **DELETE** /checks/{chk_id} | cancel
-*ChecksApi* | [**checkCreate**](docs/ChecksApi.md#checkCreate) | **POST** /checks | create
-*ChecksApi* | [**checkRetrieve**](docs/ChecksApi.md#checkRetrieve) | **GET** /checks/{chk_id} | get
-*ChecksApi* | [**checksList**](docs/ChecksApi.md#checksList) | **GET** /checks | list
-*IntlVerificationsApi* | [**bulkIntlVerifications**](docs/IntlVerificationsApi.md#bulkIntlVerifications) | **POST** /bulk/intl_verifications | verifyBulk
-*IntlVerificationsApi* | [**intlVerification**](docs/IntlVerificationsApi.md#intlVerification) | **POST** /intl_verifications | verifySingle
-*LettersApi* | [**letterCancel**](docs/LettersApi.md#letterCancel) | **DELETE** /letters/{ltr_id} | cancel
-*LettersApi* | [**letterCreate**](docs/LettersApi.md#letterCreate) | **POST** /letters | create
-*LettersApi* | [**letterRetrieve**](docs/LettersApi.md#letterRetrieve) | **GET** /letters/{ltr_id} | get
-*LettersApi* | [**lettersList**](docs/LettersApi.md#lettersList) | **GET** /letters | list
-*PostcardsApi* | [**postcardCreate**](docs/PostcardsApi.md#postcardCreate) | **POST** /postcards | create
-*PostcardsApi* | [**postcardDelete**](docs/PostcardsApi.md#postcardDelete) | **DELETE** /postcards/{psc_id} | cancel
-*PostcardsApi* | [**postcardRetrieve**](docs/PostcardsApi.md#postcardRetrieve) | **GET** /postcards/{psc_id} | get
-*PostcardsApi* | [**postcardsList**](docs/PostcardsApi.md#postcardsList) | **GET** /postcards | list
-*ReverseGeocodeLookupsApi* | [**reverseGeocodeLookup**](docs/ReverseGeocodeLookupsApi.md#reverseGeocodeLookup) | **POST** /us_reverse_geocode_lookups | lookup
-*SelfMailersApi* | [**selfMailerCreate**](docs/SelfMailersApi.md#selfMailerCreate) | **POST** /self_mailers | create
-*SelfMailersApi* | [**selfMailerDelete**](docs/SelfMailersApi.md#selfMailerDelete) | **DELETE** /self_mailers/{sfm_id} | delete
-*SelfMailersApi* | [**selfMailerRetrieve**](docs/SelfMailersApi.md#selfMailerRetrieve) | **GET** /self_mailers/{sfm_id} | get
-*SelfMailersApi* | [**selfMailersList**](docs/SelfMailersApi.md#selfMailersList) | **GET** /self_mailers | list
-*TemplateVersionsApi* | [**createTemplateVersion**](docs/TemplateVersionsApi.md#createTemplateVersion) | **POST** /templates/{tmpl_id}/versions | create
-*TemplateVersionsApi* | [**templateVersionDelete**](docs/TemplateVersionsApi.md#templateVersionDelete) | **DELETE** /templates/{tmpl_id}/versions/{vrsn_id} | delete
-*TemplateVersionsApi* | [**templateVersionRetrieve**](docs/TemplateVersionsApi.md#templateVersionRetrieve) | **GET** /templates/{tmpl_id}/versions/{vrsn_id} | get
-*TemplateVersionsApi* | [**templateVersionUpdate**](docs/TemplateVersionsApi.md#templateVersionUpdate) | **POST** /templates/{tmpl_id}/versions/{vrsn_id} | update
-*TemplateVersionsApi* | [**templateVersionsList**](docs/TemplateVersionsApi.md#templateVersionsList) | **GET** /templates/{tmpl_id}/versions | list
-*TemplatesApi* | [**createTemplate**](docs/TemplatesApi.md#createTemplate) | **POST** /templates | create
-*TemplatesApi* | [**templateDelete**](docs/TemplatesApi.md#templateDelete) | **DELETE** /templates/{tmpl_id} | delete
-*TemplatesApi* | [**templateRetrieve**](docs/TemplatesApi.md#templateRetrieve) | **GET** /templates/{tmpl_id} | get
-*TemplatesApi* | [**templateUpdate**](docs/TemplatesApi.md#templateUpdate) | **POST** /templates/{tmpl_id} | update
-*TemplatesApi* | [**templatesList**](docs/TemplatesApi.md#templatesList) | **GET** /templates | list
-*UsAutocompletionsApi* | [**autocompletion**](docs/UsAutocompletionsApi.md#autocompletion) | **POST** /us_autocompletions | autocomplete
-*UsVerificationsApi* | [**bulkUsVerifications**](docs/UsVerificationsApi.md#bulkUsVerifications) | **POST** /bulk/us_verifications | verifyBulk
-*UsVerificationsApi* | [**usVerification**](docs/UsVerificationsApi.md#usVerification) | **POST** /us_verifications | verifySingle
-*ZipLookupsApi* | [**zipLookup**](docs/ZipLookupsApi.md#zipLookup) | **POST** /us_zip_lookups | lookup
+## Testing
 
+### Unit Tests
 
-## Documentation for Models
+```bash
+$ mvn test "-Dtest=%regex[.*ApiTest.*]"
+```
 
- - [Address](docs/Address.md)
- - [AddressDeletion](docs/AddressDeletion.md)
- - [AddressDomestic](docs/AddressDomestic.md)
- - [AddressDomesticExpanded](docs/AddressDomesticExpanded.md)
- - [AddressEditable](docs/AddressEditable.md)
- - [AddressList](docs/AddressList.md)
- - [AddressTypes](docs/AddressTypes.md)
- - [BankAccount](docs/BankAccount.md)
- - [BankAccountDeletion](docs/BankAccountDeletion.md)
- - [BankAccountList](docs/BankAccountList.md)
- - [BankAccountTypes](docs/BankAccountTypes.md)
- - [BankAccountVerify](docs/BankAccountVerify.md)
- - [BankAccountWritable](docs/BankAccountWritable.md)
- - [BankTypeEnum](docs/BankTypeEnum.md)
- - [BillingGroup](docs/BillingGroup.md)
- - [BillingGroupEditable](docs/BillingGroupEditable.md)
- - [BillingGroupList](docs/BillingGroupList.md)
- - [Card](docs/Card.md)
- - [CardDeletion](docs/CardDeletion.md)
- - [CardEditable](docs/CardEditable.md)
- - [CardList](docs/CardList.md)
- - [CardOrder](docs/CardOrder.md)
- - [CardOrderEditable](docs/CardOrderEditable.md)
- - [CardUpdatable](docs/CardUpdatable.md)
- - [Check](docs/Check.md)
- - [CheckBottom](docs/CheckBottom.md)
- - [CheckDeletion](docs/CheckDeletion.md)
- - [CheckEditable](docs/CheckEditable.md)
- - [CheckList](docs/CheckList.md)
- - [CheckTypes](docs/CheckTypes.md)
- - [CountryExtended](docs/CountryExtended.md)
- - [CountryExtendedExpanded](docs/CountryExtendedExpanded.md)
- - [DeliverabilityAnalysis](docs/DeliverabilityAnalysis.md)
- - [DpvFootnote](docs/DpvFootnote.md)
- - [EngineHtml](docs/EngineHtml.md)
- - [EventType](docs/EventType.md)
- - [Events](docs/Events.md)
- - [GeocodeAddresses](docs/GeocodeAddresses.md)
- - [GeocodeComponents](docs/GeocodeComponents.md)
- - [InlineResponse200](docs/InlineResponse200.md)
- - [IntlComponents](docs/IntlComponents.md)
- - [IntlVerification](docs/IntlVerification.md)
- - [IntlVerificationWritable](docs/IntlVerificationWritable.md)
- - [IntlVerifications](docs/IntlVerifications.md)
- - [IntlVerificationsPayload](docs/IntlVerificationsPayload.md)
- - [Letter](docs/Letter.md)
- - [LetterCustomEnvelope](docs/LetterCustomEnvelope.md)
- - [LetterDeletion](docs/LetterDeletion.md)
- - [LetterEditable](docs/LetterEditable.md)
- - [LetterList](docs/LetterList.md)
- - [LetterTypes](docs/LetterTypes.md)
- - [LobConfidenceScore](docs/LobConfidenceScore.md)
- - [LobError](docs/LobError.md)
- - [Location](docs/Location.md)
- - [LocationAnalysis](docs/LocationAnalysis.md)
- - [MailType](docs/MailType.md)
- - [MultipleComponents](docs/MultipleComponents.md)
- - [MultipleComponentsIntl](docs/MultipleComponentsIntl.md)
- - [MultipleComponentsList](docs/MultipleComponentsList.md)
- - [Postcard](docs/Postcard.md)
- - [PostcardDeletion](docs/PostcardDeletion.md)
- - [PostcardEditable](docs/PostcardEditable.md)
- - [PostcardList](docs/PostcardList.md)
- - [PostcardSize](docs/PostcardSize.md)
- - [PostcardTypes](docs/PostcardTypes.md)
- - [ReturnAddress](docs/ReturnAddress.md)
- - [ReverseGeocode](docs/ReverseGeocode.md)
- - [SelfMailer](docs/SelfMailer.md)
- - [SelfMailerDeletion](docs/SelfMailerDeletion.md)
- - [SelfMailerEditable](docs/SelfMailerEditable.md)
- - [SelfMailerList](docs/SelfMailerList.md)
- - [SelfMailerSize](docs/SelfMailerSize.md)
- - [SelfMailerTypes](docs/SelfMailerTypes.md)
- - [SendDate](docs/SendDate.md)
- - [SingleLineAddress](docs/SingleLineAddress.md)
- - [SingleLineAddressIntl](docs/SingleLineAddressIntl.md)
- - [SortBy](docs/SortBy.md)
- - [SortBy1](docs/SortBy1.md)
- - [SortBy2](docs/SortBy2.md)
- - [SortBy3](docs/SortBy3.md)
- - [SortBy4](docs/SortBy4.md)
- - [SortBy5](docs/SortBy5.md)
- - [Suggestions](docs/Suggestions.md)
- - [Template](docs/Template.md)
- - [TemplateDeletion](docs/TemplateDeletion.md)
- - [TemplateList](docs/TemplateList.md)
- - [TemplateUpdate](docs/TemplateUpdate.md)
- - [TemplateVersion](docs/TemplateVersion.md)
- - [TemplateVersionDeletion](docs/TemplateVersionDeletion.md)
- - [TemplateVersionList](docs/TemplateVersionList.md)
- - [TemplateVersionUpdatable](docs/TemplateVersionUpdatable.md)
- - [TemplateVersionWritable](docs/TemplateVersionWritable.md)
- - [TemplateWritable](docs/TemplateWritable.md)
- - [Thumbnail](docs/Thumbnail.md)
- - [TrackingEventCertified](docs/TrackingEventCertified.md)
- - [TrackingEventDetails](docs/TrackingEventDetails.md)
- - [TrackingEventNormal](docs/TrackingEventNormal.md)
- - [UsAutocompletions](docs/UsAutocompletions.md)
- - [UsAutocompletionsWritable](docs/UsAutocompletionsWritable.md)
- - [UsComponents](docs/UsComponents.md)
- - [UsVerification](docs/UsVerification.md)
- - [UsVerifications](docs/UsVerifications.md)
- - [UsVerificationsWritable](docs/UsVerificationsWritable.md)
- - [Zip](docs/Zip.md)
- - [ZipCodeType](docs/ZipCodeType.md)
- - [ZipEditable](docs/ZipEditable.md)
- - [ZipLookupCity](docs/ZipLookupCity.md)
+### Integration Tests
 
+Integration tests run against a live deployment of the Lob API and require multiple valid API keys with access to specific features. As such, it is not expected that these tests will pass for every user in every environment.
+
+To run integration tests:
+
+```bash
+$ LOB_API_TEST_KEY=<<YOUR TEST KEY>> LOB_API_LIVE_KEY=<<YOUR LIVE KEY>> mvn test "-Dtest=%regex[.*SpecTest.*]"
+```
+
+#### A cleaner alternative if you are going to run integration tests frequently
+
+Run this the first time:
+
+```bash
+$ echo "LOB_API_TEST_KEY=<<YOUR TEST KEY>> LOB_API_LIVE_KEY=<<YOUR LIVE KEY>>" > LOCAL.env
+```
+
+Then, to run the integration tests:
+
+```bash
+$ env $(cat LOCAL.env) mvn test "-Dtest=%regex[.*SpecTest.*]"
+```
 
 ## Documentation for Authorization
 
@@ -321,8 +192,7 @@ Authentication schemes defined for the API:
 
 - **Type**: HTTP basic authentication
 
-
-## Recommendation
+## Multithreading Recommendation
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
