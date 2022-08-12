@@ -55,6 +55,8 @@ docs/EventType.md
 docs/Events.md
 docs/GeocodeAddresses.md
 docs/GeocodeComponents.md
+docs/IdentityValidation.md
+docs/IdentityValidationApi.md
 docs/IntlAutocompletions.md
 docs/IntlAutocompletionsApi.md
 docs/IntlAutocompletionsWritable.md
@@ -78,6 +80,7 @@ docs/LobError.md
 docs/Location.md
 docs/LocationAnalysis.md
 docs/MailType.md
+docs/MultiLineAddress.md
 docs/MultipleComponents.md
 docs/MultipleComponentsIntl.md
 docs/MultipleComponentsList.md
@@ -167,6 +170,7 @@ src/main/java/com/lob/api/client/CardsApi.java
 src/main/java/com/lob/api/client/ChecksApi.java
 src/main/java/com/lob/api/client/CreativesApi.java
 src/main/java/com/lob/api/client/DefaultApi.java
+src/main/java/com/lob/api/client/IdentityValidationApi.java
 src/main/java/com/lob/api/client/IntlAutocompletionsApi.java
 src/main/java/com/lob/api/client/IntlVerificationsApi.java
 src/main/java/com/lob/api/client/LettersApi.java
@@ -223,6 +227,7 @@ src/main/java/com/lob/model/EventType.java
 src/main/java/com/lob/model/Events.java
 src/main/java/com/lob/model/GeocodeAddresses.java
 src/main/java/com/lob/model/GeocodeComponents.java
+src/main/java/com/lob/model/IdentityValidation.java
 src/main/java/com/lob/model/IntlAutocompletions.java
 src/main/java/com/lob/model/IntlAutocompletionsWritable.java
 src/main/java/com/lob/model/IntlComponents.java
@@ -243,6 +248,7 @@ src/main/java/com/lob/model/LobError.java
 src/main/java/com/lob/model/Location.java
 src/main/java/com/lob/model/LocationAnalysis.java
 src/main/java/com/lob/model/MailType.java
+src/main/java/com/lob/model/MultiLineAddress.java
 src/main/java/com/lob/model/MultipleComponents.java
 src/main/java/com/lob/model/MultipleComponentsIntl.java
 src/main/java/com/lob/model/MultipleComponentsList.java
