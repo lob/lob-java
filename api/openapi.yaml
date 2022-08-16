@@ -38,9 +38,13 @@ tags:
   name: Cards
 - description: Checks allow you to send payments via physical checks.
   name: Checks
+- description: The creatives endpoint allows you to create and view creatives.
+  name: Creatives
 - description: When various notable things happen within the Lob architecture, Events
     will be created.
   name: Events
+- description: Validates whether a given name is associated with an address.
+  name: Identity Validation
 - description: Given partial international address information, this endpoint returns
     up to 10 address suggestions.
   name: Intl Autocompletions
@@ -64,6 +68,9 @@ tags:
 - description: As mailpieces travel through the mail stream, USPS scans their unique
     barcodes, and Lob processes these mail scans to generate tracking events.
   name: Tracking Events
+- description: The uploads endpoint allows you to upload audience files that are then
+    associated with a given campaign.
+  name: Uploads
 - description: Given partial domestic address information, this endpoint returns up
     to 10 address suggestions.
   name: Us Autocompletions
@@ -910,12 +917,6 @@ paths:
       summary: list
       tags:
       - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/campaigns \
-            -u <YOUR API KEY>:
-        label: CURL
       x-accepts: application/json
     post:
       description: Creates a new campaign with the provided properties. See how to
@@ -940,10 +941,6 @@ paths:
       requestBody:
         content:
           application/json:
-            example:
-              name: My Demo Campaign
-              description: My Campaign's description
-              schedule_type: immediate
             schema:
               $ref: '#/components/schemas/campaign_writable'
           application/x-www-form-urlencoded:
@@ -951,17 +948,9 @@ paths:
               example-prop:
                 explode: true
                 style: deepObject
-            example:
-              name: My Demo Campaign
-              description: My Campaign's description
-              schedule_type: immediate
             schema:
               $ref: '#/components/schemas/campaign_writable'
           multipart/form-data:
-            example:
-              name: My Demo Campaign
-              description: My Campaign's description
-              schedule_type: immediate
             schema:
               $ref: '#/components/schemas/campaign_writable'
         required: true
@@ -982,14 +971,6 @@ paths:
       summary: create
       tags:
       - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/campaigns \
-            -u <YOUR API KEY>: \
-            -d "name=My First Campaign" \
-            -d "schedule_type=immediate"
-        label: CURL
       x-contentType: application/json
       x-accepts: application/json
   /campaigns/{cmp_id}:
@@ -1012,9 +993,6 @@ paths:
         "200":
           content:
             application/json:
-              example:
-                id: cmp_e05ee61ff80764b
-                deleted: true
               schema:
                 description: Lob uses RESTful HTTP response codes to indicate success
                   or failure of an API request. In general, 2xx indicates success,
@@ -1037,12 +1015,6 @@ paths:
       summary: delete
       tags:
       - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl -X DELETE https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b \
-            -u <YOUR API KEY>:
-        label: CURL
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing campaign. You need only supply
@@ -1074,12 +1046,6 @@ paths:
       summary: get
       tags:
       - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b \
-            -u <YOUR API KEY>:
-        label: CURL
       x-accepts: application/json
     patch:
       description: Update the details of an existing campaign. You need only supply
@@ -1097,18 +1063,12 @@ paths:
       requestBody:
         content:
           application/json:
-            example:
-              description: Test campaign
             schema:
               $ref: '#/components/schemas/campaign_updatable'
           application/x-www-form-urlencoded:
-            example:
-              description: Test campaign
             schema:
               $ref: '#/components/schemas/campaign_updatable'
           multipart/form-data:
-            example:
-              description: Test campaign
             schema:
               $ref: '#/components/schemas/campaign_updatable'
         required: true
@@ -1872,6 +1832,48 @@ paths:
       summary: Update
       tags:
       - Creatives
+      x-contentType: application/json
+      x-accepts: application/json
+  /identity_validation:
+    post:
+      description: Validates whether a given name is associated with an address.
+      operationId: identity_validation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/multi_line_address'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/multi_line_address'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/multi_line_address'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identity_validation'
+          description: Returns the likelihood a given name is associated with an address.
+          headers:
+            ratelimit-limit:
+              $ref: '#/components/headers/ratelimit-limit'
+            ratelimit-remaining:
+              $ref: '#/components/headers/ratelimit-remaining'
+            ratelimit-reset:
+              $ref: '#/components/headers/ratelimit-reset'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: validate
+      tags:
+      - Identity Validation
       x-contentType: application/json
       x-accepts: application/json
   /intl_autocompletions:
@@ -3426,6 +3428,233 @@ paths:
       - Templates
       x-contentType: application/json
       x-accepts: application/json
+  /uploads:
+    get:
+      description: Returns a list of your uploads. Optionally, filter uploads by campaign.
+      operationId: uploads_list
+      parameters:
+      - description: id of the campaign
+        explode: true
+        in: query
+        name: campaignId
+        required: false
+        schema:
+          $ref: '#/components/schemas/cmp_id'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload_list'
+          description: An array of matching uploads. Each entry in the array is a
+            separate upload.
+      summary: list_upload
+      tags:
+      - Uploads
+      x-accepts: application/json
+    post:
+      description: Creates a new upload with the provided properties.
+      operationId: upload_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/upload_writable'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload'
+          description: Upload created successfully
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: create_upload
+      tags:
+      - Uploads
+      x-contentType: application/json
+      x-accepts: application/json
+  /uploads/{upl_id}:
+    delete:
+      description: Delete an existing upload. You need only supply the unique identifier
+        that was returned upon upload creation.
+      operationId: upload_delete
+      parameters:
+      - description: id of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      responses:
+        "204":
+          description: Successful Response
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: delete_upload
+      tags:
+      - Uploads
+      x-accepts: application/json
+    get:
+      description: Retrieves the details of an existing upload. You need only supply
+        the unique upload identifier that was returned upon upload creation.
+      operationId: upload_retrieve
+      parameters:
+      - description: id of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload'
+          description: Returns an upload object
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: get_upload
+      tags:
+      - Uploads
+      x-accepts: application/json
+    patch:
+      description: Update the details of an existing upload. You need only supply
+        the unique identifier that was returned upon upload creation.
+      operationId: upload_update
+      parameters:
+      - description: id of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/upload_updatable'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload'
+          description: Returns an upload object
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: update_upload
+      tags:
+      - Uploads
+      x-contentType: application/json
+      x-accepts: application/json
+  /uploads/{upl_id}/exports:
+    post:
+      description: |-
+        Campaign Exports can help you understand exactly which records in a campaign could not be created. By initiating and retrieving an export, you will get row-by-row errors for your campaign. For a step-by-step walkthrough of creating a campaign and exporting failures, see our [Campaigns Guide](https://help.lob.com/best-practices/launching-your-first-campaign).
+
+        Create an export file associated with an upload.
+      operationId: upload_export_create
+      parameters:
+      - description: ID of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/export_model'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload_create_export'
+          description: Successful Response
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: create_export
+      tags:
+      - Uploads
+      x-contentType: application/json
+      x-accepts: application/json
+  /uploads/{upl_id}/exports/{ex_id}:
+    get:
+      description: Retrieves the details of an existing export. You need only supply
+        the unique export identifier that was returned upon export creation. If you
+        try retrieving an export immediately after creating one (i.e., before we're
+        done processing the export), you will get back an export object with `state
+        = in_progress`.
+      operationId: export_retrieve
+      parameters:
+      - description: ID of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      - description: ID of the export
+        explode: false
+        in: path
+        name: ex_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/ex_id'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: Returns an export object
+      summary: get_export
+      tags:
+      - Uploads
+      x-accepts: application/json
   /us_autocompletions:
     post:
       description: Given an address prefix consisting of a partial primary line, as
@@ -3974,9 +4203,6 @@ components:
     campaign_deleted:
       content:
         application/json:
-          example:
-            id: cmp_e05ee61ff80764b
-            deleted: true
           schema:
             description: Lob uses RESTful HTTP response codes to indicate success
               or failure of an API request. In general, 2xx indicates success, 4xx
@@ -4013,6 +4239,19 @@ components:
           schema:
             $ref: '#/components/schemas/check'
       description: Returns a check object
+      headers:
+        ratelimit-limit:
+          $ref: '#/components/headers/ratelimit-limit'
+        ratelimit-remaining:
+          $ref: '#/components/headers/ratelimit-remaining'
+        ratelimit-reset:
+          $ref: '#/components/headers/ratelimit-reset'
+    identity_validation:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/identity_validation'
+      description: Returns the likelihood a given name is associated with an address.
       headers:
         ratelimit-limit:
           $ref: '#/components/headers/ratelimit-limit'
@@ -4176,6 +4415,13 @@ components:
         contained in the `previous_url` and `next_url` fields in the API response
         respectively.<br>If no more templates are available beyond the current set
         of returned results, the `next_url` field will be empty.
+    all_uploads:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/upload_list'
+      description: An array of matching uploads. Each entry in the array is a separate
+        upload.
     us_autocompletions:
       content:
         application/json:
@@ -5157,6 +5403,8 @@ components:
           val: US
           java_val: CountryExtended.US
           javaNonString: true
+          py_val: CountryExtended("US")
+          pyNonString: true
         lob_response_type: Address
         lob_response_var: address
         plural_object_type: Addresses
@@ -5547,6 +5795,8 @@ components:
           javaNonString: true
           ts_val: BankTypeEnum.Company
           tsNonString: true
+          py_val: BankTypeEnum("company")
+          pyNonString: true
         lob_response_type: BankAccount
         lob_response_var: bankAccount
         plural_object_type: BankAccounts
@@ -8567,6 +8817,8 @@ components:
           javaNonString: true
           ts_val: 22.5
           tsNonString: true
+          py_val: 22.5
+          pyNonString: true
         - key: memo
           pascal_case_key: Memo
           val: rent
@@ -8580,6 +8832,7 @@ components:
           dataUrlencode: true
         - key: from
           pascal_case_key: From
+          underscore_key: true
           val: adr_210a8d4b0b76d77b
         nested_objs:
         - key: to
@@ -8660,7 +8913,6 @@ components:
             isRef: true
     crv_id:
       description: Unique identifier prefixed with `crv_`.
-      example: crv_2a3b096c409b32c
       pattern: ^crv_[a-zA-Z0-9]+$
       type: string
     creative_patch:
@@ -8705,6 +8957,142 @@ components:
             isComplexObject: true
             base-type:
               java: HashMap<String,String>
+      type: object
+    multi_line_address:
+      properties:
+        recipient:
+          description: The intended recipient, typically a person's or firm's name.
+          maxLength: 500
+          nullable: true
+          type: string
+        primary_line:
+          description: |
+            The primary delivery line (usually the street address) of the address.
+            Combination of the following applicable `components`:
+            * `primary_number`
+            * `street_predirection`
+            * `street_name`
+            * `street_suffix`
+            * `street_postdirection`
+            * `secondary_designator`
+            * `secondary_number`
+            * `pmb_designator`
+            * `pmb_number`
+          maxLength: 500
+          type: string
+        secondary_line:
+          description: |
+            The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long.
+          maxLength: 500
+          type: string
+        urbanization:
+          description: |
+            Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text=I51.,-4%20Urbanizations&text=In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification.
+          maxLength: 500
+          type: string
+        city:
+          maxLength: 200
+          type: string
+        state:
+          description: The <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US" target="_blank">ISO
+            3166-2</a> two letter code or subdivision name for the state. `city` and
+            `state` are required if no `zip_code` is passed.
+          maxLength: 50
+          type: string
+        zip_code:
+          description: Required if `city` and `state` are not passed in. If included,
+            must be formatted as a US ZIP or ZIP+4 (e.g. `94107`, `941072282`, `94107-2282`).
+          pattern: ^\d{5}((-)?\d{4})?$
+          type: string
+      required:
+      - primary_line
+      - recipient
+      type: object
+    identity_validation_id:
+      description: Unique identifier prefixed with `id_validation_`.
+      pattern: ^id_validation_[a-zA-Z0-9_]+$
+      type: string
+    identity_validation:
+      example:
+        last_line: last_line
+        score: 8.008282
+        primary_line: primary_line
+        secondary_line: secondary_line
+        confidence: high
+        recipient: recipient
+        id: id
+        urbanization: urbanization
+        object: id_validation
+      properties:
+        id:
+          description: Unique identifier prefixed with `id_validation_`.
+          pattern: ^id_validation_[a-zA-Z0-9_]+$
+          type: string
+        recipient:
+          description: The intended recipient, typically a person's or firm's name.
+          maxLength: 500
+          nullable: true
+          type: string
+        primary_line:
+          description: |
+            The primary delivery line (usually the street address) of the address.
+            Combination of the following applicable `components`:
+            * `primary_number`
+            * `street_predirection`
+            * `street_name`
+            * `street_suffix`
+            * `street_postdirection`
+            * `secondary_designator`
+            * `secondary_number`
+            * `pmb_designator`
+            * `pmb_number`
+          maxLength: 500
+          type: string
+        secondary_line:
+          description: |
+            The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long.
+          maxLength: 500
+          type: string
+        urbanization:
+          description: |
+            Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text=I51.,-4%20Urbanizations&text=In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification.
+          maxLength: 500
+          type: string
+        last_line:
+          description: |
+            Combination of the following applicable `components`:
+            * City (`city`)
+            * State (`state`)
+            * ZIP code (`zip_code`)
+            * ZIP+4 (`zip_code_plus_4`)
+          type: string
+        score:
+          description: |
+            A numerical score between 0 and 100 that represents the likelihood the provided name is associated with a physical address.
+          format: float
+          maximum: 100
+          minimum: 0
+          nullable: true
+          type: number
+        confidence:
+          description: |
+            Indicates the likelihood the recipient name and address match based on our custom internal calculation. Possible values are:
+            - `high` — Has a Lob confidence score greater than 70.
+            - `medium` — Has a Lob confidence score between 40 and 70.
+            - `low` — Has a Lob confidence score less than 40.
+            - `""` — No tracking data exists for this address.
+          enum:
+          - high
+          - medium
+          - low
+          - ""
+          type: string
+        object:
+          default: id_validation
+          description: Value is resource type.
+          enum:
+          - id_validation
+          type: string
       type: object
     intl_autocompletions_writable:
       properties:
@@ -10038,6 +10426,7 @@ components:
           val: Demo Letter
         - key: from
           pascal_case_key: From
+          underscore_key: true
           val: adr_210a8d4b0b76d77b
         - key: file
           pascal_case_key: File
@@ -10050,6 +10439,8 @@ components:
           javaNonString: true
           ts_val: true
           tsNonString: true
+          py_val: "True"
+          pyNonString: true
         nested_objs:
         - key: to
           pascal_case_key: To
@@ -10080,7 +10471,6 @@ components:
           stringType: true
           elements:
           - elem: card_c51ae96f5cebf3e
-          - elem: card_thingy
         merge_variables:
           attributes:
           - key: name
@@ -10816,6 +11206,7 @@ components:
           val: Demo Postcard job
         - key: from
           pascal_case_key: From
+          underscore_key: true
           val: adr_210a8d4b0b76d77b
         - key: front
           pascal_case_key: Front
@@ -11094,8 +11485,6 @@ components:
           pattern: ^sfm_[a-zA-Z0-9]+$
           type: string
         to:
-          allOf:
-          - $ref: '#/components/schemas/address'
           x-template-config:
             isOneOf: true
             type-composite:
@@ -11112,8 +11501,6 @@ components:
                 python_path: lob_python.model.address
                 hasPath: true
         from:
-          allOf:
-          - $ref: '#/components/schemas/address_domestic_expanded'
           x-template-config:
             isOneOf: true
             type-composite:
@@ -11124,10 +11511,11 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: Address
-                python: Address
-                typescript: Models.Address
-                hasPath: false
+                java: AddressDomesticExpanded
+                python: AddressDomesticExpanded
+                typescript: Models.AddressDomesticExpanded
+                python_path: lob_python.model.address_domestic_expanded
+                hasPath: true
         size:
           $ref: '#/components/schemas/self_mailer_size'
         description:
@@ -11562,6 +11950,7 @@ components:
           val: Demo Self Mailer job
         - key: from
           pascal_case_key: From
+          underscore_key: true
           val: adr_210a8d4b0b76d77b
         - key: inside
           pascal_case_key: Inside
@@ -12237,6 +12626,270 @@ components:
         plural_object_type: Templates
         resource_type: TemplateWritable
         snake_case_resource_var_name: template_writable
+    upl_id:
+      description: Unique identifier prefixed with `upl_`.
+      pattern: ^upl_[a-zA-Z0-9]+$
+      type: string
+    column_mapping:
+      description: The mapping of column headers in your file to Lob-required fields
+        for the resource created. See our <a href="https://help.lob.com/best-practices/campaign-audience-guide"
+        target="_blank">Campaign Audience Guide</a> for additional details.
+      title: Column Mapping
+      type: object
+    upload_state:
+      default: Draft
+      description: The `state` property on the `upload` object. As the file is processed,
+        the `state` will change from `Ready for Validation` to `Validating` and then
+        will be either `Scheduled` (successfully processed) or `Errored` (Unsuccessfully
+        processed).
+      enum:
+      - Preprocessing
+      - Draft
+      - Ready for Validation
+      - Validating
+      - Scheduled
+      - Cancelled
+      - Errored
+      title: Upload State
+      type: string
+    upload:
+      example:
+        validatedMailpieces: 1
+        campaignId: campaignId
+        dateModified: 2000-01-23T04:56:07.000+00:00
+        failuresUrl: failuresUrl
+        mode: test
+        accountId: accountId
+        dateCreated: 2000-01-23T04:56:07.000+00:00
+        totalMailpieces: 0
+        failedMailpieces: 6
+        id: id
+        originalFilename: originalFilename
+        bytesProcessed: 5
+        columnMapping: '{}'
+      properties:
+        id:
+          description: Unique identifier prefixed with `upl_`.
+          pattern: ^upl_[a-zA-Z0-9]+$
+          type: string
+        accountId:
+          description: Account ID that made the request
+          title: Account ID
+          type: string
+        campaignId:
+          description: Unique identifier prefixed with `cmp_`.
+          pattern: ^cmp_[a-zA-Z0-9]+$
+          title: Campaign id
+          type: string
+        columnMapping:
+          description: The mapping of column headers in your file to Lob-required
+            fields for the resource created. See our <a href="https://help.lob.com/best-practices/campaign-audience-guide"
+            target="_blank">Campaign Audience Guide</a> for additional details.
+          title: Column Mapping
+          type: object
+        mode:
+          description: The environment in which the mailpieces were created. Today,
+            will only be `live`.
+          enum:
+          - test
+          - live
+          type: string
+        failuresUrl:
+          description: Url where your campaign mailpiece failures can be retrieved
+          title: Failures URL
+          type: string
+        originalFilename:
+          description: Filename of the upload
+          title: Original Filename
+          type: string
+        state:
+          $ref: '#/components/schemas/upload_state'
+        totalMailpieces:
+          description: Total number of recipients for the campaign
+          title: Total Mailpieces
+          type: integer
+        failedMailpieces:
+          description: Number of mailpieces that failed to create
+          title: Failed Mailpieces
+          type: integer
+        validatedMailpieces:
+          description: Number of mailpieces that were successfully created
+          title: Validated Mailpieces
+          type: integer
+        bytesProcessed:
+          description: Number of bytes processed in your CSV
+          title: Bytes Processed
+          type: integer
+        dateCreated:
+          description: A timestamp in ISO 8601 format of the date the upload was created
+          format: date-time
+          title: Date Created
+          type: string
+        dateModified:
+          description: A timestamp in ISO 8601 format of the date the upload was last
+            modified
+          format: date-time
+          title: Date Modified
+          type: string
+      required:
+      - accountId
+      - bytesProcessed
+      - campaignId
+      - columnMapping
+      - dateCreated
+      - dateModified
+      - failedMailpieces
+      - id
+      - mode
+      - state
+      - totalMailpieces
+      - validatedMailpieces
+      type: object
+    upload_list:
+      example:
+        data:
+        - validatedMailpieces: 1
+          campaignId: campaignId
+          dateModified: 2000-01-23T04:56:07.000+00:00
+          failuresUrl: failuresUrl
+          mode: test
+          accountId: accountId
+          dateCreated: 2000-01-23T04:56:07.000+00:00
+          totalMailpieces: 0
+          failedMailpieces: 6
+          id: id
+          originalFilename: originalFilename
+          bytesProcessed: 5
+          columnMapping: '{}'
+        - validatedMailpieces: 1
+          campaignId: campaignId
+          dateModified: 2000-01-23T04:56:07.000+00:00
+          failuresUrl: failuresUrl
+          mode: test
+          accountId: accountId
+          dateCreated: 2000-01-23T04:56:07.000+00:00
+          totalMailpieces: 0
+          failedMailpieces: 6
+          id: id
+          originalFilename: originalFilename
+          bytesProcessed: 5
+          columnMapping: '{}'
+        total_count: 2
+        next_url: next_url
+        count: 5
+        previous_url: previous_url
+        object: object
+      properties:
+        data:
+          description: list of uploads
+          items:
+            $ref: '#/components/schemas/upload'
+          type: array
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: ArrayList<Upload>
+        object:
+          description: Value is type of resource.
+          type: string
+        next_url:
+          description: url of next page of items in list.
+          nullable: true
+          type: string
+          x-pagination-next: true
+        previous_url:
+          description: url of previous page of items in list.
+          nullable: true
+          type: string
+          x-pagination-previous: true
+        count:
+          description: number of resources in a set
+          type: integer
+        total_count:
+          description: indicates the total number of records. Provided when the request
+            specifies an "include" query parameter
+          type: integer
+      type: object
+      x-code-snippet:
+        uploads: true
+        list: true
+        object_type: Upload
+        curl_form: uploads
+        plural_response_var: uploads
+        javaSupported: true
+        typescriptSupported: true
+        plural_object_type: Uploads
+        args:
+        - arg: "null"
+          param: campaignId
+    upload_writable:
+      properties:
+        campaignId:
+          description: Unique identifier prefixed with `cmp_`.
+          pattern: ^cmp_[a-zA-Z0-9]+$
+          title: Campaign id
+          type: string
+        columnMapping:
+          description: The mapping of column headers in your file to Lob-required
+            fields for the resource created. See our <a href="https://help.lob.com/best-practices/campaign-audience-guide"
+            target="_blank">Campaign Audience Guide</a> for additional details.
+          title: Column Mapping
+          type: object
+      required:
+      - campaignId
+      - columnMapping
+      type: object
+    upload_updatable:
+      properties:
+        columnMapping:
+          description: The mapping of column headers in your file to Lob-required
+            fields for the resource created. See our <a href="https://help.lob.com/best-practices/campaign-audience-guide"
+            target="_blank">Campaign Audience Guide</a> for additional details.
+          title: Column Mapping
+          type: object
+        state:
+          $ref: '#/components/schemas/upload_state'
+        originalFilename:
+          description: Original filename provided when the upload is created.
+          title: Original Filename
+          type: string
+        overwriteColumnMapping:
+          description: |
+            Properties in `columnMapping` will be appended to the existing `columnMapping` object if set to `false`. If set to `true`, the existing `columnMapping` object will be overwritten with the data supplied in `columnMapping` property.
+          title: Overwrite Column Mapping
+          type: boolean
+      type: object
+    export_model:
+      properties:
+        type:
+          enum:
+          - all
+          - failures
+          - successes
+          type: string
+      type: object
+    upload_create_export:
+      example:
+        message: Export is processing
+        exportId: exportId
+      properties:
+        message:
+          default: Export is processing
+          enum:
+          - Export is processing
+          title: Message
+          type: string
+        exportId:
+          title: Export ID
+          type: string
+      required:
+      - exportId
+      - message
+      type: object
+    ex_id:
+      description: Unique identifier prefixed with `ex_`.
+      pattern: ^ex_[a-zA-Z0-9]+$
+      type: string
     us_autocompletions_writable:
       properties:
         address_prefix:
@@ -13094,6 +13747,65 @@ components:
           - asc
           - desc
           type: string
+      type: object
+    inline_response_200:
+      example:
+        s3Url: s3Url
+        dateCreated: 2000-01-23T04:56:07.000+00:00
+        deleted: true
+        uploadId: uploadId
+        dateModified: 2000-01-23T04:56:07.000+00:00
+        id: id
+        state: in_progress
+        type: all
+      properties:
+        id:
+          description: Unique identifier prefixed with `ex_`.
+          pattern: ^ex_[a-zA-Z0-9]+$
+          type: string
+        dateCreated:
+          description: A timestamp in ISO 8601 format of the date the export was created
+          format: date-time
+          type: string
+        dateModified:
+          description: A timestamp in ISO 8601 format of the date the export was last
+            modified
+          format: date-time
+          type: string
+        deleted:
+          description: Returns as `true` if the resource has been successfully deleted.
+          type: boolean
+        s3Url:
+          description: The URL for the generated export file.
+          type: string
+        state:
+          description: The state of the export file, which can be `in_progress`, `failed`
+            or `succeeded`.
+          enum:
+          - in_progress
+          - failed
+          - succeeded
+          type: string
+        type:
+          description: The export file type, which can be `all`, `failures` or `successes`.
+          enum:
+          - all
+          - failures
+          - successes
+          type: string
+        uploadId:
+          description: Unique identifier prefixed with `upl_`.
+          pattern: ^upl_[a-zA-Z0-9]+$
+          type: string
+      required:
+      - dateCreated
+      - dateModified
+      - deleted
+      - id
+      - s3Url
+      - state
+      - type
+      - uploadId
       type: object
     letter_custom_envelope:
       description: |-
