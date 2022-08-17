@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.lob.model.CreativePatch;
+import com.lob.model.CreativeWritable;
 import com.lob.model.LobError;
 
 import java.lang.reflect.Type;
@@ -57,7 +58,7 @@ public class CreativesApi {
 
     /**
      * Build call for Create
-     * @param body  (required)
+     * @param creativeWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -69,8 +70,8 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call CreateCall(Object body, String xLangOutput, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call CreateCall(CreativeWritable creativeWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = creativeWritable;
 
         // create path and map variables
         String localVarPath = "/creatives";
@@ -104,15 +105,15 @@ public class CreativesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call CreateValidateBeforeCall(Object body, String xLangOutput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call CreateValidateBeforeCall(CreativeWritable creativeWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling Create(Async)");
+        // verify the required parameter 'creativeWritable' is set
+        if (creativeWritable == null) {
+            throw new ApiException("Missing the required parameter 'creativeWritable' when calling Create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = CreateCall(body, xLangOutput, _callback);
+        okhttp3.Call localVarCall = CreateCall(creativeWritable, xLangOutput, _callback);
         return localVarCall;
 
     }
@@ -120,7 +121,7 @@ public class CreativesApi {
     /**
      * Create
      * Creates a new creative with the provided properties
-     * @param body  (required)
+     * @param creativeWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -131,9 +132,9 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Object Create(Object body, String xLangOutput) throws ApiException {
+    public Object Create(CreativeWritable creativeWritable, String xLangOutput) throws ApiException {
         try {
-            ApiResponse<Object> localVarResp = CreateWithHttpInfo(body, xLangOutput);
+            ApiResponse<Object> localVarResp = CreateWithHttpInfo(creativeWritable, xLangOutput);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -143,7 +144,7 @@ public class CreativesApi {
     /**
      * Create
      * Creates a new creative with the provided properties
-     * @param body  (required)
+     * @param creativeWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -154,9 +155,9 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> CreateWithHttpInfo(Object body, String xLangOutput) throws ApiException {
+    public ApiResponse<Object> CreateWithHttpInfo(CreativeWritable creativeWritable, String xLangOutput) throws ApiException {
         try {
-            okhttp3.Call localVarCall = CreateValidateBeforeCall(body, xLangOutput, null);
+            okhttp3.Call localVarCall = CreateValidateBeforeCall(creativeWritable, xLangOutput, null);
             Type localVarReturnType = new TypeToken<Object>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -167,7 +168,7 @@ public class CreativesApi {
     /**
      * Create (asynchronously)
      * Creates a new creative with the provided properties
-     * @param body  (required)
+     * @param creativeWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -179,9 +180,9 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call CreateAsync(Object body, String xLangOutput, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call CreateAsync(CreativeWritable creativeWritable, String xLangOutput, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = CreateValidateBeforeCall(body, xLangOutput, _callback);
+        okhttp3.Call localVarCall = CreateValidateBeforeCall(creativeWritable, xLangOutput, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

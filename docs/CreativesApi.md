@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="Create"></a>
 # **Create**
-> Object Create(body, xLangOutput)
+> Object Create(creativeWritable, xLangOutput)
 
 Create
 
@@ -37,10 +37,10 @@ public class Example {
     basicAuth.setUsername("LOB_API_KEY");
 
     CreativesApi apiInstance = new CreativesApi(defaultClient);
-    Object body = null; // Object | 
+    CreativeWritable creativeWritable = new CreativeWritable(); // CreativeWritable | 
     String xLangOutput = "native"; // String | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English. 
     try {
-      Object result = apiInstance.Create(body, xLangOutput);
+      Object result = apiInstance.Create(creativeWritable, xLangOutput);
     } catch (ApiException e) {
       System.err.println("Exception when calling CreativesApi#Create");
       System.err.println("Status code: " + e.getCode());
@@ -56,7 +56,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **Object**|  |
+ **creativeWritable** | [**CreativeWritable**](CreativeWritable.md)|  |
  **xLangOutput** | **String**| * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  | [optional] [enum: native, match]
 
 ### Return type
