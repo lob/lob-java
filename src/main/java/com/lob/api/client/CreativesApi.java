@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.lob.model.CreativePatch;
+import com.lob.model.CreativeWritable;
 import com.lob.model.LobError;
 
 import java.lang.reflect.Type;
@@ -56,8 +57,8 @@ public class CreativesApi {
     }
 
     /**
-     * Build call for Create
-     * @param body  (required)
+     * Build call for create
+     * @param creativeWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -69,8 +70,8 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call CreateCall(Object body, String xLangOutput, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call createCall(CreativeWritable creativeWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = creativeWritable;
 
         // create path and map variables
         String localVarPath = "/creatives";
@@ -104,23 +105,23 @@ public class CreativesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call CreateValidateBeforeCall(Object body, String xLangOutput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(CreativeWritable creativeWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling Create(Async)");
+        // verify the required parameter 'creativeWritable' is set
+        if (creativeWritable == null) {
+            throw new ApiException("Missing the required parameter 'creativeWritable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = CreateCall(body, xLangOutput, _callback);
+        okhttp3.Call localVarCall = createCall(creativeWritable, xLangOutput, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Create
+     * create
      * Creates a new creative with the provided properties
-     * @param body  (required)
+     * @param creativeWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -131,9 +132,9 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Object Create(Object body, String xLangOutput) throws ApiException {
+    public Object create(CreativeWritable creativeWritable, String xLangOutput) throws ApiException {
         try {
-            ApiResponse<Object> localVarResp = CreateWithHttpInfo(body, xLangOutput);
+            ApiResponse<Object> localVarResp = createWithHttpInfo(creativeWritable, xLangOutput);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -141,9 +142,9 @@ public class CreativesApi {
     }
 
     /**
-     * Create
+     * create
      * Creates a new creative with the provided properties
-     * @param body  (required)
+     * @param creativeWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -154,9 +155,9 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> CreateWithHttpInfo(Object body, String xLangOutput) throws ApiException {
+    public ApiResponse<Object> createWithHttpInfo(CreativeWritable creativeWritable, String xLangOutput) throws ApiException {
         try {
-            okhttp3.Call localVarCall = CreateValidateBeforeCall(body, xLangOutput, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(creativeWritable, xLangOutput, null);
             Type localVarReturnType = new TypeToken<Object>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -165,9 +166,9 @@ public class CreativesApi {
     }
 
     /**
-     * Create (asynchronously)
+     * create (asynchronously)
      * Creates a new creative with the provided properties
-     * @param body  (required)
+     * @param creativeWritable  (required)
      * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -179,15 +180,15 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call CreateAsync(Object body, String xLangOutput, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call createAsync(CreativeWritable creativeWritable, String xLangOutput, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = CreateValidateBeforeCall(body, xLangOutput, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(creativeWritable, xLangOutput, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for Retrieve
+     * Build call for get
      * @param crvId id of the creative (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -199,7 +200,7 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call RetrieveCall(String crvId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String crvId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -231,21 +232,21 @@ public class CreativesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call RetrieveValidateBeforeCall(String crvId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String crvId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'crvId' is set
         if (crvId == null) {
-            throw new ApiException("Missing the required parameter 'crvId' when calling Retrieve(Async)");
+            throw new ApiException("Missing the required parameter 'crvId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = RetrieveCall(crvId, _callback);
+        okhttp3.Call localVarCall = getCall(crvId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Retrieve
+     * get
      * Retrieves the details of an existing creative. You need only supply the unique creative identifier that was returned upon creative creation.
      * @param crvId id of the creative (required)
      * @return Object
@@ -257,9 +258,9 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Object Retrieve(String crvId) throws ApiException {
+    public Object get(String crvId) throws ApiException {
         try {
-            ApiResponse<Object> localVarResp = RetrieveWithHttpInfo(crvId);
+            ApiResponse<Object> localVarResp = getWithHttpInfo(crvId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -267,7 +268,7 @@ public class CreativesApi {
     }
 
     /**
-     * Retrieve
+     * get
      * Retrieves the details of an existing creative. You need only supply the unique creative identifier that was returned upon creative creation.
      * @param crvId id of the creative (required)
      * @return ApiResponse&lt;Object&gt;
@@ -279,9 +280,9 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> RetrieveWithHttpInfo(String crvId) throws ApiException {
+    public ApiResponse<Object> getWithHttpInfo(String crvId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = RetrieveValidateBeforeCall(crvId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(crvId, null);
             Type localVarReturnType = new TypeToken<Object>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -290,7 +291,7 @@ public class CreativesApi {
     }
 
     /**
-     * Retrieve (asynchronously)
+     * get (asynchronously)
      * Retrieves the details of an existing creative. You need only supply the unique creative identifier that was returned upon creative creation.
      * @param crvId id of the creative (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -303,15 +304,15 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call RetrieveAsync(String crvId, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String crvId, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = RetrieveValidateBeforeCall(crvId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(crvId, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for Update
+     * Build call for update
      * @param crvId id of the creative (required)
      * @param creativePatch  (required)
      * @param _callback Callback for upload/download progress
@@ -324,7 +325,7 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call UpdateCall(String crvId, CreativePatch creativePatch, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCall(String crvId, CreativePatch creativePatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = creativePatch;
 
         // create path and map variables
@@ -356,26 +357,26 @@ public class CreativesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call UpdateValidateBeforeCall(String crvId, CreativePatch creativePatch, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateValidateBeforeCall(String crvId, CreativePatch creativePatch, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'crvId' is set
         if (crvId == null) {
-            throw new ApiException("Missing the required parameter 'crvId' when calling Update(Async)");
+            throw new ApiException("Missing the required parameter 'crvId' when calling update(Async)");
         }
         
         // verify the required parameter 'creativePatch' is set
         if (creativePatch == null) {
-            throw new ApiException("Missing the required parameter 'creativePatch' when calling Update(Async)");
+            throw new ApiException("Missing the required parameter 'creativePatch' when calling update(Async)");
         }
         
 
-        okhttp3.Call localVarCall = UpdateCall(crvId, creativePatch, _callback);
+        okhttp3.Call localVarCall = updateCall(crvId, creativePatch, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Update
+     * update
      * Update the details of an existing creative. You need only supply the unique identifier that was returned upon creative creation.
      * @param crvId id of the creative (required)
      * @param creativePatch  (required)
@@ -388,9 +389,9 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Object Update(String crvId, CreativePatch creativePatch) throws ApiException {
+    public Object update(String crvId, CreativePatch creativePatch) throws ApiException {
         try {
-            ApiResponse<Object> localVarResp = UpdateWithHttpInfo(crvId, creativePatch);
+            ApiResponse<Object> localVarResp = updateWithHttpInfo(crvId, creativePatch);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -398,7 +399,7 @@ public class CreativesApi {
     }
 
     /**
-     * Update
+     * update
      * Update the details of an existing creative. You need only supply the unique identifier that was returned upon creative creation.
      * @param crvId id of the creative (required)
      * @param creativePatch  (required)
@@ -411,9 +412,9 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> UpdateWithHttpInfo(String crvId, CreativePatch creativePatch) throws ApiException {
+    public ApiResponse<Object> updateWithHttpInfo(String crvId, CreativePatch creativePatch) throws ApiException {
         try {
-            okhttp3.Call localVarCall = UpdateValidateBeforeCall(crvId, creativePatch, null);
+            okhttp3.Call localVarCall = updateValidateBeforeCall(crvId, creativePatch, null);
             Type localVarReturnType = new TypeToken<Object>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -422,7 +423,7 @@ public class CreativesApi {
     }
 
     /**
-     * Update (asynchronously)
+     * update (asynchronously)
      * Update the details of an existing creative. You need only supply the unique identifier that was returned upon creative creation.
      * @param crvId id of the creative (required)
      * @param creativePatch  (required)
@@ -436,9 +437,9 @@ public class CreativesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call UpdateAsync(String crvId, CreativePatch creativePatch, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call updateAsync(String crvId, CreativePatch creativePatch, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = UpdateValidateBeforeCall(crvId, creativePatch, _callback);
+        okhttp3.Call localVarCall = updateValidateBeforeCall(crvId, creativePatch, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
