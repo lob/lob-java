@@ -446,7 +446,6 @@ curl https://api.lob.com/v1/letters \
   -d "to[address_zip]=94107" \
   -d "merge_variables[name]=Harry" \
   -d "cards[]=card_c51ae96f5cebf3e"
-  -d "cards[]=card_thingy"
 ```
 
 ```java
@@ -465,7 +464,6 @@ to.setAddressZip("94107");
 
 List<String> cards = new ArrayList<String>();
 cards.add("card_c51ae96f5cebf3e");
-cards.add("card_thingy");
 
 try {
   LetterEditable letterEditable = new LetterEditable(); 
