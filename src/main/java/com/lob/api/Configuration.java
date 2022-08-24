@@ -1,6 +1,6 @@
 /*
  * Lob
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -52,7 +52,24 @@ public class Configuration {
 
         HttpBasicAuth basicAuth = (HttpBasicAuth) apiClient.getAuthentication("basicAuth");
         String LOB_API_KEY = getEnvVariable("LOB_API_TEST_KEY");
-        
+
+        apiClient.setBasePath(BASE_PATH);
+        basicAuth.setUsername(LOB_API_KEY);
+        return apiClient;
+    }
+
+    /**
+     * Set a new API client, to be used with the integration tests
+     * specifically grabs the live key from the env file
+     *
+     * @return Api client configured for integration tests
+     */
+    public static ApiClient getConfigForIntegrationWithLive() {
+        ApiClient apiClient = new ApiClient();
+
+        HttpBasicAuth basicAuth = (HttpBasicAuth) apiClient.getAuthentication("basicAuth");
+        String LOB_API_KEY = getEnvVariable("LOB_API_LIVE_KEY");
+
         apiClient.setBasePath(BASE_PATH);
         basicAuth.setUsername(LOB_API_KEY);
         return apiClient;
@@ -68,7 +85,7 @@ public class Configuration {
         ApiClient apiClient = new ApiClient();
 
         HttpBasicAuth basicAuth = (HttpBasicAuth) apiClient.getAuthentication("basicAuth");
-        
+
         apiClient.setBasePath(BASE_PATH);
         basicAuth.setUsername("BAD USERNAME");
         return apiClient;
