@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Create**](CreativesApi.md#Create) | **POST** /creatives | Create
-[**Retrieve**](CreativesApi.md#Retrieve) | **GET** /creatives/{crv_id} | Retrieve
-[**Update**](CreativesApi.md#Update) | **PATCH** /creatives/{crv_id} | Update
+[**create**](CreativesApi.md#create) | **POST** /creatives | create
+[**get**](CreativesApi.md#get) | **GET** /creatives/{crv_id} | get
+[**update**](CreativesApi.md#update) | **PATCH** /creatives/{crv_id} | update
 
 
-<a name="Create"></a>
-# **Create**
-> Object Create(body, xLangOutput)
+<a name="create"></a>
+# **create**
+> CreativeResponse create(creativeWritable, xLangOutput)
 
-Create
+create
 
 Creates a new creative with the provided properties
 
@@ -37,12 +37,12 @@ public class Example {
     basicAuth.setUsername("LOB_API_KEY");
 
     CreativesApi apiInstance = new CreativesApi(defaultClient);
-    Object body = null; // Object | 
+    CreativeWritable creativeWritable = new CreativeWritable(); // CreativeWritable | 
     String xLangOutput = "native"; // String | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English. 
     try {
-      Object result = apiInstance.Create(body, xLangOutput);
+      CreativeResponse result = apiInstance.create(creativeWritable, xLangOutput);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CreativesApi#Create");
+      System.err.println("Exception when calling CreativesApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -56,12 +56,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **Object**|  |
+ **creativeWritable** | [**CreativeWritable**](CreativeWritable.md)|  |
  **xLangOutput** | **String**| * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  | [optional] [enum: native, match]
 
 ### Return type
 
-**Object**
+[**CreativeResponse**](CreativeResponse.md)
 
 ### Authorization
 
@@ -78,11 +78,11 @@ Name | Type | Description  | Notes
 **200** | Creative created successfully |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="Retrieve"></a>
-# **Retrieve**
-> Object Retrieve(crvId)
+<a name="get"></a>
+# **get**
+> CreativeResponse get(crvId)
 
-Retrieve
+get
 
 Retrieves the details of an existing creative. You need only supply the unique creative identifier that was returned upon creative creation.
 
@@ -108,9 +108,9 @@ public class Example {
     CreativesApi apiInstance = new CreativesApi(defaultClient);
     String crvId = "crvId_example"; // String | id of the creative
     try {
-      Object result = apiInstance.Retrieve(crvId);
+      CreativeResponse result = apiInstance.get(crvId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CreativesApi#Retrieve");
+      System.err.println("Exception when calling CreativesApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+[**CreativeResponse**](CreativeResponse.md)
 
 ### Authorization
 
@@ -145,11 +145,11 @@ Name | Type | Description  | Notes
 **200** | Returns a creative object |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="Update"></a>
-# **Update**
-> Object Update(crvId, creativePatch)
+<a name="update"></a>
+# **update**
+> CreativeResponse update(crvId, creativePatch)
 
-Update
+update
 
 Update the details of an existing creative. You need only supply the unique identifier that was returned upon creative creation.
 
@@ -176,9 +176,9 @@ public class Example {
     String crvId = "crvId_example"; // String | id of the creative
     CreativePatch creativePatch = new CreativePatch(); // CreativePatch | 
     try {
-      Object result = apiInstance.Update(crvId, creativePatch);
+      CreativeResponse result = apiInstance.update(crvId, creativePatch);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CreativesApi#Update");
+      System.err.println("Exception when calling CreativesApi#update");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+[**CreativeResponse**](CreativeResponse.md)
 
 ### Authorization
 
