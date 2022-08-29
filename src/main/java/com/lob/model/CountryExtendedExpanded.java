@@ -30,6 +30,8 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(CountryExtendedExpanded.Adapter.class)
 public enum CountryExtendedExpanded {
   
+  EMPTY(""),
+  
   AFGHANISTAN("AFGHANISTAN"),
   
   ALBANIA("ALBANIA"),
