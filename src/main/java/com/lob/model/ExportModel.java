@@ -26,45 +26,92 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 /**
- * CardOrderEditable
+ * ExportModel
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class CardOrderEditable {
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+public class ExportModel {
+  /**
+   * Gets or Sets type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    ALL("all"),
+    
+    FAILURES("failures"),
+    
+    SUCCESSES("successes");
 
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+
+  @SerializedName(SERIALIZED_NAME_TYPE)
   
 
-  private Integer quantity;
+  private TypeEnum type;
   /**
-  * Get quantity
-  * minimum: 10000
-  * maximum: 10000000
-  * @return quantity
+  * Get type
+  * @return type
   **/
   
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   
-  public Integer getQuantity() {
-      return quantity;
+  public TypeEnum getType() {
+      return type;
   }
   
   
 
 
   /*
-  public CardOrderEditable quantity(Integer quantity) {
+  public ExportModel type(TypeEnum type) {
     
-    this.quantity = quantity;
+    this.type = type;
     return this;
   }
   */
 
 
-  public void setQuantity(Integer quantity) {
-    this.quantity = quantity;
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
 
@@ -77,20 +124,20 @@ public class CardOrderEditable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CardOrderEditable cardOrderEditable = (CardOrderEditable) o;
-    return Objects.equals(this.quantity, cardOrderEditable.quantity);
+    ExportModel exportModel = (ExportModel) o;
+    return Objects.equals(this.type, exportModel.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity);
+    return Objects.hash(type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
