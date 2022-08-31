@@ -5,6 +5,8 @@
 ## Enum
 
 
+* `EMPTY` (value: `""`)
+
 * `AFGHANISTAN` (value: `"AFGHANISTAN"`)
 
 * `ALBANIA` (value: `"ALBANIA"`)
