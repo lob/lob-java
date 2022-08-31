@@ -20,51 +20,88 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.lob.model.MailType;
+import com.lob.model.PostcardSize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
 /**
- * CardOrderEditable
+ * Properties that the postcards in your Creative should have.
  */
+@ApiModel(description = "Properties that the postcards in your Creative should have.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class CardOrderEditable {
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+public class PostcardDetailsWritable {
+  public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
 
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)
   
 
-  private Integer quantity;
+  private MailType mailType = MailType.FIRST_CLASS;
   /**
-  * Get quantity
-  * minimum: 10000
-  * maximum: 10000000
-  * @return quantity
+  * Get mailType
+  * @return mailType
   **/
   
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   
-  public Integer getQuantity() {
-      return quantity;
+  public MailType getMailType() {
+      return mailType;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_SIZE = "size";
+
+  @SerializedName(SERIALIZED_NAME_SIZE)
+  
+
+  private PostcardSize size = PostcardSize._4X6;
+  /**
+  * Get size
+  * @return size
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "")
+  
+  public PostcardSize getSize() {
+      return size;
   }
   
   
 
 
   /*
-  public CardOrderEditable quantity(Integer quantity) {
+  public PostcardDetailsWritable mailType(MailType mailType) {
     
-    this.quantity = quantity;
+    this.mailType = mailType;
     return this;
   }
   */
 
 
-  public void setQuantity(Integer quantity) {
-    this.quantity = quantity;
+  public void setMailType(MailType mailType) {
+    this.mailType = mailType;
+  }
+
+
+
+  /*
+  public PostcardDetailsWritable size(PostcardSize size) {
+    
+    this.size = size;
+    return this;
+  }
+  */
+
+
+  public void setSize(PostcardSize size) {
+    this.size = size;
   }
 
 
@@ -77,20 +114,22 @@ public class CardOrderEditable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CardOrderEditable cardOrderEditable = (CardOrderEditable) o;
-    return Objects.equals(this.quantity, cardOrderEditable.quantity);
+    PostcardDetailsWritable postcardDetailsWritable = (PostcardDetailsWritable) o;
+    return Objects.equals(this.mailType, postcardDetailsWritable.mailType) &&
+        Objects.equals(this.size, postcardDetailsWritable.size);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity);
+    return Objects.hash(mailType, size);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    mailType: ").append(toIndentedString(mailType)).append("\n");
+    sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("}");
     return sb.toString();
   }
