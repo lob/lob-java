@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 <a name="list"></a>
 # **list**
-> BillingGroupList list(limit, offset, include, dateCreated, dateModified, sortBy)
+> BillingGroupList list(limit, offset, include, dateCreated, dateModified, sortByDateModified)
 
 list
 
@@ -246,9 +246,9 @@ public class Example {
     List<String> include = Arrays.asList(); // List<String> | Request that the response include the total count by specifying `include[]=total_count`. 
     Map<String, OffsetDateTime> dateCreated = new HashMap(); // Map<String, OffsetDateTime> | Filter by date created.
     Map<String, String> dateModified = new HashMap(); // Map<String, String> | Filter by date modified.
-    SortBy5 sortBy = new HashMap(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
+    SortByDateModified sortByDateModified = new HashMap(); // SortByDateModified | Sorts items by ascending or descending dates. Use either `date_created` or `date_modfied`, not both. 
     try {
-      BillingGroupList result = apiInstance.list(limit, offset, include, dateCreated, dateModified, sortBy);
+      BillingGroupList result = apiInstance.list(limit, offset, include, dateCreated, dateModified, sortByDateModified);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingGroupsApi#list");
       System.err.println("Status code: " + e.getCode());
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
  **include** | [**List&lt;String&gt;**](String.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional]
  **dateCreated** | [**Map&lt;String, OffsetDateTime&gt;**](OffsetDateTime.md)| Filter by date created. | [optional]
  **dateModified** | [**Map&lt;String, String&gt;**](String.md)| Filter by date modified. | [optional]
- **sortBy** | [**SortBy5**](.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
+ **sortByDateModified** | [**SortByDateModified**](.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  | [optional]
 
 ### Return type
 
