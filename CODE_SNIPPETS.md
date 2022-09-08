@@ -1,6 +1,6 @@
 # Code Snippets
 
-## Address Api
+## Addresses Api
 
 ### Retrieve
 ```bash
@@ -99,9 +99,9 @@ try {
     2, // limit
     null, // before
     null, // after
-    null, // include
-    null, // dateCreated
-    null // metadata
+    includeList, // include
+    dateCreated, // dateCreated
+    metadata // metadata
   );
 } catch (ApiException e) {
   e.printStackTrace();
@@ -254,14 +254,14 @@ try {
     2, // limit
     null, // before
     null, // after
-    null, // include
-    null, // dateCreated
-    null, // metadata
-    null, // size
-    null, // scheduled
-    null, // sendDate
-    null, // mailType
-    null // sortBy
+    includeList, // include
+    dateCreated, // dateCreated
+    metadata, // metadata
+    sizeArray, // size
+    true, // scheduled
+    sendDate, // sendDate
+    , // mailType
+    sortBy // sortBy
   );
 } catch (ApiException e) {
   e.printStackTrace();
@@ -374,14 +374,14 @@ try {
     2, // limit
     null, // before
     null, // after
-    null, // include
-    null, // dateCreated
-    null, // metadata
+    includeList, // include
+    dateCreated, // dateCreated
+    metadata, // metadata
     null, // size
-    null, // scheduled
-    null, // sendDate
-    null, // mailType
-    null // sortBy
+    true, // scheduled
+    sendDate, // sendDate
+    , // mailType
+    sortBy // sortBy
   );
 } catch (ApiException e) {
   e.printStackTrace();
@@ -446,7 +446,6 @@ curl https://api.lob.com/v1/letters \
   -d "to[address_zip]=94107" \
   -d "merge_variables[name]=Harry" \
   -d "cards[]=card_c51ae96f5cebf3e"
-  -d "cards[]=card_thingy"
 ```
 
 ```java
@@ -465,7 +464,6 @@ to.setAddressZip("94107");
 
 List<String> cards = new ArrayList<String>();
 cards.add("card_c51ae96f5cebf3e");
-cards.add("card_thingy");
 
 try {
   LetterEditable letterEditable = new LetterEditable(); 
@@ -501,14 +499,14 @@ try {
     2, // limit
     null, // before
     null, // after
-    null, // include
-    null, // dateCreated
-    null, // metadata
-    null, // color
-    null, // scheduled
-    null, // sendDate
-    null, // mailType
-    null // sortBy
+    includeList, // include
+    dateCreated, // dateCreated
+    metadata, // metadata
+    true, // color
+    true, // scheduled
+    sendDate, // sendDate
+    , // mailType
+    sortBy // sortBy
   );
 } catch (ApiException e) {
   e.printStackTrace();
@@ -627,13 +625,13 @@ try {
     2, // limit
     null, // before
     null, // after
-    null, // include
-    null, // dateCreated
-    null, // metadata
-    null, // scheduled
-    null, // sendDate
-    null, // mailType
-    null // sortBy
+    includeList, // include
+    dateCreated, // dateCreated
+    metadata, // metadata
+    true, // scheduled
+    sendDate, // sendDate
+    , // mailType
+    sortBy // sortBy
   );
 } catch (ApiException e) {
   e.printStackTrace();
@@ -697,9 +695,9 @@ try {
     2, // limit
     null, // before
     null, // after
-    null, // include
-    null, // dateCreated
-    null // metadata
+    includeList, // include
+    dateCreated, // dateCreated
+    metadata // metadata
   );
 } catch (ApiException e) {
   e.printStackTrace();
@@ -816,14 +814,13 @@ curl -X GET "https://api.lob.com/v1/templates?limit=2" \
 TemplatesApi apiInstance = new TemplatesApi(config);
 
 try {
-  List response = apiInstance.list(
+  TemplateList response = apiInstance.list(
     2, // limit
     null, // before
     null, // after
-    null, // include
-    null, // dateCreated
-    null, // metadata
-    null // size
+    includeList, // include
+    dateCreated, // dateCreated
+    metadata // metadata
   );
 } catch (ApiException e) {
   e.printStackTrace();
@@ -870,11 +867,11 @@ curl https://api.lob.com/v1/templates \
 TemplatesApi apiInstance = new TemplatesApi(config);
 
 try {
-  TemplateWritable  = new TemplateWritable(); 
-  .set("Test Template");
-  .set("<html>HTML for {{name}}</html>");
+  TemplateWritable templateWritable = new TemplateWritable(); 
+  templateWritable.set("Test Template");
+  templateWritable.set("<html>HTML for {{name}}</html>");
 
-  Template result = apiInstance.create();
+  Template result = apiInstance.create(templateWritable);
 } catch (ApiException e) {
   e.printStackTrace();
 }
@@ -945,11 +942,11 @@ curl https://api.lob.com/v1/templates/tmpl_4aa14648113e45b/versions \
 TemplateVersionsApi apiInstance = new TemplateVersionsApi(config);
 
 try {
-  TemplateVersionWritable  = new TemplateVersionWritable(); 
-  .set("Second Version");
-  .set("<html>Second HTML for {{name}}</html>");
+  TemplateVersionWritable templateVersionWritable = new TemplateVersionWritable(); 
+  templateVersionWritable.set("Second Version");
+  templateVersionWritable.set("<html>Second HTML for {{name}}</html>");
 
-  TemplateVersion result = apiInstance.create();
+  TemplateVersion result = apiInstance.create(templateVersionWritable);
 } catch (ApiException e) {
   e.printStackTrace();
 }

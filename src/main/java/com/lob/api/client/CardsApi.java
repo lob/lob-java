@@ -33,7 +33,6 @@ import com.lob.model.CardEditable;
 import com.lob.model.CardList;
 import com.lob.model.CardUpdatable;
 import com.lob.model.LobError;
-import com.lob.model.SortBy5;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -569,7 +568,7 @@ public class CardsApi {
      * @param limit How many results to return. (optional, default to 10)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
-     * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
+     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -580,7 +579,7 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCall(Integer limit, String before, String after, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -604,8 +603,8 @@ public class CardsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("after", after));
         }
 
-        if (sortBy != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort_by", sortBy));
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "include", include));
         }
 
         final String[] localVarAccepts = {
@@ -627,10 +626,10 @@ public class CardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listCall(limit, before, after, sortBy, _callback);
+        okhttp3.Call localVarCall = listCall(limit, before, after, include, _callback);
         return localVarCall;
 
     }
@@ -641,7 +640,7 @@ public class CardsApi {
      * @param limit How many results to return. (optional, default to 10)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
-     * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
+     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @return CardList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -651,9 +650,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public CardList list(Integer limit, String before, String after, SortBy5 sortBy) throws ApiException {
+    public CardList list(Integer limit, String before, String after, List<String> include) throws ApiException {
         try {
-            ApiResponse<CardList> localVarResp = listWithHttpInfo(limit, before, after, sortBy);
+            ApiResponse<CardList> localVarResp = listWithHttpInfo(limit, before, after, include);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -666,7 +665,7 @@ public class CardsApi {
      * @param limit How many results to return. (optional, default to 10)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
-     * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
+     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @return ApiResponse&lt;CardList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -676,9 +675,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CardList> listWithHttpInfo(Integer limit, String before, String after, SortBy5 sortBy) throws ApiException {
+    public ApiResponse<CardList> listWithHttpInfo(Integer limit, String before, String after, List<String> include) throws ApiException {
         try {
-            okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, sortBy, null);
+            okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, null);
             Type localVarReturnType = new TypeToken<CardList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -692,7 +691,7 @@ public class CardsApi {
      * @param limit How many results to return. (optional, default to 10)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
-     * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
+     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -703,9 +702,9 @@ public class CardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAsync(Integer limit, String before, String after, SortBy5 sortBy, final ApiCallback<CardList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, final ApiCallback<CardList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, sortBy, _callback);
+        okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, _callback);
         Type localVarReturnType = new TypeToken<CardList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

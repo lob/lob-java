@@ -26,10 +26,10 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 /**
- * SortBy4
+ * SortByDateModified
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SortBy4 {
+public class SortByDateModified {
   /**
    * Gets or Sets dateCreated
    */
@@ -99,17 +99,17 @@ public class SortBy4 {
   
 
   /**
-   * Gets or Sets sendDate
+   * Gets or Sets dateModified
    */
-  @JsonAdapter(SendDateEnum.Adapter.class)
-  public enum SendDateEnum {
+  @JsonAdapter(DateModifiedEnum.Adapter.class)
+  public enum DateModifiedEnum {
     ASC("asc"),
     
     DESC("desc");
 
     private String value;
 
-    SendDateEnum(String value) {
+    DateModifiedEnum(String value) {
       this.value = value;
     }
 
@@ -122,8 +122,8 @@ public class SortBy4 {
       return String.valueOf(value);
     }
 
-    public static SendDateEnum fromValue(String value) {
-      for (SendDateEnum b : SendDateEnum.values()) {
+    public static DateModifiedEnum fromValue(String value) {
+      for (DateModifiedEnum b : DateModifiedEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -131,44 +131,44 @@ public class SortBy4 {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<SendDateEnum> {
+    public static class Adapter extends TypeAdapter<DateModifiedEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final SendDateEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final DateModifiedEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public SendDateEnum read(final JsonReader jsonReader) throws IOException {
+      public DateModifiedEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return SendDateEnum.fromValue(value);
+        return DateModifiedEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_SEND_DATE = "send_date";
+  public static final String SERIALIZED_NAME_DATE_MODIFIED = "date_modified";
 
-  @SerializedName(SERIALIZED_NAME_SEND_DATE)
+  @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private SendDateEnum sendDate;
+  private DateModifiedEnum dateModified;
   /**
-  * Get sendDate
-  * @return sendDate
+  * Get dateModified
+  * @return dateModified
   **/
   
   @javax.annotation.Nullable
   
   @ApiModelProperty(value = "")
   
-  public SendDateEnum getSendDate() {
-      return sendDate;
+  public DateModifiedEnum getDateModified() {
+      return dateModified;
   }
   
   
 
 
   /*
-  public SortBy4 dateCreated(DateCreatedEnum dateCreated) {
+  public SortByDateModified dateCreated(DateCreatedEnum dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -183,16 +183,16 @@ public class SortBy4 {
 
 
   /*
-  public SortBy4 sendDate(SendDateEnum sendDate) {
+  public SortByDateModified dateModified(DateModifiedEnum dateModified) {
     
-    this.sendDate = sendDate;
+    this.dateModified = dateModified;
     return this;
   }
   */
 
 
-  public void setSendDate(SendDateEnum sendDate) {
-    this.sendDate = sendDate;
+  public void setDateModified(DateModifiedEnum dateModified) {
+    this.dateModified = dateModified;
   }
 
 
@@ -205,14 +205,14 @@ public class SortBy4 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SortBy4 sortBy4 = (SortBy4) o;
-    return Objects.equals(this.dateCreated, sortBy4.dateCreated) &&
-        Objects.equals(this.sendDate, sortBy4.sendDate);
+    SortByDateModified sortByDateModified = (SortByDateModified) o;
+    return Objects.equals(this.dateCreated, sortByDateModified.dateCreated) &&
+        Objects.equals(this.dateModified, sortByDateModified.dateModified);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dateCreated, sendDate);
+    return Objects.hash(dateCreated, dateModified);
   }
 
   @Override
@@ -220,7 +220,7 @@ public class SortBy4 {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
     sb.append("    dateCreated: ").append(toIndentedString(dateCreated)).append("\n");
-    sb.append("    sendDate: ").append(toIndentedString(sendDate)).append("\n");
+    sb.append("    dateModified: ").append(toIndentedString(dateModified)).append("\n");
     sb.append("}");
     return sb.toString();
   }
