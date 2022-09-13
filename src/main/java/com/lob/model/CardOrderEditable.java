@@ -38,7 +38,7 @@ public class CardOrderEditable {
   private Integer quantity;
   /**
   * Get quantity
-  * minimum: 0
+  * minimum: 10000
   * maximum: 10000000
   * @return quantity
   **/
