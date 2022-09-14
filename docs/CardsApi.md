@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 <a name="list"></a>
 # **list**
-> CardList list(limit, before, after, sortBy)
+> CardList list(limit, before, after, include)
 
 list
 
@@ -312,9 +312,9 @@ public class Example {
     Integer limit = 10; // Integer | How many results to return.
     String before = "before_example"; // String | A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response. 
     String after = "after_example"; // String | A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response. 
-    SortBy5 sortBy = new HashMap(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
+    List<String> include = Arrays.asList(); // List<String> | Request that the response include the total count by specifying `include[]=total_count`. 
     try {
-      CardList result = apiInstance.list(limit, before, after, sortBy);
+      CardList result = apiInstance.list(limit, before, after, include);
     } catch (ApiException e) {
       System.err.println("Exception when calling CardsApi#list");
       System.err.println("Status code: " + e.getCode());
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
  **limit** | **Integer**| How many results to return. | [optional] [default to 10]
  **before** | **String**| A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  | [optional]
  **after** | **String**| A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  | [optional]
- **sortBy** | [**SortBy5**](.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
+ **include** | [**List&lt;String&gt;**](String.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional]
 
 ### Return type
 

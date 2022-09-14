@@ -26,11 +26,11 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 /**
- * A nested custom envelope object containing more information about the custom envelope used or &#x60;null&#x60; if a custom envelope was not used.  Accepts an envelope ID for any customized envelope with available inventory. If no inventory is available for the specified ID, the letter will not be sent, and an error will be returned. If the letter has more than 6 sheets, it will be sent in a blank flat envelope. Custom envelopes may be created and ordered from the dashboard. This feature is exclusive to certain customers. Upgrade to the appropriate [Print &amp; Mail Edition](https://dashboard.lob.com/#/settings/editions) to gain access.
+ * A nested custom envelope object containing more information about the custom envelope used or &#x60;null&#x60; if a custom envelope was not used.
  */
-@ApiModel(description = "A nested custom envelope object containing more information about the custom envelope used or `null` if a custom envelope was not used.  Accepts an envelope ID for any customized envelope with available inventory. If no inventory is available for the specified ID, the letter will not be sent, and an error will be returned. If the letter has more than 6 sheets, it will be sent in a blank flat envelope. Custom envelopes may be created and ordered from the dashboard. This feature is exclusive to certain customers. Upgrade to the appropriate [Print & Mail Edition](https://dashboard.lob.com/#/settings/editions) to gain access.")
+@ApiModel(description = "A nested custom envelope object containing more information about the custom envelope used or `null` if a custom envelope was not used.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class LetterEditableCustomEnvelope {
+public class CustomEnvelopeReturned {
   public static final String SERIALIZED_NAME_ID = "id";
 
   @SerializedName(SERIALIZED_NAME_ID)
@@ -141,7 +141,7 @@ public class LetterEditableCustomEnvelope {
 
 
   /*
-  public LetterEditableCustomEnvelope id(String id) {
+  public CustomEnvelopeReturned id(String id) {
     
     this.id = id;
     return this;
@@ -156,7 +156,7 @@ public class LetterEditableCustomEnvelope {
 
 
   /*
-  public LetterEditableCustomEnvelope url(String url) {
+  public CustomEnvelopeReturned url(String url) {
     
     this.url = url;
     return this;
@@ -171,7 +171,7 @@ public class LetterEditableCustomEnvelope {
 
 
   /*
-  public LetterEditableCustomEnvelope _object(ObjectEnum _object) {
+  public CustomEnvelopeReturned _object(ObjectEnum _object) {
     
     this._object = _object;
     return this;
@@ -193,10 +193,10 @@ public class LetterEditableCustomEnvelope {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LetterEditableCustomEnvelope letterEditableCustomEnvelope = (LetterEditableCustomEnvelope) o;
-    return Objects.equals(this.id, letterEditableCustomEnvelope.id) &&
-        Objects.equals(this.url, letterEditableCustomEnvelope.url) &&
-        Objects.equals(this._object, letterEditableCustomEnvelope._object);
+    CustomEnvelopeReturned customEnvelopeReturned = (CustomEnvelopeReturned) o;
+    return Objects.equals(this.id, customEnvelopeReturned.id) &&
+        Objects.equals(this.url, customEnvelopeReturned.url) &&
+        Objects.equals(this._object, customEnvelopeReturned._object);
   }
 
   @Override
