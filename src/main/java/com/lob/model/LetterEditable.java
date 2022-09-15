@@ -20,7 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.LetterEditableCustomEnvelope;
 import com.lob.model.MailType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -295,7 +294,7 @@ public class LetterEditable {
   @SerializedName(SERIALIZED_NAME_CUSTOM_ENVELOPE)
   
 
-  private LetterEditableCustomEnvelope customEnvelope;
+  private String customEnvelope;
   /**
   * Get customEnvelope
   * @return customEnvelope
@@ -305,7 +304,7 @@ public class LetterEditable {
   
   @ApiModelProperty(value = "")
   
-  public LetterEditableCustomEnvelope getCustomEnvelope() {
+  public String getCustomEnvelope() {
       return customEnvelope;
   }
   
@@ -637,7 +636,7 @@ public class LetterEditable {
 
 
   /*
-  public LetterEditable customEnvelope(LetterEditableCustomEnvelope customEnvelope) {
+  public LetterEditable customEnvelope(String customEnvelope) {
     
     this.customEnvelope = customEnvelope;
     return this;
@@ -645,7 +644,7 @@ public class LetterEditable {
   */
 
 
-  public void setCustomEnvelope(LetterEditableCustomEnvelope customEnvelope) {
+  public void setCustomEnvelope(String customEnvelope) {
     this.customEnvelope = customEnvelope;
   }
 

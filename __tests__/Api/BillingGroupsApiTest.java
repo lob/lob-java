@@ -14,7 +14,7 @@ import com.lob.api.client.BillingGroupsApi;
 import com.lob.model.BillingGroup;
 import com.lob.model.BillingGroupEditable;
 import com.lob.model.BillingGroupList;
-import com.lob.model.SortBy5;
+import com.lob.model.SortByDateModified;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,9 +26,9 @@ public class BillingGroupsApiTest {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         BillingGroup fakeBillingGroup = new BillingGroup();
         BillingGroupEditable billingGroupEditable = new BillingGroupEditable();
-        
+
         fakeBillingGroup.setId("bg_fakeId");
-        
+
         when(billingGroupApiMock.create(billingGroupEditable)).thenReturn(fakeBillingGroup);
         BillingGroup response = billingGroupApiMock .create(billingGroupEditable);
 
@@ -54,16 +54,16 @@ public class BillingGroupsApiTest {
 
         billingGroupApiMock.create(null);
 
-        Assert.fail("This should not happen");   
-    }   
+        Assert.fail("This should not happen");
+    }
 
     @Test(enabled=true, groups={"Unit", "Get", "Billing Group", "Valid"})
     public void billingGroupGetTest() throws ApiException {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         BillingGroup fakeBillingGroup = new BillingGroup();
-        
+
         fakeBillingGroup.setId("bg_fakeId");
-        
+
         when(billingGroupApiMock.get("bg_fakeId")).thenReturn(fakeBillingGroup);
         BillingGroup response = billingGroupApiMock.get("bg_fakeId");
 
@@ -89,16 +89,16 @@ public class BillingGroupsApiTest {
 
         billingGroupApiMock.get(null);
     }
-  
+
     @Test(enabled=true, groups={"Unit", "Update", "Billing Group", "Valid"})
     public void billingGroupUpdateTest() throws ApiException {
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         BillingGroup fakeBillingGroup = new BillingGroup();
         BillingGroupEditable billingGroupEditable = new BillingGroupEditable();
 
-        
+
         fakeBillingGroup.setId("bg_fakeId");
-        
+
         when(billingGroupApiMock.update("bg_fakeId", billingGroupEditable)).thenReturn(fakeBillingGroup);
         BillingGroup response = billingGroupApiMock.update("bg_fakeId", billingGroupEditable);
 
@@ -124,7 +124,7 @@ public class BillingGroupsApiTest {
 
         billingGroupApiMock.update(null, null);
     }
-    
+
     @Test(enabled=false, groups={"Unit", "List", "Billing Group", "Valid"})
     public void billingGroupsListTest() throws ApiException {
         Integer limit = null;
@@ -132,7 +132,7 @@ public class BillingGroupsApiTest {
         List<String> include = null;
         Map<String, OffsetDateTime> dateCreated = null;
         Map<String, String> dateModified = null;
-        SortBy5 sortBy = null;
+        SortByDateModified sortBy = null;
         BillingGroupsApi billingGroupApiMock = mock(BillingGroupsApi.class);
         BillingGroupList fakeBillingGroup = new BillingGroupList();
         List<BillingGroup> data = new ArrayList<BillingGroup>();
@@ -149,8 +149,8 @@ public class BillingGroupsApiTest {
 
         when(billingGroupApiMock.list(limit, offset, include, dateCreated, dateModified, sortBy)).thenReturn(fakeBillingGroup);
         BillingGroupList response = billingGroupApiMock.list(limit, offset, include, dateCreated, dateModified, sortBy);
-       
-       Assert.assertEquals(fakeBillingGroup.getCount(), response.getCount()); 
+
+       Assert.assertEquals(fakeBillingGroup.getCount(), response.getCount());
     }
 
     @Test(enabled=true, groups={"Unit", "List", "Billing Group", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")

@@ -1,7 +1,6 @@
 package Model;
 
 import com.lob.model.LetterEditable;
-import com.lob.model.LetterEditableCustomEnvelope;
 import com.lob.model.MailType;
 import com.lob.model.AddressEditable;
 
@@ -34,7 +33,7 @@ public class LetterEditableTest {
             {"return_envelope", "true"},
             {"return_envelope", "false"},
             {"perforated_page", 11},
-            {"custom_envelope", new LetterEditableCustomEnvelope()},
+            {"custom_envelope", "env_fakeId"},
             {"to", new AddressEditable()},
             {"from", new AddressEditable()},
             {"file", "fake file"},
@@ -48,7 +47,7 @@ public class LetterEditableTest {
     public void letterEditableTestWithProvidedValue(String prop, Object val) throws Exception {
         LetterEditable rec = new LetterEditable();
         Gson gson = new Gson();
-        
+
         switch (prop) {
             case "mail_type": {
                 MailType castedVal = (MailType)val;
@@ -87,7 +86,7 @@ public class LetterEditableTest {
                 break;
             }
             case "custom_envelope": {
-                LetterEditableCustomEnvelope castedVal = (LetterEditableCustomEnvelope)val;
+                String castedVal = (String)val;
                 rec.setCustomEnvelope(castedVal);
                 Assert.assertEquals(rec.getCustomEnvelope(), castedVal);
                 break;
