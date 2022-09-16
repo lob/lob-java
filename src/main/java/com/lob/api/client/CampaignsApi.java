@@ -31,6 +31,7 @@ import com.lob.model.Campaign;
 import com.lob.model.CampaignUpdatable;
 import com.lob.model.CampaignWritable;
 import com.lob.model.CampaignsList;
+import com.lob.model.InlineResponse200;
 import com.lob.model.LobError;
 
 import java.lang.reflect.Type;
@@ -251,7 +252,7 @@ public class CampaignsApi {
      * delete
      * Delete an existing campaign. You need only supply the unique identifier that was returned upon campaign creation. Deleting a campaign also deletes any associated mail pieces that have been created but not sent. A campaign&#39;s &#x60;send_date&#x60; matches its associated mail pieces&#39; &#x60;send_date&#x60;s.
      * @param cmpId id of the campaign (required)
-     * @return Object
+     * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -260,9 +261,9 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Object delete(String cmpId) throws ApiException {
+    public InlineResponse200 delete(String cmpId) throws ApiException {
         try {
-            ApiResponse<Object> localVarResp = deleteWithHttpInfo(cmpId);
+            ApiResponse<InlineResponse200> localVarResp = deleteWithHttpInfo(cmpId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -273,7 +274,7 @@ public class CampaignsApi {
      * delete
      * Delete an existing campaign. You need only supply the unique identifier that was returned upon campaign creation. Deleting a campaign also deletes any associated mail pieces that have been created but not sent. A campaign&#39;s &#x60;send_date&#x60; matches its associated mail pieces&#39; &#x60;send_date&#x60;s.
      * @param cmpId id of the campaign (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -282,10 +283,10 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteWithHttpInfo(String cmpId) throws ApiException {
+    public ApiResponse<InlineResponse200> deleteWithHttpInfo(String cmpId) throws ApiException {
         try {
             okhttp3.Call localVarCall = deleteValidateBeforeCall(cmpId, null);
-            Type localVarReturnType = new TypeToken<Object>(){}.getType();
+            Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             throw e;
@@ -306,10 +307,10 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAsync(String cmpId, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteAsync(String cmpId, final ApiCallback<InlineResponse200> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteValidateBeforeCall(cmpId, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
