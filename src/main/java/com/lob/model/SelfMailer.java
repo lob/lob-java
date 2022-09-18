@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.Address;
-import com.lob.model.AddressDomesticExpanded;
 import com.lob.model.MailType;
 import com.lob.model.SelfMailerSize;
 import com.lob.model.TrackingEventCertified;
@@ -105,7 +103,7 @@ public class SelfMailer {
   }
   
   
-  public void setFrom(Address from) {
+  public void setFrom(AddressDomesticExpanded from) {
     Gson gson = new Gson();
     
     this.from = gson.toJson(from);
@@ -442,7 +440,7 @@ public class SelfMailer {
 
 
   /*
-  public SelfMailer to(Address to) {
+  public SelfMailer to(Object to) {
     
     this.to = to;
     return this;
@@ -454,7 +452,7 @@ public class SelfMailer {
 
 
   /*
-  public SelfMailer from(AddressDomesticExpanded from) {
+  public SelfMailer from(Object from) {
     
     this.from = from;
     return this;
