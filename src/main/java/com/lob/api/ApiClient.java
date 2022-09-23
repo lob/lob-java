@@ -1016,6 +1016,7 @@ public class ApiClient {
                 }
             }
             try {
+                System.out.println(respBody);
                 JSONObject outerObject = new JSONObject(respBody);
                 JSONObject errorObject = (JSONObject) outerObject.get("error");
                 throw new ApiException(errorObject.getInt("status_code"), (errorObject.getString("message")));

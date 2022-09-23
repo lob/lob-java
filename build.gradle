@@ -114,6 +114,7 @@ dependencies {
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
     implementation 'org.threeten:threetenbp:1.4.3'
     implementation "jakarta.annotation:jakarta.annotation-api:$jakarta_annotation_version"
+    implementation 'io.github.cdimascio:dotenv-java:2.2.4'
     testImplementation 'org.mockito:mockito-core:3.11.2'
     testImplementation 'org.testng:testng:7.4.0'
 }
