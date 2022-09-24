@@ -20,12 +20,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.lob.model.CampaignCreative;
 import com.lob.model.CmpScheduleType;
 import com.lob.model.CmpUseType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -192,11 +194,11 @@ public class Campaign {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {     
+  public Map<String, String> getMetadata() {
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata; 
+    return this.metadata;
   }
 
   public static final String SERIALIZED_NAME_USE_TYPE = "use_type";
@@ -311,23 +313,7 @@ public class Campaign {
   public static final String SERIALIZED_NAME_CREATIVES = "creatives";
 
   @SerializedName(SERIALIZED_NAME_CREATIVES)
-  
-
-  private List creatives = null;
-  /**
-  * An array of creatives that have been associated with this campaign.
-  * @return creatives
-  **/
-  
-  @javax.annotation.Nonnull
-  
-  @ApiModelProperty(required = true, value = "An array of creatives that have been associated with this campaign.")
-  
-  public List getCreatives() {
-      return creatives;
-  }
-  
-  
+  private List<CampaignCreative> creatives = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DATE_CREATED = "date_created";
 
@@ -657,15 +643,20 @@ public class Campaign {
 
 
   /*
-  public Campaign creatives(List creatives) {
+  public Campaign creatives(List<CampaignCreative> creatives) {
     
     this.creatives = creatives;
     return this;
   }
   */
 
+  public Campaign addCreativesItem(CampaignCreative creativesItem) {
+    this.creatives.add(creativesItem);
+    return this;
+  }
 
-  public void setCreatives(List creatives) {
+
+  public void setCreatives(List<CampaignCreative> creatives) {
     this.creatives = creatives;
   }
 

@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.Address;
-import com.lob.model.AddressDomesticExpanded;
 import com.lob.model.MailType;
 import com.lob.model.SelfMailerSize;
 import com.lob.model.TrackingEventCertified;
@@ -74,18 +72,18 @@ public class SelfMailer {
   public  String getTo() {
     return to;
   }
-  
+
 
   public void setTo(String to) {
     
-    
+
     this.to = to;
   }
   
   
   public void setTo(Address to) {
     Gson gson = new Gson();
-    
+
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_FROM = "from";
@@ -96,18 +94,18 @@ public class SelfMailer {
   public  String getFrom() {
     return from;
   }
-  
+
 
   public void setFrom(String from) {
     
-    
+
     this.from = from;
   }
   
   
-  public void setFrom(Address from) {
+  public void setFrom(AddressDomesticExpanded from) {
     Gson gson = new Gson();
-    
+
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_SIZE = "size";
@@ -156,11 +154,11 @@ public class SelfMailer {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {     
+  public Map<String, String> getMetadata() {
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata; 
+    return this.metadata;
   }
 
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
@@ -396,11 +394,11 @@ public class SelfMailer {
 
   @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)
   private List<TrackingEventCertified> trackingEvents = null;
-  public List<TrackingEventCertified> getTrackingEvents() {     
+  public List<TrackingEventCertified> getTrackingEvents() {
     if (this.trackingEvents == null) {
       this.trackingEvents = new ArrayList<TrackingEventCertified>();
     }
-    return this.trackingEvents; 
+    return this.trackingEvents;
   }
 
   public static final String SERIALIZED_NAME_URL = "url";
@@ -442,7 +440,7 @@ public class SelfMailer {
 
 
   /*
-  public SelfMailer to(Address to) {
+  public SelfMailer to(Object to) {
     
     this.to = to;
     return this;
@@ -454,7 +452,7 @@ public class SelfMailer {
 
 
   /*
-  public SelfMailer from(AddressDomesticExpanded from) {
+  public SelfMailer from(Object from) {
     
     this.from = from;
     return this;

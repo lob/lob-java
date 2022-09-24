@@ -36,11 +36,11 @@ public class BankAccountVerify {
 
   @SerializedName(SERIALIZED_NAME_AMOUNTS)
   private List<Integer> amounts = new ArrayList<>();
-  public List<Integer> getAmounts() {     
+  public List<Integer> getAmounts() {
     if (this.amounts == null) {
       this.amounts = new ArrayList<Integer>();
     }
-    return this.amounts; 
+    return this.amounts;
   }
 
 
