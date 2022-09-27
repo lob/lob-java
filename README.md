@@ -4,11 +4,11 @@
 [![Build Status](https://secure.travis-ci.org/lob/lob-java.svg)](https://travis-ci.org/lob/lob-java)
 [![Coverage Status](https://coveralls.io/repos/lob/lob-java/badge.svg?branch=master)](https://coveralls.io/r/lob/lob-java)
 
-Java wrapper for the [Lob.com](https://lob.com) API. See the full Lob.com [API Documentation](https://lob.com/docs/java).  For best results, be sure that you're using [the latest version](https://lob.com/docs/java#version) of the Lob API and the latest version of the java wrapper.
+Java wrapper for the [Lob.com](https://lob.com) API. The documentation for the legacy Java SDK no longer exists, but documentation for the new Java SDK can be found [here](https://docs.lob.com/). For best results, be sure that you're using [the latest version](https://lob.com/docs/java#version) of the Lob API and the latest version of the java wrapper.
 
 ******
 Starting a new project, we recommend using the <a href="https://github.com/lob/lob-java"><strong>Version 13.0.0</strong></a>!
-    
+
 Move your existing project from version 12.0.0 to 13.0.0? <a href="https://github.com/lob/lob-java/blob/main/MIGRATION.md">Checkout this migration guide.</a>
 ******
 
