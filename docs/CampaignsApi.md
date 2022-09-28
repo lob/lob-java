@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 <a name="delete"></a>
 # **delete**
-> Object delete(cmpId)
+> InlineResponse200 delete(cmpId)
 
 delete
 
@@ -110,7 +110,7 @@ public class Example {
     CampaignsApi apiInstance = new CampaignsApi(defaultClient);
     String cmpId = "cmpId_example"; // String | id of the campaign
     try {
-      Object result = apiInstance.delete(cmpId);
+      InlineResponse200 result = apiInstance.delete(cmpId);
     } catch (ApiException e) {
       System.err.println("Exception when calling CampaignsApi#delete");
       System.err.println("Status code: " + e.getCode());
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 

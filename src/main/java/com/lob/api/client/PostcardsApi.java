@@ -35,7 +35,7 @@ import com.lob.model.PostcardDeletion;
 import com.lob.model.PostcardEditable;
 import com.lob.model.PostcardList;
 import com.lob.model.PostcardSize;
-import com.lob.model.SortBy5;
+import com.lob.model.SortBy3;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -452,7 +452,7 @@ public class PostcardsApi {
      * @param size Specifies the size of the postcard. Only &#x60;4x6&#x60; postcards can be sent to international destinations. (optional)
      * @param scheduled * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  (optional)
      * @param sendDate Filter by date sent. (optional)
-     * @param mailType A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  (optional)
+     * @param mailType A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  (optional, default to usps_first_class)
      * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -464,7 +464,7 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<PostcardSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<PostcardSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -539,7 +539,7 @@ public class PostcardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<PostcardSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<PostcardSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
         
 
         okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
@@ -559,7 +559,7 @@ public class PostcardsApi {
      * @param size Specifies the size of the postcard. Only &#x60;4x6&#x60; postcards can be sent to international destinations. (optional)
      * @param scheduled * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  (optional)
      * @param sendDate Filter by date sent. (optional)
-     * @param mailType A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  (optional)
+     * @param mailType A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  (optional, default to usps_first_class)
      * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
      * @return PostcardList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -570,7 +570,7 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public PostcardList list(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<PostcardSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
+    public PostcardList list(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<PostcardSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy) throws ApiException {
         try {
             ApiResponse<PostcardList> localVarResp = listWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
             return localVarResp.getData();
@@ -591,7 +591,7 @@ public class PostcardsApi {
      * @param size Specifies the size of the postcard. Only &#x60;4x6&#x60; postcards can be sent to international destinations. (optional)
      * @param scheduled * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  (optional)
      * @param sendDate Filter by date sent. (optional)
-     * @param mailType A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  (optional)
+     * @param mailType A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  (optional, default to usps_first_class)
      * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
      * @return ApiResponse&lt;PostcardList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -602,7 +602,7 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PostcardList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<PostcardSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy) throws ApiException {
+    public ApiResponse<PostcardList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<PostcardSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy) throws ApiException {
         try {
             okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, null);
             Type localVarReturnType = new TypeToken<PostcardList>(){}.getType();
@@ -624,7 +624,7 @@ public class PostcardsApi {
      * @param size Specifies the size of the postcard. Only &#x60;4x6&#x60; postcards can be sent to international destinations. (optional)
      * @param scheduled * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  (optional)
      * @param sendDate Filter by date sent. (optional)
-     * @param mailType A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  (optional)
+     * @param mailType A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  (optional, default to usps_first_class)
      * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -636,7 +636,7 @@ public class PostcardsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<PostcardSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy5 sortBy, final ApiCallback<PostcardList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<PostcardSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback<PostcardList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
         Type localVarReturnType = new TypeToken<PostcardList>(){}.getType();

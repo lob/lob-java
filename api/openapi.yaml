@@ -38,9 +38,13 @@ tags:
   name: Cards
 - description: Checks allow you to send payments via physical checks.
   name: Checks
+- description: The creatives endpoint allows you to create and view creatives.
+  name: Creatives
 - description: When various notable things happen within the Lob architecture, Events
     will be created.
   name: Events
+- description: Validates whether a given name is associated with an address.
+  name: Identity Validation
 - description: Given partial international address information, this endpoint returns
     up to 10 address suggestions.
   name: Intl Autocompletions
@@ -64,6 +68,9 @@ tags:
 - description: As mailpieces travel through the mail stream, USPS scans their unique
     barcodes, and Lob processes these mail scans to generate tracking events.
   name: Tracking Events
+- description: The uploads endpoint allows you to upload audience files that are then
+    associated with a given campaign.
+  name: Uploads
 - description: Given partial domestic address information, this endpoint returns up
     to 10 address suggestions.
   name: Us Autocompletions
@@ -163,6 +170,23 @@ paths:
       summary: list
       tags:
       - Addresses
+      x-template-config:
+        test:
+          list: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: other_query_params
+            array: true
+            params:
+            - limit
+            - before
+            - after
+            - include
+            - date_created
+            - metadata
+            success: true
+          - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new address given information
@@ -197,6 +221,13 @@ paths:
       summary: create
       tags:
       - Addresses
+      x-template-config:
+        test:
+          create: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /addresses/{adr_id}:
@@ -229,6 +260,13 @@ paths:
       summary: delete
       tags:
       - Addresses
+      x-template-config:
+        test:
+          delete: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing address.
@@ -259,6 +297,13 @@ paths:
       summary: get
       tags:
       - Addresses
+      x-template-config:
+        test:
+          retrieve: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
   /bank_accounts/{bank_id}/verify:
     post:
@@ -309,6 +354,13 @@ paths:
       summary: verify
       tags:
       - Bank Accounts
+      x-template-config:
+        test:
+          verify: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-contentType: application/json
       x-accepts: application/json
   /bank_accounts/{bank_id}:
@@ -341,6 +393,13 @@ paths:
       summary: delete
       tags:
       - Bank Accounts
+      x-template-config:
+        test:
+          delete: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing bank account. You need only
@@ -373,6 +432,13 @@ paths:
       summary: get
       tags:
       - Bank Accounts
+      x-template-config:
+        test:
+          retrieve: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
   /bank_accounts:
     get:
@@ -465,6 +531,20 @@ paths:
       summary: list
       tags:
       - Bank Accounts
+      x-template-config:
+        test:
+        - subject: 200
+          success: true
+        - subject: other_query_params
+          array: true
+          params:
+          - limit
+          - before
+          - after
+          - include
+          - date_created
+          - metadata
+        - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new bank account with the provided properties. Bank accounts
@@ -512,6 +592,11 @@ paths:
       summary: create
       tags:
       - Bank Accounts
+      x-template-config:
+        test:
+        - subject: 200
+          success: true
+        - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /billing_groups/{bg_id}:
@@ -546,6 +631,14 @@ paths:
       summary: get
       tags:
       - Billing Groups
+      x-template-config:
+        test:
+          retrieve: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 404
       x-accepts: application/json
     post:
       description: Updates all editable attributes of the billing_group with the given
@@ -596,6 +689,13 @@ paths:
       summary: update
       tags:
       - Billing Groups
+      x-template-config:
+        test:
+          update: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-contentType: application/json
       x-accepts: application/json
   /billing_groups:
@@ -668,12 +768,12 @@ paths:
         x-template-config:
           base-type:
             dotnet: deepObject
-      - $ref: '#/components/parameters/sort_by_5'
+      - $ref: '#/components/parameters/sort_by_date_modified'
         description: |
-          Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
+          Sorts items by ascending or descending dates. Use either `date_created` or `date_modfied`, not both.
         explode: true
         in: query
-        name: sort_by
+        name: sort_by_date_modified
         required: false
         schema:
           properties:
@@ -682,7 +782,7 @@ paths:
               - asc
               - desc
               type: string
-            send_date:
+            date_modified:
               enum:
               - asc
               - desc
@@ -690,6 +790,7 @@ paths:
           type: object
         style: form
         x-template-config:
+          name-override: sort_by
           base-type:
             dotnet: deepObject
           additional-properties:
@@ -712,6 +813,23 @@ paths:
       summary: list
       tags:
       - Billing Groups
+      x-template-config:
+        test:
+          list: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: other_query_params
+            array: true
+            params:
+            - limit
+            - offset
+            - include
+            - date_created
+            - date_modified
+            - sort_by
+            success: true
+          - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new billing_group with the provided properties.
@@ -752,6 +870,13 @@ paths:
       summary: create
       tags:
       - Billing Groups
+      x-template-config:
+        test:
+          create: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /bulk/us_verifications:
@@ -809,6 +934,15 @@ paths:
       summary: verifyBulk
       tags:
       - Us Verifications
+      x-template-config:
+        test:
+          verifyBulk: true
+          tests:
+          - subject: valid_addresses
+            success: true
+          - subject: erroneous_address
+            successs: true
+          - subject: 0
       x-contentType: application/json
       x-accepts: application/json
   /bulk/intl_verifications:
@@ -849,6 +983,15 @@ paths:
       summary: verifyBulk
       tags:
       - Intl Verifications
+      x-template-config:
+        test:
+          verifyBulk: true
+          tests:
+          - subject: valid_addresses
+            success: true
+          - subject: erroneous_address
+            successs: true
+          - subject: 0
       x-contentType: application/json
       x-accepts: application/json
   /campaigns:
@@ -910,12 +1053,6 @@ paths:
       summary: list
       tags:
       - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/campaigns \
-            -u <YOUR API KEY>:
-        label: CURL
       x-accepts: application/json
     post:
       description: Creates a new campaign with the provided properties. See how to
@@ -940,10 +1077,6 @@ paths:
       requestBody:
         content:
           application/json:
-            example:
-              name: My Demo Campaign
-              description: My Campaign's description
-              schedule_type: immediate
             schema:
               $ref: '#/components/schemas/campaign_writable'
           application/x-www-form-urlencoded:
@@ -951,17 +1084,9 @@ paths:
               example-prop:
                 explode: true
                 style: deepObject
-            example:
-              name: My Demo Campaign
-              description: My Campaign's description
-              schedule_type: immediate
             schema:
               $ref: '#/components/schemas/campaign_writable'
           multipart/form-data:
-            example:
-              name: My Demo Campaign
-              description: My Campaign's description
-              schedule_type: immediate
             schema:
               $ref: '#/components/schemas/campaign_writable'
         required: true
@@ -982,14 +1107,6 @@ paths:
       summary: create
       tags:
       - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/campaigns \
-            -u <YOUR API KEY>: \
-            -d "name=My First Campaign" \
-            -d "schedule_type=immediate"
-        label: CURL
       x-contentType: application/json
       x-accepts: application/json
   /campaigns/{cmp_id}:
@@ -1012,20 +1129,8 @@ paths:
         "200":
           content:
             application/json:
-              example:
-                id: cmp_e05ee61ff80764b
-                deleted: true
               schema:
-                description: Lob uses RESTful HTTP response codes to indicate success
-                  or failure of an API request. In general, 2xx indicates success,
-                  4xx indicate an input error, and 5xx indicates an error on Lob's
-                  end.
-                properties:
-                  id:
-                    $ref: '#/components/schemas/cmp_id'
-                  deleted:
-                    description: True if the resource has been successfully deleted.
-                    type: boolean
+                $ref: '#/components/schemas/inline_response_200'
           description: Deleted the campaign.
         default:
           content:
@@ -1037,12 +1142,6 @@ paths:
       summary: delete
       tags:
       - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl -X DELETE https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b \
-            -u <YOUR API KEY>:
-        label: CURL
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing campaign. You need only supply
@@ -1074,12 +1173,6 @@ paths:
       summary: get
       tags:
       - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b \
-            -u <YOUR API KEY>:
-        label: CURL
       x-accepts: application/json
     patch:
       description: Update the details of an existing campaign. You need only supply
@@ -1097,18 +1190,12 @@ paths:
       requestBody:
         content:
           application/json:
-            example:
-              description: Test campaign
             schema:
               $ref: '#/components/schemas/campaign_updatable'
           application/x-www-form-urlencoded:
-            example:
-              description: Test campaign
             schema:
               $ref: '#/components/schemas/campaign_updatable'
           multipart/form-data:
-            example:
-              description: Test campaign
             schema:
               $ref: '#/components/schemas/campaign_updatable'
         required: true
@@ -1129,13 +1216,6 @@ paths:
       summary: update
       tags:
       - Campaigns
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl -X PATCH https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b \
-            -u <YOUR API KEY>: \
-            -d "description=Awesome campaign"
-        label: CURL
       x-contentType: application/json
       x-accepts: application/json
   /cards:
@@ -1173,33 +1253,15 @@ paths:
         schema:
           $ref: '#/components/schemas/after'
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
-        description: |
-          Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
+      - description: |
+          Request that the response include the total count by specifying `include[]=total_count`.
         explode: true
         in: query
-        name: sort_by
+        name: include
         required: false
         schema:
-          properties:
-            date_created:
-              enum:
-              - asc
-              - desc
-              type: string
-            send_date:
-              enum:
-              - asc
-              - desc
-              type: string
-          type: object
+          $ref: '#/components/schemas/include_model'
         style: form
-        x-template-config:
-          base-type:
-            dotnet: deepObject
-          additional-properties:
-            dotnet:
-              toJson: true
       responses:
         "200":
           content:
@@ -1217,6 +1279,21 @@ paths:
       summary: list
       tags:
       - Cards
+      x-template-config:
+        test:
+          list: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: other_query_params
+            array: true
+            params:
+            - limit
+            - before
+            - after
+            - include
+            success: true
+          - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new card given information
@@ -1250,6 +1327,13 @@ paths:
       summary: create
       tags:
       - Cards
+      x-template-config:
+        test:
+          create: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /cards/{card_id}:
@@ -1283,6 +1367,13 @@ paths:
       summary: delete
       tags:
       - Cards
+      x-template-config:
+        test:
+          delete: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing card. You need only supply
@@ -1314,6 +1405,13 @@ paths:
       summary: get
       tags:
       - Cards
+      x-template-config:
+        test:
+          retrieve: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
     post:
       description: Update the details of an existing card. You need only supply the
@@ -1357,6 +1455,14 @@ paths:
       summary: update
       tags:
       - Cards
+      x-template-config:
+        test:
+          update: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 404
       x-contentType: application/json
       x-accepts: application/json
   /cards/{card_id}/orders:
@@ -1410,6 +1516,19 @@ paths:
       summary: get
       tags:
       - Card Orders
+      x-template-config:
+        test:
+          list: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: other_query_params
+            array: true
+            params:
+            - limit
+            - offset
+            success: true
+          - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new card order given information
@@ -1452,6 +1571,13 @@ paths:
       summary: create
       tags:
       - Card Orders
+      x-template-config:
+        test:
+          create: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /checks/{chk_id}:
@@ -1490,6 +1616,14 @@ paths:
       summary: cancel
       tags:
       - Checks
+      x-template-config:
+        test:
+          cancel: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 404
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing check. You need only supply
@@ -1521,6 +1655,13 @@ paths:
       summary: get
       tags:
       - Checks
+      x-template-config:
+        test:
+          retrieve: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
   /checks:
     get:
@@ -1630,7 +1771,7 @@ paths:
         schema:
           $ref: '#/components/schemas/mail_type'
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
+      - $ref: '#/components/parameters/sort_by_3'
         description: |
           Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
         explode: true
@@ -1675,6 +1816,27 @@ paths:
       summary: list
       tags:
       - Checks
+      x-template-config:
+        test:
+          list: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: other_query_params
+            array: true
+            params:
+            - limit
+            - before
+            - after
+            - include
+            - date_created
+            - metadata
+            - scheduled
+            - send_date
+            - mail_type
+            - sort_by
+            success: true
+          - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new check with the provided properties.
@@ -1739,6 +1901,13 @@ paths:
       summary: create
       tags:
       - Checks
+      x-template-config:
+        test:
+          create: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /creatives:
@@ -1787,7 +1956,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Create
+      summary: create
       tags:
       - Creatives
       x-contentType: application/json
@@ -1820,15 +1989,9 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Retrieve
+      summary: get
       tags:
       - Creatives
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/creatives/crv_2a3b096c409b32c \
-            -u <YOUR API KEY>:
-        label: CURL
       x-accepts: application/json
     patch:
       description: Update the details of an existing creative. You need only supply
@@ -1869,9 +2032,51 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Update
+      summary: update
       tags:
       - Creatives
+      x-contentType: application/json
+      x-accepts: application/json
+  /identity_validation:
+    post:
+      description: Validates whether a given name is associated with an address.
+      operationId: identity_validation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/multi_line_address'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/multi_line_address'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/multi_line_address'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identity_validation'
+          description: Returns the likelihood a given name is associated with an address.
+          headers:
+            ratelimit-limit:
+              $ref: '#/components/headers/ratelimit-limit'
+            ratelimit-remaining:
+              $ref: '#/components/headers/ratelimit-remaining'
+            ratelimit-reset:
+              $ref: '#/components/headers/ratelimit-reset'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: validate
+      tags:
+      - Identity Validation
       x-contentType: application/json
       x-accepts: application/json
   /intl_autocompletions:
@@ -1933,6 +2138,15 @@ paths:
       summary: autocomplete
       tags:
       - Intl Autocompletions
+      x-template-config:
+        test:
+          autocomplete: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
+          - subject: test_key
+            success: true
       x-contentType: application/json
       x-accepts: application/json
   /intl_verifications:
@@ -1992,6 +2206,15 @@ paths:
       summary: verifySingle
       tags:
       - Intl Verifications
+      x-template-config:
+        test:
+          verifySingle: true
+          tests:
+          - subject: deliverable
+            success: true
+          - subject: undeliverable
+            success: true
+          - subject: 0
       x-contentType: application/json
       x-accepts: application/json
   /letters/{ltr_id}:
@@ -2030,6 +2253,13 @@ paths:
       summary: cancel
       tags:
       - Letters
+      x-template-config:
+        test:
+          cancel: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing letter. You need only supply
@@ -2061,6 +2291,14 @@ paths:
       summary: get
       tags:
       - Letters
+      x-template-config:
+        test:
+          retrieve: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 404
       x-accepts: application/json
   /letters:
     get:
@@ -2179,7 +2417,7 @@ paths:
         schema:
           $ref: '#/components/schemas/mail_type'
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
+      - $ref: '#/components/parameters/sort_by_3'
         description: |
           Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
         explode: true
@@ -2228,6 +2466,28 @@ paths:
       summary: list
       tags:
       - Letters
+      x-template-config:
+        test:
+          list: true
+          tests:
+          - subject: 200
+            var_prefix: ltr
+            success: true
+          - subject: other_query_params
+            array: true
+            params:
+            - limit
+            - before
+            - after
+            - include
+            - date_created
+            - metadata
+            - color
+            - scheduled
+            - send_date
+            - mail_type
+            - sort_by
+          - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new letter given information
@@ -2292,6 +2552,17 @@ paths:
       summary: create
       tags:
       - Letters
+      x-template-config:
+        test:
+          create: true
+          tests:
+          - subject: regular_200
+            success: true
+          - subject: certified_200
+            success: true
+          - subject: registered_200
+            success: true
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /postcards/{psc_id}:
@@ -2330,6 +2601,13 @@ paths:
       summary: cancel
       tags:
       - Postcards
+      x-template-config:
+        test:
+          cancel: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing postcard. You need only supply
@@ -2361,6 +2639,14 @@ paths:
       summary: get
       tags:
       - Postcards
+      x-template-config:
+        test:
+          retrieve: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 404
       x-accepts: application/json
   /postcards:
     get:
@@ -2486,7 +2772,7 @@ paths:
         schema:
           $ref: '#/components/schemas/mail_type'
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
+      - $ref: '#/components/parameters/sort_by_3'
         description: |
           Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
         explode: true
@@ -2531,6 +2817,28 @@ paths:
       summary: list
       tags:
       - Postcards
+      x-template-config:
+        test:
+          list: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: other_query_params
+            array: true
+            params:
+            - limit
+            - before
+            - after
+            - include
+            - date_created
+            - metadata
+            - size
+            - scheduled
+            - send_date
+            - mail_type
+            - sort_by
+            success: true
+          - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new postcard given information
@@ -2595,6 +2903,13 @@ paths:
       summary: create
       tags:
       - Postcards
+      x-template-config:
+        test:
+          create: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /self_mailers/{sfm_id}:
@@ -2628,6 +2943,13 @@ paths:
       summary: delete
       tags:
       - Self Mailers
+      x-template-config:
+        test:
+          delete: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing self_mailer. You need only
@@ -2660,6 +2982,14 @@ paths:
       summary: get
       tags:
       - Self Mailers
+      x-template-config:
+        test:
+          retrieve: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 404
       x-accepts: application/json
   /self_mailers:
     get:
@@ -2785,7 +3115,7 @@ paths:
         schema:
           $ref: '#/components/schemas/mail_type'
         style: form
-      - $ref: '#/components/parameters/sort_by_5'
+      - $ref: '#/components/parameters/sort_by_3'
         description: |
           Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
         explode: true
@@ -2830,6 +3160,28 @@ paths:
       summary: list
       tags:
       - Self Mailers
+      x-template-config:
+        test:
+          list: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: other_query_params
+            array: true
+            params:
+            - limit
+            - before
+            - after
+            - include
+            - date_created
+            - metadata
+            - size
+            - scheduled
+            - send_date
+            - mail_type
+            - sort_by
+            success: true
+          - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new self_mailer given information
@@ -2888,6 +3240,13 @@ paths:
       summary: create
       tags:
       - Self Mailers
+      x-template-config:
+        test:
+          create: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /templates/{tmpl_id}/versions/{vrsn_id}:
@@ -2929,6 +3288,13 @@ paths:
       summary: delete
       tags:
       - Template Versions
+      x-template-config:
+        test:
+          delete: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
     get:
       description: Retrieves the template version with the given template and version
@@ -2969,6 +3335,14 @@ paths:
       summary: get
       tags:
       - Template Versions
+      x-template-config:
+        test:
+          retrieve: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 404
       x-accepts: application/json
     post:
       description: Updates the template version with the given template and version
@@ -3028,6 +3402,13 @@ paths:
       summary: update
       tags:
       - Template Versions
+      x-template-config:
+        test:
+          update: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-contentType: application/json
       x-accepts: application/json
   /templates/{tmpl_id}/versions:
@@ -3122,6 +3503,22 @@ paths:
       summary: list
       tags:
       - Template Versions
+      x-template-config:
+        test:
+          list: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: other_query_params
+            array: true
+            params:
+            - limit
+            - before
+            - after
+            - include
+            - date_created
+            success: true
+          - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new template version attached to the specified template.
@@ -3172,6 +3569,13 @@ paths:
       summary: create
       tags:
       - Template Versions
+      x-template-config:
+        test:
+          create: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /templates/{tmpl_id}:
@@ -3204,6 +3608,13 @@ paths:
       summary: delete
       tags:
       - Templates
+      x-template-config:
+        test:
+          delete: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 404
       x-accepts: application/json
     get:
       description: Retrieves the details of an existing template.
@@ -3234,6 +3645,14 @@ paths:
       summary: get
       tags:
       - Templates
+      x-template-config:
+        test:
+          retrieve: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 404
       x-accepts: application/json
     post:
       description: Updates the description and/or published version of the template
@@ -3284,6 +3703,14 @@ paths:
       summary: update
       tags:
       - Templates
+      x-template-config:
+        test:
+          update: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 404
       x-contentType: application/json
       x-accepts: application/json
   /templates:
@@ -3380,6 +3807,23 @@ paths:
       summary: list
       tags:
       - Templates
+      x-template-config:
+        test:
+          list: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: other_query_params
+            array: true
+            params:
+            - limit
+            - before
+            - after
+            - include
+            - date_created
+            - metadata
+            success: true
+          - subject: 422
       x-accepts: application/json
     post:
       description: Creates a new template for use with the Print & Mail API. In Live
@@ -3424,7 +3868,306 @@ paths:
       summary: create
       tags:
       - Templates
+      x-template-config:
+        test:
+          create: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
       x-contentType: application/json
+      x-accepts: application/json
+  /uploads:
+    get:
+      description: Returns a list of your uploads. Optionally, filter uploads by campaign.
+      operationId: uploads_list
+      parameters:
+      - description: id of the campaign
+        explode: true
+        in: query
+        name: campaignId
+        required: false
+        schema:
+          $ref: '#/components/schemas/cmp_id'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload_list'
+          description: An array of matching uploads. Each entry in the array is a
+            separate upload.
+      summary: list_upload
+      tags:
+      - Uploads
+      x-template-config:
+        returnsComplexObject: true
+      x-accepts: application/json
+    post:
+      description: Creates a new upload with the provided properties.
+      operationId: upload_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/upload_writable'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload'
+          description: Upload created successfully
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: create_upload
+      tags:
+      - Uploads
+      x-contentType: application/json
+      x-accepts: application/json
+  /uploads/{upl_id}:
+    delete:
+      description: Delete an existing upload. You need only supply the unique identifier
+        that was returned upon upload creation.
+      operationId: upload_delete
+      parameters:
+      - description: id of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      responses:
+        "204":
+          description: Successful Response
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: delete_upload
+      tags:
+      - Uploads
+      x-code-snippet:
+        uploads: true
+        delete: true
+        op_name:
+          python: delete_upload
+        object_type: Upload
+        plural_object_type: Uploads
+        curl_form: uploads
+        resource_id: upl_71be866e430b11e9
+        response_var: upload
+      x-accepts: application/json
+    get:
+      description: Retrieves the details of an existing upload. You need only supply
+        the unique upload identifier that was returned upon upload creation.
+      operationId: upload_retrieve
+      parameters:
+      - description: id of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload'
+          description: Returns an upload object
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: get_upload
+      tags:
+      - Uploads
+      x-accepts: application/json
+    patch:
+      description: Update the details of an existing upload. You need only supply
+        the unique identifier that was returned upon upload creation.
+      operationId: upload_update
+      parameters:
+      - description: id of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/upload_updatable'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload'
+          description: Returns an upload object
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: update_upload
+      tags:
+      - Uploads
+      x-contentType: application/json
+      x-accepts: application/json
+  /uploads/{upl_id}/file:
+    post:
+      description: Upload an [audience file](https://help.lob.com/best-practices/campaign-audience-guide)
+        and associate it with an upload.
+      operationId: upload_file_create
+      parameters:
+      - description: ID of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object'
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  x-type:
+                    python:
+                      type: IOBase
+                      import: io
+              required:
+              - file
+              type: object
+              x-code-snippet:
+                uploads: true
+                uploadFile: true
+                upl_id: upl_71be866e430b11e9
+                file_path: <PATH_TO_CSV>
+                file_name: <YOUR_FILE_NAME_HERE>
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload_file'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: upload_file
+      tags:
+      - Uploads
+      x-contentType: multipart/form-data
+      x-accepts: application/json
+  /uploads/{upl_id}/exports:
+    post:
+      description: |-
+        Campaign Exports can help you understand exactly which records in a campaign could not be created. By initiating and retrieving an export, you will get row-by-row errors for your campaign. For a step-by-step walkthrough of creating a campaign and exporting failures, see our [Campaigns Guide](https://help.lob.com/best-practices/launching-your-first-campaign).
+
+        Create an export file associated with an upload.
+      operationId: upload_export_create
+      parameters:
+      - description: ID of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/export_model'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/upload_create_export'
+          description: Successful Response
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lob_error'
+          description: Lob uses RESTful HTTP response codes to indicate success or
+            failure of an API request.
+      summary: create_export
+      tags:
+      - Uploads
+      x-contentType: application/json
+      x-accepts: application/json
+  /uploads/{upl_id}/exports/{ex_id}:
+    get:
+      description: Retrieves the details of an existing export. You need only supply
+        the unique export identifier that was returned upon export creation. If you
+        try retrieving an export immediately after creating one (i.e., before we're
+        done processing the export), you will get back an export object with `state
+        = in_progress`.
+      operationId: export_retrieve
+      parameters:
+      - description: ID of the upload
+        explode: false
+        in: path
+        name: upl_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/upl_id'
+        style: simple
+      - description: ID of the export
+        explode: false
+        in: path
+        name: ex_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/ex_id'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/export'
+          description: Returns an export object
+      summary: get_export
+      tags:
+      - Uploads
       x-accepts: application/json
   /us_autocompletions:
     post:
@@ -3469,6 +4212,15 @@ paths:
       summary: autocomplete
       tags:
       - Us Autocompletions
+      x-template-config:
+        test:
+          autocomplete: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 422
+          - subject: test_key
+            success: true
       x-contentType: application/json
       x-accepts: application/json
   /us_reverse_geocode_lookups:
@@ -3525,6 +4277,14 @@ paths:
       summary: lookup
       tags:
       - Reverse Geocode Lookups
+      x-template-config:
+        test:
+          lookup: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /us_verifications:
@@ -3582,6 +4342,15 @@ paths:
       summary: verifySingle
       tags:
       - Us Verifications
+      x-template-config:
+        test:
+          verifySingle: true
+          tests:
+          - subject: deliverable
+            success: true
+          - subject: undeliverable
+            success: true
+          - subject: 0
       x-contentType: application/json
       x-accepts: application/json
   /us_zip_lookups:
@@ -3624,6 +4393,14 @@ paths:
       summary: lookup
       tags:
       - Zip Lookups
+      x-template-config:
+        test:
+          lookup: true
+          tests:
+          - subject: 200
+            success: true
+          - subject: 0
+          - subject: 422
       x-contentType: application/json
       x-accepts: application/json
   /shared_dont_call:
@@ -3761,13 +4538,13 @@ components:
       x-template-config:
         base-type:
           dotnet: deepObject
-    sort_by:
-      $ref: '#/components/parameters/sort_by_5'
+    sort_by_date_modified:
+      $ref: '#/components/parameters/sort_by_date_modified'
       description: |
-        Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
+        Sorts items by ascending or descending dates. Use either `date_created` or `date_modfied`, not both.
       explode: true
       in: query
-      name: sort_by
+      name: sort_by_date_modified
       required: false
       schema:
         properties:
@@ -3776,7 +4553,7 @@ components:
             - asc
             - desc
             type: string
-          send_date:
+          date_modified:
             enum:
             - asc
             - desc
@@ -3784,6 +4561,7 @@ components:
         type: object
       style: form
       x-template-config:
+        name-override: sort_by
         base-type:
           dotnet: deepObject
         additional-properties:
@@ -3844,6 +4622,34 @@ components:
       schema:
         $ref: '#/components/schemas/mail_type'
       style: form
+    sort_by:
+      $ref: '#/components/parameters/sort_by_3'
+      description: |
+        Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.
+      explode: true
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        properties:
+          date_created:
+            enum:
+            - asc
+            - desc
+            type: string
+          send_date:
+            enum:
+            - asc
+            - desc
+            type: string
+        type: object
+      style: form
+      x-template-config:
+        base-type:
+          dotnet: deepObject
+        additional-properties:
+          dotnet:
+            toJson: true
     idem-header:
       description: |
         A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).
@@ -3855,6 +4661,13 @@ components:
         maxLength: 256
         type: string
       style: simple
+  requestBodies:
+    inline_object:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/inline_object'
+      required: true
   responses:
     error_response:
       content:
@@ -3974,19 +4787,8 @@ components:
     campaign_deleted:
       content:
         application/json:
-          example:
-            id: cmp_e05ee61ff80764b
-            deleted: true
           schema:
-            description: Lob uses RESTful HTTP response codes to indicate success
-              or failure of an API request. In general, 2xx indicates success, 4xx
-              indicate an input error, and 5xx indicates an error on Lob's end.
-            properties:
-              id:
-                $ref: '#/components/schemas/cmp_id'
-              deleted:
-                description: True if the resource has been successfully deleted.
-                type: boolean
+            $ref: '#/components/schemas/inline_response_200'
       description: Deleted the campaign.
     card_deleted:
       content:
@@ -4013,6 +4815,19 @@ components:
           schema:
             $ref: '#/components/schemas/check'
       description: Returns a check object
+      headers:
+        ratelimit-limit:
+          $ref: '#/components/headers/ratelimit-limit'
+        ratelimit-remaining:
+          $ref: '#/components/headers/ratelimit-remaining'
+        ratelimit-reset:
+          $ref: '#/components/headers/ratelimit-reset'
+    identity_validation:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/identity_validation'
+      description: Returns the likelihood a given name is associated with an address.
       headers:
         ratelimit-limit:
           $ref: '#/components/headers/ratelimit-limit'
@@ -4176,6 +4991,19 @@ components:
         contained in the `previous_url` and `next_url` fields in the API response
         respectively.<br>If no more templates are available beyond the current set
         of returned results, the `next_url` field will be empty.
+    all_uploads:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/upload_list'
+      description: An array of matching uploads. Each entry in the array is a separate
+        upload.
+    upload_validation_error:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPValidationError'
+      description: Validation Error
     us_autocompletions:
       content:
         application/json:
@@ -4360,6 +5188,7 @@ components:
     country_extended_expanded:
       description: Full name of country
       enum:
+      - ""
       - AFGHANISTAN
       - ALBANIA
       - ALGERIA
@@ -4816,13 +5645,23 @@ components:
           param: before
         - arg: "null"
           param: after
-        - arg: "null"
+        - arg: includeList
+          notNull: true
           param: include
-        - arg: "null"
+        - arg: dateCreated
+          notNull: true
           param: dateCreated
-        - arg: "null"
+        - arg: metadata
+          notNull: true
           param: metadata
           last: true
+        metadata:
+          key: name
+          val: Harry
+        include: total_count
+        date_created:
+          key: lt
+          val: DateTime.Today.AddMonths(-1)
     country_extended:
       description: Must be a 2 letter country short-name code (ISO 3166).
       enum:
@@ -5157,6 +5996,8 @@ components:
           val: US
           java_val: CountryExtended.US
           javaNonString: true
+          py_val: CountryExtended("US")
+          pyNonString: true
         lob_response_type: Address
         lob_response_var: address
         plural_object_type: Addresses
@@ -5164,6 +6005,30 @@ components:
         resource_type: AddressEditable
         resource_var_name: addressEditable
         snake_case_resource_var_name: address_editable
+        resource_constructor:
+        - camel_case_key: addressLine1
+          val: 210 King St
+        - camel_case_key: addressLine2
+          val: '# 6100'
+        - camel_case_key: addressCity
+          val: San Francisco
+        - camel_case_key: addressState
+          val: CA
+        - camel_case_key: addressZip
+          val: 94107
+        - camel_case_key: addressCountry
+          dotnet_val: CountryExtended.US
+          dotnetNonString: true
+        - camel_case_key: description
+          val: Harry - Office
+        - camel_case_key: name
+          val: Harry Zhang
+        - camel_case_key: company
+          val: Lob
+        - camel_case_key: phone
+          val: 5555555555
+        - camel_case_key: email
+          val: harry@lob.com
     address_deletion:
       description: Object returned upon deleting an address
       example:
@@ -5344,6 +6209,7 @@ components:
         curl_form: bank_accounts
         resource_id: bank_8cad8df5354d33f
         response_var: bankAccount
+        snake_case_var_name: bank_account
         javaSupported: true
     bank_account_deletion:
       description: Lob uses RESTful HTTP response codes to indicate success or failure
@@ -5463,13 +6329,23 @@ components:
           param: before
         - arg: "null"
           param: after
-        - arg: "null"
+        - arg: includeList
+          notNull: true
           param: include
-        - arg: "null"
+        - arg: dateCreated
+          notNull: true
           param: dateCreated
-        - arg: "null"
+        - arg: metadata
+          notNull: true
           param: metadata
           last: true
+        metadata:
+          key: name
+          val: Harry
+        include: total_count
+        date_created:
+          key: lt
+          val: DateTime.Today.AddMonths(-1)
     bank_type_enum:
       description: The type of entity that holds the account.
       enum:
@@ -5547,13 +6423,28 @@ components:
           javaNonString: true
           ts_val: BankTypeEnum.Company
           tsNonString: true
+          py_val: BankTypeEnum("company")
+          pyNonString: true
         lob_response_type: BankAccount
         lob_response_var: bankAccount
+        snake_case_lob_response_var: bank_account
         plural_object_type: BankAccounts
         javaSupported: true
         resource_type: BankAccountWritable
         resource_var_name: bankAccountWritable
         snake_case_resource_var_name: bank_account_writable
+        resource_constructor:
+        - camel_case_key: description
+          val: Test Bank Account
+        - camel_case_key: routingNumber
+          val: 322271627
+        - camel_case_key: accountNumber
+          val: 123456789
+        - camel_case_key: accountType
+          dotnet_val: BankTypeEnum.Company
+          dotnetNonString: true
+        - camel_case_key: signatory
+          val: John Doe
     bg_id:
       description: Unique identifier prefixed with `bg_`.
       pattern: ^bg_[a-zA-Z0-9]+$
@@ -5610,6 +6501,15 @@ components:
       - name
       - object
       type: object
+      x-code-snippet:
+        billingGroups: true
+        retrieve: true
+        object_type: BillingGroup
+        plural_object_type: BillingGroups
+        curl_form: billing_groups
+        resource_id: bg_4bb02b527a72667d0
+        response_var: billingGroup
+        snake_case_var_name: billing_group
     billing_group_editable:
       properties:
         description:
@@ -5623,6 +6523,31 @@ components:
       required:
       - name
       type: object
+      x-code-snippet:
+        billingGroups: true
+        update: true
+        resource_id: bg_759954f540a1bfdb5
+        props:
+        - key: description
+          val: demo replacement
+        create: true
+        curl_form: billing_groups
+        resource:
+        - key: description
+          val: Usage group used for the Marketing Department's resource sends
+        - key: name
+          val: Marketing Department
+        lob_response_type: BillingGroup
+        lob_response_var: bg
+        plural_object_type: BillingGroups
+        resource_type: BillingGroupEditable
+        resource_var_name: billingGroupEditable
+        snake_case_resource_var_name: billing_group_editable
+        resource_constructor:
+        - camel_case_key: description
+          val: Usage group used for the Marketing Department's resource sends
+        - camel_case_key: name
+          val: Marketing Department
     billing_group_list:
       example:
         data:
@@ -5669,6 +6594,43 @@ components:
           description: number of resources in a set
           type: integer
       type: object
+      x-code-snippet:
+        billingGroups: true
+        list: true
+        object_type: BillingGroup
+        curl_form: billing_groups
+        plural_response_var: billingGroups
+        plural_object_type: BillingGroups
+        args:
+        - arg: 2
+          notNull: true
+          param: limit
+        - arg: 1
+          notNull: true
+          param: offset
+        - arg: includeList
+          notNull: true
+          param: include
+        - arg: dateCreated
+          notNull: true
+          param: dateCreated
+        - arg: dateModified
+          notNull: true
+          param: dateModified
+        - arg: sortBy
+          notNull: true
+          param: sortBy
+          last: true
+        include: total_count
+        date_created:
+          key: lt
+          val: DateTime.Today.AddMonths(-1)
+        date_modified:
+          key: lt
+          val: DateTime.Today.AddMonths(-1).ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz")
+        sort_by:
+          dotnet:
+            date_modified_enum: SortByDateModified.DateModifiedEnum.Asc
     recipient:
       description: The intended recipient, typically a person's or firm's name.
       maxLength: 500
@@ -5806,6 +6768,45 @@ components:
               - key: zip_code
                 val: 94017
                 pascal_key: ZipCode
+        resource_constructors:
+        - index: 0
+          attributes:
+          - camel_case_key: recipient
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: primaryLine
+            val: 210 King Street
+          - camel_case_key: secondaryLine
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: urbanization
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: city
+            val: San Francisco
+          - camel_case_key: state
+            val: CA
+          - camel_case_key: zipCode
+            val: 94017
+        - index: 1
+          attributes:
+          - camel_case_key: recipient
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: primaryLine
+            val: 185 BERRY ST STE 6600
+          - camel_case_key: secondaryLine
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: urbanization
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: city
+            val: San Francisco
+          - camel_case_key: state
+            val: CA
+          - camel_case_key: zipCode
+            val: 94017
     us_ver_id:
       description: Unique identifier prefixed with `us_ver_`.
       pattern: ^us_ver_[a-zA-Z0-9_]+$
@@ -6212,6 +7213,8 @@ components:
           minimum: 0
           nullable: true
           type: number
+          x-template-config:
+            nullable: true
         level:
           description: |
             indicates the likelihood that the address is a valid, mail-receiving address. Possible values are:
@@ -6225,9 +7228,6 @@ components:
           - low
           - ""
           type: string
-      required:
-      - level
-      - score
       type: object
     bulk_error_properties:
       description: Bulk error properties
@@ -6584,6 +7584,8 @@ components:
               - key: country
                 val: GB
                 pascal_key: Country
+                py_val: CountryExtended("GB")
+                pyNonString: true
           - index: 1
             attributes:
               attribute:
@@ -6602,6 +7604,48 @@ components:
               - key: country
                 val: CA
                 pascal_key: Country
+                py_val: CountryExtended("CA")
+                pyNonString: true
+        resource_constructors:
+        - index: 0
+          attributes:
+          - camel_case_key: recipient
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: primaryLine
+            val: 35 Tower Hill
+          - camel_case_key: secondaryLine
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: city
+            val: London
+          - camel_case_key: state
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: postalCode
+            val: EC3N 4DR
+          - camel_case_key: country
+            dotnet_val: CountryExtended.GB
+            dotnetNonString: true
+        - index: 1
+          attributes:
+          - camel_case_key: recipient
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: primaryLine
+            val: 370 Water St
+          - camel_case_key: secondaryLine
+            dotnet_val: "null"
+            dotnetNonString: true
+          - camel_case_key: city
+            val: Summerside
+          - camel_case_key: state
+            val: Prince Edward Island
+          - camel_case_key: postalCode
+            val: C1N 1C4
+          - camel_case_key: country
+            dotnet_val: CountryExtended.CA
+            dotnetNonString: true
     intl_ver_id:
       description: Unique identifier prefixed with `intl_ver_`.
       pattern: ^intl_ver_[a-zA-Z0-9]+$
@@ -6810,12 +7854,48 @@ components:
       pattern: ^cmp_[a-zA-Z0-9]+$
       title: Campaign id
       type: string
+    crv_id:
+      description: Unique identifier prefixed with `crv_`.
+      pattern: ^crv_[a-zA-Z0-9]+$
+      type: string
     campaign:
       example:
         metadata:
           key: metadata
         date_created: 2000-01-23T04:56:07.000+00:00
-        creatives: ""
+        creatives:
+        - metadata:
+            key: metadata
+          date_created: 2000-01-23T04:56:07.000+00:00
+          resource_type: letter
+          description: description
+          template_preview_urls: '{}'
+          template_previews:
+          - '{}'
+          - '{}'
+          deleted: true
+          campaigns: []
+          date_modified: 2000-01-23T04:56:07.000+00:00
+          from: ""
+          details: ""
+          id: id
+          object: creative
+        - metadata:
+            key: metadata
+          date_created: 2000-01-23T04:56:07.000+00:00
+          resource_type: letter
+          description: description
+          template_preview_urls: '{}'
+          template_previews:
+          - '{}'
+          - '{}'
+          deleted: true
+          campaigns: []
+          date_modified: 2000-01-23T04:56:07.000+00:00
+          from: ""
+          details: ""
+          id: id
+          object: creative
         description: description
         target_delivery_date: 2000-01-23T04:56:07.000+00:00
         billing_group_id: billing_group_id
@@ -6898,6 +7978,8 @@ components:
           type: boolean
         creatives:
           description: An array of creatives that have been associated with this campaign.
+          items:
+            $ref: '#/components/schemas/campaign_creative'
           type: array
         date_created:
           description: A timestamp in ISO 8601 format of the date the resource was
@@ -6929,13 +8011,179 @@ components:
       - object
       - schedule_type
       type: object
+      x-code-snippet:
+        campaigns: true
+        retrieve: true
+        object_type: Campaign
+        plural_object_type: Campaigns
+        curl_form: campaigns
+        resource_id: cmp_e05ee61ff80764b
+        response_var: campaign
+    campaign_creative:
+      example:
+        metadata:
+          key: metadata
+        date_created: 2000-01-23T04:56:07.000+00:00
+        resource_type: letter
+        description: description
+        template_preview_urls: '{}'
+        template_previews:
+        - '{}'
+        - '{}'
+        deleted: true
+        campaigns: []
+        date_modified: 2000-01-23T04:56:07.000+00:00
+        from: ""
+        details: ""
+        id: id
+        object: creative
+      properties:
+        id:
+          description: Unique identifier prefixed with `crv_`.
+          pattern: ^crv_[a-zA-Z0-9]+$
+          type: string
+        description:
+          description: |
+            An internal description that identifies this resource. Must be no longer than 255 characters.
+          maxLength: 255
+          nullable: true
+          type: string
+        from:
+          description: Must either be an address ID or an inline object with correct
+            address parameters.
+          x-template-config:
+            isOneOf: true
+            type-composite:
+            - base-type1:
+                java: String
+                typescript: string
+                python: str
+                default: true
+                isRef: true
+            - base-type2:
+                java: AddressEditable
+                python: AddressEditable
+                typescript: Models.AddressEditable
+                python_path: lob_python.model.address_editable
+                hasPath: true
+        resource_type:
+          description: Mailpiece type for the creative
+          enum:
+          - letter
+          - postcard
+          type: string
+        details:
+          description: Either PostcardDetailsReturned or LetterDetailsReturned
+          x-template-config:
+            isOneOf: true
+            type-composite:
+            - base-type1:
+                java: PostcardDetailsWritable
+                typescript: Models.PostcardDetailsWritable
+                python: PostcardDetailsWritable
+                python_path: lob_python.model.postcard_details_writable
+                hasPath: true
+                default: true
+                isRef: true
+            - base-type2:
+                java: LetterDetailsWritable
+                python: LetterDetailsWritable
+                typescript: Models.LetterDetailsWritable
+                python_path: lob_python.model.letter_details_writable
+                hasPath: true
+        metadata:
+          additionalProperties:
+            type: string
+          description: 'Use metadata to store custom information for tagging and labeling
+            back to your internal systems. Must be an object with up to 20 key-value
+            pairs. Keys must be at most 40 characters and values must be at most 500
+            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
+            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
+            for more information.'
+          maxLength: 500
+          pattern: '[^"\\]{0,500}'
+          type: object
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: HashMap<String,String>
+        template_preview_urls:
+          description: Preview URLs associated with a creative's artwork asset(s)
+            if the creative uses HTML templates as assets.
+          title: Template Preview URLs
+          type: object
+        template_previews:
+          description: A list of template preview objects if the creative uses HTML
+            template(s) as artwork asset(s).
+          items:
+            type: object
+          title: Template Previews
+          type: array
+        deleted:
+          description: Only returned if the resource has been successfully deleted.
+          type: boolean
+        campaigns:
+          items:
+            $ref: '#/components/schemas/campaign'
+          maxItems: 0
+          minItems: 0
+          type: array
+        date_created:
+          description: A timestamp in ISO 8601 format of the date the resource was
+            created.
+          format: date-time
+          type: string
+        date_modified:
+          description: A timestamp in ISO 8601 format of the date the resource was
+            last modified.
+          format: date-time
+          type: string
+        object:
+          default: creative
+          description: Value is resource type.
+          enum:
+          - creative
+          type: string
+      type: object
     campaigns_list:
       example:
         data:
         - metadata:
             key: metadata
           date_created: 2000-01-23T04:56:07.000+00:00
-          creatives: ""
+          creatives:
+          - metadata:
+              key: metadata
+            date_created: 2000-01-23T04:56:07.000+00:00
+            resource_type: letter
+            description: description
+            template_preview_urls: '{}'
+            template_previews:
+            - '{}'
+            - '{}'
+            deleted: true
+            campaigns: []
+            date_modified: 2000-01-23T04:56:07.000+00:00
+            from: ""
+            details: ""
+            id: id
+            object: creative
+          - metadata:
+              key: metadata
+            date_created: 2000-01-23T04:56:07.000+00:00
+            resource_type: letter
+            description: description
+            template_preview_urls: '{}'
+            template_previews:
+            - '{}'
+            - '{}'
+            deleted: true
+            campaigns: []
+            date_modified: 2000-01-23T04:56:07.000+00:00
+            from: ""
+            details: ""
+            id: id
+            object: creative
           description: description
           target_delivery_date: 2000-01-23T04:56:07.000+00:00
           billing_group_id: billing_group_id
@@ -6952,7 +8200,39 @@ components:
         - metadata:
             key: metadata
           date_created: 2000-01-23T04:56:07.000+00:00
-          creatives: ""
+          creatives:
+          - metadata:
+              key: metadata
+            date_created: 2000-01-23T04:56:07.000+00:00
+            resource_type: letter
+            description: description
+            template_preview_urls: '{}'
+            template_previews:
+            - '{}'
+            - '{}'
+            deleted: true
+            campaigns: []
+            date_modified: 2000-01-23T04:56:07.000+00:00
+            from: ""
+            details: ""
+            id: id
+            object: creative
+          - metadata:
+              key: metadata
+            date_created: 2000-01-23T04:56:07.000+00:00
+            resource_type: letter
+            description: description
+            template_preview_urls: '{}'
+            template_previews:
+            - '{}'
+            - '{}'
+            deleted: true
+            campaigns: []
+            date_modified: 2000-01-23T04:56:07.000+00:00
+            from: ""
+            details: ""
+            id: id
+            object: creative
           description: description
           target_delivery_date: 2000-01-23T04:56:07.000+00:00
           billing_group_id: billing_group_id
@@ -7020,9 +8300,11 @@ components:
           param: before
         - arg: "null"
           param: after
-        - arg: "null"
+        - arg: includeList
+          notNull: true
           param: include
           last: true
+        include: total_count
     campaign_writable:
       properties:
         billing_group_id:
@@ -7083,6 +8365,23 @@ components:
       - name
       - schedule_type
       type: object
+      x-code-snippet:
+        campaigns: true
+        create: true
+        curl_form: campaigns
+        resource:
+        - key: name
+          val: My First Campaign
+        - key: schedule_type
+          val: immediate
+          py_val: CmpScheduleType("immediate")
+          pyNonString: true
+        lob_response_type: Campaign
+        lob_response_var: campaign
+        plural_object_type: Campaigns
+        resource_type: CampaignWritable
+        resource_var_name: campaignWritable
+        snake_case_resource_var_name: campaign_writable
     campaign_updatable:
       properties:
         name:
@@ -7136,6 +8435,17 @@ components:
             and not sent if the address is updated via NCOA.
           type: boolean
       type: object
+      x-code-snippet:
+        campaigns: true
+        update: true
+        resource_id: cmp_e05ee61ff80764b
+        lob_response_var: campaign
+        snake_case_resource_var_name: campaign_updatable
+        resource_type: CampaignUpdatable
+        plural_object_type: Campaigns
+        props:
+        - key: description
+          val: Awesome campaign
     card_id:
       description: Unique identifier prefixed with `card_`.
       pattern: ^card_[a-zA-Z0-9]+$
@@ -7318,6 +8628,14 @@ components:
       - thumbnails
       - url
       type: object
+      x-code-snippet:
+        cards: true
+        retrieve: true
+        object_type: Card
+        plural_object_type: Cards
+        curl_form: cards
+        resource_id: card_7a6d73c5c8457fc
+        response_var: card
     card_list:
       example:
         data:
@@ -7407,6 +8725,26 @@ components:
             specifies an "include" query parameter
           type: integer
       type: object
+      x-code-snippet:
+        cards: true
+        list: true
+        object_type: Card
+        curl_form: cards
+        plural_response_var: cards
+        plural_object_type: Cards
+        args:
+        - arg: 2
+          notNull: true
+          param: limit
+        - arg: "null"
+          param: before
+        - arg: "null"
+          param: after
+        - arg: includeList
+          notNull: true
+          param: include
+          last: true
+        include: total_count
     card_editable:
       properties:
         front:
@@ -7431,6 +8769,35 @@ components:
       required:
       - front
       type: object
+      x-code-snippet:
+        cards: true
+        create: true
+        curl_form: cards
+        resource:
+        - key: front
+          val: https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf
+        - key: back
+          val: https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf
+        - key: size
+          val: 2.125x3.375
+        - key: description
+          val: Test Card
+        lob_response_type: Card
+        lob_response_var: card
+        plural_object_type: Cards
+        resource_type: CardEditable
+        resource_var_name: cardEditable
+        snake_case_resource_var_name: card_editable
+        resource_constructor:
+        - camel_case_key: front
+          val: https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf
+        - camel_case_key: back
+          val: https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf
+        - camel_case_key: size
+          dotnet_val: CardEditable.SizeEnum._2125x3375
+          dotnetNonString: true
+        - camel_case_key: description
+          val: Test Card
     card_updatable:
       properties:
         description:
@@ -7448,6 +8815,25 @@ components:
           minimum: 10000
           type: number
       type: object
+      x-code-snippet:
+        cards: true
+        update: true
+        resource_id: card_6afffd19045076c
+        lob_response_var: card
+        snake_case_resource_var_name: card_updatable
+        resource_type: CardUpdatable
+        plural_object_type: Cards
+        props:
+        - key: description
+          val: Awesome card
+        - key: auto_reorder
+          val: true
+          pyNonString: true
+          py_val: "True"
+        - key: reorder_quantity
+          val: 10000
+          pyNonString: true
+          py_val: 10000
     card_deletion:
       description: Lob uses RESTful HTTP response codes to indicate success or failure
         of an API request. In general, 2xx indicates success, 4xx indicate an input
@@ -7471,6 +8857,14 @@ components:
           - card_deleted
           type: string
       type: object
+      x-code-snippet:
+        cards: true
+        delete: true
+        object_type: Card
+        plural_object_type: Cards
+        curl_form: cards
+        resource_id: card_6afffd19045076c
+        response_var: card
     co_id:
       description: Unique identifier prefixed with `co_`.
       pattern: ^co_[a-zA-Z0-9]+$
@@ -7553,6 +8947,26 @@ components:
       - date_modified
       - object
       type: object
+      x-code-snippet:
+        cardOrders: true
+        retrieve: true
+        object_type: CardOrderList
+        plural_object_type: CardOrders
+        curl_form: cards/card_6afffd19045076c/orders
+        response_var: cardOrder
+        args:
+        - arg: '"card_6afffd19045076c"'
+          notNull: true
+          param: cardId
+          snake_case_param: card_id
+        - arg: 2
+          notNull: true
+          param: limit
+        - arg: 1
+          notNull: true
+          param: offset
+        card_id: card_6afffd19045076c
+        snake_case_var_name: card_order
     card_order_list:
       example:
         data:
@@ -7615,11 +9029,32 @@ components:
       properties:
         quantity:
           maximum: 10000000
-          minimum: 0
+          minimum: 10000
           type: integer
       required:
       - quantity
       type: object
+      x-code-snippet:
+        cardOrders: true
+        create: true
+        curl_form: cards/card_6afffd19045076c/orders
+        resource:
+        - key: quantity
+          val: 10000
+          py_val: 10000
+          pyNonString: true
+        lob_response_type: CardOrder
+        lob_response_var: cardOrder
+        plural_object_type: CardOrders
+        resource_type: CardOrderEditable
+        resource_var_name: cardOrderEditable
+        snake_case_resource_var_name: card_order_editable
+        snake_case_lob_response_var: card_order
+        card_id: card_6afffd19045076c
+        resource_constructor:
+        - camel_case_key: quantity
+          dotnet_val: 10000
+          dotnetNonString: true
     chk_id:
       description: Unique identifier prefixed with `chk_`.
       pattern: ^chk_[a-zA-Z0-9]+$
@@ -8084,6 +9519,7 @@ components:
         checks: true
         delete: true
         cancel: true
+        dotnetCancel: true
         object_type: Check
         plural_object_type: Checks
         curl_form: checks
@@ -8362,21 +9798,41 @@ components:
           param: before
         - arg: "null"
           param: after
-        - arg: "null"
+        - arg: includeList
+          notNull: true
           param: include
-        - arg: "null"
+        - arg: dateCreated
+          notNull: true
           param: dateCreated
-        - arg: "null"
+        - arg: metadata
+          notNull: true
           param: metadata
-        - arg: "null"
+        - arg: true
+          notNull: true
           param: scheduled
-        - arg: "null"
+        - arg: sendDate
+          notNull: true
           param: sendDate
-        - arg: "null"
+        - dotnet_arg: MailType.FirstClass
+          notNull: true
           param: mailType
-        - arg: "null"
+        - arg: sortBy
+          notNull: true
           param: sortBy
           last: true
+        metadata:
+          key: name
+          val: Harry
+        include: total_count
+        date_created:
+          key: lt
+          val: DateTime.Today.AddMonths(-1)
+        send_date:
+          key: lt
+          val: DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz")
+        sort_by:
+          dotnet:
+            date_created_enum: SortBy3.DateCreatedEnum.Asc
     check_bottom:
       description: |-
         The artwork to use on the bottom of the check page.
@@ -8567,6 +10023,8 @@ components:
           javaNonString: true
           ts_val: 22.5
           tsNonString: true
+          py_val: 22.5
+          pyNonString: true
         - key: memo
           pascal_case_key: Memo
           val: rent
@@ -8580,11 +10038,12 @@ components:
           dataUrlencode: true
         - key: from
           pascal_case_key: From
+          underscoreKey: true
           val: adr_210a8d4b0b76d77b
         nested_objs:
         - key: to
           pascal_case_key: To
-          type: AddressEditable
+          type: AddressDomestic
           obj:
           - inner_key: name
             inner_pascal_case_key: Name
@@ -8616,53 +10075,416 @@ components:
         resource_var_name: checkEditable
         snake_case_resource_var_name: check_editable
         accepts_idempotency_key: true
+        nested_objs_constructors:
+        - camel_case_key: to
+          type: AddressEditable
+          obj:
+          - inner_camel_case_key: addressLine1
+            inner_val: 210 King St
+          - inner_camel_case_key: addressLine2
+            inner_val: '# 6100'
+          - inner_camel_case_key: addressCity
+            inner_val: San Francisco
+          - inner_camel_case_key: addressState
+            inner_val: CA
+          - inner_camel_case_key: addressZip
+            inner_val: 94107
+          - inner_camel_case_key: addressCounty
+            dotnet_inner_val: default(CountryExtended)
+            dotnetNonString: true
+          - inner_camel_case_key: description
+            val: some address description
+          - inner_camel_case_key: name
+            inner_val: Harry Zhang
+        resource_constructor:
+        - camel_case_key: from
+          val: adr_249af768103d2810
+        - camel_case_key: to
+          dotnet_val: to.ToJson()
+          dotnetNonString: true
+        - camel_case_key: bank_account
+          val: bank_8cad8df5354d33f
+        - camel_case_key: amount
+          dotnet_val: 22.5f
+          dotnetNonString: true
+        - camel_case_key: logo
+          val: https://s3-us-west-2.amazonaws.com/public.lob.com/assets/check_logo.png
+        - camel_case_key: checkBottom
+          val: <h1 style='padding-top:4in;'>Demo Check for {{name}}</h1>
+        - camel_case_key: attachment
+          dotnet_val: default(string)
+          dotnetNonString: true
+        - camel_case_key: description
+          val: Demo Check
+        - camel_case_key: metadata
+          dotnet_val: default(Dictionary<string, string>)
+          dotnetNonString: true
+        - camel_case_key: mergeVariables
+          dotnet_val: mergeVariables
+          dotnetNonString: true
+        - camel_case_key: sendDate
+          dotnet_val: default(DateTime)
+          dotnetNonString: true
+        - camel_case_key: mailType
+          dotnet_val: CheckEditable.MailTypeEnum.UspsFirstClass
+          dotnetNonString: true
+        - camel_case_key: memo
+          val: rent
     creative_writable:
+      properties:
+        from:
+          description: Must either be an address ID or an inline object with correct
+            address parameters.
+          x-template-config:
+            isOneOf: true
+            type-composite:
+            - base-type1:
+                java: String
+                typescript: string
+                python: str
+                default: true
+                isRef: true
+            - base-type2:
+                java: AddressEditable
+                python: AddressEditable
+                typescript: Models.AddressEditable
+                python_path: lob_python.model.address_editable
+                hasPath: true
+        description:
+          description: |
+            An internal description that identifies this resource. Must be no longer than 255 characters.
+          maxLength: 255
+          nullable: true
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          description: 'Use metadata to store custom information for tagging and labeling
+            back to your internal systems. Must be an object with up to 20 key-value
+            pairs. Keys must be at most 40 characters and values must be at most 500
+            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
+            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
+            for more information.'
+          maxLength: 500
+          pattern: '[^"\\]{0,500}'
+          type: object
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: HashMap<String,String>
+        resource_type:
+          description: Mailpiece type for the creative
+          enum:
+          - letter
+          - postcard
+          type: string
+        campaign_id:
+          description: Unique identifier prefixed with `cmp_`.
+          pattern: ^cmp_[a-zA-Z0-9]+$
+          title: Campaign id
+          type: string
+        details:
+          description: Either PostcardDetailsWritable or LetterDetailsWritable
+          x-template-config:
+            isOneOf: true
+            type-composite:
+            - base-type1:
+                java: PostcardDetailsWritable
+                typescript: Models.PostcardDetailsWritable
+                python: PostcardDetailsWritable
+                python_path: lob_python.model.postcard_details_writable
+                hasPath: true
+                default: true
+                isRef: true
+            - base-type2:
+                java: LetterDetailsWritable
+                python: LetterDetailsWritable
+                typescript: Models.LetterDetailsWritable
+                python_path: lob_python.model.letter_details_writable
+                hasPath: true
+        file:
+          description: PDF file containing the letter's formatting. Do not include
+            for resource_type = postcard.
+          type: string
+        front:
+          description: |
+            The artwork to use as the front of your postcard. Do not include for resource_type = letter.
+          type: string
+        back:
+          description: |
+            The artwork to use as the back of your postcard. Do not include for resource_type = letter.
+          type: string
+      required:
+      - campaign_id
+      - from
+      - resource_type
       type: object
-      x-template-config:
-        isOneOf: true
-        type-composite:
-        - base-type1:
-            java: PostcardRequest
-            typescript: Models.PostcardRequest
-            python: PostcardRequest
-            php: PostcardRequest
-            python_path: lob_python.model.postcard_request
-            hasPath: true
-            isRef: true
-        - base-type2:
-            java: LetterRequest
-            typescript: Models.LetterRequest
-            php: LetterRequest
-            python: LetterRequest
-            python_path: lob_python.model.letter_request
-            hasPath: true
-            isRef: true
+      x-code-snippet:
+        creatives: true
+        create: true
+        curl_form: creatives
+        resource:
+        - key: campaign_id
+          val: cmp_e05ee61ff80764b
+        - key: resource_type
+          val: postcard
+        - key: description
+          val: Our 4x6 postcard creative
+        - key: from
+          val: adr_210a8d4b0b76d77b
+          underscoreKey: true
+        - key: front
+          val: tmpl_4aa14648113e45b
+        - key: back
+          val: tmpl_4aa14648113e45b
+        nested_objs:
+        - key: details
+          pascal_case_key: Details
+          type: PostcardDetailsWritable
+          obj:
+          - inner_key: mail_type
+            inner_pascal_case_key: MailType
+            inner_val: usps_first_class
+            inner_py_val: MailType("usps_first_class")
+            inner_pyNonString: true
+        lob_response_type: Creative
+        lob_response_var: creative
+        plural_object_type: Creatives
+        resource_type: CreativeWritable
+        resource_var_name: creativeWritable
+        snake_case_resource_var_name: creative_writable
     creative_response:
+      example:
+        metadata:
+          key: metadata
+        date_created: 2000-01-23T04:56:07.000+00:00
+        resource_type: letter
+        description: description
+        template_preview_urls: '{}'
+        template_previews:
+        - '{}'
+        - '{}'
+        deleted: true
+        campaigns:
+        - metadata:
+            key: metadata
+          date_created: 2000-01-23T04:56:07.000+00:00
+          creatives:
+          - metadata:
+              key: metadata
+            date_created: 2000-01-23T04:56:07.000+00:00
+            resource_type: letter
+            description: description
+            template_preview_urls: '{}'
+            template_previews:
+            - '{}'
+            - '{}'
+            deleted: true
+            campaigns: []
+            date_modified: 2000-01-23T04:56:07.000+00:00
+            from: ""
+            details: ""
+            id: id
+            object: creative
+          - metadata:
+              key: metadata
+            date_created: 2000-01-23T04:56:07.000+00:00
+            resource_type: letter
+            description: description
+            template_preview_urls: '{}'
+            template_previews:
+            - '{}'
+            - '{}'
+            deleted: true
+            campaigns: []
+            date_modified: 2000-01-23T04:56:07.000+00:00
+            from: ""
+            details: ""
+            id: id
+            object: creative
+          description: description
+          target_delivery_date: 2000-01-23T04:56:07.000+00:00
+          billing_group_id: billing_group_id
+          account_id: account_id
+          deleted: true
+          date_modified: 2000-01-23T04:56:07.000+00:00
+          send_date: 2000-01-23T04:56:07.000+00:00
+          is_draft: true
+          auto_cancel_if_ncoa: true
+          name: name
+          cancel_window_campaign_minutes: 0
+          id: id
+          object: campaign
+        - metadata:
+            key: metadata
+          date_created: 2000-01-23T04:56:07.000+00:00
+          creatives:
+          - metadata:
+              key: metadata
+            date_created: 2000-01-23T04:56:07.000+00:00
+            resource_type: letter
+            description: description
+            template_preview_urls: '{}'
+            template_previews:
+            - '{}'
+            - '{}'
+            deleted: true
+            campaigns: []
+            date_modified: 2000-01-23T04:56:07.000+00:00
+            from: ""
+            details: ""
+            id: id
+            object: creative
+          - metadata:
+              key: metadata
+            date_created: 2000-01-23T04:56:07.000+00:00
+            resource_type: letter
+            description: description
+            template_preview_urls: '{}'
+            template_previews:
+            - '{}'
+            - '{}'
+            deleted: true
+            campaigns: []
+            date_modified: 2000-01-23T04:56:07.000+00:00
+            from: ""
+            details: ""
+            id: id
+            object: creative
+          description: description
+          target_delivery_date: 2000-01-23T04:56:07.000+00:00
+          billing_group_id: billing_group_id
+          account_id: account_id
+          deleted: true
+          date_modified: 2000-01-23T04:56:07.000+00:00
+          send_date: 2000-01-23T04:56:07.000+00:00
+          is_draft: true
+          auto_cancel_if_ncoa: true
+          name: name
+          cancel_window_campaign_minutes: 0
+          id: id
+          object: campaign
+        date_modified: 2000-01-23T04:56:07.000+00:00
+        from: ""
+        details: ""
+        id: id
+        object: creative
+      properties:
+        id:
+          description: Unique identifier prefixed with `crv_`.
+          pattern: ^crv_[a-zA-Z0-9]+$
+          type: string
+        description:
+          description: |
+            An internal description that identifies this resource. Must be no longer than 255 characters.
+          maxLength: 255
+          nullable: true
+          type: string
+        from:
+          description: Must either be an address ID or an inline object with correct
+            address parameters.
+          x-template-config:
+            isOneOf: true
+            type-composite:
+            - base-type1:
+                java: String
+                typescript: string
+                python: str
+                default: true
+                isRef: true
+            - base-type2:
+                java: AddressEditable
+                python: AddressEditable
+                typescript: Models.AddressEditable
+                python_path: lob_python.model.address_editable
+                hasPath: true
+        resource_type:
+          description: Mailpiece type for the creative
+          enum:
+          - letter
+          - postcard
+          type: string
+        details:
+          description: Either PostcardDetailsReturned or LetterDetailsReturned
+          x-template-config:
+            isOneOf: true
+            type-composite:
+            - base-type1:
+                java: PostcardDetailsWritable
+                typescript: Models.PostcardDetailsWritable
+                python: PostcardDetailsWritable
+                python_path: lob_python.model.postcard_details_writable
+                hasPath: true
+                default: true
+                isRef: true
+            - base-type2:
+                java: LetterDetailsWritable
+                python: LetterDetailsWritable
+                typescript: Models.LetterDetailsWritable
+                python_path: lob_python.model.letter_details_writable
+                hasPath: true
+        metadata:
+          additionalProperties:
+            type: string
+          description: 'Use metadata to store custom information for tagging and labeling
+            back to your internal systems. Must be an object with up to 20 key-value
+            pairs. Keys must be at most 40 characters and values must be at most 500
+            characters. Neither can contain the characters `"` and `\`. i.e. ''{"customer_id"
+            : "NEWYORK2015"}'' Nested objects are not supported.  See [Metadata](#section/Metadata)
+            for more information.'
+          maxLength: 500
+          pattern: '[^"\\]{0,500}'
+          type: object
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: HashMap<String,String>
+        template_preview_urls:
+          description: Preview URLs associated with a creative's artwork asset(s)
+            if the creative uses HTML templates as assets.
+          title: Template Preview URLs
+          type: object
+        template_previews:
+          description: A list of template preview objects if the creative uses HTML
+            template(s) as artwork asset(s).
+          items:
+            type: object
+          title: Template Previews
+          type: array
+        deleted:
+          description: Only returned if the resource has been successfully deleted.
+          type: boolean
+        campaigns:
+          description: Array of campaigns associated with the creative ID
+          items:
+            $ref: '#/components/schemas/campaign'
+          title: Campaigns
+          type: array
+        date_created:
+          description: A timestamp in ISO 8601 format of the date the resource was
+            created.
+          format: date-time
+          type: string
+        date_modified:
+          description: A timestamp in ISO 8601 format of the date the resource was
+            last modified.
+          format: date-time
+          type: string
+        object:
+          default: creative
+          description: Value is resource type.
+          enum:
+          - creative
+          type: string
       type: object
-      x-template-config:
-        isOneOf: true
-        type-composite:
-        - base-type1:
-            java: PostcardResponse
-            typescript: Models.PostcardResponse
-            python: PostcardResponse
-            php: PostcardResponse
-            python_path: lob_python.model.postcard_response
-            hasPath: true
-            isRef: true
-        - base-type2:
-            java: LetterResponse
-            typescript: Models.LetterResponse
-            php: LetterResponse
-            python: LetterResponse
-            python_path: lob_python.model.letter_response
-            hasPath: true
-            isRef: true
-    crv_id:
-      description: Unique identifier prefixed with `crv_`.
-      example: crv_2a3b096c409b32c
-      pattern: ^crv_[a-zA-Z0-9]+$
-      type: string
+      x-code-snippet:
+        creatives: true
+        retrieve: true
+        object_type: Creative
+        plural_object_type: Creatives
+        curl_form: creatives
+        resource_id: crv_2a3b096c409b32c
+        response_var: creative
     creative_patch:
       properties:
         from:
@@ -8705,6 +10527,157 @@ components:
             isComplexObject: true
             base-type:
               java: HashMap<String,String>
+      type: object
+      x-code-snippet:
+        creatives: true
+        update: true
+        resource_id: crv_2a3b096c409b32c
+        lob_response_var: creative
+        snake_case_resource_var_name: creative_patch
+        resource_type: CreativePatch
+        plural_object_type: Creatives
+        props:
+        - key: description
+          val: Our updated 4x6 postcard creative
+    multi_line_address:
+      properties:
+        recipient:
+          description: The intended recipient, typically a person's or firm's name.
+          maxLength: 500
+          nullable: true
+          type: string
+        company:
+          description: Either `name` or `company` is required, you may also add both.
+          maxLength: 40
+          nullable: true
+          type: string
+        primary_line:
+          description: |
+            The primary delivery line (usually the street address) of the address.
+            Combination of the following applicable `components`:
+            * `primary_number`
+            * `street_predirection`
+            * `street_name`
+            * `street_suffix`
+            * `street_postdirection`
+            * `secondary_designator`
+            * `secondary_number`
+            * `pmb_designator`
+            * `pmb_number`
+          maxLength: 500
+          type: string
+        secondary_line:
+          description: |
+            The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long.
+          maxLength: 500
+          type: string
+        urbanization:
+          description: |
+            Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text=I51.,-4%20Urbanizations&text=In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification.
+          maxLength: 500
+          type: string
+        city:
+          maxLength: 200
+          type: string
+        state:
+          description: The <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US" target="_blank">ISO
+            3166-2</a> two letter code or subdivision name for the state. `city` and
+            `state` are required if no `zip_code` is passed.
+          maxLength: 50
+          type: string
+        zip_code:
+          description: Required if `city` and `state` are not passed in. If included,
+            must be formatted as a US ZIP or ZIP+4 (e.g. `94107`, `941072282`, `94107-2282`).
+          pattern: ^\d{5}((-)?\d{4})?$
+          type: string
+      required:
+      - primary_line
+      type: object
+    identity_validation_id:
+      description: Unique identifier prefixed with `id_validation_`.
+      pattern: ^id_validation_[a-zA-Z0-9_]+$
+      type: string
+    identity_validation:
+      example:
+        last_line: last_line
+        score: 8.008282
+        primary_line: primary_line
+        secondary_line: secondary_line
+        confidence: high
+        recipient: recipient
+        id: id
+        urbanization: urbanization
+        object: id_validation
+      properties:
+        id:
+          description: Unique identifier prefixed with `id_validation_`.
+          pattern: ^id_validation_[a-zA-Z0-9_]+$
+          type: string
+        recipient:
+          description: The intended recipient, typically a person's or firm's name.
+          maxLength: 500
+          nullable: true
+          type: string
+        primary_line:
+          description: |
+            The primary delivery line (usually the street address) of the address.
+            Combination of the following applicable `components`:
+            * `primary_number`
+            * `street_predirection`
+            * `street_name`
+            * `street_suffix`
+            * `street_postdirection`
+            * `secondary_designator`
+            * `secondary_number`
+            * `pmb_designator`
+            * `pmb_number`
+          maxLength: 500
+          type: string
+        secondary_line:
+          description: |
+            The secondary delivery line of the address. This field is typically empty but may contain information if `primary_line` is too long.
+          maxLength: 500
+          type: string
+        urbanization:
+          description: |
+            Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text=I51.,-4%20Urbanizations&text=In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification.
+          maxLength: 500
+          type: string
+        last_line:
+          description: |
+            Combination of the following applicable `components`:
+            * City (`city`)
+            * State (`state`)
+            * ZIP code (`zip_code`)
+            * ZIP+4 (`zip_code_plus_4`)
+          type: string
+        score:
+          description: |
+            A numerical score between 0 and 100 that represents the likelihood the provided name is associated with a physical address.
+          format: float
+          maximum: 100
+          minimum: 0
+          nullable: true
+          type: number
+        confidence:
+          description: |
+            Indicates the likelihood the recipient name and address match based on our custom internal calculation. Possible values are:
+            - `high` — Has a Lob confidence score greater than 70.
+            - `medium` — Has a Lob confidence score between 40 and 70.
+            - `low` — Has a Lob confidence score less than 40.
+            - `""` — No tracking data exists for this address.
+          enum:
+          - high
+          - medium
+          - low
+          - ""
+          type: string
+        object:
+          default: id_validation
+          description: Value is resource type.
+          enum:
+          - id_validation
+          type: string
       type: object
     intl_autocompletions_writable:
       properties:
@@ -8750,6 +10723,20 @@ components:
           val: CA
           java_val: CountryExtended.CA
           javaNonString: true
+          py_val: CountryExtended("CA")
+          pyNonString: true
+        resource_constructor:
+        - camel_case_key: addressPrefix
+          val: 340 Wat
+        - camel_case_key: city
+          val: Summerside
+        - camel_case_key: state
+          val: Prince Edward Island
+        - camel_case_key: zipCode
+          val: C1N 1C4
+        - camel_case_key: country
+          dotnet_val: CountryExtended.CA
+          dotnetNonString: true
     intl_auto_id:
       description: Unique identifier prefixed with `intl_auto_`.
       pattern: ^intl_auto_[a-zA-Z0-9]+$
@@ -8764,7 +10751,6 @@ components:
     intl_suggestions:
       example:
         primary_number_range: primary_number_range
-        country: AD
         primary_line: primary_line
         city: city
         state: state
@@ -8798,228 +10784,7 @@ components:
             The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state.
           type: string
         country:
-          description: Must be a 2 letter country short-name code (ISO 3166).
-          enum:
-          - AD
-          - AE
-          - AF
-          - AG
-          - AI
-          - AL
-          - AN
-          - AO
-          - AQ
-          - AR
-          - AT
-          - AU
-          - AW
-          - AZ
-          - BA
-          - BB
-          - BD
-          - BE
-          - BF
-          - BG
-          - BH
-          - BI
-          - BJ
-          - BM
-          - BN
-          - BO
-          - BQ
-          - BR
-          - BS
-          - BT
-          - BW
-          - BY
-          - BZ
-          - CA
-          - CD
-          - CG
-          - CH
-          - CI
-          - CK
-          - CL
-          - CM
-          - CN
-          - CO
-          - CR
-          - CS
-          - CU
-          - CV
-          - CW
-          - CY
-          - CZ
-          - DE
-          - DJ
-          - DK
-          - DM
-          - DO
-          - DZ
-          - EC
-          - EE
-          - EG
-          - EH
-          - ER
-          - ES
-          - ET
-          - FI
-          - FJ
-          - FK
-          - FO
-          - FR
-          - GA
-          - GB
-          - GD
-          - GE
-          - GH
-          - GI
-          - GL
-          - GM
-          - GN
-          - GQ
-          - GR
-          - GS
-          - GT
-          - GW
-          - GY
-          - HK
-          - HN
-          - HR
-          - HT
-          - HU
-          - ID
-          - IE
-          - IL
-          - IN
-          - IO
-          - IQ
-          - IR
-          - IS
-          - IT
-          - JM
-          - JO
-          - JP
-          - KE
-          - KG
-          - KH
-          - KI
-          - KM
-          - KN
-          - KP
-          - KR
-          - KW
-          - KY
-          - KZ
-          - LA
-          - LB
-          - LC
-          - LI
-          - LK
-          - LR
-          - LS
-          - LT
-          - LU
-          - LV
-          - LY
-          - MA
-          - MC
-          - MD
-          - ME
-          - MG
-          - MK
-          - ML
-          - MM
-          - MN
-          - MO
-          - MR
-          - MS
-          - MT
-          - MU
-          - MV
-          - MW
-          - MX
-          - MY
-          - MZ
-          - NA
-          - NE
-          - NF
-          - NG
-          - NI
-          - NL
-          - "NO"
-          - NP
-          - NR
-          - NU
-          - NZ
-          - OM
-          - PA
-          - PE
-          - PG
-          - PH
-          - PK
-          - PL
-          - PN
-          - PT
-          - PY
-          - QA
-          - RO
-          - RS
-          - RU
-          - RW
-          - SA
-          - SB
-          - SC
-          - SD
-          - SE
-          - SG
-          - SH
-          - SI
-          - SK
-          - SL
-          - SM
-          - SN
-          - SO
-          - SR
-          - SS
-          - ST
-          - SV
-          - SX
-          - SY
-          - SZ
-          - TC
-          - TD
-          - TG
-          - TH
-          - TJ
-          - TK
-          - TL
-          - TM
-          - TN
-          - TO
-          - TR
-          - TT
-          - TV
-          - TW
-          - TZ
-          - UA
-          - UG
-          - US
-          - UY
-          - UZ
-          - VA
-          - VC
-          - VE
-          - VG
-          - VN
-          - VU
-          - WS
-          - YE
-          - ZA
-          - ZM
-          - ZW
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/country_extended_expanded'
         zip_code:
           description: A 5-digit zip code. Left empty if a test key is used.
           type: string
@@ -9041,35 +10806,30 @@ components:
       example:
         suggestions:
         - primary_number_range: primary_number_range
-          country: AD
           primary_line: primary_line
           city: city
           state: state
           zip_code: zip_code
           object: intl_autocompletion
         - primary_number_range: primary_number_range
-          country: AD
           primary_line: primary_line
           city: city
           state: state
           zip_code: zip_code
           object: intl_autocompletion
         - primary_number_range: primary_number_range
-          country: AD
           primary_line: primary_line
           city: city
           state: state
           zip_code: zip_code
           object: intl_autocompletion
         - primary_number_range: primary_number_range
-          country: AD
           primary_line: primary_line
           city: city
           state: state
           zip_code: zip_code
           object: intl_autocompletion
         - primary_number_range: primary_number_range
-          country: AD
           primary_line: primary_line
           city: city
           state: state
@@ -9149,6 +10909,26 @@ components:
           - key: country
             val: CA
             pascal_key: Country
+            py_val: CountryExtended("CA")
+            pyNonString: true
+        resource_constructor:
+        - camel_case_key: recipient
+          dotnet_val: "null"
+          dotnetNonString: true
+        - camel_case_key: primaryLine
+          val: 370 Water St
+        - camel_case_key: secondaryLine
+          dotnet_val: "null"
+          dotnetNonString: true
+        - camel_case_key: city
+          val: Summerside
+        - camel_case_key: state
+          val: Prince Edward Island
+        - camel_case_key: postalCode
+          val: C1N 1C4
+        - camel_case_key: country
+          dotnet_val: CountryExtended.CA
+          dotnetNonString: true
     intl_verification:
       example:
         last_line: last_line
@@ -9616,6 +11396,7 @@ components:
         letters: true
         delete: true
         cancel: true
+        dotnetCancel: true
         object_type: Letter
         plural_object_type: Letters
         curl_form: letters
@@ -9822,23 +11603,43 @@ components:
           param: before
         - arg: "null"
           param: after
-        - arg: "null"
+        - arg: includeList
+          notNull: true
           param: include
-        - arg: "null"
+        - arg: dateCreated
+          notNull: true
           param: dateCreated
-        - arg: "null"
+        - arg: metadata
+          notNull: true
           param: metadata
-        - arg: "null"
+        - arg: true
           param: color
-        - arg: "null"
+        - arg: true
+          notNull: true
           param: scheduled
-        - arg: "null"
+        - arg: sendDate
+          notNull: true
           param: sendDate
-        - arg: "null"
+        - dotnet_arg: MailType.FirstClass
+          notNull: true
           param: mailType
-        - arg: "null"
+        - arg: sortBy
+          notNull: true
           param: sortBy
           last: true
+        metadata:
+          key: name
+          val: Harry
+        include: total_count
+        date_created:
+          key: lt
+          val: DateTime.Today.AddMonths(-1)
+        send_date:
+          key: lt
+          val: DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz")
+        sort_by:
+          dotnet:
+            date_created_enum: SortBy3.DateCreatedEnum.Asc
     letter_editable:
       properties:
         description:
@@ -9949,7 +11750,8 @@ components:
           nullable: true
           type: integer
         custom_envelope:
-          $ref: '#/components/schemas/letter_editable_custom_envelope'
+          nullable: true
+          type: string
         to:
           description: Must either be an address ID or an inline object with correct
             address parameters.
@@ -10038,6 +11840,7 @@ components:
           val: Demo Letter
         - key: from
           pascal_case_key: From
+          underscoreKey: true
           val: adr_210a8d4b0b76d77b
         - key: file
           pascal_case_key: File
@@ -10050,6 +11853,8 @@ components:
           javaNonString: true
           ts_val: true
           tsNonString: true
+          py_val: "True"
+          pyNonString: true
         nested_objs:
         - key: to
           pascal_case_key: To
@@ -10080,7 +11885,6 @@ components:
           stringType: true
           elements:
           - elem: card_c51ae96f5cebf3e
-          - elem: card_thingy
         merge_variables:
           attributes:
           - key: name
@@ -10093,6 +11897,74 @@ components:
         resource_var_name: letterEditable
         snake_case_resource_var_name: letter_editable
         accepts_idempotency_key: true
+        nested_objs_constructors:
+        - camel_case_key: to
+          type: AddressEditable
+          obj:
+          - inner_camel_case_key: addressLine1
+            inner_val: 210 King St
+          - inner_camel_case_key: addressLine2
+            inner_val: '# 6100'
+          - inner_camel_case_key: addressCity
+            inner_val: San Francisco
+          - inner_camel_case_key: addressState
+            inner_val: CA
+          - inner_camel_case_key: addressZip
+            inner_val: 94107
+          - inner_camel_case_key: addressCounty
+            dotnet_inner_val: default(CountryExtended)
+            dotnetNonString: true
+          - inner_camel_case_key: description
+            dotnet_inner_val: "null"
+            dotnetNonString: true
+          - inner_camel_case_key: name
+            inner_val: Harry Zhang
+        resource_constructor:
+        - camel_case_key: description
+          val: Demo Letter
+        - camel_case_key: metadata
+          dotnet_val: default(Dictionary<string, string>)
+          dotnetNonString: true
+        - camel_case_key: mailType
+          dotnet_val: default(MailType)
+          dotnetNonString: true
+        - camel_case_key: mergeVariables
+          dotnet_val: mergeVariables
+          dotnetNonString: true
+        - camel_case_key: sendDate
+          dotnet_val: default(DateTime)
+          dotnetNonString: true
+        - camel_case_key: color
+          dotnet_val: true
+          dotnetNonString: true
+        - camel_case_key: doubleSided
+          dotnet_val: true
+          dotnetNonString: true
+        - camel_case_key: addressPlacement
+          dotnet_val: LetterEditable.AddressPlacementEnum.TopFirstPage
+          dotnetNonString: true
+        - camel_case_key: returnEnvelope
+          dotnet_val: default(Object)
+          dotnetNonString: true
+        - camel_case_key: perforatedPage
+          dotnet_val: default(int?)
+          dotnetNonString: true
+        - camel_case_key: customEnvelope
+          dotnet_val: default(LetterEditableCustomEnvelope)
+          dotnetNonString: true
+        - camel_case_key: to
+          dotnet_val: to.ToJson()
+          dotnetNonString: true
+        - camel_case_key: from
+          val: adr_249af768103d2810
+        - camel_case_key: file
+          val: '<html style=''padding-top: 3in; margin: .5in;''>HTML Letter for {{name}}</html>'
+        - camel_case_key: extraService
+          dotnet_val: default(LetterEditable.ExtraServiceEnum?)
+          dotnetNonString: true
+        - camel_case_key: cards
+          dotnet_val: cards
+          dotnetNonString: true
     psc_id:
       description: Unique identifier prefixed with `psc_`.
       pattern: ^psc_[a-zA-Z0-9]+$
@@ -10672,23 +12544,48 @@ components:
           param: before
         - arg: "null"
           param: after
-        - arg: "null"
+        - arg: includeList
+          notNull: true
           param: include
-        - arg: "null"
+        - arg: dateCreated
+          notNull: true
           param: dateCreated
-        - arg: "null"
+        - arg: metadata
+          notNull: true
           param: metadata
-        - arg: "null"
+        - arg: sizeArray
+          notNull: true
           param: size
-        - arg: "null"
+        - arg: true
+          notNull: true
           param: scheduled
-        - arg: "null"
+        - arg: sendDate
+          notNull: true
           param: sendDate
-        - arg: "null"
+        - dotnet_arg: MailType.FirstClass
+          notNull: true
           param: mailType
-        - arg: "null"
+        - arg: sortBy
+          notNull: true
           param: sortBy
           last: true
+        metadata:
+          key: name
+          val: Harry
+        include: total_count
+        date_created:
+          key: lt
+          val: DateTime.Today.AddMonths(-1)
+        send_date:
+          key: lt
+          val: DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz")
+        sort_by:
+          dotnet:
+            date_created_enum: SortBy3.DateCreatedEnum.Asc
+        size:
+          dotnet:
+            type: PostcardSize
+            val: _4x6
     postcard_editable:
       properties:
         to:
@@ -10816,6 +12713,7 @@ components:
           val: Demo Postcard job
         - key: from
           pascal_case_key: From
+          underscoreKey: true
           val: adr_210a8d4b0b76d77b
         - key: front
           pascal_case_key: Front
@@ -10860,6 +12758,55 @@ components:
         resource_var_name: postcardEditable
         snake_case_resource_var_name: postcard_editable
         accepts_idempotency_key: true
+        nested_objs_constructors:
+        - camel_case_key: to
+          type: AddressEditable
+          obj:
+          - inner_camel_case_key: addressLine1
+            inner_val: 210 King St
+          - inner_camel_case_key: addressLine2
+            inner_val: '# 6100'
+          - inner_camel_case_key: addressCity
+            inner_val: San Francisco
+          - inner_camel_case_key: addressState
+            inner_val: CA
+          - inner_camel_case_key: addressZip
+            inner_val: 94107
+          - inner_camel_case_key: addressCounty
+            dotnet_inner_val: CountryExtended.US
+            dotnetNonString: true
+          - inner_camel_case_key: description
+            dotnet_inner_val: "null"
+            dotnetNonString: true
+          - inner_camel_case_key: name
+            inner_val: Harry Zhang
+        resource_constructor:
+        - camel_case_key: to
+          dotnet_val: to.ToJson()
+          dotnetNonString: true
+        - camel_case_key: from
+          val: adr_249af768103d2810
+        - camel_case_key: size
+          dotnet_val: default(PostcardSize)
+          dotnetNonString: true
+        - camel_case_key: description
+          val: Demo Postcard Job
+        - camel_case_key: metadata
+          dotnet_val: "null"
+          dotnetNonString: true
+        - camel_case_key: mailType
+          dotnet_val: default(MailType)
+          dotnetNonString: true
+        - camel_case_key: mergeVariables
+          dotnet_val: mergeVariables
+          dotnetNonString: true
+        - camel_case_key: sendDate
+          dotnet_val: default(DateTime)
+          dotnetNonString: true
+        - camel_case_key: front
+          val: '<html style=''padding: 1in; font-size: 20;''>Back HTML for {{name}}</html>'
+        - camel_case_key: back
+          val: '<html style=''padding: 1in; font-size: 20;''>Back HTML for {{name}}</html>'
     sfm_id:
       description: Unique identifier prefixed with `sfm_`.
       pattern: ^sfm_[a-zA-Z0-9]+$
@@ -11094,8 +13041,6 @@ components:
           pattern: ^sfm_[a-zA-Z0-9]+$
           type: string
         to:
-          allOf:
-          - $ref: '#/components/schemas/address'
           x-template-config:
             isOneOf: true
             type-composite:
@@ -11112,8 +13057,6 @@ components:
                 python_path: lob_python.model.address
                 hasPath: true
         from:
-          allOf:
-          - $ref: '#/components/schemas/address_domestic_expanded'
           x-template-config:
             isOneOf: true
             type-composite:
@@ -11124,10 +13067,11 @@ components:
                 default: true
                 isRef: true
             - base-type2:
-                java: Address
-                python: Address
-                typescript: Models.Address
-                hasPath: false
+                java: AddressDomesticExpanded
+                python: AddressDomesticExpanded
+                typescript: Models.AddressDomesticExpanded
+                python_path: lob_python.model.address_domestic_expanded
+                hasPath: true
         size:
           $ref: '#/components/schemas/self_mailer_size'
         description:
@@ -11247,6 +13191,7 @@ components:
         curl_form: self_mailers
         resource_id: sfm_8ffbe811dea49dcf
         response_var: selfMailer
+        snake_case_var_name: self_mailer
         javaSupported: true
     self_mailer_deletion:
       description: Lob uses RESTful HTTP response codes to indicate success or failure
@@ -11418,23 +13363,44 @@ components:
           param: before
         - arg: "null"
           param: after
-        - arg: "null"
+        - arg: includeList
+          notNull: true
           param: include
-        - arg: "null"
+        - arg: dateCreated
+          notNull: true
           param: dateCreated
-        - arg: "null"
+        - arg: metadata
+          notNull: true
           param: metadata
         - arg: "null"
+          notNull: true
           param: size
-        - arg: "null"
+        - arg: true
+          notNull: true
           param: scheduled
-        - arg: "null"
+        - arg: sendDate
+          notNull: true
           param: sendDate
-        - arg: "null"
+        - dotnet_arg: MailType.FirstClass
+          notNull: true
           param: mailType
-        - arg: "null"
+        - arg: sortBy
+          notNull: true
           param: sortBy
           last: true
+        metadata:
+          key: name
+          val: Harry
+        include: total_count
+        date_created:
+          key: lt
+          val: DateTime.Today.AddMonths(-1)
+        send_date:
+          key: lt
+          val: DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz")
+        sort_by:
+          dotnet:
+            date_created_enum: SortBy3.DateCreatedEnum.Asc
     self_mailer_editable:
       properties:
         to:
@@ -11562,6 +13528,7 @@ components:
           val: Demo Self Mailer job
         - key: from
           pascal_case_key: From
+          underscoreKey: true
           val: adr_210a8d4b0b76d77b
         - key: inside
           pascal_case_key: Inside
@@ -11600,12 +13567,62 @@ components:
             val: Harry
         lob_response_type: SelfMailer
         lob_response_var: selfMailer
+        snake_case_lob_response_var: self_mailer
         plural_object_type: SelfMailers
         javaSupported: true
         resource_type: SelfMailerEditable
         resource_var_name: selfMailerEditable
         snake_case_resource_var_name: self_mailer_editable
         accepts_idempotency_key: true
+        nested_objs_constructors:
+        - camel_case_key: to
+          type: AddressEditable
+          obj:
+          - inner_camel_case_key: addressLine1
+            inner_val: 210 King St
+          - inner_camel_case_key: addressLine2
+            inner_val: '# 6100'
+          - inner_camel_case_key: addressCity
+            inner_val: San Francisco
+          - inner_camel_case_key: addressState
+            inner_val: CA
+          - inner_camel_case_key: addressZip
+            inner_val: 94107
+          - inner_camel_case_key: addressCounty
+            dotnet_inner_val: default(CountryExtended)
+            dotnetNonString: true
+          - inner_camel_case_key: description
+            dotnet_inner_val: "null"
+            dotnetNonString: true
+          - inner_camel_case_key: name
+            inner_val: Harry Zhang
+        resource_constructor:
+        - camel_case_key: to
+          dotnet_val: to.ToJson()
+          dotnetNonString: true
+        - camel_case_key: from
+          val: adr_249af768103d2810
+        - camel_case_key: size
+          dotnet_val: default(SelfMailerSize)
+          dotnetNonString: true
+        - camel_case_key: description
+          val: Demo Self Mailer Job
+        - camel_case_key: metadata
+          dotnet_val: default(Dictionary<string, string>)
+          dotnetNonString: true
+        - camel_case_key: mailType
+          dotnet_val: default(MailType)
+          dotnetNonString: true
+        - camel_case_key: mergeVariables
+          dotnet_val: mergeVariables
+          dotnetNonString: true
+        - camel_case_key: sendDate
+          dotnet_val: default(DateTime)
+          dotnetNonString: true
+        - camel_case_key: inside
+          val: '<html style=''padding: 1in; font-size: 50;''>Inside HTML for {{name}}</html>'
+        - camel_case_key: outside
+          val: '<html style=''padding: 1in; font-size: 20;''>Outside HTML for {{name}}</html>'
     template_html:
       description: |
         An HTML string of less than 100,000 characters to be used as the `published_version` of this template. See [here](#section/HTML-Examples) for guidance on designing HTML templates. Please see endpoint specific documentation for any other product-specific HTML details:
@@ -11700,6 +13717,7 @@ components:
         templateVersions: true
         retrieve: true
         object_type: TemplateVersion
+        snake_case_var_name: template_version
         plural_object_type: TemplateVersions
         curl_form: templates/tmpl_c94e83ca2cd5121/versions
         curl_form_1: templates
@@ -11817,13 +13835,15 @@ components:
         templateVersions: true
         list: true
         curl_form: templates/tmpl_dadaaf7b76c9f25/versions
+        snake_case_var_name: template_versions
         javaSupported: true
         typescriptSupported: true
         plural_response_var: templateVersions
         plural_object_type: TemplateVersions
+        object_type: TemplateVersion
         template_id: tmpl_dadaaf7b76c9f25
         args:
-        - arg: tmpl_dadaaf7b76c9f25
+        - arg: '"tmpl_dadaaf7b76c9f25"'
           notNull: true
           param: tmplId
         - arg: 2
@@ -11833,11 +13853,17 @@ components:
           param: before
         - arg: "null"
           param: after
-        - arg: "null"
+        - arg: includeList
+          notNull: true
           param: include
-        - arg: "null"
+        - arg: dateCreated
+          notNull: true
           param: dateCreated
           last: true
+        include: total_count
+        date_created:
+          key: lt
+          val: DateTime.Today.AddMonths(-1)
     template_version_writable:
       properties:
         description:
@@ -11876,10 +13902,17 @@ components:
         javaSupported: true
         lob_response_type: TemplateVersion
         lob_response_var: templateVersion
+        snake_case_lob_response_var: template_version
         plural_object_type: TemplateVersions
         resource_type: TemplateVersionWritable
+        resource_var_name: templateVersionWritable
         snake_case_resource_var_name: template_version_writable
         tmpl_id: tmpl_4aa14648113e45b
+        resource_constructor:
+        - camel_case_key: description
+          val: Second Version
+        - camel_case_key: html
+          val: <html>Second HTML for {{name}}</html>
     template:
       example:
         metadata:
@@ -12163,6 +14196,7 @@ components:
         typescriptSupported: true
         plural_response_var: templates
         plural_object_type: Templates
+        object_type: Template
         args:
         - arg: 2
           notNull: true
@@ -12171,15 +14205,23 @@ components:
           param: before
         - arg: "null"
           param: after
-        - arg: "null"
+        - arg: includeList
+          notNull: true
           param: include
-        - arg: "null"
+        - arg: dateCreated
+          notNull: true
           param: dateCreated
-        - arg: "null"
+        - arg: metadata
+          notNull: true
           param: metadata
-        - arg: "null"
-          param: size
           last: true
+        metadata:
+          key: name
+          val: Harry
+        include: total_count
+        date_created:
+          key: lt
+          val: DateTime.Today.AddMonths(-1)
     template_writable:
       properties:
         description:
@@ -12236,7 +14278,360 @@ components:
         lob_response_var: template
         plural_object_type: Templates
         resource_type: TemplateWritable
+        resource_var_name: templateWritable
         snake_case_resource_var_name: template_writable
+        resource_constructor:
+        - camel_case_key: description
+          val: Test Template
+        - camel_case_key: html
+          val: <html>HTML for {{name}}</html>
+    upl_id:
+      description: Unique identifier prefixed with `upl_`.
+      pattern: ^upl_[a-zA-Z0-9]+$
+      type: string
+    column_mapping:
+      description: The mapping of column headers in your file to Lob-required fields
+        for the resource created. See our <a href="https://help.lob.com/best-practices/campaign-audience-guide"
+        target="_blank">Campaign Audience Guide</a> for additional details.
+      title: Column Mapping
+      type: object
+    upload_state:
+      default: Draft
+      description: The `state` property on the `upload` object. As the file is processed,
+        the `state` will change from `Ready for Validation` to `Validating` and then
+        will be either `Scheduled` (successfully processed) or `Errored` (Unsuccessfully
+        processed).
+      enum:
+      - Preprocessing
+      - Draft
+      - Ready for Validation
+      - Validating
+      - Scheduled
+      - Cancelled
+      - Errored
+      title: Upload State
+      type: string
+    upload:
+      example:
+        validatedMailpieces: 1
+        campaignId: campaignId
+        dateModified: 2000-01-23T04:56:07.000+00:00
+        failuresUrl: failuresUrl
+        mode: test
+        accountId: accountId
+        dateCreated: 2000-01-23T04:56:07.000+00:00
+        deleted: true
+        totalMailpieces: 0
+        failedMailpieces: 6
+        id: id
+        originalFilename: originalFilename
+        bytesProcessed: 5
+        columnMapping: '{}'
+      properties:
+        id:
+          description: Unique identifier prefixed with `upl_`.
+          pattern: ^upl_[a-zA-Z0-9]+$
+          type: string
+        accountId:
+          description: Account ID that made the request
+          title: Account ID
+          type: string
+        campaignId:
+          description: Unique identifier prefixed with `cmp_`.
+          pattern: ^cmp_[a-zA-Z0-9]+$
+          title: Campaign id
+          type: string
+        columnMapping:
+          description: The mapping of column headers in your file to Lob-required
+            fields for the resource created. See our <a href="https://help.lob.com/best-practices/campaign-audience-guide"
+            target="_blank">Campaign Audience Guide</a> for additional details.
+          title: Column Mapping
+          type: object
+        mode:
+          description: The environment in which the mailpieces were created. Today,
+            will only be `live`.
+          enum:
+          - test
+          - live
+          type: string
+        failuresUrl:
+          description: Url where your campaign mailpiece failures can be retrieved
+          title: Failures URL
+          type: string
+        originalFilename:
+          description: Filename of the upload
+          title: Original Filename
+          type: string
+        state:
+          $ref: '#/components/schemas/upload_state'
+        totalMailpieces:
+          description: Total number of recipients for the campaign
+          title: Total Mailpieces
+          type: integer
+        failedMailpieces:
+          description: Number of mailpieces that failed to create
+          title: Failed Mailpieces
+          type: integer
+        validatedMailpieces:
+          description: Number of mailpieces that were successfully created
+          title: Validated Mailpieces
+          type: integer
+        bytesProcessed:
+          description: Number of bytes processed in your CSV
+          title: Bytes Processed
+          type: integer
+        dateCreated:
+          description: A timestamp in ISO 8601 format of the date the upload was created
+          format: date-time
+          title: Date Created
+          type: string
+        dateModified:
+          description: A timestamp in ISO 8601 format of the date the upload was last
+            modified
+          format: date-time
+          title: Date Modified
+          type: string
+        deleted:
+          description: Only returned if the resource has been successfully deleted.
+          type: boolean
+      required:
+      - accountId
+      - bytesProcessed
+      - campaignId
+      - columnMapping
+      - dateCreated
+      - dateModified
+      - failedMailpieces
+      - id
+      - mode
+      - state
+      - totalMailpieces
+      - validatedMailpieces
+      type: object
+      x-code-snippet:
+        uploads: true
+        retrieve: true
+        op_name:
+          python: get_upload
+        object_type: Upload
+        plural_object_type: Uploads
+        curl_form: uploads
+        resource_id: upl_71be866e430b11e9
+        response_var: upload
+    upload_list:
+      description: list of uploads
+      items:
+        $ref: '#/components/schemas/upload'
+      type: array
+      x-template-config:
+        isComplexObject: true
+        base-type:
+          java: ArrayList<Upload>
+      x-code-snippet:
+        uploads: true
+        list: true
+        op_name:
+          python: list_upload
+        object_type: Upload
+        curl_form: uploads
+        plural_response_var: uploads
+        javaSupported: true
+        typescriptSupported: true
+        plural_object_type: Uploads
+        args:
+        - arg: "null"
+          param: campaignId
+    upload_writable:
+      properties:
+        campaignId:
+          description: Unique identifier prefixed with `cmp_`.
+          pattern: ^cmp_[a-zA-Z0-9]+$
+          title: Campaign id
+          type: string
+        columnMapping:
+          description: The mapping of column headers in your file to Lob-required
+            fields for the resource created. See our <a href="https://help.lob.com/best-practices/campaign-audience-guide"
+            target="_blank">Campaign Audience Guide</a> for additional details.
+          title: Column Mapping
+          type: object
+      required:
+      - campaignId
+      - columnMapping
+      type: object
+      x-code-snippet:
+        uploads: true
+        create: true
+        curl_form: uploads
+        op_name:
+          python: create_upload
+        resource:
+        - key: campaignId
+          snake_case_key: campaign_id
+          val: cmp_e05ee61ff80764b
+        - key: columnMapping
+          snake_case_key: column_mapping
+          val: '{''firstName'': ''first name''}'
+          py_val: '{ "firstName": "first name" }'
+          pyNonString: true
+          dataRaw: true
+        lob_response_type: Upload
+        lob_response_var: upload
+        plural_object_type: Uploads
+        resource_type: UploadWritable
+        resource_var_name: uploadWritable
+        snake_case_resource_var_name: upload_writable
+        snake_case_lob_response_var: upload
+    upload_updatable:
+      properties:
+        columnMapping:
+          description: The mapping of column headers in your file to Lob-required
+            fields for the resource created. See our <a href="https://help.lob.com/best-practices/campaign-audience-guide"
+            target="_blank">Campaign Audience Guide</a> for additional details.
+          title: Column Mapping
+          type: object
+        state:
+          $ref: '#/components/schemas/upload_state'
+        originalFilename:
+          description: Original filename provided when the upload is created.
+          title: Original Filename
+          type: string
+        overwriteColumnMapping:
+          description: |
+            Properties in `columnMapping` will be appended to the existing `columnMapping` object if set to `false`. If set to `true`, the existing `columnMapping` object will be overwritten with the data supplied in `columnMapping` property.
+          title: Overwrite Column Mapping
+          type: boolean
+      type: object
+      x-code-snippet:
+        uploads: true
+        update: true
+        op_name:
+          python: update_upload
+        resource_id: upl_71be866e430b11e9
+        lob_response_var: upload
+        snake_case_resource_var_name: upload_updatable
+        resource_type: UploadUpdatable
+        plural_object_type: Uploads
+        props:
+        - key: state
+          val: Ready for Validation
+          pyNonString: true
+          py_val: UploadState("Ready for Validation")
+    upload_file:
+      example:
+        filename: filename
+        message: File uploaded successfully
+      properties:
+        message:
+          default: File uploaded successfully
+          enum:
+          - File uploaded successfully
+          title: Message
+          type: string
+        filename:
+          title: Filename
+          type: string
+      required:
+      - filename
+      - message
+      type: object
+    export_model:
+      properties:
+        type:
+          enum:
+          - all
+          - failures
+          - successes
+          type: string
+      type: object
+    upload_create_export:
+      example:
+        message: Export is processing.
+        exportId: exportId
+      properties:
+        message:
+          default: Export is processing.
+          enum:
+          - Export is processing.
+          title: Message
+          type: string
+        exportId:
+          title: Export ID
+          type: string
+      required:
+      - exportId
+      - message
+      type: object
+      x-code-snippet:
+        uploads: true
+        createExport: true
+        upl_id: upl_71be866e430b11e9
+    ex_id:
+      description: Unique identifier prefixed with `ex_`.
+      pattern: ^ex_[a-zA-Z0-9]+$
+      type: string
+    export:
+      example:
+        s3Url: s3Url
+        dateCreated: 2000-01-23T04:56:07.000+00:00
+        deleted: true
+        uploadId: uploadId
+        dateModified: 2000-01-23T04:56:07.000+00:00
+        id: id
+        state: in_progress
+        type: all
+      properties:
+        id:
+          description: Unique identifier prefixed with `ex_`.
+          pattern: ^ex_[a-zA-Z0-9]+$
+          type: string
+        dateCreated:
+          description: A timestamp in ISO 8601 format of the date the export was created
+          format: date-time
+          type: string
+        dateModified:
+          description: A timestamp in ISO 8601 format of the date the export was last
+            modified
+          format: date-time
+          type: string
+        deleted:
+          description: Returns as `true` if the resource has been successfully deleted.
+          type: boolean
+        s3Url:
+          description: The URL for the generated export file.
+          type: string
+        state:
+          description: The state of the export file, which can be `in_progress`, `failed`
+            or `succeeded`.
+          enum:
+          - in_progress
+          - failed
+          - succeeded
+          type: string
+        type:
+          description: The export file type, which can be `all`, `failures` or `successes`.
+          enum:
+          - all
+          - failures
+          - successes
+          type: string
+        uploadId:
+          description: Unique identifier prefixed with `upl_`.
+          pattern: ^upl_[a-zA-Z0-9]+$
+          type: string
+      required:
+      - dateCreated
+      - dateModified
+      - deleted
+      - id
+      - state
+      - type
+      - uploadId
+      type: object
+      x-code-snippet:
+        uploads: true
+        retrieveExport: true
+        upl_id: upl_71be866e430b11e9
+        ex_id: ex_6a94fe68fd151e0f8
     us_autocompletions_writable:
       properties:
         address_prefix:
@@ -12594,6 +14989,27 @@ components:
           - key: zip_code
             val: 94017
             pascal_key: ZipCode
+        resource_constructor:
+        - camel_case_key: address
+          dotnet_val: "null"
+          dotnetNonString: true
+        - camel_case_key: recipient
+          dotnet_val: "null"
+          dotnetNonString: true
+        - camel_case_key: primaryLine
+          val: 210 King Street
+        - camel_case_key: secondaryLine
+          dotnet_val: "null"
+          dotnetNonString: true
+        - camel_case_key: urbanization
+          dotnet_val: "null"
+          dotnetNonString: true
+        - camel_case_key: city
+          val: San Francisco
+        - camel_case_key: state
+          val: CA
+        - camel_case_key: zipCode
+          val: 94017
     us_verification:
       example:
         last_line: last_line
@@ -12921,8 +15337,248 @@ components:
             base-type:
               java: HashMap<String,String>
       type: object
+    user_provided:
+      default: false
+      type: boolean
+    custom_envelope_user_provided:
+      description: Accepts an envelope ID for any customized envelope with available
+        inventory.
+      nullable: true
+      pattern: ^env_[a-zA-Z0-9]+$
+      type: string
+    letter_details_writable:
+      description: Properties that the letters in your Creative should have.
+      example:
+        address_placement: top_first_page
+        cards:
+        - null
+        color: true
+        custom_envelope: custom_envelope
+        double_sided: true
+        extra_service: extra_service
+        return_envelope: false
+      properties:
+        address_placement:
+          default: top_first_page
+          description: |
+            Specifies the location of the address information that will show through the double-window envelope.
+          enum:
+          - top_first_page
+          - insert_blank_page
+          - bottom_first_page_center
+          - bottom_first_page
+          type: string
+        cards:
+          description: A single-element array containing an existing card id in a
+            string format. See [cards](#tag/Cards) for more information.
+          items:
+            $ref: '#/components/schemas/card_id'
+          maxItems: 1
+          minItems: 0
+          nullable: true
+          type: array
+        color:
+          description: Set this key to `true` if you would like to print in color.
+            Set to `false` if you would like to print in black and white.
+          type: boolean
+        double_sided:
+          default: true
+          description: Set this attribute to `true` for double sided printing, or
+            `false` for for single sided printing. Defaults to `true`.
+          type: boolean
+        extra_service:
+          description: Add an extra service to your letter.
+          type: string
+        mail_type:
+          $ref: '#/components/schemas/mail_type'
+        return_envelope:
+          default: false
+          type: boolean
+        custom_envelope:
+          description: Accepts an envelope ID for any customized envelope with available
+            inventory.
+          nullable: true
+          pattern: ^env_[a-zA-Z0-9]+$
+          type: string
+      required:
+      - cards
+      - color
+      type: object
+    postcard_details_writable:
+      description: Properties that the postcards in your Creative should have.
+      example: {}
+      properties:
+        mail_type:
+          $ref: '#/components/schemas/mail_type'
+        size:
+          $ref: '#/components/schemas/postcard_size'
+      type: object
+    custom_envelope_returned:
+      description: A nested custom envelope object containing more information about
+        the custom envelope used or `null` if a custom envelope was not used.
+      example:
+        id: id
+        url: url
+        object: envelope
+      nullable: true
+      properties:
+        id:
+          description: The unique identifier of the custom envelope used.
+          maxLength: 40
+          type: string
+        url:
+          description: The url of the envelope asset used.
+          type: string
+        object:
+          default: envelope
+          enum:
+          - envelope
+          type: string
+      required:
+      - id
+      - object
+      - url
+      type: object
+    return_envelope_returned:
+      x-template-config:
+        isOneOf: true
+        type-composite:
+        - base-type1:
+            java: Boolean
+            typescript: boolean
+            python: bool
+            hasPath: false
+            default: true
+            isRef: true
+        - base-type2:
+            java: ReturnEnvelope
+            typescript: Models.ReturnEnvelope
+            python: ReturnEnvelope
+            hasPath: true
+            python_path: lob_python.model.return_envelope
+            isRef: true
+        default: false
+    letter_details_returned:
+      description: Properties that the letters in your Creative should have.
+      example:
+        address_placement: top_first_page
+        cards:
+        - null
+        file_original_url: file_original_url
+        color: true
+        custom_envelope:
+          id: id
+          url: url
+          object: envelope
+        double_sided: true
+        extra_service: extra_service
+        return_envelope: ""
+        bleed: false
+      properties:
+        color:
+          description: Set this key to `true` if you would like to print in color,
+            false for black and white.
+          type: boolean
+        cards:
+          description: A single-element array containing an existing card id in a
+            string format. See [cards](#tag/Cards) for more information.
+          items:
+            $ref: '#/components/schemas/card_id'
+          maxItems: 1
+          minItems: 0
+          nullable: true
+          type: array
+        address_placement:
+          default: top_first_page
+          description: |
+            Specifies the location of the address information that will show through the double-window envelope.
+          enum:
+          - top_first_page
+          - insert_blank_page
+          - bottom_first_page_center
+          - bottom_first_page
+          type: string
+        custom_envelope:
+          $ref: '#/components/schemas/custom_envelope_returned'
+        double_sided:
+          default: true
+          description: Set this attribute to `true` for double sided printing,  `false`
+            for for single sided printing.
+          type: boolean
+        extra_service:
+          description: Add an extra service to your letter.
+          type: string
+        mail_type:
+          $ref: '#/components/schemas/mail_type'
+        return_envelope:
+          x-template-config:
+            isOneOf: true
+            type-composite:
+            - base-type1:
+                java: Boolean
+                typescript: boolean
+                python: bool
+                hasPath: false
+                default: true
+                isRef: true
+            - base-type2:
+                java: ReturnEnvelope
+                typescript: Models.ReturnEnvelope
+                python: ReturnEnvelope
+                hasPath: true
+                python_path: lob_python.model.return_envelope
+                isRef: true
+            default: false
+        bleed:
+          default: false
+          description: Allows for letter bleed. Enabled only with specific feature
+            flags.
+          type: boolean
+        file_original_url:
+          nullable: true
+          type: string
+      required:
+      - cards
+      - color
+      type: object
+    postcard_details_returned:
+      description: Properties that the postcards in your Creative should have.
+      example:
+        back_original_url: https://openapi-generator.tech
+        front_original_url: https://openapi-generator.tech
+        setting: 0
+      properties:
+        mail_type:
+          $ref: '#/components/schemas/mail_type'
+        size:
+          $ref: '#/components/schemas/postcard_size'
+        setting:
+          default: 1001
+          type: integer
+        front_original_url:
+          description: The original URL of the front template.
+          format: uri
+          maxLength: 2083
+          minLength: 1
+          type: string
+        back_original_url:
+          description: The original URL of the back template.
+          format: uri
+          maxLength: 2083
+          minLength: 1
+          type: string
+      type: object
     placeholder_model:
       example:
+        letter_details_writable:
+          address_placement: top_first_page
+          cards:
+          - null
+          color: true
+          custom_envelope: custom_envelope
+          double_sided: true
+          extra_service: extra_service
+          return_envelope: false
         address_domestic:
           metadata:
             key: metadata
@@ -12937,16 +15593,43 @@ components:
           address_zip: address_zip
           email: email
           address_city: address_city
+        postcard_details_writable: {}
+        postcard_details_returned:
+          back_original_url: https://openapi-generator.tech
+          front_original_url: https://openapi-generator.tech
+          setting: 0
         return_envelope:
           alias: alias
           id: id
           url: url
           object: object
+        letter_details_returned:
+          address_placement: top_first_page
+          cards:
+          - null
+          file_original_url: file_original_url
+          color: true
+          custom_envelope:
+            id: id
+            url: url
+            object: envelope
+          double_sided: true
+          extra_service: extra_service
+          return_envelope: ""
+          bleed: false
       properties:
         return_envelope:
           $ref: '#/components/schemas/return_envelope'
         address_domestic:
           $ref: '#/components/schemas/address_domestic'
+        letter_details_writable:
+          $ref: '#/components/schemas/letter_details_writable'
+        postcard_details_writable:
+          $ref: '#/components/schemas/postcard_details_writable'
+        letter_details_returned:
+          $ref: '#/components/schemas/letter_details_returned'
+        postcard_details_returned:
+          $ref: '#/components/schemas/postcard_details_returned'
       type: object
     event_type:
       properties:
@@ -13017,6 +15700,44 @@ components:
       - object
       - reference_id
       type: object
+    sort_by_date_modified:
+      properties:
+        date_created:
+          enum:
+          - asc
+          - desc
+          type: string
+        date_modified:
+          enum:
+          - asc
+          - desc
+          type: string
+      type: object
+    inline_response_200:
+      description: Lob uses RESTful HTTP response codes to indicate success or failure
+        of an API request. In general, 2xx indicates success, 4xx indicate an input
+        error, and 5xx indicates an error on Lob's end.
+      example:
+        deleted: true
+        id: id
+      properties:
+        id:
+          description: Unique identifier prefixed with `cmp_`.
+          pattern: ^cmp_[a-zA-Z0-9]+$
+          title: Campaign id
+          type: string
+        deleted:
+          description: True if the resource has been successfully deleted.
+          type: boolean
+      type: object
+      x-code-snippet:
+        campaigns: true
+        delete: true
+        object_type: Campaign
+        plural_object_type: Campaigns
+        curl_form: campaigns
+        resource_id: cmp_e05ee61ff80764b
+        response_var: campaign
     sort_by:
       properties:
         date_created:
@@ -13069,31 +15790,51 @@ components:
           - desc
           type: string
       type: object
-    sort_by_4:
+    inline_object:
       properties:
-        date_created:
-          enum:
-          - asc
-          - desc
-          type: string
-        send_date:
-          enum:
-          - asc
-          - desc
-          type: string
+        file:
+          x-type:
+            python:
+              type: IOBase
+              import: io
+      required:
+      - file
       type: object
-    sort_by_5:
+      x-code-snippet:
+        uploads: true
+        uploadFile: true
+        upl_id: upl_71be866e430b11e9
+        file_path: <PATH_TO_CSV>
+        file_name: <YOUR_FILE_NAME_HERE>
+    ValidationError:
       properties:
-        date_created:
-          enum:
-          - asc
-          - desc
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          title: Location
+          type: array
+        msg:
+          title: Message
           type: string
-        send_date:
-          enum:
-          - asc
-          - desc
+        type:
+          title: Error Type
           type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
       type: object
     letter_custom_envelope:
       description: |-
@@ -13118,30 +15859,6 @@ components:
           enum:
           - envelope
           type: string
-      type: object
-    letter_editable_custom_envelope:
-      description: |-
-        A nested custom envelope object containing more information about the custom envelope used or `null` if a custom envelope was not used.
-
-        Accepts an envelope ID for any customized envelope with available inventory. If no inventory is available for the specified ID, the letter will not be sent, and an error will be returned. If the letter has more than 6 sheets, it will be sent in a blank flat envelope. Custom envelopes may be created and ordered from the dashboard. This feature is exclusive to certain customers. Upgrade to the appropriate [Print & Mail Edition](https://dashboard.lob.com/#/settings/editions) to gain access.
-      nullable: true
-      properties:
-        id:
-          description: The unique identifier of the custom envelope used.
-          maxLength: 40
-          type: string
-        url:
-          description: The url of the envelope asset used.
-          type: string
-        object:
-          default: envelope
-          enum:
-          - envelope
-          type: string
-      required:
-      - id
-      - object
-      - url
       type: object
   securitySchemes:
     basicAuth:
