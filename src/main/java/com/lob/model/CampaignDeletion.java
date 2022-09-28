@@ -30,7 +30,7 @@ import com.google.gson.Gson;
  */
 @ApiModel(description = "Lob uses RESTful HTTP response codes to indicate success or failure of an API request. In general, 2xx indicates success, 4xx indicate an input error, and 5xx indicates an error on Lob's end.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class InlineResponse200 {
+public class CampaignDeletion {
   public static final String SERIALIZED_NAME_ID = "id";
 
   @SerializedName(SERIALIZED_NAME_ID)
@@ -79,7 +79,7 @@ public class InlineResponse200 {
 
 
   /*
-  public InlineResponse200 id(String id) {
+  public CampaignDeletion id(String id) {
     
     this.id = id;
     return this;
@@ -91,7 +91,7 @@ public class InlineResponse200 {
 
 
   /*
-  public InlineResponse200 deleted(Boolean deleted) {
+  public CampaignDeletion deleted(Boolean deleted) {
     
     this.deleted = deleted;
     return this;
@@ -113,9 +113,9 @@ public class InlineResponse200 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse200 inlineResponse200 = (InlineResponse200) o;
-    return Objects.equals(this.id, inlineResponse200.id) &&
-        Objects.equals(this.deleted, inlineResponse200.deleted);
+    CampaignDeletion campaignDeletion = (CampaignDeletion) o;
+    return Objects.equals(this.id, campaignDeletion.id) &&
+        Objects.equals(this.deleted, campaignDeletion.deleted);
   }
 
   @Override

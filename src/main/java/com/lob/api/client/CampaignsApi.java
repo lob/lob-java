@@ -1,6 +1,6 @@
 /*
  * Lob
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -28,10 +28,10 @@ import java.io.IOException;
 
 
 import com.lob.model.Campaign;
+import com.lob.model.CampaignDeletion;
 import com.lob.model.CampaignUpdatable;
 import com.lob.model.CampaignWritable;
 import com.lob.model.CampaignsList;
-import com.lob.model.InlineResponse200;
 import com.lob.model.LobError;
 
 import java.lang.reflect.Type;
@@ -109,12 +109,12 @@ public class CampaignsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createValidateBeforeCall(CampaignWritable campaignWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
-
+        
         // verify the required parameter 'campaignWritable' is set
         if (campaignWritable == null) {
             throw new ApiException("Missing the required parameter 'campaignWritable' when calling create(Async)");
         }
-
+        
 
         okhttp3.Call localVarCall = createCall(campaignWritable, xLangOutput, _callback);
         return localVarCall;
@@ -225,7 +225,7 @@ public class CampaignsApi {
         }
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -236,12 +236,12 @@ public class CampaignsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteValidateBeforeCall(String cmpId, final ApiCallback _callback) throws ApiException {
-
+        
         // verify the required parameter 'cmpId' is set
         if (cmpId == null) {
             throw new ApiException("Missing the required parameter 'cmpId' when calling delete(Async)");
         }
-
+        
 
         okhttp3.Call localVarCall = deleteCall(cmpId, _callback);
         return localVarCall;
@@ -252,7 +252,7 @@ public class CampaignsApi {
      * delete
      * Delete an existing campaign. You need only supply the unique identifier that was returned upon campaign creation. Deleting a campaign also deletes any associated mail pieces that have been created but not sent. A campaign&#39;s &#x60;send_date&#x60; matches its associated mail pieces&#39; &#x60;send_date&#x60;s.
      * @param cmpId id of the campaign (required)
-     * @return InlineResponse200
+     * @return CampaignDeletion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -261,9 +261,9 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse200 delete(String cmpId) throws ApiException {
+    public CampaignDeletion delete(String cmpId) throws ApiException {
         try {
-            ApiResponse<InlineResponse200> localVarResp = deleteWithHttpInfo(cmpId);
+            ApiResponse<CampaignDeletion> localVarResp = deleteWithHttpInfo(cmpId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -274,7 +274,7 @@ public class CampaignsApi {
      * delete
      * Delete an existing campaign. You need only supply the unique identifier that was returned upon campaign creation. Deleting a campaign also deletes any associated mail pieces that have been created but not sent. A campaign&#39;s &#x60;send_date&#x60; matches its associated mail pieces&#39; &#x60;send_date&#x60;s.
      * @param cmpId id of the campaign (required)
-     * @return ApiResponse&lt;InlineResponse200&gt;
+     * @return ApiResponse&lt;CampaignDeletion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -283,10 +283,10 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse200> deleteWithHttpInfo(String cmpId) throws ApiException {
+    public ApiResponse<CampaignDeletion> deleteWithHttpInfo(String cmpId) throws ApiException {
         try {
             okhttp3.Call localVarCall = deleteValidateBeforeCall(cmpId, null);
-            Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+            Type localVarReturnType = new TypeToken<CampaignDeletion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             throw e;
@@ -307,10 +307,10 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAsync(String cmpId, final ApiCallback<InlineResponse200> _callback) throws ApiException {
+    public okhttp3.Call deleteAsync(String cmpId, final ApiCallback<CampaignDeletion> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteValidateBeforeCall(cmpId, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignDeletion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -349,7 +349,7 @@ public class CampaignsApi {
         }
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -360,12 +360,12 @@ public class CampaignsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getValidateBeforeCall(String cmpId, final ApiCallback _callback) throws ApiException {
-
+        
         // verify the required parameter 'cmpId' is set
         if (cmpId == null) {
             throw new ApiException("Missing the required parameter 'cmpId' when calling get(Async)");
         }
-
+        
 
         okhttp3.Call localVarCall = getCall(cmpId, _callback);
         return localVarCall;
@@ -485,17 +485,17 @@ public class CampaignsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateValidateBeforeCall(String cmpId, CampaignUpdatable campaignUpdatable, final ApiCallback _callback) throws ApiException {
-
+        
         // verify the required parameter 'cmpId' is set
         if (cmpId == null) {
             throw new ApiException("Missing the required parameter 'cmpId' when calling update(Async)");
         }
-
+        
         // verify the required parameter 'campaignUpdatable' is set
         if (campaignUpdatable == null) {
             throw new ApiException("Missing the required parameter 'campaignUpdatable' when calling update(Async)");
         }
-
+        
 
         okhttp3.Call localVarCall = updateCall(cmpId, campaignUpdatable, _callback);
         return localVarCall;
@@ -623,7 +623,7 @@ public class CampaignsApi {
         }
 
         final String[] localVarContentTypes = {
-
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -634,7 +634,7 @@ public class CampaignsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listValidateBeforeCall(Integer limit, List<String> include, String before, String after, final ApiCallback _callback) throws ApiException {
-
+        
 
         okhttp3.Call localVarCall = listCall(limit, include, before, after, _callback);
         return localVarCall;

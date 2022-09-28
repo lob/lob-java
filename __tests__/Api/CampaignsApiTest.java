@@ -12,7 +12,7 @@ import com.lob.api.ApiException;
 import com.lob.api.client.CampaignsApi;
 
 import com.lob.model.Campaign;
-import com.lob.model. InlineResponse200;
+import com.lob.model.CampaignDeletion;
 import com.lob.model.CampaignsList;
 import com.lob.model.CampaignUpdatable;
 import com.lob.model.CampaignWritable;
@@ -72,11 +72,11 @@ public class CampaignsApiTest {
     @Test(enabled=true, groups={"Unit", "Delete", "Campaign", "Valid"})
     public void campaignDeleteTest() throws ApiException {
         CampaignsApi campaignApiMock = mock(CampaignsApi.class);
-         InlineResponse200 fakeCampaign = new  InlineResponse200();
+        CampaignDeletion fakeCampaign = new CampaignDeletion();
         fakeCampaign.setId("cmp_fakeId");
 
         when(campaignApiMock.delete("cmp_fakeId")).thenReturn(fakeCampaign);
-         InlineResponse200 response = campaignApiMock.delete("cmp_fakeId");
+        CampaignDeletion response = campaignApiMock.delete("cmp_fakeId");
 
         Assert.assertEquals(fakeCampaign.getId(), response.getId());
     }

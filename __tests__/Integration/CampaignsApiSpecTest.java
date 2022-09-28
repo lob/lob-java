@@ -12,7 +12,7 @@ import com.lob.model.Campaign;
 import com.lob.model.CampaignWritable;
 import com.lob.model.CampaignUpdatable;
 import com.lob.model.CampaignsList;
-import com.lob.model.InlineResponse200;
+import com.lob.model.CampaignDeletion;
 import com.lob.model.CmpScheduleType;
 
 import org.testng.Assert;
@@ -109,7 +109,7 @@ public class CampaignsApiSpecTest {
 
         Campaign createdCmp = validApi.create(cmpWritable, null);
 
-        InlineResponse200 response = validApi.delete(createdCmp.getId());
+        CampaignDeletion response = validApi.delete(createdCmp.getId());
 
         Assert.assertNotNull(response);
         Assert.assertTrue(response.getDeleted());

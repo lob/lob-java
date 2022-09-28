@@ -179,7 +179,7 @@ public class CampaignUpdatable {
   @SerializedName(SERIALIZED_NAME_IS_DRAFT)
   
 
-  private Boolean isDraft = true;
+  private Boolean isDraft;
   /**
   * Whether or not the campaign is still a draft.
   * @return isDraft
