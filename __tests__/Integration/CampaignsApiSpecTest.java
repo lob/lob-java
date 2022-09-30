@@ -119,6 +119,7 @@ public class CampaignsApiSpecTest {
     @BeforeGroups("List")
     public void before_list_test()
     {
+        validApi = new CampaignsApi(Configuration.getConfigForIntegration());
         CampaignWritable cmpWritable = new CampaignWritable();
         cmpWritable.setName("Java Integration Test Campaign E");
         cmpWritable.setScheduleType(CmpScheduleType.IMMEDIATE);
