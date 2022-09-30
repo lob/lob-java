@@ -64,7 +64,7 @@ public class Configuration {
      *
      * @return Api client configured for integration tests
      */
-    public static ApiClient getConfigForIntegrationWithLive() {
+    public static ApiClient getConfigForLiveIntegration() {
         ApiClient apiClient = new ApiClient();
 
         HttpBasicAuth basicAuth = (HttpBasicAuth) apiClient.getAuthentication("basicAuth");
