@@ -27,7 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.lob.model.PlaceholderModel;
+import com.lob.model.IdentityValidation;
+import com.lob.model.LobError;
+import com.lob.model.MultiLineAddress;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -35,14 +37,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DefaultApi {
+public class IdentityValidationApi {
     private ApiClient localVarApiClient;
 
-    public DefaultApi() {
+    public IdentityValidationApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public DefaultApi(ApiClient apiClient) {
+    public IdentityValidationApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -55,21 +57,23 @@ public class DefaultApi {
     }
 
     /**
-     * Build call for placeholder_no_call
+     * Build call for validate
+     * @param multiLineAddress  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Uncallable, used for generating missing models </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the likelihood a given name is associated with an address. </td><td>  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call placeholder_no_callCall(final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+    public okhttp3.Call validateCall(MultiLineAddress multiLineAddress, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = multiLineAddress;
 
         // create path and map variables
-        String localVarPath = "/shared_dont_call";
+        String localVarPath = "/identity_validation";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -86,38 +90,45 @@ public class DefaultApi {
         }
 
         final String[] localVarContentTypes = {
-            
+            "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "basicAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call placeholder_no_callValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call validateValidateBeforeCall(MultiLineAddress multiLineAddress, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'multiLineAddress' is set
+        if (multiLineAddress == null) {
+            throw new ApiException("Missing the required parameter 'multiLineAddress' when calling validate(Async)");
+        }
         
 
-        okhttp3.Call localVarCall = placeholder_no_callCall(_callback);
+        okhttp3.Call localVarCall = validateCall(multiLineAddress, _callback);
         return localVarCall;
 
     }
 
     /**
-     * placeholder_no_call
-     * Don&#39;t call this. It&#39;s so that the right models can be generated.
-     * @return PlaceholderModel
+     * validate
+     * Validates whether a given name is associated with an address.
+     * @param multiLineAddress  (required)
+     * @return IdentityValidation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Uncallable, used for generating missing models </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the likelihood a given name is associated with an address. </td><td>  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public PlaceholderModel placeholder_no_call() throws ApiException {
+    public IdentityValidation validate(MultiLineAddress multiLineAddress) throws ApiException {
         try {
-            ApiResponse<PlaceholderModel> localVarResp = placeholder_no_callWithHttpInfo();
+            ApiResponse<IdentityValidation> localVarResp = validateWithHttpInfo(multiLineAddress);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -125,20 +136,22 @@ public class DefaultApi {
     }
 
     /**
-     * placeholder_no_call
-     * Don&#39;t call this. It&#39;s so that the right models can be generated.
-     * @return ApiResponse&lt;PlaceholderModel&gt;
+     * validate
+     * Validates whether a given name is associated with an address.
+     * @param multiLineAddress  (required)
+     * @return ApiResponse&lt;IdentityValidation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Uncallable, used for generating missing models </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the likelihood a given name is associated with an address. </td><td>  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlaceholderModel> placeholder_no_callWithHttpInfo() throws ApiException {
+    public ApiResponse<IdentityValidation> validateWithHttpInfo(MultiLineAddress multiLineAddress) throws ApiException {
         try {
-            okhttp3.Call localVarCall = placeholder_no_callValidateBeforeCall(null);
-            Type localVarReturnType = new TypeToken<PlaceholderModel>(){}.getType();
+            okhttp3.Call localVarCall = validateValidateBeforeCall(multiLineAddress, null);
+            Type localVarReturnType = new TypeToken<IdentityValidation>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             throw e;
@@ -146,21 +159,23 @@ public class DefaultApi {
     }
 
     /**
-     * placeholder_no_call (asynchronously)
-     * Don&#39;t call this. It&#39;s so that the right models can be generated.
+     * validate (asynchronously)
+     * Validates whether a given name is associated with an address.
+     * @param multiLineAddress  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Uncallable, used for generating missing models </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the likelihood a given name is associated with an address. </td><td>  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call placeholder_no_callAsync(final ApiCallback<PlaceholderModel> _callback) throws ApiException {
+    public okhttp3.Call validateAsync(MultiLineAddress multiLineAddress, final ApiCallback<IdentityValidation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = placeholder_no_callValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlaceholderModel>(){}.getType();
+        okhttp3.Call localVarCall = validateValidateBeforeCall(multiLineAddress, _callback);
+        Type localVarReturnType = new TypeToken<IdentityValidation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
