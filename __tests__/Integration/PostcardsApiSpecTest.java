@@ -16,7 +16,7 @@ import com.lob.model.PostcardDeletion;
 import com.lob.model.PostcardEditable;
 import com.lob.model.PostcardList;
 import com.lob.model.PostcardSize;
-import com.lob.model.SortBy5;
+import com.lob.model.SortBy3;
 import com.lob.model.Template;
 import com.lob.model.TemplateWritable;
 import org.testng.Assert;
@@ -46,7 +46,7 @@ public class PostcardsApiSpecTest {
     private Boolean scheduled = null;
     private Map<String, String> sendDate = null;
     private MailType mailType = null;
-    private SortBy5 sortBy = null;
+    private SortBy3 sortBy = null;
 
     @BeforeClass
     public void before_class() {

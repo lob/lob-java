@@ -17,7 +17,7 @@ import com.lob.model.PostcardDeletion;
 import com.lob.model.PostcardEditable;
 import com.lob.model.PostcardList;
 import com.lob.model.PostcardSize;
-import com.lob.model.SortBy5;
+import com.lob.model.SortBy3;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -29,9 +29,9 @@ public class PostcardsApiTest {
         PostcardsApi postcardsApiMock = mock(PostcardsApi.class);
         Postcard fakePostcard = new Postcard();
         PostcardEditable postcardEditable = new PostcardEditable();
-        
+
         fakePostcard.setId("psc_fakeId");
-        
+
         when(postcardsApiMock.create(postcardEditable, "fake_key")).thenReturn(fakePostcard);
         Postcard response = postcardsApiMock.create(postcardEditable, "fake_key");
 
@@ -57,16 +57,16 @@ public class PostcardsApiTest {
 
         postcardApiMock.create(null, null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "Cancel", "Postcard", "Valid"})
     public void postcardCancelTest() throws ApiException {
         PostcardsApi postcardsApiMock = mock(PostcardsApi.class);
         PostcardDeletion fakePostcard = new PostcardDeletion();
 
         fakePostcard.setId("psc_fakeId");
-        
+
         when(postcardsApiMock.cancel("psc_fakeId")).thenReturn(fakePostcard);
         PostcardDeletion response = postcardsApiMock.cancel("psc_fakeId");
 
@@ -92,22 +92,22 @@ public class PostcardsApiTest {
 
         postcardApiMock.cancel(null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "Get", "Postcard", "Valid"})
     public void postcardGetTest() throws ApiException {
         PostcardsApi postcardsApiMock = mock(PostcardsApi.class);
         Postcard fakePostcard = new Postcard();
 
         fakePostcard.setId("psc_fakeId");
-        
+
         when(postcardsApiMock.get("psc_fakeId")).thenReturn(fakePostcard);
         Postcard response = postcardsApiMock.get("psc_fakeId");
 
         Assert.assertEquals(fakePostcard.getId(), response.getId());
     }
-    
+
     @Test(enabled=true, groups={"Unit", "Get", "Postcard", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
     public void postcardGetTestCatchesException() throws ApiException {
         PostcardsApi postcardApiMock = mock(PostcardsApi.class);
@@ -127,8 +127,8 @@ public class PostcardsApiTest {
 
         postcardApiMock.get(null);
 
-        Assert.fail("This should not happen");   
-    }   
+        Assert.fail("This should not happen");
+    }
 
     @Test(enabled=false, groups={"Unit", "List", "Postcard", "Valid"})
     public void postcardsListTest() throws ApiException {
@@ -142,7 +142,7 @@ public class PostcardsApiTest {
         Boolean scheduled = null;
         Map<String, String> sendDate = null;
         MailType mailType = null;
-        SortBy5 sortBy = null;
+        SortBy3 sortBy = null;
 
         PostcardsApi postcardApiMock = mock(PostcardsApi.class);
         PostcardList fakePostcardList = new PostcardList();
@@ -161,7 +161,7 @@ public class PostcardsApiTest {
         when(postcardApiMock.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy)).thenReturn(fakePostcardList);
         PostcardList response = postcardApiMock.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
 
-        Assert.assertEquals(fakePostcardList.getCount(), response.getCount());  
+        Assert.assertEquals(fakePostcardList.getCount(), response.getCount());
     }
-    
+
 }

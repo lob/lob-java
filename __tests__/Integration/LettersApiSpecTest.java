@@ -48,7 +48,7 @@ public class LettersApiSpecTest {
         List<AddressEditable> addressEditableList = testFixtures.get_ADDRESSES_EDITABLE();
 
         Gson gson = new Gson();
-        
+
         letterEditable.setTo(gson.toJson(addressEditableList.get(0)));
         letterEditable.setFrom(gson.toJson(addressEditableList.get(0)));
         letterEditable.setColor(true);

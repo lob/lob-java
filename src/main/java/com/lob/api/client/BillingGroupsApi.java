@@ -32,7 +32,7 @@ import com.lob.model.BillingGroupEditable;
 import com.lob.model.BillingGroupList;
 import com.lob.model.LobError;
 import java.time.OffsetDateTime;
-import com.lob.model.SortBy5;
+import com.lob.model.SortByDateModified;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -446,7 +446,7 @@ public class BillingGroupsApi {
      * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param dateCreated Filter by date created. (optional)
      * @param dateModified Filter by date modified. (optional)
-     * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
+     * @param sortByDateModified Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -457,7 +457,7 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCall(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortByDateModified sortByDateModified, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -489,8 +489,8 @@ public class BillingGroupsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("date_modified", dateModified));
         }
 
-        if (sortBy != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort_by", sortBy));
+        if (sortByDateModified != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort_by_date_modified", sortByDateModified));
         }
 
         final String[] localVarAccepts = {
@@ -512,10 +512,10 @@ public class BillingGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortByDateModified sortByDateModified, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listCall(limit, offset, include, dateCreated, dateModified, sortBy, _callback);
+        okhttp3.Call localVarCall = listCall(limit, offset, include, dateCreated, dateModified, sortByDateModified, _callback);
         return localVarCall;
 
     }
@@ -528,7 +528,7 @@ public class BillingGroupsApi {
      * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param dateCreated Filter by date created. (optional)
      * @param dateModified Filter by date modified. (optional)
-     * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
+     * @param sortByDateModified Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)
      * @return BillingGroupList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -538,9 +538,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BillingGroupList list(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortBy5 sortBy) throws ApiException {
+    public BillingGroupList list(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortByDateModified sortByDateModified) throws ApiException {
         try {
-            ApiResponse<BillingGroupList> localVarResp = listWithHttpInfo(limit, offset, include, dateCreated, dateModified, sortBy);
+            ApiResponse<BillingGroupList> localVarResp = listWithHttpInfo(limit, offset, include, dateCreated, dateModified, sortByDateModified);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -555,7 +555,7 @@ public class BillingGroupsApi {
      * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param dateCreated Filter by date created. (optional)
      * @param dateModified Filter by date modified. (optional)
-     * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
+     * @param sortByDateModified Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)
      * @return ApiResponse&lt;BillingGroupList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -565,9 +565,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BillingGroupList> listWithHttpInfo(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortBy5 sortBy) throws ApiException {
+    public ApiResponse<BillingGroupList> listWithHttpInfo(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortByDateModified sortByDateModified) throws ApiException {
         try {
-            okhttp3.Call localVarCall = listValidateBeforeCall(limit, offset, include, dateCreated, dateModified, sortBy, null);
+            okhttp3.Call localVarCall = listValidateBeforeCall(limit, offset, include, dateCreated, dateModified, sortByDateModified, null);
             Type localVarReturnType = new TypeToken<BillingGroupList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -583,7 +583,7 @@ public class BillingGroupsApi {
      * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param dateCreated Filter by date created. (optional)
      * @param dateModified Filter by date modified. (optional)
-     * @param sortBy Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)
+     * @param sortByDateModified Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -594,9 +594,9 @@ public class BillingGroupsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAsync(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortBy5 sortBy, final ApiCallback<BillingGroupList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortByDateModified sortByDateModified, final ApiCallback<BillingGroupList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listValidateBeforeCall(limit, offset, include, dateCreated, dateModified, sortBy, _callback);
+        okhttp3.Call localVarCall = listValidateBeforeCall(limit, offset, include, dateCreated, dateModified, sortByDateModified, _callback);
         Type localVarReturnType = new TypeToken<BillingGroupList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

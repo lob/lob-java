@@ -16,7 +16,7 @@ import com.lob.model.CheckDeletion;
 import com.lob.model.CheckEditable;
 import com.lob.model.CheckList;
 import com.lob.model.MailType;
-import com.lob.model.SortBy5;
+import com.lob.model.SortBy3;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,7 +26,7 @@ public class ChecksApiTest {
     public void checkCancelTest() throws ApiException {
         ChecksApi checkApiMock = mock(ChecksApi.class);
         CheckDeletion fakeCheck = new CheckDeletion();
-        
+
         fakeCheck.setId("chk_fakeId");
 
         when(checkApiMock.cancel("chk_fakeId")).thenReturn(fakeCheck);
@@ -54,15 +54,15 @@ public class ChecksApiTest {
 
         checkApiMock.cancel(null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "Create", "Check", "Valid"})
     public void checkCreateTest() throws ApiException {
         ChecksApi checkApiMock = mock(ChecksApi.class);
         Check fakeCheck = new Check();
         CheckEditable checkEditable = new CheckEditable();
-        
+
         fakeCheck.setId("chk_fakeId");
 
         when(checkApiMock.create(checkEditable, "fake_key")).thenReturn(fakeCheck);
@@ -90,14 +90,14 @@ public class ChecksApiTest {
 
         checkApiMock.create(null, null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "Get", "Check", "Valid"})
     public void checkGetTest() throws ApiException {
         ChecksApi checkApiMock = mock(ChecksApi.class);
         Check fakeCheck = new Check();
-        
+
         fakeCheck.setId("chk_fakeId");
 
         when(checkApiMock.get("chk_fakeId")).thenReturn(fakeCheck);
@@ -105,7 +105,7 @@ public class ChecksApiTest {
 
         Assert.assertEquals(fakeCheck.getId(), response.getId());
     }
-    
+
     @Test(enabled=true, groups={"Unit", "Get", "Check", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
     public void checkGetTestCatchesException() throws ApiException {
         ChecksApi checkApiMock = mock(ChecksApi.class);
@@ -125,9 +125,9 @@ public class ChecksApiTest {
 
         checkApiMock.get(null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=false, groups={"Unit", "List", "Check", "Valid"})
     public void checksListTest() throws ApiException {
         Integer limit = null;
@@ -139,7 +139,7 @@ public class ChecksApiTest {
         Boolean scheduled = null;
         Map<String, String> sendDate = null;
         MailType mailType = null;
-        SortBy5 sortBy = null;
+        SortBy3 sortBy = null;
 
         ChecksApi checkApiMock = new ChecksApi();
         CheckList fakeCheck = new CheckList();
@@ -155,7 +155,7 @@ public class ChecksApiTest {
         fakeCheck.setCount(data.size());
 
         when(checkApiMock.list(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy)).thenReturn(fakeCheck);
-        
+
         CheckList response = checkApiMock.list(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
         Assert.assertEquals(fakeCheck.getCount(), response.getCount());
     }
@@ -179,6 +179,6 @@ public class ChecksApiTest {
 
         checkApiMock.list(null, null, null, null, null, null, null, null, null, null);
 
-        Assert.fail("This should not happen");   
-    }   
+        Assert.fail("This should not happen");
+    }
 }

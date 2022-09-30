@@ -14,7 +14,6 @@ import com.lob.model.CardDeletion;
 import com.lob.model.CardEditable;
 import com.lob.model.CardList;
 import com.lob.model.CardUpdatable;
-import com.lob.model.SortBy5;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,11 +25,11 @@ public class CardsApiTest {
         CardsApi cardApiMock = mock(CardsApi.class);
         Card fakeCard = new Card();
         CardEditable CardEditable = new CardEditable();
-        
+
         fakeCard.setId("card_fakeId");
         when(cardApiMock.create(CardEditable)).thenReturn(fakeCard);
         Card response = cardApiMock.create(CardEditable);
-        
+
         Assert.assertEquals(fakeCard.getId(), response.getId());
     }
 
@@ -53,9 +52,9 @@ public class CardsApiTest {
 
         cardApiMock.create(null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "Delete", "Card", "Valid"})
     public void cardDeleteTest() throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
@@ -87,9 +86,9 @@ public class CardsApiTest {
 
         cardApiMock.delete(null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "Get", "Card", "Valid"})
     public void cardGetTest() throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
@@ -120,23 +119,23 @@ public class CardsApiTest {
 
         cardApiMock.get(null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "Update", "Card", "Valid"})
     public void cardUpdateTest() throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
         Card fakeCard = new Card();
         CardUpdatable CardUpdatable = new CardUpdatable();
-        
+
         fakeCard.setId("card_fakeId");
 
         when(cardApiMock.update("card_fakeId", CardUpdatable)).thenReturn(fakeCard);
         Card response = cardApiMock.update("card_fakeId", CardUpdatable);
-        
+
         Assert.assertEquals(fakeCard.getId(), response.getId());
     }
-    
+
     @Test(enabled=true, groups={"Unit", "Update", "Card", "Invalid"}, expectedExceptions = {ApiException.class}, expectedExceptionsMessageRegExp = "error reported by API")
     public void cardsUpdateTestCatchesException() throws ApiException {
         CardsApi cardApiMock = mock(CardsApi.class);
@@ -156,15 +155,15 @@ public class CardsApiTest {
 
         cardApiMock.update("null", null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "List", "Card", "Valid"})
     public void CardsListTest() throws ApiException {
         Integer limit = 2;
         String before = null;
         String after = null;
-        SortBy5 sortBy = null;
+        List<String> include = null;
         CardsApi cardApiMock = mock(CardsApi.class);
         CardList fakeCard = new CardList();
         Card data1 = new Card();
@@ -179,9 +178,9 @@ public class CardsApiTest {
         fakeCard.setObject("list");
         fakeCard.setCount(data.size());
 
-        when(cardApiMock.list(limit, before, after, sortBy)).thenReturn(fakeCard);
-        CardList response = cardApiMock.list(limit, before, after, sortBy);
-    
+        when(cardApiMock.list(limit, before, after, include)).thenReturn(fakeCard);
+        CardList response = cardApiMock.list(limit, before, after, include);
+
         Assert.assertEquals(fakeCard.getCount(), response.getCount());
     }
 
@@ -204,6 +203,6 @@ public class CardsApiTest {
 
         cardApiMock.list(null, null, null, null);
 
-        Assert.fail("This should not happen");   
-    }   
+        Assert.fail("This should not happen");
+    }
 }

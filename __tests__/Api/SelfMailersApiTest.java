@@ -17,7 +17,7 @@ import com.lob.model.SelfMailerDeletion;
 import com.lob.model.SelfMailerEditable;
 import com.lob.model.SelfMailerList;
 import com.lob.model.SelfMailerSize;
-import com.lob.model.SortBy5;
+import com.lob.model.SortBy3;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -56,14 +56,14 @@ public class SelfMailersApiTest {
 
         selfMailerApiMock.create(null, null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "Delete", "Self Mailer", "Valid"})
     public void selfMailerDeleteTest() throws ApiException {
         SelfMailersApi selfMailersApiMock = mock (SelfMailersApi.class);
         SelfMailerDeletion fakeSelfMailer = new SelfMailerDeletion();
-        
+
         fakeSelfMailer.setId("sfm_fakeId");
 
         when(selfMailersApiMock.delete("smf_fakeId")).thenReturn(fakeSelfMailer);
@@ -91,14 +91,14 @@ public class SelfMailersApiTest {
 
         selfMailerApiMock.delete(null);
 
-        Assert.fail("This should not happen");  
+        Assert.fail("This should not happen");
     }
-    
+
     @Test(enabled=true, groups={"Unit", "Get", "Self Mailer", "Valid"})
     public void selfMailerGeteTest() throws ApiException {
         SelfMailersApi selfMailersApiMock = mock (SelfMailersApi.class);
         SelfMailer fakeSelfMailer = new SelfMailer();
-        
+
         fakeSelfMailer.setId("sfm_fakeId");
 
         when(selfMailersApiMock.get("sfm_fakeId")).thenReturn(fakeSelfMailer);
@@ -126,9 +126,9 @@ public class SelfMailersApiTest {
 
         selfMailerApiMock.get(null);
 
-        Assert.fail("This should not happen");  
+        Assert.fail("This should not happen");
     }
-    
+
     @Test(enabled=true, groups={"Unit", "List", "Self Mailer", "Valid"})
     public void selfMailersListTest() throws ApiException {
         Integer limit = null;
@@ -141,7 +141,7 @@ public class SelfMailersApiTest {
         Boolean scheduled = null;
         Map<String, String>  sendDate = null;
         MailType mailType = null;
-        SortBy5 sortBy = null;
+        SortBy3 sortBy = null;
         SelfMailersApi selfMailersApiMock = mock(SelfMailersApi.class);
         SelfMailerList fakeSelfMailerList = new SelfMailerList();
         List<SelfMailer> data = new ArrayList<SelfMailer>();
@@ -181,7 +181,7 @@ public class SelfMailersApiTest {
 
         selfMailerApiMock.list(null, null, null, null, null, null, null, null, null, null, null);
 
-        Assert.fail("This should not happen");  
+        Assert.fail("This should not happen");
     }
 
 }

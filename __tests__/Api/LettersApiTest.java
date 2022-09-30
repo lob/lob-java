@@ -16,7 +16,7 @@ import com.lob.model.LetterEditable;
 import com.lob.model.LetterList;
 import com.lob.model.MailType;
 import java.time.OffsetDateTime;
-import com.lob.model.SortBy5;
+import com.lob.model.SortBy3;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -55,9 +55,9 @@ public class LettersApiTest {
 
         letterApiMock.cancel(null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "Create", "Letter", "Valid"})
     public void letterCreateTest() throws ApiException {
         LettersApi lettersApiMock = mock(LettersApi.class);
@@ -91,14 +91,14 @@ public class LettersApiTest {
 
         letterApiMock.create(null, null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=true, groups={"Unit", "Get", "Letter", "Valid"})
     public void letterGetTest() throws ApiException {
         LettersApi lettersApiMock = mock(LettersApi.class);
         Letter fakeLetter = new  Letter();
-       
+
 
         fakeLetter.setId("ltr_fakeId");
 
@@ -127,9 +127,9 @@ public class LettersApiTest {
 
         letterApiMock.get(null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
     @Test(enabled=false, groups={"Unit", "List", "Letter", "Valid"})
     public void lettersListTest() throws ApiException {
         Integer limit = null;
@@ -142,7 +142,7 @@ public class LettersApiTest {
         Boolean scheduled = null;
         Map<String, String> sendDate = null;
         MailType mailType = null;
-        SortBy5 sortBy = null;
+        SortBy3 sortBy = null;
 
         LettersApi lettersApiMock = mock(LettersApi.class);
         LetterList fakeLetterList = new LetterList();
@@ -183,7 +183,7 @@ public class LettersApiTest {
 
         letterApiMock.list(null, null, null, null, null, null, null, null, null, null, null);
 
-        Assert.fail("This should not happen");   
-    }   
-    
+        Assert.fail("This should not happen");
+    }
+
 }
