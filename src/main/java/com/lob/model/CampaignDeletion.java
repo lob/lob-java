@@ -20,19 +20,17 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.IntlSuggestions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 /**
- * IntlAutocompletions
+ * Lob uses RESTful HTTP response codes to indicate success or failure of an API request. In general, 2xx indicates success, 4xx indicate an input error, and 5xx indicates an error on Lob&#39;s end.
  */
+@ApiModel(description = "Lob uses RESTful HTTP response codes to indicate success or failure of an API request. In general, 2xx indicates success, 4xx indicate an input error, and 5xx indicates an error on Lob's end.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class IntlAutocompletions {
+public class CampaignDeletion {
   public static final String SERIALIZED_NAME_ID = "id";
 
   @SerializedName(SERIALIZED_NAME_ID)
@@ -40,7 +38,7 @@ public class IntlAutocompletions {
 
   private String id;
   /**
-  * Unique identifier prefixed with `intl_auto_`.
+  * Unique identifier prefixed with `cmp_`.
   * @return id
   **/
   
@@ -49,7 +47,7 @@ public class IntlAutocompletions {
   public String getId() { return id; }
 
   public void setId (String id) throws IllegalArgumentException {
-    if(!id.matches("^intl_auto_[a-zA-Z0-9]+$")) {
+    if(!id.matches("^cmp_[a-zA-Z0-9]+$")) {
       throw new IllegalArgumentException("Invalid id provided");
     }
 
@@ -58,20 +56,30 @@ public class IntlAutocompletions {
   
   
 
-  public static final String SERIALIZED_NAME_SUGGESTIONS = "suggestions";
+  public static final String SERIALIZED_NAME_DELETED = "deleted";
 
-  @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
-  private List<IntlSuggestions> suggestions = null;
-  public List<IntlSuggestions> getSuggestions() {
-    if (this.suggestions == null) {
-      this.suggestions = new ArrayList<IntlSuggestions>();
-    }
-    return this.suggestions;
+  @SerializedName(SERIALIZED_NAME_DELETED)
+  
+
+  private Boolean deleted;
+  /**
+  * True if the resource has been successfully deleted.
+  * @return deleted
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "True if the resource has been successfully deleted.")
+  
+  public Boolean getDeleted() {
+      return deleted;
   }
+  
+  
 
 
   /*
-  public IntlAutocompletions id(String id) {
+  public CampaignDeletion id(String id) {
     
     this.id = id;
     return this;
@@ -83,24 +91,16 @@ public class IntlAutocompletions {
 
 
   /*
-  public IntlAutocompletions suggestions(List<IntlSuggestions> suggestions) {
+  public CampaignDeletion deleted(Boolean deleted) {
     
-    this.suggestions = suggestions;
+    this.deleted = deleted;
     return this;
   }
   */
 
-  public IntlAutocompletions addSuggestionsItem(IntlSuggestions suggestionsItem) {
-    if (this.suggestions == null) {
-      this.suggestions = new ArrayList<IntlSuggestions>();
-    }
-    this.suggestions.add(suggestionsItem);
-    return this;
-  }
 
-
-  public void setSuggestions(List<IntlSuggestions> suggestions) {
-    this.suggestions = suggestions;
+  public void setDeleted(Boolean deleted) {
+    this.deleted = deleted;
   }
 
 
@@ -113,14 +113,14 @@ public class IntlAutocompletions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IntlAutocompletions intlAutocompletions = (IntlAutocompletions) o;
-    return Objects.equals(this.id, intlAutocompletions.id) &&
-        Objects.equals(this.suggestions, intlAutocompletions.suggestions);
+    CampaignDeletion campaignDeletion = (CampaignDeletion) o;
+    return Objects.equals(this.id, campaignDeletion.id) &&
+        Objects.equals(this.deleted, campaignDeletion.deleted);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, suggestions);
+    return Objects.hash(id, deleted);
   }
 
   @Override
@@ -128,7 +128,7 @@ public class IntlAutocompletions {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    suggestions: ").append(toIndentedString(suggestions)).append("\n");
+    sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
     sb.append("}");
     return sb.toString();
   }

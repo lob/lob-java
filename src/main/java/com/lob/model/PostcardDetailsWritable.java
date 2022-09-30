@@ -20,47 +20,88 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.MultipleComponents;
+import com.lob.model.MailType;
+import com.lob.model.PostcardSize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 /**
- * MultipleComponentsList
+ * Properties that the postcards in your Creative should have.
  */
+@ApiModel(description = "Properties that the postcards in your Creative should have.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class MultipleComponentsList {
-  public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
+public class PostcardDetailsWritable {
+  public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
 
-  @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<MultipleComponents> addresses = new ArrayList<>();
-  public List<MultipleComponents> getAddresses() {
-    if (this.addresses == null) {
-      this.addresses = new ArrayList<MultipleComponents>();
-    }
-    return this.addresses;
+  @SerializedName(SERIALIZED_NAME_MAIL_TYPE)
+  
+
+  private MailType mailType = MailType.FIRST_CLASS;
+  /**
+  * Get mailType
+  * @return mailType
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "")
+  
+  public MailType getMailType() {
+      return mailType;
   }
+  
+  
+
+  public static final String SERIALIZED_NAME_SIZE = "size";
+
+  @SerializedName(SERIALIZED_NAME_SIZE)
+  
+
+  private PostcardSize size = PostcardSize._4X6;
+  /**
+  * Get size
+  * @return size
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "")
+  
+  public PostcardSize getSize() {
+      return size;
+  }
+  
+  
 
 
   /*
-  public MultipleComponentsList addresses(List<MultipleComponents> addresses) {
+  public PostcardDetailsWritable mailType(MailType mailType) {
     
-    this.addresses = addresses;
+    this.mailType = mailType;
     return this;
   }
   */
 
-  public MultipleComponentsList addAddressesItem(MultipleComponents addressesItem) {
-    this.addresses.add(addressesItem);
-    return this;
+
+  public void setMailType(MailType mailType) {
+    this.mailType = mailType;
   }
 
 
-  public void setAddresses(List<MultipleComponents> addresses) {
-    this.addresses = addresses;
+
+  /*
+  public PostcardDetailsWritable size(PostcardSize size) {
+    
+    this.size = size;
+    return this;
+  }
+  */
+
+
+  public void setSize(PostcardSize size) {
+    this.size = size;
   }
 
 
@@ -73,20 +114,22 @@ public class MultipleComponentsList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MultipleComponentsList multipleComponentsList = (MultipleComponentsList) o;
-    return Objects.equals(this.addresses, multipleComponentsList.addresses);
+    PostcardDetailsWritable postcardDetailsWritable = (PostcardDetailsWritable) o;
+    return Objects.equals(this.mailType, postcardDetailsWritable.mailType) &&
+        Objects.equals(this.size, postcardDetailsWritable.size);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addresses);
+    return Objects.hash(mailType, size);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
-    sb.append("    addresses: ").append(toIndentedString(addresses)).append("\n");
+    sb.append("    mailType: ").append(toIndentedString(mailType)).append("\n");
+    sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -26,7 +26,6 @@ public class ZipLookupApiSpecTest {
         Zip response = validApi.lookup(lookupInput);
 
         Assert.assertNotNull(response);
-        System.out.println(response);
         Assert.assertTrue(response.getId().contains("us_zip"));
     }
 

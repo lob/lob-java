@@ -11,7 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class IdentityValidationApiSpecTest {
-    private IdentityValidationApi validApi = new IdentityValidationApi(Configuration.getConfigForIntegrationWithLive());
+    private IdentityValidationApi validApi = new IdentityValidationApi(Configuration.getConfigForLiveIntegration());
 
     @Test(
         enabled=true,
