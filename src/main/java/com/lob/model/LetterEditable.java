@@ -62,11 +62,11 @@ public class LetterEditable {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {
+  public Map<String, String> getMetadata() {     
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata;
+    return this.metadata; 
   }
 
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
@@ -254,18 +254,18 @@ public class LetterEditable {
   public  String getReturnEnvelope() {
     return returnEnvelope;
   }
-
+  
 
   public void setReturnEnvelope(String returnEnvelope) {
     
-
+    
     this.returnEnvelope = returnEnvelope;
   }
   
   
   public void setReturnEnvelope(Boolean returnEnvelope) {
     Gson gson = new Gson();
-
+    
     this.returnEnvelope = gson.toJson(returnEnvelope);
   }
   public static final String SERIALIZED_NAME_PERFORATED_PAGE = "perforated_page";
@@ -318,18 +318,18 @@ public class LetterEditable {
   public  String getTo() {
     return to;
   }
-
+  
 
   public void setTo(String to) {
     
-
+    
     this.to = to;
   }
   
   
   public void setTo(AddressEditable to) {
     Gson gson = new Gson();
-
+    
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_FROM = "from";
@@ -340,18 +340,18 @@ public class LetterEditable {
   public  String getFrom() {
     return from;
   }
-
+  
 
   public void setFrom(String from) {
     
-
+    
     this.from = from;
   }
   
   
   public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
-
+    
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_FILE = "file";
@@ -451,11 +451,11 @@ public class LetterEditable {
 
   @SerializedName(SERIALIZED_NAME_CARDS)
   private List<String> cards = null;
-  public List<String> getCards() {
+  public List<String> getCards() {     
     if (this.cards == null) {
       this.cards = new ArrayList<String>();
     }
-    return this.cards;
+    return this.cards; 
   }
 
   public static final String SERIALIZED_NAME_BILLING_GROUP_ID = "billing_group_id";

@@ -37,11 +37,11 @@ public class UsVerifications {
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
   private List<UsVerificationOrError> addresses = new ArrayList<>();
-  public List<UsVerificationOrError> getAddresses() {
+  public List<UsVerificationOrError> getAddresses() {     
     if (this.addresses == null) {
       this.addresses = new ArrayList<UsVerificationOrError>();
     }
-    return this.addresses;
+    return this.addresses; 
   }
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
