@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 /**
@@ -43,10 +44,31 @@ public class MultiLineAddress {
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(required = true, value = "The intended recipient, typically a person's or firm's name.")
+  @ApiModelProperty(value = "The intended recipient, typically a person's or firm's name.")
   
   public String getRecipient() {
       return recipient;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_COMPANY = "company";
+
+  @SerializedName(SERIALIZED_NAME_COMPANY)
+  
+
+  private String company;
+  /**
+  * Either `name` or `company` is required, you may also add both.
+  * @return company
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "Either `name` or `company` is required, you may also add both.")
+  
+  public String getCompany() {
+      return company;
   }
   
   
@@ -198,6 +220,21 @@ public class MultiLineAddress {
 
 
   /*
+  public MultiLineAddress company(String company) {
+    
+    this.company = company;
+    return this;
+  }
+  */
+
+
+  public void setCompany(String company) {
+    this.company = company;
+  }
+
+
+
+  /*
   public MultiLineAddress primaryLine(String primaryLine) {
     
     this.primaryLine = primaryLine;
@@ -294,6 +331,7 @@ public class MultiLineAddress {
     }
     MultiLineAddress multiLineAddress = (MultiLineAddress) o;
     return Objects.equals(this.recipient, multiLineAddress.recipient) &&
+        Objects.equals(this.company, multiLineAddress.company) &&
         Objects.equals(this.primaryLine, multiLineAddress.primaryLine) &&
         Objects.equals(this.secondaryLine, multiLineAddress.secondaryLine) &&
         Objects.equals(this.urbanization, multiLineAddress.urbanization) &&
@@ -302,9 +340,20 @@ public class MultiLineAddress {
         Objects.equals(this.zipCode, multiLineAddress.zipCode);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(recipient, primaryLine, secondaryLine, urbanization, city, state, zipCode);
+    return Objects.hash(recipient, company, primaryLine, secondaryLine, urbanization, city, state, zipCode);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -312,6 +361,7 @@ public class MultiLineAddress {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
     sb.append("    recipient: ").append(toIndentedString(recipient)).append("\n");
+    sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("    primaryLine: ").append(toIndentedString(primaryLine)).append("\n");
     sb.append("    secondaryLine: ").append(toIndentedString(secondaryLine)).append("\n");
     sb.append("    urbanization: ").append(toIndentedString(urbanization)).append("\n");

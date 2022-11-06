@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.Campaign;
+import com.lob.model.Buckslip;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -30,19 +30,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 /**
- * CampaignsList
+ * BuckslipsList
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class CampaignsList {
+public class BuckslipsList {
   public static final String SERIALIZED_NAME_DATA = "data";
 
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Campaign> data = null;
-  public List<Campaign> getData() {
+  private List<Buckslip> data = null;
+  public List<Buckslip> getData() {     
     if (this.data == null) {
-      this.data = new ArrayList<Campaign>();
+      this.data = new ArrayList<Buckslip>();
     }
-    return this.data;
+    return this.data; 
   }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
@@ -89,24 +89,24 @@ public class CampaignsList {
     if (this.nextUrl == null) {
         return null;
     }
-
+    
     String[] queryPartitionArray = this.nextUrl.split("\\?");
     if (queryPartitionArray.length < 2) {
         return null;
     }
-
+    
     String[] paramPartitionArray = queryPartitionArray[1].split("\\&");
     String beforeParamString = Arrays
       .stream(paramPartitionArray)
       .filter(x -> x.contains("after="))
       .findFirst()
       .orElse(null);
-
+      
     if (beforeParamString == null) {
         return null;
     }
     return beforeParamString.split("after=")[1];
-
+      
   }
 
   public static final String SERIALIZED_NAME_PREVIOUS_URL = "previous_url";
@@ -131,24 +131,24 @@ public class CampaignsList {
     if (this.previousUrl == null) {
         return null;
     }
-
+    
     String[] queryPartitionArray = this.previousUrl.split("\\?");
     if (queryPartitionArray.length < 2) {
         return null;
     }
-
+    
     String[] paramPartitionArray = queryPartitionArray[1].split("\\&");
     String beforeParamString = Arrays
       .stream(paramPartitionArray)
       .filter(x -> x.contains("before="))
       .findFirst()
       .orElse(null);
-
+      
     if (beforeParamString == null) {
         return null;
     }
     return beforeParamString.split("before=")[1];
-
+      
   }
   
 
@@ -196,30 +196,30 @@ public class CampaignsList {
 
 
   /*
-  public CampaignsList data(List<Campaign> data) {
+  public BuckslipsList data(List<Buckslip> data) {
     
     this.data = data;
     return this;
   }
   */
 
-  public CampaignsList addDataItem(Campaign dataItem) {
+  public BuckslipsList addDataItem(Buckslip dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<Campaign>();
+      this.data = new ArrayList<Buckslip>();
     }
     this.data.add(dataItem);
     return this;
   }
 
 
-  public void setData(List<Campaign> data) {
+  public void setData(List<Buckslip> data) {
     this.data = data;
   }
 
 
 
   /*
-  public CampaignsList _object(String _object) {
+  public BuckslipsList _object(String _object) {
     
     this._object = _object;
     return this;
@@ -234,7 +234,7 @@ public class CampaignsList {
 
 
   /*
-  public CampaignsList nextUrl(String nextUrl) {
+  public BuckslipsList nextUrl(String nextUrl) {
     
     this.nextUrl = nextUrl;
     return this;
@@ -249,7 +249,7 @@ public class CampaignsList {
 
 
   /*
-  public CampaignsList previousUrl(String previousUrl) {
+  public BuckslipsList previousUrl(String previousUrl) {
     
     this.previousUrl = previousUrl;
     return this;
@@ -264,7 +264,7 @@ public class CampaignsList {
 
 
   /*
-  public CampaignsList count(Integer count) {
+  public BuckslipsList count(Integer count) {
     
     this.count = count;
     return this;
@@ -279,7 +279,7 @@ public class CampaignsList {
 
 
   /*
-  public CampaignsList totalCount(Integer totalCount) {
+  public BuckslipsList totalCount(Integer totalCount) {
     
     this.totalCount = totalCount;
     return this;
@@ -301,13 +301,13 @@ public class CampaignsList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CampaignsList campaignsList = (CampaignsList) o;
-    return Objects.equals(this.data, campaignsList.data) &&
-        Objects.equals(this._object, campaignsList._object) &&
-        Objects.equals(this.nextUrl, campaignsList.nextUrl) &&
-        Objects.equals(this.previousUrl, campaignsList.previousUrl) &&
-        Objects.equals(this.count, campaignsList.count) &&
-        Objects.equals(this.totalCount, campaignsList.totalCount);
+    BuckslipsList buckslipsList = (BuckslipsList) o;
+    return Objects.equals(this.data, buckslipsList.data) &&
+        Objects.equals(this._object, buckslipsList._object) &&
+        Objects.equals(this.nextUrl, buckslipsList.nextUrl) &&
+        Objects.equals(this.previousUrl, buckslipsList.previousUrl) &&
+        Objects.equals(this.count, buckslipsList.count) &&
+        Objects.equals(this.totalCount, buckslipsList.totalCount);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {

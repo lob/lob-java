@@ -180,11 +180,11 @@ public class Postcard {
 
   @SerializedName(SERIALIZED_NAME_THUMBNAILS)
   private List<Thumbnail> thumbnails = null;
-  public List<Thumbnail> getThumbnails() {
+  public List<Thumbnail> getThumbnails() {     
     if (this.thumbnails == null) {
       this.thumbnails = new ArrayList<Thumbnail>();
     }
-    return this.thumbnails;
+    return this.thumbnails; 
   }
 
   public static final String SERIALIZED_NAME_SIZE = "size";
@@ -396,11 +396,11 @@ public class Postcard {
 
   @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)
   private List<TrackingEventNormal> trackingEvents = null;
-  public List<TrackingEventNormal> getTrackingEvents() {
+  public List<TrackingEventNormal> getTrackingEvents() {     
     if (this.trackingEvents == null) {
       this.trackingEvents = new ArrayList<TrackingEventNormal>();
     }
-    return this.trackingEvents;
+    return this.trackingEvents; 
   }
 
   /**
@@ -519,11 +519,11 @@ public class Postcard {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {
+  public Map<String, String> getMetadata() {     
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata;
+    return this.metadata; 
   }
 
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";

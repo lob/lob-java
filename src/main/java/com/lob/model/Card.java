@@ -191,11 +191,11 @@ public class Card {
 
   @SerializedName(SERIALIZED_NAME_THUMBNAILS)
   private List<Thumbnail> thumbnails = new ArrayList<>();
-  public List<Thumbnail> getThumbnails() {
+  public List<Thumbnail> getThumbnails() {     
     if (this.thumbnails == null) {
       this.thumbnails = new ArrayList<Thumbnail>();
     }
-    return this.thumbnails;
+    return this.thumbnails; 
   }
 
   public static final String SERIALIZED_NAME_AVAILABLE_QUANTITY = "available_quantity";

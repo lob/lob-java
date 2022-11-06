@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.lob.model.MailType;
 import com.lob.model.PostcardSize;
+import com.lob.model.QrCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -45,18 +46,18 @@ public class PostcardEditable {
   public  String getTo() {
     return to;
   }
-
+  
 
   public void setTo(String to) {
     
-
+    
     this.to = to;
   }
   
   
   public void setTo(AddressEditable to) {
     Gson gson = new Gson();
-
+    
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_FROM = "from";
@@ -67,18 +68,18 @@ public class PostcardEditable {
   public  String getFrom() {
     return from;
   }
-
+  
 
   public void setFrom(String from) {
     
-
+    
     this.from = from;
   }
   
   
   public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
-
+    
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_SIZE = "size";
@@ -127,11 +128,11 @@ public class PostcardEditable {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {
+  public Map<String, String> getMetadata() {     
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata;
+    return this.metadata; 
   }
 
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
@@ -256,6 +257,27 @@ public class PostcardEditable {
   
   public String getBillingGroupId() {
       return billingGroupId;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_QR_CODE = "qr_code";
+
+  @SerializedName(SERIALIZED_NAME_QR_CODE)
+  
+
+  private QrCode qrCode;
+  /**
+  * Get qrCode
+  * @return qrCode
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "")
+  
+  public QrCode getQrCode() {
+      return qrCode;
   }
   
   
@@ -428,6 +450,21 @@ public class PostcardEditable {
 
 
 
+  /*
+  public PostcardEditable qrCode(QrCode qrCode) {
+    
+    this.qrCode = qrCode;
+    return this;
+  }
+  */
+
+
+  public void setQrCode(QrCode qrCode) {
+    this.qrCode = qrCode;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -447,7 +484,8 @@ public class PostcardEditable {
         Objects.equals(this.sendDate, postcardEditable.sendDate) &&
         Objects.equals(this.front, postcardEditable.front) &&
         Objects.equals(this.back, postcardEditable.back) &&
-        Objects.equals(this.billingGroupId, postcardEditable.billingGroupId);
+        Objects.equals(this.billingGroupId, postcardEditable.billingGroupId) &&
+        Objects.equals(this.qrCode, postcardEditable.qrCode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -456,7 +494,7 @@ public class PostcardEditable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(to, from, size, description, metadata, mailType, mergeVariables, sendDate, front, back, billingGroupId);
+    return Objects.hash(to, from, size, description, metadata, mailType, mergeVariables, sendDate, front, back, billingGroupId, qrCode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -481,6 +519,7 @@ public class PostcardEditable {
     sb.append("    front: ").append(toIndentedString(front)).append("\n");
     sb.append("    back: ").append(toIndentedString(back)).append("\n");
     sb.append("    billingGroupId: ").append(toIndentedString(billingGroupId)).append("\n");
+    sb.append("    qrCode: ").append(toIndentedString(qrCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
