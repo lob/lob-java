@@ -37,11 +37,11 @@ public class MultipleComponentsList {
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
   private List<MultipleComponents> addresses = new ArrayList<>();
-  public List<MultipleComponents> getAddresses() {
+  public List<MultipleComponents> getAddresses() {     
     if (this.addresses == null) {
       this.addresses = new ArrayList<MultipleComponents>();
     }
-    return this.addresses;
+    return this.addresses; 
   }
 
 

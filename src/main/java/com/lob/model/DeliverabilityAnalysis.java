@@ -322,11 +322,11 @@ public class DeliverabilityAnalysis {
 
   @SerializedName(SERIALIZED_NAME_DPV_FOOTNOTES)
   private List<DpvFootnote> dpvFootnotes = new ArrayList<>();
-  public List<DpvFootnote> getDpvFootnotes() {
+  public List<DpvFootnote> getDpvFootnotes() {     
     if (this.dpvFootnotes == null) {
       this.dpvFootnotes = new ArrayList<DpvFootnote>();
     }
-    return this.dpvFootnotes;
+    return this.dpvFootnotes; 
   }
 
   public static final String SERIALIZED_NAME_EWS_MATCH = "ews_match";

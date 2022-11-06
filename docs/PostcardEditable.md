@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **front** | **String** | The artwork to use as the front of your postcard.  | 
 **back** | **String** | The artwork to use as the back of your postcard.  | 
 **billingGroupId** | **String** | An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information. |  [optional]
+**qrCode** | [**QrCode**](QrCode.md) |  |  [optional]
 
 
 

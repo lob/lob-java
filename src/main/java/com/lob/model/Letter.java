@@ -154,11 +154,11 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_THUMBNAILS)
   private List<Thumbnail> thumbnails = null;
-  public List<Thumbnail> getThumbnails() {
+  public List<Thumbnail> getThumbnails() {     
     if (this.thumbnails == null) {
       this.thumbnails = new ArrayList<Thumbnail>();
     }
-    return this.thumbnails;
+    return this.thumbnails; 
   }
 
   public static final String SERIALIZED_NAME_EXPECTED_DELIVERY_DATE = "expected_delivery_date";
@@ -320,6 +320,31 @@ public class Letter {
   
   
 
+  public static final String SERIALIZED_NAME_URL = "url";
+
+  @SerializedName(SERIALIZED_NAME_URL)
+  
+
+  private String url;
+  /**
+  * A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
+  * @return url
+  **/
+  
+  @javax.annotation.Nullable
+  
+  public String getUrl() { return url; }
+
+  public void setUrl (String url) throws IllegalArgumentException {
+    if(!url.matches("^https://(lob-assets|lob-assets-staging)\\.com/(letters|postcards|bank-accounts|checks|self-mailers|cards)/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$")) {
+      throw new IllegalArgumentException("Invalid url provided");
+    }
+
+    this.url = url;
+  }
+  
+  
+
   /**
    * Gets or Sets _object
    */
@@ -411,11 +436,11 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {
+  public Map<String, String> getMetadata() {     
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata;
+    return this.metadata; 
   }
 
   public static final String SERIALIZED_NAME_MERGE_VARIABLES = "merge_variables";
@@ -506,11 +531,11 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)
   private List<TrackingEventNormal> trackingEvents = null;
-  public List<TrackingEventNormal> getTrackingEvents() {
+  public List<TrackingEventNormal> getTrackingEvents() {     
     if (this.trackingEvents == null) {
       this.trackingEvents = new ArrayList<TrackingEventNormal>();
     }
-    return this.trackingEvents;
+    return this.trackingEvents; 
   }
 
   public static final String SERIALIZED_NAME_RETURN_ADDRESS = "return_address";
@@ -521,18 +546,18 @@ public class Letter {
   public  String getReturnAddress() {
     return returnAddress;
   }
-
+  
 
   public void setReturnAddress(String returnAddress) {
     
-
+    
     this.returnAddress = returnAddress;
   }
   
   
   public void setReturnAddress(AddressEditable returnAddress) {
     Gson gson = new Gson();
-
+    
     this.returnAddress = gson.toJson(returnAddress);
   }
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
@@ -678,25 +703,25 @@ public class Letter {
   public  String getReturnEnvelope() {
     return returnEnvelope;
   }
-
+  
 
   public void setReturnEnvelope(String returnEnvelope) {
     
-
+    
     this.returnEnvelope = returnEnvelope;
   }
   
   
   public void setReturnEnvelope(ReturnEnvelope returnEnvelope) {
     Gson gson = new Gson();
-
+    
     this.returnEnvelope = gson.toJson(returnEnvelope);
   }
   
   
   public void setReturnEnvelope(Boolean returnEnvelope) {
     
-
+    
     this.returnEnvelope = Boolean.toString(returnEnvelope);
   }
   public static final String SERIALIZED_NAME_PERFORATED_PAGE = "perforated_page";
@@ -898,6 +923,18 @@ public class Letter {
   public Letter templateVersionId(String templateVersionId) {
     
     this.templateVersionId = templateVersionId;
+    return this;
+  }
+  */
+
+
+
+
+
+  /*
+  public Letter url(String url) {
+    
+    this.url = url;
     return this;
   }
   */
@@ -1176,6 +1213,7 @@ public class Letter {
         Objects.equals(this.id, letter.id) &&
         Objects.equals(this.templateId, letter.templateId) &&
         Objects.equals(this.templateVersionId, letter.templateVersionId) &&
+        Objects.equals(this.url, letter.url) &&
         Objects.equals(this._object, letter._object) &&
         Objects.equals(this.description, letter.description) &&
         Objects.equals(this.metadata, letter.metadata) &&
@@ -1200,7 +1238,7 @@ public class Letter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(to, from, carrier, thumbnails, expectedDeliveryDate, dateCreated, dateModified, deleted, id, templateId, templateVersionId, _object, description, metadata, mergeVariables, sendDate, extraService, trackingNumber, trackingEvents, returnAddress, mailType, color, doubleSided, addressPlacement, returnEnvelope, perforatedPage, customEnvelope);
+    return Objects.hash(to, from, carrier, thumbnails, expectedDeliveryDate, dateCreated, dateModified, deleted, id, templateId, templateVersionId, url, _object, description, metadata, mergeVariables, sendDate, extraService, trackingNumber, trackingEvents, returnAddress, mailType, color, doubleSided, addressPlacement, returnEnvelope, perforatedPage, customEnvelope);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1225,6 +1263,7 @@ public class Letter {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
     sb.append("    templateVersionId: ").append(toIndentedString(templateVersionId)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");

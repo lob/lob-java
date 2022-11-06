@@ -91,18 +91,18 @@ public class CampaignCreative {
   public  String getFrom() {
     return from;
   }
-
+  
 
   public void setFrom(String from) {
     
-
+    
     this.from = from;
   }
   
   
   public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
-
+    
     this.from = gson.toJson(from);
   }
   /**
@@ -177,40 +177,33 @@ public class CampaignCreative {
 
   @SerializedName(SERIALIZED_NAME_DETAILS)
   
-  private String details;
-  public  String getDetails() {
+  private PostcardDetailsWritable details;
+  public  PostcardDetailsWritable getDetails() {
     return details;
   }
-
-
-  public void setDetails(String details) {
-    
-
-    this.details = details;
-  }
   
-  
+
   public void setDetails(PostcardDetailsWritable details) {
-    Gson gson = new Gson();
-
-    this.details = gson.toJson(details);
+    
+    
+    this.details = details;
   }
   
   
   public void setDetails(LetterDetailsWritable details) {
     Gson gson = new Gson();
-
+    
     this.details = gson.toJson(details);
   }
   public static final String SERIALIZED_NAME_METADATA = "metadata";
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {
+  public Map<String, String> getMetadata() {     
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata;
+    return this.metadata; 
   }
 
   public static final String SERIALIZED_NAME_TEMPLATE_PREVIEW_URLS = "template_preview_urls";
@@ -238,12 +231,6 @@ public class CampaignCreative {
 
   @SerializedName(SERIALIZED_NAME_TEMPLATE_PREVIEWS)
   private List<Object> templatePreviews = null;
-  public List<Object> getTemplatePreviews() {
-    if (this.templatePreviews == null) {
-      this.templatePreviews = new ArrayList<Object>();
-    }
-    return this.templatePreviews;
-  }
 
   public static final String SERIALIZED_NAME_DELETED = "deleted";
 
@@ -270,12 +257,6 @@ public class CampaignCreative {
 
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
   private List<Campaign> campaigns = null;
-  public List<Campaign> getCampaigns() {
-    if (this.campaigns == null) {
-      this.campaigns = new ArrayList<Campaign>();
-    }
-    return this.campaigns;
-  }
 
   public static final String SERIALIZED_NAME_DATE_CREATED = "date_created";
 
@@ -500,7 +481,7 @@ public class CampaignCreative {
 
   public CampaignCreative addTemplatePreviewsItem(Object templatePreviewsItem) {
     if (this.templatePreviews == null) {
-      this.templatePreviews = new ArrayList<Object>();
+      this.templatePreviews = new ();
     }
     this.templatePreviews.add(templatePreviewsItem);
     return this;
@@ -538,7 +519,7 @@ public class CampaignCreative {
 
   public CampaignCreative addCampaignsItem(Campaign campaignsItem) {
     if (this.campaigns == null) {
-      this.campaigns = new ArrayList<Campaign>();
+      this.campaigns = new ();
     }
     this.campaigns.add(campaignsItem);
     return this;
