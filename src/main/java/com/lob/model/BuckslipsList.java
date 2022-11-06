@@ -40,7 +40,7 @@ public class BuckslipsList {
   private List<Buckslip> data = null;
   public List<Buckslip> getData() {     
     if (this.data == null) {
-      this.data = new ArrayList<BuckSlip>();
+      this.data = new ArrayList<Buckslip>();
     }
     return this.data; 
   }
@@ -205,7 +205,7 @@ public class BuckslipsList {
 
   public BuckslipsList addDataItem(Buckslip dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<BuckSlip>();
+      this.data = new ArrayList<Buckslip>();
     }
     this.data.add(dataItem);
     return this;

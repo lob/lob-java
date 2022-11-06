@@ -59,6 +59,23 @@ public class Configuration {
     }
 
     /**
+     * Set a new API client, to be used with the integration tests
+     * specifically grabs the live key from the env file
+     *
+     * @return Api client configured for integration tests
+     */
+    public static ApiClient getConfigForLiveIntegration() {
+        ApiClient apiClient = new ApiClient();
+
+        HttpBasicAuth basicAuth = (HttpBasicAuth) apiClient.getAuthentication("basicAuth");
+        String LOB_API_KEY = getEnvVariable("LOB_API_LIVE_KEY");
+
+        apiClient.setBasePath(BASE_PATH);
+        basicAuth.setUsername(LOB_API_KEY);
+        return apiClient;
+    }
+
+    /**
     * Set a new API client, that has an incorrect USERNAME
     * to be used with integration testing
     *
