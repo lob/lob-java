@@ -940,12 +940,6 @@ paths:
       summary: List
       tags:
       - Buckslips
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl -X GET "https://api.lob.com/v1/buckslips?limit=2" \
-            -u <YOUR API KEY>:
-        label: CURL
       x-accepts: application/json
     post:
       description: Creates a new buckslip given information
@@ -976,18 +970,11 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Create
+      summary: create
       tags:
       - Buckslips
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/buckslips \
-            -u <YOUR API KEY>: \
-            -d "description=Test buckslip" \
-            -d "front=https://s3-us-west-2.amazonaws.com/public.lob.com/assets/buckslip.pdf" \
-            -d "back=https://s3-us-west-2.amazonaws.com/public.lob.com/assets/buckslip.pdf"
-        label: CURL
+      x-code-snippet:
+        multipart: true
       x-contentType: application/json
       x-accepts: application/json
   /buckslips/{buckslip_id}:
@@ -1018,7 +1005,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Delete
+      summary: delete
       tags:
       - Buckslips
       x-codeSamples:
@@ -1055,7 +1042,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Retrieve
+      summary: get
       tags:
       - Buckslips
       x-codeSamples:
@@ -1104,7 +1091,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Update
+      summary: update
       tags:
       - Buckslips
       x-codeSamples:
@@ -1167,7 +1154,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Retrieve
+      summary: get
       tags:
       - Buckslip Orders
       x-codeSamples:
@@ -1215,7 +1202,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Create
+      summary: create
       tags:
       - Buckslip Orders
       x-codeSamples:
@@ -4275,6 +4262,8 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
+        x-code-snippet:
+          multipart: true
       summary: create_upload
       tags:
       - Uploads
@@ -6027,6 +6016,7 @@ components:
     country_extended:
       description: Must be a 2 letter country short-name code (ISO 3166).
       enum:
+      - ""
       - AD
       - AE
       - AF
@@ -6789,6 +6779,8 @@ components:
           tsNonString: true
           py_val: BankTypeEnum("company")
           pyNonString: true
+          ruby_val: BankTypeEnum::COMPANY
+          rubyNonString: true
         lob_response_type: BankAccount
         lob_response_var: bankAccount
         snake_case_lob_response_var: bank_account
@@ -6899,8 +6891,10 @@ components:
         resource:
         - key: description
           val: Usage group used for the Marketing Department's resource sends
+          pascal_case_key: Description
         - key: name
           val: Marketing Department
+          pascal_case_key: Name
         lob_response_type: BillingGroup
         lob_response_var: bg
         plural_object_type: BillingGroups
@@ -7436,7 +7430,7 @@ components:
           x-template-config:
             isComplexObject: true
             base-type:
-              java: ArrayList<BuckSlip>
+              java: ArrayList<Buckslip>
         object:
           description: Value is type of resource.
           type: string
@@ -7461,14 +7455,12 @@ components:
       x-template-config:
         go-pagination: true
       x-code-snippet:
-        address: true
+        buckslip: true
         list: true
-        object_type: Address
-        curl_form: addresses
-        plural_response_var: addresses
-        javaSupported: true
-        typescriptSupported: true
-        plural_object_type: Addresses
+        object_type: Buckslip
+        curl_form: buckslips
+        plural_response_var: buckslips
+        plural_object_type: Buckslips
         args:
         - arg: 2
           notNull: true
@@ -7480,20 +7472,7 @@ components:
         - arg: includeList
           notNull: true
           param: include
-        - arg: dateCreated
-          notNull: true
-          param: dateCreated
-        - arg: metadata
-          notNull: true
-          param: metadata
-          last: true
-        metadata:
-          key: name
-          val: Harry
         include: total_count
-        date_created:
-          key: lt
-          val: DateTime.Today.AddMonths(-1)
     buckslip_editable:
       properties:
         front:
@@ -7581,7 +7560,7 @@ components:
       x-template-config:
         go-pagination: true
       x-code-snippet:
-        address: true
+        buckslip: true
         list: true
         object_type: Address
         curl_form: addresses
@@ -7817,7 +7796,7 @@ components:
       maxLength: 2
       type: string
     zip_code_plus_4:
-      pattern: ^\d{4}$
+      pattern: ^(\d{4})?$
       type: string
     zip_code_type:
       description: |
@@ -7943,7 +7922,7 @@ components:
           pattern: ^\d{5}$
           type: string
         zip_code_plus_4:
-          pattern: ^\d{4}$
+          pattern: ^(\d{4})?$
           type: string
         zip_code_type:
           $ref: '#/components/schemas/zip_code_type'
@@ -9051,12 +9030,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         resource_type:
@@ -9071,17 +9052,21 @@ components:
             isOneOf: true
             type-composite:
             - base-type1:
+                java: String
+                ruby: String
+                isRef: true
+            - base-type2:
                 java: PostcardDetailsWritable
                 typescript: Models.PostcardDetailsWritable
                 python: PostcardDetailsWritable
+                ruby: PostcardDetailsWritable
                 python_path: lob_python.model.postcard_details_writable
                 hasPath: true
-                default: true
-                isRef: true
-            - base-type2:
+            - base-type3:
                 java: LetterDetailsWritable
                 python: LetterDetailsWritable
                 typescript: Models.LetterDetailsWritable
+                ruby: LetterDetailsWritable
                 python_path: lob_python.model.letter_details_writable
                 hasPath: true
         metadata:
@@ -9112,6 +9097,10 @@ components:
             type: object
           title: Template Previews
           type: array
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: ArrayList<Object>
         deleted:
           description: Only returned if the resource has been successfully deleted.
           type: boolean
@@ -9121,6 +9110,10 @@ components:
           maxItems: 0
           minItems: 0
           type: array
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: ArrayList<Campaign>
         date_created:
           description: A timestamp in ISO 8601 format of the date the resource was
             created.
@@ -9445,7 +9438,6 @@ components:
             base-type:
               java: HashMap<String,String>
         is_draft:
-          default: true
           description: Whether or not the campaign is still a draft.
           type: boolean
         use_type:
@@ -9767,12 +9759,16 @@ components:
         resource:
         - key: front
           val: https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf
+          pascal_case_key: Front
         - key: back
           val: https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf
+          pascal_case_key: Back
         - key: size
           val: 2.125x3.375
+          pascal_case_key: Size
         - key: description
           val: Test Card
+          pascal_case_key: Description
         lob_response_type: Card
         lob_response_var: card
         plural_object_type: Cards
@@ -10034,6 +10030,7 @@ components:
           val: 10000
           py_val: 10000
           pyNonString: true
+          pascal_case_key: Quantity
         lob_response_type: CardOrder
         lob_response_var: cardOrder
         plural_object_type: CardOrders
@@ -10849,7 +10846,6 @@ components:
         from:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -10857,18 +10853,19 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressDomestic
                 python: AddressDomestic
                 typescript: Models.AddressDomestic
+                ruby: AddressDomestic
                 python_path: lob_python.model.address_domestic
                 hasPath: true
         to:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -10876,12 +10873,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressDomestic
                 python: AddressDomestic
                 typescript: Models.AddressDomestic
+                ruby: AddressDomestic
                 hasPath: false
         bank_account:
           nullable: true
@@ -11018,6 +11017,10 @@ components:
           tsNonString: true
           py_val: 22.5
           pyNonString: true
+          ruby_val: 22.5
+          go_val: 22.5
+          rubyNonString: true
+          goNonString: true
         - key: memo
           pascal_case_key: Memo
           val: rent
@@ -11073,27 +11076,39 @@ components:
           type: AddressEditable
           obj:
           - inner_camel_case_key: addressLine1
+            inner_pascal_case_key: AddressLine1
             inner_val: 210 King St
           - inner_camel_case_key: addressLine2
+            inner_pascal_case_key: AddressLine2
             inner_val: '# 6100'
           - inner_camel_case_key: addressCity
+            inner_pascal_case_key: AddressCity
             inner_val: San Francisco
           - inner_camel_case_key: addressState
+            inner_pascal_case_key: AddressState
             inner_val: CA
           - inner_camel_case_key: addressZip
+            inner_pascal_case_key: AddressZip
             inner_val: 94107
-          - inner_camel_case_key: addressCounty
+          - inner_camel_case_key: addressCountry
+            inner_pascal_case_key: AddressCountry
             dotnet_inner_val: default(CountryExtended)
+            go_inner_val: lob.COUNTRYEXTENDED_US
             dotnetNonString: true
+            goNonString: true
           - inner_camel_case_key: description
+            inner_pascal_case_key: Description
             val: some address description
           - inner_camel_case_key: name
+            inner_pascal_case_key: Name
             inner_val: Harry Zhang
         resource_constructor:
         - camel_case_key: from
           val: adr_249af768103d2810
         - camel_case_key: to
           dotnet_val: to.ToJson()
+          go_val: checkCreate.SetTo(to)
+          goNonString: true
           dotnetNonString: true
         - camel_case_key: bank_account
           val: bank_8cad8df5354d33f
@@ -11135,12 +11150,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         description:
@@ -11185,6 +11202,7 @@ components:
                 java: PostcardDetailsWritable
                 typescript: Models.PostcardDetailsWritable
                 python: PostcardDetailsWritable
+                ruby: PostcardDetailsWritable
                 python_path: lob_python.model.postcard_details_writable
                 hasPath: true
                 default: true
@@ -11193,6 +11211,7 @@ components:
                 java: LetterDetailsWritable
                 python: LetterDetailsWritable
                 typescript: Models.LetterDetailsWritable
+                ruby: LetterDetailsWritable
                 python_path: lob_python.model.letter_details_writable
                 hasPath: true
         file:
@@ -11383,12 +11402,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         resource_type:
@@ -11403,17 +11424,21 @@ components:
             isOneOf: true
             type-composite:
             - base-type1:
+                java: String
+                ruby: String
+                isRef: true
+            - base-type2:
                 java: PostcardDetailsWritable
                 typescript: Models.PostcardDetailsWritable
                 python: PostcardDetailsWritable
+                ruby: PostcardDetailsWritable
                 python_path: lob_python.model.postcard_details_writable
                 hasPath: true
-                default: true
-                isRef: true
-            - base-type2:
+            - base-type3:
                 java: LetterDetailsWritable
                 python: LetterDetailsWritable
                 typescript: Models.LetterDetailsWritable
+                ruby: LetterDetailsWritable
                 python_path: lob_python.model.letter_details_writable
                 hasPath: true
         metadata:
@@ -11444,6 +11469,10 @@ components:
             type: object
           title: Template Previews
           type: array
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: ArrayList<Object>
         deleted:
           description: Only returned if the resource has been successfully deleted.
           type: boolean
@@ -11453,6 +11482,10 @@ components:
             $ref: '#/components/schemas/campaign'
           title: Campaigns
           type: array
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: ArrayList<Campaign>
         date_created:
           description: A timestamp in ISO 8601 format of the date the resource was
             created.
@@ -11490,12 +11523,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         description:
@@ -11777,7 +11812,7 @@ components:
             The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state.
           type: string
         country:
-          $ref: '#/components/schemas/country_extended_expanded'
+          $ref: '#/components/schemas/country_extended'
         zip_code:
           description: A 5-digit zip code. Left empty if a test key is used.
           type: string
@@ -12051,7 +12086,6 @@ components:
         This is an optional argument that is available if an account is signed up
         for the return envelope tracking beta, and has `return_envelope`, and `perforated_page`
         fields populated in the API request.
-      type: string
       x-template-config:
         isOneOf: true
         type-composite:
@@ -12059,12 +12093,14 @@ components:
             java: String
             typescript: string
             python: str
+            ruby: String
             default: true
             isRef: true
         - base-type2:
             java: AddressEditable
             typescript: Models.AddressEditable
             python: AddressEditable
+            ruby: AddressEditable
             python_path: lob_python.model.address_editable
             hasPath: true
     letter:
@@ -12083,7 +12119,7 @@ components:
           id: id
           url: url
           object: envelope
-        return_address: return_address
+        return_address: ""
         tracking_number: tracking_number
         from:
           metadata:
@@ -12282,7 +12318,6 @@ components:
             to. This is an optional argument that is available if an account is signed
             up for the return envelope tracking beta, and has `return_envelope`, and
             `perforated_page` fields populated in the API request.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -12290,12 +12325,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 typescript: Models.AddressEditable
                 python: AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         mail_type:
@@ -12327,6 +12364,7 @@ components:
                 java: String
                 typescript: boolean
                 python: bool
+                ruby: Boolean
                 hasPath: false
                 default: true
                 isRef: true
@@ -12334,12 +12372,12 @@ components:
                 java: ReturnEnvelope
                 typescript: Models.ReturnEnvelope
                 python: ReturnEnvelope
+                ruby: ReturnEnvelope
                 hasPath: true
                 python_path: lob_python.model.return_envelope
-                isRef: true
             - base-type3:
                 java: Boolean
-                isRef: true
+                bool: true
             default: false
         perforated_page:
           description: Required if `return_envelope` is `true`. The number of the
@@ -12420,7 +12458,7 @@ components:
             id: id
             url: url
             object: envelope
-          return_address: return_address
+          return_address: ""
           tracking_number: tracking_number
           from:
             metadata:
@@ -12493,7 +12531,7 @@ components:
             id: id
             url: url
             object: envelope
-          return_address: return_address
+          return_address: ""
           tracking_number: tracking_number
           from:
             metadata:
@@ -12772,12 +12810,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: Boolean
                 typescript: boolean
                 python: bool
+                ruby: Boolean
                 hasPath: false
         perforated_page:
           description: Required if `return_envelope` is `true`. The number of the
@@ -12793,7 +12833,6 @@ components:
         to:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -12801,18 +12840,19 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         from:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -12820,12 +12860,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 hasPath: false
         file:
           description: PDF file containing the letter's formatting.
@@ -12942,22 +12984,32 @@ components:
           type: AddressEditable
           obj:
           - inner_camel_case_key: addressLine1
+            inner_pascal_case_key: AddressLine1
             inner_val: 210 King St
           - inner_camel_case_key: addressLine2
+            inner_pascal_case_key: AddressLine2
             inner_val: '# 6100'
           - inner_camel_case_key: addressCity
+            inner_pascal_case_key: AddressCity
             inner_val: San Francisco
           - inner_camel_case_key: addressState
+            inner_pascal_case_key: AddressState
             inner_val: CA
           - inner_camel_case_key: addressZip
+            inner_pascal_case_key: AddressZip
             inner_val: 94107
           - inner_camel_case_key: addressCounty
             dotnet_inner_val: default(CountryExtended)
+            inner_pascal_case_key: AddressCountry
+            go_inner_val: lob.COUNTRYEXTENDED_US
             dotnetNonString: true
+            goNonString: true
           - inner_camel_case_key: description
+            inner_pascal_case_key: Description
             dotnet_inner_val: "null"
             dotnetNonString: true
           - inner_camel_case_key: name
+            inner_pascal_case_key: Name
             inner_val: Harry Zhang
         resource_constructor:
         - camel_case_key: description
@@ -12994,6 +13046,8 @@ components:
           dotnetNonString: true
         - camel_case_key: to
           dotnet_val: to.ToJson()
+          go_val: letterCreate.SetTo(to)
+          goNonString: true
           dotnetNonString: true
         - camel_case_key: from
           val: adr_249af768103d2810
@@ -13633,7 +13687,6 @@ components:
         to:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -13641,18 +13694,19 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         from:
           description: Required if `to` address is international. Must either be an
             address ID or an inline object with correct address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -13660,12 +13714,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 hasPath: false
         size:
           $ref: '#/components/schemas/postcard_size'
@@ -13807,27 +13863,39 @@ components:
           type: AddressEditable
           obj:
           - inner_camel_case_key: addressLine1
+            inner_pascal_case_key: AddressLine1
             inner_val: 210 King St
           - inner_camel_case_key: addressLine2
+            inner_pascal_case_key: AddressLine2
             inner_val: '# 6100'
           - inner_camel_case_key: addressCity
+            inner_pascal_case_key: AddressCity
             inner_val: San Francisco
           - inner_camel_case_key: addressState
+            inner_pascal_case_key: AddressState
             inner_val: CA
           - inner_camel_case_key: addressZip
+            inner_pascal_case_key: AddressZip
             inner_val: 94107
           - inner_camel_case_key: addressCounty
+            inner_pascal_case_key: AddressCountry
+            go_inner_val: lob.COUNTRYEXTENDED_US
             dotnet_inner_val: CountryExtended.US
             dotnetNonString: true
+            goNonString: true
           - inner_camel_case_key: description
+            inner_pascal_case_key: Description
             dotnet_inner_val: "null"
             dotnetNonString: true
           - inner_camel_case_key: name
+            inner_pascal_case_key: Name
             inner_val: Harry Zhang
         resource_constructor:
         - camel_case_key: to
           dotnet_val: to.ToJson()
+          go_val: postcardCreate.SetTo(to)
           dotnetNonString: true
+          goNonString: true
         - camel_case_key: from
           val: adr_249af768103d2810
         - camel_case_key: size
@@ -14092,12 +14160,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: Address
                 python: Address
                 typescript: Models.Address
+                ruby: Address
                 python_path: lob_python.model.address
                 hasPath: true
         from:
@@ -14108,12 +14178,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressDomesticExpanded
                 python: AddressDomesticExpanded
                 typescript: Models.AddressDomesticExpanded
+                ruby: AddressDomesticExpanded
                 python_path: lob_python.model.address_domestic_expanded
                 hasPath: true
         size:
@@ -14452,7 +14524,6 @@ components:
         to:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -14460,18 +14531,19 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         from:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -14479,12 +14551,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 hasPath: false
         size:
           $ref: '#/components/schemas/self_mailer_size'
@@ -14625,27 +14699,39 @@ components:
           type: AddressEditable
           obj:
           - inner_camel_case_key: addressLine1
+            inner_pascal_case_key: AddressLine1
             inner_val: 210 King St
           - inner_camel_case_key: addressLine2
+            inner_pascal_case_key: AddressLine2
             inner_val: '# 6100'
           - inner_camel_case_key: addressCity
+            inner_pascal_case_key: AddressCity
             inner_val: San Francisco
           - inner_camel_case_key: addressState
+            inner_pascal_case_key: AddressState
             inner_val: CA
           - inner_camel_case_key: addressZip
+            inner_pascal_case_key: AddressZip
             inner_val: 94107
-          - inner_camel_case_key: addressCounty
+          - inner_camel_case_key: addressCountry
+            inner_pascal_case_key: AddressCountry
             dotnet_inner_val: default(CountryExtended)
+            go_inner_val: lob.COUNTRYEXTENDED_US
             dotnetNonString: true
+            goNonString: true
           - inner_camel_case_key: description
+            inner_pascal_case_key: Description
             dotnet_inner_val: "null"
             dotnetNonString: true
           - inner_camel_case_key: name
+            inner_pascal_case_key: Name
             inner_val: Harry Zhang
         resource_constructor:
         - camel_case_key: to
           dotnet_val: to.ToJson()
+          go_val: selfMailerCreate.SetTo(to)
           dotnetNonString: true
+          goNonString: true
         - camel_case_key: from
           val: adr_249af768103d2810
         - camel_case_key: size
@@ -14909,6 +14995,7 @@ components:
           param: dateCreated
           last: true
         include: total_count
+        tmpl_id: tmpl_4aa14648113e45b
         date_created:
           key: lt
           val: DateTime.Today.AddMonths(-1)
@@ -14944,8 +15031,10 @@ components:
         resource:
         - key: description
           val: Second Version
+          pascal_case_key: Description
         - key: html
           val: <html>Second HTML for {{name}}</html>
+          pascal_case_key: Html
           dataUrlencode: true
         javaSupported: true
         lob_response_type: TemplateVersion
@@ -15320,8 +15409,10 @@ components:
         resource:
         - key: description
           val: Test Template
+          pascal_case_key: Description
         - key: html
           val: <html>HTML for {{name}}</html>
+          pascal_case_key: Html
           dataUrlencode: true
         javaSupported: true
         lob_response_type: Template
@@ -15826,7 +15917,7 @@ components:
           pattern: ^\d{5}$
           type: string
         zip_code_plus_4:
-          pattern: ^\d{4}$
+          pattern: ^(\d{4})?$
           type: string
       required:
       - zip_code
@@ -16459,6 +16550,7 @@ components:
             java: Boolean
             typescript: boolean
             python: bool
+            ruby: Boolean
             hasPath: false
             default: true
             isRef: true
@@ -16466,6 +16558,7 @@ components:
             java: ReturnEnvelope
             typescript: Models.ReturnEnvelope
             python: ReturnEnvelope
+            ruby: ReturnEnvelope
             hasPath: true
             python_path: lob_python.model.return_envelope
             isRef: true
@@ -16530,6 +16623,7 @@ components:
                 java: Boolean
                 typescript: boolean
                 python: bool
+                ruby: Boolean
                 hasPath: false
                 default: true
                 isRef: true
@@ -16537,6 +16631,7 @@ components:
                 java: ReturnEnvelope
                 typescript: Models.ReturnEnvelope
                 python: ReturnEnvelope
+                ruby: ReturnEnvelope
                 hasPath: true
                 python_path: lob_python.model.return_envelope
                 isRef: true
