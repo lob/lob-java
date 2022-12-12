@@ -920,8 +920,8 @@ TemplatesApi apiInstance = new TemplatesApi(config);
 
 try {
   TemplateWritable templateWritable = new TemplateWritable(); 
-  templateWritable.set("Test Template");
-  templateWritable.set("<html>HTML for {{name}}</html>");
+  templateWritable.setDescription("Test Template");
+  templateWritable.setHtml("<html>HTML for {{name}}</html>");
 
   Template result = apiInstance.create(templateWritable);
 } catch (ApiException e) {
@@ -995,8 +995,8 @@ TemplateVersionsApi apiInstance = new TemplateVersionsApi(config);
 
 try {
   TemplateVersionWritable templateVersionWritable = new TemplateVersionWritable(); 
-  templateVersionWritable.set("Second Version");
-  templateVersionWritable.set("<html>Second HTML for {{name}}</html>");
+  templateVersionWritable.setDescription("Second Version");
+  templateVersionWritable.setHtml("<html>Second HTML for {{name}}</html>");
 
   TemplateVersion result = apiInstance.create(templateVersionWritable);
 } catch (ApiException e) {
