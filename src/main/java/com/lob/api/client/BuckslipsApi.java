@@ -60,7 +60,7 @@ public class BuckslipsApi {
     }
 
     /**
-     * Build call for Create
+     * Build call for create
      * @param buckslipEditable  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -72,7 +72,7 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call CreateCall(BuckslipEditable buckslipEditable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(BuckslipEditable buckslipEditable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = buckslipEditable;
 
         // create path and map variables
@@ -103,21 +103,21 @@ public class BuckslipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call CreateValidateBeforeCall(BuckslipEditable buckslipEditable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(BuckslipEditable buckslipEditable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'buckslipEditable' is set
         if (buckslipEditable == null) {
-            throw new ApiException("Missing the required parameter 'buckslipEditable' when calling Create(Async)");
+            throw new ApiException("Missing the required parameter 'buckslipEditable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = CreateCall(buckslipEditable, _callback);
+        okhttp3.Call localVarCall = createCall(buckslipEditable, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Create
+     * create
      * Creates a new buckslip given information
      * @param buckslipEditable  (required)
      * @return Buckslip
@@ -129,9 +129,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Buckslip Create(BuckslipEditable buckslipEditable) throws ApiException {
+    public Buckslip create(BuckslipEditable buckslipEditable) throws ApiException {
         try {
-            ApiResponse<Buckslip> localVarResp = CreateWithHttpInfo(buckslipEditable);
+            ApiResponse<Buckslip> localVarResp = createWithHttpInfo(buckslipEditable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -139,7 +139,7 @@ public class BuckslipsApi {
     }
 
     /**
-     * Create
+     * create
      * Creates a new buckslip given information
      * @param buckslipEditable  (required)
      * @return ApiResponse&lt;Buckslip&gt;
@@ -151,9 +151,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Buckslip> CreateWithHttpInfo(BuckslipEditable buckslipEditable) throws ApiException {
+    public ApiResponse<Buckslip> createWithHttpInfo(BuckslipEditable buckslipEditable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = CreateValidateBeforeCall(buckslipEditable, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(buckslipEditable, null);
             Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -162,7 +162,7 @@ public class BuckslipsApi {
     }
 
     /**
-     * Create (asynchronously)
+     * create (asynchronously)
      * Creates a new buckslip given information
      * @param buckslipEditable  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -175,15 +175,15 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call CreateAsync(BuckslipEditable buckslipEditable, final ApiCallback<Buckslip> _callback) throws ApiException {
+    public okhttp3.Call createAsync(BuckslipEditable buckslipEditable, final ApiCallback<Buckslip> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = CreateValidateBeforeCall(buckslipEditable, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(buckslipEditable, _callback);
         Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for Delete
+     * Build call for delete
      * @param buckslipId id of the buckslip (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -195,7 +195,7 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call DeleteCall(String buckslipId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCall(String buckslipId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -227,21 +227,21 @@ public class BuckslipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call DeleteValidateBeforeCall(String buckslipId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteValidateBeforeCall(String buckslipId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'buckslipId' is set
         if (buckslipId == null) {
-            throw new ApiException("Missing the required parameter 'buckslipId' when calling Delete(Async)");
+            throw new ApiException("Missing the required parameter 'buckslipId' when calling delete(Async)");
         }
         
 
-        okhttp3.Call localVarCall = DeleteCall(buckslipId, _callback);
+        okhttp3.Call localVarCall = deleteCall(buckslipId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Delete
+     * delete
      * Delete an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
      * @param buckslipId id of the buckslip (required)
      * @return BuckslipDeletion
@@ -253,9 +253,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BuckslipDeletion Delete(String buckslipId) throws ApiException {
+    public BuckslipDeletion delete(String buckslipId) throws ApiException {
         try {
-            ApiResponse<BuckslipDeletion> localVarResp = DeleteWithHttpInfo(buckslipId);
+            ApiResponse<BuckslipDeletion> localVarResp = deleteWithHttpInfo(buckslipId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -263,7 +263,7 @@ public class BuckslipsApi {
     }
 
     /**
-     * Delete
+     * delete
      * Delete an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
      * @param buckslipId id of the buckslip (required)
      * @return ApiResponse&lt;BuckslipDeletion&gt;
@@ -275,9 +275,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuckslipDeletion> DeleteWithHttpInfo(String buckslipId) throws ApiException {
+    public ApiResponse<BuckslipDeletion> deleteWithHttpInfo(String buckslipId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = DeleteValidateBeforeCall(buckslipId, null);
+            okhttp3.Call localVarCall = deleteValidateBeforeCall(buckslipId, null);
             Type localVarReturnType = new TypeToken<BuckslipDeletion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -286,7 +286,7 @@ public class BuckslipsApi {
     }
 
     /**
-     * Delete (asynchronously)
+     * delete (asynchronously)
      * Delete an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
      * @param buckslipId id of the buckslip (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -299,15 +299,15 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call DeleteAsync(String buckslipId, final ApiCallback<BuckslipDeletion> _callback) throws ApiException {
+    public okhttp3.Call deleteAsync(String buckslipId, final ApiCallback<BuckslipDeletion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = DeleteValidateBeforeCall(buckslipId, _callback);
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(buckslipId, _callback);
         Type localVarReturnType = new TypeToken<BuckslipDeletion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for Retrieve
+     * Build call for get
      * @param buckslipId id of the buckslip (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -319,7 +319,7 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call RetrieveCall(String buckslipId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String buckslipId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -351,21 +351,21 @@ public class BuckslipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call RetrieveValidateBeforeCall(String buckslipId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String buckslipId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'buckslipId' is set
         if (buckslipId == null) {
-            throw new ApiException("Missing the required parameter 'buckslipId' when calling Retrieve(Async)");
+            throw new ApiException("Missing the required parameter 'buckslipId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = RetrieveCall(buckslipId, _callback);
+        okhttp3.Call localVarCall = getCall(buckslipId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Retrieve
+     * get
      * Retrieves the details of an existing buckslip. You need only supply the unique customer identifier that was returned upon buckslip creation.
      * @param buckslipId id of the buckslip (required)
      * @return Buckslip
@@ -377,9 +377,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Buckslip Retrieve(String buckslipId) throws ApiException {
+    public Buckslip get(String buckslipId) throws ApiException {
         try {
-            ApiResponse<Buckslip> localVarResp = RetrieveWithHttpInfo(buckslipId);
+            ApiResponse<Buckslip> localVarResp = getWithHttpInfo(buckslipId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -387,7 +387,7 @@ public class BuckslipsApi {
     }
 
     /**
-     * Retrieve
+     * get
      * Retrieves the details of an existing buckslip. You need only supply the unique customer identifier that was returned upon buckslip creation.
      * @param buckslipId id of the buckslip (required)
      * @return ApiResponse&lt;Buckslip&gt;
@@ -399,9 +399,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Buckslip> RetrieveWithHttpInfo(String buckslipId) throws ApiException {
+    public ApiResponse<Buckslip> getWithHttpInfo(String buckslipId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = RetrieveValidateBeforeCall(buckslipId, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(buckslipId, null);
             Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -410,7 +410,7 @@ public class BuckslipsApi {
     }
 
     /**
-     * Retrieve (asynchronously)
+     * get (asynchronously)
      * Retrieves the details of an existing buckslip. You need only supply the unique customer identifier that was returned upon buckslip creation.
      * @param buckslipId id of the buckslip (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -423,15 +423,15 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call RetrieveAsync(String buckslipId, final ApiCallback<Buckslip> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String buckslipId, final ApiCallback<Buckslip> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = RetrieveValidateBeforeCall(buckslipId, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(buckslipId, _callback);
         Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for Update
+     * Build call for update
      * @param buckslipId id of the buckslip (required)
      * @param buckslipUpdatable  (required)
      * @param _callback Callback for upload/download progress
@@ -444,7 +444,7 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call UpdateCall(String buckslipId, BuckslipUpdatable buckslipUpdatable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCall(String buckslipId, BuckslipUpdatable buckslipUpdatable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = buckslipUpdatable;
 
         // create path and map variables
@@ -476,26 +476,26 @@ public class BuckslipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call UpdateValidateBeforeCall(String buckslipId, BuckslipUpdatable buckslipUpdatable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateValidateBeforeCall(String buckslipId, BuckslipUpdatable buckslipUpdatable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'buckslipId' is set
         if (buckslipId == null) {
-            throw new ApiException("Missing the required parameter 'buckslipId' when calling Update(Async)");
+            throw new ApiException("Missing the required parameter 'buckslipId' when calling update(Async)");
         }
         
         // verify the required parameter 'buckslipUpdatable' is set
         if (buckslipUpdatable == null) {
-            throw new ApiException("Missing the required parameter 'buckslipUpdatable' when calling Update(Async)");
+            throw new ApiException("Missing the required parameter 'buckslipUpdatable' when calling update(Async)");
         }
         
 
-        okhttp3.Call localVarCall = UpdateCall(buckslipId, buckslipUpdatable, _callback);
+        okhttp3.Call localVarCall = updateCall(buckslipId, buckslipUpdatable, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Update
+     * update
      * Update the details of an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
      * @param buckslipId id of the buckslip (required)
      * @param buckslipUpdatable  (required)
@@ -508,9 +508,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Buckslip Update(String buckslipId, BuckslipUpdatable buckslipUpdatable) throws ApiException {
+    public Buckslip update(String buckslipId, BuckslipUpdatable buckslipUpdatable) throws ApiException {
         try {
-            ApiResponse<Buckslip> localVarResp = UpdateWithHttpInfo(buckslipId, buckslipUpdatable);
+            ApiResponse<Buckslip> localVarResp = updateWithHttpInfo(buckslipId, buckslipUpdatable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -518,7 +518,7 @@ public class BuckslipsApi {
     }
 
     /**
-     * Update
+     * update
      * Update the details of an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
      * @param buckslipId id of the buckslip (required)
      * @param buckslipUpdatable  (required)
@@ -531,9 +531,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Buckslip> UpdateWithHttpInfo(String buckslipId, BuckslipUpdatable buckslipUpdatable) throws ApiException {
+    public ApiResponse<Buckslip> updateWithHttpInfo(String buckslipId, BuckslipUpdatable buckslipUpdatable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = UpdateValidateBeforeCall(buckslipId, buckslipUpdatable, null);
+            okhttp3.Call localVarCall = updateValidateBeforeCall(buckslipId, buckslipUpdatable, null);
             Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -542,7 +542,7 @@ public class BuckslipsApi {
     }
 
     /**
-     * Update (asynchronously)
+     * update (asynchronously)
      * Update the details of an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
      * @param buckslipId id of the buckslip (required)
      * @param buckslipUpdatable  (required)
@@ -556,9 +556,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call UpdateAsync(String buckslipId, BuckslipUpdatable buckslipUpdatable, final ApiCallback<Buckslip> _callback) throws ApiException {
+    public okhttp3.Call updateAsync(String buckslipId, BuckslipUpdatable buckslipUpdatable, final ApiCallback<Buckslip> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = UpdateValidateBeforeCall(buckslipId, buckslipUpdatable, _callback);
+        okhttp3.Call localVarCall = updateValidateBeforeCall(buckslipId, buckslipUpdatable, _callback);
         Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
