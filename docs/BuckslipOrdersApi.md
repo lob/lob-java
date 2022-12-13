@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Create**](BuckslipOrdersApi.md#Create) | **POST** /buckslips/{buckslip_id}/orders | Create
-[**Retrieve**](BuckslipOrdersApi.md#Retrieve) | **GET** /buckslips/{buckslip_id}/orders | Retrieve
+[**create**](BuckslipOrdersApi.md#create) | **POST** /buckslips/{buckslip_id}/orders | create
+[**get**](BuckslipOrdersApi.md#get) | **GET** /buckslips/{buckslip_id}/orders | get
 
 
-<a name="Create"></a>
-# **Create**
-> BuckslipOrder Create(buckslipId, buckslipOrderEditable)
+<a name="create"></a>
+# **create**
+> BuckslipOrder create(buckslipId, buckslipOrderEditable)
 
-Create
+create
 
 Creates a new buckslip order given information
 
@@ -39,9 +39,9 @@ public class Example {
     String buckslipId = "buckslipId_example"; // String | The ID of the buckslip to which the buckslip orders belong.
     BuckslipOrderEditable buckslipOrderEditable = new BuckslipOrderEditable(); // BuckslipOrderEditable | 
     try {
-      BuckslipOrder result = apiInstance.Create(buckslipId, buckslipOrderEditable);
+      BuckslipOrder result = apiInstance.create(buckslipId, buckslipOrderEditable);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuckslipOrdersApi#Create");
+      System.err.println("Exception when calling BuckslipOrdersApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -77,11 +77,11 @@ Name | Type | Description  | Notes
 **200** | Buckslip order created successfully |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="Retrieve"></a>
-# **Retrieve**
-> BuckslipOrdersList Retrieve(buckslipId, limit, offset)
+<a name="get"></a>
+# **get**
+> BuckslipOrdersList get(buckslipId, limit, offset)
 
-Retrieve
+get
 
 Retrieves the buckslip orders associated with the given buckslip id.
 
@@ -109,9 +109,9 @@ public class Example {
     Integer limit = 10; // Integer | How many results to return.
     Integer offset = 0; // Integer | An integer that designates the offset at which to begin returning results. Defaults to 0.
     try {
-      BuckslipOrdersList result = apiInstance.Retrieve(buckslipId, limit, offset);
+      BuckslipOrdersList result = apiInstance.get(buckslipId, limit, offset);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuckslipOrdersApi#Retrieve");
+      System.err.println("Exception when calling BuckslipOrdersApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
