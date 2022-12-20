@@ -62,11 +62,11 @@ public class UsAutocompletions {
 
   @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
   private List<Suggestions> suggestions = null;
-  public List<Suggestions> getSuggestions() {     
+  public List<Suggestions> getSuggestions() {
     if (this.suggestions == null) {
       this.suggestions = new ArrayList<Suggestions>();
     }
-    return this.suggestions; 
+    return this.suggestions;
   }
 
   /**

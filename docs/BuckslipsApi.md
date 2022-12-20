@@ -4,18 +4,18 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Create**](BuckslipsApi.md#Create) | **POST** /buckslips | Create
-[**Delete**](BuckslipsApi.md#Delete) | **DELETE** /buckslips/{buckslip_id} | Delete
-[**Retrieve**](BuckslipsApi.md#Retrieve) | **GET** /buckslips/{buckslip_id} | Retrieve
-[**Update**](BuckslipsApi.md#Update) | **PATCH** /buckslips/{buckslip_id} | Update
+[**create**](BuckslipsApi.md#create) | **POST** /buckslips | create
+[**delete**](BuckslipsApi.md#delete) | **DELETE** /buckslips/{buckslip_id} | delete
+[**get**](BuckslipsApi.md#get) | **GET** /buckslips/{buckslip_id} | get
+[**update**](BuckslipsApi.md#update) | **PATCH** /buckslips/{buckslip_id} | update
 [**List**](BuckslipsApi.md#List) | **GET** /buckslips | List
 
 
-<a name="Create"></a>
-# **Create**
-> Buckslip Create(buckslipEditable)
+<a name="create"></a>
+# **create**
+> Buckslip create(buckslipEditable)
 
-Create
+create
 
 Creates a new buckslip given information
 
@@ -41,9 +41,9 @@ public class Example {
     BuckslipsApi apiInstance = new BuckslipsApi(defaultClient);
     BuckslipEditable buckslipEditable = new BuckslipEditable(); // BuckslipEditable | 
     try {
-      Buckslip result = apiInstance.Create(buckslipEditable);
+      Buckslip result = apiInstance.create(buckslipEditable);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuckslipsApi#Create");
+      System.err.println("Exception when calling BuckslipsApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -78,11 +78,11 @@ Name | Type | Description  | Notes
 **200** | Buckslip created successfully |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="Delete"></a>
-# **Delete**
-> BuckslipDeletion Delete(buckslipId)
+<a name="delete"></a>
+# **delete**
+> BuckslipDeletion delete(buckslipId)
 
-Delete
+delete
 
 Delete an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
 
@@ -108,9 +108,9 @@ public class Example {
     BuckslipsApi apiInstance = new BuckslipsApi(defaultClient);
     String buckslipId = "buckslipId_example"; // String | id of the buckslip
     try {
-      BuckslipDeletion result = apiInstance.Delete(buckslipId);
+      BuckslipDeletion result = apiInstance.delete(buckslipId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuckslipsApi#Delete");
+      System.err.println("Exception when calling BuckslipsApi#delete");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -145,11 +145,11 @@ Name | Type | Description  | Notes
 **200** | Deleted the buckslip |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="Retrieve"></a>
-# **Retrieve**
-> Buckslip Retrieve(buckslipId)
+<a name="get"></a>
+# **get**
+> Buckslip get(buckslipId)
 
-Retrieve
+get
 
 Retrieves the details of an existing buckslip. You need only supply the unique customer identifier that was returned upon buckslip creation.
 
@@ -175,9 +175,9 @@ public class Example {
     BuckslipsApi apiInstance = new BuckslipsApi(defaultClient);
     String buckslipId = "buckslipId_example"; // String | id of the buckslip
     try {
-      Buckslip result = apiInstance.Retrieve(buckslipId);
+      Buckslip result = apiInstance.get(buckslipId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuckslipsApi#Retrieve");
+      System.err.println("Exception when calling BuckslipsApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -212,11 +212,11 @@ Name | Type | Description  | Notes
 **200** | Returns a buckslip object |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="Update"></a>
-# **Update**
-> Buckslip Update(buckslipId, buckslipUpdatable)
+<a name="update"></a>
+# **update**
+> Buckslip update(buckslipId, buckslipUpdatable)
 
-Update
+update
 
 Update the details of an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
 
@@ -243,9 +243,9 @@ public class Example {
     String buckslipId = "buckslipId_example"; // String | id of the buckslip
     BuckslipUpdatable buckslipUpdatable = new BuckslipUpdatable(); // BuckslipUpdatable | 
     try {
-      Buckslip result = apiInstance.Update(buckslipId, buckslipUpdatable);
+      Buckslip result = apiInstance.update(buckslipId, buckslipUpdatable);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuckslipsApi#Update");
+      System.err.println("Exception when calling BuckslipsApi#update");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
