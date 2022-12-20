@@ -20,7 +20,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.lob.model.OptionalAddressColumnMapping;
+import com.lob.model.RequiredAddressColumnMapping;
 import com.lob.model.UploadState;
+import com.lob.model.UploadsMetadata;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -70,35 +73,10 @@ public class Upload {
   
   @javax.annotation.Nonnull
   
-  @ApiModelProperty(required = true, value = "Account ID that made the request")
+  @ApiModelProperty(example = "fa9ea650fc7b31a89f92", required = true, value = "Account ID that made the request")
   
   public String getAccountId() {
       return accountId;
-  }
-  
-  
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
-
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  
-
-  private String campaignId;
-  /**
-  * Unique identifier prefixed with `cmp_`.
-  * @return campaignId
-  **/
-  
-  @javax.annotation.Nonnull
-  
-  public String getCampaignId() { return campaignId; }
-
-  public void setCampaignId (String campaignId) throws IllegalArgumentException {
-    if(!campaignId.matches("^cmp_[a-zA-Z0-9]+$")) {
-      throw new IllegalArgumentException("Invalid campaignId provided");
-    }
-
-    this.campaignId = campaignId;
   }
   
   
@@ -360,23 +338,86 @@ public class Upload {
   
   
 
-  public static final String SERIALIZED_NAME_DELETED = "deleted";
+  public static final String SERIALIZED_NAME_REQUIRED_ADDRESS_COLUMN_MAPPING = "requiredAddressColumnMapping";
 
-  @SerializedName(SERIALIZED_NAME_DELETED)
+  @SerializedName(SERIALIZED_NAME_REQUIRED_ADDRESS_COLUMN_MAPPING)
   
 
-  private Boolean deleted;
+  private RequiredAddressColumnMapping requiredAddressColumnMapping;
   /**
-  * Only returned if the resource has been successfully deleted.
-  * @return deleted
+  * Get requiredAddressColumnMapping
+  * @return requiredAddressColumnMapping
+  **/
+  
+  @javax.annotation.Nonnull
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public RequiredAddressColumnMapping getRequiredAddressColumnMapping() {
+      return requiredAddressColumnMapping;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_OPTIONAL_ADDRESS_COLUMN_MAPPING = "optionalAddressColumnMapping";
+
+  @SerializedName(SERIALIZED_NAME_OPTIONAL_ADDRESS_COLUMN_MAPPING)
+  
+
+  private OptionalAddressColumnMapping optionalAddressColumnMapping;
+  /**
+  * Get optionalAddressColumnMapping
+  * @return optionalAddressColumnMapping
+  **/
+  
+  @javax.annotation.Nonnull
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public OptionalAddressColumnMapping getOptionalAddressColumnMapping() {
+      return optionalAddressColumnMapping;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  
+
+  private UploadsMetadata metadata = {"columns":[]};
+  /**
+  * Get metadata
+  * @return metadata
+  **/
+  
+  @javax.annotation.Nonnull
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public UploadsMetadata getMetadata() {
+      return metadata;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_MERGE_VARIABLE_COLUMN_MAPPING = "mergeVariableColumnMapping";
+
+  @SerializedName(SERIALIZED_NAME_MERGE_VARIABLE_COLUMN_MAPPING)
+  
+
+  private Object mergeVariableColumnMapping;
+  /**
+  * The mapping of column headers in your file to the merge variables present in your creative. See our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#step-3-map-merge-variable-data-if-applicable-7\" target=\"_blank\">Campaign Audience Guide</a> for additional details. <br />If a merge variable has the same \"name\" as a \"key\" in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping` objects, then they **CANNOT** have a different value in this object. If a different value is provided, then when the campaign is processing it will get overwritten with the mapped value present in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping` objects.
+  * @return mergeVariableColumnMapping
   **/
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(value = "Only returned if the resource has been successfully deleted.")
+  @ApiModelProperty(example = "{\"name\":\"recipient_name\",\"gift_code\":\"code\"}", required = true, value = "The mapping of column headers in your file to the merge variables present in your creative. See our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#step-3-map-merge-variable-data-if-applicable-7\" target=\"_blank\">Campaign Audience Guide</a> for additional details. <br />If a merge variable has the same \"name\" as a \"key\" in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping` objects, then they **CANNOT** have a different value in this object. If a different value is provided, then when the campaign is processing it will get overwritten with the mapped value present in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping` objects.")
   
-  public Boolean getDeleted() {
-      return deleted;
+  public Object getMergeVariableColumnMapping() {
+      return mergeVariableColumnMapping;
   }
   
   
@@ -406,18 +447,6 @@ public class Upload {
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
-
-
-
-  /*
-  public Upload campaignId(String campaignId) {
-    
-    this.campaignId = campaignId;
-    return this;
-  }
-  */
-
-
 
 
 
@@ -572,16 +601,61 @@ public class Upload {
 
 
   /*
-  public Upload deleted(Boolean deleted) {
+  public Upload requiredAddressColumnMapping(RequiredAddressColumnMapping requiredAddressColumnMapping) {
     
-    this.deleted = deleted;
+    this.requiredAddressColumnMapping = requiredAddressColumnMapping;
     return this;
   }
   */
 
 
-  public void setDeleted(Boolean deleted) {
-    this.deleted = deleted;
+  public void setRequiredAddressColumnMapping(RequiredAddressColumnMapping requiredAddressColumnMapping) {
+    this.requiredAddressColumnMapping = requiredAddressColumnMapping;
+  }
+
+
+
+  /*
+  public Upload optionalAddressColumnMapping(OptionalAddressColumnMapping optionalAddressColumnMapping) {
+    
+    this.optionalAddressColumnMapping = optionalAddressColumnMapping;
+    return this;
+  }
+  */
+
+
+  public void setOptionalAddressColumnMapping(OptionalAddressColumnMapping optionalAddressColumnMapping) {
+    this.optionalAddressColumnMapping = optionalAddressColumnMapping;
+  }
+
+
+
+  /*
+  public Upload metadata(UploadsMetadata metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+  */
+
+
+  public void setMetadata(UploadsMetadata metadata) {
+    this.metadata = metadata;
+  }
+
+
+
+  /*
+  public Upload mergeVariableColumnMapping(Object mergeVariableColumnMapping) {
+    
+    this.mergeVariableColumnMapping = mergeVariableColumnMapping;
+    return this;
+  }
+  */
+
+
+  public void setMergeVariableColumnMapping(Object mergeVariableColumnMapping) {
+    this.mergeVariableColumnMapping = mergeVariableColumnMapping;
   }
 
 
@@ -597,7 +671,6 @@ public class Upload {
     Upload upload = (Upload) o;
     return Objects.equals(this.id, upload.id) &&
         Objects.equals(this.accountId, upload.accountId) &&
-        Objects.equals(this.campaignId, upload.campaignId) &&
         Objects.equals(this.mode, upload.mode) &&
         Objects.equals(this.failuresUrl, upload.failuresUrl) &&
         Objects.equals(this.originalFilename, upload.originalFilename) &&
@@ -608,12 +681,15 @@ public class Upload {
         Objects.equals(this.bytesProcessed, upload.bytesProcessed) &&
         Objects.equals(this.dateCreated, upload.dateCreated) &&
         Objects.equals(this.dateModified, upload.dateModified) &&
-        Objects.equals(this.deleted, upload.deleted);
+        Objects.equals(this.requiredAddressColumnMapping, upload.requiredAddressColumnMapping) &&
+        Objects.equals(this.optionalAddressColumnMapping, upload.optionalAddressColumnMapping) &&
+        Objects.equals(this.metadata, upload.metadata) &&
+        Objects.equals(this.mergeVariableColumnMapping, upload.mergeVariableColumnMapping);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, accountId, campaignId, mode, failuresUrl, originalFilename, state, totalMailpieces, failedMailpieces, validatedMailpieces, bytesProcessed, dateCreated, dateModified, deleted);
+    return Objects.hash(id, accountId, mode, failuresUrl, originalFilename, state, totalMailpieces, failedMailpieces, validatedMailpieces, bytesProcessed, dateCreated, dateModified, requiredAddressColumnMapping, optionalAddressColumnMapping, metadata, mergeVariableColumnMapping);
   }
 
   @Override
@@ -622,7 +698,6 @@ public class Upload {
     sb.append("{\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
     sb.append("    failuresUrl: ").append(toIndentedString(failuresUrl)).append("\n");
     sb.append("    originalFilename: ").append(toIndentedString(originalFilename)).append("\n");
@@ -633,7 +708,10 @@ public class Upload {
     sb.append("    bytesProcessed: ").append(toIndentedString(bytesProcessed)).append("\n");
     sb.append("    dateCreated: ").append(toIndentedString(dateCreated)).append("\n");
     sb.append("    dateModified: ").append(toIndentedString(dateModified)).append("\n");
-    sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
+    sb.append("    requiredAddressColumnMapping: ").append(toIndentedString(requiredAddressColumnMapping)).append("\n");
+    sb.append("    optionalAddressColumnMapping: ").append(toIndentedString(optionalAddressColumnMapping)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    mergeVariableColumnMapping: ").append(toIndentedString(mergeVariableColumnMapping)).append("\n");
     sb.append("}");
     return sb.toString();
   }
