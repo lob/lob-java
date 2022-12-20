@@ -37,11 +37,11 @@ public class IntlVerifications {
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
   private List<IntlVerificationOrError> addresses = new ArrayList<>();
-  public List<IntlVerificationOrError> getAddresses() {     
+  public List<IntlVerificationOrError> getAddresses() {
     if (this.addresses == null) {
       this.addresses = new ArrayList<IntlVerificationOrError>();
     }
-    return this.addresses; 
+    return this.addresses;
   }
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
