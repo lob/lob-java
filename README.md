@@ -3,7 +3,7 @@
 Lob
 - API version: 1.3.0
 
-The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors.
+The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors.<p> Looking for our [legacy Java SDK](https://github.com/lob/lob-java/tree/12.3.7-Legacy)?
 
 For more information, please visit [https://support.lob.com/](https://support.lob.com/)
 
