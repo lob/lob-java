@@ -87,11 +87,11 @@ public class Template {
 
   @SerializedName(SERIALIZED_NAME_VERSIONS)
   private List<TemplateVersion> versions = new ArrayList<>();
-  public List<TemplateVersion> getVersions() {     
+  public List<TemplateVersion> getVersions() {
     if (this.versions == null) {
       this.versions = new ArrayList<TemplateVersion>();
     }
-    return this.versions; 
+    return this.versions;
   }
 
   public static final String SERIALIZED_NAME_PUBLISHED_VERSION = "published_version";
@@ -185,11 +185,11 @@ public class Template {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {     
+  public Map<String, String> getMetadata() {
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata; 
+    return this.metadata;
   }
 
   public static final String SERIALIZED_NAME_DATE_CREATED = "date_created";

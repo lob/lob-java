@@ -25,28 +25,18 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The &#x60;state&#x60; property on the &#x60;upload&#x60; object. As the file is processed, the &#x60;state&#x60; will change from &#x60;Ready for Validation&#x60; to &#x60;Validating&#x60; and then will be either &#x60;Scheduled&#x60; (successfully processed) or &#x60;Errored&#x60; (Unsuccessfully processed).
+ * Mailpiece type for the creative
  */
-@JsonAdapter(UploadState.Adapter.class)
-public enum UploadState {
+@JsonAdapter(ResourceTypeEnum.Adapter.class)
+public enum ResourceTypeEnum {
   
-  PREPROCESSING("Preprocessing"),
+  LETTER("letter"),
   
-  DRAFT("Draft"),
-  
-  READY_FOR_VALIDATION("Ready for Validation"),
-  
-  VALIDATING("Validating"),
-  
-  SCHEDULED("Scheduled"),
-  
-  CANCELLED("Cancelled"),
-  
-  ERRORED("Errored");
+  POSTCARD("postcard");
 
   private String value;
 
-  UploadState(String value) {
+  ResourceTypeEnum(String value) {
     this.value = value;
   }
 
@@ -59,8 +49,8 @@ public enum UploadState {
     return String.valueOf(value);
   }
 
-  public static UploadState fromValue(String value) {
-    for (UploadState b : UploadState.values()) {
+  public static ResourceTypeEnum fromValue(String value) {
+    for (ResourceTypeEnum b : ResourceTypeEnum.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -68,16 +58,16 @@ public enum UploadState {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<UploadState> {
+  public static class Adapter extends TypeAdapter<ResourceTypeEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final UploadState enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final ResourceTypeEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public UploadState read(final JsonReader jsonReader) throws IOException {
+    public ResourceTypeEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return UploadState.fromValue(value);
+      return ResourceTypeEnum.fromValue(value);
     }
   }
 }

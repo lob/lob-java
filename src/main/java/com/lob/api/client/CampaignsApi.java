@@ -27,11 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.lob.model.Buckslip;
-import com.lob.model.BuckslipDeletion;
-import com.lob.model.BuckslipEditable;
-import com.lob.model.BuckslipUpdatable;
-import com.lob.model.BuckslipsList;
+import com.lob.model.Campaign;
+import com.lob.model.CampaignDeletion;
+import com.lob.model.CampaignUpdatable;
+import com.lob.model.CampaignWritable;
+import com.lob.model.CampaignsList;
 import com.lob.model.LobError;
 
 import java.lang.reflect.Type;
@@ -40,14 +40,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BuckslipsApi {
+public class CampaignsApi {
     private ApiClient localVarApiClient;
 
-    public BuckslipsApi() {
+    public CampaignsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public BuckslipsApi(ApiClient apiClient) {
+    public CampaignsApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -61,28 +61,33 @@ public class BuckslipsApi {
 
     /**
      * Build call for create
-     * @param buckslipEditable  (required)
+     * @param campaignWritable  (required)
+     * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Buckslip created successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Campaign created successfully </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCall(BuckslipEditable buckslipEditable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = buckslipEditable;
+    public okhttp3.Call createCall(CampaignWritable campaignWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = campaignWritable;
 
         // create path and map variables
-        String localVarPath = "/buckslips";
+        String localVarPath = "/campaigns";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (xLangOutput != null) {
+            localVarHeaderParams.put("x-lang-output", localVarApiClient.parameterToString(xLangOutput));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -103,35 +108,36 @@ public class BuckslipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createValidateBeforeCall(BuckslipEditable buckslipEditable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(CampaignWritable campaignWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'buckslipEditable' is set
-        if (buckslipEditable == null) {
-            throw new ApiException("Missing the required parameter 'buckslipEditable' when calling create(Async)");
+        // verify the required parameter 'campaignWritable' is set
+        if (campaignWritable == null) {
+            throw new ApiException("Missing the required parameter 'campaignWritable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createCall(buckslipEditable, _callback);
+        okhttp3.Call localVarCall = createCall(campaignWritable, xLangOutput, _callback);
         return localVarCall;
 
     }
 
     /**
      * create
-     * Creates a new buckslip given information
-     * @param buckslipEditable  (required)
-     * @return Buckslip
+     * Creates a new campaign with the provided properties. See how to launch your first campaign [here](https://help.lob.com/best-practices/launching-your-first-campaign).
+     * @param campaignWritable  (required)
+     * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
+     * @return Campaign
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Buckslip created successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Campaign created successfully </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Buckslip create(BuckslipEditable buckslipEditable) throws ApiException {
+    public Campaign create(CampaignWritable campaignWritable, String xLangOutput) throws ApiException {
         try {
-            ApiResponse<Buckslip> localVarResp = createWithHttpInfo(buckslipEditable);
+            ApiResponse<Campaign> localVarResp = createWithHttpInfo(campaignWritable, xLangOutput);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -140,21 +146,22 @@ public class BuckslipsApi {
 
     /**
      * create
-     * Creates a new buckslip given information
-     * @param buckslipEditable  (required)
-     * @return ApiResponse&lt;Buckslip&gt;
+     * Creates a new campaign with the provided properties. See how to launch your first campaign [here](https://help.lob.com/best-practices/launching-your-first-campaign).
+     * @param campaignWritable  (required)
+     * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
+     * @return ApiResponse&lt;Campaign&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Buckslip created successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Campaign created successfully </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Buckslip> createWithHttpInfo(BuckslipEditable buckslipEditable) throws ApiException {
+    public ApiResponse<Campaign> createWithHttpInfo(CampaignWritable campaignWritable, String xLangOutput) throws ApiException {
         try {
-            okhttp3.Call localVarCall = createValidateBeforeCall(buckslipEditable, null);
-            Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
+            okhttp3.Call localVarCall = createValidateBeforeCall(campaignWritable, xLangOutput, null);
+            Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             throw e;
@@ -163,44 +170,45 @@ public class BuckslipsApi {
 
     /**
      * create (asynchronously)
-     * Creates a new buckslip given information
-     * @param buckslipEditable  (required)
+     * Creates a new campaign with the provided properties. See how to launch your first campaign [here](https://help.lob.com/best-practices/launching-your-first-campaign).
+     * @param campaignWritable  (required)
+     * @param xLangOutput * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Buckslip created successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Campaign created successfully </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAsync(BuckslipEditable buckslipEditable, final ApiCallback<Buckslip> _callback) throws ApiException {
+    public okhttp3.Call createAsync(CampaignWritable campaignWritable, String xLangOutput, final ApiCallback<Campaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createValidateBeforeCall(buckslipEditable, _callback);
-        Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
+        okhttp3.Call localVarCall = createValidateBeforeCall(campaignWritable, xLangOutput, _callback);
+        Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for delete
-     * @param buckslipId id of the buckslip (required)
+     * @param cmpId id of the campaign (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Deleted the buckslip </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deleted the campaign. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCall(String buckslipId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCall(String cmpId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/buckslips/{buckslip_id}"
-            .replaceAll("\\{" + "buckslip_id" + "\\}", localVarApiClient.escapeString(buckslipId.toString()));
+        String localVarPath = "/campaigns/{cmp_id}"
+            .replaceAll("\\{" + "cmp_id" + "\\}", localVarApiClient.escapeString(cmpId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -227,35 +235,35 @@ public class BuckslipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteValidateBeforeCall(String buckslipId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteValidateBeforeCall(String cmpId, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'buckslipId' is set
-        if (buckslipId == null) {
-            throw new ApiException("Missing the required parameter 'buckslipId' when calling delete(Async)");
+        // verify the required parameter 'cmpId' is set
+        if (cmpId == null) {
+            throw new ApiException("Missing the required parameter 'cmpId' when calling delete(Async)");
         }
         
 
-        okhttp3.Call localVarCall = deleteCall(buckslipId, _callback);
+        okhttp3.Call localVarCall = deleteCall(cmpId, _callback);
         return localVarCall;
 
     }
 
     /**
      * delete
-     * Delete an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
-     * @param buckslipId id of the buckslip (required)
-     * @return BuckslipDeletion
+     * Delete an existing campaign. You need only supply the unique identifier that was returned upon campaign creation. Deleting a campaign also deletes any associated mail pieces that have been created but not sent. A campaign&#39;s &#x60;send_date&#x60; matches its associated mail pieces&#39; &#x60;send_date&#x60;s.
+     * @param cmpId id of the campaign (required)
+     * @return CampaignDeletion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Deleted the buckslip </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deleted the campaign. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BuckslipDeletion delete(String buckslipId) throws ApiException {
+    public CampaignDeletion delete(String cmpId) throws ApiException {
         try {
-            ApiResponse<BuckslipDeletion> localVarResp = deleteWithHttpInfo(buckslipId);
+            ApiResponse<CampaignDeletion> localVarResp = deleteWithHttpInfo(cmpId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -264,21 +272,21 @@ public class BuckslipsApi {
 
     /**
      * delete
-     * Delete an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
-     * @param buckslipId id of the buckslip (required)
-     * @return ApiResponse&lt;BuckslipDeletion&gt;
+     * Delete an existing campaign. You need only supply the unique identifier that was returned upon campaign creation. Deleting a campaign also deletes any associated mail pieces that have been created but not sent. A campaign&#39;s &#x60;send_date&#x60; matches its associated mail pieces&#39; &#x60;send_date&#x60;s.
+     * @param cmpId id of the campaign (required)
+     * @return ApiResponse&lt;CampaignDeletion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Deleted the buckslip </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deleted the campaign. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuckslipDeletion> deleteWithHttpInfo(String buckslipId) throws ApiException {
+    public ApiResponse<CampaignDeletion> deleteWithHttpInfo(String cmpId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = deleteValidateBeforeCall(buckslipId, null);
-            Type localVarReturnType = new TypeToken<BuckslipDeletion>(){}.getType();
+            okhttp3.Call localVarCall = deleteValidateBeforeCall(cmpId, null);
+            Type localVarReturnType = new TypeToken<CampaignDeletion>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             throw e;
@@ -287,44 +295,44 @@ public class BuckslipsApi {
 
     /**
      * delete (asynchronously)
-     * Delete an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
-     * @param buckslipId id of the buckslip (required)
+     * Delete an existing campaign. You need only supply the unique identifier that was returned upon campaign creation. Deleting a campaign also deletes any associated mail pieces that have been created but not sent. A campaign&#39;s &#x60;send_date&#x60; matches its associated mail pieces&#39; &#x60;send_date&#x60;s.
+     * @param cmpId id of the campaign (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Deleted the buckslip </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Deleted the campaign. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAsync(String buckslipId, final ApiCallback<BuckslipDeletion> _callback) throws ApiException {
+    public okhttp3.Call deleteAsync(String cmpId, final ApiCallback<CampaignDeletion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteValidateBeforeCall(buckslipId, _callback);
-        Type localVarReturnType = new TypeToken<BuckslipDeletion>(){}.getType();
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(cmpId, _callback);
+        Type localVarReturnType = new TypeToken<CampaignDeletion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for get
-     * @param buckslipId id of the buckslip (required)
+     * @param cmpId id of the campaign (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a buckslip object </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a campaign object </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCall(String buckslipId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String cmpId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/buckslips/{buckslip_id}"
-            .replaceAll("\\{" + "buckslip_id" + "\\}", localVarApiClient.escapeString(buckslipId.toString()));
+        String localVarPath = "/campaigns/{cmp_id}"
+            .replaceAll("\\{" + "cmp_id" + "\\}", localVarApiClient.escapeString(cmpId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -351,35 +359,35 @@ public class BuckslipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValidateBeforeCall(String buckslipId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String cmpId, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'buckslipId' is set
-        if (buckslipId == null) {
-            throw new ApiException("Missing the required parameter 'buckslipId' when calling get(Async)");
+        // verify the required parameter 'cmpId' is set
+        if (cmpId == null) {
+            throw new ApiException("Missing the required parameter 'cmpId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getCall(buckslipId, _callback);
+        okhttp3.Call localVarCall = getCall(cmpId, _callback);
         return localVarCall;
 
     }
 
     /**
      * get
-     * Retrieves the details of an existing buckslip. You need only supply the unique customer identifier that was returned upon buckslip creation.
-     * @param buckslipId id of the buckslip (required)
-     * @return Buckslip
+     * Retrieves the details of an existing campaign. You need only supply the unique campaign identifier that was returned upon campaign creation.
+     * @param cmpId id of the campaign (required)
+     * @return Campaign
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a buckslip object </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a campaign object </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Buckslip get(String buckslipId) throws ApiException {
+    public Campaign get(String cmpId) throws ApiException {
         try {
-            ApiResponse<Buckslip> localVarResp = getWithHttpInfo(buckslipId);
+            ApiResponse<Campaign> localVarResp = getWithHttpInfo(cmpId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -388,21 +396,21 @@ public class BuckslipsApi {
 
     /**
      * get
-     * Retrieves the details of an existing buckslip. You need only supply the unique customer identifier that was returned upon buckslip creation.
-     * @param buckslipId id of the buckslip (required)
-     * @return ApiResponse&lt;Buckslip&gt;
+     * Retrieves the details of an existing campaign. You need only supply the unique campaign identifier that was returned upon campaign creation.
+     * @param cmpId id of the campaign (required)
+     * @return ApiResponse&lt;Campaign&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a buckslip object </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a campaign object </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Buckslip> getWithHttpInfo(String buckslipId) throws ApiException {
+    public ApiResponse<Campaign> getWithHttpInfo(String cmpId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = getValidateBeforeCall(buckslipId, null);
-            Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
+            okhttp3.Call localVarCall = getValidateBeforeCall(cmpId, null);
+            Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             throw e;
@@ -411,45 +419,45 @@ public class BuckslipsApi {
 
     /**
      * get (asynchronously)
-     * Retrieves the details of an existing buckslip. You need only supply the unique customer identifier that was returned upon buckslip creation.
-     * @param buckslipId id of the buckslip (required)
+     * Retrieves the details of an existing campaign. You need only supply the unique campaign identifier that was returned upon campaign creation.
+     * @param cmpId id of the campaign (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a buckslip object </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a campaign object </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAsync(String buckslipId, final ApiCallback<Buckslip> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String cmpId, final ApiCallback<Campaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValidateBeforeCall(buckslipId, _callback);
-        Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
+        okhttp3.Call localVarCall = getValidateBeforeCall(cmpId, _callback);
+        Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for update
-     * @param buckslipId id of the buckslip (required)
-     * @param buckslipUpdatable  (required)
+     * @param cmpId id of the campaign (required)
+     * @param campaignUpdatable  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a buckslip object </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a campaign object </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCall(String buckslipId, BuckslipUpdatable buckslipUpdatable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = buckslipUpdatable;
+    public okhttp3.Call updateCall(String cmpId, CampaignUpdatable campaignUpdatable, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = campaignUpdatable;
 
         // create path and map variables
-        String localVarPath = "/buckslips/{buckslip_id}"
-            .replaceAll("\\{" + "buckslip_id" + "\\}", localVarApiClient.escapeString(buckslipId.toString()));
+        String localVarPath = "/campaigns/{cmp_id}"
+            .replaceAll("\\{" + "cmp_id" + "\\}", localVarApiClient.escapeString(cmpId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -476,41 +484,41 @@ public class BuckslipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateValidateBeforeCall(String buckslipId, BuckslipUpdatable buckslipUpdatable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateValidateBeforeCall(String cmpId, CampaignUpdatable campaignUpdatable, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'buckslipId' is set
-        if (buckslipId == null) {
-            throw new ApiException("Missing the required parameter 'buckslipId' when calling update(Async)");
+        // verify the required parameter 'cmpId' is set
+        if (cmpId == null) {
+            throw new ApiException("Missing the required parameter 'cmpId' when calling update(Async)");
         }
         
-        // verify the required parameter 'buckslipUpdatable' is set
-        if (buckslipUpdatable == null) {
-            throw new ApiException("Missing the required parameter 'buckslipUpdatable' when calling update(Async)");
+        // verify the required parameter 'campaignUpdatable' is set
+        if (campaignUpdatable == null) {
+            throw new ApiException("Missing the required parameter 'campaignUpdatable' when calling update(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateCall(buckslipId, buckslipUpdatable, _callback);
+        okhttp3.Call localVarCall = updateCall(cmpId, campaignUpdatable, _callback);
         return localVarCall;
 
     }
 
     /**
      * update
-     * Update the details of an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
-     * @param buckslipId id of the buckslip (required)
-     * @param buckslipUpdatable  (required)
-     * @return Buckslip
+     * Update the details of an existing campaign. You need only supply the unique identifier that was returned upon campaign creation.
+     * @param cmpId id of the campaign (required)
+     * @param campaignUpdatable  (required)
+     * @return Campaign
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a buckslip object </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a campaign object </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Buckslip update(String buckslipId, BuckslipUpdatable buckslipUpdatable) throws ApiException {
+    public Campaign update(String cmpId, CampaignUpdatable campaignUpdatable) throws ApiException {
         try {
-            ApiResponse<Buckslip> localVarResp = updateWithHttpInfo(buckslipId, buckslipUpdatable);
+            ApiResponse<Campaign> localVarResp = updateWithHttpInfo(cmpId, campaignUpdatable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -519,22 +527,22 @@ public class BuckslipsApi {
 
     /**
      * update
-     * Update the details of an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
-     * @param buckslipId id of the buckslip (required)
-     * @param buckslipUpdatable  (required)
-     * @return ApiResponse&lt;Buckslip&gt;
+     * Update the details of an existing campaign. You need only supply the unique identifier that was returned upon campaign creation.
+     * @param cmpId id of the campaign (required)
+     * @param campaignUpdatable  (required)
+     * @return ApiResponse&lt;Campaign&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a buckslip object </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a campaign object </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Buckslip> updateWithHttpInfo(String buckslipId, BuckslipUpdatable buckslipUpdatable) throws ApiException {
+    public ApiResponse<Campaign> updateWithHttpInfo(String cmpId, CampaignUpdatable campaignUpdatable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = updateValidateBeforeCall(buckslipId, buckslipUpdatable, null);
-            Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
+            okhttp3.Call localVarCall = updateValidateBeforeCall(cmpId, campaignUpdatable, null);
+            Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             throw e;
@@ -543,47 +551,46 @@ public class BuckslipsApi {
 
     /**
      * update (asynchronously)
-     * Update the details of an existing buckslip. You need only supply the unique identifier that was returned upon buckslip creation.
-     * @param buckslipId id of the buckslip (required)
-     * @param buckslipUpdatable  (required)
+     * Update the details of an existing campaign. You need only supply the unique identifier that was returned upon campaign creation.
+     * @param cmpId id of the campaign (required)
+     * @param campaignUpdatable  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a buckslip object </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a campaign object </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAsync(String buckslipId, BuckslipUpdatable buckslipUpdatable, final ApiCallback<Buckslip> _callback) throws ApiException {
+    public okhttp3.Call updateAsync(String cmpId, CampaignUpdatable campaignUpdatable, final ApiCallback<Campaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateValidateBeforeCall(buckslipId, buckslipUpdatable, _callback);
-        Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
+        okhttp3.Call localVarCall = updateValidateBeforeCall(cmpId, campaignUpdatable, _callback);
+        Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for List
+     * Build call for list
      * @param limit How many results to return. (optional, default to 10)
+     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
-     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> description: Returns a list of buckslip objects </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A dictionary with a data property that contains an array of up to &#x60;limit&#x60; campaigns. Each entry in the array is a separate letter. The previous and next page of campaigns can be retrieved by calling the endpoint contained in the &#x60;previous_url&#x60; and &#x60;next_url&#x60; fields in the API response respectively. If no more campaigns are available beyond the current set of returned results, the &#x60;next_url&#x60; field will be empty. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ListCall(Integer limit, String before, String after, List<String> include, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, List<String> include, String before, String after, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/buckslips";
+        String localVarPath = "/campaigns";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -595,16 +602,16 @@ public class BuckslipsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "include", include));
+        }
+
         if (before != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("before", before));
         }
 
         if (after != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("after", after));
-        }
-
-        if (include != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "include", include));
         }
 
         final String[] localVarAccepts = {
@@ -626,33 +633,32 @@ public class BuckslipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ListValidateBeforeCall(Integer limit, String before, String after, List<String> include, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, List<String> include, String before, String after, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = ListCall(limit, before, after, include, _callback);
+        okhttp3.Call localVarCall = listCall(limit, include, before, after, _callback);
         return localVarCall;
 
     }
 
     /**
-     * List
-     * Returns a list of your buckslips. The buckslips are returned sorted by creation date, with the most recently created buckslips appearing first.
+     * list
+     * Returns a list of your campaigns. The campaigns are returned sorted by creation date, with the most recently created campaigns appearing first.
      * @param limit How many results to return. (optional, default to 10)
+     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
-     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
-     * @return BuckslipsList
+     * @return CampaignsList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> description: Returns a list of buckslip objects </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A dictionary with a data property that contains an array of up to &#x60;limit&#x60; campaigns. Each entry in the array is a separate letter. The previous and next page of campaigns can be retrieved by calling the endpoint contained in the &#x60;previous_url&#x60; and &#x60;next_url&#x60; fields in the API response respectively. If no more campaigns are available beyond the current set of returned results, the &#x60;next_url&#x60; field will be empty. </td><td>  -  </td></tr>
      </table>
      */
-    public BuckslipsList List(Integer limit, String before, String after, List<String> include) throws ApiException {
+    public CampaignsList list(Integer limit, List<String> include, String before, String after) throws ApiException {
         try {
-            ApiResponse<BuckslipsList> localVarResp = ListWithHttpInfo(limit, before, after, include);
+            ApiResponse<CampaignsList> localVarResp = listWithHttpInfo(limit, include, before, after);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -660,25 +666,24 @@ public class BuckslipsApi {
     }
 
     /**
-     * List
-     * Returns a list of your buckslips. The buckslips are returned sorted by creation date, with the most recently created buckslips appearing first.
+     * list
+     * Returns a list of your campaigns. The campaigns are returned sorted by creation date, with the most recently created campaigns appearing first.
      * @param limit How many results to return. (optional, default to 10)
+     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
-     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
-     * @return ApiResponse&lt;BuckslipsList&gt;
+     * @return ApiResponse&lt;CampaignsList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> description: Returns a list of buckslip objects </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A dictionary with a data property that contains an array of up to &#x60;limit&#x60; campaigns. Each entry in the array is a separate letter. The previous and next page of campaigns can be retrieved by calling the endpoint contained in the &#x60;previous_url&#x60; and &#x60;next_url&#x60; fields in the API response respectively. If no more campaigns are available beyond the current set of returned results, the &#x60;next_url&#x60; field will be empty. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuckslipsList> ListWithHttpInfo(Integer limit, String before, String after, List<String> include) throws ApiException {
+    public ApiResponse<CampaignsList> listWithHttpInfo(Integer limit, List<String> include, String before, String after) throws ApiException {
         try {
-            okhttp3.Call localVarCall = ListValidateBeforeCall(limit, before, after, include, null);
-            Type localVarReturnType = new TypeToken<BuckslipsList>(){}.getType();
+            okhttp3.Call localVarCall = listValidateBeforeCall(limit, include, before, after, null);
+            Type localVarReturnType = new TypeToken<CampaignsList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             throw e;
@@ -686,26 +691,25 @@ public class BuckslipsApi {
     }
 
     /**
-     * List (asynchronously)
-     * Returns a list of your buckslips. The buckslips are returned sorted by creation date, with the most recently created buckslips appearing first.
+     * list (asynchronously)
+     * Returns a list of your campaigns. The campaigns are returned sorted by creation date, with the most recently created campaigns appearing first.
      * @param limit How many results to return. (optional, default to 10)
+     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param before A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)
      * @param after A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)
-     * @param include Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> description: Returns a list of buckslip objects </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A dictionary with a data property that contains an array of up to &#x60;limit&#x60; campaigns. Each entry in the array is a separate letter. The previous and next page of campaigns can be retrieved by calling the endpoint contained in the &#x60;previous_url&#x60; and &#x60;next_url&#x60; fields in the API response respectively. If no more campaigns are available beyond the current set of returned results, the &#x60;next_url&#x60; field will be empty. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ListAsync(Integer limit, String before, String after, List<String> include, final ApiCallback<BuckslipsList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, List<String> include, String before, String after, final ApiCallback<CampaignsList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = ListValidateBeforeCall(limit, before, after, include, _callback);
-        Type localVarReturnType = new TypeToken<BuckslipsList>(){}.getType();
+        okhttp3.Call localVarCall = listValidateBeforeCall(limit, include, before, after, _callback);
+        Type localVarReturnType = new TypeToken<CampaignsList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -154,11 +154,11 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_THUMBNAILS)
   private List<Thumbnail> thumbnails = null;
-  public List<Thumbnail> getThumbnails() {     
+  public List<Thumbnail> getThumbnails() {
     if (this.thumbnails == null) {
       this.thumbnails = new ArrayList<Thumbnail>();
     }
-    return this.thumbnails; 
+    return this.thumbnails;
   }
 
   public static final String SERIALIZED_NAME_EXPECTED_DELIVERY_DATE = "expected_delivery_date";
@@ -436,11 +436,11 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {     
+  public Map<String, String> getMetadata() {
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata; 
+    return this.metadata;
   }
 
   public static final String SERIALIZED_NAME_MERGE_VARIABLES = "merge_variables";
@@ -531,11 +531,11 @@ public class Letter {
 
   @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)
   private List<TrackingEventNormal> trackingEvents = null;
-  public List<TrackingEventNormal> getTrackingEvents() {     
+  public List<TrackingEventNormal> getTrackingEvents() {
     if (this.trackingEvents == null) {
       this.trackingEvents = new ArrayList<TrackingEventNormal>();
     }
-    return this.trackingEvents; 
+    return this.trackingEvents;
   }
 
   public static final String SERIALIZED_NAME_RETURN_ADDRESS = "return_address";
@@ -543,21 +543,23 @@ public class Letter {
   @SerializedName(SERIALIZED_NAME_RETURN_ADDRESS)
   
   private String returnAddress;
+  
   public  String getReturnAddress() {
     return returnAddress;
   }
-  
+
 
   public void setReturnAddress(String returnAddress) {
     
-    
+
     this.returnAddress = returnAddress;
   }
   
   
+  
   public void setReturnAddress(AddressEditable returnAddress) {
     Gson gson = new Gson();
-    
+
     this.returnAddress = gson.toJson(returnAddress);
   }
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
@@ -700,28 +702,31 @@ public class Letter {
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
   private String returnEnvelope;
+  
   public  String getReturnEnvelope() {
     return returnEnvelope;
   }
-  
+
 
   public void setReturnEnvelope(String returnEnvelope) {
     
-    
+
     this.returnEnvelope = returnEnvelope;
   }
   
   
+  
   public void setReturnEnvelope(ReturnEnvelope returnEnvelope) {
     Gson gson = new Gson();
-    
+
     this.returnEnvelope = gson.toJson(returnEnvelope);
   }
   
   
+  
   public void setReturnEnvelope(Boolean returnEnvelope) {
     
-    
+
     this.returnEnvelope = Boolean.toString(returnEnvelope);
   }
   public static final String SERIALIZED_NAME_PERFORATED_PAGE = "perforated_page";
@@ -1080,7 +1085,7 @@ public class Letter {
 
 
   /*
-  public Letter returnAddress(String returnAddress) {
+  public Letter returnAddress(Object returnAddress) {
     
     this.returnAddress = returnAddress;
     return this;

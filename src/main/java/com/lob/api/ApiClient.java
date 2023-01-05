@@ -1,6 +1,6 @@
 /*
  * Lob
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -22,6 +22,7 @@ import okio.BufferedSink;
 import okio.Okio;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.google.gson.Gson;
 import javax.net.ssl.*;
 import java.io.File;
 import java.io.IOException;
@@ -54,6 +55,11 @@ import com.lob.api.auth.Authentication;
 import com.lob.api.auth.HttpBasicAuth;
 import com.lob.api.auth.HttpBearerAuth;
 import com.lob.api.auth.ApiKeyAuth;
+
+import com.google.gson.JsonSyntaxException;
+import com.lob.model.CreativeResponse;
+import com.lob.model.PostcardDetailsReturned;
+import com.lob.model.LetterDetailsReturned;
 
 public class ApiClient {
 
@@ -796,6 +802,25 @@ public class ApiClient {
             contentType = "application/json";
         }
         if (isJsonMime(contentType)) {
+            if (returnType.equals(CreativeResponse.class)) {
+                JSONObject jsonObject = new JSONObject(respBody);
+                try {
+                    PostcardDetailsReturned details = json.deserialize(jsonObject.get("details").toString(), PostcardDetailsReturned.class);
+                    jsonObject.put("details", details);
+
+                    return json.deserialize(jsonObject.toString(), returnType);
+                } catch (Exception errForPostcardDetailsReturned) {
+                    try {
+                        LetterDetailsReturned details = json.deserialize(jsonObject.get("details").toString(), LetterDetailsReturned.class);
+                        jsonObject.put("details", details);
+
+                        return json.deserialize(jsonObject.toString(), returnType);
+                    } catch (Exception errForLetterDetailsReturned) {
+                        throw new ApiException(errForLetterDetailsReturned.getMessage());
+                    }
+                }
+            }
+
             return json.deserialize(respBody, returnType);
         } else if (returnType.equals(String.class)) {
             // Expecting string, return the raw response body.
