@@ -33,7 +33,7 @@ public class ZipLookupApiSpecTest {
     @Test(
         enabled=true,
         expectedExceptions={ApiException.class},
-        expectedExceptionsMessageRegExp=".*invalid ZIP code.*",
+        expectedExceptionsMessageRegExp=".*invalid zip code.*",
         groups={"Integration", "Lookup", "ZipLookup", "Invalid"}
     )
     public void lookupTestBadParameter() throws ApiException {
