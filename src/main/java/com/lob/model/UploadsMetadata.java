@@ -20,7 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.MultipleComponents;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -29,38 +28,33 @@ import java.util.List;
 
 import com.google.gson.Gson;
 /**
- * MultipleComponentsList
+ * The list of column headers in your file as an array that you want as metadata associated with each mailpiece. See our &lt;a href&#x3D;\&quot;https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#required-columns-2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Campaign Audience Guide&lt;/a&gt; for additional details.
  */
+@ApiModel(description = "The list of column headers in your file as an array that you want as metadata associated with each mailpiece. See our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#required-columns-2\" target=\"_blank\">Campaign Audience Guide</a> for additional details.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class MultipleComponentsList {
-  public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
+public class UploadsMetadata {
+  public static final String SERIALIZED_NAME_COLUMNS = "columns";
 
-  @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<MultipleComponents> addresses = new ArrayList<>();
-  public List<MultipleComponents> getAddresses() {
-    if (this.addresses == null) {
-      this.addresses = new ArrayList<MultipleComponents>();
-    }
-    return this.addresses;
-  }
+  @SerializedName(SERIALIZED_NAME_COLUMNS)
+  private List<String> columns = new ArrayList<>();
 
 
   /*
-  public MultipleComponentsList addresses(List<MultipleComponents> addresses) {
+  public UploadsMetadata columns(List<String> columns) {
     
-    this.addresses = addresses;
+    this.columns = columns;
     return this;
   }
   */
 
-  public MultipleComponentsList addAddressesItem(MultipleComponents addressesItem) {
-    this.addresses.add(addressesItem);
+  public UploadsMetadata addColumnsItem(String columnsItem) {
+    this.columns.add(columnsItem);
     return this;
   }
 
 
-  public void setAddresses(List<MultipleComponents> addresses) {
-    this.addresses = addresses;
+  public void setColumns(List<String> columns) {
+    this.columns = columns;
   }
 
 
@@ -73,20 +67,20 @@ public class MultipleComponentsList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MultipleComponentsList multipleComponentsList = (MultipleComponentsList) o;
-    return Objects.equals(this.addresses, multipleComponentsList.addresses);
+    UploadsMetadata uploadsMetadata = (UploadsMetadata) o;
+    return Objects.equals(this.columns, uploadsMetadata.columns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addresses);
+    return Objects.hash(columns);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
-    sb.append("    addresses: ").append(toIndentedString(addresses)).append("\n");
+    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("}");
     return sb.toString();
   }

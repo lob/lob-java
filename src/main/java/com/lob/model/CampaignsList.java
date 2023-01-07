@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.Card;
+import com.lob.model.Campaign;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -30,17 +30,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 /**
- * CardList
+ * CampaignsList
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class CardList {
+public class CampaignsList {
   public static final String SERIALIZED_NAME_DATA = "data";
 
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Card> data = null;
-  public List<Card> getData() {
+  private List<Campaign> data = null;
+  public List<Campaign> getData() {
     if (this.data == null) {
-      this.data = new ArrayList<Card>();
+      this.data = new ArrayList<Campaign>();
     }
     return this.data;
   }
@@ -196,30 +196,30 @@ public class CardList {
 
 
   /*
-  public CardList data(List<Card> data) {
+  public CampaignsList data(List<Campaign> data) {
     
     this.data = data;
     return this;
   }
   */
 
-  public CardList addDataItem(Card dataItem) {
+  public CampaignsList addDataItem(Campaign dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<Card>();
+      this.data = new ArrayList<Campaign>();
     }
     this.data.add(dataItem);
     return this;
   }
 
 
-  public void setData(List<Card> data) {
+  public void setData(List<Campaign> data) {
     this.data = data;
   }
 
 
 
   /*
-  public CardList _object(String _object) {
+  public CampaignsList _object(String _object) {
     
     this._object = _object;
     return this;
@@ -234,7 +234,7 @@ public class CardList {
 
 
   /*
-  public CardList nextUrl(String nextUrl) {
+  public CampaignsList nextUrl(String nextUrl) {
     
     this.nextUrl = nextUrl;
     return this;
@@ -249,7 +249,7 @@ public class CardList {
 
 
   /*
-  public CardList previousUrl(String previousUrl) {
+  public CampaignsList previousUrl(String previousUrl) {
     
     this.previousUrl = previousUrl;
     return this;
@@ -264,7 +264,7 @@ public class CardList {
 
 
   /*
-  public CardList count(Integer count) {
+  public CampaignsList count(Integer count) {
     
     this.count = count;
     return this;
@@ -279,7 +279,7 @@ public class CardList {
 
 
   /*
-  public CardList totalCount(Integer totalCount) {
+  public CampaignsList totalCount(Integer totalCount) {
     
     this.totalCount = totalCount;
     return this;
@@ -301,13 +301,13 @@ public class CardList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CardList cardList = (CardList) o;
-    return Objects.equals(this.data, cardList.data) &&
-        Objects.equals(this._object, cardList._object) &&
-        Objects.equals(this.nextUrl, cardList.nextUrl) &&
-        Objects.equals(this.previousUrl, cardList.previousUrl) &&
-        Objects.equals(this.count, cardList.count) &&
-        Objects.equals(this.totalCount, cardList.totalCount);
+    CampaignsList campaignsList = (CampaignsList) o;
+    return Objects.equals(this.data, campaignsList.data) &&
+        Objects.equals(this._object, campaignsList._object) &&
+        Objects.equals(this.nextUrl, campaignsList.nextUrl) &&
+        Objects.equals(this.previousUrl, campaignsList.previousUrl) &&
+        Objects.equals(this.count, campaignsList.count) &&
+        Objects.equals(this.totalCount, campaignsList.totalCount);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {

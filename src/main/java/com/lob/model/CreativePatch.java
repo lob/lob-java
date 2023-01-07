@@ -39,21 +39,23 @@ public class CreativePatch {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
+  
   public  String getFrom() {
     return from;
   }
-  
+
 
   public void setFrom(String from) {
     
-    
+
     this.from = from;
   }
   
   
+  
   public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
-    
+
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
@@ -81,11 +83,11 @@ public class CreativePatch {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {     
+  public Map<String, String> getMetadata() {
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata; 
+    return this.metadata;
   }
 
 

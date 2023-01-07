@@ -444,7 +444,7 @@ public class UsComponents {
   public String getZipCode() { return zipCode; }
 
   public void setZipCode (String zipCode) throws IllegalArgumentException {
-    if(!zipCode.matches("^\\d{5}$")) {
+    if(!zipCode.matches("(^$)|(^\\d{5}$)")) {
       throw new IllegalArgumentException("Invalid zip_code provided");
     }
 
@@ -469,7 +469,7 @@ public class UsComponents {
   public String getZipCodePlus4() { return zipCodePlus4; }
 
   public void setZipCodePlus4 (String zipCodePlus4) throws IllegalArgumentException {
-    if(!zipCodePlus4.matches("^\\d{4}$")) {
+    if(!zipCodePlus4.matches("^(\\d{4})?$")) {
       throw new IllegalArgumentException("Invalid zip_code_plus_4 provided");
     }
 
