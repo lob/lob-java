@@ -58,7 +58,7 @@ public class BuckslipOrdersApi {
     }
 
     /**
-     * Build call for Create
+     * Build call for create
      * @param buckslipId The ID of the buckslip to which the buckslip orders belong. (required)
      * @param buckslipOrderEditable  (required)
      * @param _callback Callback for upload/download progress
@@ -71,7 +71,7 @@ public class BuckslipOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call CreateCall(String buckslipId, BuckslipOrderEditable buckslipOrderEditable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(String buckslipId, BuckslipOrderEditable buckslipOrderEditable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = buckslipOrderEditable;
 
         // create path and map variables
@@ -103,26 +103,26 @@ public class BuckslipOrdersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call CreateValidateBeforeCall(String buckslipId, BuckslipOrderEditable buckslipOrderEditable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(String buckslipId, BuckslipOrderEditable buckslipOrderEditable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'buckslipId' is set
         if (buckslipId == null) {
-            throw new ApiException("Missing the required parameter 'buckslipId' when calling Create(Async)");
+            throw new ApiException("Missing the required parameter 'buckslipId' when calling create(Async)");
         }
         
         // verify the required parameter 'buckslipOrderEditable' is set
         if (buckslipOrderEditable == null) {
-            throw new ApiException("Missing the required parameter 'buckslipOrderEditable' when calling Create(Async)");
+            throw new ApiException("Missing the required parameter 'buckslipOrderEditable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = CreateCall(buckslipId, buckslipOrderEditable, _callback);
+        okhttp3.Call localVarCall = createCall(buckslipId, buckslipOrderEditable, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Create
+     * create
      * Creates a new buckslip order given information
      * @param buckslipId The ID of the buckslip to which the buckslip orders belong. (required)
      * @param buckslipOrderEditable  (required)
@@ -135,9 +135,9 @@ public class BuckslipOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BuckslipOrder Create(String buckslipId, BuckslipOrderEditable buckslipOrderEditable) throws ApiException {
+    public BuckslipOrder create(String buckslipId, BuckslipOrderEditable buckslipOrderEditable) throws ApiException {
         try {
-            ApiResponse<BuckslipOrder> localVarResp = CreateWithHttpInfo(buckslipId, buckslipOrderEditable);
+            ApiResponse<BuckslipOrder> localVarResp = createWithHttpInfo(buckslipId, buckslipOrderEditable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -145,7 +145,7 @@ public class BuckslipOrdersApi {
     }
 
     /**
-     * Create
+     * create
      * Creates a new buckslip order given information
      * @param buckslipId The ID of the buckslip to which the buckslip orders belong. (required)
      * @param buckslipOrderEditable  (required)
@@ -158,9 +158,9 @@ public class BuckslipOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuckslipOrder> CreateWithHttpInfo(String buckslipId, BuckslipOrderEditable buckslipOrderEditable) throws ApiException {
+    public ApiResponse<BuckslipOrder> createWithHttpInfo(String buckslipId, BuckslipOrderEditable buckslipOrderEditable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = CreateValidateBeforeCall(buckslipId, buckslipOrderEditable, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(buckslipId, buckslipOrderEditable, null);
             Type localVarReturnType = new TypeToken<BuckslipOrder>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -169,7 +169,7 @@ public class BuckslipOrdersApi {
     }
 
     /**
-     * Create (asynchronously)
+     * create (asynchronously)
      * Creates a new buckslip order given information
      * @param buckslipId The ID of the buckslip to which the buckslip orders belong. (required)
      * @param buckslipOrderEditable  (required)
@@ -183,15 +183,15 @@ public class BuckslipOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call CreateAsync(String buckslipId, BuckslipOrderEditable buckslipOrderEditable, final ApiCallback<BuckslipOrder> _callback) throws ApiException {
+    public okhttp3.Call createAsync(String buckslipId, BuckslipOrderEditable buckslipOrderEditable, final ApiCallback<BuckslipOrder> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = CreateValidateBeforeCall(buckslipId, buckslipOrderEditable, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(buckslipId, buckslipOrderEditable, _callback);
         Type localVarReturnType = new TypeToken<BuckslipOrder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for Retrieve
+     * Build call for get
      * @param buckslipId The ID of the buckslip to which the buckslip orders belong. (required)
      * @param limit How many results to return. (optional, default to 10)
      * @param offset An integer that designates the offset at which to begin returning results. Defaults to 0. (optional, default to 0)
@@ -205,7 +205,7 @@ public class BuckslipOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call RetrieveCall(String buckslipId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String buckslipId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -245,21 +245,21 @@ public class BuckslipOrdersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call RetrieveValidateBeforeCall(String buckslipId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String buckslipId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'buckslipId' is set
         if (buckslipId == null) {
-            throw new ApiException("Missing the required parameter 'buckslipId' when calling Retrieve(Async)");
+            throw new ApiException("Missing the required parameter 'buckslipId' when calling get(Async)");
         }
         
 
-        okhttp3.Call localVarCall = RetrieveCall(buckslipId, limit, offset, _callback);
+        okhttp3.Call localVarCall = getCall(buckslipId, limit, offset, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Retrieve
+     * get
      * Retrieves the buckslip orders associated with the given buckslip id.
      * @param buckslipId The ID of the buckslip to which the buckslip orders belong. (required)
      * @param limit How many results to return. (optional, default to 10)
@@ -273,9 +273,9 @@ public class BuckslipOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public BuckslipOrdersList Retrieve(String buckslipId, Integer limit, Integer offset) throws ApiException {
+    public BuckslipOrdersList get(String buckslipId, Integer limit, Integer offset) throws ApiException {
         try {
-            ApiResponse<BuckslipOrdersList> localVarResp = RetrieveWithHttpInfo(buckslipId, limit, offset);
+            ApiResponse<BuckslipOrdersList> localVarResp = getWithHttpInfo(buckslipId, limit, offset);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -283,7 +283,7 @@ public class BuckslipOrdersApi {
     }
 
     /**
-     * Retrieve
+     * get
      * Retrieves the buckslip orders associated with the given buckslip id.
      * @param buckslipId The ID of the buckslip to which the buckslip orders belong. (required)
      * @param limit How many results to return. (optional, default to 10)
@@ -297,9 +297,9 @@ public class BuckslipOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuckslipOrdersList> RetrieveWithHttpInfo(String buckslipId, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<BuckslipOrdersList> getWithHttpInfo(String buckslipId, Integer limit, Integer offset) throws ApiException {
         try {
-            okhttp3.Call localVarCall = RetrieveValidateBeforeCall(buckslipId, limit, offset, null);
+            okhttp3.Call localVarCall = getValidateBeforeCall(buckslipId, limit, offset, null);
             Type localVarReturnType = new TypeToken<BuckslipOrdersList>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -308,7 +308,7 @@ public class BuckslipOrdersApi {
     }
 
     /**
-     * Retrieve (asynchronously)
+     * get (asynchronously)
      * Retrieves the buckslip orders associated with the given buckslip id.
      * @param buckslipId The ID of the buckslip to which the buckslip orders belong. (required)
      * @param limit How many results to return. (optional, default to 10)
@@ -323,9 +323,9 @@ public class BuckslipOrdersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call RetrieveAsync(String buckslipId, Integer limit, Integer offset, final ApiCallback<BuckslipOrdersList> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String buckslipId, Integer limit, Integer offset, final ApiCallback<BuckslipOrdersList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = RetrieveValidateBeforeCall(buckslipId, limit, offset, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(buckslipId, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<BuckslipOrdersList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

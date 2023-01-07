@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**from** | **String** | Must either be an address ID or an inline object with correct address parameters. | 
-**to** | **String** | Must either be an address ID or an inline object with correct address parameters. | 
+**from** | **Object** | Must either be an address ID or an inline object with correct address parameters. | 
+**to** | **Object** | Must either be an address ID or an inline object with correct address parameters. | 
 **bankAccount** | **String** |  | 
 **amount** | **Float** | The payment amount to be sent in US dollars. | 
 **logo** | **String** | Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check. |  [optional]

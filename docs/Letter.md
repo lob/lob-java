@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **extraService** | **String** | Add an extra service to your letter. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred. |  [optional]
 **trackingNumber** | **String** | The tracking number, if applicable, will appear here when it becomes available. Dummy tracking numbers are not created in test mode. |  [optional]
 **trackingEvents** | [**List&lt;TrackingEventNormal&gt;**](TrackingEventNormal.md) | Tracking events are not populated for registered or regular (no extra service) letters. |  [optional]
-**returnAddress** | **String** | Specifies the address the return envelope will be sent back to. This is an optional argument that is available if an account is signed up for the return envelope tracking beta, and has &#x60;return_envelope&#x60;, and &#x60;perforated_page&#x60; fields populated in the API request. |  [optional]
+**returnAddress** | **Object** | Specifies the address the return envelope will be sent back to. This is an optional argument that is available if an account is signed up for the return envelope tracking beta, and has &#x60;return_envelope&#x60;, and &#x60;perforated_page&#x60; fields populated in the API request. |  [optional]
 **mailType** | **MailType** |  |  [optional]
 **color** | **Boolean** | Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white. |  [optional]
 **doubleSided** | **Boolean** | Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;. |  [optional]

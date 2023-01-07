@@ -111,58 +111,6 @@ try {
 
 
 
-### List
-```bash
-curl -X GET "https://api.lob.com/v1/addresses?limit=2" \
-  -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
-```
-
-```java
-AddressesApi apiInstance = new AddressesApi(config);
-
-try {
-  AddressList response = apiInstance.list(
-    2, // limit
-    null, // before
-    null, // after
-    includeList, // include
-    dateCreated, // dateCreated
-    metadata // metadata
-  );
-} catch (ApiException e) {
-  e.printStackTrace();
-}
-```
-
-
-
-
-### List
-```bash
-curl -X GET "https://api.lob.com/v1/addresses?limit=2" \
-  -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
-```
-
-```java
-AddressesApi apiInstance = new AddressesApi(config);
-
-try {
-  AddressList response = apiInstance.list(
-    2, // limit
-    null, // before
-    null, // after
-    includeList, // include
-    dateCreated, // dateCreated
-    metadata // metadata
-  );
-} catch (ApiException e) {
-  e.printStackTrace();
-}
-```
-
-
-
-
 
 
 
@@ -920,8 +868,8 @@ TemplatesApi apiInstance = new TemplatesApi(config);
 
 try {
   TemplateWritable templateWritable = new TemplateWritable(); 
-  templateWritable.set("Test Template");
-  templateWritable.set("<html>HTML for {{name}}</html>");
+  templateWritable.setDescription("Test Template");
+  templateWritable.setHtml("<html>HTML for {{name}}</html>");
 
   Template result = apiInstance.create(templateWritable);
 } catch (ApiException e) {
@@ -995,8 +943,8 @@ TemplateVersionsApi apiInstance = new TemplateVersionsApi(config);
 
 try {
   TemplateVersionWritable templateVersionWritable = new TemplateVersionWritable(); 
-  templateVersionWritable.set("Second Version");
-  templateVersionWritable.set("<html>Second HTML for {{name}}</html>");
+  templateVersionWritable.setDescription("Second Version");
+  templateVersionWritable.setHtml("<html>Second HTML for {{name}}</html>");
 
   TemplateVersion result = apiInstance.create(templateVersionWritable);
 } catch (ApiException e) {
