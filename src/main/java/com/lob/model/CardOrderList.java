@@ -38,11 +38,11 @@ public class CardOrderList {
 
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<CardOrder> data = null;
-  public List<CardOrder> getData() {     
+  public List<CardOrder> getData() {
     if (this.data == null) {
       this.data = new ArrayList<CardOrder>();
     }
-    return this.data; 
+    return this.data;
   }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";

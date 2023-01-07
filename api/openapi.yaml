@@ -940,12 +940,6 @@ paths:
       summary: List
       tags:
       - Buckslips
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl -X GET "https://api.lob.com/v1/buckslips?limit=2" \
-            -u <YOUR API KEY>:
-        label: CURL
       x-accepts: application/json
     post:
       description: Creates a new buckslip given information
@@ -976,18 +970,11 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Create
+      summary: create
       tags:
       - Buckslips
-      x-codeSamples:
-      - lang: Shell
-        source: |
-          curl https://api.lob.com/v1/buckslips \
-            -u <YOUR API KEY>: \
-            -d "description=Test buckslip" \
-            -d "front=https://s3-us-west-2.amazonaws.com/public.lob.com/assets/buckslip.pdf" \
-            -d "back=https://s3-us-west-2.amazonaws.com/public.lob.com/assets/buckslip.pdf"
-        label: CURL
+      x-code-snippet:
+        multipart: true
       x-contentType: application/json
       x-accepts: application/json
   /buckslips/{buckslip_id}:
@@ -1018,7 +1005,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Delete
+      summary: delete
       tags:
       - Buckslips
       x-codeSamples:
@@ -1055,7 +1042,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Retrieve
+      summary: get
       tags:
       - Buckslips
       x-codeSamples:
@@ -1104,7 +1091,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Update
+      summary: update
       tags:
       - Buckslips
       x-codeSamples:
@@ -1167,7 +1154,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Retrieve
+      summary: get
       tags:
       - Buckslip Orders
       x-codeSamples:
@@ -1215,7 +1202,7 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
-      summary: Create
+      summary: create
       tags:
       - Buckslip Orders
       x-codeSamples:
@@ -4275,6 +4262,8 @@ paths:
                 $ref: '#/components/schemas/lob_error'
           description: Lob uses RESTful HTTP response codes to indicate success or
             failure of an API request.
+        x-code-snippet:
+          multipart: true
       summary: create_upload
       tags:
       - Uploads
@@ -4438,6 +4427,8 @@ paths:
       summary: upload_file
       tags:
       - Uploads
+      x-template-config:
+        upload_file: true
       x-contentType: multipart/form-data
       x-accepts: application/json
   /uploads/{upl_id}/exports:
@@ -6027,6 +6018,7 @@ components:
     country_extended:
       description: Must be a 2 letter country short-name code (ISO 3166).
       enum:
+      - ""
       - AD
       - AE
       - AF
@@ -6789,6 +6781,8 @@ components:
           tsNonString: true
           py_val: BankTypeEnum("company")
           pyNonString: true
+          ruby_val: BankTypeEnum::COMPANY
+          rubyNonString: true
         lob_response_type: BankAccount
         lob_response_var: bankAccount
         snake_case_lob_response_var: bank_account
@@ -6899,8 +6893,10 @@ components:
         resource:
         - key: description
           val: Usage group used for the Marketing Department's resource sends
+          pascal_case_key: Description
         - key: name
           val: Marketing Department
+          pascal_case_key: Name
         lob_response_type: BillingGroup
         lob_response_var: bg
         plural_object_type: BillingGroups
@@ -7436,7 +7432,7 @@ components:
           x-template-config:
             isComplexObject: true
             base-type:
-              java: ArrayList<BuckSlip>
+              java: ArrayList<Buckslip>
         object:
           description: Value is type of resource.
           type: string
@@ -7461,14 +7457,12 @@ components:
       x-template-config:
         go-pagination: true
       x-code-snippet:
-        address: true
+        buckslip: true
         list: true
-        object_type: Address
-        curl_form: addresses
-        plural_response_var: addresses
-        javaSupported: true
-        typescriptSupported: true
-        plural_object_type: Addresses
+        object_type: Buckslip
+        curl_form: buckslips
+        plural_response_var: buckslips
+        plural_object_type: Buckslips
         args:
         - arg: 2
           notNull: true
@@ -7480,20 +7474,7 @@ components:
         - arg: includeList
           notNull: true
           param: include
-        - arg: dateCreated
-          notNull: true
-          param: dateCreated
-        - arg: metadata
-          notNull: true
-          param: metadata
-          last: true
-        metadata:
-          key: name
-          val: Harry
         include: total_count
-        date_created:
-          key: lt
-          val: DateTime.Today.AddMonths(-1)
     buckslip_editable:
       properties:
         front:
@@ -7581,7 +7562,7 @@ components:
       x-template-config:
         go-pagination: true
       x-code-snippet:
-        address: true
+        buckslip: true
         list: true
         object_type: Address
         curl_form: addresses
@@ -7736,31 +7717,31 @@ components:
               attribute:
               - key: primary_line
                 val: 210 King Street
-                pascal_key: PrimaryLine
+                pascal_case_key: PrimaryLine
               - key: city
                 val: San Francisco
-                pascal_key: City
+                pascal_case_key: City
               - key: state
                 val: CA
-                pascal_key: State
+                pascal_case_key: State
               - key: zip_code
                 val: 94017
-                pascal_key: ZipCode
+                pascal_case_key: ZipCode
           - index: 1
             attributes:
               attribute:
               - key: primary_line
                 val: 185 BERRY ST STE 6600
-                pascal_key: PrimaryLine
+                pascal_case_key: PrimaryLine
               - key: city
                 val: SAN FRANCISCO
-                pascal_key: City
+                pascal_case_key: City
               - key: state
                 val: CA
-                pascal_key: State
+                pascal_case_key: State
               - key: zip_code
                 val: 94017
-                pascal_key: ZipCode
+                pascal_case_key: ZipCode
         resource_constructors:
         - index: 0
           attributes:
@@ -7817,7 +7798,7 @@ components:
       maxLength: 2
       type: string
     zip_code_plus_4:
-      pattern: ^\d{4}$
+      pattern: ^(\d{4})?$
       type: string
     zip_code_type:
       description: |
@@ -7940,10 +7921,10 @@ components:
           type: string
         zip_code:
           description: The 5-digit ZIP code
-          pattern: ^\d{5}$
+          pattern: (^$)|(^\d{5}$)
           type: string
         zip_code_plus_4:
-          pattern: ^\d{4}$
+          pattern: ^(\d{4})?$
           type: string
         zip_code_type:
           $ref: '#/components/schemas/zip_code_type'
@@ -8567,38 +8548,42 @@ components:
               attribute:
               - key: primary_line
                 val: 35 Tower Hill
-                pascal_key: PrimaryLine
+                pascal_case_key: PrimaryLine
               - key: city
                 val: London
-                pascal_key: City
+                pascal_case_key: City
               - key: postal_code
                 val: EC3N 4DR
-                pascal_key: PostalCode
+                pascal_case_key: PostalCode
               - key: country
                 val: GB
-                pascal_key: Country
+                pascal_case_key: Country
                 py_val: CountryExtended("GB")
                 pyNonString: true
+                ruby_val: CountryExtended::GB
+                rubyNoneString: true
           - index: 1
             attributes:
               attribute:
               - key: primary_line
                 val: 370 Water St
-                pascal_key: PrimaryLine
+                pascal_case_key: PrimaryLine
               - key: city
                 val: Summerside
-                pascal_key: City
+                pascal_case_key: City
               - key: state
                 val: Prince Edward Island
-                pascal_key: State
+                pascal_case_key: State
               - key: postal_code
                 val: C1N 1C4
-                pascal_key: PostalCode
+                pascal_case_key: PostalCode
               - key: country
                 val: CA
-                pascal_key: Country
+                pascal_case_key: Country
                 py_val: CountryExtended("CA")
                 pyNonString: true
+                ruby_val: CountryExtended::CA
+                rubyNoneString: true
         resource_constructors:
         - index: 0
           attributes:
@@ -9051,12 +9036,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         resource_type:
@@ -9071,17 +9058,21 @@ components:
             isOneOf: true
             type-composite:
             - base-type1:
+                java: String
+                ruby: String
+                isRef: true
+            - base-type2:
                 java: PostcardDetailsWritable
                 typescript: Models.PostcardDetailsWritable
                 python: PostcardDetailsWritable
+                ruby: PostcardDetailsWritable
                 python_path: lob_python.model.postcard_details_writable
                 hasPath: true
-                default: true
-                isRef: true
-            - base-type2:
+            - base-type3:
                 java: LetterDetailsWritable
                 python: LetterDetailsWritable
                 typescript: Models.LetterDetailsWritable
+                ruby: LetterDetailsWritable
                 python_path: lob_python.model.letter_details_writable
                 hasPath: true
         metadata:
@@ -9112,6 +9103,10 @@ components:
             type: object
           title: Template Previews
           type: array
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: ArrayList<Object>
         deleted:
           description: Only returned if the resource has been successfully deleted.
           type: boolean
@@ -9121,6 +9116,10 @@ components:
           maxItems: 0
           minItems: 0
           type: array
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: ArrayList<Campaign>
         date_created:
           description: A timestamp in ISO 8601 format of the date the resource was
             created.
@@ -9445,7 +9444,6 @@ components:
             base-type:
               java: HashMap<String,String>
         is_draft:
-          default: true
           description: Whether or not the campaign is still a draft.
           type: boolean
         use_type:
@@ -9460,6 +9458,8 @@ components:
         update: true
         resource_id: cmp_e05ee61ff80764b
         lob_response_var: campaign
+        lob_response_type: Campaign
+        resource_var_name: campaignUpdatable
         snake_case_resource_var_name: campaign_updatable
         resource_type: CampaignUpdatable
         plural_object_type: Campaigns
@@ -9767,12 +9767,16 @@ components:
         resource:
         - key: front
           val: https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf
+          pascal_case_key: Front
         - key: back
           val: https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf
+          pascal_case_key: Back
         - key: size
           val: 2.125x3.375
+          pascal_case_key: Size
         - key: description
           val: Test Card
+          pascal_case_key: Description
         lob_response_type: Card
         lob_response_var: card
         plural_object_type: Cards
@@ -9811,6 +9815,8 @@ components:
         update: true
         resource_id: card_6afffd19045076c
         lob_response_var: card
+        lob_response_type: Card
+        resource_var_name: cardUpdatable
         snake_case_resource_var_name: card_updatable
         resource_type: CardUpdatable
         plural_object_type: Cards
@@ -9825,6 +9831,8 @@ components:
           val: 10000
           pyNonString: true
           py_val: 10000
+          rubyNonString: true
+          ruby_val: 10000
     card_deletion:
       description: Lob uses RESTful HTTP response codes to indicate success or failure
         of an API request. In general, 2xx indicates success, 4xx indicate an input
@@ -10034,6 +10042,9 @@ components:
           val: 10000
           py_val: 10000
           pyNonString: true
+          pascal_case_key: Quantity
+          rubyNonString: true
+          ruby_val: 10000
         lob_response_type: CardOrder
         lob_response_var: cardOrder
         plural_object_type: CardOrders
@@ -10849,7 +10860,6 @@ components:
         from:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -10857,18 +10867,19 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressDomestic
                 python: AddressDomestic
                 typescript: Models.AddressDomestic
+                ruby: AddressDomestic
                 python_path: lob_python.model.address_domestic
                 hasPath: true
         to:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -10876,12 +10887,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressDomestic
                 python: AddressDomestic
                 typescript: Models.AddressDomestic
+                ruby: AddressDomestic
                 hasPath: false
         bank_account:
           nullable: true
@@ -11018,6 +11031,10 @@ components:
           tsNonString: true
           py_val: 22.5
           pyNonString: true
+          ruby_val: 22.5
+          go_val: 22.5
+          rubyNonString: true
+          goNonString: true
         - key: memo
           pascal_case_key: Memo
           val: rent
@@ -11073,27 +11090,39 @@ components:
           type: AddressEditable
           obj:
           - inner_camel_case_key: addressLine1
+            inner_pascal_case_key: AddressLine1
             inner_val: 210 King St
           - inner_camel_case_key: addressLine2
+            inner_pascal_case_key: AddressLine2
             inner_val: '# 6100'
           - inner_camel_case_key: addressCity
+            inner_pascal_case_key: AddressCity
             inner_val: San Francisco
           - inner_camel_case_key: addressState
+            inner_pascal_case_key: AddressState
             inner_val: CA
           - inner_camel_case_key: addressZip
+            inner_pascal_case_key: AddressZip
             inner_val: 94107
-          - inner_camel_case_key: addressCounty
+          - inner_camel_case_key: addressCountry
+            inner_pascal_case_key: AddressCountry
             dotnet_inner_val: default(CountryExtended)
+            go_inner_val: lob.COUNTRYEXTENDED_US
             dotnetNonString: true
+            goNonString: true
           - inner_camel_case_key: description
+            inner_pascal_case_key: Description
             val: some address description
           - inner_camel_case_key: name
+            inner_pascal_case_key: Name
             inner_val: Harry Zhang
         resource_constructor:
         - camel_case_key: from
           val: adr_249af768103d2810
         - camel_case_key: to
           dotnet_val: to.ToJson()
+          go_val: checkCreate.SetTo(to)
+          goNonString: true
           dotnetNonString: true
         - camel_case_key: bank_account
           val: bank_8cad8df5354d33f
@@ -11123,6 +11152,12 @@ components:
           dotnetNonString: true
         - camel_case_key: memo
           val: rent
+    resource_type_enum:
+      description: Mailpiece type for the creative
+      enum:
+      - letter
+      - postcard
+      type: string
     creative_writable:
       properties:
         from:
@@ -11135,12 +11170,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         description:
@@ -11166,11 +11203,7 @@ components:
             base-type:
               java: HashMap<String,String>
         resource_type:
-          description: Mailpiece type for the creative
-          enum:
-          - letter
-          - postcard
-          type: string
+          $ref: '#/components/schemas/resource_type_enum'
         campaign_id:
           description: Unique identifier prefixed with `cmp_`.
           pattern: ^cmp_[a-zA-Z0-9]+$
@@ -11181,10 +11214,11 @@ components:
           x-template-config:
             isOneOf: true
             type-composite:
-            - base-type1:
+            - base-type3:
                 java: PostcardDetailsWritable
                 typescript: Models.PostcardDetailsWritable
                 python: PostcardDetailsWritable
+                ruby: PostcardDetailsWritable
                 python_path: lob_python.model.postcard_details_writable
                 hasPath: true
                 default: true
@@ -11193,6 +11227,7 @@ components:
                 java: LetterDetailsWritable
                 python: LetterDetailsWritable
                 typescript: Models.LetterDetailsWritable
+                ruby: LetterDetailsWritable
                 python_path: lob_python.model.letter_details_writable
                 hasPath: true
         file:
@@ -11218,17 +11253,23 @@ components:
         curl_form: creatives
         resource:
         - key: campaign_id
+          pascal_case_key: CampaignId
           val: cmp_e05ee61ff80764b
         - key: resource_type
+          pascal_case_key: ResourceType
           val: postcard
         - key: description
+          pascal_case_key: Description
           val: Our 4x6 postcard creative
         - key: from
+          pascal_case_key: From
           val: adr_210a8d4b0b76d77b
           underscoreKey: true
         - key: front
+          pascal_case_key: Front
           val: tmpl_4aa14648113e45b
         - key: back
+          pascal_case_key: Back
           val: tmpl_4aa14648113e45b
         nested_objs:
         - key: details
@@ -11383,12 +11424,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         resource_type:
@@ -11403,17 +11446,21 @@ components:
             isOneOf: true
             type-composite:
             - base-type1:
+                java: String
+                ruby: String
+                isRef: true
+            - base-type2:
                 java: PostcardDetailsWritable
                 typescript: Models.PostcardDetailsWritable
                 python: PostcardDetailsWritable
+                ruby: PostcardDetailsWritable
                 python_path: lob_python.model.postcard_details_writable
                 hasPath: true
-                default: true
-                isRef: true
-            - base-type2:
+            - base-type3:
                 java: LetterDetailsWritable
                 python: LetterDetailsWritable
                 typescript: Models.LetterDetailsWritable
+                ruby: LetterDetailsWritable
                 python_path: lob_python.model.letter_details_writable
                 hasPath: true
         metadata:
@@ -11444,6 +11491,10 @@ components:
             type: object
           title: Template Previews
           type: array
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: ArrayList<Object>
         deleted:
           description: Only returned if the resource has been successfully deleted.
           type: boolean
@@ -11453,6 +11504,10 @@ components:
             $ref: '#/components/schemas/campaign'
           title: Campaigns
           type: array
+          x-template-config:
+            isComplexObject: true
+            base-type:
+              java: ArrayList<Campaign>
         date_created:
           description: A timestamp in ISO 8601 format of the date the resource was
             created.
@@ -11490,12 +11545,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         description:
@@ -11526,6 +11583,8 @@ components:
         update: true
         resource_id: crv_2a3b096c409b32c
         lob_response_var: creative
+        lob_response_type: Creative
+        resource_var_name: creativePatch
         snake_case_resource_var_name: creative_patch
         resource_type: CreativePatch
         plural_object_type: Creatives
@@ -11718,6 +11777,8 @@ components:
           javaNonString: true
           py_val: CountryExtended("CA")
           pyNonString: true
+          ruby_val: CountryExtended::CA
+          rubyNonString: true
         resource_constructor:
         - camel_case_key: addressPrefix
           val: 340 Wat
@@ -11777,7 +11838,7 @@ components:
             The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state.
           type: string
         country:
-          $ref: '#/components/schemas/country_extended_expanded'
+          $ref: '#/components/schemas/country_extended'
         zip_code:
           description: A 5-digit zip code. Left empty if a test key is used.
           type: string
@@ -11889,21 +11950,23 @@ components:
           attributes:
           - key: primary_line
             val: 370 Water St
-            pascal_key: PrimaryLine
+            pascal_case_key: PrimaryLine
           - key: city
             val: Summerside
-            pascal_key: City
+            pascal_case_key: City
           - key: state
             val: Prince Edward Island
-            pascal_key: State
+            pascal_case_key: State
           - key: postal_code
             val: C1N 1C4
-            pascal_key: PostalCode
+            pascal_case_key: PostalCode
           - key: country
             val: CA
-            pascal_key: Country
+            pascal_case_key: Country
             py_val: CountryExtended("CA")
             pyNonString: true
+            ruby_val: CountryExtended::CA
+            rubyNonString: true
         resource_constructor:
         - camel_case_key: recipient
           dotnet_val: "null"
@@ -12051,7 +12114,6 @@ components:
         This is an optional argument that is available if an account is signed up
         for the return envelope tracking beta, and has `return_envelope`, and `perforated_page`
         fields populated in the API request.
-      type: string
       x-template-config:
         isOneOf: true
         type-composite:
@@ -12059,12 +12121,14 @@ components:
             java: String
             typescript: string
             python: str
+            ruby: String
             default: true
             isRef: true
         - base-type2:
             java: AddressEditable
             typescript: Models.AddressEditable
             python: AddressEditable
+            ruby: AddressEditable
             python_path: lob_python.model.address_editable
             hasPath: true
     letter:
@@ -12083,7 +12147,7 @@ components:
           id: id
           url: url
           object: envelope
-        return_address: return_address
+        return_address: ""
         tracking_number: tracking_number
         from:
           metadata:
@@ -12282,7 +12346,6 @@ components:
             to. This is an optional argument that is available if an account is signed
             up for the return envelope tracking beta, and has `return_envelope`, and
             `perforated_page` fields populated in the API request.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -12290,12 +12353,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 typescript: Models.AddressEditable
                 python: AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         mail_type:
@@ -12327,6 +12392,7 @@ components:
                 java: String
                 typescript: boolean
                 python: bool
+                ruby: Boolean
                 hasPath: false
                 default: true
                 isRef: true
@@ -12334,12 +12400,12 @@ components:
                 java: ReturnEnvelope
                 typescript: Models.ReturnEnvelope
                 python: ReturnEnvelope
+                ruby: ReturnEnvelope
                 hasPath: true
                 python_path: lob_python.model.return_envelope
-                isRef: true
             - base-type3:
                 java: Boolean
-                isRef: true
+                bool: true
             default: false
         perforated_page:
           description: Required if `return_envelope` is `true`. The number of the
@@ -12420,7 +12486,7 @@ components:
             id: id
             url: url
             object: envelope
-          return_address: return_address
+          return_address: ""
           tracking_number: tracking_number
           from:
             metadata:
@@ -12493,7 +12559,7 @@ components:
             id: id
             url: url
             object: envelope
-          return_address: return_address
+          return_address: ""
           tracking_number: tracking_number
           from:
             metadata:
@@ -12772,12 +12838,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: Boolean
                 typescript: boolean
                 python: bool
+                ruby: Boolean
                 hasPath: false
         perforated_page:
           description: Required if `return_envelope` is `true`. The number of the
@@ -12793,7 +12861,6 @@ components:
         to:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -12801,18 +12868,19 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         from:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -12820,12 +12888,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 hasPath: false
         file:
           description: PDF file containing the letter's formatting.
@@ -12942,22 +13012,32 @@ components:
           type: AddressEditable
           obj:
           - inner_camel_case_key: addressLine1
+            inner_pascal_case_key: AddressLine1
             inner_val: 210 King St
           - inner_camel_case_key: addressLine2
+            inner_pascal_case_key: AddressLine2
             inner_val: '# 6100'
           - inner_camel_case_key: addressCity
+            inner_pascal_case_key: AddressCity
             inner_val: San Francisco
           - inner_camel_case_key: addressState
+            inner_pascal_case_key: AddressState
             inner_val: CA
           - inner_camel_case_key: addressZip
+            inner_pascal_case_key: AddressZip
             inner_val: 94107
           - inner_camel_case_key: addressCounty
             dotnet_inner_val: default(CountryExtended)
+            inner_pascal_case_key: AddressCountry
+            go_inner_val: lob.COUNTRYEXTENDED_US
             dotnetNonString: true
+            goNonString: true
           - inner_camel_case_key: description
+            inner_pascal_case_key: Description
             dotnet_inner_val: "null"
             dotnetNonString: true
           - inner_camel_case_key: name
+            inner_pascal_case_key: Name
             inner_val: Harry Zhang
         resource_constructor:
         - camel_case_key: description
@@ -12994,6 +13074,8 @@ components:
           dotnetNonString: true
         - camel_case_key: to
           dotnet_val: to.ToJson()
+          go_val: letterCreate.SetTo(to)
+          goNonString: true
           dotnetNonString: true
         - camel_case_key: from
           val: adr_249af768103d2810
@@ -13633,7 +13715,6 @@ components:
         to:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -13641,18 +13722,19 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         from:
           description: Required if `to` address is international. Must either be an
             address ID or an inline object with correct address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -13660,12 +13742,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 hasPath: false
         size:
           $ref: '#/components/schemas/postcard_size'
@@ -13807,27 +13891,39 @@ components:
           type: AddressEditable
           obj:
           - inner_camel_case_key: addressLine1
+            inner_pascal_case_key: AddressLine1
             inner_val: 210 King St
           - inner_camel_case_key: addressLine2
+            inner_pascal_case_key: AddressLine2
             inner_val: '# 6100'
           - inner_camel_case_key: addressCity
+            inner_pascal_case_key: AddressCity
             inner_val: San Francisco
           - inner_camel_case_key: addressState
+            inner_pascal_case_key: AddressState
             inner_val: CA
           - inner_camel_case_key: addressZip
+            inner_pascal_case_key: AddressZip
             inner_val: 94107
           - inner_camel_case_key: addressCounty
+            inner_pascal_case_key: AddressCountry
+            go_inner_val: lob.COUNTRYEXTENDED_US
             dotnet_inner_val: CountryExtended.US
             dotnetNonString: true
+            goNonString: true
           - inner_camel_case_key: description
+            inner_pascal_case_key: Description
             dotnet_inner_val: "null"
             dotnetNonString: true
           - inner_camel_case_key: name
+            inner_pascal_case_key: Name
             inner_val: Harry Zhang
         resource_constructor:
         - camel_case_key: to
           dotnet_val: to.ToJson()
+          go_val: postcardCreate.SetTo(to)
           dotnetNonString: true
+          goNonString: true
         - camel_case_key: from
           val: adr_249af768103d2810
         - camel_case_key: size
@@ -14092,12 +14188,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: Address
                 python: Address
                 typescript: Models.Address
+                ruby: Address
                 python_path: lob_python.model.address
                 hasPath: true
         from:
@@ -14108,12 +14206,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressDomesticExpanded
                 python: AddressDomesticExpanded
                 typescript: Models.AddressDomesticExpanded
+                ruby: AddressDomesticExpanded
                 python_path: lob_python.model.address_domestic_expanded
                 hasPath: true
         size:
@@ -14452,7 +14552,6 @@ components:
         to:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -14460,18 +14559,19 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 python_path: lob_python.model.address_editable
                 hasPath: true
         from:
           description: Must either be an address ID or an inline object with correct
             address parameters.
-          type: string
           x-template-config:
             isOneOf: true
             type-composite:
@@ -14479,12 +14579,14 @@ components:
                 java: String
                 typescript: string
                 python: str
+                ruby: String
                 default: true
                 isRef: true
             - base-type2:
                 java: AddressEditable
                 python: AddressEditable
                 typescript: Models.AddressEditable
+                ruby: AddressEditable
                 hasPath: false
         size:
           $ref: '#/components/schemas/self_mailer_size'
@@ -14625,27 +14727,39 @@ components:
           type: AddressEditable
           obj:
           - inner_camel_case_key: addressLine1
+            inner_pascal_case_key: AddressLine1
             inner_val: 210 King St
           - inner_camel_case_key: addressLine2
+            inner_pascal_case_key: AddressLine2
             inner_val: '# 6100'
           - inner_camel_case_key: addressCity
+            inner_pascal_case_key: AddressCity
             inner_val: San Francisco
           - inner_camel_case_key: addressState
+            inner_pascal_case_key: AddressState
             inner_val: CA
           - inner_camel_case_key: addressZip
+            inner_pascal_case_key: AddressZip
             inner_val: 94107
-          - inner_camel_case_key: addressCounty
+          - inner_camel_case_key: addressCountry
+            inner_pascal_case_key: AddressCountry
             dotnet_inner_val: default(CountryExtended)
+            go_inner_val: lob.COUNTRYEXTENDED_US
             dotnetNonString: true
+            goNonString: true
           - inner_camel_case_key: description
+            inner_pascal_case_key: Description
             dotnet_inner_val: "null"
             dotnetNonString: true
           - inner_camel_case_key: name
+            inner_pascal_case_key: Name
             inner_val: Harry Zhang
         resource_constructor:
         - camel_case_key: to
           dotnet_val: to.ToJson()
+          go_val: selfMailerCreate.SetTo(to)
           dotnetNonString: true
+          goNonString: true
         - camel_case_key: from
           val: adr_249af768103d2810
         - camel_case_key: size
@@ -14788,6 +14902,15 @@ components:
         update: true
         template_id: tmpl_c94e83ca2cd5121
         resource_id: vrsn_534e339882d2282
+        lob_response_var: templateVersion
+        lob_response_type: TemplateVersion
+        resource_var_name: templateVersionUpdatable
+        snake_case_resource_var_name: template_version_updatable
+        resource_type: TemplateUpdate
+        plural_object_type: TemplateVersions
+        props:
+        - key: description
+          val: updated template version
     template_version_deletion:
       description: Lob uses RESTful HTTP response codes to indicate success or failure
         of an API request. In general, 2xx indicates success, 4xx indicate an input
@@ -14819,6 +14942,7 @@ components:
         curl_form: templates/tmpl_4aa14648113e45b/versions
         template_id: tmpl_4aa14648113e45b
         resource_id: vrsn_534e339882d2282
+        response_var: templateVersion
         javaSupported: true
     template_version_list:
       example:
@@ -14909,6 +15033,7 @@ components:
           param: dateCreated
           last: true
         include: total_count
+        tmpl_id: tmpl_4aa14648113e45b
         date_created:
           key: lt
           val: DateTime.Today.AddMonths(-1)
@@ -14944,8 +15069,10 @@ components:
         resource:
         - key: description
           val: Second Version
+          pascal_case_key: Description
         - key: html
           val: <html>Second HTML for {{name}}</html>
+          pascal_case_key: Html
           dataUrlencode: true
         javaSupported: true
         lob_response_type: TemplateVersion
@@ -15091,6 +15218,17 @@ components:
         update: true
         resource_id: tmpl_c94e83ca2cd5121
         version_id: vrsn_362184d96d9b0c9
+        lob_response_var: template
+        lob_response_type: Template
+        resource_var_name: templateUpdate
+        snake_case_resource_var_name: template_update
+        resource_type: TemplateUpdate
+        plural_object_type: Templates
+        props:
+        - key: description
+          val: updated template
+        - key: published_version
+          val: vrsn_362184d96d9b0c9
     template_deletion:
       description: Lob uses RESTful HTTP response codes to indicate success or failure
         of an API request. In general, 2xx indicates success, 4xx indicate an input
@@ -15121,6 +15259,7 @@ components:
         object_type: Template
         plural_object_type: Templates
         curl_form: templates
+        response_var: template
         resource_id: tmpl_df934eeda694203
         javaSupported: true
     template_list:
@@ -15320,8 +15459,10 @@ components:
         resource:
         - key: description
           val: Test Template
+          pascal_case_key: Description
         - key: html
           val: <html>HTML for {{name}}</html>
+          pascal_case_key: Html
           dataUrlencode: true
         javaSupported: true
         lob_response_type: Template
@@ -15355,19 +15496,151 @@ components:
       - Errored
       title: Upload State
       type: string
+    required_address_column_mapping:
+      description: The mapping of column headers in your file to Lob-required fields
+        for the resource created. See our <a href="https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#required-columns-2"
+        target="_blank">Campaign Audience Guide</a> for additional details.
+      example:
+        name: recipient_name
+        address_line1: primary_line
+        address_city: city
+        address_state: state
+        address_zip: zip_code
+      properties:
+        name:
+          default: "null"
+          description: The column header from the csv file that should be mapped to
+            the required field `name`
+          nullable: true
+          type: string
+        address_line1:
+          default: "null"
+          description: The column header from the csv file that should be mapped to
+            the required field `address_line1`
+          nullable: true
+          type: string
+        address_city:
+          default: "null"
+          description: The column header from the csv file that should be mapped to
+            the required field `address_city`
+          nullable: true
+          type: string
+        address_state:
+          default: "null"
+          description: The column header from the csv file that should be mapped to
+            the required field `address_state`
+          nullable: true
+          type: string
+        address_zip:
+          default: "null"
+          description: The column header from the csv file that should be mapped to
+            the required field `address_zip`
+          nullable: true
+          type: string
+      required:
+      - address_city
+      - address_line1
+      - address_state
+      - address_zip
+      - name
+      title: Required Address Columns
+      type: object
+    optional_address_column_mapping:
+      description: The mapping of column headers in your file to Lob-optional fields
+        for the resource created. See our <a href="https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#optional-columns-3"
+        target="_blank">Campaign Audience Guide</a> for additional details.
+      example:
+        address_line2: secondary_line
+        company: company
+        address_country: country,
+      properties:
+        address_line2:
+          default: "null"
+          description: The column header from the csv file that should be mapped to
+            the optional field "address_line2"
+          nullable: true
+          type: string
+        company:
+          default: "null"
+          description: The column header from the csv file that should be mapped to
+            the optional field "company"
+          nullable: true
+          type: string
+        address_country:
+          default: "null"
+          description: The column header from the csv file that should be mapped to
+            the optional field "address_country"
+          nullable: true
+          type: string
+      required:
+      - address_country
+      - address_line2
+      - company
+      title: Optional Address Columns
+      type: object
+    uploads_metadata:
+      default:
+        columns: []
+      description: The list of column headers in your file as an array that you want
+        as metadata associated with each mailpiece. See our <a href="https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#required-columns-2"
+        target="_blank">Campaign Audience Guide</a> for additional details.
+      example:
+        columns:
+        - recipient_name
+      properties:
+        columns:
+          default: []
+          description: The list of column names from the csv file which you want associated
+            with each of your mailpieces
+          items:
+            type: string
+          type: array
+      required:
+      - columns
+      title: Metadata
+      type: object
+    merge_variable_column_mapping:
+      description: The mapping of column headers in your file to the merge variables
+        present in your creative. See our <a href="https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#step-3-map-merge-variable-data-if-applicable-7"
+        target="_blank">Campaign Audience Guide</a> for additional details. <br />If
+        a merge variable has the same "name" as a "key" in the `requiredAddressColumnMapping`
+        or `optionalAddressColumnMapping` objects, then they **CANNOT** have a different
+        value in this object. If a different value is provided, then when the campaign
+        is processing it will get overwritten with the mapped value present in the
+        `requiredAddressColumnMapping` or `optionalAddressColumnMapping` objects.
+      example:
+        name: recipient_name
+        gift_code: code
+      nullable: true
+      title: Merge Variable Mapping
+      type: object
     upload:
       example:
+        metadata:
+          columns:
+          - recipient_name
         validatedMailpieces: 1
-        campaignId: campaignId
         dateModified: 2000-01-23T04:56:07.000+00:00
         failuresUrl: failuresUrl
         mode: test
-        accountId: accountId
+        accountId: fa9ea650fc7b31a89f92
+        mergeVariableColumnMapping:
+          name: recipient_name
+          gift_code: code
         dateCreated: 2000-01-23T04:56:07.000+00:00
-        deleted: true
         totalMailpieces: 0
+        requiredAddressColumnMapping:
+          name: recipient_name
+          address_line1: primary_line
+          address_city: city
+          address_state: state
+          address_zip: zip_code
         failedMailpieces: 6
         id: id
+        optionalAddressColumnMapping:
+          address_line2: secondary_line
+          company: company
+          address_country: country,
         originalFilename: originalFilename
         bytesProcessed: 5
       properties:
@@ -15377,12 +15650,8 @@ components:
           type: string
         accountId:
           description: Account ID that made the request
+          example: fa9ea650fc7b31a89f92
           title: Account ID
-          type: string
-        campaignId:
-          description: Unique identifier prefixed with `cmp_`.
-          pattern: ^cmp_[a-zA-Z0-9]+$
-          title: Campaign id
           type: string
         mode:
           description: The environment in which the mailpieces were created. Today,
@@ -15428,9 +15697,28 @@ components:
           format: date-time
           title: Date Modified
           type: string
-        deleted:
-          description: Only returned if the resource has been successfully deleted.
-          type: boolean
+        requiredAddressColumnMapping:
+          $ref: '#/components/schemas/required_address_column_mapping'
+        optionalAddressColumnMapping:
+          $ref: '#/components/schemas/optional_address_column_mapping'
+        metadata:
+          $ref: '#/components/schemas/uploads_metadata'
+        mergeVariableColumnMapping:
+          description: The mapping of column headers in your file to the merge variables
+            present in your creative. See our <a href="https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#step-3-map-merge-variable-data-if-applicable-7"
+            target="_blank">Campaign Audience Guide</a> for additional details. <br
+            />If a merge variable has the same "name" as a "key" in the `requiredAddressColumnMapping`
+            or `optionalAddressColumnMapping` objects, then they **CANNOT** have a
+            different value in this object. If a different value is provided, then
+            when the campaign is processing it will get overwritten with the mapped
+            value present in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping`
+            objects.
+          example:
+            name: recipient_name
+            gift_code: code
+          nullable: true
+          title: Merge Variable Mapping
+          type: object
       required:
       - accountId
       - bytesProcessed
@@ -15439,7 +15727,11 @@ components:
       - dateModified
       - failedMailpieces
       - id
+      - mergeVariableColumnMapping
+      - metadata
       - mode
+      - optionalAddressColumnMapping
+      - requiredAddressColumnMapping
       - state
       - totalMailpieces
       - validatedMailpieces
@@ -15480,10 +15772,33 @@ components:
     upload_writable:
       properties:
         campaignId:
-          description: Unique identifier prefixed with `cmp_`.
-          pattern: ^cmp_[a-zA-Z0-9]+$
-          title: Campaign id
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/cmp_id'
+          - description: Associated Campaign ID
+            example: cmp_1933ad629bae1408
+            type: string
+        requiredAddressColumnMapping:
+          $ref: '#/components/schemas/required_address_column_mapping'
+        optionalAddressColumnMapping:
+          $ref: '#/components/schemas/optional_address_column_mapping'
+        metadata:
+          $ref: '#/components/schemas/uploads_metadata'
+        mergeVariableColumnMapping:
+          description: The mapping of column headers in your file to the merge variables
+            present in your creative. See our <a href="https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#step-3-map-merge-variable-data-if-applicable-7"
+            target="_blank">Campaign Audience Guide</a> for additional details. <br
+            />If a merge variable has the same "name" as a "key" in the `requiredAddressColumnMapping`
+            or `optionalAddressColumnMapping` objects, then they **CANNOT** have a
+            different value in this object. If a different value is provided, then
+            when the campaign is processing it will get overwritten with the mapped
+            value present in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping`
+            objects.
+          example:
+            name: recipient_name
+            gift_code: code
+          nullable: true
+          title: Merge Variable Mapping
+          type: object
       required:
       - campaignId
       type: object
@@ -15495,6 +15810,7 @@ components:
           python: create_upload
         resource:
         - key: campaignId
+          pascal_case_key: CampaignId
           snake_case_key: campaign_id
           val: cmp_e05ee61ff80764b
         lob_response_type: Upload
@@ -15506,12 +15822,32 @@ components:
         snake_case_lob_response_var: upload
     upload_updatable:
       properties:
-        state:
-          $ref: '#/components/schemas/upload_state'
         originalFilename:
           description: Original filename provided when the upload is created.
           title: Original Filename
           type: string
+        requiredAddressColumnMapping:
+          $ref: '#/components/schemas/required_address_column_mapping'
+        optionalAddressColumnMapping:
+          $ref: '#/components/schemas/optional_address_column_mapping'
+        metadata:
+          $ref: '#/components/schemas/uploads_metadata'
+        mergeVariableColumnMapping:
+          description: The mapping of column headers in your file to the merge variables
+            present in your creative. See our <a href="https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#step-3-map-merge-variable-data-if-applicable-7"
+            target="_blank">Campaign Audience Guide</a> for additional details. <br
+            />If a merge variable has the same "name" as a "key" in the `requiredAddressColumnMapping`
+            or `optionalAddressColumnMapping` objects, then they **CANNOT** have a
+            different value in this object. If a different value is provided, then
+            when the campaign is processing it will get overwritten with the mapped
+            value present in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping`
+            objects.
+          example:
+            name: recipient_name
+            gift_code: code
+          nullable: true
+          title: Merge Variable Mapping
+          type: object
       type: object
       x-code-snippet:
         uploads: true
@@ -15520,14 +15856,30 @@ components:
           python: update_upload
         resource_id: upl_71be866e430b11e9
         lob_response_var: upload
+        lob_response_type: Upload
+        resource_var_name: uploadUpdatable
         snake_case_resource_var_name: upload_updatable
         resource_type: UploadUpdatable
         plural_object_type: Uploads
-        props:
-        - key: state
-          val: Ready for Validation
-          pyNonString: true
-          py_val: UploadState("Ready for Validation")
+        nested_objs:
+        - key: required_address_column_mapping
+          type: RequiredAddressColumnMapping
+          obj:
+          - inner_key: name
+            inner_pascal_case_key: Name
+            inner_val: recipient
+          - inner_key: address_line1
+            inner_pascal_case_key: AddressLine1
+            inner_val: primary line
+          - inner_key: address_city
+            inner_pascal_case_key: AddressCity
+            inner_val: city
+          - inner_key: address_state
+            inner_pascal_case_key: AddressState
+            inner_val: state
+          - inner_key: address_zip
+            inner_pascal_case_key: AddressZip
+            inner_val: zip_code
     upload_file:
       example:
         filename: filename
@@ -15675,16 +16027,16 @@ components:
           attributes:
           - key: address_prefix
             val: 185 B
-            pascal_key: AddressPrefix
+            pascal_case_key: AddressPrefix
           - key: city
             val: San Francisco
-            pascal_key: City
+            pascal_case_key: City
           - key: state
             val: CA
-            pascal_key: State
+            pascal_case_key: State
           - key: zip_code
             val: 94017
-            pascal_key: ZipCode
+            pascal_case_key: ZipCode
     us_auto_id:
       description: Unique identifier prefixed with `us_auto_`.
       pattern: ^us_auto_[a-zA-Z0-9]+$
@@ -15826,7 +16178,7 @@ components:
           pattern: ^\d{5}$
           type: string
         zip_code_plus_4:
-          pattern: ^\d{4}$
+          pattern: ^(\d{4})?$
           type: string
       required:
       - zip_code
@@ -15928,10 +16280,10 @@ components:
           attributes:
           - key: latitude
             val: 37.777456
-            pascal_key: latitude
+            pascal_case_key: latitude
           - key: longitude
             val: -122.393039
-            pascal_key: longitude
+            pascal_case_key: longitude
     us_verifications_writable:
       properties:
         address:
@@ -15991,16 +16343,16 @@ components:
           attributes:
           - key: primary_line
             val: 210 King Street
-            pascal_key: PrimaryLine
+            pascal_case_key: PrimaryLine
           - key: city
             val: San Francisco
-            pascal_key: City
+            pascal_case_key: City
           - key: state
             val: CA
-            pascal_key: State
+            pascal_case_key: State
           - key: zip_code
             val: 94017
-            pascal_key: ZipCode
+            pascal_case_key: ZipCode
         resource_constructor:
         - camel_case_key: address
           dotnet_val: "null"
@@ -16455,10 +16807,11 @@ components:
       x-template-config:
         isOneOf: true
         type-composite:
-        - base-type1:
+        - base-type3:
             java: Boolean
             typescript: boolean
             python: bool
+            ruby: Boolean
             hasPath: false
             default: true
             isRef: true
@@ -16466,6 +16819,7 @@ components:
             java: ReturnEnvelope
             typescript: Models.ReturnEnvelope
             python: ReturnEnvelope
+            ruby: ReturnEnvelope
             hasPath: true
             python_path: lob_python.model.return_envelope
             isRef: true
@@ -16526,10 +16880,11 @@ components:
           x-template-config:
             isOneOf: true
             type-composite:
-            - base-type1:
+            - base-type3:
                 java: Boolean
                 typescript: boolean
                 python: bool
+                ruby: Boolean
                 hasPath: false
                 default: true
                 isRef: true
@@ -16537,6 +16892,7 @@ components:
                 java: ReturnEnvelope
                 typescript: Models.ReturnEnvelope
                 python: ReturnEnvelope
+                ruby: ReturnEnvelope
                 hasPath: true
                 python_path: lob_python.model.return_envelope
                 isRef: true

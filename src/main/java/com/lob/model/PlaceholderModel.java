@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.lob.model.AddressDomestic;
-// import com.lob.model.LetterDetailsReturned;
+import com.lob.model.LetterDetailsReturned;
 import com.lob.model.LetterDetailsWritable;
 import com.lob.model.PostcardDetailsReturned;
 import com.lob.model.PostcardDetailsWritable;
@@ -125,19 +125,19 @@ public class PlaceholderModel {
   @SerializedName(SERIALIZED_NAME_LETTER_DETAILS_RETURNED)
   
 
-  // private LetterDetailsReturned letterDetailsReturned;
-  // /**
-  // * Get letterDetailsReturned
-  // * @return letterDetailsReturned
-  // **/
+  private LetterDetailsReturned letterDetailsReturned;
+  /**
+  * Get letterDetailsReturned
+  * @return letterDetailsReturned
+  **/
   
-  // @javax.annotation.Nullable
+  @javax.annotation.Nullable
   
-  // @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "")
   
-  // public LetterDetailsReturned getLetterDetailsReturned() {
-  //     return letterDetailsReturned;
-  // }
+  public LetterDetailsReturned getLetterDetailsReturned() {
+      return letterDetailsReturned;
+  }
   
   
 
@@ -232,9 +232,9 @@ public class PlaceholderModel {
   */
 
 
-  // public void setLetterDetailsReturned(LetterDetailsReturned letterDetailsReturned) {
-  //   this.letterDetailsReturned = letterDetailsReturned;
-  // }
+  public void setLetterDetailsReturned(LetterDetailsReturned letterDetailsReturned) {
+    this.letterDetailsReturned = letterDetailsReturned;
+  }
 
 
 
@@ -266,13 +266,13 @@ public class PlaceholderModel {
         Objects.equals(this.addressDomestic, placeholderModel.addressDomestic) &&
         Objects.equals(this.letterDetailsWritable, placeholderModel.letterDetailsWritable) &&
         Objects.equals(this.postcardDetailsWritable, placeholderModel.postcardDetailsWritable) &&
-        // Objects.equals(this.letterDetailsReturned, placeholderModel.letterDetailsReturned) &&
+        Objects.equals(this.letterDetailsReturned, placeholderModel.letterDetailsReturned) &&
         Objects.equals(this.postcardDetailsReturned, placeholderModel.postcardDetailsReturned);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(returnEnvelope, addressDomestic, letterDetailsWritable, postcardDetailsWritable, postcardDetailsReturned);
+    return Objects.hash(returnEnvelope, addressDomestic, letterDetailsWritable, postcardDetailsWritable, letterDetailsReturned, postcardDetailsReturned);
   }
 
   @Override
@@ -283,6 +283,7 @@ public class PlaceholderModel {
     sb.append("    addressDomestic: ").append(toIndentedString(addressDomestic)).append("\n");
     sb.append("    letterDetailsWritable: ").append(toIndentedString(letterDetailsWritable)).append("\n");
     sb.append("    postcardDetailsWritable: ").append(toIndentedString(postcardDetailsWritable)).append("\n");
+    sb.append("    letterDetailsReturned: ").append(toIndentedString(letterDetailsReturned)).append("\n");
     sb.append("    postcardDetailsReturned: ").append(toIndentedString(postcardDetailsReturned)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -38,11 +38,11 @@ public class BuckslipsList {
 
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<Buckslip> data = null;
-  public List<Buckslip> getData() {     
+  public List<Buckslip> getData() {
     if (this.data == null) {
       this.data = new ArrayList<Buckslip>();
     }
-    return this.data; 
+    return this.data;
   }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
@@ -89,24 +89,24 @@ public class BuckslipsList {
     if (this.nextUrl == null) {
         return null;
     }
-    
+
     String[] queryPartitionArray = this.nextUrl.split("\\?");
     if (queryPartitionArray.length < 2) {
         return null;
     }
-    
+
     String[] paramPartitionArray = queryPartitionArray[1].split("\\&");
     String beforeParamString = Arrays
       .stream(paramPartitionArray)
       .filter(x -> x.contains("after="))
       .findFirst()
       .orElse(null);
-      
+
     if (beforeParamString == null) {
         return null;
     }
     return beforeParamString.split("after=")[1];
-      
+
   }
 
   public static final String SERIALIZED_NAME_PREVIOUS_URL = "previous_url";
@@ -131,24 +131,24 @@ public class BuckslipsList {
     if (this.previousUrl == null) {
         return null;
     }
-    
+
     String[] queryPartitionArray = this.previousUrl.split("\\?");
     if (queryPartitionArray.length < 2) {
         return null;
     }
-    
+
     String[] paramPartitionArray = queryPartitionArray[1].split("\\&");
     String beforeParamString = Arrays
       .stream(paramPartitionArray)
       .filter(x -> x.contains("before="))
       .findFirst()
       .orElse(null);
-      
+
     if (beforeParamString == null) {
         return null;
     }
     return beforeParamString.split("before=")[1];
-      
+
   }
   
 

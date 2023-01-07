@@ -38,11 +38,11 @@ public class CardList {
 
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<Card> data = null;
-  public List<Card> getData() {     
+  public List<Card> getData() {
     if (this.data == null) {
       this.data = new ArrayList<Card>();
     }
-    return this.data; 
+    return this.data;
   }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
@@ -89,24 +89,24 @@ public class CardList {
     if (this.nextUrl == null) {
         return null;
     }
-    
+
     String[] queryPartitionArray = this.nextUrl.split("\\?");
     if (queryPartitionArray.length < 2) {
         return null;
     }
-    
+
     String[] paramPartitionArray = queryPartitionArray[1].split("\\&");
     String beforeParamString = Arrays
       .stream(paramPartitionArray)
       .filter(x -> x.contains("after="))
       .findFirst()
       .orElse(null);
-      
+
     if (beforeParamString == null) {
         return null;
     }
     return beforeParamString.split("after=")[1];
-      
+
   }
 
   public static final String SERIALIZED_NAME_PREVIOUS_URL = "previous_url";
@@ -131,24 +131,24 @@ public class CardList {
     if (this.previousUrl == null) {
         return null;
     }
-    
+
     String[] queryPartitionArray = this.previousUrl.split("\\?");
     if (queryPartitionArray.length < 2) {
         return null;
     }
-    
+
     String[] paramPartitionArray = queryPartitionArray[1].split("\\&");
     String beforeParamString = Arrays
       .stream(paramPartitionArray)
       .filter(x -> x.contains("before="))
       .findFirst()
       .orElse(null);
-      
+
     if (beforeParamString == null) {
         return null;
     }
     return beforeParamString.split("before=")[1];
-      
+
   }
   
 
