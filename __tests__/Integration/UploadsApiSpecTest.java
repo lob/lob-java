@@ -45,7 +45,6 @@ public class UploadsApiSpecTest {
           throw new Exception("Failed to create campaign: " + e.getMessage());
         }
         cmpId = campaign.getId();
-        System.out.println(cmpId);
 
         uploadApi = new UploadsApi(Configuration.getConfigForLiveIntegration());
 

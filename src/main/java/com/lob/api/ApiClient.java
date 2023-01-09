@@ -1256,7 +1256,6 @@ public class ApiClient {
                 // and there's no endpoint at this time to test this else block
             }
         }
-
         return requestBody.build();
     }
 

@@ -72,14 +72,12 @@ public class Upload {
   **/
 
   @javax.annotation.Nonnull
-
+  
   @ApiModelProperty(example = "fa9ea650fc7b31a89f92", required = true, value = "Account ID that made the request")
-
+  
   public String getAccountId() {
       return accountId;
   }
-
-
 
   /**
    * The environment in which the mailpieces were created. Today, will only be &#x60;live&#x60;.
@@ -336,8 +334,6 @@ public class Upload {
       return dateModified;
   }
 
-
-
   public static final String SERIALIZED_NAME_REQUIRED_ADDRESS_COLUMN_MAPPING = "requiredAddressColumnMapping";
 
   @SerializedName(SERIALIZED_NAME_REQUIRED_ADDRESS_COLUMN_MAPPING)
@@ -356,8 +352,6 @@ public class Upload {
   public RequiredAddressColumnMapping getRequiredAddressColumnMapping() {
       return requiredAddressColumnMapping;
   }
-
-
 
   public static final String SERIALIZED_NAME_OPTIONAL_ADDRESS_COLUMN_MAPPING = "optionalAddressColumnMapping";
 
@@ -602,7 +596,7 @@ public class Upload {
 
   /*
   public Upload requiredAddressColumnMapping(RequiredAddressColumnMapping requiredAddressColumnMapping) {
-
+    
     this.requiredAddressColumnMapping = requiredAddressColumnMapping;
     return this;
   }
@@ -617,7 +611,7 @@ public class Upload {
 
   /*
   public Upload optionalAddressColumnMapping(OptionalAddressColumnMapping optionalAddressColumnMapping) {
-
+    
     this.optionalAddressColumnMapping = optionalAddressColumnMapping;
     return this;
   }
@@ -632,7 +626,7 @@ public class Upload {
 
   /*
   public Upload metadata(UploadsMetadata metadata) {
-
+    
     this.metadata = metadata;
     return this;
   }
@@ -647,7 +641,7 @@ public class Upload {
 
   /*
   public Upload mergeVariableColumnMapping(Object mergeVariableColumnMapping) {
-
+    
     this.mergeVariableColumnMapping = mergeVariableColumnMapping;
     return this;
   }

@@ -44,95 +44,95 @@ public class UploadWritable {
   * Get campaignId
   * @return campaignId
   **/
-
-  @javax.annotation.Nonnull
-
+  
+  @javax.annotation.Nullable
+  
   @ApiModelProperty(required = true, value = "")
-
+  
   public String getCampaignId() {
       return campaignId;
   }
-
-
+  
+  
 
   public static final String SERIALIZED_NAME_REQUIRED_ADDRESS_COLUMN_MAPPING = "requiredAddressColumnMapping";
 
   @SerializedName(SERIALIZED_NAME_REQUIRED_ADDRESS_COLUMN_MAPPING)
-
+  
 
   private RequiredAddressColumnMapping requiredAddressColumnMapping;
   /**
   * Get requiredAddressColumnMapping
   * @return requiredAddressColumnMapping
   **/
-
+  
   @javax.annotation.Nullable
-
+  
   @ApiModelProperty(value = "")
-
+  
   public RequiredAddressColumnMapping getRequiredAddressColumnMapping() {
       return requiredAddressColumnMapping;
   }
-
-
+  
+  
 
   public static final String SERIALIZED_NAME_OPTIONAL_ADDRESS_COLUMN_MAPPING = "optionalAddressColumnMapping";
 
   @SerializedName(SERIALIZED_NAME_OPTIONAL_ADDRESS_COLUMN_MAPPING)
-
+  
 
   private OptionalAddressColumnMapping optionalAddressColumnMapping;
   /**
   * Get optionalAddressColumnMapping
   * @return optionalAddressColumnMapping
   **/
-
+  
   @javax.annotation.Nullable
-
+  
   @ApiModelProperty(value = "")
-
+  
   public OptionalAddressColumnMapping getOptionalAddressColumnMapping() {
       return optionalAddressColumnMapping;
   }
-
-
+  
+  
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
 
   @SerializedName(SERIALIZED_NAME_METADATA)
-
+  
 
   private UploadsMetadata metadata = new UploadsMetadata();
   /**
   * Get metadata
   * @return metadata
   **/
-
+  
   @javax.annotation.Nullable
-
+  
   @ApiModelProperty(value = "")
-
+  
   public UploadsMetadata getMetadata() {
       return metadata;
   }
-
-
+  
+  
 
   public static final String SERIALIZED_NAME_MERGE_VARIABLE_COLUMN_MAPPING = "mergeVariableColumnMapping";
 
   @SerializedName(SERIALIZED_NAME_MERGE_VARIABLE_COLUMN_MAPPING)
-
+  
 
   private Object mergeVariableColumnMapping;
   /**
   * The mapping of column headers in your file to the merge variables present in your creative. See our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#step-3-map-merge-variable-data-if-applicable-7\" target=\"_blank\">Campaign Audience Guide</a> for additional details. <br />If a merge variable has the same \"name\" as a \"key\" in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping` objects, then they **CANNOT** have a different value in this object. If a different value is provided, then when the campaign is processing it will get overwritten with the mapped value present in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping` objects.
   * @return mergeVariableColumnMapping
   **/
-
+  
   @javax.annotation.Nullable
-
+  
   @ApiModelProperty(example = "{\"name\":\"recipient_name\",\"gift_code\":\"code\"}", value = "The mapping of column headers in your file to the merge variables present in your creative. See our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#step-3-map-merge-variable-data-if-applicable-7\" target=\"_blank\">Campaign Audience Guide</a> for additional details. <br />If a merge variable has the same \"name\" as a \"key\" in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping` objects, then they **CANNOT** have a different value in this object. If a different value is provided, then when the campaign is processing it will get overwritten with the mapped value present in the `requiredAddressColumnMapping` or `optionalAddressColumnMapping` objects.")
-
+  
   public Object getMergeVariableColumnMapping() {
       return mergeVariableColumnMapping;
   }
@@ -157,7 +157,7 @@ public class UploadWritable {
 
   /*
   public UploadWritable requiredAddressColumnMapping(RequiredAddressColumnMapping requiredAddressColumnMapping) {
-
+    
     this.requiredAddressColumnMapping = requiredAddressColumnMapping;
     return this;
   }
@@ -172,7 +172,7 @@ public class UploadWritable {
 
   /*
   public UploadWritable optionalAddressColumnMapping(OptionalAddressColumnMapping optionalAddressColumnMapping) {
-
+    
     this.optionalAddressColumnMapping = optionalAddressColumnMapping;
     return this;
   }
@@ -187,7 +187,7 @@ public class UploadWritable {
 
   /*
   public UploadWritable metadata(UploadsMetadata metadata) {
-
+    
     this.metadata = metadata;
     return this;
   }
@@ -202,7 +202,7 @@ public class UploadWritable {
 
   /*
   public UploadWritable mergeVariableColumnMapping(Object mergeVariableColumnMapping) {
-
+    
     this.mergeVariableColumnMapping = mergeVariableColumnMapping;
     return this;
   }
