@@ -19,18 +19,10 @@ import com.lob.api.ApiException;
 import com.lob.api.ApiResponse;
 import com.lob.api.Configuration;
 import com.lob.api.Pair;
-import com.lob.api.ProgressRequestBody;
-import com.lob.api.ProgressResponseBody;
-
 import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.lob.model.Export;
 import com.lob.model.ExportModel;
-import com.lob.model.HTTPValidationError;
-import com.lob.model.LobError;
 import com.lob.model.Upload;
 import com.lob.model.UploadCreateExport;
 import com.lob.model.UploadFile;

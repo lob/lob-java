@@ -14,6 +14,7 @@
 package com.lob.api;
 
 import okhttp3.*;
+import okhttp3.MultipartBody.Builder;
 import okhttp3.internal.http.HttpMethod;
 import okhttp3.internal.tls.OkHostnameVerifier;
 import okhttp3.logging.HttpLoggingInterceptor;
