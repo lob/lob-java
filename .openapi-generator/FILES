@@ -104,6 +104,7 @@ docs/MultiLineAddress.md
 docs/MultipleComponents.md
 docs/MultipleComponentsIntl.md
 docs/MultipleComponentsList.md
+docs/OptionalAddressColumnMapping.md
 docs/PlaceholderModel.md
 docs/Postcard.md
 docs/PostcardDeletion.md
@@ -114,6 +115,8 @@ docs/PostcardList.md
 docs/PostcardSize.md
 docs/PostcardsApi.md
 docs/QrCode.md
+docs/RequiredAddressColumnMapping.md
+docs/ResourceTypeEnum.md
 docs/ReturnEnvelope.md
 docs/ReverseGeocode.md
 docs/ReverseGeocodeLookupsApi.md
@@ -152,6 +155,7 @@ docs/UploadState.md
 docs/UploadUpdatable.md
 docs/UploadWritable.md
 docs/UploadsApi.md
+docs/UploadsMetadata.md
 docs/UsAutocompletions.md
 docs/UsAutocompletionsApi.md
 docs/UsAutocompletionsWritable.md
@@ -303,6 +307,7 @@ src/main/java/com/lob/model/MultiLineAddress.java
 src/main/java/com/lob/model/MultipleComponents.java
 src/main/java/com/lob/model/MultipleComponentsIntl.java
 src/main/java/com/lob/model/MultipleComponentsList.java
+src/main/java/com/lob/model/OptionalAddressColumnMapping.java
 src/main/java/com/lob/model/PlaceholderModel.java
 src/main/java/com/lob/model/Postcard.java
 src/main/java/com/lob/model/PostcardDeletion.java
@@ -312,6 +317,8 @@ src/main/java/com/lob/model/PostcardEditable.java
 src/main/java/com/lob/model/PostcardList.java
 src/main/java/com/lob/model/PostcardSize.java
 src/main/java/com/lob/model/QrCode.java
+src/main/java/com/lob/model/RequiredAddressColumnMapping.java
+src/main/java/com/lob/model/ResourceTypeEnum.java
 src/main/java/com/lob/model/ReturnEnvelope.java
 src/main/java/com/lob/model/ReverseGeocode.java
 src/main/java/com/lob/model/SelfMailer.java
@@ -345,6 +352,7 @@ src/main/java/com/lob/model/UploadFile.java
 src/main/java/com/lob/model/UploadState.java
 src/main/java/com/lob/model/UploadUpdatable.java
 src/main/java/com/lob/model/UploadWritable.java
+src/main/java/com/lob/model/UploadsMetadata.java
 src/main/java/com/lob/model/UsAutocompletions.java
 src/main/java/com/lob/model/UsAutocompletionsWritable.java
 src/main/java/com/lob/model/UsComponents.java
