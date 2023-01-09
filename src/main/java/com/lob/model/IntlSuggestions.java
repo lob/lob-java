@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.CountryExtendedExpanded;
+import com.lob.model.CountryExtended;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -120,7 +120,7 @@ public class IntlSuggestions {
   @SerializedName(SERIALIZED_NAME_COUNTRY)
   
 
-  private CountryExtendedExpanded country;
+  private CountryExtended country;
   /**
   * Get country
   * @return country
@@ -130,7 +130,7 @@ public class IntlSuggestions {
   
   @ApiModelProperty(required = true, value = "")
   
-  public CountryExtendedExpanded getCountry() {
+  public CountryExtended getCountry() {
       return country;
   }
   
@@ -285,7 +285,7 @@ public class IntlSuggestions {
 
 
   /*
-  public IntlSuggestions country(CountryExtendedExpanded country) {
+  public IntlSuggestions country(CountryExtended country) {
     
     this.country = country;
     return this;
@@ -293,7 +293,7 @@ public class IntlSuggestions {
   */
 
 
-  public void setCountry(CountryExtendedExpanded country) {
+  public void setCountry(CountryExtended country) {
     this.country = country;
   }
 

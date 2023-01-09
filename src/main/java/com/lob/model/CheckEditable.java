@@ -40,21 +40,23 @@ public class CheckEditable {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
+  
   public  String getFrom() {
     return from;
   }
-  
+
 
   public void setFrom(String from) {
     
-    
+
     this.from = from;
   }
   
   
+  
   public void setFrom(AddressDomestic from) {
     Gson gson = new Gson();
-    
+
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_TO = "to";
@@ -62,21 +64,23 @@ public class CheckEditable {
   @SerializedName(SERIALIZED_NAME_TO)
   
   private String to;
+  
   public  String getTo() {
     return to;
   }
-  
+
 
   public void setTo(String to) {
     
-    
+
     this.to = to;
   }
   
   
+  
   public void setTo(AddressDomestic to) {
     Gson gson = new Gson();
-    
+
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_BANK_ACCOUNT = "bank_account";
@@ -210,11 +214,11 @@ public class CheckEditable {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {     
+  public Map<String, String> getMetadata() {
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata; 
+    return this.metadata;
   }
 
   public static final String SERIALIZED_NAME_MERGE_VARIABLES = "merge_variables";
@@ -413,7 +417,7 @@ public class CheckEditable {
 
 
   /*
-  public CheckEditable from(String from) {
+  public CheckEditable from(Object from) {
     
     this.from = from;
     return this;
@@ -425,7 +429,7 @@ public class CheckEditable {
 
 
   /*
-  public CheckEditable to(String to) {
+  public CheckEditable to(Object to) {
     
     this.to = to;
     return this;

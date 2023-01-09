@@ -81,11 +81,11 @@ public class TemplateWritable {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {     
+  public Map<String, String> getMetadata() {
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata; 
+    return this.metadata;
   }
 
   public static final String SERIALIZED_NAME_ENGINE = "engine";

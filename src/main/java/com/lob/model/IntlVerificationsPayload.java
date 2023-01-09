@@ -37,11 +37,11 @@ public class IntlVerificationsPayload {
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
   private List<MultipleComponentsIntl> addresses = new ArrayList<>();
-  public List<MultipleComponentsIntl> getAddresses() {     
+  public List<MultipleComponentsIntl> getAddresses() {
     if (this.addresses == null) {
       this.addresses = new ArrayList<MultipleComponentsIntl>();
     }
-    return this.addresses; 
+    return this.addresses;
   }
 
 

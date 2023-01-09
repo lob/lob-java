@@ -69,21 +69,23 @@ public class SelfMailer {
   @SerializedName(SERIALIZED_NAME_TO)
   
   private String to;
+  
   public  String getTo() {
     return to;
   }
-  
+
 
   public void setTo(String to) {
     
-    
+
     this.to = to;
   }
   
   
+  
   public void setTo(Address to) {
     Gson gson = new Gson();
-    
+
     this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_FROM = "from";
@@ -91,21 +93,23 @@ public class SelfMailer {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
+  
   public  String getFrom() {
     return from;
   }
-  
+
 
   public void setFrom(String from) {
     
-    
+
     this.from = from;
   }
   
   
+  
   public void setFrom(AddressDomesticExpanded from) {
     Gson gson = new Gson();
-    
+
     this.from = gson.toJson(from);
   }
   public static final String SERIALIZED_NAME_SIZE = "size";
@@ -154,11 +158,11 @@ public class SelfMailer {
 
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, String> metadata = null;
-  public Map<String, String> getMetadata() {     
+  public Map<String, String> getMetadata() {
     if (this.metadata == null) {
       this.metadata = new HashMap<String,String>();
     }
-    return this.metadata; 
+    return this.metadata;
   }
 
   public static final String SERIALIZED_NAME_MAIL_TYPE = "mail_type";
@@ -394,11 +398,11 @@ public class SelfMailer {
 
   @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)
   private List<TrackingEventCertified> trackingEvents = null;
-  public List<TrackingEventCertified> getTrackingEvents() {     
+  public List<TrackingEventCertified> getTrackingEvents() {
     if (this.trackingEvents == null) {
       this.trackingEvents = new ArrayList<TrackingEventCertified>();
     }
-    return this.trackingEvents; 
+    return this.trackingEvents;
   }
 
   public static final String SERIALIZED_NAME_URL = "url";
