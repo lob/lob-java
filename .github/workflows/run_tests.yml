@@ -30,7 +30,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Run unit tests with Maven
-        run: mvn clean -B test -e
+        run: mvn clean -B test
         env:
           LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
           LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
