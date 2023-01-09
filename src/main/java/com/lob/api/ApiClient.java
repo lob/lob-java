@@ -14,6 +14,7 @@
 package com.lob.api;
 
 import okhttp3.*;
+import okhttp3.MultipartBody.Builder;
 import okhttp3.internal.http.HttpMethod;
 import okhttp3.internal.tls.OkHostnameVerifier;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -1268,19 +1269,19 @@ public class ApiClient {
      * @return RequestBody
      */
     public RequestBody buildRequestBodyMultipart(Map<String, Object> formParams) {
-        MultipartBody.Builder mpBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        Builder requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM);
+
         for (Entry<String, Object> param : formParams.entrySet()) {
             if (param.getValue() instanceof File) {
                 File file = (File) param.getValue();
-                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"; filename=\"" + file.getName() + "\"");
-                MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
-                mpBuilder.addPart(partHeaders, RequestBody.create(file, mediaType));
+                requestBody.addFormDataPart("file", file.getName(),
+                        RequestBody.create(MediaType.parse("text/csv"), file));
             } else {
-                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"");
-                mpBuilder.addPart(partHeaders, RequestBody.create(parameterToString(param.getValue()), null));
+                // this function has been manually edited
+                // and there's no endpoint at this time to test this else block
             }
         }
-        return mpBuilder.build();
+        return requestBody.build();
     }
 
     /**
