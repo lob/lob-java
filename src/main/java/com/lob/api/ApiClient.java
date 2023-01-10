@@ -1274,11 +1274,10 @@ public class ApiClient {
         for (Entry<String, Object> param : formParams.entrySet()) {
             if (param.getValue() instanceof File) {
                 File file = (File) param.getValue();
-                requestBody.addFormDataPart("file", file.getName(),
+                requestBody.addFormDataPart(param.getKey(), file.getName(),
                         RequestBody.create(MediaType.parse("text/csv"), file));
             } else {
-                // this function has been manually edited
-                // and there's no endpoint at this time to test this else block
+                requestBody.addFormDataPart(param.getKey(), parameterToString(param.getValue()));
             }
         }
 
