@@ -29,6 +29,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CreativePatch
  */
@@ -118,6 +121,8 @@ public class CreativePatch {
 
 
 
+
+
   /*
   public CreativePatch metadata(Map<String, String> metadata) {
     
@@ -138,6 +143,8 @@ public class CreativePatch {
   public void setMetadata(Map<String, String> metadata) {
     this.metadata = metadata;
   }
+
+
 
 
 

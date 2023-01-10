@@ -34,11 +34,13 @@ import com.lob.model.LobError;
 import java.time.OffsetDateTime;
 import com.lob.model.SortByDateModified;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class BillingGroupsApi {
     private ApiClient localVarApiClient;
@@ -73,8 +75,6 @@ public class BillingGroupsApi {
      </table>
      */
     public okhttp3.Call createCall(BillingGroupEditable billingGroupEditable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = billingGroupEditable;
-
         // create path and map variables
         String localVarPath = "/billing_groups";
 
@@ -92,9 +92,13 @@ public class BillingGroupsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = billingGroupEditable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -196,8 +200,6 @@ public class BillingGroupsApi {
      </table>
      */
     public okhttp3.Call getCall(String bgId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/billing_groups/{bg_id}"
             .replaceAll("\\{" + "bg_id" + "\\}", localVarApiClient.escapeString(bgId.toString()));
@@ -216,9 +218,13 @@ public class BillingGroupsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -321,8 +327,6 @@ public class BillingGroupsApi {
      </table>
      */
     public okhttp3.Call updateCall(String bgId, BillingGroupEditable billingGroupEditable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = billingGroupEditable;
-
         // create path and map variables
         String localVarPath = "/billing_groups/{bg_id}"
             .replaceAll("\\{" + "bg_id" + "\\}", localVarApiClient.escapeString(bgId.toString()));
@@ -341,9 +345,13 @@ public class BillingGroupsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = billingGroupEditable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -458,8 +466,6 @@ public class BillingGroupsApi {
      </table>
      */
     public okhttp3.Call listCall(Integer limit, Integer offset, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> dateModified, SortByDateModified sortByDateModified, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/billing_groups";
 
@@ -501,9 +507,13 @@ public class BillingGroupsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

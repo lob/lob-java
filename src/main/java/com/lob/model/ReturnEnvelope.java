@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * ReturnEnvelope
  */
@@ -130,6 +133,8 @@ public class ReturnEnvelope {
 
 
 
+
+
   /*
   public ReturnEnvelope alias(String alias) {
     
@@ -142,6 +147,8 @@ public class ReturnEnvelope {
   public void setAlias(String alias) {
     this.alias = alias;
   }
+
+
 
 
 
@@ -160,6 +167,8 @@ public class ReturnEnvelope {
 
 
 
+
+
   /*
   public ReturnEnvelope _object(String _object) {
     
@@ -172,6 +181,8 @@ public class ReturnEnvelope {
   public void setObject(String _object) {
     this._object = _object;
   }
+
+
 
 
 

@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Suggestions
  */
@@ -196,6 +199,8 @@ public class Suggestions {
 
 
 
+
+
   /*
   public Suggestions city(String city) {
     
@@ -208,6 +213,8 @@ public class Suggestions {
   public void setCity(String city) {
     this.city = city;
   }
+
+
 
 
 
@@ -226,6 +233,8 @@ public class Suggestions {
 
 
 
+
+
   /*
   public Suggestions zipCode(String zipCode) {
     
@@ -241,6 +250,8 @@ public class Suggestions {
 
 
 
+
+
   /*
   public Suggestions _object(ObjectEnum _object) {
     
@@ -253,6 +264,8 @@ public class Suggestions {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

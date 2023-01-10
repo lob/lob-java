@@ -27,6 +27,9 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CardOrder
  */
@@ -406,6 +409,8 @@ public class CardOrder {
 
 
 
+
+
   /*
   public CardOrder inventory(BigDecimal inventory) {
     
@@ -418,6 +423,8 @@ public class CardOrder {
   public void setInventory(BigDecimal inventory) {
     this.inventory = inventory;
   }
+
+
 
 
 
@@ -436,6 +443,8 @@ public class CardOrder {
 
 
 
+
+
   /*
   public CardOrder unitPrice(BigDecimal unitPrice) {
     
@@ -448,6 +457,8 @@ public class CardOrder {
   public void setUnitPrice(BigDecimal unitPrice) {
     this.unitPrice = unitPrice;
   }
+
+
 
 
 
@@ -466,6 +477,8 @@ public class CardOrder {
 
 
 
+
+
   /*
   public CardOrder availabilityDate(OffsetDateTime availabilityDate) {
     
@@ -478,6 +491,8 @@ public class CardOrder {
   public void setAvailabilityDate(OffsetDateTime availabilityDate) {
     this.availabilityDate = availabilityDate;
   }
+
+
 
 
 
@@ -496,6 +511,8 @@ public class CardOrder {
 
 
 
+
+
   /*
   public CardOrder dateCreated(OffsetDateTime dateCreated) {
     
@@ -508,6 +525,8 @@ public class CardOrder {
   public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
+
+
 
 
 
@@ -526,6 +545,8 @@ public class CardOrder {
 
 
 
+
+
   /*
   public CardOrder deleted(Boolean deleted) {
     
@@ -541,6 +562,8 @@ public class CardOrder {
 
 
 
+
+
   /*
   public CardOrder _object(String _object) {
     
@@ -553,6 +576,8 @@ public class CardOrder {
   public void setObject(String _object) {
     this._object = _object;
   }
+
+
 
 
 

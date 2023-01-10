@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * SortBy3
  */
@@ -182,6 +185,8 @@ public class SortBy3 {
 
 
 
+
+
   /*
   public SortBy3 sendDate(SendDateEnum sendDate) {
     
@@ -194,6 +199,8 @@ public class SortBy3 {
   public void setSendDate(SendDateEnum sendDate) {
     this.sendDate = sendDate;
   }
+
+
 
 
 

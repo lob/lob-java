@@ -32,11 +32,13 @@ import com.lob.model.CardOrderEditable;
 import com.lob.model.CardOrderList;
 import com.lob.model.LobError;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class CardOrdersApi {
     private ApiClient localVarApiClient;
@@ -72,8 +74,6 @@ public class CardOrdersApi {
      </table>
      */
     public okhttp3.Call createCall(String cardId, CardOrderEditable cardOrderEditable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = cardOrderEditable;
-
         // create path and map variables
         String localVarPath = "/cards/{card_id}/orders"
             .replaceAll("\\{" + "card_id" + "\\}", localVarApiClient.escapeString(cardId.toString()));
@@ -92,9 +92,13 @@ public class CardOrdersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = cardOrderEditable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -206,8 +210,6 @@ public class CardOrdersApi {
      </table>
      */
     public okhttp3.Call getCall(String cardId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/cards/{card_id}/orders"
             .replaceAll("\\{" + "card_id" + "\\}", localVarApiClient.escapeString(cardId.toString()));
@@ -234,9 +236,13 @@ public class CardOrdersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

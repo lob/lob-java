@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * A nested custom envelope object containing more information about the custom envelope used or &#x60;null&#x60; if a custom envelope was not used.
  */
@@ -155,6 +158,8 @@ public class CustomEnvelopeReturned {
 
 
 
+
+
   /*
   public CustomEnvelopeReturned url(String url) {
     
@@ -170,6 +175,8 @@ public class CustomEnvelopeReturned {
 
 
 
+
+
   /*
   public CustomEnvelopeReturned _object(ObjectEnum _object) {
     
@@ -182,6 +189,8 @@ public class CustomEnvelopeReturned {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

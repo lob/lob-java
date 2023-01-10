@@ -29,6 +29,9 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CampaignsList
  */
@@ -218,6 +221,8 @@ public class CampaignsList {
 
 
 
+
+
   /*
   public CampaignsList _object(String _object) {
     
@@ -230,6 +235,8 @@ public class CampaignsList {
   public void setObject(String _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -248,6 +255,8 @@ public class CampaignsList {
 
 
 
+
+
   /*
   public CampaignsList previousUrl(String previousUrl) {
     
@@ -260,6 +269,8 @@ public class CampaignsList {
   public void setPreviousUrl(String previousUrl) {
     this.previousUrl = previousUrl;
   }
+
+
 
 
 
@@ -278,6 +289,8 @@ public class CampaignsList {
 
 
 
+
+
   /*
   public CampaignsList totalCount(Integer totalCount) {
     
@@ -290,6 +303,8 @@ public class CampaignsList {
   public void setTotalCount(Integer totalCount) {
     this.totalCount = totalCount;
   }
+
+
 
 
 

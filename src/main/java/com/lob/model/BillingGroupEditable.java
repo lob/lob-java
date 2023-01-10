@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * BillingGroupEditable
  */
@@ -88,6 +91,8 @@ public class BillingGroupEditable {
 
 
 
+
+
   /*
   public BillingGroupEditable name(String name) {
     
@@ -100,6 +105,8 @@ public class BillingGroupEditable {
   public void setName(String name) {
     this.name = name;
   }
+
+
 
 
 

@@ -27,6 +27,9 @@ import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * TrackingEventNormal
  */
@@ -365,6 +368,8 @@ public class TrackingEventNormal {
 
 
 
+
+
   /*
   public TrackingEventNormal name(NameEnum name) {
     
@@ -377,6 +382,8 @@ public class TrackingEventNormal {
   public void setName(NameEnum name) {
     this.name = name;
   }
+
+
 
 
 
@@ -407,6 +414,8 @@ public class TrackingEventNormal {
 
 
 
+
+
   /*
   public TrackingEventNormal id(String id) {
     
@@ -434,6 +443,8 @@ public class TrackingEventNormal {
 
 
 
+
+
   /*
   public TrackingEventNormal dateCreated(OffsetDateTime dateCreated) {
     
@@ -446,6 +457,8 @@ public class TrackingEventNormal {
   public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
+
+
 
 
 
@@ -464,6 +477,8 @@ public class TrackingEventNormal {
 
 
 
+
+
   /*
   public TrackingEventNormal _object(ObjectEnum _object) {
     
@@ -476,6 +491,8 @@ public class TrackingEventNormal {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

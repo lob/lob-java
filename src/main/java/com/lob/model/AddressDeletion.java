@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Object returned upon deleting an address
  */
@@ -171,6 +174,8 @@ public class AddressDeletion {
 
 
 
+
+
   /*
   public AddressDeletion _object(ObjectEnum _object) {
     
@@ -183,6 +188,8 @@ public class AddressDeletion {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

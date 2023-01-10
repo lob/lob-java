@@ -26,6 +26,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * MultiLineAddress
  */
@@ -219,6 +222,8 @@ public class MultiLineAddress {
 
 
 
+
+
   /*
   public MultiLineAddress company(String company) {
     
@@ -231,6 +236,8 @@ public class MultiLineAddress {
   public void setCompany(String company) {
     this.company = company;
   }
+
+
 
 
 
@@ -249,6 +256,8 @@ public class MultiLineAddress {
 
 
 
+
+
   /*
   public MultiLineAddress secondaryLine(String secondaryLine) {
     
@@ -261,6 +270,8 @@ public class MultiLineAddress {
   public void setSecondaryLine(String secondaryLine) {
     this.secondaryLine = secondaryLine;
   }
+
+
 
 
 
@@ -279,6 +290,8 @@ public class MultiLineAddress {
 
 
 
+
+
   /*
   public MultiLineAddress city(String city) {
     
@@ -294,6 +307,8 @@ public class MultiLineAddress {
 
 
 
+
+
   /*
   public MultiLineAddress state(String state) {
     
@@ -306,6 +321,8 @@ public class MultiLineAddress {
   public void setState(String state) {
     this.state = state;
   }
+
+
 
 
 

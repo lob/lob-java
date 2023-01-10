@@ -31,11 +31,13 @@ import com.lob.model.IdentityValidation;
 import com.lob.model.LobError;
 import com.lob.model.MultiLineAddress;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class IdentityValidationApi {
     private ApiClient localVarApiClient;
@@ -70,8 +72,6 @@ public class IdentityValidationApi {
      </table>
      */
     public okhttp3.Call validateCall(MultiLineAddress multiLineAddress, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = multiLineAddress;
-
         // create path and map variables
         String localVarPath = "/identity_validation";
 
@@ -89,9 +89,13 @@ public class IdentityValidationApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = multiLineAddress;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

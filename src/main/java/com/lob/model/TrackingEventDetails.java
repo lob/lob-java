@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * TrackingEventDetails
  */
@@ -227,6 +230,8 @@ public class TrackingEventDetails {
 
 
 
+
+
   /*
   public TrackingEventDetails description(String description) {
     
@@ -239,6 +244,8 @@ public class TrackingEventDetails {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 
@@ -257,6 +264,8 @@ public class TrackingEventDetails {
 
 
 
+
+
   /*
   public TrackingEventDetails actionRequired(Boolean actionRequired) {
     
@@ -269,6 +278,8 @@ public class TrackingEventDetails {
   public void setActionRequired(Boolean actionRequired) {
     this.actionRequired = actionRequired;
   }
+
+
 
 
 

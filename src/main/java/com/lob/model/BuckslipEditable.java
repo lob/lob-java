@@ -26,6 +26,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * BuckslipEditable
  */
@@ -176,6 +179,8 @@ public class BuckslipEditable {
 
 
 
+
+
   /*
   public BuckslipEditable back(String back) {
     
@@ -188,6 +193,8 @@ public class BuckslipEditable {
   public void setBack(String back) {
     this.back = back;
   }
+
+
 
 
 
@@ -206,6 +213,8 @@ public class BuckslipEditable {
 
 
 
+
+
   /*
   public BuckslipEditable size(SizeEnum size) {
     
@@ -218,6 +227,8 @@ public class BuckslipEditable {
   public void setSize(SizeEnum size) {
     this.size = size;
   }
+
+
 
 
 

@@ -26,6 +26,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * BuckslipOrdersList
  */
@@ -152,6 +155,8 @@ public class BuckslipOrdersList {
 
 
 
+
+
   /*
   public BuckslipOrdersList nextUrl(String nextUrl) {
     
@@ -164,6 +169,8 @@ public class BuckslipOrdersList {
   public void setNextUrl(String nextUrl) {
     this.nextUrl = nextUrl;
   }
+
+
 
 
 
@@ -182,6 +189,8 @@ public class BuckslipOrdersList {
 
 
 
+
+
   /*
   public BuckslipOrdersList count(Integer count) {
     
@@ -197,6 +206,8 @@ public class BuckslipOrdersList {
 
 
 
+
+
   /*
   public BuckslipOrdersList totalCount(Integer totalCount) {
     
@@ -209,6 +220,8 @@ public class BuckslipOrdersList {
   public void setTotalCount(Integer totalCount) {
     this.totalCount = totalCount;
   }
+
+
 
 
 

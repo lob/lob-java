@@ -36,6 +36,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Check
  */
@@ -747,6 +750,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check from(Address from) {
     
@@ -762,6 +767,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check description(String description) {
     
@@ -774,6 +781,8 @@ public class Check {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 
@@ -800,6 +809,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check mergeVariables(Object mergeVariables) {
     
@@ -812,6 +823,8 @@ public class Check {
   public void setMergeVariables(Object mergeVariables) {
     this.mergeVariables = mergeVariables;
   }
+
+
 
 
 
@@ -830,6 +843,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check mailType(MailTypeEnum mailType) {
     
@@ -842,6 +857,8 @@ public class Check {
   public void setMailType(MailTypeEnum mailType) {
     this.mailType = mailType;
   }
+
+
 
 
 
@@ -860,6 +877,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check checkNumber(Integer checkNumber) {
     
@@ -872,6 +891,8 @@ public class Check {
   public void setCheckNumber(Integer checkNumber) {
     this.checkNumber = checkNumber;
   }
+
+
 
 
 
@@ -890,6 +911,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check amount(Float amount) {
     
@@ -905,6 +928,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check bankAccount(BankAccount bankAccount) {
     
@@ -917,6 +942,8 @@ public class Check {
   public void setBankAccount(BankAccount bankAccount) {
     this.bankAccount = bankAccount;
   }
+
+
 
 
 
@@ -995,6 +1022,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check thumbnails(List<Thumbnail> thumbnails) {
     
@@ -1018,6 +1047,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check expectedDeliveryDate(LocalDate expectedDeliveryDate) {
     
@@ -1030,6 +1061,8 @@ public class Check {
   public void setExpectedDeliveryDate(LocalDate expectedDeliveryDate) {
     this.expectedDeliveryDate = expectedDeliveryDate;
   }
+
+
 
 
 
@@ -1056,6 +1089,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check _object(ObjectEnum _object) {
     
@@ -1068,6 +1103,8 @@ public class Check {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -1086,6 +1123,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check dateModified(OffsetDateTime dateModified) {
     
@@ -1101,6 +1140,8 @@ public class Check {
 
 
 
+
+
   /*
   public Check deleted(Boolean deleted) {
     
@@ -1113,6 +1154,8 @@ public class Check {
   public void setDeleted(Boolean deleted) {
     this.deleted = deleted;
   }
+
+
 
 
 

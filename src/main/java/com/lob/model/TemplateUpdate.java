@@ -26,6 +26,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * TemplateUpdate
  */
@@ -90,6 +93,8 @@ public class TemplateUpdate {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 

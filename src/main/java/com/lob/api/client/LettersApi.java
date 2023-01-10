@@ -1,6 +1,6 @@
 /*
  * Lob
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -36,7 +36,6 @@ import com.lob.model.MailType;
 import java.time.OffsetDateTime;
 import com.lob.model.SortBy3;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,8 +77,6 @@ public class LettersApi {
      </table>
      */
     public okhttp3.Call cancelCall(String ltrId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/letters/{ltr_id}"
             .replaceAll("\\{" + "ltr_id" + "\\}", localVarApiClient.escapeString(ltrId.toString()));
@@ -98,9 +95,13 @@ public class LettersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
 
+        Object localVarPostBody = null;
+
+        final String[] localVarContentTypes = {
+            
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -110,12 +111,12 @@ public class LettersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call cancelValidateBeforeCall(String ltrId, final ApiCallback _callback) throws ApiException {
-
+        
         // verify the required parameter 'ltrId' is set
         if (ltrId == null) {
             throw new ApiException("Missing the required parameter 'ltrId' when calling cancel(Async)");
         }
-
+        
 
         okhttp3.Call localVarCall = cancelCall(ltrId, _callback);
         return localVarCall;
@@ -212,7 +213,20 @@ public class LettersApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (idempotencyKey != null) {
+            localVarHeaderParams.put("Idempotency-Key", localVarApiClient.parameterToString(idempotencyKey));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
         Object localVarPostBody = null;
+        String[] localVarContentTypes;
 
         if (letterEditable.getIsMultipart()) {
             Method[] methods = LetterEditable.class.getDeclaredMethods();
@@ -225,11 +239,11 @@ public class LettersApi {
             Field[] fields = LetterEditable.class.getDeclaredFields();
 
             for (int i = 0; i < fields.length; i++) {
-                if (i % 2 == 0) continue;
-
                 Field field = fields[i];
-                String rawFieldName = field.getAnnotation(SerializedName.class).value();
                 String fieldName = field.getName(); // camelCase
+                if (Character.isUpperCase(fieldName.charAt(0)) || fieldName.equals("isMultipart")) continue;
+
+                String rawFieldName = field.getAnnotation(SerializedName.class).value();
 
                 String getterString = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
                 Method getter = nameToMethod.get(getterString);
@@ -256,30 +270,13 @@ public class LettersApi {
                     throw new ApiException(e);
                 }
             }
-        } else {
-            localVarPostBody = letterEditable;
-        }
 
-        if (idempotencyKey != null) {
-            localVarHeaderParams.put("Idempotency-Key", localVarApiClient.parameterToString(idempotencyKey));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        String[] localVarContentTypes;
-
-        if (letterEditable.getIsMultipart()) {
             localVarContentTypes = new String[]{ "multipart/form-data" };
         } else {
+            localVarPostBody = letterEditable;
             localVarContentTypes = new String[]{ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" };
         }
-
+        
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -289,12 +286,12 @@ public class LettersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createValidateBeforeCall(LetterEditable letterEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
-
+        
         // verify the required parameter 'letterEditable' is set
         if (letterEditable == null) {
             throw new ApiException("Missing the required parameter 'letterEditable' when calling create(Async)");
         }
-
+        
 
         okhttp3.Call localVarCall = createCall(letterEditable, idempotencyKey, _callback);
         return localVarCall;
@@ -384,8 +381,6 @@ public class LettersApi {
      </table>
      */
     public okhttp3.Call getCall(String ltrId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/letters/{ltr_id}"
             .replaceAll("\\{" + "ltr_id" + "\\}", localVarApiClient.escapeString(ltrId.toString()));
@@ -404,9 +399,13 @@ public class LettersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
 
+        Object localVarPostBody = null;
+
+        final String[] localVarContentTypes = {
+            
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -416,12 +415,12 @@ public class LettersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getValidateBeforeCall(String ltrId, final ApiCallback _callback) throws ApiException {
-
+        
         // verify the required parameter 'ltrId' is set
         if (ltrId == null) {
             throw new ApiException("Missing the required parameter 'ltrId' when calling get(Async)");
         }
-
+        
 
         okhttp3.Call localVarCall = getCall(ltrId, _callback);
         return localVarCall;
@@ -518,8 +517,6 @@ public class LettersApi {
      </table>
      */
     public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/letters";
 
@@ -581,9 +578,13 @@ public class LettersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
 
+        Object localVarPostBody = null;
+
+        final String[] localVarContentTypes = {
+            
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -593,7 +594,7 @@ public class LettersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
-
+        
 
         okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy, _callback);
         return localVarCall;

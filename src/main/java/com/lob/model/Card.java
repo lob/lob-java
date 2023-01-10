@@ -31,6 +31,9 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Card
  */
@@ -643,6 +646,8 @@ public class Card {
 
 
 
+
+
   /*
   public Card autoReorder(Boolean autoReorder) {
     
@@ -655,6 +660,8 @@ public class Card {
   public void setAutoReorder(Boolean autoReorder) {
     this.autoReorder = autoReorder;
   }
+
+
 
 
 
@@ -673,6 +680,8 @@ public class Card {
 
 
 
+
+
   /*
   public Card rawUrl(URI rawUrl) {
     
@@ -685,6 +694,8 @@ public class Card {
   public void setRawUrl(URI rawUrl) {
     this.rawUrl = rawUrl;
   }
+
+
 
 
 
@@ -703,6 +714,8 @@ public class Card {
 
 
 
+
+
   /*
   public Card backOriginalUrl(URI backOriginalUrl) {
     
@@ -715,6 +728,8 @@ public class Card {
   public void setBackOriginalUrl(URI backOriginalUrl) {
     this.backOriginalUrl = backOriginalUrl;
   }
+
+
 
 
 
@@ -738,6 +753,8 @@ public class Card {
 
 
 
+
+
   /*
   public Card availableQuantity(Integer availableQuantity) {
     
@@ -750,6 +767,8 @@ public class Card {
   public void setAvailableQuantity(Integer availableQuantity) {
     this.availableQuantity = availableQuantity;
   }
+
+
 
 
 
@@ -768,6 +787,8 @@ public class Card {
 
 
 
+
+
   /*
   public Card status(StatusEnum status) {
     
@@ -780,6 +801,8 @@ public class Card {
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
+
+
 
 
 
@@ -798,6 +821,8 @@ public class Card {
 
 
 
+
+
   /*
   public Card thresholdAmount(Integer thresholdAmount) {
     
@@ -810,6 +835,8 @@ public class Card {
   public void setThresholdAmount(Integer thresholdAmount) {
     this.thresholdAmount = thresholdAmount;
   }
+
+
 
 
 
@@ -828,6 +855,8 @@ public class Card {
 
 
 
+
+
   /*
   public Card dateModified(OffsetDateTime dateModified) {
     
@@ -840,6 +869,8 @@ public class Card {
   public void setDateModified(OffsetDateTime dateModified) {
     this.dateModified = dateModified;
   }
+
+
 
 
 
@@ -858,6 +889,8 @@ public class Card {
 
 
 
+
+
   /*
   public Card _object(ObjectEnum _object) {
     
@@ -870,6 +903,8 @@ public class Card {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -888,6 +923,8 @@ public class Card {
 
 
 
+
+
   /*
   public Card size(SizeEnum size) {
     
@@ -900,6 +937,8 @@ public class Card {
   public void setSize(SizeEnum size) {
     this.size = size;
   }
+
+
 
 
 

@@ -26,6 +26,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Lob Confidence Score is a nested object that provides a numerical value between 0-100 of the likelihood that an address is deliverable based on Lob’s mail delivery data to over half of US households.
  */
@@ -143,6 +146,8 @@ public class LobConfidenceScore {
 
 
 
+
+
   /*
   public LobConfidenceScore level(LevelEnum level) {
     
@@ -155,6 +160,8 @@ public class LobConfidenceScore {
   public void setLevel(LevelEnum level) {
     this.level = level;
   }
+
+
 
 
 

@@ -27,6 +27,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * IntlVerificationWritable
  */
@@ -216,6 +219,8 @@ public class IntlVerificationWritable {
 
 
 
+
+
   /*
   public IntlVerificationWritable primaryLine(String primaryLine) {
     
@@ -228,6 +233,8 @@ public class IntlVerificationWritable {
   public void setPrimaryLine(String primaryLine) {
     this.primaryLine = primaryLine;
   }
+
+
 
 
 
@@ -246,6 +253,8 @@ public class IntlVerificationWritable {
 
 
 
+
+
   /*
   public IntlVerificationWritable city(String city) {
     
@@ -258,6 +267,8 @@ public class IntlVerificationWritable {
   public void setCity(String city) {
     this.city = city;
   }
+
+
 
 
 
@@ -276,6 +287,8 @@ public class IntlVerificationWritable {
 
 
 
+
+
   /*
   public IntlVerificationWritable postalCode(String postalCode) {
     
@@ -288,6 +301,8 @@ public class IntlVerificationWritable {
   public void setPostalCode(String postalCode) {
     this.postalCode = postalCode;
   }
+
+
 
 
 
@@ -306,6 +321,8 @@ public class IntlVerificationWritable {
 
 
 
+
+
   /*
   public IntlVerificationWritable address(String address) {
     
@@ -318,6 +335,8 @@ public class IntlVerificationWritable {
   public void setAddress(String address) {
     this.address = address;
   }
+
+
 
 
 

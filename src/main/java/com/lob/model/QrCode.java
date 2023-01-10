@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Customize and place a QR code on the creative at the required position.
  */
@@ -241,6 +244,8 @@ public class QrCode {
 
 
 
+
+
   /*
   public QrCode top(String top) {
     
@@ -253,6 +258,8 @@ public class QrCode {
   public void setTop(String top) {
     this.top = top;
   }
+
+
 
 
 
@@ -271,6 +278,8 @@ public class QrCode {
 
 
 
+
+
   /*
   public QrCode left(String left) {
     
@@ -283,6 +292,8 @@ public class QrCode {
   public void setLeft(String left) {
     this.left = left;
   }
+
+
 
 
 
@@ -301,6 +312,8 @@ public class QrCode {
 
 
 
+
+
   /*
   public QrCode redirectUrl(String redirectUrl) {
     
@@ -316,6 +329,8 @@ public class QrCode {
 
 
 
+
+
   /*
   public QrCode width(String width) {
     
@@ -328,6 +343,8 @@ public class QrCode {
   public void setWidth(String width) {
     this.width = width;
   }
+
+
 
 
 

@@ -37,11 +37,13 @@ import com.lob.model.SelfMailerList;
 import com.lob.model.SelfMailerSize;
 import com.lob.model.SortBy3;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class SelfMailersApi {
     private ApiClient localVarApiClient;
@@ -77,8 +79,6 @@ public class SelfMailersApi {
      </table>
      */
     public okhttp3.Call createCall(SelfMailerEditable selfMailerEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = selfMailerEditable;
-
         // create path and map variables
         String localVarPath = "/self_mailers";
 
@@ -100,9 +100,58 @@ public class SelfMailersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
-        };
+        Object localVarPostBody = null;
+        String[] localVarContentTypes;
+
+        if (selfMailerEditable.getIsMultipart()) {
+            Method[] methods = SelfMailerEditable.class.getDeclaredMethods();
+
+            Map<String, Method> nameToMethod = new HashMap<String, Method>();
+            for (Method method: methods) {
+                nameToMethod.put(method.getName(), method);
+            }
+
+            Field[] fields = SelfMailerEditable.class.getDeclaredFields();
+
+            for (int i = 0; i < fields.length; i++) {
+                Field field = fields[i];
+                String fieldName = field.getName(); // camelCase
+                if (Character.isUpperCase(fieldName.charAt(0)) || fieldName.equals("isMultipart")) continue;
+
+                String rawFieldName = field.getAnnotation(SerializedName.class).value();
+
+                String getterString = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+                Method getter = nameToMethod.get(getterString);
+
+                try {
+                    if (getter.invoke(selfMailerEditable) != null) {
+                        if (
+                            rawFieldName.equals("file") ||
+                            rawFieldName.equals("check_bottom") ||
+                            rawFieldName.equals("attachment") ||
+                            rawFieldName.equals("front") ||
+                            rawFieldName.equals("back") ||
+                            rawFieldName.equals("inside") ||
+                            rawFieldName.equals("outside")
+                        )  {
+                            localVarFormParams.put(rawFieldName, new File((String)getter.invoke(selfMailerEditable)));
+                        } else {
+                            localVarFormParams.put(rawFieldName, getter.invoke(selfMailerEditable));
+                        }
+                    }
+                } catch (IllegalAccessException e) {
+                    throw new ApiException(e);
+                } catch (InvocationTargetException e) {
+                    throw new ApiException(e);
+                }
+            }
+
+            localVarContentTypes = new String[]{ "multipart/form-data" };
+        } else {
+            localVarPostBody = selfMailerEditable;
+            localVarContentTypes = new String[]{ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" };
+        }
+        
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -207,8 +256,6 @@ public class SelfMailersApi {
      </table>
      */
     public okhttp3.Call deleteCall(String sfmId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/self_mailers/{sfm_id}"
             .replaceAll("\\{" + "sfm_id" + "\\}", localVarApiClient.escapeString(sfmId.toString()));
@@ -227,9 +274,13 @@ public class SelfMailersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -331,8 +382,6 @@ public class SelfMailersApi {
      </table>
      */
     public okhttp3.Call getCall(String sfmId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/self_mailers/{sfm_id}"
             .replaceAll("\\{" + "sfm_id" + "\\}", localVarApiClient.escapeString(sfmId.toString()));
@@ -351,9 +400,13 @@ public class SelfMailersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -465,8 +518,6 @@ public class SelfMailersApi {
      </table>
      */
     public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/self_mailers";
 
@@ -528,9 +579,13 @@ public class SelfMailersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

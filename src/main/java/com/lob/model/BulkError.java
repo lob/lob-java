@@ -26,6 +26,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Lob uses RESTful HTTP response codes to indicate success or failure of an API request.
  */
@@ -66,6 +69,8 @@ public class BulkError {
   public void setError(BulkErrorProperties error) {
     this.error = error;
   }
+
+
 
 
 

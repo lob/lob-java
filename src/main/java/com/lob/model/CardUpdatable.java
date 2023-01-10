@@ -27,6 +27,9 @@ import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CardUpdatable
  */
@@ -113,6 +116,8 @@ public class CardUpdatable {
 
 
 
+
+
   /*
   public CardUpdatable autoReorder(Boolean autoReorder) {
     
@@ -128,6 +133,8 @@ public class CardUpdatable {
 
 
 
+
+
   /*
   public CardUpdatable reorderQuantity(BigDecimal reorderQuantity) {
     
@@ -140,6 +147,8 @@ public class CardUpdatable {
   public void setReorderQuantity(BigDecimal reorderQuantity) {
     this.reorderQuantity = reorderQuantity;
   }
+
+
 
 
 

@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Lob uses RESTful HTTP response codes to indicate success or failure of an API request.
  */
@@ -304,6 +307,8 @@ public class LobError {
 
 
 
+
+
   /*
   public LobError statusCode(StatusCodeEnum statusCode) {
     
@@ -319,6 +324,8 @@ public class LobError {
 
 
 
+
+
   /*
   public LobError code(CodeEnum code) {
     
@@ -331,6 +338,8 @@ public class LobError {
   public void setCode(CodeEnum code) {
     this.code = code;
   }
+
+
 
 
 

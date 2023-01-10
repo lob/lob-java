@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * ZipLookupCity
  */
@@ -151,6 +154,8 @@ public class ZipLookupCity {
 
 
 
+
+
   /*
   public ZipLookupCity state(String state) {
     
@@ -163,6 +168,8 @@ public class ZipLookupCity {
   public void setState(String state) {
     this.state = state;
   }
+
+
 
 
 
@@ -181,6 +188,8 @@ public class ZipLookupCity {
 
 
 
+
+
   /*
   public ZipLookupCity countyFips(String countyFips) {
     
@@ -196,6 +205,8 @@ public class ZipLookupCity {
 
 
 
+
+
   /*
   public ZipLookupCity preferred(Boolean preferred) {
     
@@ -208,6 +219,8 @@ public class ZipLookupCity {
   public void setPreferred(Boolean preferred) {
     this.preferred = preferred;
   }
+
+
 
 
 

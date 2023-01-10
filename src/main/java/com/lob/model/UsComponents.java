@@ -27,6 +27,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * A nested object containing a breakdown of each component of an address.
  */
@@ -886,6 +889,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents streetPredirection(StreetPredirectionEnum streetPredirection) {
     
@@ -898,6 +903,8 @@ public class UsComponents {
   public void setStreetPredirection(StreetPredirectionEnum streetPredirection) {
     this.streetPredirection = streetPredirection;
   }
+
+
 
 
 
@@ -916,6 +923,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents streetSuffix(String streetSuffix) {
     
@@ -928,6 +937,8 @@ public class UsComponents {
   public void setStreetSuffix(String streetSuffix) {
     this.streetSuffix = streetSuffix;
   }
+
+
 
 
 
@@ -946,6 +957,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents secondaryDesignator(String secondaryDesignator) {
     
@@ -958,6 +971,8 @@ public class UsComponents {
   public void setSecondaryDesignator(String secondaryDesignator) {
     this.secondaryDesignator = secondaryDesignator;
   }
+
+
 
 
 
@@ -976,6 +991,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents pmbDesignator(String pmbDesignator) {
     
@@ -988,6 +1005,8 @@ public class UsComponents {
   public void setPmbDesignator(String pmbDesignator) {
     this.pmbDesignator = pmbDesignator;
   }
+
+
 
 
 
@@ -1006,6 +1025,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents extraSecondaryDesignator(String extraSecondaryDesignator) {
     
@@ -1018,6 +1039,8 @@ public class UsComponents {
   public void setExtraSecondaryDesignator(String extraSecondaryDesignator) {
     this.extraSecondaryDesignator = extraSecondaryDesignator;
   }
+
+
 
 
 
@@ -1036,6 +1059,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents city(String city) {
     
@@ -1051,6 +1076,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents state(String state) {
     
@@ -1063,6 +1090,8 @@ public class UsComponents {
   public void setState(String state) {
     this.state = state;
   }
+
+
 
 
 
@@ -1105,6 +1134,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents deliveryPointBarcode(String deliveryPointBarcode) {
     
@@ -1117,6 +1148,8 @@ public class UsComponents {
   public void setDeliveryPointBarcode(String deliveryPointBarcode) {
     this.deliveryPointBarcode = deliveryPointBarcode;
   }
+
+
 
 
 
@@ -1135,6 +1168,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents recordType(RecordTypeEnum recordType) {
     
@@ -1147,6 +1182,8 @@ public class UsComponents {
   public void setRecordType(RecordTypeEnum recordType) {
     this.recordType = recordType;
   }
+
+
 
 
 
@@ -1165,6 +1202,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents county(String county) {
     
@@ -1177,6 +1216,8 @@ public class UsComponents {
   public void setCounty(String county) {
     this.county = county;
   }
+
+
 
 
 
@@ -1195,6 +1236,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents carrierRoute(String carrierRoute) {
     
@@ -1207,6 +1250,8 @@ public class UsComponents {
   public void setCarrierRoute(String carrierRoute) {
     this.carrierRoute = carrierRoute;
   }
+
+
 
 
 
@@ -1225,6 +1270,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents latitude(Float latitude) {
     
@@ -1240,6 +1287,8 @@ public class UsComponents {
 
 
 
+
+
   /*
   public UsComponents longitude(Float longitude) {
     
@@ -1252,6 +1301,8 @@ public class UsComponents {
   public void setLongitude(Float longitude) {
     this.longitude = longitude;
   }
+
+
 
 
 

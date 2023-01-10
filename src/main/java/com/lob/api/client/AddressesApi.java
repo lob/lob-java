@@ -34,11 +34,13 @@ import com.lob.model.AddressList;
 import com.lob.model.LobError;
 import java.time.OffsetDateTime;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class AddressesApi {
     private ApiClient localVarApiClient;
@@ -73,8 +75,6 @@ public class AddressesApi {
      </table>
      */
     public okhttp3.Call createCall(AddressEditable addressEditable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = addressEditable;
-
         // create path and map variables
         String localVarPath = "/addresses";
 
@@ -92,9 +92,13 @@ public class AddressesApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = addressEditable;
+
         final String[] localVarContentTypes = {
             "application/json"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -196,8 +200,6 @@ public class AddressesApi {
      </table>
      */
     public okhttp3.Call deleteCall(String adrId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/addresses/{adr_id}"
             .replaceAll("\\{" + "adr_id" + "\\}", localVarApiClient.escapeString(adrId.toString()));
@@ -216,9 +218,13 @@ public class AddressesApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -320,8 +326,6 @@ public class AddressesApi {
      </table>
      */
     public okhttp3.Call getCall(String adrId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/addresses/{adr_id}"
             .replaceAll("\\{" + "adr_id" + "\\}", localVarApiClient.escapeString(adrId.toString()));
@@ -340,9 +344,13 @@ public class AddressesApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -449,8 +457,6 @@ public class AddressesApi {
      </table>
      */
     public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/addresses";
 
@@ -492,9 +498,13 @@ public class AddressesApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

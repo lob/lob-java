@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Location
  */
@@ -92,6 +95,8 @@ public class Location {
 
 
 
+
+
   /*
   public Location longitude(Float longitude) {
     
@@ -104,6 +109,8 @@ public class Location {
   public void setLongitude(Float longitude) {
     this.longitude = longitude;
   }
+
+
 
 
 

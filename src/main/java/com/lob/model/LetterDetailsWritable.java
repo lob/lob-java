@@ -29,6 +29,9 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Properties that the letters in your Creative should have.
  */
@@ -258,6 +261,8 @@ public class LetterDetailsWritable {
 
 
 
+
+
   /*
   public LetterDetailsWritable cards(List<String> cards) {
     
@@ -278,6 +283,8 @@ public class LetterDetailsWritable {
 
 
 
+
+
   /*
   public LetterDetailsWritable color(Boolean color) {
     
@@ -290,6 +297,8 @@ public class LetterDetailsWritable {
   public void setColor(Boolean color) {
     this.color = color;
   }
+
+
 
 
 
@@ -308,6 +317,8 @@ public class LetterDetailsWritable {
 
 
 
+
+
   /*
   public LetterDetailsWritable extraService(String extraService) {
     
@@ -320,6 +331,8 @@ public class LetterDetailsWritable {
   public void setExtraService(String extraService) {
     this.extraService = extraService;
   }
+
+
 
 
 
@@ -338,6 +351,8 @@ public class LetterDetailsWritable {
 
 
 
+
+
   /*
   public LetterDetailsWritable returnEnvelope(Boolean returnEnvelope) {
     
@@ -350,6 +365,8 @@ public class LetterDetailsWritable {
   public void setReturnEnvelope(Boolean returnEnvelope) {
     this.returnEnvelope = returnEnvelope;
   }
+
+
 
 
 

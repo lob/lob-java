@@ -28,6 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * A nested object containing a breakdown of the deliverability of an address.
  */
@@ -527,6 +530,8 @@ public class DeliverabilityAnalysis {
 
 
 
+
+
   /*
   public DeliverabilityAnalysis dpvCmra(DpvCmraEnum dpvCmra) {
     
@@ -539,6 +544,8 @@ public class DeliverabilityAnalysis {
   public void setDpvCmra(DpvCmraEnum dpvCmra) {
     this.dpvCmra = dpvCmra;
   }
+
+
 
 
 
@@ -557,6 +564,8 @@ public class DeliverabilityAnalysis {
 
 
 
+
+
   /*
   public DeliverabilityAnalysis dpvActive(DpvActiveEnum dpvActive) {
     
@@ -569,6 +578,8 @@ public class DeliverabilityAnalysis {
   public void setDpvActive(DpvActiveEnum dpvActive) {
     this.dpvActive = dpvActive;
   }
+
+
 
 
 
@@ -592,6 +603,8 @@ public class DeliverabilityAnalysis {
 
 
 
+
+
   /*
   public DeliverabilityAnalysis ewsMatch(Boolean ewsMatch) {
     
@@ -604,6 +617,8 @@ public class DeliverabilityAnalysis {
   public void setEwsMatch(Boolean ewsMatch) {
     this.ewsMatch = ewsMatch;
   }
+
+
 
 
 
@@ -622,6 +637,8 @@ public class DeliverabilityAnalysis {
 
 
 
+
+
   /*
   public DeliverabilityAnalysis lacsReturnCode(String lacsReturnCode) {
     
@@ -637,6 +654,8 @@ public class DeliverabilityAnalysis {
 
 
 
+
+
   /*
   public DeliverabilityAnalysis suiteReturnCode(SuiteReturnCodeEnum suiteReturnCode) {
     
@@ -649,6 +668,8 @@ public class DeliverabilityAnalysis {
   public void setSuiteReturnCode(SuiteReturnCodeEnum suiteReturnCode) {
     this.suiteReturnCode = suiteReturnCode;
   }
+
+
 
 
 

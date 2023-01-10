@@ -26,11 +26,19 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CardEditable
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CardEditable {
+  private boolean isMultipart = false;
+
+  public boolean getIsMultipart() {
+    return isMultipart;
+  }
   public static final String SERIALIZED_NAME_FRONT = "front";
 
   @SerializedName(SERIALIZED_NAME_FRONT)
@@ -176,6 +184,12 @@ public class CardEditable {
     this.front = front;
   }
 
+  public void setFront (File front) {
+    isMultipart = true;
+    this.front = front.getPath();
+  }
+
+
 
 
   /*
@@ -190,6 +204,12 @@ public class CardEditable {
   public void setBack(String back) {
     this.back = back;
   }
+
+  public void setBack (File back) {
+    isMultipart = true;
+    this.back = back.getPath();
+  }
+
 
 
 
@@ -208,6 +228,8 @@ public class CardEditable {
 
 
 
+
+
   /*
   public CardEditable description(String description) {
     
@@ -220,6 +242,8 @@ public class CardEditable {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 

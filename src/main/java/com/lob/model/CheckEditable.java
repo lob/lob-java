@@ -30,11 +30,19 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CheckEditable
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CheckEditable {
+  private boolean isMultipart = false;
+
+  public boolean getIsMultipart() {
+    return isMultipart;
+  }
   public static final String SERIALIZED_NAME_FROM = "from";
 
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -455,6 +463,8 @@ public class CheckEditable {
 
 
 
+
+
   /*
   public CheckEditable amount(Float amount) {
     
@@ -467,6 +477,8 @@ public class CheckEditable {
   public void setAmount(Float amount) {
     this.amount = amount;
   }
+
+
 
 
 
@@ -485,6 +497,8 @@ public class CheckEditable {
 
 
 
+
+
   /*
   public CheckEditable checkBottom(String checkBottom) {
     
@@ -497,6 +511,12 @@ public class CheckEditable {
   public void setCheckBottom(String checkBottom) {
     this.checkBottom = checkBottom;
   }
+
+  public void setCheckBottom (File checkBottom) {
+    isMultipart = true;
+    this.checkBottom = checkBottom.getPath();
+  }
+
 
 
 
@@ -513,6 +533,12 @@ public class CheckEditable {
     this.attachment = attachment;
   }
 
+  public void setAttachment (File attachment) {
+    isMultipart = true;
+    this.attachment = attachment.getPath();
+  }
+
+
 
 
   /*
@@ -527,6 +553,8 @@ public class CheckEditable {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 
@@ -553,6 +581,8 @@ public class CheckEditable {
 
 
 
+
+
   /*
   public CheckEditable mergeVariables(Object mergeVariables) {
     
@@ -565,6 +595,8 @@ public class CheckEditable {
   public void setMergeVariables(Object mergeVariables) {
     this.mergeVariables = mergeVariables;
   }
+
+
 
 
 
@@ -583,6 +615,8 @@ public class CheckEditable {
 
 
 
+
+
   /*
   public CheckEditable mailType(MailTypeEnum mailType) {
     
@@ -595,6 +629,8 @@ public class CheckEditable {
   public void setMailType(MailTypeEnum mailType) {
     this.mailType = mailType;
   }
+
+
 
 
 
@@ -613,6 +649,8 @@ public class CheckEditable {
 
 
 
+
+
   /*
   public CheckEditable checkNumber(Integer checkNumber) {
     
@@ -625,6 +663,8 @@ public class CheckEditable {
   public void setCheckNumber(Integer checkNumber) {
     this.checkNumber = checkNumber;
   }
+
+
 
 
 
@@ -643,6 +683,8 @@ public class CheckEditable {
 
 
 
+
+
   /*
   public CheckEditable billingGroupId(String billingGroupId) {
     
@@ -655,6 +697,8 @@ public class CheckEditable {
   public void setBillingGroupId(String billingGroupId) {
     this.billingGroupId = billingGroupId;
   }
+
+
 
 
 

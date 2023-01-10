@@ -26,6 +26,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * MultipleComponents
  */
@@ -198,6 +201,8 @@ public class MultipleComponents {
 
 
 
+
+
   /*
   public MultipleComponents primaryLine(String primaryLine) {
     
@@ -210,6 +215,8 @@ public class MultipleComponents {
   public void setPrimaryLine(String primaryLine) {
     this.primaryLine = primaryLine;
   }
+
+
 
 
 
@@ -228,6 +235,8 @@ public class MultipleComponents {
 
 
 
+
+
   /*
   public MultipleComponents urbanization(String urbanization) {
     
@@ -240,6 +249,8 @@ public class MultipleComponents {
   public void setUrbanization(String urbanization) {
     this.urbanization = urbanization;
   }
+
+
 
 
 
@@ -258,6 +269,8 @@ public class MultipleComponents {
 
 
 
+
+
   /*
   public MultipleComponents state(String state) {
     
@@ -270,6 +283,8 @@ public class MultipleComponents {
   public void setState(String state) {
     this.state = state;
   }
+
+
 
 
 

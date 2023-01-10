@@ -35,11 +35,13 @@ import com.lob.model.BankAccountWritable;
 import com.lob.model.LobError;
 import java.time.OffsetDateTime;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class BankAccountsApi {
     private ApiClient localVarApiClient;
@@ -74,8 +76,6 @@ public class BankAccountsApi {
      </table>
      */
     public okhttp3.Call createCall(BankAccountWritable bankAccountWritable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = bankAccountWritable;
-
         // create path and map variables
         String localVarPath = "/bank_accounts";
 
@@ -93,9 +93,13 @@ public class BankAccountsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = bankAccountWritable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -197,8 +201,6 @@ public class BankAccountsApi {
      </table>
      */
     public okhttp3.Call deleteCall(String bankId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/bank_accounts/{bank_id}"
             .replaceAll("\\{" + "bank_id" + "\\}", localVarApiClient.escapeString(bankId.toString()));
@@ -217,9 +219,13 @@ public class BankAccountsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -321,8 +327,6 @@ public class BankAccountsApi {
      </table>
      */
     public okhttp3.Call getCall(String bankId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/bank_accounts/{bank_id}"
             .replaceAll("\\{" + "bank_id" + "\\}", localVarApiClient.escapeString(bankId.toString()));
@@ -341,9 +345,13 @@ public class BankAccountsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -446,8 +454,6 @@ public class BankAccountsApi {
      </table>
      */
     public okhttp3.Call verifyCall(String bankId, BankAccountVerify bankAccountVerify, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = bankAccountVerify;
-
         // create path and map variables
         String localVarPath = "/bank_accounts/{bank_id}/verify"
             .replaceAll("\\{" + "bank_id" + "\\}", localVarApiClient.escapeString(bankId.toString()));
@@ -466,9 +472,13 @@ public class BankAccountsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = bankAccountVerify;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -583,8 +593,6 @@ public class BankAccountsApi {
      </table>
      */
     public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/bank_accounts";
 
@@ -626,9 +634,13 @@ public class BankAccountsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

@@ -30,6 +30,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * A model used to represent an entry in a result list where the entry can either be a us_verification or an Error. The SDK will perform necessary casting into the correct corresponding type. 
  */
@@ -418,6 +421,8 @@ public class UsVerificationOrError {
 
 
 
+
+
   /*
   public UsVerificationOrError primaryLine(String primaryLine) {
     
@@ -430,6 +435,8 @@ public class UsVerificationOrError {
   public void setPrimaryLine(String primaryLine) {
     this.primaryLine = primaryLine;
   }
+
+
 
 
 
@@ -448,6 +455,8 @@ public class UsVerificationOrError {
 
 
 
+
+
   /*
   public UsVerificationOrError urbanization(String urbanization) {
     
@@ -460,6 +469,8 @@ public class UsVerificationOrError {
   public void setUrbanization(String urbanization) {
     this.urbanization = urbanization;
   }
+
+
 
 
 
@@ -478,6 +489,8 @@ public class UsVerificationOrError {
 
 
 
+
+
   /*
   public UsVerificationOrError deliverability(DeliverabilityEnum deliverability) {
     
@@ -490,6 +503,8 @@ public class UsVerificationOrError {
   public void setDeliverability(DeliverabilityEnum deliverability) {
     this.deliverability = deliverability;
   }
+
+
 
 
 
@@ -508,6 +523,8 @@ public class UsVerificationOrError {
 
 
 
+
+
   /*
   public UsVerificationOrError deliverabilityAnalysis(DeliverabilityAnalysis deliverabilityAnalysis) {
     
@@ -520,6 +537,8 @@ public class UsVerificationOrError {
   public void setDeliverabilityAnalysis(DeliverabilityAnalysis deliverabilityAnalysis) {
     this.deliverabilityAnalysis = deliverabilityAnalysis;
   }
+
+
 
 
 
@@ -538,6 +557,8 @@ public class UsVerificationOrError {
 
 
 
+
+
   /*
   public UsVerificationOrError _object(ObjectEnum _object) {
     
@@ -553,6 +574,8 @@ public class UsVerificationOrError {
 
 
 
+
+
   /*
   public UsVerificationOrError error(BulkError error) {
     
@@ -565,6 +588,8 @@ public class UsVerificationOrError {
   public void setError(BulkError error) {
     this.error = error;
   }
+
+
 
 
 

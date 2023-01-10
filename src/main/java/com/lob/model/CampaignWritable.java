@@ -32,6 +32,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CampaignWritable
  */
@@ -269,6 +272,8 @@ public class CampaignWritable {
 
 
 
+
+
   /*
   public CampaignWritable description(String description) {
     
@@ -281,6 +286,8 @@ public class CampaignWritable {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 
@@ -299,6 +306,8 @@ public class CampaignWritable {
 
 
 
+
+
   /*
   public CampaignWritable targetDeliveryDate(OffsetDateTime targetDeliveryDate) {
     
@@ -311,6 +320,8 @@ public class CampaignWritable {
   public void setTargetDeliveryDate(OffsetDateTime targetDeliveryDate) {
     this.targetDeliveryDate = targetDeliveryDate;
   }
+
+
 
 
 
@@ -329,6 +340,8 @@ public class CampaignWritable {
 
 
 
+
+
   /*
   public CampaignWritable cancelWindowCampaignMinutes(Integer cancelWindowCampaignMinutes) {
     
@@ -341,6 +354,8 @@ public class CampaignWritable {
   public void setCancelWindowCampaignMinutes(Integer cancelWindowCampaignMinutes) {
     this.cancelWindowCampaignMinutes = cancelWindowCampaignMinutes;
   }
+
+
 
 
 
@@ -367,6 +382,8 @@ public class CampaignWritable {
 
 
 
+
+
   /*
   public CampaignWritable useType(CmpUseType useType) {
     
@@ -382,6 +399,8 @@ public class CampaignWritable {
 
 
 
+
+
   /*
   public CampaignWritable autoCancelIfNcoa(Boolean autoCancelIfNcoa) {
     
@@ -394,6 +413,8 @@ public class CampaignWritable {
   public void setAutoCancelIfNcoa(Boolean autoCancelIfNcoa) {
     this.autoCancelIfNcoa = autoCancelIfNcoa;
   }
+
+
 
 
 

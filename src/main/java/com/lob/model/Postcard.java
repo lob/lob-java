@@ -38,6 +38,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Postcard
  */
@@ -617,6 +620,8 @@ public class Postcard {
 
 
 
+
+
   /*
   public Postcard from(AddressDomesticExpanded from) {
     
@@ -632,6 +637,8 @@ public class Postcard {
 
 
 
+
+
   /*
   public Postcard carrier(CarrierEnum carrier) {
     
@@ -644,6 +651,8 @@ public class Postcard {
   public void setCarrier(CarrierEnum carrier) {
     this.carrier = carrier;
   }
+
+
 
 
 
@@ -670,6 +679,8 @@ public class Postcard {
 
 
 
+
+
   /*
   public Postcard size(PostcardSize size) {
     
@@ -682,6 +693,8 @@ public class Postcard {
   public void setSize(PostcardSize size) {
     this.size = size;
   }
+
+
 
 
 
@@ -700,6 +713,8 @@ public class Postcard {
 
 
 
+
+
   /*
   public Postcard dateCreated(OffsetDateTime dateCreated) {
     
@@ -712,6 +727,8 @@ public class Postcard {
   public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
+
+
 
 
 
@@ -730,6 +747,8 @@ public class Postcard {
 
 
 
+
+
   /*
   public Postcard deleted(Boolean deleted) {
     
@@ -742,6 +761,8 @@ public class Postcard {
   public void setDeleted(Boolean deleted) {
     this.deleted = deleted;
   }
+
+
 
 
 
@@ -816,6 +837,8 @@ public class Postcard {
 
 
 
+
+
   /*
   public Postcard _object(ObjectEnum _object) {
     
@@ -828,6 +851,8 @@ public class Postcard {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -858,6 +883,8 @@ public class Postcard {
 
 
 
+
+
   /*
   public Postcard metadata(Map<String, String> metadata) {
     
@@ -881,6 +908,8 @@ public class Postcard {
 
 
 
+
+
   /*
   public Postcard mailType(MailType mailType) {
     
@@ -893,6 +922,8 @@ public class Postcard {
   public void setMailType(MailType mailType) {
     this.mailType = mailType;
   }
+
+
 
 
 
@@ -911,6 +942,8 @@ public class Postcard {
 
 
 
+
+
   /*
   public Postcard sendDate(OffsetDateTime sendDate) {
     
@@ -923,6 +956,8 @@ public class Postcard {
   public void setSendDate(OffsetDateTime sendDate) {
     this.sendDate = sendDate;
   }
+
+
 
 
 

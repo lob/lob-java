@@ -27,6 +27,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * TemplateVersionUpdatable
  */
@@ -90,6 +93,8 @@ public class TemplateVersionUpdatable {
 
 
 
+
+
   /*
   public TemplateVersionUpdatable engine(EngineHtml engine) {
     
@@ -102,6 +107,8 @@ public class TemplateVersionUpdatable {
   public void setEngine(EngineHtml engine) {
     this.engine = engine;
   }
+
+
 
 
 

@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * InlineObject
  */
@@ -64,6 +67,8 @@ public class InlineObject {
   public void setFile(Object file) {
     this.file = file;
   }
+
+
 
 
 

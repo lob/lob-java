@@ -31,11 +31,13 @@ import com.lob.model.LobError;
 import com.lob.model.Location;
 import com.lob.model.ReverseGeocode;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class ReverseGeocodeLookupsApi {
     private ApiClient localVarApiClient;
@@ -71,8 +73,6 @@ public class ReverseGeocodeLookupsApi {
      </table>
      */
     public okhttp3.Call lookupCall(Location location, Integer size, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = location;
-
         // create path and map variables
         String localVarPath = "/us_reverse_geocode_lookups";
 
@@ -94,9 +94,13 @@ public class ReverseGeocodeLookupsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = location;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

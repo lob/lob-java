@@ -31,11 +31,13 @@ import com.lob.model.IntlAutocompletions;
 import com.lob.model.IntlAutocompletionsWritable;
 import com.lob.model.LobError;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class IntlAutocompletionsApi {
     private ApiClient localVarApiClient;
@@ -71,8 +73,6 @@ public class IntlAutocompletionsApi {
      </table>
      */
     public okhttp3.Call autocompleteCall(IntlAutocompletionsWritable intlAutocompletionsWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = intlAutocompletionsWritable;
-
         // create path and map variables
         String localVarPath = "/intl_autocompletions";
 
@@ -94,9 +94,13 @@ public class IntlAutocompletionsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = intlAutocompletionsWritable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

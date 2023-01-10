@@ -34,6 +34,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * SelfMailer
  */
@@ -482,6 +485,8 @@ public class SelfMailer {
 
 
 
+
+
   /*
   public SelfMailer description(String description) {
     
@@ -494,6 +499,8 @@ public class SelfMailer {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 
@@ -520,6 +527,8 @@ public class SelfMailer {
 
 
 
+
+
   /*
   public SelfMailer mailType(MailType mailType) {
     
@@ -532,6 +541,8 @@ public class SelfMailer {
   public void setMailType(MailType mailType) {
     this.mailType = mailType;
   }
+
+
 
 
 
@@ -550,6 +561,8 @@ public class SelfMailer {
 
 
 
+
+
   /*
   public SelfMailer sendDate(OffsetDateTime sendDate) {
     
@@ -562,6 +575,8 @@ public class SelfMailer {
   public void setSendDate(OffsetDateTime sendDate) {
     this.sendDate = sendDate;
   }
+
+
 
 
 
@@ -628,6 +643,8 @@ public class SelfMailer {
 
 
 
+
+
   /*
   public SelfMailer trackingEvents(List<TrackingEventCertified> trackingEvents) {
     
@@ -648,6 +665,8 @@ public class SelfMailer {
   public void setTrackingEvents(List<TrackingEventCertified> trackingEvents) {
     this.trackingEvents = trackingEvents;
   }
+
+
 
 
 

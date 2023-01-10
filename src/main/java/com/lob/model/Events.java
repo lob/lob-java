@@ -27,6 +27,9 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Events
  */
@@ -235,6 +238,8 @@ public class Events {
 
 
 
+
+
   /*
   public Events referenceId(String referenceId) {
     
@@ -247,6 +252,8 @@ public class Events {
   public void setReferenceId(String referenceId) {
     this.referenceId = referenceId;
   }
+
+
 
 
 
@@ -265,6 +272,8 @@ public class Events {
 
 
 
+
+
   /*
   public Events dateCreated(OffsetDateTime dateCreated) {
     
@@ -280,6 +289,8 @@ public class Events {
 
 
 
+
+
   /*
   public Events _object(ObjectEnum _object) {
     
@@ -292,6 +303,8 @@ public class Events {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * A nested object containing a breakdown of each component of an address.
  */
@@ -152,6 +155,8 @@ public class IntlComponents {
 
 
 
+
+
   /*
   public IntlComponents streetName(String streetName) {
     
@@ -164,6 +169,8 @@ public class IntlComponents {
   public void setStreetName(String streetName) {
     this.streetName = streetName;
   }
+
+
 
 
 
@@ -182,6 +189,8 @@ public class IntlComponents {
 
 
 
+
+
   /*
   public IntlComponents state(String state) {
     
@@ -197,6 +206,8 @@ public class IntlComponents {
 
 
 
+
+
   /*
   public IntlComponents postalCode(String postalCode) {
     
@@ -209,6 +220,8 @@ public class IntlComponents {
   public void setPostalCode(String postalCode) {
     this.postalCode = postalCode;
   }
+
+
 
 
 

@@ -26,6 +26,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * IdentityValidation
  */
@@ -350,6 +353,8 @@ public class IdentityValidation {
 
 
 
+
+
   /*
   public IdentityValidation primaryLine(String primaryLine) {
     
@@ -362,6 +367,8 @@ public class IdentityValidation {
   public void setPrimaryLine(String primaryLine) {
     this.primaryLine = primaryLine;
   }
+
+
 
 
 
@@ -380,6 +387,8 @@ public class IdentityValidation {
 
 
 
+
+
   /*
   public IdentityValidation urbanization(String urbanization) {
     
@@ -392,6 +401,8 @@ public class IdentityValidation {
   public void setUrbanization(String urbanization) {
     this.urbanization = urbanization;
   }
+
+
 
 
 
@@ -410,6 +421,8 @@ public class IdentityValidation {
 
 
 
+
+
   /*
   public IdentityValidation score(Float score) {
     
@@ -422,6 +435,8 @@ public class IdentityValidation {
   public void setScore(Float score) {
     this.score = score;
   }
+
+
 
 
 
@@ -440,6 +455,8 @@ public class IdentityValidation {
 
 
 
+
+
   /*
   public IdentityValidation _object(ObjectEnum _object) {
     
@@ -452,6 +469,8 @@ public class IdentityValidation {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

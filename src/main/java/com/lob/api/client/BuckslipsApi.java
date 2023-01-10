@@ -34,11 +34,13 @@ import com.lob.model.BuckslipUpdatable;
 import com.lob.model.BuckslipsList;
 import com.lob.model.LobError;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class BuckslipsApi {
     private ApiClient localVarApiClient;
@@ -73,8 +75,6 @@ public class BuckslipsApi {
      </table>
      */
     public okhttp3.Call createCall(BuckslipEditable buckslipEditable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = buckslipEditable;
-
         // create path and map variables
         String localVarPath = "/buckslips";
 
@@ -92,9 +92,13 @@ public class BuckslipsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = buckslipEditable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -196,8 +200,6 @@ public class BuckslipsApi {
      </table>
      */
     public okhttp3.Call deleteCall(String buckslipId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/buckslips/{buckslip_id}"
             .replaceAll("\\{" + "buckslip_id" + "\\}", localVarApiClient.escapeString(buckslipId.toString()));
@@ -216,9 +218,13 @@ public class BuckslipsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -320,8 +326,6 @@ public class BuckslipsApi {
      </table>
      */
     public okhttp3.Call getCall(String buckslipId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/buckslips/{buckslip_id}"
             .replaceAll("\\{" + "buckslip_id" + "\\}", localVarApiClient.escapeString(buckslipId.toString()));
@@ -340,9 +344,13 @@ public class BuckslipsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -445,8 +453,6 @@ public class BuckslipsApi {
      </table>
      */
     public okhttp3.Call updateCall(String buckslipId, BuckslipUpdatable buckslipUpdatable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = buckslipUpdatable;
-
         // create path and map variables
         String localVarPath = "/buckslips/{buckslip_id}"
             .replaceAll("\\{" + "buckslip_id" + "\\}", localVarApiClient.escapeString(buckslipId.toString()));
@@ -465,9 +471,13 @@ public class BuckslipsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = buckslipUpdatable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -580,8 +590,6 @@ public class BuckslipsApi {
      </table>
      */
     public okhttp3.Call ListCall(Integer limit, String before, String after, List<String> include, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/buckslips";
 
@@ -615,9 +623,13 @@ public class BuckslipsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

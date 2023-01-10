@@ -30,6 +30,9 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Properties that the letters in your Creative should have.
  */
@@ -296,6 +299,8 @@ public class LetterDetailsReturned {
 
 
 
+
+
   /*
   public LetterDetailsReturned cards(List<String> cards) {
     
@@ -316,6 +321,8 @@ public class LetterDetailsReturned {
 
 
 
+
+
   /*
   public LetterDetailsReturned addressPlacement(AddressPlacementEnum addressPlacement) {
     
@@ -328,6 +335,8 @@ public class LetterDetailsReturned {
   public void setAddressPlacement(AddressPlacementEnum addressPlacement) {
     this.addressPlacement = addressPlacement;
   }
+
+
 
 
 
@@ -346,6 +355,8 @@ public class LetterDetailsReturned {
 
 
 
+
+
   /*
   public LetterDetailsReturned doubleSided(Boolean doubleSided) {
     
@@ -358,6 +369,8 @@ public class LetterDetailsReturned {
   public void setDoubleSided(Boolean doubleSided) {
     this.doubleSided = doubleSided;
   }
+
+
 
 
 
@@ -376,6 +389,8 @@ public class LetterDetailsReturned {
 
 
 
+
+
   /*
   public LetterDetailsReturned mailType(MailType mailType) {
     
@@ -388,6 +403,8 @@ public class LetterDetailsReturned {
   public void setMailType(MailType mailType) {
     this.mailType = mailType;
   }
+
+
 
 
 
@@ -418,6 +435,8 @@ public class LetterDetailsReturned {
 
 
 
+
+
   /*
   public LetterDetailsReturned fileOriginalUrl(String fileOriginalUrl) {
     
@@ -430,6 +449,8 @@ public class LetterDetailsReturned {
   public void setFileOriginalUrl(String fileOriginalUrl) {
     this.fileOriginalUrl = fileOriginalUrl;
   }
+
+
 
 
 

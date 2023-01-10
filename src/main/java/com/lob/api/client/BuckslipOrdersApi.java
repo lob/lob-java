@@ -32,11 +32,13 @@ import com.lob.model.BuckslipOrderEditable;
 import com.lob.model.BuckslipOrdersList;
 import com.lob.model.LobError;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class BuckslipOrdersApi {
     private ApiClient localVarApiClient;
@@ -72,8 +74,6 @@ public class BuckslipOrdersApi {
      </table>
      */
     public okhttp3.Call createCall(String buckslipId, BuckslipOrderEditable buckslipOrderEditable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = buckslipOrderEditable;
-
         // create path and map variables
         String localVarPath = "/buckslips/{buckslip_id}/orders"
             .replaceAll("\\{" + "buckslip_id" + "\\}", localVarApiClient.escapeString(buckslipId.toString()));
@@ -92,9 +92,13 @@ public class BuckslipOrdersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = buckslipOrderEditable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -206,8 +210,6 @@ public class BuckslipOrdersApi {
      </table>
      */
     public okhttp3.Call getCall(String buckslipId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/buckslips/{buckslip_id}/orders"
             .replaceAll("\\{" + "buckslip_id" + "\\}", localVarApiClient.escapeString(buckslipId.toString()));
@@ -234,9 +236,13 @@ public class BuckslipOrdersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

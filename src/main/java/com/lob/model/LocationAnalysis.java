@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * A nested object containing a breakdown of the analysis of a reverse geocoded location.
  */
@@ -114,6 +117,8 @@ public class LocationAnalysis {
 
 
 
+
+
   /*
   public LocationAnalysis longitude(Float longitude) {
     
@@ -129,6 +134,8 @@ public class LocationAnalysis {
 
 
 
+
+
   /*
   public LocationAnalysis distance(Float distance) {
     
@@ -141,6 +148,8 @@ public class LocationAnalysis {
   public void setDistance(Float distance) {
     this.distance = distance;
   }
+
+
 
 
 

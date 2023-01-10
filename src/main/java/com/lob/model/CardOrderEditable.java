@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CardOrderEditable
  */
@@ -66,6 +69,8 @@ public class CardOrderEditable {
   public void setQuantity(Integer quantity) {
     this.quantity = quantity;
   }
+
+
 
 
 

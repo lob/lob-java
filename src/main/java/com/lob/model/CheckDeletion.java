@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Lob uses RESTful HTTP response codes to indicate success or failure of an API request. In general, 2xx indicates success, 4xx indicate an input error, and 5xx indicates an error on Lob&#39;s end.
  */
@@ -171,6 +174,8 @@ public class CheckDeletion {
 
 
 
+
+
   /*
   public CheckDeletion _object(ObjectEnum _object) {
     
@@ -183,6 +188,8 @@ public class CheckDeletion {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

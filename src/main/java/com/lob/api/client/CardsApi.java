@@ -34,11 +34,13 @@ import com.lob.model.CardList;
 import com.lob.model.CardUpdatable;
 import com.lob.model.LobError;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class CardsApi {
     private ApiClient localVarApiClient;
@@ -73,8 +75,6 @@ public class CardsApi {
      </table>
      */
     public okhttp3.Call createCall(CardEditable cardEditable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = cardEditable;
-
         // create path and map variables
         String localVarPath = "/cards";
 
@@ -92,9 +92,58 @@ public class CardsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
-        };
+        Object localVarPostBody = null;
+        String[] localVarContentTypes;
+
+        if (cardEditable.getIsMultipart()) {
+            Method[] methods = CardEditable.class.getDeclaredMethods();
+
+            Map<String, Method> nameToMethod = new HashMap<String, Method>();
+            for (Method method: methods) {
+                nameToMethod.put(method.getName(), method);
+            }
+
+            Field[] fields = CardEditable.class.getDeclaredFields();
+
+            for (int i = 0; i < fields.length; i++) {
+                Field field = fields[i];
+                String fieldName = field.getName(); // camelCase
+                if (Character.isUpperCase(fieldName.charAt(0)) || fieldName.equals("isMultipart")) continue;
+
+                String rawFieldName = field.getAnnotation(SerializedName.class).value();
+
+                String getterString = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+                Method getter = nameToMethod.get(getterString);
+
+                try {
+                    if (getter.invoke(cardEditable) != null) {
+                        if (
+                            rawFieldName.equals("file") ||
+                            rawFieldName.equals("check_bottom") ||
+                            rawFieldName.equals("attachment") ||
+                            rawFieldName.equals("front") ||
+                            rawFieldName.equals("back") ||
+                            rawFieldName.equals("inside") ||
+                            rawFieldName.equals("outside")
+                        )  {
+                            localVarFormParams.put(rawFieldName, new File((String)getter.invoke(cardEditable)));
+                        } else {
+                            localVarFormParams.put(rawFieldName, getter.invoke(cardEditable));
+                        }
+                    }
+                } catch (IllegalAccessException e) {
+                    throw new ApiException(e);
+                } catch (InvocationTargetException e) {
+                    throw new ApiException(e);
+                }
+            }
+
+            localVarContentTypes = new String[]{ "multipart/form-data" };
+        } else {
+            localVarPostBody = cardEditable;
+            localVarContentTypes = new String[]{ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" };
+        }
+        
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -196,8 +245,6 @@ public class CardsApi {
      </table>
      */
     public okhttp3.Call deleteCall(String cardId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/cards/{card_id}"
             .replaceAll("\\{" + "card_id" + "\\}", localVarApiClient.escapeString(cardId.toString()));
@@ -216,9 +263,13 @@ public class CardsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -320,8 +371,6 @@ public class CardsApi {
      </table>
      */
     public okhttp3.Call getCall(String cardId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/cards/{card_id}"
             .replaceAll("\\{" + "card_id" + "\\}", localVarApiClient.escapeString(cardId.toString()));
@@ -340,9 +389,13 @@ public class CardsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -445,8 +498,6 @@ public class CardsApi {
      </table>
      */
     public okhttp3.Call updateCall(String cardId, CardUpdatable cardUpdatable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = cardUpdatable;
-
         // create path and map variables
         String localVarPath = "/cards/{card_id}"
             .replaceAll("\\{" + "card_id" + "\\}", localVarApiClient.escapeString(cardId.toString()));
@@ -465,9 +516,13 @@ public class CardsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = cardUpdatable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -580,8 +635,6 @@ public class CardsApi {
      </table>
      */
     public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/cards";
 
@@ -615,9 +668,13 @@ public class CardsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

@@ -30,6 +30,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * AddressEditable
  */
@@ -293,6 +296,8 @@ public class AddressEditable {
 
 
 
+
+
   /*
   public AddressEditable addressLine2(String addressLine2) {
     
@@ -305,6 +310,8 @@ public class AddressEditable {
   public void setAddressLine2(String addressLine2) {
     this.addressLine2 = addressLine2;
   }
+
+
 
 
 
@@ -323,6 +330,8 @@ public class AddressEditable {
 
 
 
+
+
   /*
   public AddressEditable addressState(String addressState) {
     
@@ -335,6 +344,8 @@ public class AddressEditable {
   public void setAddressState(String addressState) {
     this.addressState = addressState;
   }
+
+
 
 
 
@@ -353,6 +364,8 @@ public class AddressEditable {
 
 
 
+
+
   /*
   public AddressEditable addressCountry(CountryExtended addressCountry) {
     
@@ -365,6 +378,8 @@ public class AddressEditable {
   public void setAddressCountry(CountryExtended addressCountry) {
     this.addressCountry = addressCountry;
   }
+
+
 
 
 
@@ -383,6 +398,8 @@ public class AddressEditable {
 
 
 
+
+
   /*
   public AddressEditable name(String name) {
     
@@ -395,6 +412,8 @@ public class AddressEditable {
   public void setName(String name) {
     this.name = name;
   }
+
+
 
 
 
@@ -413,6 +432,8 @@ public class AddressEditable {
 
 
 
+
+
   /*
   public AddressEditable phone(String phone) {
     
@@ -428,6 +449,8 @@ public class AddressEditable {
 
 
 
+
+
   /*
   public AddressEditable email(String email) {
     
@@ -440,6 +463,8 @@ public class AddressEditable {
   public void setEmail(String email) {
     this.email = email;
   }
+
+
 
 
 
@@ -463,6 +488,8 @@ public class AddressEditable {
   public void setMetadata(Map<String, String> metadata) {
     this.metadata = metadata;
   }
+
+
 
 
 

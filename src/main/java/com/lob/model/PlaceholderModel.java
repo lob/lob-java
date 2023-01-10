@@ -31,6 +31,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * PlaceholderModel
  */
@@ -178,6 +181,8 @@ public class PlaceholderModel {
 
 
 
+
+
   /*
   public PlaceholderModel addressDomestic(AddressDomestic addressDomestic) {
     
@@ -190,6 +195,8 @@ public class PlaceholderModel {
   public void setAddressDomestic(AddressDomestic addressDomestic) {
     this.addressDomestic = addressDomestic;
   }
+
+
 
 
 
@@ -208,6 +215,8 @@ public class PlaceholderModel {
 
 
 
+
+
   /*
   public PlaceholderModel postcardDetailsWritable(PostcardDetailsWritable postcardDetailsWritable) {
     
@@ -220,6 +229,8 @@ public class PlaceholderModel {
   public void setPostcardDetailsWritable(PostcardDetailsWritable postcardDetailsWritable) {
     this.postcardDetailsWritable = postcardDetailsWritable;
   }
+
+
 
 
 
@@ -238,6 +249,8 @@ public class PlaceholderModel {
 
 
 
+
+
   /*
   public PlaceholderModel postcardDetailsReturned(PostcardDetailsReturned postcardDetailsReturned) {
     
@@ -250,6 +263,8 @@ public class PlaceholderModel {
   public void setPostcardDetailsReturned(PostcardDetailsReturned postcardDetailsReturned) {
     this.postcardDetailsReturned = postcardDetailsReturned;
   }
+
+
 
 
 

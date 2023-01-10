@@ -30,6 +30,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * TemplateWritable
  */
@@ -125,6 +128,8 @@ public class TemplateWritable {
 
 
 
+
+
   /*
   public TemplateWritable html(String html) {
     
@@ -137,6 +142,8 @@ public class TemplateWritable {
   public void setHtml(String html) {
     this.html = html;
   }
+
+
 
 
 
@@ -163,6 +170,8 @@ public class TemplateWritable {
 
 
 
+
+
   /*
   public TemplateWritable engine(EngineHtml engine) {
     
@@ -175,6 +184,8 @@ public class TemplateWritable {
   public void setEngine(EngineHtml engine) {
     this.engine = engine;
   }
+
+
 
 
 

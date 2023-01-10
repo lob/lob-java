@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * The list of column headers in your file as an array that you want as metadata associated with each mailpiece. See our &lt;a href&#x3D;\&quot;https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#required-columns-2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Campaign Audience Guide&lt;/a&gt; for additional details.
  */
@@ -56,6 +59,8 @@ public class UploadsMetadata {
   public void setColumns(List<String> columns) {
     this.columns = columns;
   }
+
+
 
 
 

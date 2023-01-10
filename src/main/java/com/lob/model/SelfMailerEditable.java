@@ -32,11 +32,19 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * SelfMailerEditable
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SelfMailerEditable {
+  private boolean isMultipart = false;
+
+  public boolean getIsMultipart() {
+    return isMultipart;
+  }
   public static final String SERIALIZED_NAME_TO = "to";
 
   @SerializedName(SERIALIZED_NAME_TO)
@@ -304,6 +312,8 @@ public class SelfMailerEditable {
 
 
 
+
+
   /*
   public SelfMailerEditable description(String description) {
     
@@ -316,6 +326,8 @@ public class SelfMailerEditable {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 
@@ -342,6 +354,8 @@ public class SelfMailerEditable {
 
 
 
+
+
   /*
   public SelfMailerEditable mailType(MailType mailType) {
     
@@ -354,6 +368,8 @@ public class SelfMailerEditable {
   public void setMailType(MailType mailType) {
     this.mailType = mailType;
   }
+
+
 
 
 
@@ -372,6 +388,8 @@ public class SelfMailerEditable {
 
 
 
+
+
   /*
   public SelfMailerEditable sendDate(OffsetDateTime sendDate) {
     
@@ -384,6 +402,8 @@ public class SelfMailerEditable {
   public void setSendDate(OffsetDateTime sendDate) {
     this.sendDate = sendDate;
   }
+
+
 
 
 
@@ -400,6 +420,12 @@ public class SelfMailerEditable {
     this.inside = inside;
   }
 
+  public void setInside (File inside) {
+    isMultipart = true;
+    this.inside = inside.getPath();
+  }
+
+
 
 
   /*
@@ -415,6 +441,12 @@ public class SelfMailerEditable {
     this.outside = outside;
   }
 
+  public void setOutside (File outside) {
+    isMultipart = true;
+    this.outside = outside.getPath();
+  }
+
+
 
 
   /*
@@ -429,6 +461,8 @@ public class SelfMailerEditable {
   public void setBillingGroupId(String billingGroupId) {
     this.billingGroupId = billingGroupId;
   }
+
+
 
 
 

@@ -30,6 +30,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * BankAccountWritable
  */
@@ -167,6 +170,8 @@ public class BankAccountWritable {
 
 
 
+
+
   /*
   public BankAccountWritable routingNumber(String routingNumber) {
     
@@ -179,6 +184,8 @@ public class BankAccountWritable {
   public void setRoutingNumber(String routingNumber) {
     this.routingNumber = routingNumber;
   }
+
+
 
 
 
@@ -197,6 +204,8 @@ public class BankAccountWritable {
 
 
 
+
+
   /*
   public BankAccountWritable accountType(BankTypeEnum accountType) {
     
@@ -212,6 +221,8 @@ public class BankAccountWritable {
 
 
 
+
+
   /*
   public BankAccountWritable signatory(String signatory) {
     
@@ -224,6 +235,8 @@ public class BankAccountWritable {
   public void setSignatory(String signatory) {
     this.signatory = signatory;
   }
+
+
 
 
 
@@ -247,6 +260,8 @@ public class BankAccountWritable {
   public void setMetadata(Map<String, String> metadata) {
     this.metadata = metadata;
   }
+
+
 
 
 

@@ -36,11 +36,13 @@ import com.lob.model.UploadFile;
 import com.lob.model.UploadUpdatable;
 import com.lob.model.UploadWritable;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class UploadsApi {
     private ApiClient localVarApiClient;
@@ -75,8 +77,6 @@ public class UploadsApi {
      </table>
      */
     public okhttp3.Call get_exportCall(String uplId, String exId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/uploads/{upl_id}/exports/{ex_id}"
             .replaceAll("\\{" + "upl_id" + "\\}", localVarApiClient.escapeString(uplId.toString()))
@@ -96,9 +96,13 @@ public class UploadsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
 
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -205,8 +209,6 @@ public class UploadsApi {
      </table>
      */
     public okhttp3.Call create_uploadCall(UploadWritable uploadWritable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = uploadWritable;
-
         // create path and map variables
         String localVarPath = "/uploads";
 
@@ -224,9 +226,13 @@ public class UploadsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = uploadWritable;
+
         final String[] localVarContentTypes = {
             "application/json"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -328,8 +334,6 @@ public class UploadsApi {
      </table>
      */
     public okhttp3.Call delete_uploadCall(String uplId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/uploads/{upl_id}"
             .replaceAll("\\{" + "upl_id" + "\\}", localVarApiClient.escapeString(uplId.toString()));
@@ -348,9 +352,13 @@ public class UploadsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
 
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -449,8 +457,6 @@ public class UploadsApi {
      </table>
      */
     public okhttp3.Call create_exportCall(String uplId, ExportModel exportModel, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = exportModel;
-
         // create path and map variables
         String localVarPath = "/uploads/{upl_id}/exports"
             .replaceAll("\\{" + "upl_id" + "\\}", localVarApiClient.escapeString(uplId.toString()));
@@ -469,9 +475,13 @@ public class UploadsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = exportModel;
+
         final String[] localVarContentTypes = {
             "application/json"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -582,8 +592,6 @@ public class UploadsApi {
      </table>
      */
     public okhttp3.Call upload_fileCall(String uplId, Object file, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/uploads/{upl_id}/file"
             .replaceAll("\\{" + "upl_id" + "\\}", localVarApiClient.escapeString(uplId.toString()));
@@ -606,9 +614,13 @@ public class UploadsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -718,8 +730,6 @@ public class UploadsApi {
      </table>
      */
     public okhttp3.Call get_uploadCall(String uplId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/uploads/{upl_id}"
             .replaceAll("\\{" + "upl_id" + "\\}", localVarApiClient.escapeString(uplId.toString()));
@@ -738,9 +748,13 @@ public class UploadsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
 
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -843,8 +857,6 @@ public class UploadsApi {
      </table>
      */
     public okhttp3.Call update_uploadCall(String uplId, UploadUpdatable uploadUpdatable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = uploadUpdatable;
-
         // create path and map variables
         String localVarPath = "/uploads/{upl_id}"
             .replaceAll("\\{" + "upl_id" + "\\}", localVarApiClient.escapeString(uplId.toString()));
@@ -863,9 +875,13 @@ public class UploadsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = uploadUpdatable;
+
         final String[] localVarContentTypes = {
             "application/json"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -974,8 +990,6 @@ public class UploadsApi {
      </table>
      */
     public okhttp3.Call list_uploadCall(String campaignId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/uploads";
 
@@ -997,9 +1011,13 @@ public class UploadsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
 
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

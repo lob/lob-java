@@ -32,6 +32,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CampaignCreative
  */
@@ -418,6 +421,8 @@ public class CampaignCreative {
 
 
 
+
+
   /*
   public CampaignCreative from(Object from) {
     
@@ -442,6 +447,8 @@ public class CampaignCreative {
   public void setResourceType(ResourceTypeEnum resourceType) {
     this.resourceType = resourceType;
   }
+
+
 
 
 
@@ -480,6 +487,8 @@ public class CampaignCreative {
 
 
 
+
+
   /*
   public CampaignCreative templatePreviewUrls(Object templatePreviewUrls) {
     
@@ -492,6 +501,8 @@ public class CampaignCreative {
   public void setTemplatePreviewUrls(Object templatePreviewUrls) {
     this.templatePreviewUrls = templatePreviewUrls;
   }
+
+
 
 
 
@@ -518,6 +529,8 @@ public class CampaignCreative {
 
 
 
+
+
   /*
   public CampaignCreative deleted(Boolean deleted) {
     
@@ -530,6 +543,8 @@ public class CampaignCreative {
   public void setDeleted(Boolean deleted) {
     this.deleted = deleted;
   }
+
+
 
 
 
@@ -556,6 +571,8 @@ public class CampaignCreative {
 
 
 
+
+
   /*
   public CampaignCreative dateCreated(OffsetDateTime dateCreated) {
     
@@ -568,6 +585,8 @@ public class CampaignCreative {
   public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
+
+
 
 
 
@@ -586,6 +605,8 @@ public class CampaignCreative {
 
 
 
+
+
   /*
   public CampaignCreative _object(ObjectEnum _object) {
     
@@ -598,6 +619,8 @@ public class CampaignCreative {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

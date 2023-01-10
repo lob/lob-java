@@ -29,6 +29,9 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CardOrderList
  */
@@ -153,6 +156,8 @@ public class CardOrderList {
 
 
 
+
+
   /*
   public CardOrderList _object(String _object) {
     
@@ -165,6 +170,8 @@ public class CardOrderList {
   public void setObject(String _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -183,6 +190,8 @@ public class CardOrderList {
 
 
 
+
+
   /*
   public CardOrderList previousUrl(String previousUrl) {
     
@@ -198,6 +207,8 @@ public class CardOrderList {
 
 
 
+
+
   /*
   public CardOrderList count(Integer count) {
     
@@ -210,6 +221,8 @@ public class CardOrderList {
   public void setCount(Integer count) {
     this.count = count;
   }
+
+
 
 
 

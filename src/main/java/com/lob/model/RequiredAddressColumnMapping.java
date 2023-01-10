@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * The mapping of column headers in your file to Lob-required fields for the resource created. See our &lt;a href&#x3D;\&quot;https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#required-columns-2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Campaign Audience Guide&lt;/a&gt; for additional details.
  */
@@ -152,6 +155,8 @@ public class RequiredAddressColumnMapping {
 
 
 
+
+
   /*
   public RequiredAddressColumnMapping addressLine1(String addressLine1) {
     
@@ -164,6 +169,8 @@ public class RequiredAddressColumnMapping {
   public void setAddressLine1(String addressLine1) {
     this.addressLine1 = addressLine1;
   }
+
+
 
 
 
@@ -182,6 +189,8 @@ public class RequiredAddressColumnMapping {
 
 
 
+
+
   /*
   public RequiredAddressColumnMapping addressState(String addressState) {
     
@@ -197,6 +206,8 @@ public class RequiredAddressColumnMapping {
 
 
 
+
+
   /*
   public RequiredAddressColumnMapping addressZip(String addressZip) {
     
@@ -209,6 +220,8 @@ public class RequiredAddressColumnMapping {
   public void setAddressZip(String addressZip) {
     this.addressZip = addressZip;
   }
+
+
 
 
 

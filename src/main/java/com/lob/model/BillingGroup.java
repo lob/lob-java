@@ -26,6 +26,9 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * BillingGroup
  */
@@ -222,6 +225,8 @@ public class BillingGroup {
 
 
 
+
+
   /*
   public BillingGroup name(String name) {
     
@@ -234,6 +239,8 @@ public class BillingGroup {
   public void setName(String name) {
     this.name = name;
   }
+
+
 
 
 
@@ -264,6 +271,8 @@ public class BillingGroup {
 
 
 
+
+
   /*
   public BillingGroup dateModified(OffsetDateTime dateModified) {
     
@@ -279,6 +288,8 @@ public class BillingGroup {
 
 
 
+
+
   /*
   public BillingGroup _object(ObjectEnum _object) {
     
@@ -291,6 +302,8 @@ public class BillingGroup {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

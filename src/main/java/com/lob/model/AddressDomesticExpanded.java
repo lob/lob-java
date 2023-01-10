@@ -29,6 +29,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * AddressDomesticExpanded
  */
@@ -296,6 +299,8 @@ public class AddressDomesticExpanded {
 
 
 
+
+
   /*
   public AddressDomesticExpanded addressLine2(String addressLine2) {
     
@@ -308,6 +313,8 @@ public class AddressDomesticExpanded {
   public void setAddressLine2(String addressLine2) {
     this.addressLine2 = addressLine2;
   }
+
+
 
 
 
@@ -326,6 +333,8 @@ public class AddressDomesticExpanded {
 
 
 
+
+
   /*
   public AddressDomesticExpanded addressState(String addressState) {
     
@@ -338,6 +347,8 @@ public class AddressDomesticExpanded {
   public void setAddressState(String addressState) {
     this.addressState = addressState;
   }
+
+
 
 
 
@@ -356,6 +367,8 @@ public class AddressDomesticExpanded {
 
 
 
+
+
   /*
   public AddressDomesticExpanded description(String description) {
     
@@ -368,6 +381,8 @@ public class AddressDomesticExpanded {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 
@@ -386,6 +401,8 @@ public class AddressDomesticExpanded {
 
 
 
+
+
   /*
   public AddressDomesticExpanded company(String company) {
     
@@ -398,6 +415,8 @@ public class AddressDomesticExpanded {
   public void setCompany(String company) {
     this.company = company;
   }
+
+
 
 
 
@@ -416,6 +435,8 @@ public class AddressDomesticExpanded {
 
 
 
+
+
   /*
   public AddressDomesticExpanded email(String email) {
     
@@ -428,6 +449,8 @@ public class AddressDomesticExpanded {
   public void setEmail(String email) {
     this.email = email;
   }
+
+
 
 
 
@@ -463,6 +486,8 @@ public class AddressDomesticExpanded {
   public void setMetadata(Map<String, String> metadata) {
     this.metadata = metadata;
   }
+
+
 
 
 

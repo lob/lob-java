@@ -27,6 +27,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * GeocodeAddresses
  */
@@ -90,6 +93,8 @@ public class GeocodeAddresses {
 
 
 
+
+
   /*
   public GeocodeAddresses locationAnalysis(LocationAnalysis locationAnalysis) {
     
@@ -102,6 +107,8 @@ public class GeocodeAddresses {
   public void setLocationAnalysis(LocationAnalysis locationAnalysis) {
     this.locationAnalysis = locationAnalysis;
   }
+
+
 
 
 

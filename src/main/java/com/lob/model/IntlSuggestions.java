@@ -26,6 +26,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * IntlSuggestions
  */
@@ -239,6 +242,8 @@ public class IntlSuggestions {
 
 
 
+
+
   /*
   public IntlSuggestions primaryLine(String primaryLine) {
     
@@ -251,6 +256,8 @@ public class IntlSuggestions {
   public void setPrimaryLine(String primaryLine) {
     this.primaryLine = primaryLine;
   }
+
+
 
 
 
@@ -269,6 +276,8 @@ public class IntlSuggestions {
 
 
 
+
+
   /*
   public IntlSuggestions state(String state) {
     
@@ -281,6 +290,8 @@ public class IntlSuggestions {
   public void setState(String state) {
     this.state = state;
   }
+
+
 
 
 
@@ -299,6 +310,8 @@ public class IntlSuggestions {
 
 
 
+
+
   /*
   public IntlSuggestions zipCode(String zipCode) {
     
@@ -314,6 +327,8 @@ public class IntlSuggestions {
 
 
 
+
+
   /*
   public IntlSuggestions _object(ObjectEnum _object) {
     
@@ -326,6 +341,8 @@ public class IntlSuggestions {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

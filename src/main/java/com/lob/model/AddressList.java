@@ -29,6 +29,9 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * AddressList
  */
@@ -218,6 +221,8 @@ public class AddressList {
 
 
 
+
+
   /*
   public AddressList _object(String _object) {
     
@@ -230,6 +235,8 @@ public class AddressList {
   public void setObject(String _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -248,6 +255,8 @@ public class AddressList {
 
 
 
+
+
   /*
   public AddressList previousUrl(String previousUrl) {
     
@@ -260,6 +269,8 @@ public class AddressList {
   public void setPreviousUrl(String previousUrl) {
     this.previousUrl = previousUrl;
   }
+
+
 
 
 
@@ -278,6 +289,8 @@ public class AddressList {
 
 
 
+
+
   /*
   public AddressList totalCount(Integer totalCount) {
     
@@ -290,6 +303,8 @@ public class AddressList {
   public void setTotalCount(Integer totalCount) {
     this.totalCount = totalCount;
   }
+
+
 
 
 

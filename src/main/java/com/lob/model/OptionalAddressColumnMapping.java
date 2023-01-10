@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * The mapping of column headers in your file to Lob-optional fields for the resource created. See our &lt;a href&#x3D;\&quot;https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#optional-columns-3\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Campaign Audience Guide&lt;/a&gt; for additional details.
  */
@@ -110,6 +113,8 @@ public class OptionalAddressColumnMapping {
 
 
 
+
+
   /*
   public OptionalAddressColumnMapping company(String company) {
     
@@ -125,6 +130,8 @@ public class OptionalAddressColumnMapping {
 
 
 
+
+
   /*
   public OptionalAddressColumnMapping addressCountry(String addressCountry) {
     
@@ -137,6 +144,8 @@ public class OptionalAddressColumnMapping {
   public void setAddressCountry(String addressCountry) {
     this.addressCountry = addressCountry;
   }
+
+
 
 
 

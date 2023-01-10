@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * BankAccountVerify
  */
@@ -61,6 +64,8 @@ public class BankAccountVerify {
   public void setAmounts(List<Integer> amounts) {
     this.amounts = amounts;
   }
+
+
 
 
 

@@ -28,6 +28,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * A model used to represent an entry in a result list where the entry can either be a intl_verification or an Error. The SDK will perform necessary casting into the correct corresponding type. 
  */
@@ -534,6 +537,8 @@ public class IntlVerificationOrError {
 
 
 
+
+
   /*
   public IntlVerificationOrError primaryLine(String primaryLine) {
     
@@ -546,6 +551,8 @@ public class IntlVerificationOrError {
   public void setPrimaryLine(String primaryLine) {
     this.primaryLine = primaryLine;
   }
+
+
 
 
 
@@ -564,6 +571,8 @@ public class IntlVerificationOrError {
 
 
 
+
+
   /*
   public IntlVerificationOrError lastLine(String lastLine) {
     
@@ -576,6 +585,8 @@ public class IntlVerificationOrError {
   public void setLastLine(String lastLine) {
     this.lastLine = lastLine;
   }
+
+
 
 
 
@@ -594,6 +605,8 @@ public class IntlVerificationOrError {
 
 
 
+
+
   /*
   public IntlVerificationOrError coverage(CoverageEnum coverage) {
     
@@ -606,6 +619,8 @@ public class IntlVerificationOrError {
   public void setCoverage(CoverageEnum coverage) {
     this.coverage = coverage;
   }
+
+
 
 
 
@@ -624,6 +639,8 @@ public class IntlVerificationOrError {
 
 
 
+
+
   /*
   public IntlVerificationOrError status(StatusEnum status) {
     
@@ -636,6 +653,8 @@ public class IntlVerificationOrError {
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
+
+
 
 
 
@@ -654,6 +673,8 @@ public class IntlVerificationOrError {
 
 
 
+
+
   /*
   public IntlVerificationOrError _object(ObjectEnum _object) {
     
@@ -669,6 +690,8 @@ public class IntlVerificationOrError {
 
 
 
+
+
   /*
   public IntlVerificationOrError error(BulkError error) {
     
@@ -681,6 +704,8 @@ public class IntlVerificationOrError {
   public void setError(BulkError error) {
     this.error = error;
   }
+
+
 
 
 

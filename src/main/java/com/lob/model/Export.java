@@ -26,6 +26,9 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Export
  */
@@ -333,6 +336,8 @@ public class Export {
 
 
 
+
+
   /*
   public Export dateModified(OffsetDateTime dateModified) {
     
@@ -345,6 +350,8 @@ public class Export {
   public void setDateModified(OffsetDateTime dateModified) {
     this.dateModified = dateModified;
   }
+
+
 
 
 
@@ -363,6 +370,8 @@ public class Export {
 
 
 
+
+
   /*
   public Export s3Url(String s3Url) {
     
@@ -375,6 +384,8 @@ public class Export {
   public void setS3Url(String s3Url) {
     this.s3Url = s3Url;
   }
+
+
 
 
 
@@ -393,6 +404,8 @@ public class Export {
 
 
 
+
+
   /*
   public Export type(TypeEnum type) {
     
@@ -405,6 +418,8 @@ public class Export {
   public void setType(TypeEnum type) {
     this.type = type;
   }
+
+
 
 
 

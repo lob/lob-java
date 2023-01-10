@@ -26,6 +26,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * UsVerificationsWritable
  */
@@ -219,6 +222,8 @@ public class UsVerificationsWritable {
 
 
 
+
+
   /*
   public UsVerificationsWritable recipient(String recipient) {
     
@@ -231,6 +236,8 @@ public class UsVerificationsWritable {
   public void setRecipient(String recipient) {
     this.recipient = recipient;
   }
+
+
 
 
 
@@ -249,6 +256,8 @@ public class UsVerificationsWritable {
 
 
 
+
+
   /*
   public UsVerificationsWritable secondaryLine(String secondaryLine) {
     
@@ -261,6 +270,8 @@ public class UsVerificationsWritable {
   public void setSecondaryLine(String secondaryLine) {
     this.secondaryLine = secondaryLine;
   }
+
+
 
 
 
@@ -279,6 +290,8 @@ public class UsVerificationsWritable {
 
 
 
+
+
   /*
   public UsVerificationsWritable city(String city) {
     
@@ -294,6 +307,8 @@ public class UsVerificationsWritable {
 
 
 
+
+
   /*
   public UsVerificationsWritable state(String state) {
     
@@ -306,6 +321,8 @@ public class UsVerificationsWritable {
   public void setState(String state) {
     this.state = state;
   }
+
+
 
 
 

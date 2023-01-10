@@ -28,6 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * ReverseGeocode
  */
@@ -171,6 +174,8 @@ public class ReverseGeocode {
 
 
 
+
+
   /*
   public ReverseGeocode _object(ObjectEnum _object) {
     
@@ -183,6 +188,8 @@ public class ReverseGeocode {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

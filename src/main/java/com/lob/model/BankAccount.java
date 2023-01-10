@@ -30,6 +30,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * BankAccount
  */
@@ -435,6 +438,8 @@ public class BankAccount {
 
 
 
+
+
   /*
   public BankAccount routingNumber(String routingNumber) {
     
@@ -447,6 +452,8 @@ public class BankAccount {
   public void setRoutingNumber(String routingNumber) {
     this.routingNumber = routingNumber;
   }
+
+
 
 
 
@@ -465,6 +472,8 @@ public class BankAccount {
 
 
 
+
+
   /*
   public BankAccount accountType(AccountTypeEnum accountType) {
     
@@ -480,6 +489,8 @@ public class BankAccount {
 
 
 
+
+
   /*
   public BankAccount signatory(String signatory) {
     
@@ -492,6 +503,8 @@ public class BankAccount {
   public void setSignatory(String signatory) {
     this.signatory = signatory;
   }
+
+
 
 
 
@@ -515,6 +528,8 @@ public class BankAccount {
   public void setMetadata(Map<String, String> metadata) {
     this.metadata = metadata;
   }
+
+
 
 
 
@@ -557,6 +572,8 @@ public class BankAccount {
 
 
 
+
+
   /*
   public BankAccount verified(Boolean verified) {
     
@@ -569,6 +586,8 @@ public class BankAccount {
   public void setVerified(Boolean verified) {
     this.verified = verified;
   }
+
+
 
 
 
@@ -587,6 +606,8 @@ public class BankAccount {
 
 
 
+
+
   /*
   public BankAccount dateModified(OffsetDateTime dateModified) {
     
@@ -599,6 +620,8 @@ public class BankAccount {
   public void setDateModified(OffsetDateTime dateModified) {
     this.dateModified = dateModified;
   }
+
+
 
 
 
@@ -617,6 +640,8 @@ public class BankAccount {
 
 
 
+
+
   /*
   public BankAccount _object(ObjectEnum _object) {
     
@@ -629,6 +654,8 @@ public class BankAccount {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

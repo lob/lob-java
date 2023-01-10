@@ -1280,7 +1280,6 @@ public class ApiClient {
                 requestBody.addFormDataPart(param.getKey(), parameterToString(param.getValue()));
             }
         }
-
         return requestBody.build();
     }
 

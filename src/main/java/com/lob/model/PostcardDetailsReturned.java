@@ -28,6 +28,9 @@ import java.io.IOException;
 import java.net.URI;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Properties that the postcards in your Creative should have.
  */
@@ -155,6 +158,8 @@ public class PostcardDetailsReturned {
 
 
 
+
+
   /*
   public PostcardDetailsReturned size(PostcardSize size) {
     
@@ -167,6 +172,8 @@ public class PostcardDetailsReturned {
   public void setSize(PostcardSize size) {
     this.size = size;
   }
+
+
 
 
 
@@ -185,6 +192,8 @@ public class PostcardDetailsReturned {
 
 
 
+
+
   /*
   public PostcardDetailsReturned frontOriginalUrl(URI frontOriginalUrl) {
     
@@ -200,6 +209,8 @@ public class PostcardDetailsReturned {
 
 
 
+
+
   /*
   public PostcardDetailsReturned backOriginalUrl(URI backOriginalUrl) {
     
@@ -212,6 +223,8 @@ public class PostcardDetailsReturned {
   public void setBackOriginalUrl(URI backOriginalUrl) {
     this.backOriginalUrl = backOriginalUrl;
   }
+
+
 
 
 

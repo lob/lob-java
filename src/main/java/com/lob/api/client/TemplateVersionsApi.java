@@ -35,11 +35,13 @@ import com.lob.model.TemplateVersionList;
 import com.lob.model.TemplateVersionUpdatable;
 import com.lob.model.TemplateVersionWritable;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class TemplateVersionsApi {
     private ApiClient localVarApiClient;
@@ -75,8 +77,6 @@ public class TemplateVersionsApi {
      </table>
      */
     public okhttp3.Call createCall(String tmplId, TemplateVersionWritable templateVersionWritable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = templateVersionWritable;
-
         // create path and map variables
         String localVarPath = "/templates/{tmpl_id}/versions"
             .replaceAll("\\{" + "tmpl_id" + "\\}", localVarApiClient.escapeString(tmplId.toString()));
@@ -95,9 +95,13 @@ public class TemplateVersionsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = templateVersionWritable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -208,8 +212,6 @@ public class TemplateVersionsApi {
      </table>
      */
     public okhttp3.Call deleteCall(String tmplId, String vrsnId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/templates/{tmpl_id}/versions/{vrsn_id}"
             .replaceAll("\\{" + "tmpl_id" + "\\}", localVarApiClient.escapeString(tmplId.toString()))
@@ -229,9 +231,13 @@ public class TemplateVersionsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -342,8 +348,6 @@ public class TemplateVersionsApi {
      </table>
      */
     public okhttp3.Call getCall(String tmplId, String vrsnId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/templates/{tmpl_id}/versions/{vrsn_id}"
             .replaceAll("\\{" + "tmpl_id" + "\\}", localVarApiClient.escapeString(tmplId.toString()))
@@ -363,9 +367,13 @@ public class TemplateVersionsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -477,8 +485,6 @@ public class TemplateVersionsApi {
      </table>
      */
     public okhttp3.Call updateCall(String tmplId, String vrsnId, TemplateVersionUpdatable templateVersionUpdatable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = templateVersionUpdatable;
-
         // create path and map variables
         String localVarPath = "/templates/{tmpl_id}/versions/{vrsn_id}"
             .replaceAll("\\{" + "tmpl_id" + "\\}", localVarApiClient.escapeString(tmplId.toString()))
@@ -498,9 +504,13 @@ public class TemplateVersionsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = templateVersionUpdatable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -623,8 +633,6 @@ public class TemplateVersionsApi {
      </table>
      */
     public okhttp3.Call listCall(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/templates/{tmpl_id}/versions"
             .replaceAll("\\{" + "tmpl_id" + "\\}", localVarApiClient.escapeString(tmplId.toString()));
@@ -663,9 +671,13 @@ public class TemplateVersionsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

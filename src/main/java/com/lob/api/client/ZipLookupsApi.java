@@ -31,11 +31,13 @@ import com.lob.model.LobError;
 import com.lob.model.Zip;
 import com.lob.model.ZipEditable;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class ZipLookupsApi {
     private ApiClient localVarApiClient;
@@ -70,8 +72,6 @@ public class ZipLookupsApi {
      </table>
      */
     public okhttp3.Call lookupCall(ZipEditable zipEditable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = zipEditable;
-
         // create path and map variables
         String localVarPath = "/us_zip_lookups";
 
@@ -89,9 +89,13 @@ public class ZipLookupsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = zipEditable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

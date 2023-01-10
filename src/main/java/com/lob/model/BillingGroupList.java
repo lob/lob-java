@@ -29,6 +29,9 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * BillingGroupList
  */
@@ -197,6 +200,8 @@ public class BillingGroupList {
 
 
 
+
+
   /*
   public BillingGroupList _object(String _object) {
     
@@ -209,6 +214,8 @@ public class BillingGroupList {
   public void setObject(String _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -227,6 +234,8 @@ public class BillingGroupList {
 
 
 
+
+
   /*
   public BillingGroupList previousUrl(String previousUrl) {
     
@@ -242,6 +251,8 @@ public class BillingGroupList {
 
 
 
+
+
   /*
   public BillingGroupList count(Integer count) {
     
@@ -254,6 +265,8 @@ public class BillingGroupList {
   public void setCount(Integer count) {
     this.count = count;
   }
+
+
 
 
 

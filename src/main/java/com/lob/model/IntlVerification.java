@@ -27,6 +27,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * IntlVerification
  */
@@ -511,6 +514,8 @@ public class IntlVerification {
 
 
 
+
+
   /*
   public IntlVerification primaryLine(String primaryLine) {
     
@@ -523,6 +528,8 @@ public class IntlVerification {
   public void setPrimaryLine(String primaryLine) {
     this.primaryLine = primaryLine;
   }
+
+
 
 
 
@@ -541,6 +548,8 @@ public class IntlVerification {
 
 
 
+
+
   /*
   public IntlVerification lastLine(String lastLine) {
     
@@ -553,6 +562,8 @@ public class IntlVerification {
   public void setLastLine(String lastLine) {
     this.lastLine = lastLine;
   }
+
+
 
 
 
@@ -571,6 +582,8 @@ public class IntlVerification {
 
 
 
+
+
   /*
   public IntlVerification coverage(CoverageEnum coverage) {
     
@@ -583,6 +596,8 @@ public class IntlVerification {
   public void setCoverage(CoverageEnum coverage) {
     this.coverage = coverage;
   }
+
+
 
 
 
@@ -601,6 +616,8 @@ public class IntlVerification {
 
 
 
+
+
   /*
   public IntlVerification status(StatusEnum status) {
     
@@ -613,6 +630,8 @@ public class IntlVerification {
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
+
+
 
 
 
@@ -631,6 +650,8 @@ public class IntlVerification {
 
 
 
+
+
   /*
   public IntlVerification _object(ObjectEnum _object) {
     
@@ -643,6 +664,8 @@ public class IntlVerification {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

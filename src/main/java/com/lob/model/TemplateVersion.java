@@ -28,6 +28,9 @@ import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * TemplateVersion
  */
@@ -320,6 +323,8 @@ public class TemplateVersion {
 
 
 
+
+
   /*
   public TemplateVersion html(String html) {
     
@@ -332,6 +337,8 @@ public class TemplateVersion {
   public void setHtml(String html) {
     this.html = html;
   }
+
+
 
 
 
@@ -350,6 +357,8 @@ public class TemplateVersion {
 
 
 
+
+
   /*
   public TemplateVersion suggestJsonEditor(Boolean suggestJsonEditor) {
     
@@ -362,6 +371,8 @@ public class TemplateVersion {
   public void setSuggestJsonEditor(Boolean suggestJsonEditor) {
     this.suggestJsonEditor = suggestJsonEditor;
   }
+
+
 
 
 
@@ -380,6 +391,8 @@ public class TemplateVersion {
 
 
 
+
+
   /*
   public TemplateVersion dateCreated(OffsetDateTime dateCreated) {
     
@@ -392,6 +405,8 @@ public class TemplateVersion {
   public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
+
+
 
 
 
@@ -410,6 +425,8 @@ public class TemplateVersion {
 
 
 
+
+
   /*
   public TemplateVersion deleted(Boolean deleted) {
     
@@ -425,6 +442,8 @@ public class TemplateVersion {
 
 
 
+
+
   /*
   public TemplateVersion _object(ObjectEnum _object) {
     
@@ -437,6 +456,8 @@ public class TemplateVersion {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

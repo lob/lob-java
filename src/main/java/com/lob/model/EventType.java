@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * EventType
  */
@@ -230,6 +233,8 @@ public class EventType {
 
 
 
+
+
   /*
   public EventType enabledForTest(Boolean enabledForTest) {
     
@@ -242,6 +247,8 @@ public class EventType {
   public void setEnabledForTest(Boolean enabledForTest) {
     this.enabledForTest = enabledForTest;
   }
+
+
 
 
 
@@ -260,6 +267,8 @@ public class EventType {
 
 
 
+
+
   /*
   public EventType _object(ObjectEnum _object) {
     
@@ -272,6 +281,8 @@ public class EventType {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

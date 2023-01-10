@@ -33,11 +33,13 @@ import com.lob.model.UsVerification;
 import com.lob.model.UsVerifications;
 import com.lob.model.UsVerificationsWritable;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class UsVerificationsApi {
     private ApiClient localVarApiClient;
@@ -73,8 +75,6 @@ public class UsVerificationsApi {
      </table>
      */
     public okhttp3.Call verifyBulkCall(MultipleComponentsList multipleComponentsList, String _case, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = multipleComponentsList;
-
         // create path and map variables
         String localVarPath = "/bulk/us_verifications";
 
@@ -96,9 +96,13 @@ public class UsVerificationsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = multipleComponentsList;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -204,8 +208,6 @@ public class UsVerificationsApi {
      </table>
      */
     public okhttp3.Call verifySingleCall(UsVerificationsWritable usVerificationsWritable, String _case, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = usVerificationsWritable;
-
         // create path and map variables
         String localVarPath = "/us_verifications";
 
@@ -227,9 +229,13 @@ public class UsVerificationsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = usVerificationsWritable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

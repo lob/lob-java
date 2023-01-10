@@ -31,6 +31,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Buckslip
  */
@@ -774,6 +777,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip reorderQuantity(Integer reorderQuantity) {
     
@@ -786,6 +791,8 @@ public class Buckslip {
   public void setReorderQuantity(Integer reorderQuantity) {
     this.reorderQuantity = reorderQuantity;
   }
+
+
 
 
 
@@ -804,6 +811,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip url(URI url) {
     
@@ -816,6 +825,8 @@ public class Buckslip {
   public void setUrl(URI url) {
     this.url = url;
   }
+
+
 
 
 
@@ -834,6 +845,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip frontOriginalUrl(URI frontOriginalUrl) {
     
@@ -849,6 +862,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip backOriginalUrl(URI backOriginalUrl) {
     
@@ -861,6 +876,8 @@ public class Buckslip {
   public void setBackOriginalUrl(URI backOriginalUrl) {
     this.backOriginalUrl = backOriginalUrl;
   }
+
+
 
 
 
@@ -884,6 +901,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip availableQuantity(BigDecimal availableQuantity) {
     
@@ -896,6 +915,8 @@ public class Buckslip {
   public void setAvailableQuantity(BigDecimal availableQuantity) {
     this.availableQuantity = availableQuantity;
   }
+
+
 
 
 
@@ -914,6 +935,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip onhandQuantity(BigDecimal onhandQuantity) {
     
@@ -926,6 +949,8 @@ public class Buckslip {
   public void setOnhandQuantity(BigDecimal onhandQuantity) {
     this.onhandQuantity = onhandQuantity;
   }
+
+
 
 
 
@@ -944,6 +969,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip projectedQuantity(BigDecimal projectedQuantity) {
     
@@ -956,6 +983,8 @@ public class Buckslip {
   public void setProjectedQuantity(BigDecimal projectedQuantity) {
     this.projectedQuantity = projectedQuantity;
   }
+
+
 
 
 
@@ -979,6 +1008,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip stock(StockEnum stock) {
     
@@ -991,6 +1022,8 @@ public class Buckslip {
   public void setStock(StockEnum stock) {
     this.stock = stock;
   }
+
+
 
 
 
@@ -1009,6 +1042,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip finish(FinishEnum finish) {
     
@@ -1021,6 +1056,8 @@ public class Buckslip {
   public void setFinish(FinishEnum finish) {
     this.finish = finish;
   }
+
+
 
 
 
@@ -1039,6 +1076,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip _object(ObjectEnum _object) {
     
@@ -1051,6 +1090,8 @@ public class Buckslip {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -1069,6 +1110,8 @@ public class Buckslip {
 
 
 
+
+
   /*
   public Buckslip size(SizeEnum size) {
     
@@ -1081,6 +1124,8 @@ public class Buckslip {
   public void setSize(SizeEnum size) {
     this.size = size;
   }
+
+
 
 
 

@@ -34,6 +34,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Campaign
  */
@@ -472,6 +475,8 @@ public class Campaign {
 
 
 
+
+
   /*
   public Campaign description(String description) {
     
@@ -484,6 +489,8 @@ public class Campaign {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 
@@ -502,6 +509,8 @@ public class Campaign {
 
 
 
+
+
   /*
   public Campaign targetDeliveryDate(OffsetDateTime targetDeliveryDate) {
     
@@ -514,6 +523,8 @@ public class Campaign {
   public void setTargetDeliveryDate(OffsetDateTime targetDeliveryDate) {
     this.targetDeliveryDate = targetDeliveryDate;
   }
+
+
 
 
 
@@ -532,6 +543,8 @@ public class Campaign {
 
 
 
+
+
   /*
   public Campaign cancelWindowCampaignMinutes(Integer cancelWindowCampaignMinutes) {
     
@@ -544,6 +557,8 @@ public class Campaign {
   public void setCancelWindowCampaignMinutes(Integer cancelWindowCampaignMinutes) {
     this.cancelWindowCampaignMinutes = cancelWindowCampaignMinutes;
   }
+
+
 
 
 
@@ -570,6 +585,8 @@ public class Campaign {
 
 
 
+
+
   /*
   public Campaign useType(CmpUseType useType) {
     
@@ -585,6 +602,8 @@ public class Campaign {
 
 
 
+
+
   /*
   public Campaign autoCancelIfNcoa(Boolean autoCancelIfNcoa) {
     
@@ -597,6 +616,8 @@ public class Campaign {
   public void setAutoCancelIfNcoa(Boolean autoCancelIfNcoa) {
     this.autoCancelIfNcoa = autoCancelIfNcoa;
   }
+
+
 
 
 
@@ -627,6 +648,8 @@ public class Campaign {
 
 
 
+
+
   /*
   public Campaign isDraft(Boolean isDraft) {
     
@@ -639,6 +662,8 @@ public class Campaign {
   public void setIsDraft(Boolean isDraft) {
     this.isDraft = isDraft;
   }
+
+
 
 
 
@@ -662,6 +687,8 @@ public class Campaign {
 
 
 
+
+
   /*
   public Campaign dateCreated(OffsetDateTime dateCreated) {
     
@@ -674,6 +701,8 @@ public class Campaign {
   public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
+
+
 
 
 
@@ -692,6 +721,8 @@ public class Campaign {
 
 
 
+
+
   /*
   public Campaign deleted(Boolean deleted) {
     
@@ -707,6 +738,8 @@ public class Campaign {
 
 
 
+
+
   /*
   public Campaign _object(ObjectEnum _object) {
     
@@ -719,6 +752,8 @@ public class Campaign {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

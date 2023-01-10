@@ -33,11 +33,19 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * PostcardEditable
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PostcardEditable {
+  private boolean isMultipart = false;
+
+  public boolean getIsMultipart() {
+    return isMultipart;
+  }
   public static final String SERIALIZED_NAME_TO = "to";
 
   @SerializedName(SERIALIZED_NAME_TO)
@@ -326,6 +334,8 @@ public class PostcardEditable {
 
 
 
+
+
   /*
   public PostcardEditable description(String description) {
     
@@ -338,6 +348,8 @@ public class PostcardEditable {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 
@@ -364,6 +376,8 @@ public class PostcardEditable {
 
 
 
+
+
   /*
   public PostcardEditable mailType(MailType mailType) {
     
@@ -376,6 +390,8 @@ public class PostcardEditable {
   public void setMailType(MailType mailType) {
     this.mailType = mailType;
   }
+
+
 
 
 
@@ -394,6 +410,8 @@ public class PostcardEditable {
 
 
 
+
+
   /*
   public PostcardEditable sendDate(OffsetDateTime sendDate) {
     
@@ -406,6 +424,8 @@ public class PostcardEditable {
   public void setSendDate(OffsetDateTime sendDate) {
     this.sendDate = sendDate;
   }
+
+
 
 
 
@@ -422,6 +442,12 @@ public class PostcardEditable {
     this.front = front;
   }
 
+  public void setFront (File front) {
+    isMultipart = true;
+    this.front = front.getPath();
+  }
+
+
 
 
   /*
@@ -436,6 +462,12 @@ public class PostcardEditable {
   public void setBack(String back) {
     this.back = back;
   }
+
+  public void setBack (File back) {
+    isMultipart = true;
+    this.back = back.getPath();
+  }
+
 
 
 
@@ -454,6 +486,8 @@ public class PostcardEditable {
 
 
 
+
+
   /*
   public PostcardEditable qrCode(QrCode qrCode) {
     
@@ -466,6 +500,8 @@ public class PostcardEditable {
   public void setQrCode(QrCode qrCode) {
     this.qrCode = qrCode;
   }
+
+
 
 
 

@@ -28,6 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * UsVerifications
  */
@@ -86,6 +89,8 @@ public class UsVerifications {
 
 
 
+
+
   /*
   public UsVerifications errors(Boolean errors) {
     
@@ -98,6 +103,8 @@ public class UsVerifications {
   public void setErrors(Boolean errors) {
     this.errors = errors;
   }
+
+
 
 
 

@@ -27,6 +27,9 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * TemplateVersionWritable
  */
@@ -111,6 +114,8 @@ public class TemplateVersionWritable {
 
 
 
+
+
   /*
   public TemplateVersionWritable html(String html) {
     
@@ -126,6 +131,8 @@ public class TemplateVersionWritable {
 
 
 
+
+
   /*
   public TemplateVersionWritable engine(EngineHtml engine) {
     
@@ -138,6 +145,8 @@ public class TemplateVersionWritable {
   public void setEngine(EngineHtml engine) {
     this.engine = engine;
   }
+
+
 
 
 

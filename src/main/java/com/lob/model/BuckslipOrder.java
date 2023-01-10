@@ -27,6 +27,9 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * BuckslipOrder
  */
@@ -382,6 +385,8 @@ public class BuckslipOrder {
 
 
 
+
+
   /*
   public BuckslipOrder dateModified(OffsetDateTime dateModified) {
     
@@ -394,6 +399,8 @@ public class BuckslipOrder {
   public void setDateModified(OffsetDateTime dateModified) {
     this.dateModified = dateModified;
   }
+
+
 
 
 
@@ -412,6 +419,8 @@ public class BuckslipOrder {
 
 
 
+
+
   /*
   public BuckslipOrder _object(String _object) {
     
@@ -424,6 +433,8 @@ public class BuckslipOrder {
   public void setObject(String _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -466,6 +477,8 @@ public class BuckslipOrder {
 
 
 
+
+
   /*
   public BuckslipOrder quantityOrdered(BigDecimal quantityOrdered) {
     
@@ -478,6 +491,8 @@ public class BuckslipOrder {
   public void setQuantityOrdered(BigDecimal quantityOrdered) {
     this.quantityOrdered = quantityOrdered;
   }
+
+
 
 
 
@@ -496,6 +511,8 @@ public class BuckslipOrder {
 
 
 
+
+
   /*
   public BuckslipOrder inventory(BigDecimal inventory) {
     
@@ -508,6 +525,8 @@ public class BuckslipOrder {
   public void setInventory(BigDecimal inventory) {
     this.inventory = inventory;
   }
+
+
 
 
 
@@ -526,6 +545,8 @@ public class BuckslipOrder {
 
 
 
+
+
   /*
   public BuckslipOrder availabilityDate(OffsetDateTime availabilityDate) {
     
@@ -541,6 +562,8 @@ public class BuckslipOrder {
 
 
 
+
+
   /*
   public BuckslipOrder expectedAvailabilityDate(OffsetDateTime expectedAvailabilityDate) {
     
@@ -553,6 +576,8 @@ public class BuckslipOrder {
   public void setExpectedAvailabilityDate(OffsetDateTime expectedAvailabilityDate) {
     this.expectedAvailabilityDate = expectedAvailabilityDate;
   }
+
+
 
 
 

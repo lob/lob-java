@@ -25,6 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * UsAutocompletionsWritable
  */
@@ -151,6 +154,8 @@ public class UsAutocompletionsWritable {
 
 
 
+
+
   /*
   public UsAutocompletionsWritable city(String city) {
     
@@ -163,6 +168,8 @@ public class UsAutocompletionsWritable {
   public void setCity(String city) {
     this.city = city;
   }
+
+
 
 
 
@@ -181,6 +188,8 @@ public class UsAutocompletionsWritable {
 
 
 
+
+
   /*
   public UsAutocompletionsWritable zipCode(String zipCode) {
     
@@ -196,6 +205,8 @@ public class UsAutocompletionsWritable {
 
 
 
+
+
   /*
   public UsAutocompletionsWritable geoIpSort(Boolean geoIpSort) {
     
@@ -208,6 +219,8 @@ public class UsAutocompletionsWritable {
   public void setGeoIpSort(Boolean geoIpSort) {
     this.geoIpSort = geoIpSort;
   }
+
+
 
 
 

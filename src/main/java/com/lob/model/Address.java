@@ -31,6 +31,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Address
  */
@@ -489,6 +492,8 @@ public class Address {
 
 
 
+
+
   /*
   public Address name(String name) {
     
@@ -501,6 +506,8 @@ public class Address {
   public void setName(String name) {
     this.name = name;
   }
+
+
 
 
 
@@ -519,6 +526,8 @@ public class Address {
 
 
 
+
+
   /*
   public Address phone(String phone) {
     
@@ -534,6 +543,8 @@ public class Address {
 
 
 
+
+
   /*
   public Address email(String email) {
     
@@ -546,6 +557,8 @@ public class Address {
   public void setEmail(String email) {
     this.email = email;
   }
+
+
 
 
 
@@ -572,6 +585,8 @@ public class Address {
 
 
 
+
+
   /*
   public Address addressLine1(String addressLine1) {
     
@@ -584,6 +599,8 @@ public class Address {
   public void setAddressLine1(String addressLine1) {
     this.addressLine1 = addressLine1;
   }
+
+
 
 
 
@@ -602,6 +619,8 @@ public class Address {
 
 
 
+
+
   /*
   public Address addressCity(String addressCity) {
     
@@ -614,6 +633,8 @@ public class Address {
   public void setAddressCity(String addressCity) {
     this.addressCity = addressCity;
   }
+
+
 
 
 
@@ -656,6 +677,8 @@ public class Address {
 
 
 
+
+
   /*
   public Address _object(ObjectEnum _object) {
     
@@ -668,6 +691,8 @@ public class Address {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -686,6 +711,8 @@ public class Address {
 
 
 
+
+
   /*
   public Address dateModified(OffsetDateTime dateModified) {
     
@@ -698,6 +725,8 @@ public class Address {
   public void setDateModified(OffsetDateTime dateModified) {
     this.dateModified = dateModified;
   }
+
+
 
 
 
@@ -716,6 +745,8 @@ public class Address {
 
 
 
+
+
   /*
   public Address recipientMoved(Boolean recipientMoved) {
     
@@ -728,6 +759,8 @@ public class Address {
   public void setRecipientMoved(Boolean recipientMoved) {
     this.recipientMoved = recipientMoved;
   }
+
+
 
 
 

@@ -27,6 +27,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Properties that the postcards in your Creative should have.
  */
@@ -91,6 +94,8 @@ public class PostcardDetailsWritable {
 
 
 
+
+
   /*
   public PostcardDetailsWritable size(PostcardSize size) {
     
@@ -103,6 +108,8 @@ public class PostcardDetailsWritable {
   public void setSize(PostcardSize size) {
     this.size = size;
   }
+
+
 
 
 

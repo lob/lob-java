@@ -32,6 +32,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Template
  */
@@ -271,6 +274,8 @@ public class Template {
 
 
 
+
+
   /*
   public Template id(String id) {
     
@@ -303,6 +308,8 @@ public class Template {
 
 
 
+
+
   /*
   public Template publishedVersion(TemplateVersion publishedVersion) {
     
@@ -318,6 +325,8 @@ public class Template {
 
 
 
+
+
   /*
   public Template _object(ObjectEnum _object) {
     
@@ -330,6 +339,8 @@ public class Template {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 
@@ -356,6 +367,8 @@ public class Template {
 
 
 
+
+
   /*
   public Template dateCreated(OffsetDateTime dateCreated) {
     
@@ -368,6 +381,8 @@ public class Template {
   public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
+
+
 
 
 
@@ -386,6 +401,8 @@ public class Template {
 
 
 
+
+
   /*
   public Template deleted(Boolean deleted) {
     
@@ -398,6 +415,8 @@ public class Template {
   public void setDeleted(Boolean deleted) {
     this.deleted = deleted;
   }
+
+
 
 
 

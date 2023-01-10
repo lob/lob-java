@@ -28,6 +28,9 @@ import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * TrackingEventCertified
  */
@@ -393,6 +396,8 @@ public class TrackingEventCertified {
 
 
 
+
+
   /*
   public TrackingEventCertified name(NameEnum name) {
     
@@ -405,6 +410,8 @@ public class TrackingEventCertified {
   public void setName(NameEnum name) {
     this.name = name;
   }
+
+
 
 
 
@@ -423,6 +430,8 @@ public class TrackingEventCertified {
 
 
 
+
+
   /*
   public TrackingEventCertified location(String location) {
     
@@ -435,6 +444,8 @@ public class TrackingEventCertified {
   public void setLocation(String location) {
     this.location = location;
   }
+
+
 
 
 
@@ -465,6 +476,8 @@ public class TrackingEventCertified {
 
 
 
+
+
   /*
   public TrackingEventCertified dateCreated(OffsetDateTime dateCreated) {
     
@@ -477,6 +490,8 @@ public class TrackingEventCertified {
   public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
+
+
 
 
 
@@ -495,6 +510,8 @@ public class TrackingEventCertified {
 
 
 
+
+
   /*
   public TrackingEventCertified _object(ObjectEnum _object) {
     
@@ -507,6 +524,8 @@ public class TrackingEventCertified {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

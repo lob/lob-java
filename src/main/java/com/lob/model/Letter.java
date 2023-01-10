@@ -37,6 +37,9 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Letter
  */
@@ -787,6 +790,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter from(Address from) {
     
@@ -802,6 +807,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter carrier(CarrierEnum carrier) {
     
@@ -814,6 +821,8 @@ public class Letter {
   public void setCarrier(CarrierEnum carrier) {
     this.carrier = carrier;
   }
+
+
 
 
 
@@ -840,6 +849,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter expectedDeliveryDate(LocalDate expectedDeliveryDate) {
     
@@ -852,6 +863,8 @@ public class Letter {
   public void setExpectedDeliveryDate(LocalDate expectedDeliveryDate) {
     this.expectedDeliveryDate = expectedDeliveryDate;
   }
+
+
 
 
 
@@ -870,6 +883,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter dateModified(OffsetDateTime dateModified) {
     
@@ -885,6 +900,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter deleted(Boolean deleted) {
     
@@ -897,6 +914,8 @@ public class Letter {
   public void setDeleted(Boolean deleted) {
     this.deleted = deleted;
   }
+
+
 
 
 
@@ -963,6 +982,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter description(String description) {
     
@@ -975,6 +996,8 @@ public class Letter {
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
 
 
@@ -1001,6 +1024,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter mergeVariables(Object mergeVariables) {
     
@@ -1013,6 +1038,8 @@ public class Letter {
   public void setMergeVariables(Object mergeVariables) {
     this.mergeVariables = mergeVariables;
   }
+
+
 
 
 
@@ -1031,6 +1058,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter extraService(String extraService) {
     
@@ -1046,6 +1075,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter trackingNumber(String trackingNumber) {
     
@@ -1058,6 +1089,8 @@ public class Letter {
   public void setTrackingNumber(String trackingNumber) {
     this.trackingNumber = trackingNumber;
   }
+
+
 
 
 
@@ -1081,6 +1114,8 @@ public class Letter {
   public void setTrackingEvents(List<TrackingEventNormal> trackingEvents) {
     this.trackingEvents = trackingEvents;
   }
+
+
 
 
 
@@ -1111,6 +1146,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter color(Boolean color) {
     
@@ -1123,6 +1160,8 @@ public class Letter {
   public void setColor(Boolean color) {
     this.color = color;
   }
+
+
 
 
 
@@ -1141,6 +1180,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter addressPlacement(AddressPlacementEnum addressPlacement) {
     
@@ -1153,6 +1194,8 @@ public class Letter {
   public void setAddressPlacement(AddressPlacementEnum addressPlacement) {
     this.addressPlacement = addressPlacement;
   }
+
+
 
 
 
@@ -1183,6 +1226,8 @@ public class Letter {
 
 
 
+
+
   /*
   public Letter customEnvelope(LetterCustomEnvelope customEnvelope) {
     
@@ -1195,6 +1240,8 @@ public class Letter {
   public void setCustomEnvelope(LetterCustomEnvelope customEnvelope) {
     this.customEnvelope = customEnvelope;
   }
+
+
 
 
 

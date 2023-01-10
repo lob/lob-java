@@ -34,11 +34,13 @@ import com.lob.model.CampaignWritable;
 import com.lob.model.CampaignsList;
 import com.lob.model.LobError;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class CampaignsApi {
     private ApiClient localVarApiClient;
@@ -74,8 +76,6 @@ public class CampaignsApi {
      </table>
      */
     public okhttp3.Call createCall(CampaignWritable campaignWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = campaignWritable;
-
         // create path and map variables
         String localVarPath = "/campaigns";
 
@@ -97,9 +97,13 @@ public class CampaignsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = campaignWritable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -204,8 +208,6 @@ public class CampaignsApi {
      </table>
      */
     public okhttp3.Call deleteCall(String cmpId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/campaigns/{cmp_id}"
             .replaceAll("\\{" + "cmp_id" + "\\}", localVarApiClient.escapeString(cmpId.toString()));
@@ -224,9 +226,13 @@ public class CampaignsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -328,8 +334,6 @@ public class CampaignsApi {
      </table>
      */
     public okhttp3.Call getCall(String cmpId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/campaigns/{cmp_id}"
             .replaceAll("\\{" + "cmp_id" + "\\}", localVarApiClient.escapeString(cmpId.toString()));
@@ -348,9 +352,13 @@ public class CampaignsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -453,8 +461,6 @@ public class CampaignsApi {
      </table>
      */
     public okhttp3.Call updateCall(String cmpId, CampaignUpdatable campaignUpdatable, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = campaignUpdatable;
-
         // create path and map variables
         String localVarPath = "/campaigns/{cmp_id}"
             .replaceAll("\\{" + "cmp_id" + "\\}", localVarApiClient.escapeString(cmpId.toString()));
@@ -473,9 +479,13 @@ public class CampaignsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = campaignUpdatable;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -587,8 +597,6 @@ public class CampaignsApi {
      </table>
      */
     public okhttp3.Call listCall(Integer limit, List<String> include, String before, String after, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/campaigns";
 
@@ -622,9 +630,13 @@ public class CampaignsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

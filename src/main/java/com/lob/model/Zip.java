@@ -29,6 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * Zip
  */
@@ -227,6 +230,8 @@ public class Zip {
 
 
 
+
+
   /*
   public Zip zipCodeType(ZipCodeType zipCodeType) {
     
@@ -242,6 +247,8 @@ public class Zip {
 
 
 
+
+
   /*
   public Zip _object(ObjectEnum _object) {
     
@@ -254,6 +261,8 @@ public class Zip {
   public void setObject(ObjectEnum _object) {
     this._object = _object;
   }
+
+
 
 
 

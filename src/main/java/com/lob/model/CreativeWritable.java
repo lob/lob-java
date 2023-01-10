@@ -30,11 +30,19 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
+
 /**
  * CreativeWritable
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreativeWritable {
+  private boolean isMultipart = false;
+
+  public boolean getIsMultipart() {
+    return isMultipart;
+  }
   public static final String SERIALIZED_NAME_FROM = "from";
 
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -248,6 +256,8 @@ public class CreativeWritable {
 
 
 
+
+
   /*
   public CreativeWritable metadata(Map<String, String> metadata) {
     
@@ -271,6 +281,8 @@ public class CreativeWritable {
 
 
 
+
+
   /*
   public CreativeWritable resourceType(ResourceTypeEnum resourceType) {
     
@@ -283,6 +295,8 @@ public class CreativeWritable {
   public void setResourceType(ResourceTypeEnum resourceType) {
     this.resourceType = resourceType;
   }
+
+
 
 
 
@@ -325,6 +339,8 @@ public class CreativeWritable {
 
 
 
+
+
   /*
   public CreativeWritable front(String front) {
     
@@ -337,6 +353,12 @@ public class CreativeWritable {
   public void setFront(String front) {
     this.front = front;
   }
+
+  public void setFront (File front) {
+    isMultipart = true;
+    this.front = front.getPath();
+  }
+
 
 
 
@@ -352,6 +374,12 @@ public class CreativeWritable {
   public void setBack(String back) {
     this.back = back;
   }
+
+  public void setBack (File back) {
+    isMultipart = true;
+    this.back = back.getPath();
+  }
+
 
 
 

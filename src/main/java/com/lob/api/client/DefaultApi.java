@@ -29,11 +29,13 @@ import java.io.IOException;
 
 import com.lob.model.PlaceholderModel;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class DefaultApi {
     private ApiClient localVarApiClient;
@@ -66,8 +68,6 @@ public class DefaultApi {
      </table>
      */
     public okhttp3.Call placeholder_no_callCall(final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/shared_dont_call";
 
@@ -85,9 +85,13 @@ public class DefaultApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
