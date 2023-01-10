@@ -100,31 +100,32 @@ public class PostcardsApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        Object localVarPostBody = null;
+        Map<String, Object> localVarPostBody = new HashMap<String, Object>();
         String[] localVarContentTypes;
 
-        if (postcardEditable.getIsMultipart()) {
-            Method[] methods = PostcardEditable.class.getDeclaredMethods();
+        Method[] methods = PostcardEditable.class.getDeclaredMethods();
 
-            Map<String, Method> nameToMethod = new HashMap<String, Method>();
-            for (Method method: methods) {
-                nameToMethod.put(method.getName(), method);
-            }
+        Map<String, Method> nameToMethod = new HashMap<String, Method>();
+        for (Method method: methods) {
+            nameToMethod.put(method.getName(), method);
+        }
 
-            Field[] fields = PostcardEditable.class.getDeclaredFields();
+        Field[] fields = PostcardEditable.class.getDeclaredFields();
 
-            for (int i = 0; i < fields.length; i++) {
-                Field field = fields[i];
-                String fieldName = field.getName(); // camelCase
-                if (Character.isUpperCase(fieldName.charAt(0)) || fieldName.equals("isMultipart")) continue;
+        for (int i = 0; i < fields.length; i++) {
+            Field field = fields[i];
+            String fieldName = field.getName(); // camelCase
+            if (Character.isUpperCase(fieldName.charAt(0)) || fieldName.equals("isMultipart")) continue;
 
-                String rawFieldName = field.getAnnotation(SerializedName.class).value();
+            String rawFieldName = field.getAnnotation(SerializedName.class).value();
 
-                String getterString = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-                Method getter = nameToMethod.get(getterString);
+            String getterString = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+            Method getter = nameToMethod.get(getterString);
 
-                try {
-                    if (getter.invoke(postcardEditable) != null) {
+            try {
+                if (getter.invoke(postcardEditable) != null) {
+                    // if the Object has a property containing a File to be uploaded
+                    if (postcardEditable.getIsMultipart()) {
                         if (
                             rawFieldName.equals("file") ||
                             rawFieldName.equals("check_bottom") ||
@@ -133,22 +134,20 @@ public class PostcardsApi {
                             rawFieldName.equals("back") ||
                             rawFieldName.equals("inside") ||
                             rawFieldName.equals("outside")
-                        )  {
-                            localVarFormParams.put(rawFieldName, new File((String)getter.invoke(postcardEditable)));
-                        } else {
-                            localVarFormParams.put(rawFieldName, getter.invoke(postcardEditable));
-                        }
-                    }
-                } catch (IllegalAccessException e) {
-                    throw new ApiException(e);
-                } catch (InvocationTargetException e) {
-                    throw new ApiException(e);
+                        ) localVarFormParams.put(rawFieldName, new File((String)getter.invoke(postcardEditable)));
+                        else localVarFormParams.put(rawFieldName, getter.invoke(postcardEditable));
+                    } else localVarPostBody.put(rawFieldName, getter.invoke(postcardEditable));
                 }
+            } catch (IllegalAccessException e) {
+                throw new ApiException(e);
+            } catch (InvocationTargetException e) {
+                throw new ApiException(e);
             }
+        }
 
+        if (postcardEditable.getIsMultipart()) {
             localVarContentTypes = new String[]{ "multipart/form-data" };
         } else {
-            localVarPostBody = postcardEditable;
             localVarContentTypes = new String[]{ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" };
         }
         

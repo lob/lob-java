@@ -1,6 +1,6 @@
 /*
  * Lob
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -81,49 +81,49 @@ public class UploadFile {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
 
   @SerializedName(SERIALIZED_NAME_MESSAGE)
-
+  
 
   private MessageEnum message = MessageEnum.FILE_UPLOADED_SUCCESSFULLY;
   /**
   * Get message
   * @return message
   **/
-
+  
   @javax.annotation.Nonnull
-
+  
   @ApiModelProperty(required = true, value = "")
-
+  
   public MessageEnum getMessage() {
       return message;
   }
-
-
+  
+  
 
   public static final String SERIALIZED_NAME_FILENAME = "filename";
 
   @SerializedName(SERIALIZED_NAME_FILENAME)
-
+  
 
   private String filename;
   /**
   * Get filename
   * @return filename
   **/
-
+  
   @javax.annotation.Nonnull
-
+  
   @ApiModelProperty(required = true, value = "")
-
+  
   public String getFilename() {
       return filename;
   }
-
-
+  
+  
 
 
   /*
   public UploadFile message(MessageEnum message) {
-
+    
     this.message = message;
     return this;
   }
@@ -140,7 +140,7 @@ public class UploadFile {
 
   /*
   public UploadFile filename(String filename) {
-
+    
     this.filename = filename;
     return this;
   }

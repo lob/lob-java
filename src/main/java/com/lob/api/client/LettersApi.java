@@ -225,31 +225,32 @@ public class LettersApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        Object localVarPostBody = null;
+        Map<String, Object> localVarPostBody = new HashMap<String, Object>();
         String[] localVarContentTypes;
 
-        if (letterEditable.getIsMultipart()) {
-            Method[] methods = LetterEditable.class.getDeclaredMethods();
+        Method[] methods = LetterEditable.class.getDeclaredMethods();
 
-            Map<String, Method> nameToMethod = new HashMap<String, Method>();
-            for (Method method: methods) {
-                nameToMethod.put(method.getName(), method);
-            }
+        Map<String, Method> nameToMethod = new HashMap<String, Method>();
+        for (Method method: methods) {
+            nameToMethod.put(method.getName(), method);
+        }
 
-            Field[] fields = LetterEditable.class.getDeclaredFields();
+        Field[] fields = LetterEditable.class.getDeclaredFields();
 
-            for (int i = 0; i < fields.length; i++) {
-                Field field = fields[i];
-                String fieldName = field.getName(); // camelCase
-                if (Character.isUpperCase(fieldName.charAt(0)) || fieldName.equals("isMultipart")) continue;
+        for (int i = 0; i < fields.length; i++) {
+            Field field = fields[i];
+            String fieldName = field.getName(); // camelCase
+            if (Character.isUpperCase(fieldName.charAt(0)) || fieldName.equals("isMultipart")) continue;
 
-                String rawFieldName = field.getAnnotation(SerializedName.class).value();
+            String rawFieldName = field.getAnnotation(SerializedName.class).value();
 
-                String getterString = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-                Method getter = nameToMethod.get(getterString);
+            String getterString = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+            Method getter = nameToMethod.get(getterString);
 
-                try {
-                    if (getter.invoke(letterEditable) != null) {
+            try {
+                if (getter.invoke(letterEditable) != null) {
+                    // if the Object has a property containing a File to be uploaded
+                    if (letterEditable.getIsMultipart()) {
                         if (
                             rawFieldName.equals("file") ||
                             rawFieldName.equals("check_bottom") ||
@@ -258,22 +259,20 @@ public class LettersApi {
                             rawFieldName.equals("back") ||
                             rawFieldName.equals("inside") ||
                             rawFieldName.equals("outside")
-                        )  {
-                            localVarFormParams.put(rawFieldName, new File((String)getter.invoke(letterEditable)));
-                        } else {
-                            localVarFormParams.put(rawFieldName, getter.invoke(letterEditable));
-                        }
-                    }
-                } catch (IllegalAccessException e) {
-                    throw new ApiException(e);
-                } catch (InvocationTargetException e) {
-                    throw new ApiException(e);
+                        ) localVarFormParams.put(rawFieldName, new File((String)getter.invoke(letterEditable)));
+                        else localVarFormParams.put(rawFieldName, getter.invoke(letterEditable));
+                    } else localVarPostBody.put(rawFieldName, getter.invoke(letterEditable));
                 }
+            } catch (IllegalAccessException e) {
+                throw new ApiException(e);
+            } catch (InvocationTargetException e) {
+                throw new ApiException(e);
             }
+        }
 
+        if (letterEditable.getIsMultipart()) {
             localVarContentTypes = new String[]{ "multipart/form-data" };
         } else {
-            localVarPostBody = letterEditable;
             localVarContentTypes = new String[]{ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" };
         }
         

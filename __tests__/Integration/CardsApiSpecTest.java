@@ -14,14 +14,14 @@ import com.lob.model.CardEditable.SizeEnum;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import java.io.File;
 
 import Helper.TestFixtures;
 
 public class CardsApiSpecTest {
     private CardsApi validApi;
     private CardsApi invalidApi;
-    private Card dummyCard;
-    private List<CardEditable> createdCardEditables = new ArrayList<CardEditable>();
+    private List<CardEditable> cardEditables = new ArrayList<CardEditable>();
 
     @BeforeClass
     public void before_class()
@@ -37,21 +37,20 @@ public class CardsApiSpecTest {
         editableCard1.setSize(SizeEnum._2_125X3_375);
 
         CardEditable editableCard2 = new CardEditable();
-        editableCard1.setDescription("Test Card 2");
-        editableCard1.setFront(tf.get_FILE_LOCATION());
-        editableCard1.setBack(tf.get_FILE_LOCATION());
-        editableCard1.setSize(SizeEnum._2_125X3_375);
-
+        editableCard2.setDescription("Test Card 2");
+        editableCard2.setFront(new File("__tests__/Helper/card_horizontal.pdf"));
+        editableCard2.setBack(new File("__tests__/Helper/card_horizontal.pdf"));
+        editableCard2.setSize(SizeEnum._2_125X3_375);
 
         CardEditable editableCard3 = new CardEditable();
-        editableCard1.setDescription("Test Card 3");
-        editableCard1.setFront(tf.get_FILE_LOCATION());
-        editableCard1.setBack(tf.get_FILE_LOCATION());
-        editableCard1.setSize(SizeEnum._2_125X3_375);
+        editableCard3.setDescription("Test Card 3");
+        editableCard3.setFront(tf.get_FILE_LOCATION());
+        editableCard3.setBack(tf.get_FILE_LOCATION());
+        editableCard3.setSize(SizeEnum._2_125X3_375);
 
-        createdCardEditables.add(editableCard1);
-        createdCardEditables.add(editableCard2);
-        createdCardEditables.add(editableCard3);
+        cardEditables.add(editableCard1);
+        cardEditables.add(editableCard2);
+        cardEditables.add(editableCard3);
     }
 
     @Test(
@@ -59,9 +58,15 @@ public class CardsApiSpecTest {
         groups={"Integration", "Create", "Card", "Valid"}
     )
     public void cardCreateTest() throws ApiException {
-       dummyCard = validApi.create(createdCardEditables.get(0));
+        Card card = validApi.create(cardEditables.get(0));
 
-        Assert.assertNotNull(dummyCard.getId());
+        Assert.assertNotNull(card.getId());
+    }
+
+    public void cardCreateTestWithLocalFile() throws ApiException {
+        Card card = validApi.create(cardEditables.get(1));
+
+        Assert.assertNotNull(card.getId());
     }
 
     @Test(
@@ -71,7 +76,7 @@ public class CardsApiSpecTest {
         groups={"Integration", "Create", "Card", "Invalid"}
     )
     public void cardCreateTestBadParameter() throws ApiException {
-        validApi.create( null);
+        validApi.create(null);
     }
 
     @Test(
@@ -81,12 +86,7 @@ public class CardsApiSpecTest {
         groups={"Integration", "Create", "Card", "Invalid"}
     )
     public void cardCreateTestInvalidCredentials() throws ApiException {
-        try {
-            invalidApi.create(createdCardEditables.get(1));
-        }
-        catch(ApiException e) {
-            throw e;
-        }
+        invalidApi.create(cardEditables.get(1));
     }
 
     @Test(
@@ -94,9 +94,9 @@ public class CardsApiSpecTest {
         groups={"Integration", "Get", "Card", "Valid"}
     )
     public void cardGetTest() throws ApiException {
-        Card response = validApi.get(dummyCard.getId());
- 
-         Assert.assertEquals(response.getId(), dummyCard.getId());
+        Card card = validApi.create(cardEditables.get(2));
+        Card response = validApi.get(card.getId());
+        Assert.assertEquals(response.getId(), card.getId());
      }
 
 
@@ -105,8 +105,8 @@ public class CardsApiSpecTest {
         groups={"Integration", "Delete", "Card", "Valid"}
     )
     public void cardDeleteTest() throws ApiException {
-        CardDeletion response = validApi.delete(dummyCard.getId());
- 
-         Assert.assertEquals(response.getId(), dummyCard.getId());
+        Card card = validApi.create(cardEditables.get(2));
+        CardDeletion response = validApi.delete(card.getId());
+        Assert.assertEquals(response.getId(), card.getId());
      }
 }

@@ -32,11 +32,13 @@ import com.lob.model.CreativeResponse;
 import com.lob.model.CreativeWritable;
 import com.lob.model.LobError;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.lang.reflect.*;
+import com.google.gson.annotations.SerializedName;
 
 public class CreativesApi {
     private ApiClient localVarApiClient;
@@ -72,8 +74,6 @@ public class CreativesApi {
      </table>
      */
     public okhttp3.Call createCall(CreativeWritable creativeWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = creativeWritable;
-
         // create path and map variables
         String localVarPath = "/creatives";
 
@@ -95,9 +95,57 @@ public class CreativesApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
-        };
+        Map<String, Object> localVarPostBody = new HashMap<String, Object>();
+        String[] localVarContentTypes;
+
+        Method[] methods = CreativeWritable.class.getDeclaredMethods();
+
+        Map<String, Method> nameToMethod = new HashMap<String, Method>();
+        for (Method method: methods) {
+            nameToMethod.put(method.getName(), method);
+        }
+
+        Field[] fields = CreativeWritable.class.getDeclaredFields();
+
+        for (int i = 0; i < fields.length; i++) {
+            Field field = fields[i];
+            String fieldName = field.getName(); // camelCase
+            if (Character.isUpperCase(fieldName.charAt(0)) || fieldName.equals("isMultipart")) continue;
+
+            String rawFieldName = field.getAnnotation(SerializedName.class).value();
+
+            String getterString = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+            Method getter = nameToMethod.get(getterString);
+
+            try {
+                if (getter.invoke(creativeWritable) != null) {
+                    // if the Object has a property containing a File to be uploaded
+                    if (creativeWritable.getIsMultipart()) {
+                        if (
+                            rawFieldName.equals("file") ||
+                            rawFieldName.equals("check_bottom") ||
+                            rawFieldName.equals("attachment") ||
+                            rawFieldName.equals("front") ||
+                            rawFieldName.equals("back") ||
+                            rawFieldName.equals("inside") ||
+                            rawFieldName.equals("outside")
+                        ) localVarFormParams.put(rawFieldName, new File((String)getter.invoke(creativeWritable)));
+                        else localVarFormParams.put(rawFieldName, getter.invoke(creativeWritable));
+                    } else localVarPostBody.put(rawFieldName, getter.invoke(creativeWritable));
+                }
+            } catch (IllegalAccessException e) {
+                throw new ApiException(e);
+            } catch (InvocationTargetException e) {
+                throw new ApiException(e);
+            }
+        }
+
+        if (creativeWritable.getIsMultipart()) {
+            localVarContentTypes = new String[]{ "multipart/form-data" };
+        } else {
+            localVarContentTypes = new String[]{ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" };
+        }
+        
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -202,8 +250,6 @@ public class CreativesApi {
      </table>
      */
     public okhttp3.Call getCall(String crvId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
         // create path and map variables
         String localVarPath = "/creatives/{crv_id}"
             .replaceAll("\\{" + "crv_id" + "\\}", localVarApiClient.escapeString(crvId.toString()));
@@ -222,9 +268,13 @@ public class CreativesApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = null;
+
         final String[] localVarContentTypes = {
             
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -327,8 +377,6 @@ public class CreativesApi {
      </table>
      */
     public okhttp3.Call updateCall(String crvId, CreativePatch creativePatch, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = creativePatch;
-
         // create path and map variables
         String localVarPath = "/creatives/{crv_id}"
             .replaceAll("\\{" + "crv_id" + "\\}", localVarApiClient.escapeString(crvId.toString()));
@@ -347,9 +395,13 @@ public class CreativesApi {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
+
+        Object localVarPostBody = creativePatch;
+
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 

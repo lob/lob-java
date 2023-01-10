@@ -1,6 +1,6 @@
 /*
  * Lob
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -81,49 +81,49 @@ public class UploadCreateExport {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
 
   @SerializedName(SERIALIZED_NAME_MESSAGE)
-
+  
 
   private MessageEnum message = MessageEnum.EXPORT_IS_PROCESSING_;
   /**
   * Get message
   * @return message
   **/
-
+  
   @javax.annotation.Nonnull
-
+  
   @ApiModelProperty(required = true, value = "")
-
+  
   public MessageEnum getMessage() {
       return message;
   }
-
-
+  
+  
 
   public static final String SERIALIZED_NAME_EXPORT_ID = "exportId";
 
   @SerializedName(SERIALIZED_NAME_EXPORT_ID)
-
+  
 
   private String exportId;
   /**
   * Get exportId
   * @return exportId
   **/
-
+  
   @javax.annotation.Nonnull
-
+  
   @ApiModelProperty(required = true, value = "")
-
+  
   public String getExportId() {
       return exportId;
   }
-
-
+  
+  
 
 
   /*
   public UploadCreateExport message(MessageEnum message) {
-
+    
     this.message = message;
     return this;
   }
@@ -140,7 +140,7 @@ public class UploadCreateExport {
 
   /*
   public UploadCreateExport exportId(String exportId) {
-
+    
     this.exportId = exportId;
     return this;
   }
