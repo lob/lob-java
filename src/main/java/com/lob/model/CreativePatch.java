@@ -42,20 +42,19 @@ public class CreativePatch {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
-  public  String getFrom() {
+
+  public String getFrom() {
     return from;
   }
-
+  
 
   public void setFrom(String from) {
     
 
     this.from = from;
   }
-  
-  
-  
+
+
   public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
 

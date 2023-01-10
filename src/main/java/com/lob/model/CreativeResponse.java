@@ -91,20 +91,19 @@ public class CreativeResponse {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
-  public  String getFrom() {
+
+  public String getFrom() {
     return from;
   }
-
+  
 
   public void setFrom(String from) {
     
 
     this.from = from;
   }
-  
-  
-  
+
+
   public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
 
@@ -183,28 +182,26 @@ public class CreativeResponse {
   @SerializedName(SERIALIZED_NAME_DETAILS)
   
   private String details;
-  
-  public  String getDetails() {
+
+  public String getDetails() {
     return details;
   }
-
+  
 
   public void setDetails(String details) {
     
 
     this.details = details;
   }
-  
-  
-  
+
+
   public void setDetails(PostcardDetailsWritable details) {
     Gson gson = new Gson();
 
     this.details = gson.toJson(details);
   }
-  
-  
-  
+
+
   public void setDetails(LetterDetailsWritable details) {
     Gson gson = new Gson();
 

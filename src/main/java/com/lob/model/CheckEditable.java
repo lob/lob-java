@@ -48,20 +48,19 @@ public class CheckEditable {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
-  public  String getFrom() {
+
+  public String getFrom() {
     return from;
   }
-
+  
 
   public void setFrom(String from) {
     
 
     this.from = from;
   }
-  
-  
-  
+
+
   public void setFrom(AddressDomestic from) {
     Gson gson = new Gson();
 
@@ -72,20 +71,19 @@ public class CheckEditable {
   @SerializedName(SERIALIZED_NAME_TO)
   
   private String to;
-  
-  public  String getTo() {
+
+  public String getTo() {
     return to;
   }
-
+  
 
   public void setTo(String to) {
     
 
     this.to = to;
   }
-  
-  
-  
+
+
   public void setTo(AddressDomestic to) {
     Gson gson = new Gson();
 

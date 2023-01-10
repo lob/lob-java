@@ -260,20 +260,19 @@ public class LetterEditable {
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
   private String returnEnvelope;
-  
-  public  String getReturnEnvelope() {
+
+  public String getReturnEnvelope() {
     return returnEnvelope;
   }
-
+  
 
   public void setReturnEnvelope(String returnEnvelope) {
     
 
     this.returnEnvelope = returnEnvelope;
   }
-  
-  
-  
+
+
   public void setReturnEnvelope(Boolean returnEnvelope) {
     Gson gson = new Gson();
 
@@ -326,20 +325,19 @@ public class LetterEditable {
   @SerializedName(SERIALIZED_NAME_TO)
   
   private String to;
-  
-  public  String getTo() {
+
+  public String getTo() {
     return to;
   }
-
+  
 
   public void setTo(String to) {
     
 
     this.to = to;
   }
-  
-  
-  
+
+
   public void setTo(AddressEditable to) {
     Gson gson = new Gson();
 
@@ -350,20 +348,19 @@ public class LetterEditable {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
-  public  String getFrom() {
+
+  public String getFrom() {
     return from;
   }
-
+  
 
   public void setFrom(String from) {
     
 
     this.from = from;
   }
-  
-  
-  
+
+
   public void setFrom(AddressEditable from) {
     Gson gson = new Gson();
 

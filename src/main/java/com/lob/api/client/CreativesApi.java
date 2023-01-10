@@ -1,6 +1,6 @@
 /*
  * Lob
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -145,7 +145,7 @@ public class CreativesApi {
         } else {
             localVarContentTypes = new String[]{ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" };
         }
-        
+
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -155,12 +155,12 @@ public class CreativesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createValidateBeforeCall(CreativeWritable creativeWritable, String xLangOutput, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'creativeWritable' is set
         if (creativeWritable == null) {
             throw new ApiException("Missing the required parameter 'creativeWritable' when calling create(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = createCall(creativeWritable, xLangOutput, _callback);
         return localVarCall;
@@ -272,7 +272,7 @@ public class CreativesApi {
         Object localVarPostBody = null;
 
         final String[] localVarContentTypes = {
-            
+
         };
 
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -284,12 +284,12 @@ public class CreativesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getValidateBeforeCall(String crvId, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'crvId' is set
         if (crvId == null) {
             throw new ApiException("Missing the required parameter 'crvId' when calling get(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = getCall(crvId, _callback);
         return localVarCall;
@@ -411,17 +411,17 @@ public class CreativesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateValidateBeforeCall(String crvId, CreativePatch creativePatch, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'crvId' is set
         if (crvId == null) {
             throw new ApiException("Missing the required parameter 'crvId' when calling update(Async)");
         }
-        
+
         // verify the required parameter 'creativePatch' is set
         if (creativePatch == null) {
             throw new ApiException("Missing the required parameter 'creativePatch' when calling update(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = updateCall(crvId, creativePatch, _callback);
         return localVarCall;

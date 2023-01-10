@@ -546,20 +546,19 @@ public class Letter {
   @SerializedName(SERIALIZED_NAME_RETURN_ADDRESS)
   
   private String returnAddress;
-  
-  public  String getReturnAddress() {
+
+  public String getReturnAddress() {
     return returnAddress;
   }
-
+  
 
   public void setReturnAddress(String returnAddress) {
     
 
     this.returnAddress = returnAddress;
   }
-  
-  
-  
+
+
   public void setReturnAddress(AddressEditable returnAddress) {
     Gson gson = new Gson();
 
@@ -705,28 +704,26 @@ public class Letter {
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
   private String returnEnvelope;
-  
-  public  String getReturnEnvelope() {
+
+  public String getReturnEnvelope() {
     return returnEnvelope;
   }
-
+  
 
   public void setReturnEnvelope(String returnEnvelope) {
     
 
     this.returnEnvelope = returnEnvelope;
   }
-  
-  
-  
+
+
   public void setReturnEnvelope(ReturnEnvelope returnEnvelope) {
     Gson gson = new Gson();
 
     this.returnEnvelope = gson.toJson(returnEnvelope);
   }
-  
-  
-  
+
+
   public void setReturnEnvelope(Boolean returnEnvelope) {
     
 

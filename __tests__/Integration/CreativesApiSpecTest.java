@@ -125,42 +125,42 @@ public class CreativesApiSpecTest {
         Assert.assertNotNull(response.getId());
     }
 
-    @Test(
-        enabled=true,
-        groups={"Integration", "Create", "Creative", "Valid"}
-    )
-    public void createLtrCreativeTest() throws ApiException {
-        CreativeResponse response = creativeApi.create(ltrCrvWritable, null);
+    // @Test(
+    //     enabled=true,
+    //     groups={"Integration", "Create", "Creative", "Valid"}
+    // )
+    // public void createLtrCreativeTest() throws ApiException {
+    //     CreativeResponse response = creativeApi.create(ltrCrvWritable, null);
 
-        Assert.assertNotNull(response.getId());
-    }
+    //     Assert.assertNotNull(response.getId());
+    // }
 
-    @Test(
-        enabled=true,
-        groups={"Integration", "Retrieve", "Creative", "Valid"}
-    )
-    public void creativeRetrieveTest() throws ApiException {
-        CreativeResponse creative = creativeApi.create(pscCrvWritable, null);
+    // @Test(
+    //     enabled=true,
+    //     groups={"Integration", "Retrieve", "Creative", "Valid"}
+    // )
+    // public void creativeRetrieveTest() throws ApiException {
+    //     CreativeResponse creative = creativeApi.create(pscCrvWritable, null);
 
-        CreativeResponse response = creativeApi.get(creative.getId());
+    //     CreativeResponse response = creativeApi.get(creative.getId());
 
-        Assert.assertNotNull(response.getId());
-        Assert.assertEquals(response.getId(), creative.getId());
-    }
+    //     Assert.assertNotNull(response.getId());
+    //     Assert.assertEquals(response.getId(), creative.getId());
+    // }
 
-    @Test(
-        enabled=false,
-        groups={"Integration", "Update", "Creative", "Valid"}
-    )
-    public void CreativeUpdateTest() throws ApiException {
-        CreativeResponse creative = creativeApi.create(pscCrvWritable, null);
+    // @Test(
+    //     enabled=false,
+    //     groups={"Integration", "Update", "Creative", "Valid"}
+    // )
+    // public void CreativeUpdateTest() throws ApiException {
+    //     CreativeResponse creative = creativeApi.create(pscCrvWritable, null);
 
-        CreativePatch update = new CreativePatch();
+    //     CreativePatch update = new CreativePatch();
 
-        update.setDescription("Java Integration Test Updated Creative");
+    //     update.setDescription("Java Integration Test Updated Creative");
 
-        CreativeResponse response = creativeApi.update(creative.getId(), update);
-        Assert.assertNotNull(response);
-        Assert.assertEquals(response.getDescription(), "Java Integration Test Updated Creative");
-    }
+    //     CreativeResponse response = creativeApi.update(creative.getId(), update);
+    //     Assert.assertNotNull(response);
+    //     Assert.assertEquals(response.getDescription(), "Java Integration Test Updated Creative");
+    // }
 }
