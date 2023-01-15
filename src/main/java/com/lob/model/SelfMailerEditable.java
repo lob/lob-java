@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.lob.model.MailType;
 import com.lob.model.SelfMailerSize;
+import com.lob.model.SfmUseType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -42,7 +43,6 @@ public class SelfMailerEditable {
   @SerializedName(SERIALIZED_NAME_TO)
   
   private String to;
-  
   public  String getTo() {
     return to;
   }
@@ -55,7 +55,6 @@ public class SelfMailerEditable {
   }
   
   
-  
   public void setTo(AddressEditable to) {
     Gson gson = new Gson();
 
@@ -66,7 +65,6 @@ public class SelfMailerEditable {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
   public  String getFrom() {
     return from;
   }
@@ -77,7 +75,6 @@ public class SelfMailerEditable {
 
     this.from = from;
   }
-  
   
   
   public void setFrom(AddressEditable from) {
@@ -264,6 +261,27 @@ public class SelfMailerEditable {
   
   
 
+  public static final String SERIALIZED_NAME_USE_TYPE = "use_type";
+
+  @SerializedName(SERIALIZED_NAME_USE_TYPE)
+  
+
+  private SfmUseType useType;
+  /**
+  * Get useType
+  * @return useType
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public SfmUseType getUseType() {
+      return useType;
+  }
+  
+  
+
 
   /*
   public SelfMailerEditable to(Object to) {
@@ -432,6 +450,21 @@ public class SelfMailerEditable {
 
 
 
+  /*
+  public SelfMailerEditable useType(SfmUseType useType) {
+    
+    this.useType = useType;
+    return this;
+  }
+  */
+
+
+  public void setUseType(SfmUseType useType) {
+    this.useType = useType;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -451,7 +484,8 @@ public class SelfMailerEditable {
         Objects.equals(this.sendDate, selfMailerEditable.sendDate) &&
         Objects.equals(this.inside, selfMailerEditable.inside) &&
         Objects.equals(this.outside, selfMailerEditable.outside) &&
-        Objects.equals(this.billingGroupId, selfMailerEditable.billingGroupId);
+        Objects.equals(this.billingGroupId, selfMailerEditable.billingGroupId) &&
+        Objects.equals(this.useType, selfMailerEditable.useType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -460,7 +494,7 @@ public class SelfMailerEditable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(to, from, size, description, metadata, mailType, mergeVariables, sendDate, inside, outside, billingGroupId);
+    return Objects.hash(to, from, size, description, metadata, mailType, mergeVariables, sendDate, inside, outside, billingGroupId, useType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -485,6 +519,7 @@ public class SelfMailerEditable {
     sb.append("    inside: ").append(toIndentedString(inside)).append("\n");
     sb.append("    outside: ").append(toIndentedString(outside)).append("\n");
     sb.append("    billingGroupId: ").append(toIndentedString(billingGroupId)).append("\n");
+    sb.append("    useType: ").append(toIndentedString(useType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

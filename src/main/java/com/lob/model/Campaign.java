@@ -214,7 +214,7 @@ public class Campaign {
   
   @javax.annotation.Nullable
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   
   public CmpUseType getUseType() {
       return useType;

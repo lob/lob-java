@@ -88,7 +88,6 @@ public class CampaignCreative {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
   public  String getFrom() {
     return from;
   }
@@ -99,7 +98,6 @@ public class CampaignCreative {
 
     this.from = from;
   }
-  
   
   
   public void setFrom(AddressEditable from) {
@@ -180,7 +178,6 @@ public class CampaignCreative {
   @SerializedName(SERIALIZED_NAME_DETAILS)
   
   private String details;
-  
   public  String getDetails() {
     return details;
   }
@@ -193,13 +190,11 @@ public class CampaignCreative {
   }
   
   
-  
   public void setDetails(PostcardDetailsWritable details) {
     Gson gson = new Gson();
 
     this.details = gson.toJson(details);
   }
-  
   
   
   public void setDetails(LetterDetailsWritable details) {

@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.lob.model.MailType;
 import com.lob.model.PostcardSize;
+import com.lob.model.PscUseType;
 import com.lob.model.QrCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -43,7 +44,6 @@ public class PostcardEditable {
   @SerializedName(SERIALIZED_NAME_TO)
   
   private String to;
-  
   public  String getTo() {
     return to;
   }
@@ -56,7 +56,6 @@ public class PostcardEditable {
   }
   
   
-  
   public void setTo(AddressEditable to) {
     Gson gson = new Gson();
 
@@ -67,7 +66,6 @@ public class PostcardEditable {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
   public  String getFrom() {
     return from;
   }
@@ -78,7 +76,6 @@ public class PostcardEditable {
 
     this.from = from;
   }
-  
   
   
   public void setFrom(AddressEditable from) {
@@ -286,6 +283,27 @@ public class PostcardEditable {
   
   
 
+  public static final String SERIALIZED_NAME_USE_TYPE = "use_type";
+
+  @SerializedName(SERIALIZED_NAME_USE_TYPE)
+  
+
+  private PscUseType useType;
+  /**
+  * Get useType
+  * @return useType
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public PscUseType getUseType() {
+      return useType;
+  }
+  
+  
+
 
   /*
   public PostcardEditable to(Object to) {
@@ -469,6 +487,21 @@ public class PostcardEditable {
 
 
 
+  /*
+  public PostcardEditable useType(PscUseType useType) {
+    
+    this.useType = useType;
+    return this;
+  }
+  */
+
+
+  public void setUseType(PscUseType useType) {
+    this.useType = useType;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -489,7 +522,8 @@ public class PostcardEditable {
         Objects.equals(this.front, postcardEditable.front) &&
         Objects.equals(this.back, postcardEditable.back) &&
         Objects.equals(this.billingGroupId, postcardEditable.billingGroupId) &&
-        Objects.equals(this.qrCode, postcardEditable.qrCode);
+        Objects.equals(this.qrCode, postcardEditable.qrCode) &&
+        Objects.equals(this.useType, postcardEditable.useType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -498,7 +532,7 @@ public class PostcardEditable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(to, from, size, description, metadata, mailType, mergeVariables, sendDate, front, back, billingGroupId, qrCode);
+    return Objects.hash(to, from, size, description, metadata, mailType, mergeVariables, sendDate, front, back, billingGroupId, qrCode, useType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -524,6 +558,7 @@ public class PostcardEditable {
     sb.append("    back: ").append(toIndentedString(back)).append("\n");
     sb.append("    billingGroupId: ").append(toIndentedString(billingGroupId)).append("\n");
     sb.append("    qrCode: ").append(toIndentedString(qrCode)).append("\n");
+    sb.append("    useType: ").append(toIndentedString(useType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

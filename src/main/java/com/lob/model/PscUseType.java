@@ -25,18 +25,20 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Mailpiece type for the creative
+ * The use type for each mailpiece. Can be one of marketing, operational, or null. Null use_type is only allowed if an account default use_type is selected in Account Settings. For more information on use_type, see our  [Help Center article](https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings/declaring-mail-use-type).
  */
-@JsonAdapter(ResourceTypeEnum.Adapter.class)
-public enum ResourceTypeEnum {
+@JsonAdapter(PscUseType.Adapter.class)
+public enum PscUseType {
   
-  LETTER("letter"),
+  MARKETING("marketing"),
   
-  POSTCARD("postcard");
+  OPERATIONAL("operational"),
+  
+  NULL("null");
 
   private String value;
 
-  ResourceTypeEnum(String value) {
+  PscUseType(String value) {
     this.value = value;
   }
 
@@ -49,25 +51,25 @@ public enum ResourceTypeEnum {
     return String.valueOf(value);
   }
 
-  public static ResourceTypeEnum fromValue(String value) {
-    for (ResourceTypeEnum b : ResourceTypeEnum.values()) {
+  public static PscUseType fromValue(String value) {
+    for (PscUseType b : PscUseType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return null;
   }
 
-  public static class Adapter extends TypeAdapter<ResourceTypeEnum> {
+  public static class Adapter extends TypeAdapter<PscUseType> {
     @Override
-    public void write(final JsonWriter jsonWriter, final ResourceTypeEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final PscUseType enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public ResourceTypeEnum read(final JsonReader jsonReader) throws IOException {
+    public PscUseType read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return ResourceTypeEnum.fromValue(value);
+      return PscUseType.fromValue(value);
     }
   }
 }

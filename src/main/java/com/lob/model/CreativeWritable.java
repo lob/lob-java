@@ -20,7 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.lob.model.ResourceTypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -40,7 +39,6 @@ public class CreativeWritable {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
   public  String getFrom() {
     return from;
   }
@@ -51,7 +49,6 @@ public class CreativeWritable {
 
     this.from = from;
   }
-  
   
   
   public void setFrom(AddressEditable from) {
@@ -91,6 +88,53 @@ public class CreativeWritable {
     return this.metadata;
   }
 
+  /**
+   * Mailpiece type for the creative
+   */
+  @JsonAdapter(ResourceTypeEnum.Adapter.class)
+  public enum ResourceTypeEnum {
+    LETTER("letter"),
+    
+    POSTCARD("postcard");
+
+    private String value;
+
+    ResourceTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ResourceTypeEnum fromValue(String value) {
+      for (ResourceTypeEnum b : ResourceTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ResourceTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ResourceTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ResourceTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ResourceTypeEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_RESOURCE_TYPE = "resource_type";
 
   @SerializedName(SERIALIZED_NAME_RESOURCE_TYPE)
@@ -98,13 +142,13 @@ public class CreativeWritable {
 
   private ResourceTypeEnum resourceType;
   /**
-  * Get resourceType
+  * Mailpiece type for the creative
   * @return resourceType
   **/
   
   @javax.annotation.Nonnull
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Mailpiece type for the creative")
   
   public ResourceTypeEnum getResourceType() {
       return resourceType;
@@ -141,15 +185,24 @@ public class CreativeWritable {
 
   @SerializedName(SERIALIZED_NAME_DETAILS)
   
-  
   private String details;
+  public  String getDetails() {
+    return details;
+  }
+
+
+  public void setDetails(String details) {
+    
+
+    this.details = details;
+  }
+  
   
   public void setDetails(PostcardDetailsWritable details) {
     Gson gson = new Gson();
 
     this.details = gson.toJson(details);
   }
-  
   
   
   public void setDetails(LetterDetailsWritable details) {

@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.lob.model.ChkUseType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -40,7 +41,6 @@ public class CheckEditable {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
   public  String getFrom() {
     return from;
   }
@@ -53,7 +53,6 @@ public class CheckEditable {
   }
   
   
-  
   public void setFrom(AddressDomestic from) {
     Gson gson = new Gson();
 
@@ -64,7 +63,6 @@ public class CheckEditable {
   @SerializedName(SERIALIZED_NAME_TO)
   
   private String to;
-  
   public  String getTo() {
     return to;
   }
@@ -75,7 +73,6 @@ public class CheckEditable {
 
     this.to = to;
   }
-  
   
   
   public void setTo(AddressDomestic to) {
@@ -415,6 +412,27 @@ public class CheckEditable {
   
   
 
+  public static final String SERIALIZED_NAME_USE_TYPE = "use_type";
+
+  @SerializedName(SERIALIZED_NAME_USE_TYPE)
+  
+
+  private ChkUseType useType;
+  /**
+  * Get useType
+  * @return useType
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public ChkUseType getUseType() {
+      return useType;
+  }
+  
+  
+
 
   /*
   public CheckEditable from(Object from) {
@@ -658,6 +676,21 @@ public class CheckEditable {
 
 
 
+  /*
+  public CheckEditable useType(ChkUseType useType) {
+    
+    this.useType = useType;
+    return this;
+  }
+  */
+
+
+  public void setUseType(ChkUseType useType) {
+    this.useType = useType;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -682,7 +715,8 @@ public class CheckEditable {
         Objects.equals(this.memo, checkEditable.memo) &&
         Objects.equals(this.checkNumber, checkEditable.checkNumber) &&
         Objects.equals(this.message, checkEditable.message) &&
-        Objects.equals(this.billingGroupId, checkEditable.billingGroupId);
+        Objects.equals(this.billingGroupId, checkEditable.billingGroupId) &&
+        Objects.equals(this.useType, checkEditable.useType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -691,7 +725,7 @@ public class CheckEditable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, to, bankAccount, amount, logo, checkBottom, attachment, description, metadata, mergeVariables, sendDate, mailType, memo, checkNumber, message, billingGroupId);
+    return Objects.hash(from, to, bankAccount, amount, logo, checkBottom, attachment, description, metadata, mergeVariables, sendDate, mailType, memo, checkNumber, message, billingGroupId, useType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -721,6 +755,7 @@ public class CheckEditable {
     sb.append("    checkNumber: ").append(toIndentedString(checkNumber)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    billingGroupId: ").append(toIndentedString(billingGroupId)).append("\n");
+    sb.append("    useType: ").append(toIndentedString(useType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

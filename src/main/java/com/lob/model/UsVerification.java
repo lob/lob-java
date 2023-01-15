@@ -238,6 +238,27 @@ public class UsVerification {
   
   
 
+  public static final String SERIALIZED_NAME_VALID_ADDRESS = "valid_address";
+
+  @SerializedName(SERIALIZED_NAME_VALID_ADDRESS)
+  
+
+  private Boolean validAddress;
+  /**
+  * This field indicates whether an address was found in a more comprehensive address dataset that includes sources from the USPS, open source mapping data, and our proprietary mail delivery data. This field can be interpreted as a representation of whether an address is a real location or not. Additionally a valid address may contradict the deliverability field since an address can be a real valid location but the USPS may not deliver to that address. 
+  * @return validAddress
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "This field indicates whether an address was found in a more comprehensive address dataset that includes sources from the USPS, open source mapping data, and our proprietary mail delivery data. This field can be interpreted as a representation of whether an address is a real location or not. Additionally a valid address may contradict the deliverability field since an address can be a real valid location but the USPS may not deliver to that address. ")
+  
+  public Boolean getValidAddress() {
+      return validAddress;
+  }
+  
+  
+
   public static final String SERIALIZED_NAME_COMPONENTS = "components";
 
   @SerializedName(SERIALIZED_NAME_COMPONENTS)
@@ -471,6 +492,21 @@ public class UsVerification {
 
 
   /*
+  public UsVerification validAddress(Boolean validAddress) {
+    
+    this.validAddress = validAddress;
+    return this;
+  }
+  */
+
+
+  public void setValidAddress(Boolean validAddress) {
+    this.validAddress = validAddress;
+  }
+
+
+
+  /*
   public UsVerification components(UsComponents components) {
     
     this.components = components;
@@ -546,6 +582,7 @@ public class UsVerification {
         Objects.equals(this.urbanization, usVerification.urbanization) &&
         Objects.equals(this.lastLine, usVerification.lastLine) &&
         Objects.equals(this.deliverability, usVerification.deliverability) &&
+        Objects.equals(this.validAddress, usVerification.validAddress) &&
         Objects.equals(this.components, usVerification.components) &&
         Objects.equals(this.deliverabilityAnalysis, usVerification.deliverabilityAnalysis) &&
         Objects.equals(this.lobConfidenceScore, usVerification.lobConfidenceScore) &&
@@ -558,7 +595,7 @@ public class UsVerification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, recipient, primaryLine, secondaryLine, urbanization, lastLine, deliverability, components, deliverabilityAnalysis, lobConfidenceScore, _object);
+    return Objects.hash(id, recipient, primaryLine, secondaryLine, urbanization, lastLine, deliverability, validAddress, components, deliverabilityAnalysis, lobConfidenceScore, _object);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -579,6 +616,7 @@ public class UsVerification {
     sb.append("    urbanization: ").append(toIndentedString(urbanization)).append("\n");
     sb.append("    lastLine: ").append(toIndentedString(lastLine)).append("\n");
     sb.append("    deliverability: ").append(toIndentedString(deliverability)).append("\n");
+    sb.append("    validAddress: ").append(toIndentedString(validAddress)).append("\n");
     sb.append("    components: ").append(toIndentedString(components)).append("\n");
     sb.append("    deliverabilityAnalysis: ").append(toIndentedString(deliverabilityAnalysis)).append("\n");
     sb.append("    lobConfidenceScore: ").append(toIndentedString(lobConfidenceScore)).append("\n");

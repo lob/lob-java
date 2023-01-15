@@ -27,8 +27,8 @@ import com.google.gson.stream.JsonWriter;
 /**
  * The use type for each mailpiece. Can be one of marketing, operational, or null. Null use_type is only allowed if an account default use_type is selected in Account Settings. For more information on use_type, see our  [Help Center article](https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings/declaring-mail-use-type).
  */
-@JsonAdapter(CmpUseType.Adapter.class)
-public enum CmpUseType {
+@JsonAdapter(LtrUseType.Adapter.class)
+public enum LtrUseType {
   
   MARKETING("marketing"),
   
@@ -38,7 +38,7 @@ public enum CmpUseType {
 
   private String value;
 
-  CmpUseType(String value) {
+  LtrUseType(String value) {
     this.value = value;
   }
 
@@ -51,8 +51,8 @@ public enum CmpUseType {
     return String.valueOf(value);
   }
 
-  public static CmpUseType fromValue(String value) {
-    for (CmpUseType b : CmpUseType.values()) {
+  public static LtrUseType fromValue(String value) {
+    for (LtrUseType b : LtrUseType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -60,16 +60,16 @@ public enum CmpUseType {
     return null;
   }
 
-  public static class Adapter extends TypeAdapter<CmpUseType> {
+  public static class Adapter extends TypeAdapter<LtrUseType> {
     @Override
-    public void write(final JsonWriter jsonWriter, final CmpUseType enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final LtrUseType enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public CmpUseType read(final JsonReader jsonReader) throws IOException {
+    public LtrUseType read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return CmpUseType.fromValue(value);
+      return LtrUseType.fromValue(value);
     }
   }
 }

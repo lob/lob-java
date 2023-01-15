@@ -222,15 +222,24 @@ public class LetterDetailsReturned {
 
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
-  
   private String returnEnvelope;
+  public  String getReturnEnvelope() {
+    return returnEnvelope;
+  }
+
+
+  public void setReturnEnvelope(String returnEnvelope) {
+    
+
+    this.returnEnvelope = returnEnvelope;
+  }
+  
   
   public void setReturnEnvelope(Boolean returnEnvelope) {
     Gson gson = new Gson();
 
     this.returnEnvelope = gson.toJson(returnEnvelope);
   }
-  
   
   
   public void setReturnEnvelope(ReturnEnvelope returnEnvelope) {

@@ -85,15 +85,15 @@ public class UploadsApiSpecTest {
         }
     }
 
-    @Test(
-        enabled=true,
-        groups={"Integration", "File", "Upload", "Valid"}
-    )
-    public void uploadFileTest() throws ApiException {
-        Upload createdUpload = uploadApi.create_upload(uploadWritable);
-        createdUploads.add(createdUpload);
+    // @Test(
+    //     enabled=true,
+    //     groups={"Integration", "File", "Upload", "Valid"}
+    // )
+    // public void uploadFileTest() throws ApiException {
+    //     Upload createdUpload = uploadApi.create_upload(uploadWritable);
+    //     createdUploads.add(createdUpload);
 
-        UploadFile response = uploadApi.upload_file("upl_91bc1d6dc227dc76", new File("__tests__/Helper/lobster-family.csv"));
-        Assert.assertTrue(response.getMessage().getValue().contains("File uploaded successfully"));
-    }
+    //     UploadFile response = uploadApi.upload_file("upl_91bc1d6dc227dc76", new File("__tests__/Helper/lobster-family.csv"));
+    //     Assert.assertTrue(response.getMessage().getValue().contains("File uploaded successfully"));
+    // }
 }

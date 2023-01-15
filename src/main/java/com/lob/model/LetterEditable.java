@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.lob.model.LtrUseType;
 import com.lob.model.MailType;
 import com.lob.model.QrCode;
 import io.swagger.annotations.ApiModel;
@@ -252,7 +253,6 @@ public class LetterEditable {
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
   private String returnEnvelope;
-  
   public  String getReturnEnvelope() {
     return returnEnvelope;
   }
@@ -263,7 +263,6 @@ public class LetterEditable {
 
     this.returnEnvelope = returnEnvelope;
   }
-  
   
   
   public void setReturnEnvelope(Boolean returnEnvelope) {
@@ -318,7 +317,6 @@ public class LetterEditable {
   @SerializedName(SERIALIZED_NAME_TO)
   
   private String to;
-  
   public  String getTo() {
     return to;
   }
@@ -331,7 +329,6 @@ public class LetterEditable {
   }
   
   
-  
   public void setTo(AddressEditable to) {
     Gson gson = new Gson();
 
@@ -342,7 +339,6 @@ public class LetterEditable {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
   public  String getFrom() {
     return from;
   }
@@ -353,7 +349,6 @@ public class LetterEditable {
 
     this.from = from;
   }
-  
   
   
   public void setFrom(AddressEditable from) {
@@ -503,6 +498,27 @@ public class LetterEditable {
   
   public QrCode getQrCode() {
       return qrCode;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_USE_TYPE = "use_type";
+
+  @SerializedName(SERIALIZED_NAME_USE_TYPE)
+  
+
+  private LtrUseType useType;
+  /**
+  * Get useType
+  * @return useType
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public LtrUseType getUseType() {
+      return useType;
   }
   
   
@@ -785,6 +801,21 @@ public class LetterEditable {
 
 
 
+  /*
+  public LetterEditable useType(LtrUseType useType) {
+    
+    this.useType = useType;
+    return this;
+  }
+  */
+
+
+  public void setUseType(LtrUseType useType) {
+    this.useType = useType;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -811,7 +842,8 @@ public class LetterEditable {
         Objects.equals(this.extraService, letterEditable.extraService) &&
         Objects.equals(this.cards, letterEditable.cards) &&
         Objects.equals(this.billingGroupId, letterEditable.billingGroupId) &&
-        Objects.equals(this.qrCode, letterEditable.qrCode);
+        Objects.equals(this.qrCode, letterEditable.qrCode) &&
+        Objects.equals(this.useType, letterEditable.useType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -820,7 +852,7 @@ public class LetterEditable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, metadata, mailType, mergeVariables, sendDate, color, doubleSided, addressPlacement, returnEnvelope, perforatedPage, customEnvelope, to, from, file, extraService, cards, billingGroupId, qrCode);
+    return Objects.hash(description, metadata, mailType, mergeVariables, sendDate, color, doubleSided, addressPlacement, returnEnvelope, perforatedPage, customEnvelope, to, from, file, extraService, cards, billingGroupId, qrCode, useType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -852,6 +884,7 @@ public class LetterEditable {
     sb.append("    cards: ").append(toIndentedString(cards)).append("\n");
     sb.append("    billingGroupId: ").append(toIndentedString(billingGroupId)).append("\n");
     sb.append("    qrCode: ").append(toIndentedString(qrCode)).append("\n");
+    sb.append("    useType: ").append(toIndentedString(useType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.lob.model.MailType;
 import com.lob.model.SelfMailerSize;
+import com.lob.model.SfmUseType;
 import com.lob.model.TrackingEventCertified;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -69,7 +70,6 @@ public class SelfMailer {
   @SerializedName(SERIALIZED_NAME_TO)
   
   private String to;
-  
   public  String getTo() {
     return to;
   }
@@ -82,7 +82,6 @@ public class SelfMailer {
   }
   
   
-  
   public void setTo(Address to) {
     Gson gson = new Gson();
 
@@ -93,7 +92,6 @@ public class SelfMailer {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
   public  String getFrom() {
     return from;
   }
@@ -104,7 +102,6 @@ public class SelfMailer {
 
     this.from = from;
   }
-  
   
   
   public void setFrom(AddressDomesticExpanded from) {
@@ -430,6 +427,27 @@ public class SelfMailer {
   
   
 
+  public static final String SERIALIZED_NAME_USE_TYPE = "use_type";
+
+  @SerializedName(SERIALIZED_NAME_USE_TYPE)
+  
+
+  private SfmUseType useType;
+  /**
+  * Get useType
+  * @return useType
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public SfmUseType getUseType() {
+      return useType;
+  }
+  
+  
+
 
   /*
   public SelfMailer id(String id) {
@@ -663,6 +681,21 @@ public class SelfMailer {
 
 
 
+  /*
+  public SelfMailer useType(SfmUseType useType) {
+    
+    this.useType = useType;
+    return this;
+  }
+  */
+
+
+  public void setUseType(SfmUseType useType) {
+    this.useType = useType;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -687,7 +720,8 @@ public class SelfMailer {
         Objects.equals(this.insideTemplateVersionId, selfMailer.insideTemplateVersionId) &&
         Objects.equals(this._object, selfMailer._object) &&
         Objects.equals(this.trackingEvents, selfMailer.trackingEvents) &&
-        Objects.equals(this.url, selfMailer.url);
+        Objects.equals(this.url, selfMailer.url) &&
+        Objects.equals(this.useType, selfMailer.useType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -696,7 +730,7 @@ public class SelfMailer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, to, from, size, description, metadata, mailType, mergeVariables, sendDate, outsideTemplateId, insideTemplateId, outsideTemplateVersionId, insideTemplateVersionId, _object, trackingEvents, url);
+    return Objects.hash(id, to, from, size, description, metadata, mailType, mergeVariables, sendDate, outsideTemplateId, insideTemplateId, outsideTemplateVersionId, insideTemplateVersionId, _object, trackingEvents, url, useType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -726,6 +760,7 @@ public class SelfMailer {
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    trackingEvents: ").append(toIndentedString(trackingEvents)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    useType: ").append(toIndentedString(useType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

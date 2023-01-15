@@ -24,6 +24,7 @@ import com.lob.model.Address;
 import com.lob.model.AddressDomesticExpanded;
 import com.lob.model.MailType;
 import com.lob.model.PostcardSize;
+import com.lob.model.PscUseType;
 import com.lob.model.Thumbnail;
 import com.lob.model.TrackingEventNormal;
 import io.swagger.annotations.ApiModel;
@@ -589,6 +590,27 @@ public class Postcard {
   
   
 
+  public static final String SERIALIZED_NAME_USE_TYPE = "use_type";
+
+  @SerializedName(SERIALIZED_NAME_USE_TYPE)
+  
+
+  private PscUseType useType;
+  /**
+  * Get useType
+  * @return useType
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "")
+  
+  public PscUseType getUseType() {
+      return useType;
+  }
+  
+  
+
 
   /*
   public Postcard id(String id) {
@@ -926,6 +948,21 @@ public class Postcard {
 
 
 
+  /*
+  public Postcard useType(PscUseType useType) {
+    
+    this.useType = useType;
+    return this;
+  }
+  */
+
+
+  public void setUseType(PscUseType useType) {
+    this.useType = useType;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -956,7 +993,8 @@ public class Postcard {
         Objects.equals(this.metadata, postcard.metadata) &&
         Objects.equals(this.mailType, postcard.mailType) &&
         Objects.equals(this.mergeVariables, postcard.mergeVariables) &&
-        Objects.equals(this.sendDate, postcard.sendDate);
+        Objects.equals(this.sendDate, postcard.sendDate) &&
+        Objects.equals(this.useType, postcard.useType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -965,7 +1003,7 @@ public class Postcard {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, to, from, carrier, thumbnails, size, expectedDeliveryDate, dateCreated, dateModified, deleted, frontTemplateId, backTemplateId, frontTemplateVersionId, backTemplateVersionId, trackingEvents, _object, url, description, metadata, mailType, mergeVariables, sendDate);
+    return Objects.hash(id, to, from, carrier, thumbnails, size, expectedDeliveryDate, dateCreated, dateModified, deleted, frontTemplateId, backTemplateId, frontTemplateVersionId, backTemplateVersionId, trackingEvents, _object, url, description, metadata, mailType, mergeVariables, sendDate, useType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1001,6 +1039,7 @@ public class Postcard {
     sb.append("    mailType: ").append(toIndentedString(mailType)).append("\n");
     sb.append("    mergeVariables: ").append(toIndentedString(mergeVariables)).append("\n");
     sb.append("    sendDate: ").append(toIndentedString(sendDate)).append("\n");
+    sb.append("    useType: ").append(toIndentedString(useType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

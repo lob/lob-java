@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.lob.model.Address;
 import com.lob.model.LetterCustomEnvelope;
+import com.lob.model.LtrUseType;
 import com.lob.model.MailType;
 import com.lob.model.Thumbnail;
 import com.lob.model.TrackingEventNormal;
@@ -543,7 +544,6 @@ public class Letter {
   @SerializedName(SERIALIZED_NAME_RETURN_ADDRESS)
   
   private String returnAddress;
-  
   public  String getReturnAddress() {
     return returnAddress;
   }
@@ -554,7 +554,6 @@ public class Letter {
 
     this.returnAddress = returnAddress;
   }
-  
   
   
   public void setReturnAddress(AddressEditable returnAddress) {
@@ -702,7 +701,6 @@ public class Letter {
   @SerializedName(SERIALIZED_NAME_RETURN_ENVELOPE)
   
   private String returnEnvelope;
-  
   public  String getReturnEnvelope() {
     return returnEnvelope;
   }
@@ -715,13 +713,11 @@ public class Letter {
   }
   
   
-  
   public void setReturnEnvelope(ReturnEnvelope returnEnvelope) {
     Gson gson = new Gson();
 
     this.returnEnvelope = gson.toJson(returnEnvelope);
   }
-  
   
   
   public void setReturnEnvelope(Boolean returnEnvelope) {
@@ -767,6 +763,48 @@ public class Letter {
   
   public LetterCustomEnvelope getCustomEnvelope() {
       return customEnvelope;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
+
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  
+
+  private String campaignId;
+  /**
+  * The unique ID of the associated campaign if the resource was generated from a campaign.
+  * @return campaignId
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "The unique ID of the associated campaign if the resource was generated from a campaign.")
+  
+  public String getCampaignId() {
+      return campaignId;
+  }
+  
+  
+
+  public static final String SERIALIZED_NAME_USE_TYPE = "use_type";
+
+  @SerializedName(SERIALIZED_NAME_USE_TYPE)
+  
+
+  private LtrUseType useType;
+  /**
+  * Get useType
+  * @return useType
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public LtrUseType getUseType() {
+      return useType;
   }
   
   
@@ -1198,6 +1236,36 @@ public class Letter {
 
 
 
+  /*
+  public Letter campaignId(String campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+  */
+
+
+  public void setCampaignId(String campaignId) {
+    this.campaignId = campaignId;
+  }
+
+
+
+  /*
+  public Letter useType(LtrUseType useType) {
+    
+    this.useType = useType;
+    return this;
+  }
+  */
+
+
+  public void setUseType(LtrUseType useType) {
+    this.useType = useType;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -1234,7 +1302,9 @@ public class Letter {
         Objects.equals(this.addressPlacement, letter.addressPlacement) &&
         Objects.equals(this.returnEnvelope, letter.returnEnvelope) &&
         Objects.equals(this.perforatedPage, letter.perforatedPage) &&
-        Objects.equals(this.customEnvelope, letter.customEnvelope);
+        Objects.equals(this.customEnvelope, letter.customEnvelope) &&
+        Objects.equals(this.campaignId, letter.campaignId) &&
+        Objects.equals(this.useType, letter.useType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1243,7 +1313,7 @@ public class Letter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(to, from, carrier, thumbnails, expectedDeliveryDate, dateCreated, dateModified, deleted, id, templateId, templateVersionId, url, _object, description, metadata, mergeVariables, sendDate, extraService, trackingNumber, trackingEvents, returnAddress, mailType, color, doubleSided, addressPlacement, returnEnvelope, perforatedPage, customEnvelope);
+    return Objects.hash(to, from, carrier, thumbnails, expectedDeliveryDate, dateCreated, dateModified, deleted, id, templateId, templateVersionId, url, _object, description, metadata, mergeVariables, sendDate, extraService, trackingNumber, trackingEvents, returnAddress, mailType, color, doubleSided, addressPlacement, returnEnvelope, perforatedPage, customEnvelope, campaignId, useType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1285,6 +1355,8 @@ public class Letter {
     sb.append("    returnEnvelope: ").append(toIndentedString(returnEnvelope)).append("\n");
     sb.append("    perforatedPage: ").append(toIndentedString(perforatedPage)).append("\n");
     sb.append("    customEnvelope: ").append(toIndentedString(customEnvelope)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    useType: ").append(toIndentedString(useType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

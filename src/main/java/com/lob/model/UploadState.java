@@ -25,20 +25,28 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The use type for each mailpiece. Can be one of marketing, operational, or null. Null use_type is only allowed if an account default use_type is selected in Account Settings. For more information on use_type, see our  [Help Center article](https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings/declaring-mail-use-type).
+ * The &#x60;state&#x60; property on the &#x60;upload&#x60; object. As the file is processed, the &#x60;state&#x60; will change from &#x60;Ready for Validation&#x60; to &#x60;Validating&#x60; and then will be either &#x60;Scheduled&#x60; (successfully processed) or &#x60;Errored&#x60; (Unsuccessfully processed).
  */
-@JsonAdapter(CmpUseType.Adapter.class)
-public enum CmpUseType {
+@JsonAdapter(UploadState.Adapter.class)
+public enum UploadState {
   
-  MARKETING("marketing"),
+  PREPROCESSING("Preprocessing"),
   
-  OPERATIONAL("operational"),
+  DRAFT("Draft"),
   
-  NULL("null");
+  READY_FOR_VALIDATION("Ready for Validation"),
+  
+  VALIDATING("Validating"),
+  
+  SCHEDULED("Scheduled"),
+  
+  CANCELLED("Cancelled"),
+  
+  ERRORED("Errored");
 
   private String value;
 
-  CmpUseType(String value) {
+  UploadState(String value) {
     this.value = value;
   }
 
@@ -51,25 +59,25 @@ public enum CmpUseType {
     return String.valueOf(value);
   }
 
-  public static CmpUseType fromValue(String value) {
-    for (CmpUseType b : CmpUseType.values()) {
+  public static UploadState fromValue(String value) {
+    for (UploadState b : UploadState.values()) {
       if (b.value.equals(value)) {
         return b;
       }
     }
-    return null;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<CmpUseType> {
+  public static class Adapter extends TypeAdapter<UploadState> {
     @Override
-    public void write(final JsonWriter jsonWriter, final CmpUseType enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final UploadState enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public CmpUseType read(final JsonReader jsonReader) throws IOException {
+    public UploadState read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return CmpUseType.fromValue(value);
+      return UploadState.fromValue(value);
     }
   }
 }

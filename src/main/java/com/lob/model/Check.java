@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.lob.model.Address;
 import com.lob.model.BankAccount;
+import com.lob.model.ChkUseType;
 import com.lob.model.Thumbnail;
 import com.lob.model.TrackingEventNormal;
 import io.swagger.annotations.ApiModel;
@@ -719,6 +720,27 @@ public class Check {
   
   
 
+  public static final String SERIALIZED_NAME_USE_TYPE = "use_type";
+
+  @SerializedName(SERIALIZED_NAME_USE_TYPE)
+  
+
+  private ChkUseType useType;
+  /**
+  * Get useType
+  * @return useType
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public ChkUseType getUseType() {
+      return useType;
+  }
+  
+  
+
 
   /*
   public Check id(String id) {
@@ -1116,6 +1138,21 @@ public class Check {
 
 
 
+  /*
+  public Check useType(ChkUseType useType) {
+    
+    this.useType = useType;
+    return this;
+  }
+  */
+
+
+  public void setUseType(ChkUseType useType) {
+    this.useType = useType;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -1150,7 +1187,8 @@ public class Check {
         Objects.equals(this._object, check._object) &&
         Objects.equals(this.dateCreated, check.dateCreated) &&
         Objects.equals(this.dateModified, check.dateModified) &&
-        Objects.equals(this.deleted, check.deleted);
+        Objects.equals(this.deleted, check.deleted) &&
+        Objects.equals(this.useType, check.useType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1159,7 +1197,7 @@ public class Check {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, to, from, description, metadata, mergeVariables, sendDate, mailType, memo, checkNumber, message, amount, bankAccount, checkBottomTemplateId, attachmentTemplateId, checkBottomTemplateVersionId, attachmentTemplateVersionId, url, carrier, thumbnails, expectedDeliveryDate, trackingEvents, _object, dateCreated, dateModified, deleted);
+    return Objects.hash(id, to, from, description, metadata, mergeVariables, sendDate, mailType, memo, checkNumber, message, amount, bankAccount, checkBottomTemplateId, attachmentTemplateId, checkBottomTemplateVersionId, attachmentTemplateVersionId, url, carrier, thumbnails, expectedDeliveryDate, trackingEvents, _object, dateCreated, dateModified, deleted, useType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1199,6 +1237,7 @@ public class Check {
     sb.append("    dateCreated: ").append(toIndentedString(dateCreated)).append("\n");
     sb.append("    dateModified: ").append(toIndentedString(dateModified)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
+    sb.append("    useType: ").append(toIndentedString(useType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

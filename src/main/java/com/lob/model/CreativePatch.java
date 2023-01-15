@@ -39,7 +39,6 @@ public class CreativePatch {
   @SerializedName(SERIALIZED_NAME_FROM)
   
   private String from;
-  
   public  String getFrom() {
     return from;
   }
@@ -50,7 +49,6 @@ public class CreativePatch {
 
     this.from = from;
   }
-  
   
   
   public void setFrom(AddressEditable from) {
