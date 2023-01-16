@@ -107,7 +107,6 @@ public class CreativesApiSpecTest {
         // letterDetails.setAddressPlacement(LetterDetailsWritable.AddressPlacementEnum.BOTTOM_FIRST_PAGE);
         // letterDetails.setMailType(MailType.FIRST_CLASS);
         ltrCrvWritable.setDetails(letterDetails);
-        System.out.println("hellp");
     }
 
     @AfterClass
