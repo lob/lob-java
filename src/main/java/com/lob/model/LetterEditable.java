@@ -889,6 +889,30 @@ public class LetterEditable {
     return sb.toString();
   }
 
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("description", description);
+      localMap.put("metadata", metadata);
+      localMap.put("mail_type", mailType);
+      localMap.put("merge_variables", mergeVariables);
+      localMap.put("send_date", sendDate);
+      localMap.put("color", color);
+      localMap.put("double_sided", doubleSided);
+      localMap.put("address_placement", addressPlacement);
+      localMap.put("return_envelope", returnEnvelope);
+      localMap.put("perforated_page", perforatedPage);
+      localMap.put("custom_envelope", customEnvelope);
+      localMap.put("to", to);
+      localMap.put("from", from);
+      localMap.put("file", file);
+      localMap.put("extra_service", extraService);
+      localMap.put("cards", cards);
+      localMap.put("billing_group_id", billingGroupId);
+      localMap.put("qr_code", qrCode);
+      localMap.put("use_type", useType);
+      return localMap;
+    }
+
   /**
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).

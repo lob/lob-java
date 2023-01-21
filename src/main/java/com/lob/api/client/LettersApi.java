@@ -21,9 +21,11 @@ import com.lob.api.Configuration;
 import com.lob.api.Pair;
 import com.lob.api.ProgressRequestBody;
 import com.lob.api.ProgressResponseBody;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.IOException;
 
 
@@ -36,11 +38,17 @@ import com.lob.model.MailType;
 import java.time.OffsetDateTime;
 import com.lob.model.SortBy3;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.json.JSONObject;
 
 public class LettersApi {
     private ApiClient localVarApiClient;
@@ -247,6 +255,81 @@ public class LettersApi {
 
     }
 
+
+    public okhttp3.Call createCallWithFile(LetterEditable letterEditable, Object file, String idempotencyKey, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = letterEditable;
+
+        // create path and map variables
+        String localVarPath = "/letters";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (idempotencyKey != null) {
+            localVarHeaderParams.put("Idempotency-Key", localVarApiClient.parameterToString(idempotencyKey));
+        }
+        
+
+        if (file != null) {
+            localVarFormParams = letterEditable.toMap();
+            try {
+                byte[] fileContent;
+                if(file instanceof File) {
+                    fileContent = Files.readAllBytes(((File) file).toPath());
+                    localVarFormParams.put("file", fileContent);
+                }
+                else if(file instanceof byte[]) {
+                    fileContent = ((byte[]) file);
+                    localVarFormParams.put("file", fileContent);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "multipart/form-data"
+        };
+        final String localVarContentType = file != null ?  "multipart/form-data" : localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "basicAuth" };
+
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createValidateBeforeCallWithFile(LetterEditable letterEditable, File file, String idempotencyKey, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'letterEditable' is set
+        if (letterEditable == null) {
+            throw new ApiException("Missing the required parameter 'letterEditable' when calling create(Async)");
+        }
+
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling upload_file(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createCallWithFile(letterEditable, file, idempotencyKey, _callback);
+        return localVarCall;
+
+    }
+
     /**
      * create
      * Creates a new letter given information
@@ -265,6 +348,25 @@ public class LettersApi {
         try {
             ApiResponse<Letter> localVarResp = createWithHttpInfo(letterEditable, idempotencyKey);
             return localVarResp.getData();
+        } catch (ApiException e) {
+            throw e;
+        }
+    }
+
+    public Letter createWithFile(LetterEditable letterEditable, File file, String idempotencyKey) throws ApiException {
+        try {
+            ApiResponse<Letter> localVarResp = createWithHttpInfoAndFile(letterEditable, file, idempotencyKey);
+            return localVarResp.getData();
+        } catch (ApiException e) {
+            throw e;
+        }
+    }
+
+    public ApiResponse<Letter> createWithHttpInfoAndFile(LetterEditable letterEditable, File file, String idempotencyKey) throws ApiException {
+        try {
+            okhttp3.Call localVarCall = createValidateBeforeCallWithFile(letterEditable, file, idempotencyKey, null);
+            Type localVarReturnType = new TypeToken<Letter>(){}.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             throw e;
         }
