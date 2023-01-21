@@ -34,6 +34,8 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * LetterEditable
  */

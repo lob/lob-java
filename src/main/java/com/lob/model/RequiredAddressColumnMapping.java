@@ -25,6 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * The mapping of column headers in your file to Lob-required fields for the resource created. See our &lt;a href&#x3D;\&quot;https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide#required-columns-2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Campaign Audience Guide&lt;/a&gt; for additional details.
  */
@@ -245,6 +247,16 @@ public class RequiredAddressColumnMapping {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("name", name);
+      localMap.put("address_line1", addressLine1);
+      localMap.put("address_city", addressCity);
+      localMap.put("address_state", addressState);
+      localMap.put("address_zip", addressZip);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

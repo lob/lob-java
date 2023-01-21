@@ -27,6 +27,8 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * A nested object containing a breakdown of each component of an address.
  */
@@ -1341,6 +1343,37 @@ public class UsComponents {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("primary_number", primaryNumber);
+      localMap.put("street_predirection", streetPredirection);
+      localMap.put("street_name", streetName);
+      localMap.put("street_suffix", streetSuffix);
+      localMap.put("street_postdirection", streetPostdirection);
+      localMap.put("secondary_designator", secondaryDesignator);
+      localMap.put("secondary_number", secondaryNumber);
+      localMap.put("pmb_designator", pmbDesignator);
+      localMap.put("pmb_number", pmbNumber);
+      localMap.put("extra_secondary_designator", extraSecondaryDesignator);
+      localMap.put("extra_secondary_number", extraSecondaryNumber);
+      localMap.put("city", city);
+      localMap.put("state", state);
+      localMap.put("zip_code", zipCode);
+      localMap.put("zip_code_plus_4", zipCodePlus4);
+      localMap.put("zip_code_type", zipCodeType);
+      localMap.put("delivery_point_barcode", deliveryPointBarcode);
+      localMap.put("address_type", addressType);
+      localMap.put("record_type", recordType);
+      localMap.put("default_building_address", defaultBuildingAddress);
+      localMap.put("county", county);
+      localMap.put("county_fips", countyFips);
+      localMap.put("carrier_route", carrierRoute);
+      localMap.put("carrier_route_type", carrierRouteType);
+      localMap.put("latitude", latitude);
+      localMap.put("longitude", longitude);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

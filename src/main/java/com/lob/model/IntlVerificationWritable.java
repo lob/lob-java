@@ -27,6 +27,8 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * IntlVerificationWritable
  */
@@ -371,6 +373,19 @@ public class IntlVerificationWritable {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("recipient", recipient);
+      localMap.put("primary_line", primaryLine);
+      localMap.put("secondary_line", secondaryLine);
+      localMap.put("city", city);
+      localMap.put("state", state);
+      localMap.put("postal_code", postalCode);
+      localMap.put("country", country);
+      localMap.put("address", address);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

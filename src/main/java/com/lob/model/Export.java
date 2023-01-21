@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Export
  */
@@ -459,6 +461,19 @@ public class Export {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("dateCreated", dateCreated);
+      localMap.put("dateModified", dateModified);
+      localMap.put("deleted", deleted);
+      localMap.put("s3Url", s3Url);
+      localMap.put("state", state);
+      localMap.put("type", type);
+      localMap.put("uploadId", uploadId);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

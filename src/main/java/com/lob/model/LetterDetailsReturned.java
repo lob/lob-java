@@ -30,6 +30,8 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Properties that the letters in your Creative should have.
  */
@@ -496,6 +498,21 @@ public class LetterDetailsReturned {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("color", color);
+      localMap.put("cards", cards);
+      localMap.put("address_placement", addressPlacement);
+      localMap.put("custom_envelope", customEnvelope);
+      localMap.put("double_sided", doubleSided);
+      localMap.put("extra_service", extraService);
+      localMap.put("mail_type", mailType);
+      localMap.put("return_envelope", returnEnvelope);
+      localMap.put("bleed", bleed);
+      localMap.put("file_original_url", fileOriginalUrl);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

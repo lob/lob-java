@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * A nested object containing a breakdown of the deliverability of an address.
  */
@@ -693,6 +695,20 @@ public class DeliverabilityAnalysis {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("dpv_confirmation", dpvConfirmation);
+      localMap.put("dpv_cmra", dpvCmra);
+      localMap.put("dpv_vacant", dpvVacant);
+      localMap.put("dpv_active", dpvActive);
+      localMap.put("dpv_footnotes", dpvFootnotes);
+      localMap.put("ews_match", ewsMatch);
+      localMap.put("lacs_indicator", lacsIndicator);
+      localMap.put("lacs_return_code", lacsReturnCode);
+      localMap.put("suite_return_code", suiteReturnCode);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

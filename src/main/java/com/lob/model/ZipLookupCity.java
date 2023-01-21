@@ -25,6 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * ZipLookupCity
  */
@@ -244,6 +246,16 @@ public class ZipLookupCity {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("city", city);
+      localMap.put("state", state);
+      localMap.put("county", county);
+      localMap.put("county_fips", countyFips);
+      localMap.put("preferred", preferred);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Events
  */
@@ -330,6 +332,17 @@ public class Events {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("body", body);
+      localMap.put("reference_id", referenceId);
+      localMap.put("event_type", eventType);
+      localMap.put("date_created", dateCreated);
+      localMap.put("object", _object);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

@@ -36,7 +36,7 @@ public class UploadsApiSpecTest {
     {
         campaignApi = new CampaignsApi(Configuration.getConfigForIntegration());
         CampaignWritable cmpWritable = new CampaignWritable();
-        cmpWritable.setName("UPLOADINGGGGGG" + OffsetDateTime.now());
+        cmpWritable.setName("UPLOADINGGGGGG TEST" + OffsetDateTime.now());
         cmpWritable.setScheduleType(CmpScheduleType.IMMEDIATE);
 
         Campaign campaign = new Campaign();
@@ -71,7 +71,7 @@ public class UploadsApiSpecTest {
     {
         for (Upload upload: createdUploads) {
             try {
-                uploadApi.delete_upload(upload.getId());
+                uploadApi.delete(upload.getId());
             } catch (Exception e) {
                 Assert.fail("Deleting uploads after has failed");
             }
@@ -90,7 +90,7 @@ public class UploadsApiSpecTest {
         groups={"Integration", "Create", "Upload", "Valid"}
     )
     public void uploadCreateTest() throws ApiException {
-        Upload createdUpload = uploadApi.create_upload(uploadWritable);
+        Upload createdUpload = uploadApi.create(uploadWritable);
 
         Assert.assertNotNull(createdUpload.getId());
         createdUploads.add(createdUpload);
@@ -102,11 +102,11 @@ public class UploadsApiSpecTest {
         groups={"Integration", "Retrieve", "Upload", "Valid"}
     )
     public void uploadRetrieveTest() throws ApiException {
-        Upload createdUpload = uploadApi.create_upload(uploadWritable);
+        Upload createdUpload = uploadApi.create(uploadWritable);
 
         createdUploads.add(createdUpload);
 
-        Upload response = uploadApi.get_upload(createdUpload.getId());
+        Upload response = uploadApi.get(createdUpload.getId());
 
         Assert.assertNotNull(response.getId());
         Assert.assertEquals(response.getId(), createdUpload.getId());
@@ -117,12 +117,10 @@ public class UploadsApiSpecTest {
         groups={"Integration", "File", "Upload", "Valid"}
     )
     public void uploadFileTest() throws ApiException {
-        Upload createdUpload = uploadApi.create_upload(uploadWritable);
+        Upload createdUpload = uploadApi.create(uploadWritable);
         createdUploads.add(createdUpload);
 
-        System.out.println("Upload Create");        UploadFile response = uploadApi.upload_file(createdUpload.getId(), new File("__tests__/Helper/lobster-family.csv"));
-
-        System.out.println("Upload Done");
+        UploadFile response = uploadApi.upload_file(createdUpload.getId(), new File("__tests__/Helper/lobster-family.csv"));
 
         Assert.assertTrue(response.getMessage().getValue().contains("File uploaded successfully"));
     }
@@ -132,10 +130,10 @@ public class UploadsApiSpecTest {
         groups={"Integration", "Update", "Upload", "Valid"}
     )
     public void uploadUpdateTest() throws ApiException {
-        Upload createdUpload = uploadApi.create_upload(uploadWritable);
+        Upload createdUpload = uploadApi.create(uploadWritable);
         createdUploads.add(createdUpload);
 
-        List<Upload> response = uploadApi.list_upload(cmpId);
+        List<Upload> response = uploadApi.list(cmpId);
         Assert.assertTrue(response.size() > 0);
     }
 }

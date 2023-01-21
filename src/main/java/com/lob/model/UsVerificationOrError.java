@@ -30,6 +30,8 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * A model used to represent an entry in a result list where the entry can either be a us_verification or an Error. The SDK will perform necessary casting into the correct corresponding type. 
  */
@@ -626,6 +628,23 @@ public class UsVerificationOrError {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("recipient", recipient);
+      localMap.put("primary_line", primaryLine);
+      localMap.put("secondary_line", secondaryLine);
+      localMap.put("urbanization", urbanization);
+      localMap.put("last_line", lastLine);
+      localMap.put("deliverability", deliverability);
+      localMap.put("components", components);
+      localMap.put("deliverability_analysis", deliverabilityAnalysis);
+      localMap.put("lob_confidence_score", lobConfidenceScore);
+      localMap.put("object", _object);
+      localMap.put("error", error);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

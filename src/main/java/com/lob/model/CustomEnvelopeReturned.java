@@ -25,6 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * A nested custom envelope object containing more information about the custom envelope used or &#x60;null&#x60; if a custom envelope was not used.
  */
@@ -214,6 +216,14 @@ public class CustomEnvelopeReturned {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("url", url);
+      localMap.put("object", _object);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

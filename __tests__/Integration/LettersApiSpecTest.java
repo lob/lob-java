@@ -1,7 +1,9 @@
 package Integration;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -97,17 +99,19 @@ public class LettersApiSpecTest {
         letterEditable.setMailType(MailType.FIRST_CLASS);
         letterEditable.setDescription("Why is this failing");
 
-        Letter letter = validApi.createWithFile(letterEditable, new File("__tests__/Helper/example.html"), null);
-
+        // fileContent = Files.readAllBytes(((File) new File("__tests__/Helper/example.html")).toPath());
+        Letter letter = validApi.create(letterEditable, null, new File("__tests__/Helper/example.html"));
 
         Assert.assertNotNull(letter.getId());
         Assert.assertEquals(letter.getExtraService(), letter.getExtraService());
-
+   
         Letter retrievedLetter = validApi.get(letter.getId());
-        System.out.println(retrievedLetter);
         Assert.assertEquals(retrievedLetter.getId(), letter.getId());
-
+   
         LetterDeletion cancelledLetter = validApi.cancel(letter.getId());
         Assert.assertTrue(cancelledLetter.getDeleted());
+
+
+
     }
 }

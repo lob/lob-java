@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Buckslip
  */
@@ -1151,6 +1153,33 @@ public class Buckslip {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("auto_reorder", autoReorder);
+      localMap.put("reorder_quantity", reorderQuantity);
+      localMap.put("threshold_amount", thresholdAmount);
+      localMap.put("url", url);
+      localMap.put("raw_url", rawUrl);
+      localMap.put("front_original_url", frontOriginalUrl);
+      localMap.put("back_original_url", backOriginalUrl);
+      localMap.put("thumbnails", thumbnails);
+      localMap.put("available_quantity", availableQuantity);
+      localMap.put("allocated_quantity", allocatedQuantity);
+      localMap.put("onhand_quantity", onhandQuantity);
+      localMap.put("pending_quantity", pendingQuantity);
+      localMap.put("projected_quantity", projectedQuantity);
+      localMap.put("buckslip_orders", buckslipOrders);
+      localMap.put("stock", stock);
+      localMap.put("weight", weight);
+      localMap.put("finish", finish);
+      localMap.put("status", status);
+      localMap.put("object", _object);
+      localMap.put("description", description);
+      localMap.put("size", size);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

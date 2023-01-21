@@ -26,6 +26,8 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * IdentityValidation
  */
@@ -507,6 +509,20 @@ public class IdentityValidation {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("recipient", recipient);
+      localMap.put("primary_line", primaryLine);
+      localMap.put("secondary_line", secondaryLine);
+      localMap.put("urbanization", urbanization);
+      localMap.put("last_line", lastLine);
+      localMap.put("score", score);
+      localMap.put("confidence", confidence);
+      localMap.put("object", _object);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

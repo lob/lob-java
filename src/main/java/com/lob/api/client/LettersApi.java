@@ -21,13 +21,11 @@ import com.lob.api.Configuration;
 import com.lob.api.Pair;
 import com.lob.api.ProgressRequestBody;
 import com.lob.api.ProgressResponseBody;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
+import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.io.IOException;
-
+import java.nio.file.Files;
 
 import com.lob.model.Letter;
 import com.lob.model.LetterDeletion;
@@ -38,17 +36,11 @@ import com.lob.model.MailType;
 import java.time.OffsetDateTime;
 import com.lob.model.SortBy3;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Type;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
-import org.json.JSONObject;
 
 public class LettersApi {
     private ApiClient localVarApiClient;
@@ -197,6 +189,7 @@ public class LettersApi {
      * Build call for create
      * @param letterEditable  (required)
      * @param idempotencyKey A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)
+     * @param file An optional file upload as either a byte array or file type.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -207,7 +200,7 @@ public class LettersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCall(LetterEditable letterEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(LetterEditable letterEditable, String idempotencyKey, Object file, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = letterEditable;
 
         // create path and map variables
@@ -218,6 +211,19 @@ public class LettersApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (file != null) {
+            localVarFormParams = letterEditable.toMap();
+            byte[] fileContent;
+            if(file instanceof File) {
+                // fileContent = Files.readAllBytes(((File) file).toPath());
+                localVarFormParams.put("file", file);
+            }
+            else if(file instanceof byte[]) {
+                fileContent = ((byte[]) file);
+                localVarFormParams.put("file", fileContent);
+            }
+        }
 
         if (idempotencyKey != null) {
             localVarHeaderParams.put("Idempotency-Key", localVarApiClient.parameterToString(idempotencyKey));
@@ -234,98 +240,23 @@ public class LettersApi {
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "basicAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createValidateBeforeCall(LetterEditable letterEditable, String idempotencyKey, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'letterEditable' is set
-        if (letterEditable == null) {
-            throw new ApiException("Missing the required parameter 'letterEditable' when calling create(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = createCall(letterEditable, idempotencyKey, _callback);
-        return localVarCall;
-
-    }
-
-
-    public okhttp3.Call createCallWithFile(LetterEditable letterEditable, Object file, String idempotencyKey, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = letterEditable;
-
-        // create path and map variables
-        String localVarPath = "/letters";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (idempotencyKey != null) {
-            localVarHeaderParams.put("Idempotency-Key", localVarApiClient.parameterToString(idempotencyKey));
-        }
-        
-
-        if (file != null) {
-            localVarFormParams = letterEditable.toMap();
-            try {
-                byte[] fileContent;
-                if(file instanceof File) {
-                    fileContent = Files.readAllBytes(((File) file).toPath());
-                    localVarFormParams.put("file", fileContent);
-                }
-                else if(file instanceof byte[]) {
-                    fileContent = ((byte[]) file);
-                    localVarFormParams.put("file", fileContent);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "multipart/form-data"
-        };
         final String localVarContentType = file != null ?  "multipart/form-data" : localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "basicAuth" };
-
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createValidateBeforeCallWithFile(LetterEditable letterEditable, File file, String idempotencyKey, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(LetterEditable letterEditable, String idempotencyKey, Object file, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'letterEditable' is set
         if (letterEditable == null) {
             throw new ApiException("Missing the required parameter 'letterEditable' when calling create(Async)");
         }
-
-        // verify the required parameter 'file' is set
-        if (file == null) {
-            throw new ApiException("Missing the required parameter 'file' when calling upload_file(Async)");
-        }
         
 
-        okhttp3.Call localVarCall = createCallWithFile(letterEditable, file, idempotencyKey, _callback);
+        okhttp3.Call localVarCall = createCall(letterEditable, idempotencyKey, file, _callback);
         return localVarCall;
 
     }
@@ -335,6 +266,7 @@ public class LettersApi {
      * Creates a new letter given information
      * @param letterEditable  (required)
      * @param idempotencyKey A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)
+     * @param file An optional file upload as either a byte array or file type.  (optional)
      * @return Letter
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -346,27 +278,8 @@ public class LettersApi {
      */
     public Letter create(LetterEditable letterEditable, String idempotencyKey) throws ApiException {
         try {
-            ApiResponse<Letter> localVarResp = createWithHttpInfo(letterEditable, idempotencyKey);
+            ApiResponse<Letter> localVarResp = createWithHttpInfo(letterEditable, idempotencyKey, null);
             return localVarResp.getData();
-        } catch (ApiException e) {
-            throw e;
-        }
-    }
-
-    public Letter createWithFile(LetterEditable letterEditable, File file, String idempotencyKey) throws ApiException {
-        try {
-            ApiResponse<Letter> localVarResp = createWithHttpInfoAndFile(letterEditable, file, idempotencyKey);
-            return localVarResp.getData();
-        } catch (ApiException e) {
-            throw e;
-        }
-    }
-
-    public ApiResponse<Letter> createWithHttpInfoAndFile(LetterEditable letterEditable, File file, String idempotencyKey) throws ApiException {
-        try {
-            okhttp3.Call localVarCall = createValidateBeforeCallWithFile(letterEditable, file, idempotencyKey, null);
-            Type localVarReturnType = new TypeToken<Letter>(){}.getType();
-            return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             throw e;
         }
@@ -377,6 +290,31 @@ public class LettersApi {
      * Creates a new letter given information
      * @param letterEditable  (required)
      * @param idempotencyKey A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)
+     * @param file An optional file upload as either a byte array or file type.  (optional)
+     * @return Letter
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns a letter object </td><td>  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
+     </table>
+     */
+    public Letter create(LetterEditable letterEditable, String idempotencyKey, Object file) throws ApiException {
+        try {
+            ApiResponse<Letter> localVarResp = createWithHttpInfo(letterEditable, idempotencyKey, file);
+            return localVarResp.getData();
+        } catch (ApiException e) {
+            throw e;
+        }
+    }
+
+    /**
+     * create
+     * Creates a new letter given information
+     * @param letterEditable  (required)
+     * @param idempotencyKey A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)
+     * @param file An optional file upload as either a byte array or file type.  (optional)
      * @return ApiResponse&lt;Letter&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -386,9 +324,9 @@ public class LettersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Letter> createWithHttpInfo(LetterEditable letterEditable, String idempotencyKey) throws ApiException {
+    public ApiResponse<Letter> createWithHttpInfo(LetterEditable letterEditable, String idempotencyKey, Object file) throws ApiException {
         try {
-            okhttp3.Call localVarCall = createValidateBeforeCall(letterEditable, idempotencyKey, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(letterEditable, idempotencyKey, file, null);
             Type localVarReturnType = new TypeToken<Letter>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -401,6 +339,7 @@ public class LettersApi {
      * Creates a new letter given information
      * @param letterEditable  (required)
      * @param idempotencyKey A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)
+     * @param file An optional file upload as either a byte array or file type.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -411,9 +350,9 @@ public class LettersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAsync(LetterEditable letterEditable, String idempotencyKey, final ApiCallback<Letter> _callback) throws ApiException {
+    public okhttp3.Call createAsync(LetterEditable letterEditable, String idempotencyKey, Object file, final ApiCallback<Letter> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createValidateBeforeCall(letterEditable, idempotencyKey, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(letterEditable, idempotencyKey, file, _callback);
         Type localVarReturnType = new TypeToken<Letter>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

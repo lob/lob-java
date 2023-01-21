@@ -27,6 +27,8 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * BuckslipOrder
  */
@@ -605,6 +607,24 @@ public class BuckslipOrder {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("date_created", dateCreated);
+      localMap.put("date_modified", dateModified);
+      localMap.put("deleted", deleted);
+      localMap.put("object", _object);
+      localMap.put("id", id);
+      localMap.put("buckslip_id", buckslipId);
+      localMap.put("status", status);
+      localMap.put("quantity_ordered", quantityOrdered);
+      localMap.put("unit_price", unitPrice);
+      localMap.put("inventory", inventory);
+      localMap.put("cancelled_reason", cancelledReason);
+      localMap.put("availability_date", availabilityDate);
+      localMap.put("expected_availability_date", expectedAvailabilityDate);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

@@ -23,9 +23,9 @@ import com.lob.api.ProgressRequestBody;
 import com.lob.api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
-
+import java.io.File;
 import java.io.IOException;
-
+import java.nio.file.Files;
 
 import com.lob.model.Export;
 import com.lob.model.ExportModel;
@@ -192,7 +192,131 @@ public class UploadsApi {
         return localVarCall;
     }
     /**
-     * Build call for create_upload
+     * Build call for get
+     * @param uplId id of the upload (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns an upload object </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCall(String uplId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/uploads/{upl_id}"
+            .replaceAll("\\{" + "upl_id" + "\\}", localVarApiClient.escapeString(uplId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "basicAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getValidateBeforeCall(String uplId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'uplId' is set
+        if (uplId == null) {
+            throw new ApiException("Missing the required parameter 'uplId' when calling get(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getCall(uplId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * get
+     * Retrieves the details of an existing upload. You need only supply the unique upload identifier that was returned upon upload creation.
+     * @param uplId id of the upload (required)
+     * @return Upload
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns an upload object </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
+     </table>
+     */
+    public Upload get(String uplId) throws ApiException {
+        try {
+            ApiResponse<Upload> localVarResp = getWithHttpInfo(uplId);
+            return localVarResp.getData();
+        } catch (ApiException e) {
+            throw e;
+        }
+    }
+
+    /**
+     * get
+     * Retrieves the details of an existing upload. You need only supply the unique upload identifier that was returned upon upload creation.
+     * @param uplId id of the upload (required)
+     * @return ApiResponse&lt;Upload&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns an upload object </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Upload> getWithHttpInfo(String uplId) throws ApiException {
+        try {
+            okhttp3.Call localVarCall = getValidateBeforeCall(uplId, null);
+            Type localVarReturnType = new TypeToken<Upload>(){}.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
+        } catch (ApiException e) {
+            throw e;
+        }
+    }
+
+    /**
+     * get (asynchronously)
+     * Retrieves the details of an existing upload. You need only supply the unique upload identifier that was returned upon upload creation.
+     * @param uplId id of the upload (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns an upload object </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAsync(String uplId, final ApiCallback<Upload> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getValidateBeforeCall(uplId, _callback);
+        Type localVarReturnType = new TypeToken<Upload>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for create
      * @param uploadWritable  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -204,7 +328,7 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call create_uploadCall(UploadWritable uploadWritable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(UploadWritable uploadWritable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = uploadWritable;
 
         // create path and map variables
@@ -235,21 +359,21 @@ public class UploadsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call create_uploadValidateBeforeCall(UploadWritable uploadWritable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(UploadWritable uploadWritable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'uploadWritable' is set
         if (uploadWritable == null) {
-            throw new ApiException("Missing the required parameter 'uploadWritable' when calling create_upload(Async)");
+            throw new ApiException("Missing the required parameter 'uploadWritable' when calling create(Async)");
         }
         
 
-        okhttp3.Call localVarCall = create_uploadCall(uploadWritable, _callback);
+        okhttp3.Call localVarCall = createCall(uploadWritable, _callback);
         return localVarCall;
 
     }
 
     /**
-     * create_upload
+     * create
      * Creates a new upload with the provided properties.
      * @param uploadWritable  (required)
      * @return Upload
@@ -261,9 +385,9 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Upload create_upload(UploadWritable uploadWritable) throws ApiException {
+    public Upload create(UploadWritable uploadWritable) throws ApiException {
         try {
-            ApiResponse<Upload> localVarResp = create_uploadWithHttpInfo(uploadWritable);
+            ApiResponse<Upload> localVarResp = createWithHttpInfo(uploadWritable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -271,7 +395,7 @@ public class UploadsApi {
     }
 
     /**
-     * create_upload
+     * create
      * Creates a new upload with the provided properties.
      * @param uploadWritable  (required)
      * @return ApiResponse&lt;Upload&gt;
@@ -283,9 +407,9 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Upload> create_uploadWithHttpInfo(UploadWritable uploadWritable) throws ApiException {
+    public ApiResponse<Upload> createWithHttpInfo(UploadWritable uploadWritable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = create_uploadValidateBeforeCall(uploadWritable, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(uploadWritable, null);
             Type localVarReturnType = new TypeToken<Upload>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -294,7 +418,7 @@ public class UploadsApi {
     }
 
     /**
-     * create_upload (asynchronously)
+     * create (asynchronously)
      * Creates a new upload with the provided properties.
      * @param uploadWritable  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -307,15 +431,15 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call create_uploadAsync(UploadWritable uploadWritable, final ApiCallback<Upload> _callback) throws ApiException {
+    public okhttp3.Call createAsync(UploadWritable uploadWritable, final ApiCallback<Upload> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = create_uploadValidateBeforeCall(uploadWritable, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(uploadWritable, _callback);
         Type localVarReturnType = new TypeToken<Upload>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for delete_upload
+     * Build call for delete
      * @param uplId id of the upload (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -327,7 +451,7 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call delete_uploadCall(String uplId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCall(String uplId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -359,21 +483,21 @@ public class UploadsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call delete_uploadValidateBeforeCall(String uplId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteValidateBeforeCall(String uplId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'uplId' is set
         if (uplId == null) {
-            throw new ApiException("Missing the required parameter 'uplId' when calling delete_upload(Async)");
+            throw new ApiException("Missing the required parameter 'uplId' when calling delete(Async)");
         }
         
 
-        okhttp3.Call localVarCall = delete_uploadCall(uplId, _callback);
+        okhttp3.Call localVarCall = deleteCall(uplId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * delete_upload
+     * delete
      * Delete an existing upload. You need only supply the unique identifier that was returned upon upload creation.
      * @param uplId id of the upload (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -384,16 +508,16 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public void delete_upload(String uplId) throws ApiException {
+    public void delete(String uplId) throws ApiException {
         try {
-            delete_uploadWithHttpInfo(uplId);
+            deleteWithHttpInfo(uplId);
         } catch (ApiException e) {
             throw e;
         }
     }
 
     /**
-     * delete_upload
+     * delete
      * Delete an existing upload. You need only supply the unique identifier that was returned upon upload creation.
      * @param uplId id of the upload (required)
      * @return ApiResponse&lt;Void&gt;
@@ -405,9 +529,9 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> delete_uploadWithHttpInfo(String uplId) throws ApiException {
+    public ApiResponse<Void> deleteWithHttpInfo(String uplId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = delete_uploadValidateBeforeCall(uplId, null);
+            okhttp3.Call localVarCall = deleteValidateBeforeCall(uplId, null);
             return localVarApiClient.execute(localVarCall);
         } catch (ApiException e) {
             throw e;
@@ -415,7 +539,7 @@ public class UploadsApi {
     }
 
     /**
-     * delete_upload (asynchronously)
+     * delete (asynchronously)
      * Delete an existing upload. You need only supply the unique identifier that was returned upon upload creation.
      * @param uplId id of the upload (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -428,9 +552,9 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call delete_uploadAsync(String uplId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteAsync(String uplId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = delete_uploadValidateBeforeCall(uplId, _callback);
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(uplId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -609,7 +733,7 @@ public class UploadsApi {
         final String[] localVarContentTypes = {
             "multipart/form-data"
         };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = file != null ?  "multipart/form-data" : localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "basicAuth" };
@@ -705,131 +829,7 @@ public class UploadsApi {
         return localVarCall;
     }
     /**
-     * Build call for get_upload
-     * @param uplId id of the upload (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns an upload object </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call get_uploadCall(String uplId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/uploads/{upl_id}"
-            .replaceAll("\\{" + "upl_id" + "\\}", localVarApiClient.escapeString(uplId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "basicAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call get_uploadValidateBeforeCall(String uplId, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'uplId' is set
-        if (uplId == null) {
-            throw new ApiException("Missing the required parameter 'uplId' when calling get_upload(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = get_uploadCall(uplId, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * get_upload
-     * Retrieves the details of an existing upload. You need only supply the unique upload identifier that was returned upon upload creation.
-     * @param uplId id of the upload (required)
-     * @return Upload
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns an upload object </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
-     </table>
-     */
-    public Upload get_upload(String uplId) throws ApiException {
-        try {
-            ApiResponse<Upload> localVarResp = get_uploadWithHttpInfo(uplId);
-            return localVarResp.getData();
-        } catch (ApiException e) {
-            throw e;
-        }
-    }
-
-    /**
-     * get_upload
-     * Retrieves the details of an existing upload. You need only supply the unique upload identifier that was returned upon upload creation.
-     * @param uplId id of the upload (required)
-     * @return ApiResponse&lt;Upload&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns an upload object </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Upload> get_uploadWithHttpInfo(String uplId) throws ApiException {
-        try {
-            okhttp3.Call localVarCall = get_uploadValidateBeforeCall(uplId, null);
-            Type localVarReturnType = new TypeToken<Upload>(){}.getType();
-            return localVarApiClient.execute(localVarCall, localVarReturnType);
-        } catch (ApiException e) {
-            throw e;
-        }
-    }
-
-    /**
-     * get_upload (asynchronously)
-     * Retrieves the details of an existing upload. You need only supply the unique upload identifier that was returned upon upload creation.
-     * @param uplId id of the upload (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns an upload object </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call get_uploadAsync(String uplId, final ApiCallback<Upload> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = get_uploadValidateBeforeCall(uplId, _callback);
-        Type localVarReturnType = new TypeToken<Upload>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for update_upload
+     * Build call for update
      * @param uplId id of the upload (required)
      * @param uploadUpdatable  (required)
      * @param _callback Callback for upload/download progress
@@ -842,7 +842,7 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call update_uploadCall(String uplId, UploadUpdatable uploadUpdatable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCall(String uplId, UploadUpdatable uploadUpdatable, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = uploadUpdatable;
 
         // create path and map variables
@@ -874,26 +874,26 @@ public class UploadsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call update_uploadValidateBeforeCall(String uplId, UploadUpdatable uploadUpdatable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateValidateBeforeCall(String uplId, UploadUpdatable uploadUpdatable, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'uplId' is set
         if (uplId == null) {
-            throw new ApiException("Missing the required parameter 'uplId' when calling update_upload(Async)");
+            throw new ApiException("Missing the required parameter 'uplId' when calling update(Async)");
         }
         
         // verify the required parameter 'uploadUpdatable' is set
         if (uploadUpdatable == null) {
-            throw new ApiException("Missing the required parameter 'uploadUpdatable' when calling update_upload(Async)");
+            throw new ApiException("Missing the required parameter 'uploadUpdatable' when calling update(Async)");
         }
         
 
-        okhttp3.Call localVarCall = update_uploadCall(uplId, uploadUpdatable, _callback);
+        okhttp3.Call localVarCall = updateCall(uplId, uploadUpdatable, _callback);
         return localVarCall;
 
     }
 
     /**
-     * update_upload
+     * update
      * Update the details of an existing upload. You need only supply the unique identifier that was returned upon upload creation.
      * @param uplId id of the upload (required)
      * @param uploadUpdatable  (required)
@@ -906,9 +906,9 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Upload update_upload(String uplId, UploadUpdatable uploadUpdatable) throws ApiException {
+    public Upload update(String uplId, UploadUpdatable uploadUpdatable) throws ApiException {
         try {
-            ApiResponse<Upload> localVarResp = update_uploadWithHttpInfo(uplId, uploadUpdatable);
+            ApiResponse<Upload> localVarResp = updateWithHttpInfo(uplId, uploadUpdatable);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -916,7 +916,7 @@ public class UploadsApi {
     }
 
     /**
-     * update_upload
+     * update
      * Update the details of an existing upload. You need only supply the unique identifier that was returned upon upload creation.
      * @param uplId id of the upload (required)
      * @param uploadUpdatable  (required)
@@ -929,9 +929,9 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Upload> update_uploadWithHttpInfo(String uplId, UploadUpdatable uploadUpdatable) throws ApiException {
+    public ApiResponse<Upload> updateWithHttpInfo(String uplId, UploadUpdatable uploadUpdatable) throws ApiException {
         try {
-            okhttp3.Call localVarCall = update_uploadValidateBeforeCall(uplId, uploadUpdatable, null);
+            okhttp3.Call localVarCall = updateValidateBeforeCall(uplId, uploadUpdatable, null);
             Type localVarReturnType = new TypeToken<Upload>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -940,7 +940,7 @@ public class UploadsApi {
     }
 
     /**
-     * update_upload (asynchronously)
+     * update (asynchronously)
      * Update the details of an existing upload. You need only supply the unique identifier that was returned upon upload creation.
      * @param uplId id of the upload (required)
      * @param uploadUpdatable  (required)
@@ -954,15 +954,15 @@ public class UploadsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call update_uploadAsync(String uplId, UploadUpdatable uploadUpdatable, final ApiCallback<Upload> _callback) throws ApiException {
+    public okhttp3.Call updateAsync(String uplId, UploadUpdatable uploadUpdatable, final ApiCallback<Upload> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = update_uploadValidateBeforeCall(uplId, uploadUpdatable, _callback);
+        okhttp3.Call localVarCall = updateValidateBeforeCall(uplId, uploadUpdatable, _callback);
         Type localVarReturnType = new TypeToken<Upload>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for list_upload
+     * Build call for list
      * @param campaignId id of the campaign (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -973,7 +973,7 @@ public class UploadsApi {
         <tr><td> 200 </td><td> An array of matching uploads. Each entry in the array is a separate upload. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call list_uploadCall(String campaignId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(String campaignId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1008,16 +1008,16 @@ public class UploadsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call list_uploadValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = list_uploadCall(campaignId, _callback);
+        okhttp3.Call localVarCall = listCall(campaignId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * list_upload
+     * list
      * Returns a list of your uploads. Optionally, filter uploads by campaign.
      * @param campaignId id of the campaign (optional)
      * @return List&lt;Upload&gt;
@@ -1028,9 +1028,9 @@ public class UploadsApi {
         <tr><td> 200 </td><td> An array of matching uploads. Each entry in the array is a separate upload. </td><td>  -  </td></tr>
      </table>
      */
-    public List<Upload> list_upload(String campaignId) throws ApiException {
+    public List<Upload> list(String campaignId) throws ApiException {
         try {
-            ApiResponse<List<Upload>> localVarResp = list_uploadWithHttpInfo(campaignId);
+            ApiResponse<List<Upload>> localVarResp = listWithHttpInfo(campaignId);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -1038,7 +1038,7 @@ public class UploadsApi {
     }
 
     /**
-     * list_upload
+     * list
      * Returns a list of your uploads. Optionally, filter uploads by campaign.
      * @param campaignId id of the campaign (optional)
      * @return ApiResponse&lt;List&lt;Upload&gt;&gt;
@@ -1049,9 +1049,9 @@ public class UploadsApi {
         <tr><td> 200 </td><td> An array of matching uploads. Each entry in the array is a separate upload. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Upload>> list_uploadWithHttpInfo(String campaignId) throws ApiException {
+    public ApiResponse<List<Upload>> listWithHttpInfo(String campaignId) throws ApiException {
         try {
-            okhttp3.Call localVarCall = list_uploadValidateBeforeCall(campaignId, null);
+            okhttp3.Call localVarCall = listValidateBeforeCall(campaignId, null);
             Type localVarReturnType = new TypeToken<List<Upload>>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -1060,7 +1060,7 @@ public class UploadsApi {
     }
 
     /**
-     * list_upload (asynchronously)
+     * list (asynchronously)
      * Returns a list of your uploads. Optionally, filter uploads by campaign.
      * @param campaignId id of the campaign (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1072,9 +1072,9 @@ public class UploadsApi {
         <tr><td> 200 </td><td> An array of matching uploads. Each entry in the array is a separate upload. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call list_uploadAsync(String campaignId, final ApiCallback<List<Upload>> _callback) throws ApiException {
+    public okhttp3.Call listAsync(String campaignId, final ApiCallback<List<Upload>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = list_uploadValidateBeforeCall(campaignId, _callback);
+        okhttp3.Call localVarCall = listValidateBeforeCall(campaignId, _callback);
         Type localVarReturnType = new TypeToken<List<Upload>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

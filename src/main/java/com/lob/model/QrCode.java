@@ -25,6 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Customize and place a QR code on the creative at the required position.
  */
@@ -368,6 +370,18 @@ public class QrCode {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("position", position);
+      localMap.put("top", top);
+      localMap.put("right", right);
+      localMap.put("left", left);
+      localMap.put("bottom", bottom);
+      localMap.put("redirect_url", redirectUrl);
+      localMap.put("width", width);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces
