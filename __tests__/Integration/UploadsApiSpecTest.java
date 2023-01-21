@@ -20,6 +20,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class UploadsApiSpecTest {
     {
         campaignApi = new CampaignsApi(Configuration.getConfigForIntegration());
         CampaignWritable cmpWritable = new CampaignWritable();
-        cmpWritable.setName("Campaign for Java Creative Test");
+        cmpWritable.setName("UPLOADINGGGGGG TEST" + OffsetDateTime.now());
         cmpWritable.setScheduleType(CmpScheduleType.IMMEDIATE);
 
         Campaign campaign = new Campaign();
@@ -70,7 +71,7 @@ public class UploadsApiSpecTest {
     {
         for (Upload upload: createdUploads) {
             try {
-                uploadApi.delete_upload(upload.getId());
+                uploadApi.delete(upload.getId());
             } catch (Exception e) {
                 Assert.fail("Deleting uploads after has failed");
             }
@@ -84,15 +85,55 @@ public class UploadsApiSpecTest {
         }
     }
 
-    // @Test(
-    //     enabled=true,
-    //     groups={"Integration", "File", "Upload", "Valid"}
-    // )
-    // public void uploadFileTest() throws ApiException {
-    //     Upload createdUpload = uploadApi.create_upload(uploadWritable);
-    //     createdUploads.add(createdUpload);
+    @Test(
+        enabled=true,
+        groups={"Integration", "Create", "Upload", "Valid"}
+    )
+    public void uploadCreateTest() throws ApiException {
+        Upload createdUpload = uploadApi.create(uploadWritable);
 
-    //     UploadFile response = uploadApi.upload_file("upl_91bc1d6dc227dc76", new File("__tests__/Helper/lobster-family.csv"));
-    //     Assert.assertTrue(response.getMessage().getValue().contains("File uploaded successfully"));
-    // }
+        Assert.assertNotNull(createdUpload.getId());
+        createdUploads.add(createdUpload);
+    }
+
+
+    @Test(
+        enabled=true,
+        groups={"Integration", "Retrieve", "Upload", "Valid"}
+    )
+    public void uploadRetrieveTest() throws ApiException {
+        Upload createdUpload = uploadApi.create(uploadWritable);
+
+        createdUploads.add(createdUpload);
+
+        Upload response = uploadApi.get(createdUpload.getId());
+
+        Assert.assertNotNull(response.getId());
+        Assert.assertEquals(response.getId(), createdUpload.getId());
+    }
+
+    @Test(
+        enabled=true,
+        groups={"Integration", "File", "Upload", "Valid"}
+    )
+    public void uploadFileTest() throws ApiException {
+        Upload createdUpload = uploadApi.create(uploadWritable);
+        createdUploads.add(createdUpload);
+
+        UploadFile response = uploadApi.upload_file(createdUpload.getId(), new File("__tests__/Helper/lobster-family.csv"));
+
+        Assert.assertTrue(response.getMessage().getValue().contains("File uploaded successfully"));
+    }
+
+    @Test(
+        enabled=true,
+        groups={"Integration", "Update", "Upload", "Valid"}
+    )
+    public void uploadUpdateTest() throws ApiException {
+        Upload createdUpload = uploadApi.create(uploadWritable);
+        createdUploads.add(createdUpload);
+
+        List<Upload> response = uploadApi.list(cmpId);
+        Assert.assertTrue(response.size() > 0);
+    }
 }

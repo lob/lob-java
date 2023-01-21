@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * BillingGroup
  */
@@ -329,6 +331,17 @@ public class BillingGroup {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("description", description);
+      localMap.put("name", name);
+      localMap.put("id", id);
+      localMap.put("date_created", dateCreated);
+      localMap.put("date_modified", dateModified);
+      localMap.put("object", _object);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

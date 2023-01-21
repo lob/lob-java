@@ -28,6 +28,8 @@ import java.io.IOException;
 import java.net.URI;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Properties that the postcards in your Creative should have.
  */
@@ -248,6 +250,16 @@ public class PostcardDetailsReturned {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("mail_type", mailType);
+      localMap.put("size", size);
+      localMap.put("setting", setting);
+      localMap.put("front_original_url", frontOriginalUrl);
+      localMap.put("back_original_url", backOriginalUrl);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

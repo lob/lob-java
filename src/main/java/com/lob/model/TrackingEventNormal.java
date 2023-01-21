@@ -27,6 +27,8 @@ import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * TrackingEventNormal
  */
@@ -529,6 +531,19 @@ public class TrackingEventNormal {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("type", type);
+      localMap.put("name", name);
+      localMap.put("location", location);
+      localMap.put("id", id);
+      localMap.put("time", time);
+      localMap.put("date_created", dateCreated);
+      localMap.put("date_modified", dateModified);
+      localMap.put("object", _object);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

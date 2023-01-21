@@ -27,6 +27,8 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * CardOrder
  */
@@ -605,6 +607,24 @@ public class CardOrder {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("card_id", cardId);
+      localMap.put("status", status);
+      localMap.put("inventory", inventory);
+      localMap.put("quantity_ordered", quantityOrdered);
+      localMap.put("unit_price", unitPrice);
+      localMap.put("cancelled_reason", cancelledReason);
+      localMap.put("availability_date", availabilityDate);
+      localMap.put("expected_availability_date", expectedAvailabilityDate);
+      localMap.put("date_created", dateCreated);
+      localMap.put("date_modified", dateModified);
+      localMap.put("deleted", deleted);
+      localMap.put("object", _object);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

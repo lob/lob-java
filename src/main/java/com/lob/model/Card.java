@@ -31,6 +31,8 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Card
  */
@@ -975,6 +977,30 @@ public class Card {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("url", url);
+      localMap.put("auto_reorder", autoReorder);
+      localMap.put("reorder_quantity", reorderQuantity);
+      localMap.put("raw_url", rawUrl);
+      localMap.put("front_original_url", frontOriginalUrl);
+      localMap.put("back_original_url", backOriginalUrl);
+      localMap.put("thumbnails", thumbnails);
+      localMap.put("available_quantity", availableQuantity);
+      localMap.put("pending_quantity", pendingQuantity);
+      localMap.put("status", status);
+      localMap.put("orientation", orientation);
+      localMap.put("threshold_amount", thresholdAmount);
+      localMap.put("date_created", dateCreated);
+      localMap.put("date_modified", dateModified);
+      localMap.put("deleted", deleted);
+      localMap.put("object", _object);
+      localMap.put("description", description);
+      localMap.put("size", size);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

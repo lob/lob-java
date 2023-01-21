@@ -27,6 +27,8 @@ import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * TemplateVersionUpdatable
  */
@@ -143,6 +145,13 @@ public class TemplateVersionUpdatable {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("description", description);
+      localMap.put("engine", engine);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

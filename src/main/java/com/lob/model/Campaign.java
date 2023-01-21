@@ -34,6 +34,8 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Campaign
  */
@@ -792,6 +794,29 @@ public class Campaign {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("billing_group_id", billingGroupId);
+      localMap.put("name", name);
+      localMap.put("description", description);
+      localMap.put("schedule_type", scheduleType);
+      localMap.put("target_delivery_date", targetDeliveryDate);
+      localMap.put("send_date", sendDate);
+      localMap.put("cancel_window_campaign_minutes", cancelWindowCampaignMinutes);
+      localMap.put("metadata", metadata);
+      localMap.put("use_type", useType);
+      localMap.put("auto_cancel_if_ncoa", autoCancelIfNcoa);
+      localMap.put("id", id);
+      localMap.put("account_id", accountId);
+      localMap.put("is_draft", isDraft);
+      localMap.put("creatives", creatives);
+      localMap.put("date_created", dateCreated);
+      localMap.put("date_modified", dateModified);
+      localMap.put("deleted", deleted);
+      localMap.put("object", _object);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

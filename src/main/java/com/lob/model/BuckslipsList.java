@@ -29,6 +29,8 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * BuckslipsList
  */
@@ -339,6 +341,17 @@ public class BuckslipsList {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("data", data);
+      localMap.put("object", _object);
+      localMap.put("next_url", nextUrl);
+      localMap.put("previous_url", previousUrl);
+      localMap.put("count", count);
+      localMap.put("total_count", totalCount);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

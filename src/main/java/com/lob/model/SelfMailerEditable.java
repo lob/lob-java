@@ -33,6 +33,8 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * SelfMailerEditable
  */
@@ -523,6 +525,23 @@ public class SelfMailerEditable {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("to", to);
+      localMap.put("from", from);
+      localMap.put("size", size);
+      localMap.put("description", description);
+      localMap.put("metadata", metadata);
+      localMap.put("mail_type", mailType);
+      localMap.put("merge_variables", mergeVariables);
+      localMap.put("send_date", sendDate);
+      localMap.put("inside", inside);
+      localMap.put("outside", outside);
+      localMap.put("billing_group_id", billingGroupId);
+      localMap.put("use_type", useType);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

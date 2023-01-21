@@ -38,6 +38,8 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Letter
  */
@@ -1360,6 +1362,41 @@ public class Letter {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("to", to);
+      localMap.put("from", from);
+      localMap.put("carrier", carrier);
+      localMap.put("thumbnails", thumbnails);
+      localMap.put("expected_delivery_date", expectedDeliveryDate);
+      localMap.put("date_created", dateCreated);
+      localMap.put("date_modified", dateModified);
+      localMap.put("deleted", deleted);
+      localMap.put("id", id);
+      localMap.put("template_id", templateId);
+      localMap.put("template_version_id", templateVersionId);
+      localMap.put("url", url);
+      localMap.put("object", _object);
+      localMap.put("description", description);
+      localMap.put("metadata", metadata);
+      localMap.put("merge_variables", mergeVariables);
+      localMap.put("send_date", sendDate);
+      localMap.put("extra_service", extraService);
+      localMap.put("tracking_number", trackingNumber);
+      localMap.put("tracking_events", trackingEvents);
+      localMap.put("return_address", returnAddress);
+      localMap.put("mail_type", mailType);
+      localMap.put("color", color);
+      localMap.put("double_sided", doubleSided);
+      localMap.put("address_placement", addressPlacement);
+      localMap.put("return_envelope", returnEnvelope);
+      localMap.put("perforated_page", perforatedPage);
+      localMap.put("custom_envelope", customEnvelope);
+      localMap.put("campaign_id", campaignId);
+      localMap.put("use_type", useType);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

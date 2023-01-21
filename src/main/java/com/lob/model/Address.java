@@ -31,6 +31,8 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Address
  */
@@ -801,6 +803,29 @@ public class Address {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("description", description);
+      localMap.put("name", name);
+      localMap.put("company", company);
+      localMap.put("phone", phone);
+      localMap.put("email", email);
+      localMap.put("metadata", metadata);
+      localMap.put("address_line1", addressLine1);
+      localMap.put("address_line2", addressLine2);
+      localMap.put("address_city", addressCity);
+      localMap.put("address_state", addressState);
+      localMap.put("address_zip", addressZip);
+      localMap.put("address_country", addressCountry);
+      localMap.put("object", _object);
+      localMap.put("date_created", dateCreated);
+      localMap.put("date_modified", dateModified);
+      localMap.put("deleted", deleted);
+      localMap.put("recipient_moved", recipientMoved);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

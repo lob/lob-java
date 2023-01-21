@@ -37,6 +37,8 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Check
  */
@@ -1241,6 +1243,38 @@ public class Check {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("to", to);
+      localMap.put("from", from);
+      localMap.put("description", description);
+      localMap.put("metadata", metadata);
+      localMap.put("merge_variables", mergeVariables);
+      localMap.put("send_date", sendDate);
+      localMap.put("mail_type", mailType);
+      localMap.put("memo", memo);
+      localMap.put("check_number", checkNumber);
+      localMap.put("message", message);
+      localMap.put("amount", amount);
+      localMap.put("bank_account", bankAccount);
+      localMap.put("check_bottom_template_id", checkBottomTemplateId);
+      localMap.put("attachment_template_id", attachmentTemplateId);
+      localMap.put("check_bottom_template_version_id", checkBottomTemplateVersionId);
+      localMap.put("attachment_template_version_id", attachmentTemplateVersionId);
+      localMap.put("url", url);
+      localMap.put("carrier", carrier);
+      localMap.put("thumbnails", thumbnails);
+      localMap.put("expected_delivery_date", expectedDeliveryDate);
+      localMap.put("tracking_events", trackingEvents);
+      localMap.put("object", _object);
+      localMap.put("date_created", dateCreated);
+      localMap.put("date_modified", dateModified);
+      localMap.put("deleted", deleted);
+      localMap.put("use_type", useType);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

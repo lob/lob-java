@@ -30,6 +30,8 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Upload
  */
@@ -715,6 +717,27 @@ public class Upload {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("accountId", accountId);
+      localMap.put("mode", mode);
+      localMap.put("failuresUrl", failuresUrl);
+      localMap.put("originalFilename", originalFilename);
+      localMap.put("state", state);
+      localMap.put("totalMailpieces", totalMailpieces);
+      localMap.put("failedMailpieces", failedMailpieces);
+      localMap.put("validatedMailpieces", validatedMailpieces);
+      localMap.put("bytesProcessed", bytesProcessed);
+      localMap.put("dateCreated", dateCreated);
+      localMap.put("dateModified", dateModified);
+      localMap.put("requiredAddressColumnMapping", requiredAddressColumnMapping);
+      localMap.put("optionalAddressColumnMapping", optionalAddressColumnMapping);
+      localMap.put("metadata", metadata);
+      localMap.put("mergeVariableColumnMapping", mergeVariableColumnMapping);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * IntlAutocompletions
  */
@@ -132,6 +134,13 @@ public class IntlAutocompletions {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("suggestions", suggestions);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

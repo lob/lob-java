@@ -25,6 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * CardOrderEditable
  */
@@ -94,6 +96,12 @@ public class CardOrderEditable {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("quantity", quantity);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

@@ -32,6 +32,8 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * CreativeResponse
  */
@@ -656,6 +658,24 @@ public class CreativeResponse {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("id", id);
+      localMap.put("description", description);
+      localMap.put("from", from);
+      localMap.put("resource_type", resourceType);
+      localMap.put("details", details);
+      localMap.put("metadata", metadata);
+      localMap.put("template_preview_urls", templatePreviewUrls);
+      localMap.put("template_previews", templatePreviews);
+      localMap.put("deleted", deleted);
+      localMap.put("campaigns", campaigns);
+      localMap.put("date_created", dateCreated);
+      localMap.put("date_modified", dateModified);
+      localMap.put("object", _object);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

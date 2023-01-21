@@ -31,6 +31,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * PlaceholderModel
  */
@@ -288,6 +290,17 @@ public class PlaceholderModel {
     sb.append("}");
     return sb.toString();
   }
+
+    public Map<String, Object> toMap() {
+      Map<String, Object> localMap = new HashMap<String, Object>();
+      localMap.put("return_envelope", returnEnvelope);
+      localMap.put("address_domestic", addressDomestic);
+      localMap.put("letter_details_writable", letterDetailsWritable);
+      localMap.put("postcard_details_writable", postcardDetailsWritable);
+      localMap.put("letter_details_returned", letterDetailsReturned);
+      localMap.put("postcard_details_returned", postcardDetailsReturned);
+      return localMap;
+    }
 
   /**
    * Convert the given object to string with each line indented by 4 spaces

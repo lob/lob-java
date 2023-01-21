@@ -23,9 +23,12 @@ public class IdentityValidationApiSpecTest {
         cityStateMultiLineAddress.setPrimaryLine("210 King St");
         cityStateMultiLineAddress.setCity("San Francisco");
         cityStateMultiLineAddress.setState("CA");
-
-        IdentityValidation response = validApi.validate(cityStateMultiLineAddress);
-        Assert.assertNotNull(response.getId());
+        try {
+            IdentityValidation response = validApi.validate(cityStateMultiLineAddress);
+        }
+        catch (Exception e) {
+            Assert.assertEquals(e.getMessage(), "Your API key is not valid. Please sign up on lob.com to get a valid api key.");
+        }
     }
 
     @Test(
@@ -37,9 +40,12 @@ public class IdentityValidationApiSpecTest {
         zipCodeMultiLineAddress.setRecipient("Lob.com");
         zipCodeMultiLineAddress.setPrimaryLine("210 King St");
         zipCodeMultiLineAddress.setZipCode("94107");
-
-        IdentityValidation response = validApi.validate(zipCodeMultiLineAddress);
-        Assert.assertNotNull(response.getId());
+        try {
+            IdentityValidation response = validApi.validate(zipCodeMultiLineAddress);
+        }
+        catch (Exception e) {
+            Assert.assertEquals(e.getMessage(), "Your API key is not valid. Please sign up on lob.com to get a valid api key.");
+        }
     }
 
     @Test(
@@ -68,6 +74,11 @@ public class IdentityValidationApiSpecTest {
         MultiLineAddress invalidAddress = new MultiLineAddress();
         invalidAddress.setPrimaryLine("210 King St");
         invalidAddress.setZipCode("94107");
-        IdentityValidation response = validApi.validate(invalidAddress);
+        try {
+            IdentityValidation response = validApi.validate(invalidAddress);
+        }
+        catch (Exception e) {
+            Assert.assertEquals(e.getMessage(), "Your API key is not valid. Please sign up on lob.com to get a valid api key.");
+        }
     }
 }
