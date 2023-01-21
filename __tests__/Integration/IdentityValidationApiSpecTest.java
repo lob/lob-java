@@ -69,5 +69,6 @@ public class IdentityValidationApiSpecTest {
         invalidAddress.setPrimaryLine("210 King St");
         invalidAddress.setZipCode("94107");
         IdentityValidation response = validApi.validate(invalidAddress);
+        Assert.assertEquals(response.getRecipient(), "Your API key is not valid.");
     }
 }
