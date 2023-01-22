@@ -23,6 +23,10 @@ public class TestFixtures {
         return "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf";
     }
 
+    public String get_FILE_LOCATION_6x18() {
+        return "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf";
+    }
+
     public String get_FILE_LOCATION() {
         return "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf";
     }

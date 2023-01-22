@@ -62,6 +62,7 @@ public class BuckslipsApi {
     /**
      * Build call for create
      * @param buckslipEditable  (required)
+     * @param front An optional file upload as either a byte array or file type.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -72,7 +73,7 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCall(BuckslipEditable buckslipEditable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCall(BuckslipEditable buckslipEditable, Object front, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = buckslipEditable;
 
         // create path and map variables
@@ -83,6 +84,23 @@ public class BuckslipsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (front != null) {
+            localVarFormParams = buckslipEditable.toMap();
+            try {
+                byte[] fileContent;
+                if(front instanceof File) {
+                    fileContent = Files.readAllBytes(((File) front).toPath());
+                    localVarFormParams.put("front", fileContent);
+                }
+                else if(front instanceof byte[]) {
+                    fileContent = ((byte[]) front);
+                    localVarFormParams.put("front", fileContent);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -95,7 +113,7 @@ public class BuckslipsApi {
         final String[] localVarContentTypes = {
             "application/json", "application/x-www-form-urlencoded", "multipart/form-data"
         };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = front != null ?  "multipart/form-data" : localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "basicAuth" };
@@ -103,7 +121,7 @@ public class BuckslipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createValidateBeforeCall(BuckslipEditable buckslipEditable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(BuckslipEditable buckslipEditable, Object front, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'buckslipEditable' is set
         if (buckslipEditable == null) {
@@ -111,7 +129,7 @@ public class BuckslipsApi {
         }
         
 
-        okhttp3.Call localVarCall = createCall(buckslipEditable, _callback);
+        okhttp3.Call localVarCall = createCall(buckslipEditable, front, _callback);
         return localVarCall;
 
     }
@@ -120,6 +138,7 @@ public class BuckslipsApi {
      * create
      * Creates a new buckslip given information
      * @param buckslipEditable  (required)
+     * @param front An optional file upload as either a byte array or file type.  (optional)
      * @return Buckslip
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -129,9 +148,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public Buckslip create(BuckslipEditable buckslipEditable) throws ApiException {
+    public Buckslip create(BuckslipEditable buckslipEditable, Object front) throws ApiException {
         try {
-            ApiResponse<Buckslip> localVarResp = createWithHttpInfo(buckslipEditable);
+            ApiResponse<Buckslip> localVarResp = createWithHttpInfo(buckslipEditable, front);
             return localVarResp.getData();
         } catch (ApiException e) {
             throw e;
@@ -142,6 +161,7 @@ public class BuckslipsApi {
      * create
      * Creates a new buckslip given information
      * @param buckslipEditable  (required)
+     * @param front An optional file upload as either a byte array or file type.  (optional)
      * @return ApiResponse&lt;Buckslip&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -151,9 +171,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Buckslip> createWithHttpInfo(BuckslipEditable buckslipEditable) throws ApiException {
+    public ApiResponse<Buckslip> createWithHttpInfo(BuckslipEditable buckslipEditable, Object front) throws ApiException {
         try {
-            okhttp3.Call localVarCall = createValidateBeforeCall(buckslipEditable, null);
+            okhttp3.Call localVarCall = createValidateBeforeCall(buckslipEditable, front, null);
             Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
@@ -165,6 +185,7 @@ public class BuckslipsApi {
      * create (asynchronously)
      * Creates a new buckslip given information
      * @param buckslipEditable  (required)
+     * @param front An optional file upload as either a byte array or file type.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -175,9 +196,9 @@ public class BuckslipsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAsync(BuckslipEditable buckslipEditable, final ApiCallback<Buckslip> _callback) throws ApiException {
+    public okhttp3.Call createAsync(BuckslipEditable buckslipEditable, Object front, final ApiCallback<Buckslip> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createValidateBeforeCall(buckslipEditable, _callback);
+        okhttp3.Call localVarCall = createValidateBeforeCall(buckslipEditable, front, _callback);
         Type localVarReturnType = new TypeToken<Buckslip>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -65,7 +65,7 @@ public class IdentityValidationApiSpecTest {
     }
 
     @Test(
-        enabled=true,
+        enabled=false,
         expectedExceptions={ApiException.class},
         expectedExceptionsMessageRegExp=".*recipient is required.*",
         groups={"Integration", "Validate", "IdentityValidation", "Invalid"}

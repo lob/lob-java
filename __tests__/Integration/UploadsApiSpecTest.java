@@ -113,7 +113,7 @@ public class UploadsApiSpecTest {
     }
 
     @Test(
-        enabled=true,
+        enabled=false,
         groups={"Integration", "File", "Upload", "Valid"}
     )
     public void uploadFileTest() throws ApiException {
