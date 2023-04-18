@@ -95,6 +95,7 @@ public class PostcardsApiSpecTest {
         postcardWithTemplateIds.setFrom(gson.toJson(addressEditableList.get(1)));
         postcardWithTemplateIds.setFront(createdTemplate.getId());
         postcardWithTemplateIds.setBack(createdTemplate.getId());
+        postcardWithTemplateIds.setUseType(PscUseType.MARKETING);
 
         Postcard postcard = validApi.create(postcardWithTemplateIds, null);
         Assert.assertNotNull(postcard.getId());
