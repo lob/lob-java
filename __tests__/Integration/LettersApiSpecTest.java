@@ -63,6 +63,7 @@ public class LettersApiSpecTest {
         letterEditable.setColor(true);
         letterEditable.setExtraService(LetterEditable.ExtraServiceEnum.CERTIFIED);
         letterEditable.setFile(testFixtures.get_FILE_LOCATION_8X11());
+        letterEditable.setUseType(LtrUseType.MARKETING);
 
         Letter letter = validApi.create(letterEditable, null);
 
