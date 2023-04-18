@@ -16,6 +16,7 @@ import com.lob.model.PostcardDeletion;
 import com.lob.model.PostcardEditable;
 import com.lob.model.PostcardList;
 import com.lob.model.PostcardSize;
+import com.lob.model.PscUseType;
 import com.lob.model.SortBy3;
 import com.lob.model.Template;
 import com.lob.model.TemplateWritable;
@@ -51,10 +52,12 @@ public class PostcardsApiSpecTest {
     @BeforeClass
     public void before_class() {
       Gson gson = new Gson();
-        dummyPostcard.setTo(gson.toJson(addressEditableList.get(2)));
+        dummyPostcard.setTo(addressEditableList.get(2));
         dummyPostcard.setFrom(gson.toJson(addressEditableList.get(1)));
         dummyPostcard.setFront(testFixtures.get_FILE_LOCATION_4X6());
+        dummyPostcard.setUseType(PscUseType.MARKETING);
         dummyPostcard.setBack(testFixtures.get_FILE_LOCATION_4X6());
+        dummyPostcard.setUseType(PscUseType.MARKETING);
     }
 
     @Test(

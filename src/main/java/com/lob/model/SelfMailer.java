@@ -71,46 +71,39 @@ public class SelfMailer {
 
   @SerializedName(SERIALIZED_NAME_TO)
   
-  private String to;
-  public  String getTo() {
-    return to;
-  }
 
-
-  public void setTo(String to) {
-    
-
-    this.to = to;
-  }
+  private Address to;
+  /**
+  * Get to
+  * @return to
+  **/
   
+  @javax.annotation.Nonnull
   
-  public void setTo(Address to) {
-    Gson gson = new Gson();
-
-    this.to = gson.toJson(to);
+  @ApiModelProperty(required = true, value = "")
+  
+  public Address getTo() {
+      return to;
   }
   public static final String SERIALIZED_NAME_FROM = "from";
 
   @SerializedName(SERIALIZED_NAME_FROM)
   
-  private String from;
-  public  String getFrom() {
-    return from;
-  }
 
-
-  public void setFrom(String from) {
-    
-
-    this.from = from;
+  private Address from;
+  /**
+  * Get from
+  * @return from
+  **/
+  
+  @javax.annotation.Nonnull
+  
+  @ApiModelProperty(required = true, value = "")
+  
+  public Address getFrom() {
+      return from;
   }
   
-  
-  public void setFrom(AddressDomesticExpanded from) {
-    Gson gson = new Gson();
-
-    this.from = gson.toJson(from);
-  }
   public static final String SERIALIZED_NAME_SIZE = "size";
 
   @SerializedName(SERIALIZED_NAME_SIZE)
