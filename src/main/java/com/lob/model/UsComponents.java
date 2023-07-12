@@ -764,6 +764,8 @@ public class UsComponents {
     RURAL_ROUTE("rural_route"),
     
     HIGHWAY_CONTRACT("highway_contract"),
+
+    CONTRACT("contract"),
     
     PO_BOX("po_box"),
     
