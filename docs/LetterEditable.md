@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **cards** | **List&lt;String&gt;** | A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information. |  [optional]
 **billingGroupId** | **String** | An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information. |  [optional]
 **qrCode** | [**QrCode**](QrCode.md) |  |  [optional]
+**useType** | **LtrUseType** |  | 
 
 
 

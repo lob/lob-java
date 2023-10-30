@@ -71,39 +71,46 @@ public class SelfMailer {
 
   @SerializedName(SERIALIZED_NAME_TO)
   
+  private String to;
+  public  String getTo() {
+    return to;
+  }
 
-  private Address to;
-  /**
-  * Get to
-  * @return to
-  **/
+
+  public void setTo(String to) {
+    
+
+    this.to = to;
+  }
   
-  @javax.annotation.Nonnull
   
-  @ApiModelProperty(required = true, value = "")
-  
-  public Address getTo() {
-      return to;
+  public void setTo(Address to) {
+    Gson gson = new Gson();
+
+    this.to = gson.toJson(to);
   }
   public static final String SERIALIZED_NAME_FROM = "from";
 
   @SerializedName(SERIALIZED_NAME_FROM)
   
+  private String from;
+  public  String getFrom() {
+    return from;
+  }
 
-  private Address from;
-  /**
-  * Get from
-  * @return from
-  **/
-  
-  @javax.annotation.Nonnull
-  
-  @ApiModelProperty(required = true, value = "")
-  
-  public Address getFrom() {
-      return from;
+
+  public void setFrom(String from) {
+    
+
+    this.from = from;
   }
   
+  
+  public void setFrom(AddressDomesticExpanded from) {
+    Gson gson = new Gson();
+
+    this.from = gson.toJson(from);
+  }
   public static final String SERIALIZED_NAME_SIZE = "size";
 
   @SerializedName(SERIALIZED_NAME_SIZE)
@@ -413,7 +420,7 @@ public class SelfMailer {
   public String getUrl() { return url; }
 
   public void setUrl (String url) throws IllegalArgumentException {
-    if(!url.matches("^https://(lob-assets|lob-assets-staging)\\.com/(letters|postcards|bank-accounts|checks|self-mailers|cards)/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$")) {
+    if(!url.matches("^https://lob-assets.com/(letters|postcards|bank-accounts|checks|self-mailers|cards)/[a-z]{3,4}_[a-z0-9]{15,16}('|_signature)(.pdf|_thumb_[a-z]+_[0-9]+.png|.png)?(version=[a-z0-9]*&)expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+")) {
       throw new IllegalArgumentException("Invalid url provided");
     }
 

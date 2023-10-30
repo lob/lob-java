@@ -104,7 +104,7 @@ public class Example {
 
     IntlVerificationsApi apiInstance = new IntlVerificationsApi(defaultClient);
     IntlVerificationWritable intlVerificationWritable = new IntlVerificationWritable(); // IntlVerificationWritable | 
-    String xLangOutput = "native"; // String | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English. 
+    String xLangOutput = "xLangOutput_example"; // String | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English. 
     try {
       IntlVerification result = apiInstance.verifySingle(intlVerificationWritable, xLangOutput);
     } catch (ApiException e) {

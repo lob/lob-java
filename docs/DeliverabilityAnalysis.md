@@ -12,6 +12,12 @@ Name | Type | Description | Notes
 **dpvCmra** | [**DpvCmraEnum**](#DpvCmraEnum) | indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * &#x60;Y&#x60; –– Address is CMRA-authorized. * &#x60;N&#x60; –– Address is not CMRA-authorized. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  | 
 **dpvVacant** | [**DpvVacantEnum**](#DpvVacantEnum) | indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * &#x60;Y&#x60; –– Address is vacant. * &#x60;N&#x60; –– Address is not vacant. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  | 
 **dpvActive** | [**DpvActiveEnum**](#DpvActiveEnum) | Corresponds to the USPS field &#x60;dpv_no_stat&#x60;. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it&#39;s been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * &#x60;Y&#x60; –– Address is active. * &#x60;N&#x60; –– Address is not active. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  | 
+**dpvInactiveReason** | [**DpvInactiveReasonEnum**](#DpvInactiveReasonEnum) | Indicates the reason why an address is vacant or no longer receiving deliveries. Possible values are: * &#x60;01&#x60; –– Address does not receive mail from the USPS directly, but is serviced by a drop address. * &#x60;02&#x60; –– Address not yet deliverable. * &#x60;03&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). * &#x60;04&#x60; –– Address is a College, Military Zone, or other type. * &#x60;05&#x60; –– Address no longer receives deliveries. * &#x60;06&#x60; –– Address is missing required secondary information. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made or the address is active.  | 
+**dpvThrowback** | [**DpvThrowbackEnum**](#DpvThrowbackEnum) | Indicates a street address for which mail is delivered to a PO Box. Possible values are: * &#x60;Y&#x60; –– Address is a PO Box throwback delivery point. * &#x60;N&#x60; –– Address is not a PO Box throwback delivery point. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  | 
+**dpvNonDeliveryDayFlag** | [**DpvNonDeliveryDayFlagEnum**](#DpvNonDeliveryDayFlagEnum) | Indicates whether deliveries are not performed on one or more days of the week at an address. Possible values are: * &#x60;Y&#x60; –– Mail delivery does not occur on some days of the week. * &#x60;N&#x60; –– Mail delivery occurs every day of the week. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  | 
+**dpvNonDeliveryDayValues** | **String** | Indicates days of the week (starting on Sunday) deliveries are not performed at an address. For example: * &#x60;YNNNNNN&#x60; –– Mail delivery does not occur on Sunday&#39;s. * &#x60;NYNNNYN&#x60; –– Mail delivery does not occur on Monday&#39;s or Friday&#39;s. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string) or address receives mail every day of the week (&#x60;deliverability_analysis[dpv_non_delivery_day_flag]&#x60; is &#x60;N&#x60; or an empty string).  | 
+**dpvNoSecureLocation** | [**DpvNoSecureLocationEnum**](#DpvNoSecureLocationEnum) | Indicates packages to this address will not be left due to security concerns. Possible values are: * &#x60;Y&#x60; –– Address does not have a secure mailbox. * &#x60;N&#x60; –– Address has a secure mailbox. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  | 
+**dpvDoorNotAccessible** | [**DpvDoorNotAccessibleEnum**](#DpvDoorNotAccessibleEnum) | Indicates the door of the address is not accessible for mail delivery. Possible values are: * &#x60;Y&#x60; –– Door is not accessible. * &#x60;N&#x60; –– Door is accessible. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  | 
 **dpvFootnotes** | **List&lt;DpvFootnote&gt;** | An array of 2-character strings that gives more insight into how &#x60;deliverability_analysis[dpv_confirmation]&#x60; was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types).  | 
 **ewsMatch** | **Boolean** | indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months.  | 
 **lacsIndicator** | [**LacsIndicatorEnum**](#LacsIndicatorEnum) | indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  | 
@@ -53,6 +59,60 @@ EMPTY | &quot;&quot;
 
 
 ## Enum: DpvActiveEnum
+
+Name | Value
+---- | -----
+Y | &quot;Y&quot;
+N | &quot;N&quot;
+EMPTY | &quot;&quot;
+
+
+
+## Enum: DpvInactiveReasonEnum
+
+Name | Value
+---- | -----
+_01 | &quot;01&quot;
+_02 | &quot;02&quot;
+_03 | &quot;03&quot;
+_04 | &quot;04&quot;
+_05 | &quot;05&quot;
+_06 | &quot;06&quot;
+EMPTY | &quot;&quot;
+
+
+
+## Enum: DpvThrowbackEnum
+
+Name | Value
+---- | -----
+Y | &quot;Y&quot;
+N | &quot;N&quot;
+EMPTY | &quot;&quot;
+
+
+
+## Enum: DpvNonDeliveryDayFlagEnum
+
+Name | Value
+---- | -----
+Y | &quot;Y&quot;
+N | &quot;N&quot;
+EMPTY | &quot;&quot;
+
+
+
+## Enum: DpvNoSecureLocationEnum
+
+Name | Value
+---- | -----
+Y | &quot;Y&quot;
+N | &quot;N&quot;
+EMPTY | &quot;&quot;
+
+
+
+## Enum: DpvDoorNotAccessibleEnum
 
 Name | Value
 ---- | -----

@@ -5,13 +5,13 @@ All URIs are relative to *https://api.lob.com/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_export**](UploadsApi.md#get_export) | **GET** /uploads/{upl_id}/exports/{ex_id} | get_export
-[**create_upload**](UploadsApi.md#create_upload) | **POST** /uploads | create_upload
-[**delete_upload**](UploadsApi.md#delete_upload) | **DELETE** /uploads/{upl_id} | delete_upload
+[**get**](UploadsApi.md#get) | **GET** /uploads/{upl_id} | get
+[**create**](UploadsApi.md#create) | **POST** /uploads | create
+[**delete**](UploadsApi.md#delete) | **DELETE** /uploads/{upl_id} | delete
 [**create_export**](UploadsApi.md#create_export) | **POST** /uploads/{upl_id}/exports | create_export
 [**upload_file**](UploadsApi.md#upload_file) | **POST** /uploads/{upl_id}/file | upload_file
-[**get_upload**](UploadsApi.md#get_upload) | **GET** /uploads/{upl_id} | get_upload
-[**update_upload**](UploadsApi.md#update_upload) | **PATCH** /uploads/{upl_id} | update_upload
-[**list_upload**](UploadsApi.md#list_upload) | **GET** /uploads | list_upload
+[**update**](UploadsApi.md#update) | **PATCH** /uploads/{upl_id} | update
+[**list**](UploadsApi.md#list) | **GET** /uploads | list
 
 
 <a name="get_export"></a>
@@ -82,11 +82,78 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Returns an export object |  -  |
 
-<a name="create_upload"></a>
-# **create_upload**
-> Upload create_upload(uploadWritable)
+<a name="get"></a>
+# **get**
+> Upload get(uplId)
 
-create_upload
+get
+
+Retrieves the details of an existing upload. You need only supply the unique upload identifier that was returned upon upload creation.
+
+### Example
+```java
+// Import classes:
+import com.lob.api.ApiClient;
+import com.lob.api.ApiException;
+import com.lob.api.Configuration;
+import com.lob.api.auth.*;
+import com.lob.api.models.*;
+import com.lob.api.client.UploadsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.lob.com/v1");
+    
+    // Configure HTTP basic authorization: basicAuth
+    HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+    basicAuth.setUsername("LOB_API_KEY");
+
+    UploadsApi apiInstance = new UploadsApi(defaultClient);
+    String uplId = "uplId_example"; // String | id of the upload
+    try {
+      Upload result = apiInstance.get(uplId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UploadsApi#get");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uplId** | **String**| id of the upload |
+
+### Return type
+
+[**Upload**](Upload.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns an upload object |  -  |
+**0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
+
+<a name="create"></a>
+# **create**
+> Upload create(uploadWritable)
+
+create
 
 Creates a new upload with the provided properties.
 
@@ -112,9 +179,9 @@ public class Example {
     UploadsApi apiInstance = new UploadsApi(defaultClient);
     UploadWritable uploadWritable = new UploadWritable(); // UploadWritable | 
     try {
-      Upload result = apiInstance.create_upload(uploadWritable);
+      Upload result = apiInstance.create(uploadWritable);
     } catch (ApiException e) {
-      System.err.println("Exception when calling UploadsApi#create_upload");
+      System.err.println("Exception when calling UploadsApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -149,11 +216,11 @@ Name | Type | Description  | Notes
 **201** | Upload created successfully |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="delete_upload"></a>
-# **delete_upload**
-> delete_upload(uplId)
+<a name="delete"></a>
+# **delete**
+> delete(uplId)
 
-delete_upload
+delete
 
 Delete an existing upload. You need only supply the unique identifier that was returned upon upload creation.
 
@@ -179,9 +246,9 @@ public class Example {
     UploadsApi apiInstance = new UploadsApi(defaultClient);
     String uplId = "uplId_example"; // String | id of the upload
     try {
-      apiInstance.delete_upload(uplId);
+      apiInstance.delete(uplId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling UploadsApi#delete_upload");
+      System.err.println("Exception when calling UploadsApi#delete");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -354,78 +421,11 @@ Name | Type | Description  | Notes
 **202** | Successful Response |  -  |
 **422** | Validation Error |  -  |
 
-<a name="get_upload"></a>
-# **get_upload**
-> Upload get_upload(uplId)
+<a name="update"></a>
+# **update**
+> Upload update(uplId, uploadUpdatable)
 
-get_upload
-
-Retrieves the details of an existing upload. You need only supply the unique upload identifier that was returned upon upload creation.
-
-### Example
-```java
-// Import classes:
-import com.lob.api.ApiClient;
-import com.lob.api.ApiException;
-import com.lob.api.Configuration;
-import com.lob.api.auth.*;
-import com.lob.api.models.*;
-import com.lob.api.client.UploadsApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.lob.com/v1");
-    
-    // Configure HTTP basic authorization: basicAuth
-    HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-    basicAuth.setUsername("LOB_API_KEY");
-
-    UploadsApi apiInstance = new UploadsApi(defaultClient);
-    String uplId = "uplId_example"; // String | id of the upload
-    try {
-      Upload result = apiInstance.get_upload(uplId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling UploadsApi#get_upload");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **uplId** | **String**| id of the upload |
-
-### Return type
-
-[**Upload**](Upload.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Returns an upload object |  -  |
-**0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
-
-<a name="update_upload"></a>
-# **update_upload**
-> Upload update_upload(uplId, uploadUpdatable)
-
-update_upload
+update
 
 Update the details of an existing upload. You need only supply the unique identifier that was returned upon upload creation.
 
@@ -452,9 +452,9 @@ public class Example {
     String uplId = "uplId_example"; // String | id of the upload
     UploadUpdatable uploadUpdatable = new UploadUpdatable(); // UploadUpdatable | 
     try {
-      Upload result = apiInstance.update_upload(uplId, uploadUpdatable);
+      Upload result = apiInstance.update(uplId, uploadUpdatable);
     } catch (ApiException e) {
-      System.err.println("Exception when calling UploadsApi#update_upload");
+      System.err.println("Exception when calling UploadsApi#update");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -490,11 +490,11 @@ Name | Type | Description  | Notes
 **200** | Returns an upload object |  -  |
 **0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
 
-<a name="list_upload"></a>
-# **list_upload**
-> List&lt;Upload&gt; list_upload(campaignId)
+<a name="list"></a>
+# **list**
+> List&lt;Upload&gt; list(campaignId)
 
-list_upload
+list
 
 Returns a list of your uploads. Optionally, filter uploads by campaign.
 
@@ -520,9 +520,9 @@ public class Example {
     UploadsApi apiInstance = new UploadsApi(defaultClient);
     String campaignId = "campaignId_example"; // String | id of the campaign
     try {
-      List<Upload> result = apiInstance.list_upload(campaignId);
+      List<Upload> result = apiInstance.list(campaignId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling UploadsApi#list_upload");
+      System.err.println("Exception when calling UploadsApi#list");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

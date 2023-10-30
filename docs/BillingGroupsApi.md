@@ -246,7 +246,7 @@ public class Example {
     List<String> include = Arrays.asList(); // List<String> | Request that the response include the total count by specifying `include[]=total_count`. 
     Map<String, OffsetDateTime> dateCreated = new HashMap(); // Map<String, OffsetDateTime> | Filter by date created.
     Map<String, String> dateModified = new HashMap(); // Map<String, String> | Filter by date modified.
-    SortByDateModified sortByDateModified = new HashMap(); // SortByDateModified | Sorts items by ascending or descending dates. Use either `date_created` or `date_modfied`, not both. 
+    SortByDateModified sortByDateModified = new SortByDateModified(); // SortByDateModified | Sorts items by ascending or descending dates. Use either `date_created` or `date_modfied`, not both. 
     try {
       BillingGroupList result = apiInstance.list(limit, offset, include, dateCreated, dateModified, sortByDateModified);
     } catch (ApiException e) {

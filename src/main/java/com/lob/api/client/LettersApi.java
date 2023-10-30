@@ -214,14 +214,18 @@ public class LettersApi {
 
         if (file != null) {
             localVarFormParams = letterEditable.toMap();
-            byte[] fileContent;
-            if(file instanceof File) {
-                // fileContent = Files.readAllBytes(((File) file).toPath());
-                localVarFormParams.put("file", file);
-            }
-            else if(file instanceof byte[]) {
-                fileContent = ((byte[]) file);
-                localVarFormParams.put("file", fileContent);
+            try {
+                byte[] fileContent;
+                if(file instanceof File) {
+                    fileContent = Files.readAllBytes(((File) file).toPath());
+                    localVarFormParams.put("file", fileContent);
+                }
+                else if(file instanceof byte[]) {
+                    fileContent = ((byte[]) file);
+                    localVarFormParams.put("file", fileContent);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
@@ -259,30 +263,6 @@ public class LettersApi {
         okhttp3.Call localVarCall = createCall(letterEditable, idempotencyKey, file, _callback);
         return localVarCall;
 
-    }
-
-    /**
-     * create
-     * Creates a new letter given information
-     * @param letterEditable  (required)
-     * @param idempotencyKey A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)
-     * @param file An optional file upload as either a byte array or file type.  (optional)
-     * @return Letter
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a letter object </td><td>  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  </td></tr>
-        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
-     </table>
-     */
-    public Letter create(LetterEditable letterEditable, String idempotencyKey) throws ApiException {
-        try {
-            ApiResponse<Letter> localVarResp = createWithHttpInfo(letterEditable, idempotencyKey, null);
-            return localVarResp.getData();
-        } catch (ApiException e) {
-            throw e;
-        }
     }
 
     /**

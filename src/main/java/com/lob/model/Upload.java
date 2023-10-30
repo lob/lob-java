@@ -151,6 +151,27 @@ public class Upload {
   
   
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  
+
+  private String campaignId;
+  /**
+  * Campaign ID associated with the upload
+  * @return campaignId
+  **/
+  
+  @javax.annotation.Nonnull
+  
+  @ApiModelProperty(required = true, value = "Campaign ID associated with the upload")
+  
+  public String getCampaignId() {
+      return campaignId;
+  }
+  
+  
+
   public static final String SERIALIZED_NAME_FAILURES_URL = "failuresUrl";
 
   @SerializedName(SERIALIZED_NAME_FAILURES_URL)
@@ -468,6 +489,21 @@ public class Upload {
 
 
   /*
+  public Upload campaignId(String campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+  */
+
+
+  public void setCampaignId(String campaignId) {
+    this.campaignId = campaignId;
+  }
+
+
+
+  /*
   public Upload failuresUrl(String failuresUrl) {
     
     this.failuresUrl = failuresUrl;
@@ -674,6 +710,7 @@ public class Upload {
     return Objects.equals(this.id, upload.id) &&
         Objects.equals(this.accountId, upload.accountId) &&
         Objects.equals(this.mode, upload.mode) &&
+        Objects.equals(this.campaignId, upload.campaignId) &&
         Objects.equals(this.failuresUrl, upload.failuresUrl) &&
         Objects.equals(this.originalFilename, upload.originalFilename) &&
         Objects.equals(this.state, upload.state) &&
@@ -691,7 +728,7 @@ public class Upload {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, accountId, mode, failuresUrl, originalFilename, state, totalMailpieces, failedMailpieces, validatedMailpieces, bytesProcessed, dateCreated, dateModified, requiredAddressColumnMapping, optionalAddressColumnMapping, metadata, mergeVariableColumnMapping);
+    return Objects.hash(id, accountId, mode, campaignId, failuresUrl, originalFilename, state, totalMailpieces, failedMailpieces, validatedMailpieces, bytesProcessed, dateCreated, dateModified, requiredAddressColumnMapping, optionalAddressColumnMapping, metadata, mergeVariableColumnMapping);
   }
 
   @Override
@@ -701,6 +738,7 @@ public class Upload {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    failuresUrl: ").append(toIndentedString(failuresUrl)).append("\n");
     sb.append("    originalFilename: ").append(toIndentedString(originalFilename)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
@@ -723,6 +761,7 @@ public class Upload {
       localMap.put("id", id);
       localMap.put("accountId", accountId);
       localMap.put("mode", mode);
+      localMap.put("campaignId", campaignId);
       localMap.put("failuresUrl", failuresUrl);
       localMap.put("originalFilename", originalFilename);
       localMap.put("state", state);

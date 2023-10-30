@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **checkNumber** | **Integer** | An integer that designates the check number. |  [optional]
 **message** | **String** | Max of 400 characters to be included at the bottom of the check page. |  [optional]
 **billingGroupId** | **String** | An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information. |  [optional]
+**useType** | **ChkUseType** |  | 
 
 
 

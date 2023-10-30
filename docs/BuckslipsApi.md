@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="create"></a>
 # **create**
-> Buckslip create(buckslipEditable)
+> Buckslip create(buckslipEditable, front)
 
 create
 
@@ -40,8 +40,9 @@ public class Example {
 
     BuckslipsApi apiInstance = new BuckslipsApi(defaultClient);
     BuckslipEditable buckslipEditable = new BuckslipEditable(); // BuckslipEditable | 
+    Object front = null; // Object | An optional file upload as either a byte array or file type. 
     try {
-      Buckslip result = apiInstance.create(buckslipEditable);
+      Buckslip result = apiInstance.create(buckslipEditable, front);
     } catch (ApiException e) {
       System.err.println("Exception when calling BuckslipsApi#create");
       System.err.println("Status code: " + e.getCode());
@@ -58,6 +59,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buckslipEditable** | [**BuckslipEditable**](BuckslipEditable.md)|  |
+ **front** | [**Object**](.md)| An optional file upload as either a byte array or file type.  | [optional]
 
 ### Return type
 

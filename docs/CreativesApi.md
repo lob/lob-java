@@ -38,7 +38,7 @@ public class Example {
 
     CreativesApi apiInstance = new CreativesApi(defaultClient);
     CreativeWritable creativeWritable = new CreativeWritable(); // CreativeWritable | 
-    String xLangOutput = "native"; // String | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English. 
+    String xLangOutput = "xLangOutput_example"; // String | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English. 
     try {
       CreativeResponse result = apiInstance.create(creativeWritable, xLangOutput);
     } catch (ApiException e) {

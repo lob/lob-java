@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 <a name="create"></a>
 # **create**
-> Letter create(letterEditable, idempotencyKey)
+> Letter create(letterEditable, idempotencyKey, file)
 
 create
 
@@ -107,8 +107,9 @@ public class Example {
     LettersApi apiInstance = new LettersApi(defaultClient);
     LetterEditable letterEditable = new LetterEditable(); // LetterEditable | 
     String idempotencyKey = "idempotencyKey_example"; // String | A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request). 
+    Object file = null; // Object | An optional file upload as either a byte array or file type. 
     try {
-      Letter result = apiInstance.create(letterEditable, idempotencyKey);
+      Letter result = apiInstance.create(letterEditable, idempotencyKey, file);
     } catch (ApiException e) {
       System.err.println("Exception when calling LettersApi#create");
       System.err.println("Status code: " + e.getCode());
@@ -126,6 +127,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **letterEditable** | [**LetterEditable**](LetterEditable.md)|  |
  **idempotencyKey** | **String**| A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  | [optional]
+ **file** | [**Object**](.md)| An optional file upload as either a byte array or file type.  | [optional]
 
 ### Return type
 
@@ -251,7 +253,7 @@ public class Example {
     Boolean scheduled = true; // Boolean | * `true` - only return orders (past or future) where `send_date` is greater than `date_created` * `false` - only return orders where `send_date` is equal to `date_created` 
     Map<String, String> sendDate = new HashMap(); // Map<String, String> | Filter by date sent.
     MailType mailType = MailType.fromValue("usps_first_class"); // MailType | A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States. 
-    SortBy3 sortBy = new HashMap(); // SortBy3 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
+    SortBy3 sortBy = new SortBy3(); // SortBy3 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. 
     try {
       LetterList result = apiInstance.list(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
     } catch (ApiException e) {
@@ -278,7 +280,7 @@ Name | Type | Description  | Notes
  **color** | **Boolean**| Set to &#x60;true&#x60; to return only color letters. Set to &#x60;false&#x60; to return only black &amp; white letters. | [optional]
  **scheduled** | **Boolean**| * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  | [optional]
  **sendDate** | [**Map&lt;String, String&gt;**](String.md)| Filter by date sent. | [optional]
- **mailType** | [**MailType**](.md)| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional] [default to usps_first_class] [enum: usps_first_class, usps_standard]
+ **mailType** | [**MailType**](.md)| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional] [enum: usps_first_class, usps_standard]
  **sortBy** | [**SortBy3**](.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
 
 ### Return type

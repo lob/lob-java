@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **id** | **String** | Unique identifier prefixed with &#x60;upl_&#x60;. | 
 **accountId** | **String** | Account ID that made the request | 
 **mode** | [**ModeEnum**](#ModeEnum) | The environment in which the mailpieces were created. Today, will only be &#x60;live&#x60;. | 
+**campaignId** | **String** | Campaign ID associated with the upload | 
 **failuresUrl** | **String** | Url where your campaign mailpiece failures can be retrieved |  [optional]
 **originalFilename** | **String** | Filename of the upload |  [optional]
 **state** | **UploadState** |  | 

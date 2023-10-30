@@ -29,6 +29,7 @@ import java.nio.file.Files;
 
 import com.lob.model.Export;
 import com.lob.model.ExportModel;
+import com.lob.model.HTTPValidationError;
 import com.lob.model.LobError;
 import com.lob.model.Upload;
 import com.lob.model.UploadCreateExport;
@@ -733,7 +734,7 @@ public class UploadsApi {
         final String[] localVarContentTypes = {
             "multipart/form-data"
         };
-        final String localVarContentType = file != null ?  "multipart/form-data" : localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType =  != null ?  "multipart/form-data" : localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "basicAuth" };

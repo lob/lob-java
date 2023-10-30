@@ -36,7 +36,7 @@ public class Example {
 
     IntlAutocompletionsApi apiInstance = new IntlAutocompletionsApi(defaultClient);
     IntlAutocompletionsWritable intlAutocompletionsWritable = new IntlAutocompletionsWritable(); // IntlAutocompletionsWritable | 
-    String xLangOutput = "native"; // String | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English. 
+    String xLangOutput = "xLangOutput_example"; // String | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English. 
     try {
       IntlAutocompletions result = apiInstance.autocomplete(intlAutocompletionsWritable, xLangOutput);
     } catch (ApiException e) {

@@ -53,9 +53,6 @@ import java.util.regex.Pattern;
 import com.lob.api.auth.Authentication;
 import com.lob.api.auth.HttpBasicAuth;
 import com.lob.api.auth.HttpBearerAuth;
-import com.lob.model.CreativeResponse;
-import com.lob.model.LetterDetailsReturned;
-import com.lob.model.PostcardDetailsReturned;
 import com.lob.api.auth.ApiKeyAuth;
 
 public class ApiClient {
@@ -799,25 +796,6 @@ public class ApiClient {
             contentType = "application/json";
         }
         if (isJsonMime(contentType)) {
-            if (returnType.equals(CreativeResponse.class)) {
-                JSONObject jsonObject = new JSONObject(respBody);
-                try {
-                    PostcardDetailsReturned details = json.deserialize(jsonObject.get("details").toString(), PostcardDetailsReturned.class);
-                    jsonObject.put("details", details);
-
-                    return json.deserialize(jsonObject.toString(), returnType);
-                } catch (Exception errForPostcardDetailsReturned) {
-                    try {
-                        LetterDetailsReturned details = json.deserialize(jsonObject.get("details").toString(), LetterDetailsReturned.class);
-                        jsonObject.put("details", details);
-
-                        return json.deserialize(jsonObject.toString(), returnType);
-                    } catch (Exception errForLetterDetailsReturned) {
-                        throw new ApiException(errForLetterDetailsReturned.getMessage());
-                    }
-                }
-            }
-
             return json.deserialize(respBody, returnType);
         } else if (returnType.equals(String.class)) {
             // Expecting string, return the raw response body.

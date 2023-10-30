@@ -830,6 +830,76 @@ public class UsComponents {
   
   
 
+  /**
+   * Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available. 
+   */
+  @JsonAdapter(PoBoxOnlyFlagEnum.Adapter.class)
+  public enum PoBoxOnlyFlagEnum {
+    Y("Y"),
+    
+    N("N"),
+    
+    EMPTY("");
+
+    private String value;
+
+    PoBoxOnlyFlagEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PoBoxOnlyFlagEnum fromValue(String value) {
+      for (PoBoxOnlyFlagEnum b : PoBoxOnlyFlagEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PoBoxOnlyFlagEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PoBoxOnlyFlagEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PoBoxOnlyFlagEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PoBoxOnlyFlagEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PO_BOX_ONLY_FLAG = "po_box_only_flag";
+
+  @SerializedName(SERIALIZED_NAME_PO_BOX_ONLY_FLAG)
+  
+
+  private PoBoxOnlyFlagEnum poBoxOnlyFlag;
+  /**
+  * Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available. 
+  * @return poBoxOnlyFlag
+  **/
+  
+  @javax.annotation.Nonnull
+  
+  @ApiModelProperty(required = true, value = "Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available. ")
+  
+  public PoBoxOnlyFlagEnum getPoBoxOnlyFlag() {
+      return poBoxOnlyFlag;
+  }
+  
+  
+
   public static final String SERIALIZED_NAME_LATITUDE = "latitude";
 
   @SerializedName(SERIALIZED_NAME_LATITUDE)
@@ -1228,6 +1298,21 @@ public class UsComponents {
 
 
   /*
+  public UsComponents poBoxOnlyFlag(PoBoxOnlyFlagEnum poBoxOnlyFlag) {
+    
+    this.poBoxOnlyFlag = poBoxOnlyFlag;
+    return this;
+  }
+  */
+
+
+  public void setPoBoxOnlyFlag(PoBoxOnlyFlagEnum poBoxOnlyFlag) {
+    this.poBoxOnlyFlag = poBoxOnlyFlag;
+  }
+
+
+
+  /*
   public UsComponents latitude(Float latitude) {
     
     this.latitude = latitude;
@@ -1290,6 +1375,7 @@ public class UsComponents {
         Objects.equals(this.countyFips, usComponents.countyFips) &&
         Objects.equals(this.carrierRoute, usComponents.carrierRoute) &&
         Objects.equals(this.carrierRouteType, usComponents.carrierRouteType) &&
+        Objects.equals(this.poBoxOnlyFlag, usComponents.poBoxOnlyFlag) &&
         Objects.equals(this.latitude, usComponents.latitude) &&
         Objects.equals(this.longitude, usComponents.longitude);
   }
@@ -1300,7 +1386,7 @@ public class UsComponents {
 
   @Override
   public int hashCode() {
-    return Objects.hash(primaryNumber, streetPredirection, streetName, streetSuffix, streetPostdirection, secondaryDesignator, secondaryNumber, pmbDesignator, pmbNumber, extraSecondaryDesignator, extraSecondaryNumber, city, state, zipCode, zipCodePlus4, zipCodeType, deliveryPointBarcode, addressType, recordType, defaultBuildingAddress, county, countyFips, carrierRoute, carrierRouteType, latitude, longitude);
+    return Objects.hash(primaryNumber, streetPredirection, streetName, streetSuffix, streetPostdirection, secondaryDesignator, secondaryNumber, pmbDesignator, pmbNumber, extraSecondaryDesignator, extraSecondaryNumber, city, state, zipCode, zipCodePlus4, zipCodeType, deliveryPointBarcode, addressType, recordType, defaultBuildingAddress, county, countyFips, carrierRoute, carrierRouteType, poBoxOnlyFlag, latitude, longitude);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1338,6 +1424,7 @@ public class UsComponents {
     sb.append("    countyFips: ").append(toIndentedString(countyFips)).append("\n");
     sb.append("    carrierRoute: ").append(toIndentedString(carrierRoute)).append("\n");
     sb.append("    carrierRouteType: ").append(toIndentedString(carrierRouteType)).append("\n");
+    sb.append("    poBoxOnlyFlag: ").append(toIndentedString(poBoxOnlyFlag)).append("\n");
     sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
     sb.append("}");
@@ -1370,6 +1457,7 @@ public class UsComponents {
       localMap.put("county_fips", countyFips);
       localMap.put("carrier_route", carrierRoute);
       localMap.put("carrier_route_type", carrierRouteType);
+      localMap.put("po_box_only_flag", poBoxOnlyFlag);
       localMap.put("latitude", latitude);
       localMap.put("longitude", longitude);
       return localMap;
