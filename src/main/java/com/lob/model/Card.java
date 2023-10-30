@@ -25,8 +25,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -192,7 +192,7 @@ public class Card {
   public static final String SERIALIZED_NAME_THUMBNAILS = "thumbnails";
 
   @SerializedName(SERIALIZED_NAME_THUMBNAILS)
-  private List<Thumbnail> thumbnails = new ArrayList<Thumbnail>();
+  private List<Thumbnail> thumbnails = new ArrayList<>();
   public List<Thumbnail> getThumbnails() {
     if (this.thumbnails == null) {
       this.thumbnails = new ArrayList<Thumbnail>();
@@ -404,7 +404,7 @@ public class Card {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private Date dateCreated;
+  private OffsetDateTime dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -414,7 +414,7 @@ public class Card {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public Date getDateCreated() {
+  public OffsetDateTime getDateCreated() {
       return dateCreated;
   }
   
@@ -425,7 +425,7 @@ public class Card {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private Date dateModified;
+  private OffsetDateTime dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -435,7 +435,7 @@ public class Card {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public Date getDateModified() {
+  public OffsetDateTime getDateModified() {
       return dateModified;
   }
   
@@ -816,7 +816,7 @@ public class Card {
 
 
   /*
-  public Card dateCreated(Date dateCreated) {
+  public Card dateCreated(OffsetDateTime dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -824,14 +824,14 @@ public class Card {
   */
 
 
-  public void setDateCreated(Date dateCreated) {
+  public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public Card dateModified(Date dateModified) {
+  public Card dateModified(OffsetDateTime dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -839,7 +839,7 @@ public class Card {
   */
 
 
-  public void setDateModified(Date dateModified) {
+  public void setDateModified(OffsetDateTime dateModified) {
     this.dateModified = dateModified;
   }
 

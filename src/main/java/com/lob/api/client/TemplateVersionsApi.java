@@ -27,8 +27,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-import java.util.Date;
 import com.lob.model.LobError;
+import java.time.OffsetDateTime;
 import com.lob.model.TemplateVersion;
 import com.lob.model.TemplateVersionDeletion;
 import com.lob.model.TemplateVersionList;
@@ -622,7 +622,7 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCall(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -674,7 +674,7 @@ public class TemplateVersionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'tmplId' is set
         if (tmplId == null) {
@@ -705,7 +705,7 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateVersionList list(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated) throws ApiException {
+    public TemplateVersionList list(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated) throws ApiException {
         try {
             ApiResponse<TemplateVersionList> localVarResp = listWithHttpInfo(tmplId, limit, before, after, include, dateCreated);
             return localVarResp.getData();
@@ -732,7 +732,7 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateVersionList> listWithHttpInfo(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated) throws ApiException {
+    public ApiResponse<TemplateVersionList> listWithHttpInfo(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated) throws ApiException {
         try {
             okhttp3.Call localVarCall = listValidateBeforeCall(tmplId, limit, before, after, include, dateCreated, null);
             Type localVarReturnType = new TypeToken<TemplateVersionList>(){}.getType();
@@ -761,7 +761,7 @@ public class TemplateVersionsApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAsync(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, final ApiCallback<TemplateVersionList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(String tmplId, Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, final ApiCallback<TemplateVersionList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listValidateBeforeCall(tmplId, limit, before, after, include, dateCreated, _callback);
         Type localVarReturnType = new TypeToken<TemplateVersionList>(){}.getType();

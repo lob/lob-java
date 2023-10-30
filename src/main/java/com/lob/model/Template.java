@@ -24,8 +24,8 @@ import com.lob.model.TemplateVersion;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,7 +88,7 @@ public class Template {
   public static final String SERIALIZED_NAME_VERSIONS = "versions";
 
   @SerializedName(SERIALIZED_NAME_VERSIONS)
-  private List<TemplateVersion> versions = new ArrayList<TemplateVersion>();
+  private List<TemplateVersion> versions = new ArrayList<>();
   public List<TemplateVersion> getVersions() {
     if (this.versions == null) {
       this.versions = new ArrayList<TemplateVersion>();
@@ -199,7 +199,7 @@ public class Template {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private Date dateCreated;
+  private OffsetDateTime dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -209,7 +209,7 @@ public class Template {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public Date getDateCreated() {
+  public OffsetDateTime getDateCreated() {
       return dateCreated;
   }
   
@@ -220,7 +220,7 @@ public class Template {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private Date dateModified;
+  private OffsetDateTime dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -230,7 +230,7 @@ public class Template {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public Date getDateModified() {
+  public OffsetDateTime getDateModified() {
       return dateModified;
   }
   
@@ -359,7 +359,7 @@ public class Template {
 
 
   /*
-  public Template dateCreated(Date dateCreated) {
+  public Template dateCreated(OffsetDateTime dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -367,14 +367,14 @@ public class Template {
   */
 
 
-  public void setDateCreated(Date dateCreated) {
+  public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public Template dateModified(Date dateModified) {
+  public Template dateModified(OffsetDateTime dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -382,7 +382,7 @@ public class Template {
   */
 
 
-  public void setDateModified(Date dateModified) {
+  public void setDateModified(OffsetDateTime dateModified) {
     this.dateModified = dateModified;
   }
 

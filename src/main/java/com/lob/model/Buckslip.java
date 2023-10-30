@@ -213,7 +213,7 @@ public class Buckslip {
   public static final String SERIALIZED_NAME_THUMBNAILS = "thumbnails";
 
   @SerializedName(SERIALIZED_NAME_THUMBNAILS)
-  private List<Thumbnail> thumbnails = new ArrayList<Thumbnail>();
+  private List<Thumbnail> thumbnails = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_AVAILABLE_QUANTITY = "available_quantity";
 
@@ -323,7 +323,7 @@ public class Buckslip {
   public static final String SERIALIZED_NAME_BUCKSLIP_ORDERS = "buckslip_orders";
 
   @SerializedName(SERIALIZED_NAME_BUCKSLIP_ORDERS)
-  private List<BuckslipOrder> buckslipOrders = new ArrayList<BuckslipOrder>();
+  private List<BuckslipOrder> buckslipOrders = new ArrayList<>();
 
   /**
    * Gets or Sets stock

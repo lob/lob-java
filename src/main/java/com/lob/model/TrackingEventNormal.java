@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -231,7 +231,7 @@ public class TrackingEventNormal {
   @SerializedName(SERIALIZED_NAME_TIME)
   
 
-  private Date time;
+  private OffsetDateTime time;
   /**
   * A timestamp in ISO 8601 format of the date USPS registered the event.
   * @return time
@@ -241,7 +241,7 @@ public class TrackingEventNormal {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date USPS registered the event.")
   
-  public Date getTime() {
+  public OffsetDateTime getTime() {
       return time;
   }
   
@@ -252,7 +252,7 @@ public class TrackingEventNormal {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private Date dateCreated;
+  private OffsetDateTime dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -262,7 +262,7 @@ public class TrackingEventNormal {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public Date getDateCreated() {
+  public OffsetDateTime getDateCreated() {
       return dateCreated;
   }
   
@@ -273,7 +273,7 @@ public class TrackingEventNormal {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private Date dateModified;
+  private OffsetDateTime dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -283,7 +283,7 @@ public class TrackingEventNormal {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public Date getDateModified() {
+  public OffsetDateTime getDateModified() {
       return dateModified;
   }
   
@@ -426,7 +426,7 @@ public class TrackingEventNormal {
 
 
   /*
-  public TrackingEventNormal time(Date time) {
+  public TrackingEventNormal time(OffsetDateTime time) {
     
     this.time = time;
     return this;
@@ -434,14 +434,14 @@ public class TrackingEventNormal {
   */
 
 
-  public void setTime(Date time) {
+  public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
 
 
   /*
-  public TrackingEventNormal dateCreated(Date dateCreated) {
+  public TrackingEventNormal dateCreated(OffsetDateTime dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -449,14 +449,14 @@ public class TrackingEventNormal {
   */
 
 
-  public void setDateCreated(Date dateCreated) {
+  public void setDateCreated(OffsetDateTime dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public TrackingEventNormal dateModified(Date dateModified) {
+  public TrackingEventNormal dateModified(OffsetDateTime dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -464,7 +464,7 @@ public class TrackingEventNormal {
   */
 
 
-  public void setDateModified(Date dateModified) {
+  public void setDateModified(OffsetDateTime dateModified) {
     this.dateModified = dateModified;
   }
 

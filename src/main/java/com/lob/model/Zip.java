@@ -89,7 +89,7 @@ public class Zip {
   public static final String SERIALIZED_NAME_CITIES = "cities";
 
   @SerializedName(SERIALIZED_NAME_CITIES)
-  private List<ZipLookupCity> cities = new ArrayList<ZipLookupCity>();
+  private List<ZipLookupCity> cities = new ArrayList<>();
   public List<ZipLookupCity> getCities() {
     if (this.cities == null) {
       this.cities = new ArrayList<ZipLookupCity>();

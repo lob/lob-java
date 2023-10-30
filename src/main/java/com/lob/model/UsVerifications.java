@@ -38,7 +38,7 @@ public class UsVerifications {
   public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<UsVerificationOrError> addresses = new ArrayList<UsVerificationOrError>();
+  private List<UsVerificationOrError> addresses = new ArrayList<>();
   public List<UsVerificationOrError> getAddresses() {
     if (this.addresses == null) {
       this.addresses = new ArrayList<UsVerificationOrError>();

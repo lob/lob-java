@@ -62,7 +62,7 @@ public class LetterDetailsReturned {
   public static final String SERIALIZED_NAME_CARDS = "cards";
 
   @SerializedName(SERIALIZED_NAME_CARDS)
-  private List<String> cards = new ArrayList<String>();
+  private List<String> cards = new ArrayList<>();
 
   /**
    * Specifies the location of the address information that will show through the double-window envelope. 

@@ -31,9 +31,9 @@ import com.lob.model.Check;
 import com.lob.model.CheckDeletion;
 import com.lob.model.CheckEditable;
 import com.lob.model.CheckList;
-import java.util.Date;
 import com.lob.model.LobError;
 import com.lob.model.MailType;
+import java.time.OffsetDateTime;
 import com.lob.model.SortBy3;
 
 import java.lang.reflect.Type;
@@ -462,7 +462,7 @@ public class ChecksApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -533,7 +533,7 @@ public class ChecksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
         
 
         okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy, _callback);
@@ -563,7 +563,7 @@ public class ChecksApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public CheckList list(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy) throws ApiException {
+    public CheckList list(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy) throws ApiException {
         try {
             ApiResponse<CheckList> localVarResp = listWithHttpInfo(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
             return localVarResp.getData();
@@ -594,7 +594,7 @@ public class ChecksApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy) throws ApiException {
+    public ApiResponse<CheckList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy) throws ApiException {
         try {
             okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy, null);
             Type localVarReturnType = new TypeToken<CheckList>(){}.getType();
@@ -627,7 +627,7 @@ public class ChecksApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback<CheckList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback<CheckList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy, _callback);
         Type localVarReturnType = new TypeToken<CheckList>(){}.getType();

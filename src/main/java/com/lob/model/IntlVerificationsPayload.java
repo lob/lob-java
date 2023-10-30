@@ -38,7 +38,7 @@ public class IntlVerificationsPayload {
   public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<MultipleComponentsIntl> addresses = new ArrayList<MultipleComponentsIntl>();
+  private List<MultipleComponentsIntl> addresses = new ArrayList<>();
   public List<MultipleComponentsIntl> getAddresses() {
     if (this.addresses == null) {
       this.addresses = new ArrayList<MultipleComponentsIntl>();
