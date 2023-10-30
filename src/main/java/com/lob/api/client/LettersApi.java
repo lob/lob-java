@@ -1,6 +1,6 @@
 /*
  * Lob
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -96,7 +96,7 @@ public class LettersApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -107,12 +107,12 @@ public class LettersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call cancelValidateBeforeCall(String ltrId, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'ltrId' is set
         if (ltrId == null) {
             throw new ApiException("Missing the required parameter 'ltrId' when calling cancel(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = cancelCall(ltrId, _callback);
         return localVarCall;
@@ -214,18 +214,14 @@ public class LettersApi {
 
         if (file != null) {
             localVarFormParams = letterEditable.toMap();
-            try {
-                byte[] fileContent;
-                if(file instanceof File) {
-                    fileContent = Files.readAllBytes(((File) file).toPath());
-                    localVarFormParams.put("file", fileContent);
-                }
-                else if(file instanceof byte[]) {
-                    fileContent = ((byte[]) file);
-                    localVarFormParams.put("file", fileContent);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+            byte[] fileContent;
+            if(file instanceof File) {
+                // fileContent = Files.readAllBytes(((File) file).toPath());
+                localVarFormParams.put("file", file);
+            }
+            else if(file instanceof byte[]) {
+                fileContent = ((byte[]) file);
+                localVarFormParams.put("file", fileContent);
             }
         }
 
@@ -253,16 +249,40 @@ public class LettersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createValidateBeforeCall(LetterEditable letterEditable, String idempotencyKey, Object file, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'letterEditable' is set
         if (letterEditable == null) {
             throw new ApiException("Missing the required parameter 'letterEditable' when calling create(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = createCall(letterEditable, idempotencyKey, file, _callback);
         return localVarCall;
 
+    }
+
+    /**
+     * create
+     * Creates a new letter given information
+     * @param letterEditable  (required)
+     * @param idempotencyKey A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)
+     * @param file An optional file upload as either a byte array or file type.  (optional)
+     * @return Letter
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns a letter object </td><td>  * ratelimit-limit -  <br>  * ratelimit-remaining -  <br>  * ratelimit-reset -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
+     </table>
+     */
+    public Letter create(LetterEditable letterEditable, String idempotencyKey) throws ApiException {
+        try {
+            ApiResponse<Letter> localVarResp = createWithHttpInfo(letterEditable, idempotencyKey, null);
+            return localVarResp.getData();
+        } catch (ApiException e) {
+            throw e;
+        }
     }
 
     /**
@@ -372,7 +392,7 @@ public class LettersApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -383,12 +403,12 @@ public class LettersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getValidateBeforeCall(String ltrId, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'ltrId' is set
         if (ltrId == null) {
             throw new ApiException("Missing the required parameter 'ltrId' when calling get(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = getCall(ltrId, _callback);
         return localVarCall;
@@ -549,7 +569,7 @@ public class LettersApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -560,7 +580,7 @@ public class LettersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, Boolean color, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
-        
+
 
         okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy, _callback);
         return localVarCall;
