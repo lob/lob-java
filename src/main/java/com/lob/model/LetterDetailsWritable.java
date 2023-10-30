@@ -112,7 +112,7 @@ public class LetterDetailsWritable {
   public static final String SERIALIZED_NAME_CARDS = "cards";
 
   @SerializedName(SERIALIZED_NAME_CARDS)
-  private List<String> cards = new ArrayList<>();
+  private List<String> cards = new ArrayList<String>();
 
   public static final String SERIALIZED_NAME_COLOR = "color";
 

@@ -26,8 +26,8 @@ import com.lob.model.CmpUseType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -134,7 +134,7 @@ public class Campaign {
   @SerializedName(SERIALIZED_NAME_TARGET_DELIVERY_DATE)
   
 
-  private OffsetDateTime targetDeliveryDate;
+  private Date targetDeliveryDate;
   /**
   * If `schedule_type` is `target_delivery_date`, provide a targeted delivery date for mail pieces in this campaign.
   * @return targetDeliveryDate
@@ -144,7 +144,7 @@ public class Campaign {
   
   @ApiModelProperty(value = "If `schedule_type` is `target_delivery_date`, provide a targeted delivery date for mail pieces in this campaign.")
   
-  public OffsetDateTime getTargetDeliveryDate() {
+  public Date getTargetDeliveryDate() {
       return targetDeliveryDate;
   }
   
@@ -155,7 +155,7 @@ public class Campaign {
   @SerializedName(SERIALIZED_NAME_SEND_DATE)
   
 
-  private OffsetDateTime sendDate;
+  private Date sendDate;
   /**
   * If `schedule_type` is `scheduled_send_date`, provide a date to send this campaign.
   * @return sendDate
@@ -165,7 +165,7 @@ public class Campaign {
   
   @ApiModelProperty(value = "If `schedule_type` is `scheduled_send_date`, provide a date to send this campaign.")
   
-  public OffsetDateTime getSendDate() {
+  public Date getSendDate() {
       return sendDate;
   }
   
@@ -315,14 +315,14 @@ public class Campaign {
   public static final String SERIALIZED_NAME_CREATIVES = "creatives";
 
   @SerializedName(SERIALIZED_NAME_CREATIVES)
-  private List<CampaignCreative> creatives = new ArrayList<>();
+  private List<CampaignCreative> creatives = new ArrayList<CampaignCreative>();
 
   public static final String SERIALIZED_NAME_DATE_CREATED = "date_created";
 
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -332,7 +332,7 @@ public class Campaign {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -343,7 +343,7 @@ public class Campaign {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private OffsetDateTime dateModified;
+  private Date dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -353,7 +353,7 @@ public class Campaign {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public OffsetDateTime getDateModified() {
+  public Date getDateModified() {
       return dateModified;
   }
   
@@ -505,7 +505,7 @@ public class Campaign {
 
 
   /*
-  public Campaign targetDeliveryDate(OffsetDateTime targetDeliveryDate) {
+  public Campaign targetDeliveryDate(Date targetDeliveryDate) {
     
     this.targetDeliveryDate = targetDeliveryDate;
     return this;
@@ -513,14 +513,14 @@ public class Campaign {
   */
 
 
-  public void setTargetDeliveryDate(OffsetDateTime targetDeliveryDate) {
+  public void setTargetDeliveryDate(Date targetDeliveryDate) {
     this.targetDeliveryDate = targetDeliveryDate;
   }
 
 
 
   /*
-  public Campaign sendDate(OffsetDateTime sendDate) {
+  public Campaign sendDate(Date sendDate) {
     
     this.sendDate = sendDate;
     return this;
@@ -528,7 +528,7 @@ public class Campaign {
   */
 
 
-  public void setSendDate(OffsetDateTime sendDate) {
+  public void setSendDate(Date sendDate) {
     this.sendDate = sendDate;
   }
 
@@ -665,7 +665,7 @@ public class Campaign {
 
 
   /*
-  public Campaign dateCreated(OffsetDateTime dateCreated) {
+  public Campaign dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -673,14 +673,14 @@ public class Campaign {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public Campaign dateModified(OffsetDateTime dateModified) {
+  public Campaign dateModified(Date dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -688,7 +688,7 @@ public class Campaign {
   */
 
 
-  public void setDateModified(OffsetDateTime dateModified) {
+  public void setDateModified(Date dateModified) {
     this.dateModified = dateModified;
   }
 

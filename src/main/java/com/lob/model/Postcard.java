@@ -30,9 +30,8 @@ import com.lob.model.TrackingEventNormal;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -216,7 +215,7 @@ public class Postcard {
   @SerializedName(SERIALIZED_NAME_EXPECTED_DELIVERY_DATE)
   
 
-  private LocalDate expectedDeliveryDate;
+  private Date expectedDeliveryDate;
   /**
   * A date in YYYY-MM-DD format of the mailpiece's expected delivery date based on its `send_date`.
   * @return expectedDeliveryDate
@@ -226,7 +225,7 @@ public class Postcard {
   
   @ApiModelProperty(value = "A date in YYYY-MM-DD format of the mailpiece's expected delivery date based on its `send_date`.")
   
-  public LocalDate getExpectedDeliveryDate() {
+  public Date getExpectedDeliveryDate() {
       return expectedDeliveryDate;
   }
   
@@ -237,7 +236,7 @@ public class Postcard {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -247,7 +246,7 @@ public class Postcard {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -258,7 +257,7 @@ public class Postcard {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private OffsetDateTime dateModified;
+  private Date dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -268,7 +267,7 @@ public class Postcard {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public OffsetDateTime getDateModified() {
+  public Date getDateModified() {
       return dateModified;
   }
   
@@ -576,7 +575,7 @@ public class Postcard {
   @SerializedName(SERIALIZED_NAME_SEND_DATE)
   
 
-  private OffsetDateTime sendDate;
+  private Date sendDate;
   /**
   * A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the `send_date` has passed, the mailpiece can be canceled. If a date in the format `2017-11-01` is passed, it will evaluate to midnight UTC of that date (`2017-11-01T00:00:00.000Z`). If a datetime is passed, that exact time will be used. A `send_date` passed with no time zone will default to UTC, while a `send_date` passed with a time zone will be converted to UTC.
   * @return sendDate
@@ -586,7 +585,7 @@ public class Postcard {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the `send_date` has passed, the mailpiece can be canceled. If a date in the format `2017-11-01` is passed, it will evaluate to midnight UTC of that date (`2017-11-01T00:00:00.000Z`). If a datetime is passed, that exact time will be used. A `send_date` passed with no time zone will default to UTC, while a `send_date` passed with a time zone will be converted to UTC.")
   
-  public OffsetDateTime getSendDate() {
+  public Date getSendDate() {
       return sendDate;
   }
   
@@ -710,7 +709,7 @@ public class Postcard {
 
 
   /*
-  public Postcard expectedDeliveryDate(LocalDate expectedDeliveryDate) {
+  public Postcard expectedDeliveryDate(Date expectedDeliveryDate) {
     
     this.expectedDeliveryDate = expectedDeliveryDate;
     return this;
@@ -718,14 +717,14 @@ public class Postcard {
   */
 
 
-  public void setExpectedDeliveryDate(LocalDate expectedDeliveryDate) {
+  public void setExpectedDeliveryDate(Date expectedDeliveryDate) {
     this.expectedDeliveryDate = expectedDeliveryDate;
   }
 
 
 
   /*
-  public Postcard dateCreated(OffsetDateTime dateCreated) {
+  public Postcard dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -733,14 +732,14 @@ public class Postcard {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public Postcard dateModified(OffsetDateTime dateModified) {
+  public Postcard dateModified(Date dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -748,7 +747,7 @@ public class Postcard {
   */
 
 
-  public void setDateModified(OffsetDateTime dateModified) {
+  public void setDateModified(Date dateModified) {
     this.dateModified = dateModified;
   }
 
@@ -936,7 +935,7 @@ public class Postcard {
 
 
   /*
-  public Postcard sendDate(OffsetDateTime sendDate) {
+  public Postcard sendDate(Date sendDate) {
     
     this.sendDate = sendDate;
     return this;
@@ -944,7 +943,7 @@ public class Postcard {
   */
 
 
-  public void setSendDate(OffsetDateTime sendDate) {
+  public void setSendDate(Date sendDate) {
     this.sendDate = sendDate;
   }
 

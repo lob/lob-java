@@ -25,7 +25,7 @@ import com.lob.model.CmpUseType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -107,7 +107,7 @@ public class CampaignUpdatable {
   @SerializedName(SERIALIZED_NAME_TARGET_DELIVERY_DATE)
   
 
-  private OffsetDateTime targetDeliveryDate;
+  private Date targetDeliveryDate;
   /**
   * If `schedule_type` is `target_delivery_date`, provide a targeted delivery date for mail pieces in this campaign.
   * @return targetDeliveryDate
@@ -117,7 +117,7 @@ public class CampaignUpdatable {
   
   @ApiModelProperty(value = "If `schedule_type` is `target_delivery_date`, provide a targeted delivery date for mail pieces in this campaign.")
   
-  public OffsetDateTime getTargetDeliveryDate() {
+  public Date getTargetDeliveryDate() {
       return targetDeliveryDate;
   }
   
@@ -128,7 +128,7 @@ public class CampaignUpdatable {
   @SerializedName(SERIALIZED_NAME_SEND_DATE)
   
 
-  private OffsetDateTime sendDate;
+  private Date sendDate;
   /**
   * If `schedule_type` is `scheduled_send_date`, provide a date to send this campaign.
   * @return sendDate
@@ -138,7 +138,7 @@ public class CampaignUpdatable {
   
   @ApiModelProperty(value = "If `schedule_type` is `scheduled_send_date`, provide a date to send this campaign.")
   
-  public OffsetDateTime getSendDate() {
+  public Date getSendDate() {
       return sendDate;
   }
   
@@ -286,7 +286,7 @@ public class CampaignUpdatable {
 
 
   /*
-  public CampaignUpdatable targetDeliveryDate(OffsetDateTime targetDeliveryDate) {
+  public CampaignUpdatable targetDeliveryDate(Date targetDeliveryDate) {
     
     this.targetDeliveryDate = targetDeliveryDate;
     return this;
@@ -294,14 +294,14 @@ public class CampaignUpdatable {
   */
 
 
-  public void setTargetDeliveryDate(OffsetDateTime targetDeliveryDate) {
+  public void setTargetDeliveryDate(Date targetDeliveryDate) {
     this.targetDeliveryDate = targetDeliveryDate;
   }
 
 
 
   /*
-  public CampaignUpdatable sendDate(OffsetDateTime sendDate) {
+  public CampaignUpdatable sendDate(Date sendDate) {
     
     this.sendDate = sendDate;
     return this;
@@ -309,7 +309,7 @@ public class CampaignUpdatable {
   */
 
 
-  public void setSendDate(OffsetDateTime sendDate) {
+  public void setSendDate(Date sendDate) {
     this.sendDate = sendDate;
   }
 

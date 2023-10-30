@@ -38,7 +38,7 @@ public class IntlVerifications {
   public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<IntlVerificationOrError> addresses = new ArrayList<>();
+  private List<IntlVerificationOrError> addresses = new ArrayList<IntlVerificationOrError>();
   public List<IntlVerificationOrError> getAddresses() {
     if (this.addresses == null) {
       this.addresses = new ArrayList<IntlVerificationOrError>();

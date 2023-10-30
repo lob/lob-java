@@ -38,7 +38,7 @@ public class MultipleComponentsList {
   public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
 
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<MultipleComponents> addresses = new ArrayList<>();
+  private List<MultipleComponents> addresses = new ArrayList<MultipleComponents>();
   public List<MultipleComponents> getAddresses() {
     if (this.addresses == null) {
       this.addresses = new ArrayList<MultipleComponents>();

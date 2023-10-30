@@ -27,7 +27,7 @@ import com.lob.model.UploadsMetadata;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -324,7 +324,7 @@ public class Upload {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the upload was created
   * @return dateCreated
@@ -334,7 +334,7 @@ public class Upload {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the upload was created")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -345,7 +345,7 @@ public class Upload {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private OffsetDateTime dateModified;
+  private Date dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the upload was last modified
   * @return dateModified
@@ -355,7 +355,7 @@ public class Upload {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the upload was last modified")
   
-  public OffsetDateTime getDateModified() {
+  public Date getDateModified() {
       return dateModified;
   }
   
@@ -609,7 +609,7 @@ public class Upload {
 
 
   /*
-  public Upload dateCreated(OffsetDateTime dateCreated) {
+  public Upload dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -617,14 +617,14 @@ public class Upload {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public Upload dateModified(OffsetDateTime dateModified) {
+  public Upload dateModified(Date dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -632,7 +632,7 @@ public class Upload {
   */
 
 
-  public void setDateModified(OffsetDateTime dateModified) {
+  public void setDateModified(Date dateModified) {
     this.dateModified = dateModified;
   }
 

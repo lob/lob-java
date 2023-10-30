@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class BuckslipOrder {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -49,7 +49,7 @@ public class BuckslipOrder {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -60,7 +60,7 @@ public class BuckslipOrder {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private OffsetDateTime dateModified;
+  private Date dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -70,7 +70,7 @@ public class BuckslipOrder {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public OffsetDateTime getDateModified() {
+  public Date getDateModified() {
       return dateModified;
   }
   
@@ -331,7 +331,7 @@ public class BuckslipOrder {
   @SerializedName(SERIALIZED_NAME_AVAILABILITY_DATE)
   
 
-  private OffsetDateTime availabilityDate;
+  private Date availabilityDate;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return availabilityDate
@@ -341,7 +341,7 @@ public class BuckslipOrder {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getAvailabilityDate() {
+  public Date getAvailabilityDate() {
       return availabilityDate;
   }
   
@@ -352,7 +352,7 @@ public class BuckslipOrder {
   @SerializedName(SERIALIZED_NAME_EXPECTED_AVAILABILITY_DATE)
   
 
-  private OffsetDateTime expectedAvailabilityDate;
+  private Date expectedAvailabilityDate;
   /**
   * The fixed deadline for the buckslips to be printed.
   * @return expectedAvailabilityDate
@@ -362,7 +362,7 @@ public class BuckslipOrder {
   
   @ApiModelProperty(value = "The fixed deadline for the buckslips to be printed.")
   
-  public OffsetDateTime getExpectedAvailabilityDate() {
+  public Date getExpectedAvailabilityDate() {
       return expectedAvailabilityDate;
   }
   
@@ -370,7 +370,7 @@ public class BuckslipOrder {
 
 
   /*
-  public BuckslipOrder dateCreated(OffsetDateTime dateCreated) {
+  public BuckslipOrder dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -378,14 +378,14 @@ public class BuckslipOrder {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public BuckslipOrder dateModified(OffsetDateTime dateModified) {
+  public BuckslipOrder dateModified(Date dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -393,7 +393,7 @@ public class BuckslipOrder {
   */
 
 
-  public void setDateModified(OffsetDateTime dateModified) {
+  public void setDateModified(Date dateModified) {
     this.dateModified = dateModified;
   }
 
@@ -529,7 +529,7 @@ public class BuckslipOrder {
 
 
   /*
-  public BuckslipOrder availabilityDate(OffsetDateTime availabilityDate) {
+  public BuckslipOrder availabilityDate(Date availabilityDate) {
     
     this.availabilityDate = availabilityDate;
     return this;
@@ -537,14 +537,14 @@ public class BuckslipOrder {
   */
 
 
-  public void setAvailabilityDate(OffsetDateTime availabilityDate) {
+  public void setAvailabilityDate(Date availabilityDate) {
     this.availabilityDate = availabilityDate;
   }
 
 
 
   /*
-  public BuckslipOrder expectedAvailabilityDate(OffsetDateTime expectedAvailabilityDate) {
+  public BuckslipOrder expectedAvailabilityDate(Date expectedAvailabilityDate) {
     
     this.expectedAvailabilityDate = expectedAvailabilityDate;
     return this;
@@ -552,7 +552,7 @@ public class BuckslipOrder {
   */
 
 
-  public void setExpectedAvailabilityDate(OffsetDateTime expectedAvailabilityDate) {
+  public void setExpectedAvailabilityDate(Date expectedAvailabilityDate) {
     this.expectedAvailabilityDate = expectedAvailabilityDate;
   }
 

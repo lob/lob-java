@@ -24,7 +24,7 @@ import com.lob.model.EventType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -127,7 +127,7 @@ public class Events {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -137,7 +137,7 @@ public class Events {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -268,7 +268,7 @@ public class Events {
 
 
   /*
-  public Events dateCreated(OffsetDateTime dateCreated) {
+  public Events dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -276,7 +276,7 @@ public class Events {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 

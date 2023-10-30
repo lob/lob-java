@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -63,7 +63,7 @@ public class Export {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the export was created
   * @return dateCreated
@@ -73,7 +73,7 @@ public class Export {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the export was created")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -84,7 +84,7 @@ public class Export {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private OffsetDateTime dateModified;
+  private Date dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the export was last modified
   * @return dateModified
@@ -94,7 +94,7 @@ public class Export {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the export was last modified")
   
-  public OffsetDateTime getDateModified() {
+  public Date getDateModified() {
       return dateModified;
   }
   
@@ -321,7 +321,7 @@ public class Export {
 
 
   /*
-  public Export dateCreated(OffsetDateTime dateCreated) {
+  public Export dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -329,14 +329,14 @@ public class Export {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public Export dateModified(OffsetDateTime dateModified) {
+  public Export dateModified(Date dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -344,7 +344,7 @@ public class Export {
   */
 
 
-  public void setDateModified(OffsetDateTime dateModified) {
+  public void setDateModified(Date dateModified) {
     this.dateModified = dateModified;
   }
 

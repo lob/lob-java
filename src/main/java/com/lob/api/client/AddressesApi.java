@@ -31,8 +31,8 @@ import com.lob.model.Address;
 import com.lob.model.AddressDeletion;
 import com.lob.model.AddressEditable;
 import com.lob.model.AddressList;
+import java.util.Date;
 import com.lob.model.LobError;
-import java.time.OffsetDateTime;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -448,7 +448,7 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -503,7 +503,7 @@ public class AddressesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
         
 
         okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, _callback);
@@ -529,7 +529,7 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public AddressList list(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata) throws ApiException {
+    public AddressList list(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata) throws ApiException {
         try {
             ApiResponse<AddressList> localVarResp = listWithHttpInfo(limit, before, after, include, dateCreated, metadata);
             return localVarResp.getData();
@@ -556,7 +556,7 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AddressList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata) throws ApiException {
+    public ApiResponse<AddressList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata) throws ApiException {
         try {
             okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, null);
             Type localVarReturnType = new TypeToken<AddressList>(){}.getType();
@@ -585,7 +585,7 @@ public class AddressesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, final ApiCallback<AddressList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, final ApiCallback<AddressList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, _callback);
         Type localVarReturnType = new TypeToken<AddressList>(){}.getType();

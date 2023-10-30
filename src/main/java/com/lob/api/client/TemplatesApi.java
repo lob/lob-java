@@ -27,8 +27,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import java.util.Date;
 import com.lob.model.LobError;
-import java.time.OffsetDateTime;
 import com.lob.model.Template;
 import com.lob.model.TemplateDeletion;
 import com.lob.model.TemplateList;
@@ -582,7 +582,7 @@ public class TemplatesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -637,7 +637,7 @@ public class TemplatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, final ApiCallback _callback) throws ApiException {
         
 
         okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, _callback);
@@ -663,7 +663,7 @@ public class TemplatesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateList list(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata) throws ApiException {
+    public TemplateList list(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata) throws ApiException {
         try {
             ApiResponse<TemplateList> localVarResp = listWithHttpInfo(limit, before, after, include, dateCreated, metadata);
             return localVarResp.getData();
@@ -690,7 +690,7 @@ public class TemplatesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata) throws ApiException {
+    public ApiResponse<TemplateList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata) throws ApiException {
         try {
             okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, null);
             Type localVarReturnType = new TypeToken<TemplateList>(){}.getType();
@@ -719,7 +719,7 @@ public class TemplatesApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, final ApiCallback<TemplateList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, final ApiCallback<TemplateList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, _callback);
         Type localVarReturnType = new TypeToken<TemplateList>(){}.getType();

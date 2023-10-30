@@ -702,7 +702,7 @@ public class DeliverabilityAnalysis {
   public static final String SERIALIZED_NAME_DPV_FOOTNOTES = "dpv_footnotes";
 
   @SerializedName(SERIALIZED_NAME_DPV_FOOTNOTES)
-  private List<DpvFootnote> dpvFootnotes = new ArrayList<>();
+  private List<DpvFootnote> dpvFootnotes = new ArrayList<DpvFootnote>();
   public List<DpvFootnote> getDpvFootnotes() {
     if (this.dpvFootnotes == null) {
       this.dpvFootnotes = new ArrayList<DpvFootnote>();

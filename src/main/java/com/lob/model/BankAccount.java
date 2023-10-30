@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -297,7 +297,7 @@ public class BankAccount {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -307,7 +307,7 @@ public class BankAccount {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -318,7 +318,7 @@ public class BankAccount {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private OffsetDateTime dateModified;
+  private Date dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -328,7 +328,7 @@ public class BankAccount {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public OffsetDateTime getDateModified() {
+  public Date getDateModified() {
       return dateModified;
   }
   
@@ -575,7 +575,7 @@ public class BankAccount {
 
 
   /*
-  public BankAccount dateCreated(OffsetDateTime dateCreated) {
+  public BankAccount dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -583,14 +583,14 @@ public class BankAccount {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public BankAccount dateModified(OffsetDateTime dateModified) {
+  public BankAccount dateModified(Date dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -598,7 +598,7 @@ public class BankAccount {
   */
 
 
-  public void setDateModified(OffsetDateTime dateModified) {
+  public void setDateModified(Date dateModified) {
     this.dateModified = dateModified;
   }
 

@@ -38,7 +38,7 @@ public class UploadsMetadata {
   public static final String SERIALIZED_NAME_COLUMNS = "columns";
 
   @SerializedName(SERIALIZED_NAME_COLUMNS)
-  private List<String> columns = new ArrayList<>();
+  private List<String> columns = new ArrayList<String>();
 
 
   /*

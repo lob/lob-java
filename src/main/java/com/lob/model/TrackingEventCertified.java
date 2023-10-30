@@ -24,7 +24,7 @@ import com.lob.model.TrackingEventDetails;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -255,7 +255,7 @@ public class TrackingEventCertified {
   @SerializedName(SERIALIZED_NAME_TIME)
   
 
-  private OffsetDateTime time;
+  private Date time;
   /**
   * A timestamp in ISO 8601 format of the date USPS registered the event.
   * @return time
@@ -265,7 +265,7 @@ public class TrackingEventCertified {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date USPS registered the event.")
   
-  public OffsetDateTime getTime() {
+  public Date getTime() {
       return time;
   }
   
@@ -276,7 +276,7 @@ public class TrackingEventCertified {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -286,7 +286,7 @@ public class TrackingEventCertified {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -297,7 +297,7 @@ public class TrackingEventCertified {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private OffsetDateTime dateModified;
+  private Date dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -307,7 +307,7 @@ public class TrackingEventCertified {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public OffsetDateTime getDateModified() {
+  public Date getDateModified() {
       return dateModified;
   }
   
@@ -453,7 +453,7 @@ public class TrackingEventCertified {
 
 
   /*
-  public TrackingEventCertified time(OffsetDateTime time) {
+  public TrackingEventCertified time(Date time) {
     
     this.time = time;
     return this;
@@ -461,14 +461,14 @@ public class TrackingEventCertified {
   */
 
 
-  public void setTime(OffsetDateTime time) {
+  public void setTime(Date time) {
     this.time = time;
   }
 
 
 
   /*
-  public TrackingEventCertified dateCreated(OffsetDateTime dateCreated) {
+  public TrackingEventCertified dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -476,14 +476,14 @@ public class TrackingEventCertified {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public TrackingEventCertified dateModified(OffsetDateTime dateModified) {
+  public TrackingEventCertified dateModified(Date dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -491,7 +491,7 @@ public class TrackingEventCertified {
   */
 
 
-  public void setDateModified(OffsetDateTime dateModified) {
+  public void setDateModified(Date dateModified) {
     this.dateModified = dateModified;
   }
 

@@ -1,6 +1,6 @@
 /*
  * Lob
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -29,7 +29,6 @@ import java.nio.file.Files;
 
 import com.lob.model.Export;
 import com.lob.model.ExportModel;
-import com.lob.model.HTTPValidationError;
 import com.lob.model.LobError;
 import com.lob.model.Upload;
 import com.lob.model.UploadCreateExport;
@@ -98,7 +97,7 @@ public class UploadsApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -109,17 +108,17 @@ public class UploadsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call get_exportValidateBeforeCall(String uplId, String exId, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'uplId' is set
         if (uplId == null) {
             throw new ApiException("Missing the required parameter 'uplId' when calling get_export(Async)");
         }
-        
+
         // verify the required parameter 'exId' is set
         if (exId == null) {
             throw new ApiException("Missing the required parameter 'exId' when calling get_export(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = get_exportCall(uplId, exId, _callback);
         return localVarCall;
@@ -227,7 +226,7 @@ public class UploadsApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -238,12 +237,12 @@ public class UploadsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getValidateBeforeCall(String uplId, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'uplId' is set
         if (uplId == null) {
             throw new ApiException("Missing the required parameter 'uplId' when calling get(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = getCall(uplId, _callback);
         return localVarCall;
@@ -361,12 +360,12 @@ public class UploadsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createValidateBeforeCall(UploadWritable uploadWritable, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'uploadWritable' is set
         if (uploadWritable == null) {
             throw new ApiException("Missing the required parameter 'uploadWritable' when calling create(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = createCall(uploadWritable, _callback);
         return localVarCall;
@@ -474,7 +473,7 @@ public class UploadsApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -485,12 +484,12 @@ public class UploadsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteValidateBeforeCall(String uplId, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'uplId' is set
         if (uplId == null) {
             throw new ApiException("Missing the required parameter 'uplId' when calling delete(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = deleteCall(uplId, _callback);
         return localVarCall;
@@ -606,17 +605,17 @@ public class UploadsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call create_exportValidateBeforeCall(String uplId, ExportModel exportModel, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'uplId' is set
         if (uplId == null) {
             throw new ApiException("Missing the required parameter 'uplId' when calling create_export(Async)");
         }
-        
+
         // verify the required parameter 'exportModel' is set
         if (exportModel == null) {
             throw new ApiException("Missing the required parameter 'exportModel' when calling create_export(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = create_exportCall(uplId, exportModel, _callback);
         return localVarCall;
@@ -734,7 +733,7 @@ public class UploadsApi {
         final String[] localVarContentTypes = {
             "multipart/form-data"
         };
-        final String localVarContentType =  != null ?  "multipart/form-data" : localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = file != null ?  "multipart/form-data" : localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "basicAuth" };
@@ -743,17 +742,17 @@ public class UploadsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call upload_fileValidateBeforeCall(String uplId, Object file, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'uplId' is set
         if (uplId == null) {
             throw new ApiException("Missing the required parameter 'uplId' when calling upload_file(Async)");
         }
-        
+
         // verify the required parameter 'file' is set
         if (file == null) {
             throw new ApiException("Missing the required parameter 'file' when calling upload_file(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = upload_fileCall(uplId, file, _callback);
         return localVarCall;
@@ -876,17 +875,17 @@ public class UploadsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateValidateBeforeCall(String uplId, UploadUpdatable uploadUpdatable, final ApiCallback _callback) throws ApiException {
-        
+
         // verify the required parameter 'uplId' is set
         if (uplId == null) {
             throw new ApiException("Missing the required parameter 'uplId' when calling update(Async)");
         }
-        
+
         // verify the required parameter 'uploadUpdatable' is set
         if (uploadUpdatable == null) {
             throw new ApiException("Missing the required parameter 'uploadUpdatable' when calling update(Async)");
         }
-        
+
 
         okhttp3.Call localVarCall = updateCall(uplId, uploadUpdatable, _callback);
         return localVarCall;
@@ -999,7 +998,7 @@ public class UploadsApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1010,7 +1009,7 @@ public class UploadsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
-        
+
 
         okhttp3.Call localVarCall = listCall(campaignId, _callback);
         return localVarCall;

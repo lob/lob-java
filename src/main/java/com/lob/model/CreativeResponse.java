@@ -24,8 +24,8 @@ import com.lob.model.Campaign;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -284,7 +284,7 @@ public class CreativeResponse {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -294,7 +294,7 @@ public class CreativeResponse {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -305,7 +305,7 @@ public class CreativeResponse {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private OffsetDateTime dateModified;
+  private Date dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -315,7 +315,7 @@ public class CreativeResponse {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public OffsetDateTime getDateModified() {
+  public Date getDateModified() {
       return dateModified;
   }
   
@@ -554,7 +554,7 @@ public class CreativeResponse {
 
 
   /*
-  public CreativeResponse dateCreated(OffsetDateTime dateCreated) {
+  public CreativeResponse dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -562,14 +562,14 @@ public class CreativeResponse {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public CreativeResponse dateModified(OffsetDateTime dateModified) {
+  public CreativeResponse dateModified(Date dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -577,7 +577,7 @@ public class CreativeResponse {
   */
 
 
-  public void setDateModified(OffsetDateTime dateModified) {
+  public void setDateModified(Date dateModified) {
     this.dateModified = dateModified;
   }
 

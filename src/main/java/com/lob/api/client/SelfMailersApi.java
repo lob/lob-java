@@ -27,9 +27,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import java.util.Date;
 import com.lob.model.LobError;
 import com.lob.model.MailType;
-import java.time.OffsetDateTime;
 import com.lob.model.SelfMailer;
 import com.lob.model.SelfMailerDeletion;
 import com.lob.model.SelfMailerEditable;
@@ -464,7 +464,7 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listCall(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -539,7 +539,7 @@ public class SelfMailersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValidateBeforeCall(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback _callback) throws ApiException {
         
 
         okhttp3.Call localVarCall = listCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
@@ -570,7 +570,7 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public SelfMailerList list(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy) throws ApiException {
+    public SelfMailerList list(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy) throws ApiException {
         try {
             ApiResponse<SelfMailerList> localVarResp = listWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
             return localVarResp.getData();
@@ -602,7 +602,7 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SelfMailerList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy) throws ApiException {
+    public ApiResponse<SelfMailerList> listWithHttpInfo(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy) throws ApiException {
         try {
             okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, null);
             Type localVarReturnType = new TypeToken<SelfMailerList>(){}.getType();
@@ -636,7 +636,7 @@ public class SelfMailersApi {
         <tr><td> 0 </td><td> Lob uses RESTful HTTP response codes to indicate success or failure of an API request. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, OffsetDateTime> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback<SelfMailerList> _callback) throws ApiException {
+    public okhttp3.Call listAsync(Integer limit, String before, String after, List<String> include, Map<String, Date> dateCreated, Map<String, String> metadata, List<SelfMailerSize> size, Boolean scheduled, Map<String, String> sendDate, MailType mailType, SortBy3 sortBy, final ApiCallback<SelfMailerList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listValidateBeforeCall(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, _callback);
         Type localVarReturnType = new TypeToken<SelfMailerList>(){}.getType();

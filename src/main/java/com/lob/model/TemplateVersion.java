@@ -24,7 +24,7 @@ import com.lob.model.EngineHtml;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -170,7 +170,7 @@ public class TemplateVersion {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -180,7 +180,7 @@ public class TemplateVersion {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -191,7 +191,7 @@ public class TemplateVersion {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private OffsetDateTime dateModified;
+  private Date dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -201,7 +201,7 @@ public class TemplateVersion {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public OffsetDateTime getDateModified() {
+  public Date getDateModified() {
       return dateModified;
   }
   
@@ -383,7 +383,7 @@ public class TemplateVersion {
 
 
   /*
-  public TemplateVersion dateCreated(OffsetDateTime dateCreated) {
+  public TemplateVersion dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -391,14 +391,14 @@ public class TemplateVersion {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public TemplateVersion dateModified(OffsetDateTime dateModified) {
+  public TemplateVersion dateModified(Date dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -406,7 +406,7 @@ public class TemplateVersion {
   */
 
 
-  public void setDateModified(OffsetDateTime dateModified) {
+  public void setDateModified(Date dateModified) {
     this.dateModified = dateModified;
   }
 

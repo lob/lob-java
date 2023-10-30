@@ -37,7 +37,7 @@ public class BankAccountVerify {
   public static final String SERIALIZED_NAME_AMOUNTS = "amounts";
 
   @SerializedName(SERIALIZED_NAME_AMOUNTS)
-  private List<Integer> amounts = new ArrayList<>();
+  private List<Integer> amounts = new ArrayList<Integer>();
   public List<Integer> getAmounts() {
     if (this.amounts == null) {
       this.amounts = new ArrayList<Integer>();

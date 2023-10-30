@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -247,7 +247,7 @@ public class CardOrder {
   @SerializedName(SERIALIZED_NAME_AVAILABILITY_DATE)
   
 
-  private OffsetDateTime availabilityDate;
+  private Date availabilityDate;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return availabilityDate
@@ -257,7 +257,7 @@ public class CardOrder {
   
   @ApiModelProperty(value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getAvailabilityDate() {
+  public Date getAvailabilityDate() {
       return availabilityDate;
   }
   
@@ -268,7 +268,7 @@ public class CardOrder {
   @SerializedName(SERIALIZED_NAME_EXPECTED_AVAILABILITY_DATE)
   
 
-  private OffsetDateTime expectedAvailabilityDate;
+  private Date expectedAvailabilityDate;
   /**
   * The fixed deadline for the cards to be printed.
   * @return expectedAvailabilityDate
@@ -278,7 +278,7 @@ public class CardOrder {
   
   @ApiModelProperty(value = "The fixed deadline for the cards to be printed.")
   
-  public OffsetDateTime getExpectedAvailabilityDate() {
+  public Date getExpectedAvailabilityDate() {
       return expectedAvailabilityDate;
   }
   
@@ -289,7 +289,7 @@ public class CardOrder {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   
 
-  private OffsetDateTime dateCreated;
+  private Date dateCreated;
   /**
   * A timestamp in ISO 8601 format of the date the resource was created.
   * @return dateCreated
@@ -299,7 +299,7 @@ public class CardOrder {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was created.")
   
-  public OffsetDateTime getDateCreated() {
+  public Date getDateCreated() {
       return dateCreated;
   }
   
@@ -310,7 +310,7 @@ public class CardOrder {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   
 
-  private OffsetDateTime dateModified;
+  private Date dateModified;
   /**
   * A timestamp in ISO 8601 format of the date the resource was last modified.
   * @return dateModified
@@ -320,7 +320,7 @@ public class CardOrder {
   
   @ApiModelProperty(required = true, value = "A timestamp in ISO 8601 format of the date the resource was last modified.")
   
-  public OffsetDateTime getDateModified() {
+  public Date getDateModified() {
       return dateModified;
   }
   
@@ -469,7 +469,7 @@ public class CardOrder {
 
 
   /*
-  public CardOrder availabilityDate(OffsetDateTime availabilityDate) {
+  public CardOrder availabilityDate(Date availabilityDate) {
     
     this.availabilityDate = availabilityDate;
     return this;
@@ -477,14 +477,14 @@ public class CardOrder {
   */
 
 
-  public void setAvailabilityDate(OffsetDateTime availabilityDate) {
+  public void setAvailabilityDate(Date availabilityDate) {
     this.availabilityDate = availabilityDate;
   }
 
 
 
   /*
-  public CardOrder expectedAvailabilityDate(OffsetDateTime expectedAvailabilityDate) {
+  public CardOrder expectedAvailabilityDate(Date expectedAvailabilityDate) {
     
     this.expectedAvailabilityDate = expectedAvailabilityDate;
     return this;
@@ -492,14 +492,14 @@ public class CardOrder {
   */
 
 
-  public void setExpectedAvailabilityDate(OffsetDateTime expectedAvailabilityDate) {
+  public void setExpectedAvailabilityDate(Date expectedAvailabilityDate) {
     this.expectedAvailabilityDate = expectedAvailabilityDate;
   }
 
 
 
   /*
-  public CardOrder dateCreated(OffsetDateTime dateCreated) {
+  public CardOrder dateCreated(Date dateCreated) {
     
     this.dateCreated = dateCreated;
     return this;
@@ -507,14 +507,14 @@ public class CardOrder {
   */
 
 
-  public void setDateCreated(OffsetDateTime dateCreated) {
+  public void setDateCreated(Date dateCreated) {
     this.dateCreated = dateCreated;
   }
 
 
 
   /*
-  public CardOrder dateModified(OffsetDateTime dateModified) {
+  public CardOrder dateModified(Date dateModified) {
     
     this.dateModified = dateModified;
     return this;
@@ -522,7 +522,7 @@ public class CardOrder {
   */
 
 
-  public void setDateModified(OffsetDateTime dateModified) {
+  public void setDateModified(Date dateModified) {
     this.dateModified = dateModified;
   }
 
