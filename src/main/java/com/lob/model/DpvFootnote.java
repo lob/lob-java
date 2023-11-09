@@ -37,17 +37,21 @@ public enum DpvFootnote {
   
   CC("CC"),
   
-  N1("N1"),
+  C1("C1"),
   
   F1("F1"),
   
   G1("G1"),
   
-  U1("U1"),
+  IA("IA"),
   
   M1("M1"),
   
   M3("M3"),
+  
+  N1("N1"),
+  
+  PB("PB"),
   
   P1("P1"),
   
@@ -57,7 +61,11 @@ public enum DpvFootnote {
   
   R7("R7"),
   
-  RR("RR");
+  RR("RR"),
+  
+  TA("TA"),
+  
+  U1("U1");
 
   private String value;
 
