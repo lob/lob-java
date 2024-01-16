@@ -126,10 +126,10 @@ public class App
         addressEditable.setDescription("Harry - Office");
         addressEditable.setName("Harry Zhang");
         addressEditable.setCompany("Lob");
-        addressEditable.setAddressLine1("210 King St");
+        addressEditable.setAddressLine1("2261 Market Street");
         addressEditable.setAddressCity("San Francisco");
         addressEditable.setAddressState("CA");
-        addressEditable.setAddressZip("94107");
+        addressEditable.setAddressZip("94114");
         addressEditable.setAddressCountry(CountryExtended.US);
         addressEditable.setPhone("555-555-5555");
         addressEditable.setEmail("harry@lob.com");
