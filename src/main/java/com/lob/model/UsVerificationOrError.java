@@ -371,6 +371,27 @@ public class UsVerificationOrError {
   
   
 
+  public static final String SERIALIZED_NAME_TRANSIENT_ID = "transient_id";
+
+  @SerializedName(SERIALIZED_NAME_TRANSIENT_ID)
+  
+
+  private String transientId;
+  /**
+  * ID that is returned in the response body for the verification 
+  * @return transientId
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "ID that is returned in the response body for the verification ")
+  
+  public String getTransientId() {
+      return transientId;
+  }
+  
+  
+
   public static final String SERIALIZED_NAME_ERROR = "error";
 
   @SerializedName(SERIALIZED_NAME_ERROR)
@@ -556,6 +577,21 @@ public class UsVerificationOrError {
 
 
   /*
+  public UsVerificationOrError transientId(String transientId) {
+    
+    this.transientId = transientId;
+    return this;
+  }
+  */
+
+
+  public void setTransientId(String transientId) {
+    this.transientId = transientId;
+  }
+
+
+
+  /*
   public UsVerificationOrError error(BulkError error) {
     
     this.error = error;
@@ -590,6 +626,7 @@ public class UsVerificationOrError {
         Objects.equals(this.deliverabilityAnalysis, usVerificationOrError.deliverabilityAnalysis) &&
         Objects.equals(this.lobConfidenceScore, usVerificationOrError.lobConfidenceScore) &&
         Objects.equals(this._object, usVerificationOrError._object) &&
+        Objects.equals(this.transientId, usVerificationOrError.transientId) &&
         Objects.equals(this.error, usVerificationOrError.error);
   }
 
@@ -599,7 +636,7 @@ public class UsVerificationOrError {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, recipient, primaryLine, secondaryLine, urbanization, lastLine, deliverability, components, deliverabilityAnalysis, lobConfidenceScore, _object, error);
+    return Objects.hash(id, recipient, primaryLine, secondaryLine, urbanization, lastLine, deliverability, components, deliverabilityAnalysis, lobConfidenceScore, _object, transientId, error);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -624,6 +661,7 @@ public class UsVerificationOrError {
     sb.append("    deliverabilityAnalysis: ").append(toIndentedString(deliverabilityAnalysis)).append("\n");
     sb.append("    lobConfidenceScore: ").append(toIndentedString(lobConfidenceScore)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
+    sb.append("    transientId: ").append(toIndentedString(transientId)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -642,6 +680,7 @@ public class UsVerificationOrError {
       localMap.put("deliverability_analysis", deliverabilityAnalysis);
       localMap.put("lob_confidence_score", lobConfidenceScore);
       localMap.put("object", _object);
+      localMap.put("transient_id", transientId);
       localMap.put("error", error);
       return localMap;
     }

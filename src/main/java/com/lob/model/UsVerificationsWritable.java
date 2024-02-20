@@ -205,6 +205,27 @@ public class UsVerificationsWritable {
   
   
 
+  public static final String SERIALIZED_NAME_TRANSIENT_ID = "transient_id";
+
+  @SerializedName(SERIALIZED_NAME_TRANSIENT_ID)
+  
+
+  private String transientId;
+  /**
+  * ID that is returned in the response body for the verification 
+  * @return transientId
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "ID that is returned in the response body for the verification ")
+  
+  public String getTransientId() {
+      return transientId;
+  }
+  
+  
+
 
   /*
   public UsVerificationsWritable address(String address) {
@@ -323,6 +344,21 @@ public class UsVerificationsWritable {
 
 
 
+  /*
+  public UsVerificationsWritable transientId(String transientId) {
+    
+    this.transientId = transientId;
+    return this;
+  }
+  */
+
+
+  public void setTransientId(String transientId) {
+    this.transientId = transientId;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -339,7 +375,8 @@ public class UsVerificationsWritable {
         Objects.equals(this.urbanization, usVerificationsWritable.urbanization) &&
         Objects.equals(this.city, usVerificationsWritable.city) &&
         Objects.equals(this.state, usVerificationsWritable.state) &&
-        Objects.equals(this.zipCode, usVerificationsWritable.zipCode);
+        Objects.equals(this.zipCode, usVerificationsWritable.zipCode) &&
+        Objects.equals(this.transientId, usVerificationsWritable.transientId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -348,7 +385,7 @@ public class UsVerificationsWritable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, recipient, primaryLine, secondaryLine, urbanization, city, state, zipCode);
+    return Objects.hash(address, recipient, primaryLine, secondaryLine, urbanization, city, state, zipCode, transientId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -370,6 +407,7 @@ public class UsVerificationsWritable {
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    zipCode: ").append(toIndentedString(zipCode)).append("\n");
+    sb.append("    transientId: ").append(toIndentedString(transientId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -384,6 +422,7 @@ public class UsVerificationsWritable {
       localMap.put("city", city);
       localMap.put("state", state);
       localMap.put("zip_code", zipCode);
+      localMap.put("transient_id", transientId);
       return localMap;
     }
 
