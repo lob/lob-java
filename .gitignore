@@ -27,3 +27,5 @@ build
 
 # Filesystem
 .DS_Store
+
+pom.xml.releaseBackup

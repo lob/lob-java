@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **countyFips** | **String** | A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code.  | 
 **carrierRoute** | **String** | A 4-character code assigned to a mail delivery route within a ZIP code.  | 
 **carrierRouteType** | [**CarrierRouteTypeEnum**](#CarrierRouteTypeEnum) | The type of &#x60;components[carrier_route]&#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types).  | 
+**poBoxOnlyFlag** | [**PoBoxOnlyFlagEnum**](#PoBoxOnlyFlagEnum) | Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available.  | 
 **latitude** | **Float** | A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;longitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;).  |  [optional]
 **longitude** | **Float** | A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;latitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;).  |  [optional]
 
@@ -102,6 +103,16 @@ RURAL_ROUTE | &quot;rural_route&quot;
 HIGHWAY_CONTRACT | &quot;highway_contract&quot;
 PO_BOX | &quot;po_box&quot;
 GENERAL_DELIVERY | &quot;general_delivery&quot;
+EMPTY | &quot;&quot;
+
+
+
+## Enum: PoBoxOnlyFlagEnum
+
+Name | Value
+---- | -----
+Y | &quot;Y&quot;
+N | &quot;N&quot;
 EMPTY | &quot;&quot;
 
 

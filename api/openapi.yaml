@@ -6332,10 +6332,10 @@ components:
           val: 5555555555
         - key: address_line1
           pascal_case_key: AddressLine1
-          val: 210 King St
+          val: 2261 Market Street
         - key: address_line2
           pascal_case_key: AddressLine2
-          val: '# 6100'
+          val: 'Ste 5668'
         - key: address_city
           pascal_case_key: AddressCity
           val: San Francisco
@@ -6344,7 +6344,7 @@ components:
           val: CA
         - key: address_zip
           pascal_case_key: AddressZip
-          val: 94107
+          val: 94114
         - key: address_country
           pascal_case_key: AddressCountry
           val: US
@@ -6361,15 +6361,15 @@ components:
         snake_case_resource_var_name: address_editable
         resource_constructor:
         - camel_case_key: addressLine1
-          val: 210 King St
+          val: 2261 Market Street
         - camel_case_key: addressLine2
-          val: '# 6100'
+          val: 'Ste 5668'
         - camel_case_key: addressCity
           val: San Francisco
         - camel_case_key: addressState
           val: CA
         - camel_case_key: addressZip
-          val: 94107
+          val: 94114
         - camel_case_key: addressCountry
           dotnet_val: CountryExtended.US
           dotnetNonString: true
@@ -7716,7 +7716,7 @@ components:
             attributes:
               attribute:
               - key: primary_line
-                val: 210 King Street
+                val: 2261 Market Street
                 pascal_case_key: PrimaryLine
               - key: city
                 val: San Francisco
@@ -7725,7 +7725,7 @@ components:
                 val: CA
                 pascal_case_key: State
               - key: zip_code
-                val: 94017
+                val: 94114
                 pascal_case_key: ZipCode
           - index: 1
             attributes:
@@ -7749,7 +7749,7 @@ components:
             dotnet_val: "null"
             dotnetNonString: true
           - camel_case_key: primaryLine
-            val: 210 King Street
+            val: 2261 Market Street
           - camel_case_key: secondaryLine
             dotnet_val: "null"
             dotnetNonString: true
@@ -7761,7 +7761,7 @@ components:
           - camel_case_key: state
             val: CA
           - camel_case_key: zipCode
-            val: 94017
+            val: 94114
         - index: 1
           attributes:
           - camel_case_key: recipient
@@ -11060,10 +11060,10 @@ components:
             inner_val: Harry Zhang
           - inner_key: address_line1
             inner_pascal_case_key: AddressLine1
-            inner_val: 210 King St
+            inner_val: 2261 Market Street
           - inner_key: address_line2
             inner_pascal_case_key: AddressLine2
-            inner_val: '# 6100'
+            inner_val: 'Ste 5668'
           - inner_key: address_city
             inner_pascal_case_key: AddressCity
             inner_val: San Francisco
@@ -11072,7 +11072,7 @@ components:
             inner_val: CA
           - inner_key: address_zip
             inner_pascal_case_key: AddressZip
-            inner_val: 94107
+            inner_val: 94114
         merge_variables:
           attributes:
           - key: name
@@ -11091,10 +11091,10 @@ components:
           obj:
           - inner_camel_case_key: addressLine1
             inner_pascal_case_key: AddressLine1
-            inner_val: 210 King St
+            inner_val: 2261 Market Street
           - inner_camel_case_key: addressLine2
             inner_pascal_case_key: AddressLine2
-            inner_val: '# 6100'
+            inner_val: 'Ste 5668'
           - inner_camel_case_key: addressCity
             inner_pascal_case_key: AddressCity
             inner_val: San Francisco
@@ -11103,7 +11103,7 @@ components:
             inner_val: CA
           - inner_camel_case_key: addressZip
             inner_pascal_case_key: AddressZip
-            inner_val: 94107
+            inner_val: 94114
           - inner_camel_case_key: addressCountry
             inner_pascal_case_key: AddressCountry
             dotnet_inner_val: default(CountryExtended)
@@ -12975,10 +12975,10 @@ components:
             inner_val: Harry Zhang
           - inner_key: address_line1
             inner_pascal_case_key: AddressLine1
-            inner_val: 210 King St
+            inner_val: 2261 Market Street
           - inner_key: address_line2
             inner_pascal_case_key: AddressLine2
-            inner_val: '# 6100'
+            inner_val: 'Ste 5668'
           - inner_key: address_city
             inner_pascal_case_key: AddressCity
             inner_val: San Francisco
@@ -12987,7 +12987,7 @@ components:
             inner_val: CA
           - inner_key: address_zip
             inner_pascal_case_key: AddressZip
-            inner_val: 94107
+            inner_val: 94114
         arrays:
         - key: cards
           pascal_case_key: Cards
@@ -13013,10 +13013,10 @@ components:
           obj:
           - inner_camel_case_key: addressLine1
             inner_pascal_case_key: AddressLine1
-            inner_val: 210 King St
+            inner_val: 2261 Market Street
           - inner_camel_case_key: addressLine2
             inner_pascal_case_key: AddressLine2
-            inner_val: '# 6100'
+            inner_val: 'Ste 5668'
           - inner_camel_case_key: addressCity
             inner_pascal_case_key: AddressCity
             inner_val: San Francisco
@@ -13025,7 +13025,7 @@ components:
             inner_val: CA
           - inner_camel_case_key: addressZip
             inner_pascal_case_key: AddressZip
-            inner_val: 94107
+            inner_val: 94114
           - inner_camel_case_key: addressCounty
             dotnet_inner_val: default(CountryExtended)
             inner_pascal_case_key: AddressCountry
@@ -13861,10 +13861,10 @@ components:
             inner_val: Harry Zhang
           - inner_key: address_line1
             inner_pascal_case_key: AddressLine1
-            inner_val: 210 King St
+            inner_val: 2261 Market Street
           - inner_key: address_line2
             inner_pascal_case_key: AddressLine2
-            inner_val: '# 6100'
+            inner_val: 'Ste 5668'
           - inner_key: address_city
             inner_pascal_case_key: AddressCity
             inner_val: San Francisco
@@ -13873,7 +13873,7 @@ components:
             inner_val: CA
           - inner_key: address_zip
             inner_pascal_case_key: AddressZip
-            inner_val: 94107
+            inner_val: 94114
         merge_variables:
           attributes:
           - key: name
@@ -13892,10 +13892,10 @@ components:
           obj:
           - inner_camel_case_key: addressLine1
             inner_pascal_case_key: AddressLine1
-            inner_val: 210 King St
+            inner_val: 2261 Market Street
           - inner_camel_case_key: addressLine2
             inner_pascal_case_key: AddressLine2
-            inner_val: '# 6100'
+            inner_val: 'Ste 5668'
           - inner_camel_case_key: addressCity
             inner_pascal_case_key: AddressCity
             inner_val: San Francisco
@@ -13904,7 +13904,7 @@ components:
             inner_val: CA
           - inner_camel_case_key: addressZip
             inner_pascal_case_key: AddressZip
-            inner_val: 94107
+            inner_val: 94114
           - inner_camel_case_key: addressCounty
             inner_pascal_case_key: AddressCountry
             go_inner_val: lob.COUNTRYEXTENDED_US
@@ -14696,10 +14696,10 @@ components:
             inner_val: Harry Zhang
           - inner_key: address_line1
             inner_pascal_case_key: AddressLine1
-            inner_val: 210 King St
+            inner_val: 2261 Market Street
           - inner_key: address_line2
             inner_pascal_case_key: AddressLine2
-            inner_val: '# 6100'
+            inner_val: 'Ste 5668'
           - inner_key: address_city
             inner_pascal_case_key: AddressCity
             inner_val: San Francisco
@@ -14708,7 +14708,7 @@ components:
             inner_val: CA
           - inner_key: address_zip
             inner_pascal_case_key: AddressZip
-            inner_val: 94107
+            inner_val: 94114
         merge_variables:
           attributes:
           - key: name
@@ -14728,10 +14728,10 @@ components:
           obj:
           - inner_camel_case_key: addressLine1
             inner_pascal_case_key: AddressLine1
-            inner_val: 210 King St
+            inner_val: 2261 Market Street
           - inner_camel_case_key: addressLine2
             inner_pascal_case_key: AddressLine2
-            inner_val: '# 6100'
+            inner_val: 'Ste 5668'
           - inner_camel_case_key: addressCity
             inner_pascal_case_key: AddressCity
             inner_val: San Francisco
@@ -14740,7 +14740,7 @@ components:
             inner_val: CA
           - inner_camel_case_key: addressZip
             inner_pascal_case_key: AddressZip
-            inner_val: 94107
+            inner_val: 94114
           - inner_camel_case_key: addressCountry
             inner_pascal_case_key: AddressCountry
             dotnet_inner_val: default(CountryExtended)
@@ -16291,7 +16291,7 @@ components:
       properties:
         address:
           description: |
-            The entire address in one string (e.g., "210 King Street 94107"). _Does not support a recipient and will error when other payload parameters are provided._
+            The entire address in one string (e.g., "2261 Market Street 94114"). _Does not support a recipient and will error when other payload parameters are provided._
           maxLength: 500
           type: string
         recipient:
@@ -16345,7 +16345,7 @@ components:
         address:
           attributes:
           - key: primary_line
-            val: 210 King Street
+            val: 2261 Market Street
             pascal_case_key: PrimaryLine
           - key: city
             val: San Francisco
@@ -16354,7 +16354,7 @@ components:
             val: CA
             pascal_case_key: State
           - key: zip_code
-            val: 94017
+            val: 94114
             pascal_case_key: ZipCode
         resource_constructor:
         - camel_case_key: address
@@ -16364,7 +16364,7 @@ components:
           dotnet_val: "null"
           dotnetNonString: true
         - camel_case_key: primaryLine
-          val: 210 King Street
+          val: 2261 Market Street
         - camel_case_key: secondaryLine
           dotnet_val: "null"
           dotnetNonString: true
@@ -16376,7 +16376,7 @@ components:
         - camel_case_key: state
           val: CA
         - camel_case_key: zipCode
-          val: 94017
+          val: 94114
     us_verification:
       example:
         last_line: last_line
