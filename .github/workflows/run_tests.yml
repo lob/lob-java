@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 14
+          distribution: oracle
       - name: Cache Maven packages
         uses: actions/cache@v4
         with:
