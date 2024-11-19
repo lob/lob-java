@@ -108,7 +108,7 @@ public class CheckEditable {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   
 
-  private Float amount;
+  private Double amount;
   /**
   * The payment amount to be sent in US dollars.
   * maximum: 999999.99
@@ -119,7 +119,7 @@ public class CheckEditable {
   
   @ApiModelProperty(required = true, value = "The payment amount to be sent in US dollars.")
   
-  public Float getAmount() {
+  public Double getAmount() {
       return amount;
   }
   
@@ -476,7 +476,7 @@ public class CheckEditable {
 
 
   /*
-  public CheckEditable amount(Float amount) {
+  public CheckEditable amount(Double amount) {
     
     this.amount = amount;
     return this;
@@ -484,7 +484,7 @@ public class CheckEditable {
   */
 
 
-  public void setAmount(Float amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
