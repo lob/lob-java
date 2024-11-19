@@ -20,7 +20,7 @@ public class CheckEditableTest {
             {"from", new AddressDomestic()},
             {"to", new AddressDomestic()},
             {"bank_account", "fake account"},
-            {"amount", 147480.18f},
+            {"amount", 147480.18d},
             {"logo", "fake logo"},
             {"check_bottom", "fake bottom"},
             {"attachment", "fake attachment"},
