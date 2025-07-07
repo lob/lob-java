@@ -18,13 +18,14 @@ jobs:
           echo LOB_API_TEST_KEY=${{ secrets.LOB_API_TEST_KEY }} >> .env
           cat .env
       - name: Checkout the repository
-        uses: actions/checkout@v2
-      - name: Set up JDK 14
-        uses: actions/setup-java@v1
+        uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
-          java-version: 14
+          java-version: 17
+          distribution: oracle
       - name: Cache Maven packages
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
