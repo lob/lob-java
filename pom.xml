@@ -3,7 +3,7 @@
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
     <packaging>jar</packaging>
-    <version>13.4.7-SNAPSHOT</version>
+    <version>13.4.8-SNAPSHOT</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Parent pom for the Lob API Java Wrapper</description>
     <url>https://github.com/lob/lob-java</url>
@@ -37,7 +37,7 @@
         <connection>scm:git:git@github.com:lob/lob-java.git</connection>
         <developerConnection>scm:git:git@github.com:lob/lob-java.git</developerConnection>
         <url>https://github.com/lob/lob-java</url>
-        <tag>lob-java-13.4.5</tag>
+        <tag>lob-java-13.4.8</tag>
     </scm>
 
     <build>
@@ -52,7 +52,7 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.12</version>
+                <version>1.6.13</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
@@ -366,6 +366,23 @@
             </build>
         </profile>
     </profiles>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+            <enabled>true</enabled>
+            </releases>
+            <snapshots>
+            <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <dependencies>
         <dependency>
