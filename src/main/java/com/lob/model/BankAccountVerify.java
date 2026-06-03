@@ -37,34 +37,44 @@ public class BankAccountVerify {
   public static final String SERIALIZED_NAME_AMOUNTS = "amounts";
 
   @SerializedName(SERIALIZED_NAME_AMOUNTS)
-  private List<Integer> amounts = new ArrayList<>();
+  private List<Integer> amounts;
   public List<Integer> getAmounts() {
-    if (this.amounts == null) {
-      this.amounts = new ArrayList<Integer>();
-    }
     return this.amounts;
   }
 
-
-  /*
-  public BankAccountVerify amounts(List<Integer> amounts) {
-    
-    this.amounts = amounts;
-    return this;
-  }
-  */
-
   public BankAccountVerify addAmountsItem(Integer amountsItem) {
+    if (this.amounts == null) {
+      this.amounts = new ArrayList<Integer>();
+    }
     this.amounts.add(amountsItem);
     return this;
   }
-
 
   public void setAmounts(List<Integer> amounts) {
     this.amounts = amounts;
   }
 
+  public static final String SERIALIZED_NAME_DESCRIPTOR_CODE = "descriptor_code";
 
+  @SerializedName(SERIALIZED_NAME_DESCRIPTOR_CODE)
+  private String descriptorCode;
+
+  public String getDescriptorCode() {
+    return this.descriptorCode;
+  }
+
+  public void setDescriptorCode(String descriptorCode) {
+    if (descriptorCode != null && !descriptorCode.matches("^SM[a-zA-Z0-9]{4}$")) {
+      throw new IllegalArgumentException("Invalid descriptor_code: must match ^SM[a-zA-Z0-9]{4}$");
+    }
+    this.descriptorCode = descriptorCode;
+  }
+
+  public boolean isValid() {
+    boolean hasAmounts = amounts != null;
+    boolean hasDescriptorCode = descriptorCode != null;
+    return hasAmounts ^ hasDescriptorCode;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -75,12 +85,13 @@ public class BankAccountVerify {
       return false;
     }
     BankAccountVerify bankAccountVerify = (BankAccountVerify) o;
-    return Objects.equals(this.amounts, bankAccountVerify.amounts);
+    return Objects.equals(this.amounts, bankAccountVerify.amounts) &&
+        Objects.equals(this.descriptorCode, bankAccountVerify.descriptorCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amounts);
+    return Objects.hash(amounts, descriptorCode);
   }
 
   @Override
@@ -88,6 +99,7 @@ public class BankAccountVerify {
     StringBuilder sb = new StringBuilder();
     sb.append("{\n");
     sb.append("    amounts: ").append(toIndentedString(amounts)).append("\n");
+    sb.append("    descriptorCode: ").append(toIndentedString(descriptorCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -95,6 +107,7 @@ public class BankAccountVerify {
     public Map<String, Object> toMap() {
       Map<String, Object> localMap = new HashMap<String, Object>();
       localMap.put("amounts", amounts);
+      localMap.put("descriptor_code", descriptorCode);
       return localMap;
     }
 

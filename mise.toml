@@ -1,0 +1,3 @@
+[tools]
+java = "corretto-17"
+maven = "3"
