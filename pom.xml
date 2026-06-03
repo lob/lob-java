@@ -3,7 +3,7 @@
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
     <packaging>jar</packaging>
-    <version>13.4.8-SNAPSHOT</version>
+    <version>13.5.0-SNAPSHOT</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Parent pom for the Lob API Java Wrapper</description>
     <url>https://github.com/lob/lob-java</url>
@@ -64,7 +64,6 @@
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>1.7.0</version>
-                <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
