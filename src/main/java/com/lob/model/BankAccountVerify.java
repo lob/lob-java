@@ -37,8 +37,11 @@ public class BankAccountVerify {
   public static final String SERIALIZED_NAME_AMOUNTS = "amounts";
 
   @SerializedName(SERIALIZED_NAME_AMOUNTS)
-  private List<Integer> amounts;
+  private List<Integer> amounts = new ArrayList<>();
   public List<Integer> getAmounts() {
+    if (this.amounts == null) {
+      this.amounts = new ArrayList<Integer>();
+    }
     return this.amounts;
   }
 
@@ -55,6 +58,8 @@ public class BankAccountVerify {
   }
 
   public static final String SERIALIZED_NAME_DESCRIPTOR_CODE = "descriptor_code";
+  private static final java.util.regex.Pattern DESCRIPTOR_CODE_PATTERN =
+      java.util.regex.Pattern.compile("^SM[a-zA-Z0-9]{4}$");
 
   @SerializedName(SERIALIZED_NAME_DESCRIPTOR_CODE)
   private String descriptorCode;
@@ -64,15 +69,15 @@ public class BankAccountVerify {
   }
 
   public void setDescriptorCode(String descriptorCode) {
-    if (descriptorCode != null && !descriptorCode.matches("^SM[a-zA-Z0-9]{4}$")) {
+    if (descriptorCode != null && !DESCRIPTOR_CODE_PATTERN.matcher(descriptorCode).matches()) {
       throw new IllegalArgumentException("Invalid descriptor_code: must match ^SM[a-zA-Z0-9]{4}$");
     }
     this.descriptorCode = descriptorCode;
   }
 
   public boolean isValid() {
-    boolean hasAmounts = amounts != null;
-    boolean hasDescriptorCode = descriptorCode != null;
+    boolean hasAmounts = amounts != null && !amounts.isEmpty();
+    boolean hasDescriptorCode = descriptorCode != null && !descriptorCode.isEmpty();
     return hasAmounts ^ hasDescriptorCode;
   }
 
