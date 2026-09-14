@@ -85,11 +85,11 @@ LobResponse<Address> response = new Address.RequestBuilder()
         .setDescription("Harry - Office")
         .setName("Harry Zhang")
         .setCompany("Lob")
-        .setLine1("210 King St")
-        .setLine2("# 6100")
+        .setLine1("2261 Market Street")
+        .setLine2("Ste 5668")
         .setCity("San Francisco")
         .setState("CA")
-        .setZip("94107")
+        .setZip("94114")
         .setCountry("US")
         .setPhone("555-555-5555")
         .setEmail("harry@lob.com")
@@ -107,11 +107,11 @@ try {
     address.setCompany("Lob");
     address.setEmail("harry@lob.com");
     address.setPhone("5555555555");
-    address.setAddressLine1("210 King St");
-    address.setAddressLine2("# 6100");
+    address.setAddressLine1("2261 Market Street");
+    address.setAddressLine2("Ste 5668");
     address.setAddressCity("San Francisco");
     address.setAddressState("CA");
-    address.setAddressZip("94107");
+    address.setAddressZip("94114");
     address.setAddressCountry(CountryExtended.US);
     
     apiInstance.addressCreate(address);
@@ -132,10 +132,10 @@ LobResponse<Letter> response = new Letter.RequestBuilder()
         .setTo(
                 new Address.RequestBuilder()
                         .setName("Harry Zhang")
-                        .setLine1("210 King St Ste 6100")
+                        .setLine1("2261 Market Street Ste 5668")
                         .setCity("San Francisco")
                         .setState("CA")
-                        .setZip("94107")
+                        .setZip("94114")
         )
         .setFrom("adr_210a8d4b0b76d77b")
         .create();
@@ -149,11 +149,11 @@ The same letter can be created as follows:
 try {
     AddressEditable addressTo = new AddressEditable();
     addressTo.setName("Harry Zhang");
-    addressTo.setAddressLine1("210 King St");
-    addressTo.setAddressLine2("# 6100");
+    addressTo.setAddressLine1("2261 Market Street");
+    addressTo.setAddressLine2("Ste 5668");
     addressTo.setAddressCity("San Francisco");
     addressTo.setAddressState("CA");
-    addressTo.setAddressZip("94107");
+    addressTo.setAddressZip("94114");
 
     LetterEditable letterRaw = new LetterEditable();
     letterRaw.setDescription("Demo Letter");

@@ -3,8 +3,7 @@
     <groupId>com.lob</groupId>
     <artifactId>lob-java</artifactId>
     <packaging>jar</packaging>
-    <version>13.4.4</version>
-
+    <version>13.4.8-SNAPSHOT</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Parent pom for the Lob API Java Wrapper</description>
     <url>https://github.com/lob/lob-java</url>
@@ -38,7 +37,7 @@
         <connection>scm:git:git@github.com:lob/lob-java.git</connection>
         <developerConnection>scm:git:git@github.com:lob/lob-java.git</developerConnection>
         <url>https://github.com/lob/lob-java</url>
-        <tag>lob-java-13.4.4</tag>
+        <tag>lob-java-13.4.8</tag>
     </scm>
 
     <build>
@@ -51,9 +50,20 @@
         <testSourceDirectory>${testSourceDirectory}</testSourceDirectory>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy</goals>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.12</version>
+                <version>1.7.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
@@ -367,6 +377,23 @@
             </build>
         </profile>
     </profiles>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+            <enabled>true</enabled>
+            </releases>
+            <snapshots>
+            <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <dependencies>
         <dependency>

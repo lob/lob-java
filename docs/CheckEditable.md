@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **from** | **Object** | Must either be an address ID or an inline object with correct address parameters. | 
 **to** | **Object** | Must either be an address ID or an inline object with correct address parameters. | 
 **bankAccount** | **String** |  | 
-**amount** | **Float** | The payment amount to be sent in US dollars. | 
+**amount** | **Double** | The payment amount to be sent in US dollars. | 
 **logo** | **String** | Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check. |  [optional]
 **checkBottom** | **String** | The artwork to use on the bottom of the check page.  Notes: - HTML merge variables should not include delimiting whitespace. - PDF, PNG, and JPGs must be sized at 8.5\&quot;x11\&quot; at 300 DPI, while supplied HTML will be rendered and trimmed to fit on a 8.5\&quot;x11\&quot; page. - The check bottom will always be printed in black &amp; white. - Must conform to [this template](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/check_bottom_template.pdf).  Need more help? Consult our [HTML examples](#section/HTML-Examples). |  [optional]
 **attachment** | **String** | A document to include with the check. |  [optional]

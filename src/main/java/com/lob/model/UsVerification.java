@@ -390,6 +390,27 @@ public class UsVerification {
   
   
 
+  public static final String SERIALIZED_NAME_TRANSIENT_ID = "transient_id";
+
+  @SerializedName(SERIALIZED_NAME_TRANSIENT_ID)
+  
+
+  private String transientId;
+  /**
+  * ID that is returned in the response body for the verification 
+  * @return transientId
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "ID that is returned in the response body for the verification ")
+  
+  public String getTransientId() {
+      return transientId;
+  }
+  
+  
+
 
   /*
   public UsVerification id(String id) {
@@ -568,6 +589,21 @@ public class UsVerification {
 
 
 
+  /*
+  public UsVerification transientId(String transientId) {
+    
+    this.transientId = transientId;
+    return this;
+  }
+  */
+
+
+  public void setTransientId(String transientId) {
+    this.transientId = transientId;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -588,7 +624,8 @@ public class UsVerification {
         Objects.equals(this.components, usVerification.components) &&
         Objects.equals(this.deliverabilityAnalysis, usVerification.deliverabilityAnalysis) &&
         Objects.equals(this.lobConfidenceScore, usVerification.lobConfidenceScore) &&
-        Objects.equals(this._object, usVerification._object);
+        Objects.equals(this._object, usVerification._object) &&
+        Objects.equals(this.transientId, usVerification.transientId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -597,7 +634,7 @@ public class UsVerification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, recipient, primaryLine, secondaryLine, urbanization, lastLine, deliverability, validAddress, components, deliverabilityAnalysis, lobConfidenceScore, _object);
+    return Objects.hash(id, recipient, primaryLine, secondaryLine, urbanization, lastLine, deliverability, validAddress, components, deliverabilityAnalysis, lobConfidenceScore, _object, transientId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -623,6 +660,7 @@ public class UsVerification {
     sb.append("    deliverabilityAnalysis: ").append(toIndentedString(deliverabilityAnalysis)).append("\n");
     sb.append("    lobConfidenceScore: ").append(toIndentedString(lobConfidenceScore)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
+    sb.append("    transientId: ").append(toIndentedString(transientId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -641,6 +679,7 @@ public class UsVerification {
       localMap.put("deliverability_analysis", deliverabilityAnalysis);
       localMap.put("lob_confidence_score", lobConfidenceScore);
       localMap.put("object", _object);
+      localMap.put("transient_id", transientId);
       return localMap;
     }
 

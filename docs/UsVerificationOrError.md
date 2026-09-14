@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **deliverabilityAnalysis** | [**DeliverabilityAnalysis**](DeliverabilityAnalysis.md) |  |  [optional]
 **lobConfidenceScore** | [**LobConfidenceScore**](LobConfidenceScore.md) |  |  [optional]
 **_object** | [**ObjectEnum**](#ObjectEnum) |  |  [optional]
+**transientId** | **String** | ID that is returned in the response body for the verification  |  [optional]
 **error** | [**BulkError**](BulkError.md) |  |  [optional]
 
 

@@ -20,7 +20,7 @@ public class CheckEditableTest {
             {"from", new AddressDomestic()},
             {"to", new AddressDomestic()},
             {"bank_account", "fake account"},
-            {"amount", 111f},
+            {"amount", 147480.18d},
             {"logo", "fake logo"},
             {"check_bottom", "fake bottom"},
             {"attachment", "fake attachment"},
@@ -61,7 +61,7 @@ public class CheckEditableTest {
                 break;
             }
             case "amount": {
-                Float castedVal = (Float)val;
+                Double castedVal = (Double)val;
                 rec.setAmount(castedVal);
                 Assert.assertEquals(rec.getAmount(), castedVal);
                 break;

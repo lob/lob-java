@@ -184,6 +184,27 @@ public class MultipleComponents {
   
   
 
+  public static final String SERIALIZED_NAME_TRANSIENT_ID = "transient_id";
+
+  @SerializedName(SERIALIZED_NAME_TRANSIENT_ID)
+  
+
+  private String transientId;
+  /**
+  * ID that is returned in the response body for the verification 
+  * @return transientId
+  **/
+  
+  @javax.annotation.Nullable
+  
+  @ApiModelProperty(value = "ID that is returned in the response body for the verification ")
+  
+  public String getTransientId() {
+      return transientId;
+  }
+  
+  
+
 
   /*
   public MultipleComponents recipient(String recipient) {
@@ -287,6 +308,21 @@ public class MultipleComponents {
 
 
 
+  /*
+  public MultipleComponents transientId(String transientId) {
+    
+    this.transientId = transientId;
+    return this;
+  }
+  */
+
+
+  public void setTransientId(String transientId) {
+    this.transientId = transientId;
+  }
+
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -302,7 +338,8 @@ public class MultipleComponents {
         Objects.equals(this.urbanization, multipleComponents.urbanization) &&
         Objects.equals(this.city, multipleComponents.city) &&
         Objects.equals(this.state, multipleComponents.state) &&
-        Objects.equals(this.zipCode, multipleComponents.zipCode);
+        Objects.equals(this.zipCode, multipleComponents.zipCode) &&
+        Objects.equals(this.transientId, multipleComponents.transientId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -311,7 +348,7 @@ public class MultipleComponents {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipient, primaryLine, secondaryLine, urbanization, city, state, zipCode);
+    return Objects.hash(recipient, primaryLine, secondaryLine, urbanization, city, state, zipCode, transientId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -332,6 +369,7 @@ public class MultipleComponents {
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    zipCode: ").append(toIndentedString(zipCode)).append("\n");
+    sb.append("    transientId: ").append(toIndentedString(transientId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -345,6 +383,7 @@ public class MultipleComponents {
       localMap.put("city", city);
       localMap.put("state", state);
       localMap.put("zip_code", zipCode);
+      localMap.put("transient_id", transientId);
       return localMap;
     }
 

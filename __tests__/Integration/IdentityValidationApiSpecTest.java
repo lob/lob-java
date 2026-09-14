@@ -20,7 +20,7 @@ public class IdentityValidationApiSpecTest {
     public void validationTestWithCityState() throws ApiException {
         MultiLineAddress cityStateMultiLineAddress = new MultiLineAddress();
         cityStateMultiLineAddress.setRecipient("Lob.com");
-        cityStateMultiLineAddress.setPrimaryLine("210 King St");
+        cityStateMultiLineAddress.setPrimaryLine("2261 Market Street");
         cityStateMultiLineAddress.setCity("San Francisco");
         cityStateMultiLineAddress.setState("CA");
         try {
@@ -38,8 +38,8 @@ public class IdentityValidationApiSpecTest {
     public void validationTestWithZipCode() throws ApiException {
         MultiLineAddress zipCodeMultiLineAddress = new MultiLineAddress();
         zipCodeMultiLineAddress.setRecipient("Lob.com");
-        zipCodeMultiLineAddress.setPrimaryLine("210 King St");
-        zipCodeMultiLineAddress.setZipCode("94107");
+        zipCodeMultiLineAddress.setPrimaryLine("2261 Market Street");
+        zipCodeMultiLineAddress.setZipCode("94114");
         try {
             IdentityValidation response = validApi.validate(zipCodeMultiLineAddress);
         }
@@ -55,7 +55,7 @@ public class IdentityValidationApiSpecTest {
     public void validationTestWithTestKey() throws ApiException {
         MultiLineAddress cityStateMultiLineAddress = new MultiLineAddress();
         cityStateMultiLineAddress.setRecipient("Lob.com");
-        cityStateMultiLineAddress.setPrimaryLine("210 King St");
+        cityStateMultiLineAddress.setPrimaryLine("2261 Market Street");
         cityStateMultiLineAddress.setCity("San Francisco");
         cityStateMultiLineAddress.setState("CA");
 
@@ -72,8 +72,8 @@ public class IdentityValidationApiSpecTest {
     )
     public void validationTestBadParameter() throws ApiException {
         MultiLineAddress invalidAddress = new MultiLineAddress();
-        invalidAddress.setPrimaryLine("210 King St");
-        invalidAddress.setZipCode("94107");
+        invalidAddress.setPrimaryLine("2261 Market Street");
+        invalidAddress.setZipCode("94114");
         try {
             IdentityValidation response = validApi.validate(invalidAddress);
         }
