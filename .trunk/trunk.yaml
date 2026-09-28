@@ -1,0 +1,22 @@
+version: 0.1
+cli:
+  version: 1.22.13
+
+plugins:
+  sources:
+    - id: trunk
+      ref: v1.6.7
+      uri: https://github.com/trunk-io/plugins
+
+lint:
+  enabled:
+    - trufflehog@3.88.4
+  ignore:
+    - linters: [ALL]
+      paths:
+        - target/**
+        - build/**
+
+runtimes:
+  enabled:
+    - java@17.0.0
