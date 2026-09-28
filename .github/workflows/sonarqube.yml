@@ -1,0 +1,33 @@
+name: SonarQube Scan
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  sonarqube:
+    name: SonarQube Analysis
+    runs-on: [self-hosted, lob-runner, x64, Linux]
+    
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+      
+      - name: Set up JDK 17
+        uses: actions/setup-java@8df1039502a15bceb9433410b1a100fbe190c53b # v4.5.0
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      
+      - name: Run tests with coverage
+        run: mvn clean verify jacoco:report
+      
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@ba9859eae8dd6bd29e412f25ddbbef3d032000f4 # v8.2.2
+        continue-on-error: true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
