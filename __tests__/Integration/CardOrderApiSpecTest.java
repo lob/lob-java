@@ -61,7 +61,7 @@ public class CardOrderApiSpecTest {
     }
 
     @Test(
-        enabled=false, // cards is not available for this test account; dummyCard is never set
+        enabled=true,
         groups={"Integration", "Create", "Card Order", "Valid"}
     )
     public void cardOrderCreateTest() throws ApiException {
@@ -71,7 +71,7 @@ public class CardOrderApiSpecTest {
     }
 
     @Test(
-        enabled=false, // cards is not available for this test account; dummyCard is never set
+        enabled=true,
         expectedExceptions={ApiException.class},
         expectedExceptionsMessageRegExp=".*Missing the required parameter 'cardOrderEditable'.*",
         groups={"Integration", "Create", "Card Order", "Invalid"}
@@ -81,7 +81,7 @@ public class CardOrderApiSpecTest {
     }
 
     @Test(
-        enabled=false, // cards is not available for this test account; dummyCard is never set
+        enabled=true,
         expectedExceptions={ApiException.class},
         expectedExceptionsMessageRegExp=".*Your API key is not valid. Please sign up on lob.com to get a valid api key..*",
         groups={"Integration", "Create", "Card Order", "Invalid"}
@@ -96,7 +96,7 @@ public class CardOrderApiSpecTest {
     }
 
     @Test(
-        enabled=false, // cards is not available for this test account; dummyCard is never set
+        enabled=true,
         groups={"Integration", "Get", "Card Order", "Valid"}
     )
     public void cardOrderRetrieveTest() throws ApiException {

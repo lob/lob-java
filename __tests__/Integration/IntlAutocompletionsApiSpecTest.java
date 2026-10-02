@@ -18,7 +18,7 @@ public class IntlAutocompletionsApiSpecTest {
 
 
     @Test(
-        enabled=false, // endpoint returns "Unrecognized request URL" for this test account
+        enabled=true,
         groups={"Integration", "AutoComplete", "IntlAutocompletion", "Valid"}
     )
     public void AutocompleteTest() throws ApiException {
