@@ -128,10 +128,10 @@ public class BankAccountsApiTest {
     @Test(enabled=false, groups={"Unit", "Verify", "Bank Account", "Valid"})
     public void bankAccountVerifyTest() throws ApiException {
         BankAccountsApi bankAccountsApiMock = mock(BankAccountsApi.class);
-        BankAccount FakeBankAccount = new BankAccount(); 
+        BankAccount FakeBankAccount = new BankAccount();
         BankAccountVerify bankAccountVerify = new BankAccountVerify();
         List<Integer> amounts = new ArrayList<Integer>();
-        
+
         FakeBankAccount.setId("bank_fakeId");
         amounts.add(1);
         amounts.add(2);
@@ -139,8 +139,38 @@ public class BankAccountsApiTest {
 
         when(bankAccountsApiMock.verify("bank_fakeId", bankAccountVerify)).thenReturn(FakeBankAccount);
         BankAccount response = bankAccountsApiMock.verify("bank_fakeId", bankAccountVerify);
-        
+
         Assert.assertEquals(FakeBankAccount.getId(), response.getId());
+    }
+
+    @Test(enabled=true, groups={"Unit", "Verify", "Bank Account", "Valid"})
+    public void bankAccountVerifyWithDescriptorCodeTest() throws ApiException {
+        BankAccountsApi bankAccountsApiMock = mock(BankAccountsApi.class);
+        BankAccount fakeBankAccount = new BankAccount();
+        BankAccountVerify bankAccountVerify = new BankAccountVerify();
+
+        fakeBankAccount.setId("bank_fakeId");
+        bankAccountVerify.setDescriptorCode("SM11AA");
+
+        when(bankAccountsApiMock.verify("bank_fakeId", bankAccountVerify)).thenReturn(fakeBankAccount);
+        BankAccount response = bankAccountsApiMock.verify("bank_fakeId", bankAccountVerify);
+
+        Assert.assertEquals(fakeBankAccount.getId(), response.getId());
+    }
+
+    @Test(enabled=true, groups={"Unit", "Bank Account", "Valid"})
+    public void bankAccountHasMicrodepositTypeTest() throws ApiException {
+        BankAccount account = new BankAccount();
+        account.setId("bank_fakeId");
+
+        account.setMicrodepositType("amounts");
+        Assert.assertEquals(account.getMicrodepositType(), "amounts");
+
+        account.setMicrodepositType("descriptor_code");
+        Assert.assertEquals(account.getMicrodepositType(), "descriptor_code");
+
+        account.setMicrodepositType(null);
+        Assert.assertNull(account.getMicrodepositType());
     }
     
     @Test(enabled=true, groups={"Unit", "List", "Bank Account", "Valid"})

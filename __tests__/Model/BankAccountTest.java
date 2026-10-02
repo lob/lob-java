@@ -33,6 +33,8 @@ public class BankAccountTest {
             {"deleted", false},
             {"deleted", true},
             {"object", BankAccount.ObjectEnum.BANK_ACCOUNT},
+            {"microdeposit_type", "amounts"},
+            {"microdeposit_type", "descriptor_code"},
         };
     }
 
@@ -123,6 +125,12 @@ public class BankAccountTest {
                 BankAccount.ObjectEnum castedVal = (BankAccount.ObjectEnum)val;
                 rec.setObject(castedVal);
                 Assert.assertEquals(rec.getObject(), castedVal);
+                break;
+            }
+            case "microdeposit_type": {
+                String castedVal = (String)val;
+                rec.setMicrodepositType(castedVal);
+                Assert.assertEquals(rec.getMicrodepositType(), castedVal);
                 break;
             }
             default:

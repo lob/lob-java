@@ -403,20 +403,36 @@ public class BankAccount {
   public static final String SERIALIZED_NAME_OBJECT = "object";
 
   @SerializedName(SERIALIZED_NAME_OBJECT)
-  
+
 
   private ObjectEnum _object = ObjectEnum.BANK_ACCOUNT;
   /**
   * Get _object
   * @return _object
   **/
-  
+
   @javax.annotation.Nonnull
-  
+
   @ApiModelProperty(required = true, value = "")
-  
+
   public ObjectEnum getObject() {
       return _object;
+  }
+
+  public static final String SERIALIZED_NAME_MICRODEPOSIT_TYPE = "microdeposit_type";
+
+  @SerializedName(SERIALIZED_NAME_MICRODEPOSIT_TYPE)
+  private String microdepositType;
+
+  /**
+  * The type of microdeposit verification required. Present when verified is false; null once the account is verified.
+  * Use this to determine which field to submit to the verify endpoint: amounts or descriptor_code.
+  * @return microdepositType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The type of microdeposit verification required. Present when verified is false; null once the account is verified.")
+  public String getMicrodepositType() {
+      return microdepositType;
   }
   
   
@@ -632,6 +648,10 @@ public class BankAccount {
     this._object = _object;
   }
 
+  public void setMicrodepositType(String microdepositType) {
+    this.microdepositType = microdepositType;
+  }
+
 
 
   @Override
@@ -656,7 +676,8 @@ public class BankAccount {
         Objects.equals(this.dateCreated, bankAccount.dateCreated) &&
         Objects.equals(this.dateModified, bankAccount.dateModified) &&
         Objects.equals(this.deleted, bankAccount.deleted) &&
-        Objects.equals(this._object, bankAccount._object);
+        Objects.equals(this._object, bankAccount._object) &&
+        Objects.equals(this.microdepositType, bankAccount.microdepositType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -665,7 +686,7 @@ public class BankAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, routingNumber, accountNumber, accountType, signatory, metadata, id, signatureUrl, bankName, verified, dateCreated, dateModified, deleted, _object);
+    return Objects.hash(description, routingNumber, accountNumber, accountType, signatory, metadata, id, signatureUrl, bankName, verified, dateCreated, dateModified, deleted, _object, microdepositType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -693,6 +714,7 @@ public class BankAccount {
     sb.append("    dateModified: ").append(toIndentedString(dateModified)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
+    sb.append("    microdepositType: ").append(toIndentedString(microdepositType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -713,6 +735,7 @@ public class BankAccount {
       localMap.put("date_modified", dateModified);
       localMap.put("deleted", deleted);
       localMap.put("object", _object);
+      localMap.put("microdeposit_type", microdepositType);
       return localMap;
     }
 

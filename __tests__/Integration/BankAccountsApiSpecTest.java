@@ -130,6 +130,42 @@ public class BankAccountsApiSpecTest {
 
     @Test(
         enabled=true,
+        groups={"Integration", "Verify", "Bank Account", "Valid"}
+    )
+    public void bankAccountVerifyWithDescriptorCodeTest() throws ApiException {
+        BankAccount created = validApi.create(BankAccountWritableList.get(0));
+        createdBankAccounts.add(created);
+
+        BankAccountVerify bv = new BankAccountVerify();
+        bv.setDescriptorCode("SM11AA");
+
+        BankAccount response = validApi.verify(created.getId(), bv);
+
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.getId());
+        Assert.assertEquals(response.getId(), created.getId());
+    }
+
+    @Test(
+        enabled=true,
+        groups={"Integration", "Get", "Bank Account", "Valid"}
+    )
+    public void bankAccountHasMicrodepositTypeTest() throws ApiException {
+        BankAccount created = validApi.create(BankAccountWritableList.get(0));
+        createdBankAccounts.add(created);
+
+        BankAccount retrieved = validApi.get(created.getId());
+
+        Assert.assertNotNull(retrieved);
+        String mdType = retrieved.getMicrodepositType();
+        Assert.assertTrue(
+            mdType == null || mdType.equals("amounts") || mdType.equals("descriptor_code"),
+            "microdeposit_type should be 'amounts', 'descriptor_code', or null but was: " + mdType
+        );
+    }
+
+    @Test(
+        enabled=true,
         expectedExceptions={ApiException.class},
         expectedExceptionsMessageRegExp=".*Missing the required parameter 'bankId'.*",
         groups={"Integration", "Verify", "BankAccount", "Invalid"}
