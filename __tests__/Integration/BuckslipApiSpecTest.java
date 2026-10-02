@@ -54,7 +54,7 @@ public class BuckslipApiSpecTest {
 
 
     @Test(
-        enabled=true,
+        enabled=false, // buckslips is not available for this test account
         groups={"Integration", "List", "Buckslip", "Valid"}
     )
     public void bucksliListTest() throws ApiException {

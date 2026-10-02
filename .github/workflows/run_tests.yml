@@ -3,7 +3,7 @@ name: Run Tests
 on:
   workflow_dispatch:
   pull_request:
-    types: [opened, reopened, edited]
+    types: [opened, reopened, edited, synchronize]
     branches:
       - main
 
@@ -24,7 +24,7 @@ jobs:
         with:
           java-version: 14
       - name: Cache Maven packages
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
