@@ -62,7 +62,7 @@ Some versions of the Spring framework introduce a dependency collision that prev
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>4.9.1</version>
+            <version>4.9.2</version>
         </dependency>
     </dependencies>
 </dependencyManagement>
@@ -72,7 +72,7 @@ and
 <dependency>
     <groupId>com.squareup.okhttp3</groupId>
     <artifactId>okhttp</artifactId>
-    <version>4.9.1</version>
+    <version>4.9.2</version>
 </dependency>
 ```
 
