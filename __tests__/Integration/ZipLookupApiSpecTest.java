@@ -16,7 +16,7 @@ public class ZipLookupApiSpecTest {
     private ZipLookupsApi validApi = new ZipLookupsApi(Configuration.getConfigForLiveIntegration());
 
     @Test(
-        enabled=true,
+        enabled=false, // this test account has no verified bank account/credit card for live requests
         groups={"Integration", "Lookup", "ZipLookup", "Valid"}
     )
     public void lookupTest() throws ApiException {
@@ -31,7 +31,7 @@ public class ZipLookupApiSpecTest {
 
 
     @Test(
-        enabled=true,
+        enabled=false, // this test account has no verified bank account/credit card for live requests
         expectedExceptions={ApiException.class},
         expectedExceptionsMessageRegExp=".*invalid zip code.*",
         groups={"Integration", "Lookup", "ZipLookup", "Invalid"}
